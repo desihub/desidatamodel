@@ -11,6 +11,8 @@ Contents
    sdR.rst
    spPlate.rst
 
+.. automodule:: desiDataModel
+   :members:
 
 Indices and tables
 ==================
