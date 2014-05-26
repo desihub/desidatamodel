@@ -12,6 +12,7 @@ def main():
     """Program to run if called as an executable."""
     import xml.etree.ElementTree as ET
     import re
+    from sys import argv, stderr
     from argparse import ArgumentParser
     from os import getenv
     from os.path import basename, join
@@ -19,9 +20,9 @@ def main():
     try:
         import fitsio
     except ImportError:
-        print("This script requires fitsio, available from https://github.com/esheldon/fitsio",file=sys.stderr)
+        print("This script requires fitsio, available from https://github.com/esheldon/fitsio",file=stderr)
         return 1
-    parser = ArgumentParser(description=__doc__,prog=os.path.basename(sys.argv[0]))
+    parser = ArgumentParser(description=__doc__,prog=basename(argv[0]))
     parser.add_argument('filename',help='A FITS file.',metavar='FILE',nargs='+')
     options = parser.parse_args()
     template = join(getenv('DESIDATAMODEL_DIR'),'etc','template.html')
