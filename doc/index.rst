@@ -20,6 +20,9 @@ Examples
    examples/sdR.rst
    examples/spPlate.rst
 
+desiDataModel Python Package
+============================
+
 .. automodule:: desiDataModel
    :members:
 

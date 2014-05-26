@@ -1,20 +1,19 @@
+# License information goes here
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+# The line above will help with 2to3 support.
 """
 =============
 desiDataModel
 =============
 
-This package is a template for other DESI_ Python_ packages.
-
-A Python package should have a `version()` method that returns the
-version of the package.  This function should be used to set the ``__version__``
-package variable.
+This package provides support for the DESI_ Data Model.
 
 .. _DESI: http://desi.lbl.gov
-.. _Python: http://python.org
 """
 
 def version():
-    """Returns the version of the template package.
+    """Returns the version of the desiDataModel package.
 
     Parameters
     ----------
@@ -34,4 +33,3 @@ def version():
     return '0.0.1.dev'
 
 __version__ = version()
-
