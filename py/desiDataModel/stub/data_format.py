@@ -16,7 +16,7 @@ def data_format(hdr,div):
     -------
     None
     """
-    from . import binary_data_format, get_uri
+    from . import binary_table_format, get_uri
     uri = get_uri(div)
     if 'XTENSION' in hdr:
         if hdr['XTENSION'].strip() == 'BINTABLE':
