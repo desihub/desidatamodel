@@ -26,6 +26,15 @@ desiDataModel Python Package
 .. automodule:: desiDataModel
    :members:
 
+.. autosummary::
+
+   desiDataModel.stub
+
+.. toctree::
+   :maxdepth: 1
+
+   api/stub.rst
+
 Indices and tables
 ==================
 
