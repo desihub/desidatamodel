@@ -16,7 +16,7 @@ def main():
     from argparse import ArgumentParser
     from os import getenv
     from os.path import basename, join
-    from . import parse_header
+    from . import get_uri, parse_header
     try:
         import fitsio
     except ImportError:
