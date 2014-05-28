@@ -53,7 +53,7 @@ def main():
         #
         #- Read the file and parse the headers
         #
-        fx = fitsio.FITS(sys.argv[1])
+        fx = fitsio.FITS(f)
         nhdr = len(fx)
         body = root.find('{0}body'.format(uri))
         if nhdr < 2:
