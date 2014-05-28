@@ -17,6 +17,7 @@ def binary_table_format(hdr,div):
     None
     """
     import xml.etree.ElementTree as ET
+    from cgi import escape
     from . import get_uri
     uri = get_uri(div)
     table = ET.SubElement(div,'{0}table'.format(uri),attrib={'class':'columns'})
