@@ -45,37 +45,33 @@ def main():
         #- Read the file and parse the headers
         #
         fx = fitsio.FITS(f)
-        # nhdr = len(fx)
-        nhdr = 137
-        nspace = ''
-        hduhighlight = '='*6
+        nhdr = len(fx)
+        # nspace = ''
+        # hduhighlight = '='*6
         if nhdr > 99:
             hduname = 'HDU{0:03d}'
-            nspace = ' '
-            hduhighlight += '='
+            # nspace = ' '
+            # hduhighlight += '='
         elif nhdr > 9:
             hduname = 'HDU{0:02d}'
         else:
             hduname = 'HDU{0:1d}'
-        rstkeywords['nspace'] = nspace
-        rstkeywords['hduhighlight'] = hduhighlight
-        rstkeywords['contentstable'] = ''
-        # if nhdr > 2:
-        #     #
-        #     # Add extra hdu sections
-        #     #
-        #     for k in range(2,nhdr):
-        #         divid = "hdu{0}".format(k)
-        #         div = ET.Element('{0}div'.format(uri),attrib={'id':divid})
-        #         div.text="\n"
-        #         div.tail="\n\n"
-        #         h2 = ET.SubElement(div,'{0}h2'.format(uri))
-        #         h2.text = "HDU{0}: [What's in this HDU?]".format(k)
-        #         h2.tail = "\n"
-        #         p = ET.SubElement(div,'{0}p'.format(uri))
-        #         p.text='[Summarize contents of this HDU.]'
-        #         p.tail="\n"
-        #         body.insert(k+1,div)
+        # rstkeywords['nspace'] = nspace
+        # rstkeywords['hduhighlight'] = hduhighlight
+        # rstkeywords['contentstable'] = ''
+        contents_table = [('Number','EXTNAME','Type','Contents')]
+        for k in range(nhdr):
+            hdr = fx[k].read_header()
+            if k > 0 and 'EXTNAME' in hdr:
+                extname = hdr['EXTNAME']
+            else:
+                extname = ''
+            if k > 0:
+                exttype = hdr['XTENSION']
+            else:
+                exttype = 'IMAGE'
+            contents_table.append((hduname.format(k),extname,exttype,'*Brief Description*'))
+        print(contents_table)
         # for k in range(nhdr):
         #     div = root.find('.//{0}div[@id="hdu{1}"]'.format(uri,k))
         #     if div is None:

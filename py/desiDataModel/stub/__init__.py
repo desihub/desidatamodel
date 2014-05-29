@@ -49,10 +49,6 @@ File Type
 Contents
 ========
 
-{hduhighlight} ======= ===== ========
-Number{nspace} EXTNAME Type  Contents
-{hduhighlight} ======= ===== ========
-{contentstable}
-{hduhighlight} ======= ===== ========
+{contents_table}
 
 """
