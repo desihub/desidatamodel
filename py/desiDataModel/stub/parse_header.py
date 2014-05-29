@@ -38,6 +38,8 @@ def parse_header(hdr):
             if isinstance(value, float):
                 value = str(value)
                 ktype = 'float'
+            if value.endswith('_'):
+                value = value[0:len(value)-1] + '\\_'
             keywords.append(dict(KEY=key, Value=value, Type=ktype,
                 Comment=escape(hdr.get_comment(key))) )
     if len(keywords) == 0:
