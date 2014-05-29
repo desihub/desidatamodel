@@ -17,3 +17,42 @@ from .file_size import file_size
 from .fits_column_format import fits_column_format
 from .get_uri import get_uri
 from .parse_header import parse_header
+#
+# This is a template.
+#
+rst = """{titlehighlight}
+{title}
+{titlehighlight}
+
+General Description
+===================
+
+Summary
+-------
+
+*This section should be filled in with a high-level description of this file.
+In general, you should remove or replace the emphasized text (\*this text
+is emphasized\*) in this document.*
+
+Naming Convention
+-----------------
+
+``{filename}``, where ...  *The filename should be replaced with a regular expression
+that matches the filename.  Also give a human-readable description of the
+filename. For example, a six-digit number wouldcorrespond to ``[0-9]{{6}}``.
+
+File Type
+---------
+
+{filetype}, {filesize}  *This section gives the type of the file and its approximate size.*
+
+Contents
+========
+
+{hduhighlight} ======= ===== ========
+Number{nspace} EXTNAME Type  Contents
+{hduhighlight} ======= ===== ========
+{contentstable}
+{hduhighlight} ======= ===== ========
+
+"""
