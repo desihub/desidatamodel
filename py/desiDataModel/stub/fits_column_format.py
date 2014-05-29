@@ -24,6 +24,9 @@ def fits_column_format(format):
     >>> fits_column_format('12E')
     'float32[12]'
     """
+    if format.startswith('1P'):
+        cmap = {'B':'8-bit stream','I':'16-bit stream','J':'32-bit stream'}
+        return cmap[format[2]]
     fitstype=format[-1]
     if fitstype == 'A' and len(format) == 1:
         return 'char[1]'
