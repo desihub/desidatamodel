@@ -77,7 +77,7 @@ def main():
         colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])+"\n"
         rstkeywords['contents_table'] = highlight
         for k in range(nhdr):
-            rstkeywords['contents_table'] += colformat.format(*contents_table[0])
+            rstkeywords['contents_table'] += colformat.format(*contents_table[k])
             if k == 0:
                 rstkeywords['contents_table'] += highlight
         rstkeywords['contents_table'] += highlight
