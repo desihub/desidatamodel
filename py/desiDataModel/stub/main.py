@@ -38,7 +38,7 @@ def main():
             modelname = basef[0:basef.index('.')]
         rstkeywords['title'] = 'Datamodel: {0}'.format(modelname)
         rstkeywords['titlehighlight'] = '='*len(rstkeywords['title'])
-        rstkeywords['filename'] = f
+        rstkeywords['filename'] = basef
         rstkeywords['filetype'] = 'FITS'
         rstkeywords['filesize'] = file_size(f)
         #
@@ -46,32 +46,32 @@ def main():
         #
         fx = fitsio.FITS(f)
         nhdr = len(fx)
-        # nspace = ''
-        # hduhighlight = '='*6
         if nhdr > 99:
             hduname = 'HDU{0:03d}'
-            # nspace = ' '
-            # hduhighlight += '='
         elif nhdr > 9:
             hduname = 'HDU{0:02d}'
         else:
             hduname = 'HDU{0:1d}'
-        # rstkeywords['nspace'] = nspace
-        # rstkeywords['hduhighlight'] = hduhighlight
-        # rstkeywords['contentstable'] = ''
         contents_table = [('Number','EXTNAME','Type','Contents')]
+        headers = list()
+        hdu_sections = list()
         for k in range(nhdr):
-            hdr = fx[k].read_header()
-            if k > 0 and 'EXTNAME' in hdr:
-                extname = hdr['EXTNAME']
+            headers.append(fx[k].read_header())
+            if k > 0 and 'EXTNAME' in headers[k]:
+                extname = headers[k]['EXTNAME'].strip()
             else:
                 extname = ''
             if k > 0:
-                exttype = hdr['XTENSION']
+                exttype = headers[k]['XTENSION'].strip()
             else:
                 exttype = 'IMAGE'
             contents_table.append((hduname.format(k)+'_',extname,exttype,'*Brief Description*'))
-        # print(contents_table)
+            sec_title = hduname.format(k)
+            hdu_sections.append(sec_title)
+            hdu_sections.append('-'*len(sec_title))
+            hdu_sections.append('')
+            hdu_sections.append('*Summarize the contents of this HDU.*')
+            hdu_sections.append('')
         colsizes = [max(map(len,col)) for col in zip(*contents_table)]
         highlight = ' '.join(['='*k for k in colsizes])+"\n"
         colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])+"\n"
@@ -81,23 +81,10 @@ def main():
             if k == 0:
                 rstkeywords['contents_table'] += highlight
         rstkeywords['contents_table'] += highlight
+        rstkeywords['hdu_sections'] = '\n'.join(hdu_sections)
         # for k in range(nhdr):
-        #     div = root.find('.//{0}div[@id="hdu{1}"]'.format(uri,k))
-        #     if div is None:
-        #         print('Could not find hdu{0}!'.format(k))
-        #     if k == 0:
-        #         #
-        #         # Remove header table
-        #         #
-        #         del div[4]
-        #     if k == 1:
-        #         div[0].text= "HDU{0}: [What's in this HDU?]".format(k)
-        #         del div[1:]
-        #         p = ET.SubElement(div,'{0}p'.format(uri))
-        #         p.text='[Summarize contents of this HDU.]'
-        #         p.tail="\n"
         #     hdr = fx[k].read_header()
         #     parse_header(hdr,div)
-        with open("{0}.rst".format(modelname),'w') as f:
-            f.write(rst.format(**rstkeywords))
+        with open("{0}.rst".format(modelname),'w') as m:
+            m.write(rst.format(**rstkeywords))
     return 0

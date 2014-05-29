@@ -51,4 +51,14 @@ Contents
 
 {contents_table}
 
+FITS Header Units
+=================
+
+{hdu_sections}
+
+Notes and Examples
+==================
+
+*Add notes and examples here.  You can also create links to example files.*
+
 """
