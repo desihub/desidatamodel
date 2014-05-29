@@ -70,8 +70,12 @@ def main():
                 exttype = hdr['XTENSION']
             else:
                 exttype = 'IMAGE'
-            contents_table.append((hduname.format(k),extname,exttype,'*Brief Description*'))
-        print(contents_table)
+            contents_table.append((hduname.format(k)+'_',extname,exttype,'*Brief Description*'))
+        # print(contents_table)
+        colsizes = [max(map(len,col)) for col in zip(*contents_table)]
+        highlight = ' '.join(['='*k for k in colsizes])+"\n"
+        colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])+"\n"
+        rstkeywords['contents_table'] = highlight + colformat.format(*contents_table[0]) + highlight + highlight
         # for k in range(nhdr):
         #     div = root.find('.//{0}div[@id="hdu{1}"]'.format(uri,k))
         #     if div is None:
