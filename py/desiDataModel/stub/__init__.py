@@ -39,7 +39,7 @@ Naming Convention
 
 ``{filename}``, where ...  *The filename should be replaced with a regular expression
 that matches the filename.  Also give a human-readable description of the
-filename. For example, a six-digit number wouldcorrespond to ``[0-9]{{6}}``.
+filename. For example, a six-digit number would correspond to ``[0-9]{{6}}``.*
 
 File Type
 ---------

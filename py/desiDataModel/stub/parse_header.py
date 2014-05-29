@@ -2,24 +2,22 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
-def parse_header(hdr,div):
+def parse_header(hdr):
     """Create a table of header keywords, omitting those required by FITS anyway.
 
     Parameters
     ----------
     hdr : an object returned by the fitsio method ``read_header()``
         The header to parse.
-    div : xml.etree.ElementTree.Element
-        A representation of the div that will contain the information.
 
     Returns
     -------
-    None
+    parse_header : list
+        A list of strings that can be appended to the main document.
     """
-    import xml.etree.ElementTree as ET
     from cgi import escape
-    from . import data_format, extrakey, get_uri
-    uri = get_uri(div)
+    from . import data_format, extrakey
+    section = list()
     keywords = list()
     for key in hdr.keys():
         if extrakey(key):
@@ -40,29 +38,23 @@ def parse_header(hdr,div):
             keywords.append(dict(KEY=key, Value=value, Type=ktype,
                 Comment=escape(hdr.get_comment(key))) )
     if len(keywords) == 0:
-        p = ET.SubElement(div,'{0}p'.format(uri))
-        p.text = 'This HDU has no non-standard required keywords.'
-        p.tail = '\n'
+        section.append('This HDU has no non-standard required keywords.')
+        section.append('')
     else:
-        table = ET.SubElement(div,'{0}table'.format(uri),attrib={'class':'header'})
-        table.text='\n'
-        table.tail='\n\n'
-        caption = ET.SubElement(table,'{0}caption'.format(uri))
-        caption.text='Required Header Keywords'
-        caption.tail='\n'
-        tr = ET.SubElement(table,'{0}tr'.format(uri))
-        tr.tail='\n'
-        for k in ('KEY','Value','Type','Comment'):
-            th = ET.SubElement(tr,'{0}th'.format(uri))
-            th.text= k
+        section.append('Required Header Keywords')
+        section.append('~~~~~~~~~~~~~~~~~~~~~~~~')
+        section.append('')
+        keywords_table =  [('KEY','Value','Type','Comment')]
         for kw in keywords:
-            tr = ET.SubElement(table,'{0}tr'.format(uri))
-            tr.tail='\n'
-            for k in ('KEY','Value','Type','Comment'):
-                td = ET.SubElement(tr,'{0}td'.format(uri))
-                if kw[k] == '':
-                    td.text = ' '
-                else:
-                    td.text = kw[k]
-    data_format(hdr,div)
-    return
+            keywords_table.append((kw['KEY'],kw['Value'],kw['Type'],kw['Comment']))
+        colsizes = [max(map(len,col)) for col in zip(*keywords_table)]
+        highlight = ' '.join(['='*k for k in colsizes])
+        colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])
+        section.append(highlight)
+        for k in range(len(keywords_table)):
+            section.append(colformat.format(*keywords_table[k]))
+            if k == 0:
+                section.append(highlight)
+        section.append(highlight)
+    # data_format(hdr,div)
+    return section
