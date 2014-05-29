@@ -25,7 +25,7 @@ def binary_table_format(hdr):
 
     for j in range(1, hdr['TFIELDS']+1):
         name = hdr['TTYPE{0}'.format(j)].strip()
-        ttype = fits_column_format(hdr['TFORM{0}'.format(j)].strip()
+        ttype = fits_column_format(hdr['TFORM{0}'.format(j)].strip())
         tunit = 'TUNIT{0}'.format(j)
         if tunit in hdr:
             units = hdr[tunit]
