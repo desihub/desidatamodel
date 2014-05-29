@@ -75,7 +75,12 @@ def main():
         colsizes = [max(map(len,col)) for col in zip(*contents_table)]
         highlight = ' '.join(['='*k for k in colsizes])+"\n"
         colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])+"\n"
-        rstkeywords['contents_table'] = highlight + colformat.format(*contents_table[0]) + highlight + highlight
+        rstkeywords['contents_table'] = highlight
+        for k in range(nhdr):
+            rstkeywords['contents_table'] += colformat.format(*contents_table[0])
+            if k == 0:
+                rstkeywords['contents_table'] += highlight
+        rstkeywords['contents_table'] += highlight
         # for k in range(nhdr):
         #     div = root.find('.//{0}div[@id="hdu{1}"]'.format(uri,k))
         #     if div is None:
