@@ -23,6 +23,9 @@ def parse_header(hdr):
         if extrakey(key):
             #- Escape &, <, >, in strings, but don't choke on int/float
             value = hdr[key]
+            if isinstance(value, bool):
+                ktype = 'bool'
+                value = ('F','T')[int(value)]
             if isinstance(value, str):
                 value = escape(value)
                 if value == 'T' or value == 'F':

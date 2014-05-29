@@ -22,7 +22,6 @@ def binary_table_format(hdr):
     section.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     section.append('')
     columns_table =  [('Name','Type','Units','Description')]
-
     for j in range(1, hdr['TFIELDS']+1):
         name = hdr['TTYPE{0}'.format(j)].strip()
         ttype = fits_column_format(hdr['TFORM{0}'.format(j)].strip())
