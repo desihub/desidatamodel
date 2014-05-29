@@ -8,8 +8,9 @@ The DESI Data Tree
 .. toctree::
    :maxdepth: 1
 
-   imaging/README.rst
-   imaging/data/README.rst
+   imaging/index.rst
+   imaging/data/index.rst
+   imaging/data/decam/index.rst
 
 Examples
 ========
