@@ -56,5 +56,9 @@ def parse_header(hdr):
             if k == 0:
                 section.append(highlight)
         section.append(highlight)
-    # data_format(hdr,div)
+        section.append('')
+    #
+    # Analyze any tables that might be present.
+    #
+    section += data_format(hdr)
     return section

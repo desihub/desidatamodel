@@ -2,31 +2,28 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
-def data_format(hdr,div):
+def data_format(hdr):
     """Decide which kind of header this is, and print its data format
 
     Parameters
     ----------
     hdr : an object returned by the fitsio method ``read_header()``
         The header to parse.
-    div : xml.etree.ElementTree.Element
-        A representation of the div that will contain the information.
 
     Returns
     -------
-    None
+    data_format : list
+        A list of strings that can be appended to the main document.
     """
-    from . import binary_table_format, get_uri
-    uri = get_uri(div)
+    from . import binary_table_format
+    section = list()
     if 'XTENSION' in hdr:
         if hdr['XTENSION'].strip() == 'BINTABLE':
-            binary_table_format(hdr,div)
+            section += binary_table_format(hdr)
         elif hdr['XTENSION'].strip() == 'IMAGE':
-            p = ET.SubElement(div,'{0}p'.format(uri))
-            p.text = 'Data: FITS image'
-            p.tail = '\n'
+            section.append('Data: FITS image')
+            section.append('')
         else:
-            p = ET.SubElement(div,'{0}p'.format(uri))
-            p.text = "Unknown extension type {0}".format(hdr['XTENSION'])
-            p.tail = '\n'
-    return
+            section.append("Unknown extension type {0}".format(hdr['XTENSION']))
+            section.append('')
+    return section

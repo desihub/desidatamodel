@@ -2,58 +2,50 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
-def binary_table_format(hdr,div):
+def binary_table_format(hdr):
     """Print format of binary table
 
     Parameters
     ----------
     hdr : an object returned by the fitsio method ``read_header()``
         The header to parse.
-    div : xml.etree.ElementTree.Element
-        A representation of the div that will contain the information.
 
     Returns
     -------
-    None
+    binary_table_format : list
+        A list of strings that can be appended to the main document.
     """
-    import xml.etree.ElementTree as ET
     from cgi import escape
-    from . import fits_column_format, get_uri
-    uri = get_uri(div)
-    table = ET.SubElement(div,'{0}table'.format(uri),attrib={'class':'columns'})
-    table.text='\n'
-    table.tail='\n\n'
-    caption = ET.SubElement(table,'{0}caption'.format(uri))
-    caption.text = 'Required Data Table Columns'
-    caption.tail='\n'
-    tr = ET.SubElement(table,'{0}tr'.format(uri))
-    tr.tail='\n'
-    for k in ('Name','Type','Units','Description'):
-        th = ET.SubElement(tr,'{0}th'.format(uri))
-        th.text = k
+    from . import fits_column_format
+    section = list()
+    section.append('Required Data Table Columns')
+    section.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    section.append('')
+    columns_table =  [('Name','Type','Units','Description')]
+
     for j in range(1, hdr['TFIELDS']+1):
+        name = hdr['TTYPE{0}'.format(j)].strip()
+        ttype = fits_column_format(hdr['TFORM{0}'.format(j)].strip()
+        tunit = 'TUNIT{0}'.format(j)
+        if tunit in hdr:
+            units = hdr[tunit]
+        else:
+            units = ''
         #- Check TCOMMnn keyword, otherwise use TTYPE comment for description
         commkey = 'TCOMM{0}'.format(j)
         if commkey in hdr:
             description = escape(hdr[commkey])
         else:
             description = escape(hdr.get_comment('TTYPE{0}'.format(j)))
-
-        ### print(j, hdr['TTYPE{0}'.format(j)], hdr['TFORM{0}'.format(j)] )
-        cols = dict(Name = hdr['TTYPE{0}'.format(j)].strip(),
-                    Type = fits_column_format(hdr['TFORM{0}'.format(j)].strip()),
-                    Description = description,
-                    Units = ''
-                    )
-        tunit = 'TUNIT{0}'.format(j)
-        if tunit in hdr:
-            cols['Units'] = hdr[tunit]
-        tr = ET.SubElement(table,'{0}tr'.format(uri))
-        tr.tail='\n'
-        for k in ('Name','Type','Units','Description'):
-            td = ET.SubElement(tr,'{0}td'.format(uri))
-            if cols[k] == '':
-                td.text = ' '
-            else:
-                td.text = cols[k]
-    return
+        columns_table.append((name,ttype,units,description))
+    colsizes = [max(map(len,col)) for col in zip(*columns_table)]
+    highlight = ' '.join(['='*k for k in colsizes])
+    colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])
+    section.append(highlight)
+    for k in range(len(columns_table)):
+        section.append(colformat.format(*columns_table[k]))
+        if k == 0:
+            section.append(highlight)
+    section.append(highlight)
+    section.append('')
+    return section
