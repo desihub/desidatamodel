@@ -1,7 +1,5 @@
 # License information goes here
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
-# The line above will help with 2to3 support.
 """
 ==================
 desiDataModel.stub
@@ -9,7 +7,8 @@ desiDataModel.stub
 
 Generate data model files from FITS files.
 """
-
+from __future__ import absolute_import, division, print_function, unicode_literals
+# The line above will help with 2to3 support.
 from .binary_table_format import binary_table_format
 from .data_format import data_format
 from .extrakey import extrakey
