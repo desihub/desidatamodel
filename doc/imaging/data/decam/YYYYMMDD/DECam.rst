@@ -149,7 +149,7 @@ PROPOSER      Schlegel                                                 str   Pro
 DTPI          Schlegel                                                 str    Principal Investigator
 PROPID        2013A-0741                                               str   Proposal ID
 EXCLUDED                                                               str   DECam components not used for this frame
-SEQID         23900321_                                                str   Sequence name
+SEQID         23900321\_                                               str   Sequence name
 SEQNUM        16                                                       int   Number of image in sequence
 SEQTOT        16                                                       int   Total number of images in sequence
 AOS           T                                                        bool  AOS information availability
