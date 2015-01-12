@@ -44,7 +44,7 @@ module-whatis "Sets up $product/$version in your environment."
 #
 module load desiUtil
 prereq desiUtil
-module load fitsio
+module load fitsio-hpcp
 #
 # ENVIRONMENT SECTION
 #
