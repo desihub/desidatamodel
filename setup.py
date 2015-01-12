@@ -16,7 +16,7 @@ setup_keywords['description'] = 'DESI Data Model'
 setup_keywords['author'] = 'Benjamin Alan Weaver'
 setup_keywords['author_email'] = 'baweaver@lbl.gov'
 setup_keywords['license'] = 'BSD'
-setup_keywords['url'] = 'https://desi.lbl.gov/svn/code/archive/desiDataModel'
+setup_keywords['url'] = 'https://desi.lbl.gov/svn/code/desiDataModel'
 #
 # END OF SETTINGS THAT NEED TO BE CHANGED.
 #
