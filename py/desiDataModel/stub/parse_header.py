@@ -49,7 +49,7 @@ def parse_header(hdr):
         section.append('Required Header Keywords')
         section.append('~~~~~~~~~~~~~~~~~~~~~~~~')
         section.append('')
-        keywords_table =  [('KEY','Value','Type','Comment')]
+        keywords_table =  [('KEY','Example Value','Type','Comment')]
         for kw in keywords:
             keywords_table.append((kw['KEY'],kw['Value'],kw['Type'],kw['Comment']))
         colsizes = [max(map(len,col)) for col in zip(*keywords_table)]

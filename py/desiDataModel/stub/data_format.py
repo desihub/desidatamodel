@@ -21,7 +21,23 @@ def data_format(hdr):
         if hdr['XTENSION'].strip() == 'BINTABLE':
             section += binary_table_format(hdr)
         elif hdr['XTENSION'].strip() == 'IMAGE':
-            section.append('Data: FITS image')
+            datatype = ''
+            if 'BITPIX' in hdr.keys():
+                bitpix = hdr['BITPIX']
+                if bitpix == 8:
+                    datatype = '[char]'
+                elif bitpix == 16:
+                    datatype = '[int16]'
+                elif bitpix == 32:
+                    datatype = '[int32]'
+                elif bitpix == -32:
+                    datatype = '[float32]'
+                elif bitpix == -64:
+                    datatype = '[float64]'
+                else:
+                    datatype = '[BITPIX={}]'.format(bitpix)
+                    
+            section.append('Data: FITS image '+datatype)
             section.append('')
         else:
             section.append("Unknown extension type {0}".format(hdr['XTENSION']))

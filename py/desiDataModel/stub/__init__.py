@@ -36,9 +36,13 @@ is emphasized\*) in this document.*
 Naming Convention
 -----------------
 
-``{filename}``, where ...  *The filename should be replaced with a regular expression
-that matches the filename.  Also give a human-readable description of the
-filename. For example, a six-digit number would correspond to ``[0-9]{{6}}``.*
+``{filename}``, where ... 
+*Give a human readable description of the filename, e.g.
+``blat-{{EXPID}}`` where ``{{EXPID}}`` is the 8-digit exposure ID.*
+
+regex: ``{filename}``
+*Give a regular expression for this filename.
+For example, a six-digit number would correspond to ``[0-9]{{6}}``.*
 
 File Type
 ---------

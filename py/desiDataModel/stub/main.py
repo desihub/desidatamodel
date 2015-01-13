@@ -70,6 +70,9 @@ def main():
             hdu_sections.append(sec_title)
             hdu_sections.append('-'*len(sec_title))
             hdu_sections.append('')
+            if extname != '':
+                hdu_sections.append('EXTNAME = '+extname)
+                hdu_sections.append('')
             hdu_sections.append('*Summarize the contents of this HDU.*')
             hdu_sections.append('')
             hdu_sections += parse_header(headers[k])

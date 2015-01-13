@@ -35,7 +35,10 @@ def extrakey(key):
         return False
     if match(r'TCOMM\d+', key) is not None:
         return False
-    if key in ('BITPIX', 'NAXIS', 'NAXIS1', 'NAXIS2', 'PCOUNT', 'GCOUNT',
+    if match(r'TDIM\d+', key) is not None:
+        return False
+    #- don't drop NAXIS1 and NAXIS2 since we want to document which is which
+    if key in ('BITPIX', 'NAXIS', 'PCOUNT', 'GCOUNT',
         'TFIELDS', 'XTENSION', 'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY'):
         return False
     return True
