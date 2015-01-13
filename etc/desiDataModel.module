@@ -44,7 +44,11 @@ module-whatis "Sets up $product/$version in your environment."
 #
 module load desiUtil
 prereq desiUtil
-module load fitsio-hpcp
+if {{[info exists env(NERSC_HOST)]}} {{
+    module load fitsio-hpcp
+}} else {{
+    module load fitsio
+}}
 #
 # ENVIRONMENT SECTION
 #
@@ -63,7 +67,7 @@ set PRODUCT_DIR $PRODUCT_ROOT/$product/$version
 # This line creates an environment variable pointing to the install
 # directory of your product.
 #
-setenv [string toupper $product]_DIR $PRODUCT_DIR
+setenv [string toupper $product] $PRODUCT_DIR
 #
 # The lines below set various other environment variables.  They assume the
 # template product layout.  These will be set or commented as needed by the

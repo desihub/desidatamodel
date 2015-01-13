@@ -25,7 +25,7 @@ def main():
     parser = ArgumentParser(description=__doc__,prog=basename(argv[0]))
     parser.add_argument('filename',help='A FITS file.',metavar='FILE',nargs='+')
     options = parser.parse_args()
-    template = join(getenv('DESIDATAMODEL_DIR'),'etc','template.html')
+    template = join(getenv('DESIDATAMODEL'),'etc','template.html')
     for f in options.filename:
         rstkeywords = dict()
         #
