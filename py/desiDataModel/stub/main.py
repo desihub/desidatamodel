@@ -80,7 +80,7 @@ def main():
         highlight = ' '.join(['='*k for k in colsizes])+"\n"
         colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])+"\n"
         rstkeywords['contents_table'] = highlight
-        for k in range(nhdr):
+        for k in range(nhdr+1):
             rstkeywords['contents_table'] += colformat.format(*contents_table[k])
             if k == 0:
                 rstkeywords['contents_table'] += highlight
