@@ -27,14 +27,13 @@ desiDataModel Python Package
 .. automodule:: desiDataModel
    :members:
 
-.. autosummary::
+.. automodule:: desiDataModel.stub
+   :members:
 
-   desiDataModel.stub
+Test area
+=========
 
-.. toctree::
-   :maxdepth: 1
-
-   api/stub.rst
+:doc:`Direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`
 
 Indices and tables
 ==================
