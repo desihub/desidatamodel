@@ -1,5 +1,5 @@
 ==============
-Datamodel: pix
+pix
 ==============
 
 General Description

@@ -1,5 +1,5 @@
 ==================
-Datamodel: simspec
+simspec
 ==================
 
 General Description

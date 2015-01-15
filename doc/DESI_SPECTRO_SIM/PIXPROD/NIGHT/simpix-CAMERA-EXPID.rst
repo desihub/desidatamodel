@@ -1,5 +1,5 @@
 =================
-Datamodel: simpix
+simpix
 =================
 
 General Description

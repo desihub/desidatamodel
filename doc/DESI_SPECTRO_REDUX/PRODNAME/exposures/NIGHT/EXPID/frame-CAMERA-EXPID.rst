@@ -1,6 +1,6 @@
-====================================
-Datamodel: spframe-CAMERA-EXPID.fits
-====================================
+=========================
+spframe-CAMERA-EXPID.fits
+=========================
 
 General Description
 ===================
@@ -14,12 +14,12 @@ any further calibration.
 Naming Convention
 -----------------
 
-``spframe-AS-EXPID.fits``, where
+``frame-AS-EXPID.fits``, where
 A is the camera arm b, r, or z;
 S is the spectrograph number 0-9,
 and EXPID is the zero-padded 8-digit exposure ID.
 
-regex: ``spframe-[brz][0-9]-[0-9]{8}.fits``
+regex: ``frame-[brz][0-9]-[0-9]{8}.fits``
 
 File Type
 ---------
@@ -32,7 +32,7 @@ Contents
 ====== ========== ===== ===================
 Number EXTNAME    Type  Contents           
 ====== ========== ===== ===================
-HDU0_             IMAGE Extracted electrons
+HDU0_             IMAGE Extracted electrons (photons)
 HDU1_  IVAR       IMAGE Inverse variance of extracted electrons
 HDU2_  WAVELENGTH IMAGE Wavelength grid of the extraction
 HDU3_  RESOLUTION IMAGE Resolution matrix

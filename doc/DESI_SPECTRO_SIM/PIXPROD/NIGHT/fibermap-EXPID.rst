@@ -1,5 +1,5 @@
 ===================
-Datamodel: fibermap
+fibermap
 ===================
 
 General Description

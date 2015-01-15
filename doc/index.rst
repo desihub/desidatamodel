@@ -12,6 +12,10 @@ The DESI Data Tree
    imaging/data/index.rst
    imaging/data/decam/index.rst
 
+   DESI_SPECTRO_DATA/index.rst
+   DESI_SPECTRO_SIM/index.rst
+   DESI_SPECTRO_REDUX/index.rst
+
 Examples
 ========
 

@@ -9,3 +9,13 @@ The desispec code refers to this location with the environment variable
 $DESI_SPECTRO_REDUX .  The canonical location is $DESI_ROOT/spectro/redux,
 but changing the environment variable allows the code to write to other
 test directories.
+
+.. toctree::
+   :maxdepth: 1
+
+   PRODNAME/index.rst
+   PRODNAME/versions.json.rst
+   PRODNAME/exposures/NIGHT/EXPID/index.rst
+   PRODNAME/bricks/index.rst
+   PRODNAME/calib1d/index.rst
+   PRODNAME/calib2d/index.rst

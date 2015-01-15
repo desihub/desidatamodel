@@ -1,6 +1,6 @@
-==============
-Datamodel: psf
-==============
+===
+psf
+===
 
 General Description
 ===================
@@ -130,14 +130,14 @@ BnnNPAR  300           int   number of parameters in fit for fiber bundle nn
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ===== ===================
-Name    Type          Units Description        
-======= ============= ===== ===================
-PARAM   char[8]             Name of parameter
-WAVEMIN float64             Min wavelength for mapping to [-1,1] domain
-WAVEMAX float64             Max wavelength for mapping to [-1,1] domain
-COEFF   float64[91,500,8]   3D array [nparam, nspec, ncoeff]
-======= ============= ===== ===================
+======= ================== ===== ===================
+Name    Type               Units Description        
+======= ================== ===== ===================
+PARAM   char[8]                  Name of parameter
+WAVEMIN float64                  Min wavelength for mapping to [-1,1] domain
+WAVEMAX float64                  Max wavelength for mapping to [-1,1] domain
+COEFF   float64[91,500,8]        3D array [nparam, nspec, ncoeff]
+======= ================== ===== ===================
 
 
 Notes and Examples
