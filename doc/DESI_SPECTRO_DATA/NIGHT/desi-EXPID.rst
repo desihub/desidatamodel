@@ -1,6 +1,6 @@
-==========================
-Datamodel: desi-EXPID.fits
-==========================
+==========
+desi-EXPID
+==========
 
 This is a placeholder for documenting the DESI raw data format.
 

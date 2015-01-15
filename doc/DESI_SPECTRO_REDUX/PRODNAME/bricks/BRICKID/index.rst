@@ -1,10 +1,10 @@
-==============
-bricks/BRICKID
-==============
+===========================================
+DESI_SPECTRO_REDUX/PRODNAME/bricks/BRICKID/
+===========================================
 
 .. toctree::
    :maxdepth: 1
 
-   brick-BRICKID.rst
-   coadd-BRICKID.rst
-   z-BRICKID.rst
+   brick-BRICKID
+   coadd-BRICKID
+   z-BRICKID

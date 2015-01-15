@@ -1,6 +1,6 @@
-================
-Datamodel: DECam
-================
+=====
+DECam
+=====
 
 General Description
 ===================

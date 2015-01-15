@@ -8,13 +8,10 @@ The DESI Data Tree
 .. toctree::
    :maxdepth: 1
 
-   imaging/index.rst
-   imaging/data/index.rst
-   imaging/data/decam/index.rst
-
-   DESI_SPECTRO_DATA/index.rst
-   DESI_SPECTRO_SIM/index.rst
-   DESI_SPECTRO_REDUX/index.rst
+   imaging/index
+   DESI_SPECTRO_DATA/index
+   DESI_SPECTRO_SIM/index
+   DESI_SPECTRO_REDUX/index
 
 Examples
 ========
@@ -33,6 +30,7 @@ desiDataModel Python Package
 
 .. automodule:: desiDataModel.stub
    :members:
+   :imported-members:
 
 Test area
 =========

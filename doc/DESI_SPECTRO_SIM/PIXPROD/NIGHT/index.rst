@@ -1,6 +1,6 @@
-=====
-NIGHT
-=====
+===============================
+DESI_SPECTRO_SIM/PIXPROD/NIGHT/
+===============================
 
 $DESI_SPECTRO_SIM contains simulated raw data, with the canonical location
 of $DESI_ROOT/spectro/sim.  Simulated files are additionally grouped under

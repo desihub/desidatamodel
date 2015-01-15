@@ -13,5 +13,4 @@ test directories.
 .. toctree::
    :maxdepth: 1
 
-   PRODNAME/index.rst
-   PRODNAME/versions.json.rst
+   PRODNAME/index

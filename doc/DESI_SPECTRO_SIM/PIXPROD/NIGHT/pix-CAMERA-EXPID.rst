@@ -26,17 +26,19 @@ FITS, 320 MB
 Contents
 ========
 
-====== ======= ===== ===================
-Number EXTNAME Type  Contents           
-====== ======= ===== ===================
+====== ======= ===== ================================
+Number EXTNAME Type  Contents
+====== ======= ===== ================================
 HDU0_          IMAGE Pre-processed electrons
 HDU1_  IVAR    IMAGE Inverse variance [1/electrons^2]
-HDU1_  MASK    IMAGE Mask 0=good, non-0 is bad
-====== ======= ===== ===================
+HDU2_  MASK    IMAGE Mask 0=good, non-0 is bad
+====== ======= ===== ================================
 
 
 FITS Header Units
 =================
+
+.. _HDU0:
 
 HDU0 - ELECTRONS
 ----------------
@@ -47,16 +49,18 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ============= ===== ==================================
-KEY      Example Value Type  Comment                           
+KEY      Example Value Type  Comment
 ======== ============= ===== ==================================
-CAMERA   b0            str   Spectograph Camera                
-VSPECTER 0.0.0         str   TODO: Specter version             
-EXPTIME  1000.0        float Exposure time [sec]               
-RDNOISE  3.0           float Read noise [electrons]            
+CAMERA   b0            str   Spectograph Camera
+VSPECTER 0.0.0         str   TODO: Specter version
+EXPTIME  1000.0        float Exposure time [sec]
+RDNOISE  3.0           float Read noise [electrons]
 FLAVOR   arc           str   Exposure type (arc, flat, science)
 ======== ============= ===== ==================================
 
 Data: FITS image
+
+.. _HDU1:
 
 HDU1 - IVAR
 -----------
@@ -67,9 +71,9 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ======== ===== ======================
-KEY     Value    Type  Comment               
+KEY     Value    Type  Comment
 ======= ======== ===== ======================
-EXTNAME IVAR     str   extension name        
+EXTNAME IVAR     str   extension name
 RDNOISE 3.0      float Read noise [electrons]
 ======= ======== ===== ======================
 
@@ -84,7 +88,7 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ======== ==== ==============
-KEY     Value    Type Comment       
+KEY     Value    Type Comment
 ======= ======== ==== ==============
 EXTNAME MASK     str  extension name
 ======= ======== ==== ==============
@@ -96,4 +100,3 @@ Notes and Examples
 ==================
 
 *Add notes and examples here.  You can also create links to example files.*
-

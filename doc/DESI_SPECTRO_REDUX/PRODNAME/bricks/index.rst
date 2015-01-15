@@ -1,8 +1,8 @@
-==============
-bricks
-==============
+===================================
+DESI_SPECTRO_REDUX/PRODNAME/bricks/
+===================================
 
 .. toctree::
    :maxdepth: 1
 
-   BRICKID/index.rst
+   BRICKID/index

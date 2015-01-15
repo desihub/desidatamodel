@@ -1,8 +1,8 @@
-=======
-calib2d
-=======
+====================================
+DESI_SPECTRO_REDUX/PRODNAME/calib2d/
+====================================
 
 .. toctree::
-    :maxdepth: 1
-    
-    psf/NIGHT/psf-gauss-hermite.rst
+   :maxdepth: 1
+
+   psf/index

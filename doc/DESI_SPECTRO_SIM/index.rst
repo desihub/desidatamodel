@@ -1,9 +1,9 @@
-================
-DESI_SPECTRO_SIM
-================
+=================
+DESI_SPECTRO_SIM/
+=================
 
 $DESI_SPECTRO_SIM contains simulated raw data, with the canonical location
-of $DESI_ROOT/spectro/sim.  Simulated files are additionally grouped under
+of ``$DESI_ROOT/spectro/sim``.  Simulated files are additionally grouped under
 a $PIXPROD subdirectory to isolate different simulation runs.
 
 The intention is that $DESI_SPECTRO_SIM/$PIXPROD will contain a superset of
@@ -16,4 +16,4 @@ so this is not yet possible.
 .. toctree::
    :maxdepth: 1
 
-   PIXPROD/index.rst
+   PIXPROD/index
