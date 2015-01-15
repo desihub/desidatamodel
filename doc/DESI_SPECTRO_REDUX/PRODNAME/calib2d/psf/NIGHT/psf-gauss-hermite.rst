@@ -40,7 +40,7 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
+Blank except for keywords PSFTYPE and PSFVER.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,5 +1,5 @@
 =========================
-spframe-CAMERA-EXPID.fits
+frame-CAMERA-EXPID.fits
 =========================
 
 General Description
