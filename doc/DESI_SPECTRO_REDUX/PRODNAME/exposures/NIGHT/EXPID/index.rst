@@ -1,5 +1,5 @@
 =====================
-exposures/NIGHT/EXPID
+EXPID
 =====================
 
 .. toctree::

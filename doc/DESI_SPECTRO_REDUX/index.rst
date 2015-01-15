@@ -15,7 +15,3 @@ test directories.
 
    PRODNAME/index.rst
    PRODNAME/versions.json.rst
-   PRODNAME/exposures/NIGHT/EXPID/index.rst
-   PRODNAME/bricks/index.rst
-   PRODNAME/calib1d/index.rst
-   PRODNAME/calib2d/index.rst

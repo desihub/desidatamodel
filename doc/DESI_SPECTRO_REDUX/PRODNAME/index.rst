@@ -5,10 +5,10 @@ PRODNAME
 .. toctree::
    :maxdepth: 1
 
-   exposures/NIGHT/EXPID/cframe-CAMERA-EXPID.rst
-   exposures/NIGHT/EXPID/fluxcalib-CAMERA-EXPID.rst
-   exposures/NIGHT/EXPID/frame-CAMERA-EXPID.rst
-   exposures/NIGHT/EXPID/skymodel-CAMERA-EXPID.rst
+   exposures/index.rst
+   bricks/index.rst
+   calib1d/index.rst
+   calib2d/index.rst
 
 
 Input files for spectroscopic reduction::
