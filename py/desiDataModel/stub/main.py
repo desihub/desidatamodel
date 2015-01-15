@@ -36,7 +36,7 @@ def main():
             modelname = basef[0:basef.index('-')]
         except ValueError:
             modelname = basef[0:basef.index('.')]
-        rstkeywords['title'] = 'Datamodel: {0}'.format(modelname)
+        rstkeywords['title'] = modelname
         rstkeywords['titlehighlight'] = '='*len(rstkeywords['title'])
         rstkeywords['filename'] = basef
         rstkeywords['filetype'] = 'FITS'
