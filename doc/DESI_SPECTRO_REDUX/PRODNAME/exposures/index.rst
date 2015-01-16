@@ -1,6 +1,6 @@
-======================================
-DESI_SPECTRO_REDUX/PRODNAME/exposures/
-======================================
+=========
+exposures
+=========
 
 .. toctree::
    :maxdepth: 1

@@ -1,6 +1,6 @@
-============================================
-DESI_SPECTRO_REDUX/PRODNAME/exposures/NIGHT/
-============================================
+=====
+NIGHT
+=====
 
 .. toctree::
    :maxdepth: 1

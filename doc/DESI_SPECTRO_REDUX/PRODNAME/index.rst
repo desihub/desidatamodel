@@ -1,6 +1,6 @@
-============================
-DESI_SPECTRO_REDUX/PRODNAME/
-============================
+========
+PRODNAME
+========
 
 Input files for spectroscopic reduction::
 

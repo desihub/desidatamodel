@@ -1,6 +1,6 @@
-===================
-DESI_SPECTRO_REDUX/
-===================
+==================
+DESI_SPECTRO_REDUX
+==================
 
 This directory contains production runs of the spectroscopic data reduction
 pipeline.  Each different run is contained in different PRODNAME subdirectory.

@@ -1,6 +1,6 @@
-===================================
-DESI_SPECTRO_REDUX/PRODNAME/bricks/
-===================================
+======
+bricks
+======
 
 .. toctree::
    :maxdepth: 1
