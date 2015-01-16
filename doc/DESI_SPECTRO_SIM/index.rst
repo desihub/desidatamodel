@@ -1,8 +1,8 @@
-=================
-DESI_SPECTRO_SIM/
-=================
+================
+DESI_SPECTRO_SIM
+================
 
-$DESI_SPECTRO_SIM contains simulated raw data, with the canonical location
+:envvar:`DESI_SPECTRO_SIM` contains simulated raw data, with the canonical location
 of ``$DESI_ROOT/spectro/sim``.  Simulated files are additionally grouped under
 a $PIXPROD subdirectory to isolate different simulation runs.
 

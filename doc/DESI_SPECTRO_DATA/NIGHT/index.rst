@@ -1,6 +1,6 @@
-========================
-DESI_SPECTRO_DATA/NIGHT/
-========================
+=====
+NIGHT
+=====
 
 ``NIGHT`` is the night of observation in YYYYMMDD format.
 

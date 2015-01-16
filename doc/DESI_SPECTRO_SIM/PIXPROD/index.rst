@@ -1,6 +1,6 @@
-=========================
-DESI_SPECTRO_SIM/PIXPROD/
-=========================
+=======
+PIXPROD
+=======
 
 Simulation runs are grouped into $PIXPROD subdirectories, which are
 further subdivided by NIGHT = YYYYMMDD.
