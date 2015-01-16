@@ -1,6 +1,6 @@
-============================
-imaging/data/decam/YYYYMMDD/
-============================
+=========
+YYYYMMDD/
+=========
 
 This directory contains raw imaging data from DECam.
 

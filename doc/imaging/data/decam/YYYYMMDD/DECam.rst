@@ -99,6 +99,7 @@ HDU66_ FS4     BINTABLE *Brief Description*
 HDU67_ FN1     BINTABLE *Brief Description*
 HDU68_ FN2     BINTABLE *Brief Description*
 HDU69_ FN3     BINTABLE *Brief Description*
+HDU70_ FN4     BINTABLE *Brief Description*
 ====== ======= ======== ===================
 
 
