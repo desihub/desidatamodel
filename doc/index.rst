@@ -13,6 +13,7 @@ The DESI Data Tree
    DESI_SPECTRO_SIM/index
    DESI_SPECTRO_REDUX/index
 
+
 Examples
 ========
 
@@ -20,6 +21,7 @@ Examples
    :maxdepth: 1
 
    examples/index
+
 
 Directory Tree
 ==============
@@ -34,6 +36,15 @@ data model.
    a. Links to index.rst files in any subdirectories.
    b. Links to files in that directory.
 
+
+Tips and Tests
+==============
+
+Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`::
+
+    Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`
+
+
 desiDataModel Python Package
 ============================
 
@@ -44,10 +55,6 @@ desiDataModel Python Package
    :members:
    :imported-members:
 
-Test area
-=========
-
-:doc:`Direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`
 
 Indices and tables
 ==================
