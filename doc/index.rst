@@ -19,8 +19,20 @@ Examples
 .. toctree::
    :maxdepth: 1
 
-   examples/sdR.rst
-   examples/spPlate.rst
+   examples/index
+
+Directory Tree
+==============
+
+Please follow these rules when creating or updating directories within the
+data model.
+
+1. All directories have an index.rst file.
+2. The title of every index.rst file contains *only* the name of the directory it is in.
+3. Each index.rst contains the following items in its toctree:
+
+   a. Links to index.rst files in any subdirectories.
+   b. Links to files in that directory.
 
 desiDataModel Python Package
 ============================
