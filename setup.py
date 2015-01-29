@@ -48,7 +48,7 @@ if setup_keywords['version'].endswith('dev'):
     #
     try:
         from desiUtil.install import get_svn_devstr
-        setup_keywords['version'] += get_svn_devstr()
+        setup_keywords['version'] += get_svn_devstr(setup_keywords['name'])
     except ImportError:
         pass
 #
