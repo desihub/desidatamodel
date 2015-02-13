@@ -2,10 +2,8 @@
 cframe-CAMERA-EXPID.fits
 ========================
 
-*This is a placeholder for the cframe data model*
-
 This holds the calibrated spectra for a given camera and exposure.
-Nominally the HDUs will be:
+See the datamodel for frame-CAMERA-EXPID files for details of the format.
 
   - HDU0 (FLUX) : flux[nspec, nwave] - erg/s/cm2/A
   - HDU1 (IVAR) : ivar[nspec, nwave] - (erg/s/cm2/A)^-2

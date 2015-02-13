@@ -123,10 +123,25 @@ EXTNAME = RESOLUTION
 
 Resolution matrix stored as a 3D sparse matrix:
 
-R[nspec, ndiag, nwave]
+Rdata[nspec, ndiag, nwave]
 
-*This needs more documentation.  Find description from the first data
-challenge and add it here.*
+To convert this into matrices for convolving models:
+
+``
+#- read a model and its wavelength vector from somewhere
+#- IMPORTANT: cast them to .astype(np.float64) to get native endian
+
+#- read the resolution data
+resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
+
+nspec, nwave = model.shape
+convolvedmodel = np.zeros((nspec, nwave))
+diags = np.arange(10, -11, -1)
+
+for i in range(nspec):
+    R = spdiags(resdata[i], diags, nwave, nwave)
+    convolvedmodel[i] = R.dot(model)
+``
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
