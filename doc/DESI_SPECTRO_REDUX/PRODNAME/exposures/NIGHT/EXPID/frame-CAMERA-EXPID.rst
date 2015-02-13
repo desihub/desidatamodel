@@ -125,9 +125,15 @@ Resolution matrix stored as a 3D sparse matrix:
 
 Rdata[nspec, ndiag, nwave]
 
-To convert this into matrices for convolving models:
+To convert this into sparse matrices for convolving a model that is sampled
+at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
 
 .. code::
+
+    from scipy.sparse import spdiags
+    from astropy.io import fits
+    import numpy as np
+
     #- read a model and its wavelength vector from somewhere
     #- IMPORTANT: cast them to .astype(np.float64) to get native endian
 
