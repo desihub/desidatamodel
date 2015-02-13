@@ -127,21 +127,20 @@ Rdata[nspec, ndiag, nwave]
 
 To convert this into matrices for convolving models:
 
-``
-#- read a model and its wavelength vector from somewhere
-#- IMPORTANT: cast them to .astype(np.float64) to get native endian
+.. code:: python
+    #- read a model and its wavelength vector from somewhere
+    #- IMPORTANT: cast them to .astype(np.float64) to get native endian
 
-#- read the resolution data
-resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
+    #- read the resolution data
+    resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
 
-nspec, nwave = model.shape
-convolvedmodel = np.zeros((nspec, nwave))
-diags = np.arange(10, -11, -1)
+    nspec, nwave = model.shape
+    convolvedmodel = np.zeros((nspec, nwave))
+    diags = np.arange(10, -11, -1)
 
-for i in range(nspec):
-    R = spdiags(resdata[i], diags, nwave, nwave)
-    convolvedmodel[i] = R.dot(model)
-``
+    for i in range(nspec):
+        R = spdiags(resdata[i], diags, nwave, nwave)
+        convolvedmodel[i] = R.dot(model)
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
