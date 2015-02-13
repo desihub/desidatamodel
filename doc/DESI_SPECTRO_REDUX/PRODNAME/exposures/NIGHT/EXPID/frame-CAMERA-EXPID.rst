@@ -127,7 +127,6 @@ Rdata[nspec, ndiag, nwave]
 
 To convert this into matrices for convolving models:
 
-.. code:: python
     #- read a model and its wavelength vector from somewhere
     #- IMPORTANT: cast them to .astype(np.float64) to get native endian
 
