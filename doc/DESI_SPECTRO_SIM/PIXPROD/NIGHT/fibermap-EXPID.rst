@@ -93,6 +93,7 @@ X_FVCOBS     float64          X location observed by Fiber View Cam [mm]
 Y_FVCOBS     float64          Y location observed by Fiber View Cam [mm]     
 Y_FVCERR     float32          Y location uncertainty from Fiber View Cam [mm]
 X_FVCERR     float32          X location uncertainty from Fiber View Cam [mm]
+BRICKNAME    char[8]          Brick name on sky
 ============ ========== ===== ===============================================
 
 
