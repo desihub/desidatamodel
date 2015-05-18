@@ -1,6 +1,6 @@
-==================
-coadd-BRICKID.fits
-==================
+====================
+coadd-BRICKNAME.fits
+====================
 
 *This is a placeholder for the coadd data model*
 
@@ -20,6 +20,6 @@ Nominally the HDUs will be:
 Inputs
 ======
 
-Written by XXX, using:
+Written by desi_update_coadds.py, using:
 
   - brick
