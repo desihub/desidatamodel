@@ -1,6 +1,6 @@
-==================
+============================
 brick-CHANNEL-BRICKNAME.fits
-==================
+============================
 
 
 This should contain the same information as cframe files, just differently
@@ -12,10 +12,9 @@ Inputs
 
 Written by desi_make_bricks.py, using:
 
-  - cframe
-  - fibermap
-  
-#-------------------------------------------------------------------------
+- cframe
+- fibermap
+
 General Description
 ===================
 
@@ -46,7 +45,7 @@ Contents
 ========
 
 ====== ========== ======== ===================
-Number EXTNAME    Type     Contents           
+Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
 HDU0_  FLUX       IMAGE    Spectral flux [nspec, nwave]
 HDU1_  IVAR       IMAGE    Inverse variance of flux
@@ -68,10 +67,10 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ============= ==== ============
-KEY     Example Value Type Comment     
+KEY     Example Value Type Comment
 ======= ============= ==== ============
 NAXIS1  3494          int  Number of wavelength bins
-NAXIS2  51            int  Number of spectra    
+NAXIS2  51            int  Number of spectra
 EXTNAME FLUX          str  erg/s/cm^2/Angstrom
 ======= ============= ==== ============
 
@@ -88,7 +87,7 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ============= ==== ============
-KEY     Example Value Type Comment     
+KEY     Example Value Type Comment
 ======= ============= ==== ============
 NAXIS1  3494          int  Number of wavelength bins
 NAXIS2  51            int  Number of spectra
@@ -108,7 +107,7 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ============= ==== ===========
-KEY     Example Value Type Comment    
+KEY     Example Value Type Comment
 ======= ============= ==== ===========
 NAXIS1  3494          int  wavelength [Angstroms]
 EXTNAME WAVELENGTH    str  [Angstroms]
@@ -127,7 +126,7 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ============= ==== ============
-KEY     Example Value Type Comment     
+KEY     Example Value Type Comment
 ======= ============= ==== ============
 NAXIS1  3494          int  Number of wavelength bins
 NAXIS2  21            int  Number of diagonals
@@ -146,7 +145,7 @@ Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ====== ============= ==== =====================
-KEY    Example Value Type Comment              
+KEY    Example Value Type Comment
 ====== ============= ==== =====================
 NAXIS1 224           int  length of dimension 1
 NAXIS2 51            int  Number of spectra
@@ -158,27 +157,27 @@ Required Data Table Columns
 ============ ========== ===== ===========
 Name         Type       Units Description
 ============ ========== ===== ===========
-OBJTYPE      char[10]                    
-TARGETCAT    char[20]                    
-TARGETID     int64                       
-TARGET_MASK0 int64                       
-MAG          float32[5]                  
-FILTER       char[50]                    
-SPECTROID    int64                       
-POSITIONER   int64                       
-FIBER        int32                       
-LAMBDAREF    float32                     
-RA_TARGET    float64                     
-DEC_TARGET   float64                     
-RA_OBS       float64                     
-DEC_OBS      float64                     
-X_TARGET     float64                     
-Y_TARGET     float64                     
-X_FVCOBS     float64                     
-Y_FVCOBS     float64                     
-Y_FVCERR     float32                     
-X_FVCERR     float32                     
-NIGHT        int32                       
-EXPID        int32                       
-INDEX        int32                       
+OBJTYPE      char[10]
+TARGETCAT    char[20]
+TARGETID     int64
+TARGET_MASK0 int64
+MAG          float32[5]
+FILTER       char[50]
+SPECTROID    int64
+POSITIONER   int64
+FIBER        int32
+LAMBDAREF    float32
+RA_TARGET    float64
+DEC_TARGET   float64
+RA_OBS       float64
+DEC_OBS      float64
+X_TARGET     float64
+Y_TARGET     float64
+X_FVCOBS     float64
+Y_FVCOBS     float64
+Y_FVCERR     float32
+X_FVCERR     float32
+NIGHT        int32
+EXPID        int32
+INDEX        int32
 ============ ========== ===== ===========
