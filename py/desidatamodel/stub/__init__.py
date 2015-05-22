@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 ==================
-desiDataModel.stub
+desidatamodel.stub
 ==================
 
 Generate data model files from FITS files.
@@ -36,7 +36,7 @@ is emphasized\*) in this document.*
 Naming Convention
 -----------------
 
-``{filename}``, where ... 
+``{filename}``, where ...
 *Give a human readable description of the filename, e.g.
 ``blat-{{EXPID}}`` where ``{{EXPID}}`` is the 8-digit exposure ID.*
 

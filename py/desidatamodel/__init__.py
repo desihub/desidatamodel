@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 =============
-desiDataModel
+desidatamodel
 =============
 
 This package provides support for the DESI_ Data Model.
@@ -15,7 +15,7 @@ from desiUtil.install import version
 #
 # Set version string.
 #
-__version__ = version('$HeadURL$')
+__version__ = '0.2.0'
 #
 # Clean up namespace
 #
