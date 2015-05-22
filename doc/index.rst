@@ -45,13 +45,13 @@ Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/
     Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`
 
 
-desiDataModel Python Package
+desidatamodel Python Package
 ============================
 
-.. automodule:: desiDataModel
+.. automodule:: desidatamodel
    :members:
 
-.. automodule:: desiDataModel.stub
+.. automodule:: desidatamodel.stub
    :members:
    :imported-members:
 

@@ -4,5 +4,5 @@
 # $Id$
 #
 from sys import exit
-from desiDataModel.stub.main import main
+from desidatamodel.stub.main import main
 exit(main())

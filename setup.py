@@ -11,12 +11,12 @@ setup_keywords = dict()
 #
 # THESE SETTINGS NEED TO BE CHANGED FOR EVERY PRODUCT.
 #
-setup_keywords['name'] = 'desiDataModel'
+setup_keywords['name'] = 'desidatamodel'
 setup_keywords['description'] = 'DESI Data Model'
-setup_keywords['author'] = 'Benjamin Alan Weaver'
-setup_keywords['author_email'] = 'baweaver@lbl.gov'
+setup_keywords['author'] = 'DESI Collaboration'
+setup_keywords['author_email'] = 'desi-data@desi.lbl.gov'
 setup_keywords['license'] = 'BSD'
-setup_keywords['url'] = 'https://desi.lbl.gov/svn/code/desiDataModel'
+setup_keywords['url'] = 'https://github.com/desihub/desidatamodel'
 #
 # END OF SETTINGS THAT NEED TO BE CHANGED.
 #
