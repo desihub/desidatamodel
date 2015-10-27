@@ -11,12 +11,7 @@ This package provides support for the DESI_ Data Model.
 """
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
-from desiUtil.install import version
 #
 # Set version string.
 #
-__version__ = '0.2.1.dev'
-#
-# Clean up namespace
-#
-del version
+from ._version import __version__
