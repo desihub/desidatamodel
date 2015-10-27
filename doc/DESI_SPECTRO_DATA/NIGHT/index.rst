@@ -8,3 +8,4 @@ NIGHT
    :maxdepth: 1
 
    desi-EXPID
+   fibermap-EXPID
