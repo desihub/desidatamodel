@@ -15,7 +15,7 @@ Naming Convention
 
 *TODO*
 
-``fiberflat-b0-00000001.fits``, where ... 
+``fiberflat-b0-00000001.fits``, where ...
 *Give a human readable description of the filename, e.g.
 ``blat-{EXPID}`` where ``{EXPID}`` is the 8-digit exposure ID.*
 
@@ -32,7 +32,7 @@ Contents
 ========
 
 ====== ========== ===== ===================
-Number EXTNAME    Type  Contents           
+Number EXTNAME    Type  Contents
 ====== ========== ===== ===================
 HDU0_  FIBERFLAT  IMAGE fiberflat[nspec, nwave]
 HDU1_  IVAR       IMAGE inverse variance of fiberflat
@@ -46,3 +46,30 @@ FITS Header Units
 =================
 
 *TODO: Describe in detail*
+
+*These empty headers are needed to avoid sphinx build errors*
+
+HDU0
+----
+
+*TODO*
+
+HDU1
+----
+
+*TODO*
+
+HDU2
+----
+
+*TODO*
+
+HDU3
+----
+
+*TODO*
+
+HDU4
+----
+
+*TODO*

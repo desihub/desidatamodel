@@ -7,4 +7,4 @@ BRICKID
 
    brick-CHANNEL-BRICKNAME
    coadd-BRICKNAME
-   z-BRICKNAME
+   zbest-BRICKNAME
