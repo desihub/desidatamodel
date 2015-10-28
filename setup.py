@@ -59,6 +59,10 @@ setup_keywords['test_suite']='{name}.test.{name}_test_suite.{name}_test_suite'.f
 #
 # setup_keywords['entry_points'] = {'console_scripts':['generate_model = desidatamodel.stub.main:main']}
 #
+# Add internal data directories.
+#
+setup_keywords['package_data'] = {'desidatamodel.test': ['t/*']}
+#
 # Run setup command.
 #
 setup(**setup_keywords)
