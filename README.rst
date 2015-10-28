@@ -19,11 +19,11 @@ Full Documentation
 
 Please visit `desidatamodel on Read the Docs`_
 
-.. image:: https://readthedocs.org/projects/desidatamodel/badge/?version=latest
-    :target: http://desidatamodel.readthedocs.org/en/latest/
+.. image:: https://readthedocs.org/projects/desidatamodel/badge/?version=pre-1.0
+    :target: http://desidatamodel.readthedocs.org/en/pre-1.0/
     :alt: Documentation Status
 
-.. _`desidatamodel on Read the Docs`: http://desidatamodel.readthedocs.org/en/latest/
+.. _`desidatamodel on Read the Docs`: http://desidatamodel.readthedocs.org/en/pre-1.0/
 
 Travis Build Status
 ===================
