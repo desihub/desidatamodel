@@ -1,4 +1,4 @@
-# License information goes here
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
@@ -22,14 +22,9 @@ def binary_table_format(hdr):
     section.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     section.append('')
     columns_table =  [('Name','Type','Units','Description')]
-    if hdr['TFIELDS'] < 10:
-        jformat = '{0:d}'
-    elif hdr['TFIELDS'] < 100:
-        jformat = '{0:02d}'
-    else:
-        jformat = '{0:03d}'
+    jformat = '{0:d}'
     for j in range(hdr['TFIELDS']):
-        jj = jformat.format(j)
+        jj = jformat.format(j+1)
         name = hdr['TTYPE'+jj].strip()
         ttype = fits_column_format(hdr['TFORM'+jj].strip())
         tunit = 'TUNIT'+jj

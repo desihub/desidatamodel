@@ -7,12 +7,13 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 #
 import os
 import unittest
+from collections import OrderedDict
 from new import instancemethod
-from ..stub import data_format, extrakey, file_size, fits_column_format
+from ..stub import data_format, extrakey, file_size, fits_column_format, parse_header
 #
 #
 #
-class sim_header(dict):
+class sim_header(OrderedDict):
     """Simulate a FITS header object.
     """
     def get_comment(self,key):
@@ -49,14 +50,14 @@ class TestStub(unittest.TestCase):
         del hdr['BITPIX']
         hdr['XTENSION'] = 'BINTABLE'
         hdr['TFIELDS'] = 3
-        hdr['TTYPE0'] = 'one'
-        hdr['TTYPE1'] = 'two'
-        hdr['TTYPE2'] = 'three'
-        hdr['TFORM0'] = '1A'
-        hdr['TFORM1'] = '2J'
-        hdr['TFORM2'] = '3D'
-        hdr['TUNIT2'] = 'km/s'
-        hdr['TCOMM2'] = 'The units are km/s.'
+        hdr['TTYPE1'] = 'one'
+        hdr['TTYPE2'] = 'two'
+        hdr['TTYPE3'] = 'three'
+        hdr['TFORM1'] = '1A'
+        hdr['TFORM2'] = '2J'
+        hdr['TFORM3'] = '3D'
+        hdr['TUNIT3'] = 'km/s'
+        hdr['TCOMM3'] = 'The units are km/s.'
         lines = data_format(hdr)
         with open(os.path.join(self.data_dir,'data_table.txt')) as dt:
             table = dt.read().split('\n')
@@ -107,6 +108,38 @@ class TestStub(unittest.TestCase):
         for f in formats:
             ff = fits_column_format(f)
             self.assertEqual(ff,formats[f])
+
+    def test_parse_header(self):
+        """Test the parsing of a full FITS HDU.
+        """
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        lines = parse_header(hdr)
+        self.assertEqual(lines,['This HDU has no non-standard required keywords.',''])
+        hdr['BOOLEAN'] = True
+        hdr['VERSION'] = '0.1.2'
+        hdr['INTEGER'] = 12345
+        hdr['FLOAT'] = 3.14159
+        hdr['UNDR_'] = 'underscore_'
+        lines = parse_header(hdr)
+        self.assertEqual(lines,[
+            'Required Header Keywords',
+            '~~~~~~~~~~~~~~~~~~~~~~~~',
+            '',
+            '======= ============= ===== ===============================',
+            'KEY     Example Value Type  Comment',
+            '======= ============= ===== ===============================',
+            'BOOLEAN T             bool  This is the comment on BOOLEAN.',
+            'VERSION 0.1.2         str   This is the comment on VERSION.',
+            'INTEGER 12345         int   This is the comment on INTEGER.',
+            'FLOAT   3.14159       float This is the comment on FLOAT.',
+            'UNDR\\_  underscore\\_  str   This is the comment on UNDR\\_.',
+            '======= ============= ===== ===============================',
+            ''
+            ])
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,16 +1,14 @@
-# License information goes here
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
-"""
-Generate an DESI data model stub for a given FITS file.
+"""Generate an DESI data model stub for a given FITS file.
 
-You will still need to hand edit the file to add descriptions, etc. but
+You will still need to hand edit the file to add descriptions, etc., but
 it gives you a good starting point in the correct format.
 """
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
 def main():
     """Program to run if called as an executable."""
-    import xml.etree.ElementTree as ET
     import re
     from sys import argv, stderr
     from argparse import ArgumentParser
@@ -25,7 +23,6 @@ def main():
     parser = ArgumentParser(description=__doc__,prog=basename(argv[0]))
     parser.add_argument('filename',help='A FITS file.',metavar='FILE',nargs='+')
     options = parser.parse_args()
-    template = join(getenv('DESIDATAMODEL'),'etc','template.html')
     for f in options.filename:
         rstkeywords = dict()
         #
