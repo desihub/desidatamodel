@@ -14,7 +14,6 @@ from .data_format import data_format
 from .extrakey import extrakey
 from .file_size import file_size
 from .fits_column_format import fits_column_format
-from .get_uri import get_uri
 from .parse_header import parse_header
 #
 # This is a template.

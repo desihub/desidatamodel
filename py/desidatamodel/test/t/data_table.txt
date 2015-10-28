@@ -1,0 +1,10 @@
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+===== ========== ===== ==============================
+Name  Type       Units Description
+===== ========== ===== ==============================
+one   char[1]          This is the comment on TTYPE0.
+two   int32[2]         This is the comment on TTYPE1.
+three float64[3] km/s  The units are km/s.
+===== ========== ===== ==============================

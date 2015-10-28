@@ -5,18 +5,62 @@
 #
 from __future__ import absolute_import, division, print_function, unicode_literals
 #
+import os
 import unittest
-from ..stub import extrakey
+from new import instancemethod
+from ..stub import data_format, extrakey, file_size, fits_column_format
+#
+#
+#
+class sim_header(dict):
+    """Simulate a FITS header object.
+    """
+    def get_comment(self,key):
+        """Simulate the get_comment method from FITS header objects.
+        """
+        return "This is the comment on {0}.".format(key)
+#
+#
 #
 class TestStub(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        pass
+        cls.data_dir = os.path.join(os.path.dirname(__file__),'t')
 
     @classmethod
     def tearDownClass(cls):
         pass
+
+    def test_data_format(self):
+        """Test identification of images and tables.
+        """
+        hdr = sim_header()
+        lines = data_format(hdr)
+        self.assertEqual(lines,[])
+        hdr['XTENSION'] = 'FOOBAR'
+        lines = data_format(hdr)
+        self.assertEqual(lines,["Unknown extension type {0}".format(hdr['XTENSION']),''])
+        hdr['XTENSION'] = 'IMAGE'
+        bitpix = {8:'char',16:'int16',32:'int32',64:'int64',-32:'float32',-64:'float64',99:'BITPIX=99'}
+        for k in bitpix:
+            hdr['BITPIX'] = k
+            self.assertEqual(data_format(hdr),['Data: FITS image [{0}]'.format(bitpix[k]),''])
+        del hdr['BITPIX']
+        hdr['XTENSION'] = 'BINTABLE'
+        hdr['TFIELDS'] = 3
+        hdr['TTYPE0'] = 'one'
+        hdr['TTYPE1'] = 'two'
+        hdr['TTYPE2'] = 'three'
+        hdr['TFORM0'] = '1A'
+        hdr['TFORM1'] = '2J'
+        hdr['TFORM2'] = '3D'
+        hdr['TUNIT2'] = 'km/s'
+        hdr['TCOMM2'] = 'The units are km/s.'
+        lines = data_format(hdr)
+        with open(os.path.join(self.data_dir,'data_table.txt')) as dt:
+            table = dt.read().split('\n')
+        self.assertEqual(lines,table)
 
     def test_extrakey(self):
         """Test the identification of non-boring keys.
@@ -33,6 +77,36 @@ class TestStub(unittest.TestCase):
                 self.assertTrue(extrakey(k))
             else:
                 self.assertFalse(extrakey(k))
+
+    def test_file_size(self):
+        """Test the determination and formatting of file size.
+        """
+        filename = os.path.join(self.data_dir,'this-file-contains-five-bytes.txt')
+        s = file_size(filename)
+        self.assertEqual(s,'5 bytes')
+        filename = os.path.join(self.data_dir,'this-file-contains-2048-bytes.txt')
+        s = file_size(filename)
+        self.assertEqual(s,'2 KB')
+
+    def test_fits_column_format(self):
+        """Test the translation of FITS column format strings.
+        """
+        formats = {
+            '1PB':'8-bit stream',
+            '1PI':'16-bit stream',
+            '1PJ':'32-bit stream',
+            'A':'char[1]',
+            'B':'bool',
+            'E':'float32',
+            'D':'float64',
+            'I':'int16',
+            'J':'int32',
+            'K':'int64',
+            '10D':'float64[10]',
+            '20J':'int32[20]'}
+        for f in formats:
+            ff = fits_column_format(f)
+            self.assertEqual(ff,formats[f])
 
 if __name__ == '__main__':
     unittest.main()
