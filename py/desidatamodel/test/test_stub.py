@@ -9,7 +9,8 @@ import os
 import unittest
 from collections import OrderedDict
 from new import instancemethod
-from ..stub import data_format, extrakey, file_size, fits_column_format, parse_header
+from ..stub import (data_format, extrakey, file_size,
+    fits_column_format, parse_header, process_file)
 #
 #
 #
@@ -140,6 +141,17 @@ class TestStub(unittest.TestCase):
             '======= ============= ===== ===============================',
             ''
             ])
+
+    def test_process_file(self):
+        """Full test of parsing a FITS file.
+        """
+        filename = os.path.join(self.data_dir,'fits_file.fits')
+        modelfile = os.path.join(self.data_dir,'fits_file.rst')
+        with open(modelfile) as m:
+            modeldata = m.read()
+        modelname, data = process_file(filename)
+        self.assertEqual(modelname,'fits_file')
+        self.assertEqual(data,modeldata)
 
 if __name__ == '__main__':
     unittest.main()

@@ -15,6 +15,7 @@ from .extrakey import extrakey
 from .file_size import file_size
 from .fits_column_format import fits_column_format
 from .parse_header import parse_header
+from .process_file import process_file
 #
 # This is a template.
 #
