@@ -19,11 +19,11 @@ Full Documentation
 
 Please visit `desidatamodel on Read the Docs`_
 
-.. image:: https://readthedocs.org/projects/desidatamodel/badge/?version=pre-1.0
-    :target: http://desidatamodel.readthedocs.org/en/pre-1.0/
+.. image:: https://readthedocs.org/projects/desidatamodel/badge/
+    :target: http://desidatamodel.readthedocs.org/en/latest/
     :alt: Documentation Status
 
-.. _`desidatamodel on Read the Docs`: http://desidatamodel.readthedocs.org/en/pre-1.0/
+.. _`desidatamodel on Read the Docs`: http://desidatamodel.readthedocs.org/en/latest/
 
 Travis Build Status
 ===================
@@ -35,8 +35,8 @@ Travis Build Status
 Test Coverage Status
 ====================
 
-.. image:: https://coveralls.io/repos/desihub/desidatamodel/badge.svg?branch=pre-1.0&service=github
-    :target: https://coveralls.io/github/desihub/desidatamodel?branch=pre-1.0
+.. image:: https://coveralls.io/repos/desihub/desidatamodel/badge.svg?
+    :target: https://coveralls.io/github/desihub/desidatamodel
     :alt: Test Coverage Status
 
 License
