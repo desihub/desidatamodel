@@ -1,4 +1,4 @@
-# License information goes here
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
@@ -19,14 +19,14 @@ def parse_header(hdr):
     from . import data_format, extrakey
     section = list()
     keywords = list()
-    for key in hdr.keys():
+    for key in hdr:
         if extrakey(key):
             #- Escape &, <, >, in strings, but don't choke on int/float
             value = hdr[key]
             if isinstance(value, bool):
                 ktype = 'bool'
                 value = ('F','T')[int(value)]
-            if isinstance(value, str):
+            if isinstance(value, (str,unicode)):
                 value = escape(value)
                 if value == 'T' or value == 'F':
                     ktype = 'bool'
@@ -38,6 +38,8 @@ def parse_header(hdr):
             if isinstance(value, float):
                 value = str(value)
                 ktype = 'float'
+            if key.endswith('_'):
+                key = key[0:len(key)-1] + '\\_'
             if value.endswith('_'):
                 value = value[0:len(value)-1] + '\\_'
             keywords.append(dict(KEY=key, Value=value, Type=ktype,
@@ -57,7 +59,7 @@ def parse_header(hdr):
         colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i,s) for i,s in enumerate(colsizes)])
         section.append(highlight)
         for k in range(len(keywords_table)):
-            section.append(colformat.format(*keywords_table[k]))
+            section.append(colformat.format(*keywords_table[k]).rstrip())
             if k == 0:
                 section.append(highlight)
         section.append(highlight)

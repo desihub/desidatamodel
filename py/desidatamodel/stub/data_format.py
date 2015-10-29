@@ -1,4 +1,4 @@
-# License information goes here
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
@@ -22,22 +22,13 @@ def data_format(hdr):
             section += binary_table_format(hdr)
         elif hdr['XTENSION'].strip() == 'IMAGE':
             datatype = ''
-            if 'BITPIX' in hdr.keys():
-                bitpix = hdr['BITPIX']
-                if bitpix == 8:
-                    datatype = '[char]'
-                elif bitpix == 16:
-                    datatype = '[int16]'
-                elif bitpix == 32:
-                    datatype = '[int32]'
-                elif bitpix == -32:
-                    datatype = '[float32]'
-                elif bitpix == -64:
-                    datatype = '[float64]'
-                else:
-                    datatype = '[BITPIX={}]'.format(bitpix)
-                    
-            section.append('Data: FITS image '+datatype)
+            if 'BITPIX' in hdr:
+                bitmap = {8:'char',16:'int16',32:'int32',64:'int64',-32:'float32',-64:'float64'}
+                try:
+                    datatype = bitmap[hdr['BITPIX']]
+                except KeyError:
+                    datatype = 'BITPIX={}'.format(hdr['BITPIX'])
+            section.append('Data: FITS image [{0}]'.format(datatype))
             section.append('')
         else:
             section.append("Unknown extension type {0}".format(hdr['XTENSION']))

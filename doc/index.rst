@@ -22,20 +22,24 @@ Examples
 
    examples/index
 
-
 Directory Tree
 ==============
 
 Please follow these rules when creating or updating directories within the
 data model.
 
-1. All directories have an index.rst file.
+1. All directories must have an index.rst file.
 2. The title of every index.rst file contains *only* the name of the directory it is in.
 3. Each index.rst contains the following items in its toctree:
 
    a. Links to index.rst files in any subdirectories.
    b. Links to files in that directory.
 
+4. Every file must have a title.  For example::
+
+    ===================
+    fibermap-EXPID.fits
+    ===================
 
 Tips and Tests
 ==============
@@ -44,6 +48,9 @@ Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/
 
     Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`
 
+Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`::
+
+    Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`
 
 desidatamodel Python Package
 ============================

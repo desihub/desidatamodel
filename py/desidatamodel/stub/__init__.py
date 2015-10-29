@@ -1,4 +1,4 @@
-# License information goes here
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
 """
 ==================
@@ -14,8 +14,8 @@ from .data_format import data_format
 from .extrakey import extrakey
 from .file_size import file_size
 from .fits_column_format import fits_column_format
-from .get_uri import get_uri
 from .parse_header import parse_header
+from .process_file import process_file
 #
 # This is a template.
 #
