@@ -13,4 +13,4 @@ test directories.
 .. toctree::
    :maxdepth: 1
 
-   PRODNAME/index
+   $DESI_SPECTRO_REDUX/$PRODNAME <PRODNAME/index>

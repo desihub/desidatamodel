@@ -1,6 +1,6 @@
-=======
-targets
-=======
+===============
+targets-\*.fits
+===============
 
 General Description
 ===================
@@ -58,8 +58,7 @@ DEPVER02 /project/projectdirs/cosmo/data/legacysurvey/dr1/tractor str  input dir
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=lf-light radius of deVaucouleurs model (>0)
-==================== ========== ===== ===================
+===================== ========== ===== ===================
 Name                  Type       Units Description
 ===================== ========== ===== ===================
 BRICKID               int32            Brick ID from tractor input
@@ -89,6 +88,7 @@ Notes and Examples
 NUMOBS may be deprecated in future versions.
 
 In general, the above format contains:
+
 * Columns that were used by target selection (e.g. DECAM_FLUX)
 * Columns needed by fiber assignment (e.g. RA, DEC)
 * Columns needed for traceability (e.g. BRICKNAME, TARGETID, TARGETFLAG)

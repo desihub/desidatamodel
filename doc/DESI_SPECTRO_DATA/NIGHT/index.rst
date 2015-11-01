@@ -2,12 +2,13 @@
 NIGHT
 =====
 
-``NIGHT`` is the night of observation in YYYYMMDD format.
-The "night" roles over at noon local-time (TBD), thus data taken between
-sunset to sunrise all belong to the same "night" even though they span two dates.
+``NIGHT`` is the night of observation in YYYYMMDD format.  The "night" roles
+over at noon local time, so all data taken between sunset and sunrise belong to the same night (i.e. the date of the sunset).
+
+Each exposure id (expid) has two files:
 
 .. toctree::
    :maxdepth: 1
 
-   desi-EXPID
-   fibermap-EXPID
+   desi-{expid}.fits : Raw data <desi-EXPID>
+   fibermap-{expid}.fits : Table of which fibers were assigned to which targets <fibermap-EXPID>

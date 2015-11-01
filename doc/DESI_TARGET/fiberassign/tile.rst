@@ -30,10 +30,10 @@ FITS Header Units
 =================
 
 HDU0 (Blank)
-----
+------------
 
 HDU1 / FiberMap
-----
+---------------
 
 The target assignments for each fiber of this tile.
 
@@ -58,7 +58,7 @@ yfocal_design float32 mm       Y location on focal plane [mm]
 Note: we will probably change these to UPPERCASE and adjust some names (e.g. t_priority to PRIORITY)
 
 HDU2 / PotentialFiberMap
-----
+------------------------
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
