@@ -6,7 +6,8 @@ You will still need to hand edit the file to add descriptions, etc., but
 it gives you a good starting point in the correct format.
 """
 from __future__ import absolute_import, division, print_function, unicode_literals
-# The line above will help with 2to3 support.
+from os.path import basename
+
 def main():
     """Program to run if called as an executable.
     """

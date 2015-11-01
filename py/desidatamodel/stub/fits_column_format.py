@@ -31,7 +31,7 @@ def fits_column_format(format):
     if fitstype == 'A' and len(format) == 1:
         return 'char[1]'
     fmap = {'A':'char','I':'int16','J':'int32','K':'int64',
-        'E':'float32','D':'float64', 'B':'bool'}
+            'E':'float32','D':'float64', 'B':'binary', 'L':'logical'}
     if len(format) > 1:
         return fmap[fitstype] + '[' + format[0:len(format)-1] + ']'
     else:
