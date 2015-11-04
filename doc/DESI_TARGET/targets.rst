@@ -24,7 +24,7 @@ Contents
 ========
 
 ====== ======= ======== ===================
-Number EXTNAME Type     Contents           
+Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Blank
 HDU1_  TARGETS BINTABLE Target selection table
@@ -34,11 +34,15 @@ HDU1_  TARGETS BINTABLE Target selection table
 FITS Header Units
 =================
 
-HDU0 (Blank)
-------------
+HDU0
+----
 
-HDU1 / TARGETS
---------------
+Empty header.
+
+HDU1
+----
+
+Targets.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
