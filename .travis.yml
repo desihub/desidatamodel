@@ -65,6 +65,8 @@ matrix:
           env: SETUP_CMD='test --coverage'
 
 install:
+    - if [[ $SETUP_CMD == 'build_sphinx' ]]; then pip install Sphinx; fi
+    - if [[ $SETUP_CMD == 'test --coverage' ]]; then pip install coverage coveralls; fi
     - pip install -r requirements.txt
 
 script:

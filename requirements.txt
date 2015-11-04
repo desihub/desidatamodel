@@ -1,7 +1,2 @@
-setuptools
-requests
-Sphinx
-coverage
-coveralls
 astropy
-git+https://github.com/desihub/desiutil@travis-test#egg=desiutil
+git+https://github.com/desihub/desiutil.git@travis-test#egg=desiutil
