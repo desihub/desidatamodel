@@ -7,7 +7,7 @@ def parse_header(hdr):
 
     Parameters
     ----------
-    hdr : an object returned by the fitsio method ``read_header()``
+    hdr : astropy.io.fits.Header
         The header to parse.
 
     Returns
@@ -43,7 +43,7 @@ def parse_header(hdr):
             if value.endswith('_'):
                 value = value[0:len(value)-1] + '\\_'
             keywords.append(dict(KEY=key, Value=value, Type=ktype,
-                Comment=escape(hdr.get_comment(key))) )
+                Comment=escape(hdr.comments[key])) )
     if len(keywords) == 0:
         section.append('This HDU has no non-standard required keywords.')
         section.append('')

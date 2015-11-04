@@ -7,7 +7,7 @@ it gives you a good starting point in the correct format.
 """
 from __future__ import absolute_import, division, print_function, unicode_literals
 from os.path import basename
-
+#
 def main():
     """Program to run if called as an executable.
     """
@@ -15,9 +15,9 @@ def main():
     from argparse import ArgumentParser
     from . import process_file
     try:
-        import fitsio
+        from astropy.io import fits
     except ImportError:
-        print("This script requires fitsio, available from https://github.com/esheldon/fitsio",file=stderr)
+        print("This script requires astropy.io.fits, available in your favourite Python distribution.",file=stderr)
         return 1
     parser = ArgumentParser(description=__doc__,prog=basename(argv[0]))
     parser.add_argument('filename',help='A FITS file.',metavar='FILE',nargs='+')

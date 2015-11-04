@@ -16,7 +16,7 @@ def process_file(filename):
         A tuple containing the name of the model file and the data to write to it.
     """
     import re
-    from fitsio import FITS
+    from astropy.io import fits
     from os.path import basename
     from . import file_size, parse_header, rst
     rstkeywords = dict()
@@ -36,38 +36,38 @@ def process_file(filename):
     #
     #- Read the file and parse the headers
     #
-    fx = FITS(filename)
-    nhdr = len(fx)
-    if nhdr > 99:
-        hduname = 'HDU{0:03d}'
-    elif nhdr > 9:
-        hduname = 'HDU{0:02d}'
-    else:
-        hduname = 'HDU{0:1d}'
-    contents_table = [('Number','EXTNAME','Type','Contents')]
-    headers = list()
-    hdu_sections = list()
-    for k in range(nhdr):
-        headers.append(fx[k].read_header())
-        if k > 0 and 'EXTNAME' in headers[k]:
-            extname = headers[k]['EXTNAME'].strip()
+    with fits.open(filename) as fx:
+        nhdr = len(fx)
+        if nhdr > 99:
+            hduname = 'HDU{0:03d}'
+        elif nhdr > 9:
+            hduname = 'HDU{0:02d}'
         else:
-            extname = ''
-        if k > 0:
-            exttype = headers[k]['XTENSION'].strip()
-        else:
-            exttype = 'IMAGE'
-        contents_table.append((hduname.format(k)+'_',extname,exttype,'*Brief Description*'))
-        sec_title = hduname.format(k)
-        hdu_sections.append(sec_title)
-        hdu_sections.append('-'*len(sec_title))
-        hdu_sections.append('')
-        if extname != '':
-            hdu_sections.append('EXTNAME = '+extname)
+            hduname = 'HDU{0:1d}'
+        contents_table = [('Number','EXTNAME','Type','Contents')]
+        headers = list()
+        hdu_sections = list()
+        for k in range(nhdr):
+            headers.append(fx[k].header)
+            if k > 0 and 'EXTNAME' in headers[k]:
+                extname = headers[k]['EXTNAME'].strip()
+            else:
+                extname = ''
+            if k > 0:
+                exttype = headers[k]['XTENSION'].strip()
+            else:
+                exttype = 'IMAGE'
+            contents_table.append((hduname.format(k)+'_',extname,exttype,'*Brief Description*'))
+            sec_title = hduname.format(k)
+            hdu_sections.append(sec_title)
+            hdu_sections.append('-'*len(sec_title))
             hdu_sections.append('')
-        hdu_sections.append('*Summarize the contents of this HDU.*')
-        hdu_sections.append('')
-        hdu_sections += parse_header(headers[k])
+            if extname != '':
+                hdu_sections.append('EXTNAME = '+extname)
+                hdu_sections.append('')
+            hdu_sections.append('*Summarize the contents of this HDU.*')
+            hdu_sections.append('')
+            hdu_sections += parse_header(headers[k])
     #
     # Construct the contents table.
     #

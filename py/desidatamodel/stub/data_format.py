@@ -7,7 +7,7 @@ def data_format(hdr):
 
     Parameters
     ----------
-    hdr : an object returned by the fitsio method ``read_header()``
+    hdr : astropy.io.fits.Header
         The header to parse.
 
     Returns
