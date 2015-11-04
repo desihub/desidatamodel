@@ -18,7 +18,7 @@ for testing.
    $DESI_SPECTRO_DATA : raw data <DESI_SPECTRO_DATA/index>
    $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_SPECTRO_REDUX : processed spectro data <DESI_SPECTRO_REDUX/index>
-   
+
 
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
@@ -54,9 +54,24 @@ data model.
 Tips and Tests
 ==============
 
-Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`::
+You can browse some :doc:`examples <examples/index>`.
 
-    Here is how you make a :doc:`direct link to a file <imaging/data/decam/YYYYMMDD/DECam>`
+Here is how you make a :doc:`direct link to a file <examples/spPlate>`::
+
+    Here is how you make a :doc:`direct link to a file <examples/spPlate>`
+
+Note that the link must take into account the directory structure.
+So for example, if you're in the directory ``DESI_SPECTRO_SIM/PIXPROD/NIGHT``
+and want to refer to a file in ``DESI_SPECTRO_DATA/NIGHT``, the link has
+to have the form::
+
+    :doc:`link to real data <../../../DESI_SPECTRO_DATA/NIGHT/real_data_file>`
+
+or::
+
+    :doc:`link to real data </DESI_SPECTRO_DATA/NIGHT/real_data_file>`
+
+That is, you can use a relative or absolute path.
 
 Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`::
 
