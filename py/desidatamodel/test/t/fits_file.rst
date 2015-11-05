@@ -77,13 +77,13 @@ NAXIS2 3             int  length of dimension 2
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ======== ======== ===========
-Name   Type     Units    Description
-====== ======== ======== ===========
+====== ======== ===== ===========
+Name   Type     Units Description
+====== ======== ===== ===========
 target char[20]
 V_mag  float32  mag
 vdisp  float64  km/s
-====== ======== ======== ===========
+====== ======== ===== ===========
 
 
 Notes and Examples

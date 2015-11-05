@@ -14,13 +14,18 @@ from ..stub import (data_format, extrakey, file_size,
 #
 #
 #
+class sim_comments(dict):
+    """Simulate a dictionary.
+    """
+    def __getitem__(self,key):
+        return "This is the comment on {0}.".format(key)
+#
+#
+#
 class sim_header(OrderedDict):
     """Simulate a FITS header object.
     """
-    def get_comment(self,key):
-        """Simulate the get_comment method from FITS header objects.
-        """
-        return "This is the comment on {0}.".format(key)
+    comments = sim_comments()
 #
 #
 #

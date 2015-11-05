@@ -1,0 +1,2 @@
+astropy
+git+https://github.com/desihub/desiutil.git@travis-test#egg=desiutil

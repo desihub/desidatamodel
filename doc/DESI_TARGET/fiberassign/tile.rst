@@ -18,7 +18,7 @@ Contents
 ========
 
 ====== ================= ======== ===================
-Number EXTNAME           Type     Contents           
+Number EXTNAME           Type     Contents
 ====== ================= ======== ===================
 HDU0_                    IMAGE    Blank
 HDU1_  FiberMap          BINTABLE Target assignment for each fiber
@@ -29,11 +29,15 @@ HDU2_  PotentialFiberMap BINTABLE All targets that could have been assigned
 FITS Header Units
 =================
 
-HDU0 (Blank)
-------------
+HDU0
+----
 
-HDU1 / FiberMap
----------------
+Blank header.
+
+HDU1
+----
+
+FiberMap
 
 The target assignments for each fiber of this tile.
 
@@ -57,8 +61,10 @@ yfocal_design float32 mm       Y location on focal plane [mm]
 
 Note: we will probably change these to UPPERCASE and adjust some names (e.g. t_priority to PRIORITY)
 
-HDU2 / PotentialFiberMap
-------------------------
+HDU2
+----
+
+PotentialFiberMap
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -7,7 +7,7 @@ def binary_table_format(hdr):
 
     Parameters
     ----------
-    hdr : an object returned by the fitsio method ``read_header()``
+    hdr : astropy.io.fits.Header
         The header to parse.
 
     Returns
@@ -29,15 +29,15 @@ def binary_table_format(hdr):
         ttype = fits_column_format(hdr['TFORM'+jj].strip())
         tunit = 'TUNIT'+jj
         if tunit in hdr:
-            units = hdr[tunit]
+            units = hdr[tunit].strip()
         else:
             units = ''
         #- Check TCOMMnn keyword, otherwise use TTYPE comment for description
         commkey = 'TCOMM'+jj
         if commkey in hdr:
-            description = escape(hdr[commkey])
+            description = escape(hdr[commkey].strip())
         else:
-            description = escape(hdr.get_comment('TTYPE'+jj))
+            description = escape(hdr.comments['TTYPE'+jj])
         columns_table.append((name,ttype,units,description))
     colsizes = [max(map(len,col)) for col in zip(*columns_table)]
     highlight = ' '.join(['='*k for k in colsizes])
