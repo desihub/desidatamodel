@@ -267,9 +267,14 @@ def parse_header(hdr):
     parse_header : list
         A list of strings that can be appended to the main document.
     """
+    from sys import version_info
     from cgi import escape
     section = list()
     keywords = list()
+    if version_info.major == 3:
+        str_types = (str,)
+    else:
+        str_types = (str,unicode)
     for key in hdr:
         if extrakey(key):
             #- Escape &, <, >, in strings, but don't choke on int/float
@@ -277,7 +282,7 @@ def parse_header(hdr):
             if isinstance(value, bool):
                 ktype = 'bool'
                 value = ('F','T')[int(value)]
-            if isinstance(value, (str,unicode)):
+            if isinstance(value, str_types):
                 value = escape(value)
                 if value == 'T' or value == 'F':
                     ktype = 'bool'
