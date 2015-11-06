@@ -57,7 +57,7 @@ setup_keywords['test_suite']='{name}.test.{name}_test_suite.{name}_test_suite'.f
 #
 # Autogenerate command-line scripts.
 #
-# setup_keywords['entry_points'] = {'console_scripts':['generate_model = desidatamodel.stub.main:main']}
+# setup_keywords['entry_points'] = {'console_scripts':['generate_model = desidatamodel.stub:main']}
 #
 # Add internal data directories.
 #

@@ -31,12 +31,12 @@ FITS, 28 KB  *This section gives the type of the file and its approximate size.*
 Contents
 ========
 
-====== ======= ======== ===================
-Number EXTNAME Type     Contents           
-====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_          BINTABLE *Brief Description*
-====== ======= ======== ===================
+====== ======== ======== ===================
+Number EXTNAME  Type     Contents           
+====== ======== ======== ===================
+HDU0_           IMAGE    *Brief Description*
+HDU1_  Galaxies BINTABLE *Brief Description*
+====== ======== ======== ===================
 
 
 FITS Header Units
@@ -50,29 +50,32 @@ HDU0
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======
+====== ============= ==== ====================================
 KEY    Example Value Type Comment
-====== ============= ==== =======
+====== ============= ==== ====================================
 NAXIS1 100           int
 NAXIS2 100           int
 BSCALE 1             int
-BZERO  32768         int
-====== ============= ==== =======
+BZERO  32768         int  Data are really unsigned 16-bit int.
+====== ============= ==== ====================================
 
 HDU1
 ----
+
+EXTNAME = Galaxies
 
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 32            int  length of dimension 1
-NAXIS2 3             int  length of dimension 2
-====== ============= ==== =====================
+======= ============= ==== =====================
+KEY     Example Value Type Comment
+======= ============= ==== =====================
+NAXIS1  32            int  length of dimension 1
+NAXIS2  3             int  length of dimension 2
+EXTNAME Galaxies      str  Name of this HDU.
+======= ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

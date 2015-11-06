@@ -85,8 +85,6 @@ desidatamodel Python Package
 
 .. automodule:: desidatamodel.stub
    :members:
-   :imported-members:
-
 
 Indices and tables
 ==================
