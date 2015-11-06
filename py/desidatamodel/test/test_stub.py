@@ -8,7 +8,6 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import os
 import unittest
 from collections import OrderedDict
-from new import instancemethod
 from ..stub import (data_format, extrakey, file_size,
     fits_column_format, parse_header, process_file)
 #
