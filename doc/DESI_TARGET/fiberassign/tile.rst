@@ -47,19 +47,24 @@ Required Data Table Columns
 ============= ======= ======== ===================
 Name          Type    Units    Description
 ============= ======= ======== ===================
-fiber         int32            fiber id [0-4999]
-positioner    int32            label for field   2
-numtarget     int32            number of targets that this fiber covers
-t_priority    int32            target priority
+fiber         int32            fiber id on the CCDs [0-4999]
+positioner    int32            positioner id on the focal plane [0-4999]
 targetid      int64            selected target ID
-desi_target0  int64            TARGETFLAG for that target
 ra            float32 deg      Right ascension [degrees]
 dec           float32 deg      Declination [degrees]
 xfocal_design float32 mm       X location on focal plane [mm]
 yfocal_design float32 mm       Y location on focal plane [mm]
+desi_target0  int64            TARGETFLAG for that target
+numtarget     int32            number of targets that this fiber covers
+t_priority    int32            target priority [deprecated?]
 ============= ======= ======== ===================
 
-Note: we will probably change these to UPPERCASE and adjust some names (e.g. t_priority to PRIORITY)
+Notes:
+
+  * we will probably change these to UPPERCASE and adjust some names (e.g. t_priority to PRIORITY)
+  * x/yfocal_design are where fiber assignment thought the targets would
+    be; this is non-authoritative and more detailed downstream code may have a
+    refined answer
 
 HDU2
 ----
