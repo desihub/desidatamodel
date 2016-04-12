@@ -17,6 +17,6 @@ def main():
     Returns
     -------
     :class:`int`
-        An integer suitable for passing to ``sys.exit()``.
+        An integer suitable for passing to :func:`sys.exit`.
     """
     return 0
