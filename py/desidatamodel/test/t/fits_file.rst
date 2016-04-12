@@ -26,7 +26,8 @@ For example, a six-digit number would correspond to ``[0-9]{6}``.*
 File Type
 ---------
 
-FITS, 28 KB  *This section gives the type of the file and its approximate size.*
+FITS, 28 KB  *This section gives the type of the file and its
+approximate size.*
 
 Contents
 ========

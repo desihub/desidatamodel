@@ -3,36 +3,34 @@
 """Test desidatamodel.stub functions
 """
 #
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 #
 import os
 import unittest
 from collections import OrderedDict
-from ..stub import (data_format, extrakey, file_size,
-    fits_column_format, parse_header, process_file)
-#
-#
-#
+from ..stub import (data_format, extrakey, file_size, fits_column_format,
+                    parse_header, process_file)
+
+
 class sim_comments(dict):
     """Simulate a dictionary.
     """
-    def __getitem__(self,key):
+    def __getitem__(self, key):
         return "This is the comment on {0}.".format(key)
-#
-#
-#
+
+
 class sim_header(OrderedDict):
     """Simulate a FITS header object.
     """
     comments = sim_comments()
-#
-#
-#
+
+
 class TestStub(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.data_dir = os.path.join(os.path.dirname(__file__),'t')
+        cls.data_dir = os.path.join(os.path.dirname(__file__), 't')
 
     @classmethod
     def tearDownClass(cls):
@@ -43,15 +41,19 @@ class TestStub(unittest.TestCase):
         """
         hdr = sim_header()
         lines = data_format(hdr)
-        self.assertEqual(lines,[])
+        self.assertEqual(lines, [])
         hdr['XTENSION'] = 'FOOBAR'
         lines = data_format(hdr)
-        self.assertEqual(lines,["Unknown extension type {0}".format(hdr['XTENSION']),''])
+        self.assertEqual(lines,
+                         ["Unknown extension type {0}".format(hdr['XTENSION']),
+                          ''])
         hdr['XTENSION'] = 'IMAGE'
-        bitpix = {8:'char',16:'int16',32:'int32',64:'int64',-32:'float32',-64:'float64',99:'BITPIX=99'}
+        bitpix = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
+                  -32: 'float32', -64: 'float64', 99: 'BITPIX=99'}
         for k in bitpix:
             hdr['BITPIX'] = k
-            self.assertEqual(data_format(hdr),['Data: FITS image [{0}]'.format(bitpix[k]),''])
+            self.assertEqual(data_format(hdr),
+                             ['Data: FITS image [{0}]'.format(bitpix[k]), ''])
         del hdr['BITPIX']
         hdr['XTENSION'] = 'BINTABLE'
         hdr['TFIELDS'] = 3
@@ -64,20 +66,20 @@ class TestStub(unittest.TestCase):
         hdr['TUNIT3'] = 'km/s'
         hdr['TCOMM3'] = 'The units are km/s.'
         lines = data_format(hdr)
-        with open(os.path.join(self.data_dir,'data_table.txt')) as dt:
+        with open(os.path.join(self.data_dir, 'data_table.txt')) as dt:
             table = dt.read().split('\n')
-        self.assertEqual(lines,table)
+        self.assertEqual(lines, table)
 
     def test_extrakey(self):
         """Test the identification of non-boring keys.
         """
-        extrakey_tests = {'TTYPE01':False,
-            'TFORM12':False,
-            'TUNIT00':False,
-            'TCOMM33':False,
-            'TDIM11':False,
-            'BITPIX':False,
-            'FOOBAR':True}
+        extrakey_tests = {'TTYPE01': False,
+                          'TFORM12': False,
+                          'TUNIT00': False,
+                          'TCOMM33': False,
+                          'TDIM11': False,
+                          'BITPIX': False,
+                          'FOOBAR': True}
         for k in extrakey_tests:
             if extrakey_tests[k]:
                 self.assertTrue(extrakey(k))
@@ -87,33 +89,35 @@ class TestStub(unittest.TestCase):
     def test_file_size(self):
         """Test the determination and formatting of file size.
         """
-        filename = os.path.join(self.data_dir,'this-file-contains-five-bytes.txt')
+        filename = os.path.join(self.data_dir,
+                                'this-file-contains-five-bytes.txt')
         s = file_size(filename)
-        self.assertEqual(s,'5 bytes')
-        filename = os.path.join(self.data_dir,'this-file-contains-2048-bytes.txt')
+        self.assertEqual(s, '5 bytes')
+        filename = os.path.join(self.data_dir,
+                                'this-file-contains-2048-bytes.txt')
         s = file_size(filename)
-        self.assertEqual(s,'2 KB')
+        self.assertEqual(s, '2 KB')
 
     def test_fits_column_format(self):
         """Test the translation of FITS column format strings.
         """
         formats = {
-            '1PB':'8-bit stream',
-            '1PI':'16-bit stream',
-            '1PJ':'32-bit stream',
-            'A':'char[1]',
-            'B':'binary',
-            'L':'logical',
-            'E':'float32',
-            'D':'float64',
-            'I':'int16',
-            'J':'int32',
-            'K':'int64',
-            '10D':'float64[10]',
-            '20J':'int32[20]'}
+            '1PB': '8-bit stream',
+            '1PI': '16-bit stream',
+            '1PJ': '32-bit stream',
+            'A': 'char[1]',
+            'B': 'binary',
+            'L': 'logical',
+            'E': 'float32',
+            'D': 'float64',
+            'I': 'int16',
+            'J': 'int32',
+            'K': 'int64',
+            '10D': 'float64[10]',
+            '20J': 'int32[20]'}
         for f in formats:
             ff = fits_column_format(f)
-            self.assertEqual(ff,formats[f])
+            self.assertEqual(ff, formats[f])
 
     def test_parse_header(self):
         """Test the parsing of a full FITS HDU.
@@ -124,14 +128,16 @@ class TestStub(unittest.TestCase):
         hdr['NAXIS'] = 0
         hdr['EXTEND'] = True
         lines = parse_header(hdr)
-        self.assertEqual(lines,['This HDU has no non-standard required keywords.',''])
+        self.assertEqual(lines,
+                         ['This HDU has no non-standard required keywords.',
+                          ''])
         hdr['BOOLEAN'] = True
         hdr['VERSION'] = '0.1.2'
         hdr['INTEGER'] = 12345
         hdr['FLOAT'] = 3.14159
         hdr['UNDR_'] = 'underscore_'
         lines = parse_header(hdr)
-        self.assertEqual(lines,[
+        self.assertEqual(lines, [
             'Required Header Keywords',
             '~~~~~~~~~~~~~~~~~~~~~~~~',
             '',
@@ -150,13 +156,16 @@ class TestStub(unittest.TestCase):
     def test_process_file(self):
         """Full test of parsing a FITS file.
         """
-        filename = os.path.join(self.data_dir,'fits_file.fits')
-        modelfile = os.path.join(self.data_dir,'fits_file.rst')
+        filename = os.path.join(self.data_dir, 'fits_file.fits')
+        modelfile = os.path.join(self.data_dir, 'fits_file.rst')
         with open(modelfile) as m:
             modeldata = m.read()
         modelname, data = process_file(filename)
-        self.assertEqual(modelname,'fits_file')
-        self.assertEqual(data,modeldata)
+        self.assertEqual(modelname, 'fits_file')
+        modellines = modeldata.split('\n')
+        for i, l in enumerate(data.split('\n')):
+            self.assertEqual(l, modellines[i])
+
 
 if __name__ == '__main__':
     unittest.main()
