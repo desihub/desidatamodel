@@ -14,18 +14,20 @@ for testing.
 .. toctree::
    :maxdepth: 1
 
-   $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
    $DESI_SPECTRO_DATA : raw data <DESI_SPECTRO_DATA/index>
-   $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_SPECTRO_REDUX : processed spectro data <DESI_SPECTRO_REDUX/index>
+   $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
+   $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
 
 
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
 
-To do:
+To Do
+=====
 
 * LSS catalog
+* DESIMODEL
 
 -------------------------------------------------------------------------
 
@@ -82,6 +84,9 @@ desidatamodel Python Package
 
 .. automodule:: desidatamodel
    :members:
+
+.. automodule:: desidatamodel.check
+  :members:
 
 .. automodule:: desidatamodel.stub
    :members:

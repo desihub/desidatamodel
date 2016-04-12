@@ -66,12 +66,12 @@ def binary_table_format(hdr):
 
     Parameters
     ----------
-    hdr : astropy.io.fits.Header
+    hdr : :class:`~astropy.io.fits.Header`
         The header to parse.
 
     Returns
     -------
-    binary_table_format : list
+    :class:`list`
         A list of strings that can be appended to the main document.
     """
     from cgi import escape
@@ -116,12 +116,12 @@ def data_format(hdr):
 
     Parameters
     ----------
-    hdr : astropy.io.fits.Header
+    hdr : :class:`~astropy.io.fits.Header`
         The header to parse.
 
     Returns
     -------
-    data_format : list
+    :class:`list`
         A list of strings that can be appended to the main document.
     """
     section = list()
@@ -154,12 +154,12 @@ def extrakey(key):
 
     Parameters
     ----------
-    key : str
+    key : :class:`str`
         A FITS keyword.
 
     Returns
     -------
-    extrakey : bool
+    :class:`bool`
         ``True`` if the keyword is not boring.
 
     Examples
@@ -193,12 +193,12 @@ def file_size(filename):
 
     Parameters
     ----------
-    filename : str
+    filename : :class:`str`
         A string containing a filename.
 
     Returns
     -------
-    file_size : str
+    :class:`str`
         A human-readable file size.
 
     Examples
@@ -222,12 +222,12 @@ def fits_column_format(format):
 
     Parameters
     ----------
-    format : str
+    format : :class:`str`
         A FITS-style format string.
 
     Returns
     -------
-    fits_column_format : str
+    :class:`str`
         A human-readable version of the format string.
 
     Examples
@@ -259,12 +259,12 @@ def parse_header(hdr):
 
     Parameters
     ----------
-    hdr : astropy.io.fits.Header
+    hdr : :class:`~astropy.io.fits.Header`
         The header to parse.
 
     Returns
     -------
-    parse_header : list
+    :class:`list`
         A list of strings that can be appended to the main document.
     """
     from sys import version_info
@@ -333,12 +333,12 @@ def process_file(filename):
 
     Parameters
     ----------
-    filename : str
+    filename : :class:`str`
         Name of a FITS file.
 
     Returns
     -------
-    process_file : tuple
+    :func:`tuple`
         A tuple containing the name of the model file and the data to write to it.
     """
     import re
@@ -414,14 +414,10 @@ def process_file(filename):
 def main():
     """Entry point for the generate_model script.
 
-    Parameters
-    ----------
-    None
-
     Returns
     -------
-    main : int
-        An integer suitable for passing to ``sys.exit()``.
+    :class:`int`
+        An integer suitable for passing to :func:`sys.exit`.
     """
     from os.path import basename
     from sys import argv, stderr
