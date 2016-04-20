@@ -9,7 +9,7 @@ from __future__ import (absolute_import, division, print_function,
 from os import environ
 from os.path import dirname, isdir, join
 import unittest
-from ..check import scan_model
+from ..check import files_to_regex, scan_model
 
 
 class TestCheck(unittest.TestCase):
@@ -41,3 +41,20 @@ class TestCheck(unittest.TestCase):
         files = scan_model(root)
         expected = set([join(root, f) for f in ('sdR.rst', 'spPlate.rst')])
         self.assertEqual(set(files), expected)
+
+    def test_files_to_regex(self):
+        """Test compilation of regular expressions.
+        """
+        root = join(environ['DESIDATAMODEL'], 'doc', 'DESI_SPECTRO_DATA')
+        files = scan_model(root)
+        f2r = files_to_regex(root, '/desi/spectro/data', files)
+        regexes = ['/desi/spectro/data/20160703/desi-12345678.fits',
+                   '/desi/spectro/data/20160703/fibermap-12345678.fits']
+        expected = [join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
+                                                     'fibermap-EXPID.rst')]
+        expected_f2r = dict(zip(expected, regexes))
+        for k in f2r:
+            self.assertRegexpMatches(expected_f2r[k], f2r[k],
+                                     ("{0} does not match " +
+                                      "{1}").format(f2r[k].pattern,
+                                                    expected_f2r[k]))

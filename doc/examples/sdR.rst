@@ -13,7 +13,7 @@ Raw data.
 Naming Convention
 -----------------
 
-``sdR-[0-9]{8}\.fits``
+regex: ``sdR-[0-9]{8}\.fits``
 
 
 Contents

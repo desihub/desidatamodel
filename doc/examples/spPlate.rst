@@ -27,6 +27,7 @@ Naming Convention
 ``spPlate-PLATE4-MJD5.fits``, where ``PLATE4`` is the zero-padded, four-digit
 plate number and ``MJD5`` is the five-digit MJD.
 
+regex: ``spPlate-[0-9]{4}-[0-9]{5}\.fits``
 
 Contents
 ========
