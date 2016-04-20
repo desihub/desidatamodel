@@ -166,4 +166,8 @@ def main():
     # print(files)
     f2r = files_to_regex(scan_root, options.directory, files)
     # print([f2r[p].pattern for p in f2r])
+    p, e, m = collect_files(options.directory, f2r)
+    print(p)
+    print(e)
+    print(m)
     return 0
