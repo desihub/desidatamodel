@@ -51,6 +51,7 @@ def files_to_regex(section, root, files):
     :class:`dict`
         A mapping of data model file name to regular expression.
     """
+    from . import PY3
     from os.path import dirname, join
     import re
     d2r = {'NIGHT': '[0-9]{8}',  # YYYYMMDD
@@ -60,7 +61,10 @@ def files_to_regex(section, root, files):
         f2r[f] = None
         with open(f) as dm:
             for le in dm.readlines():
-                l = le.decode('utf-8')
+                if PY3:
+                    l = le
+                else:
+                    l = le.decode('utf-8')
                 if l.startswith('regex:'):
                     d = dirname(f).replace(section, root)
                     for k in d2r:

@@ -10,7 +10,7 @@ from os import environ
 from os.path import dirname, isdir, join
 import unittest
 from ..check import files_to_regex, scan_model
-
+from .. import PY3
 
 class TestCheck(unittest.TestCase):
 
@@ -26,6 +26,8 @@ class TestCheck(unittest.TestCase):
                                            dirname(  # desidatamodel/
                                            dirname(__file__)  # test/
                                            )))
+        if PY3:
+            cls.assertRegexpMatches = cls.assertRegex
 
     @classmethod
     def tearDownClass(cls):

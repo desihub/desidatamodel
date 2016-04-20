@@ -16,3 +16,7 @@ from __future__ import (absolute_import, division, print_function,
 # Set version string.
 #
 from ._version import __version__
+
+from sys import version_info
+
+PY3 = version_info[0] > 2

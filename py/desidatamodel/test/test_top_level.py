@@ -9,7 +9,7 @@ from __future__ import (absolute_import, division, print_function,
 import unittest
 import re
 from .. import __version__ as theVersion
-
+from .. import PY3
 
 class TestTopLevel(unittest.TestCase):
 
@@ -17,6 +17,8 @@ class TestTopLevel(unittest.TestCase):
     def setUpClass(cls):
         cls.versionre = re.compile(
             r'([0-9]+!)?([0-9]+)(\.[0-9]+)*((a|b|rc|\.post|\.dev)[0-9]+)?')
+        if PY3:
+            cls.assertRegexpMatches = cls.assertRegex
 
     @classmethod
     def tearDownClass(cls):

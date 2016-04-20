@@ -77,7 +77,11 @@ def binary_table_format(hdr):
     :class:`list`
         A list of strings that can be appended to the main document.
     """
-    from cgi import escape
+    from . import PY3
+    if PY3:
+        from html import escape
+    else:
+        from cgi import escape
     section = list()
     section.append('Required Data Table Columns')
     section.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -270,11 +274,14 @@ def parse_header(hdr):
     :class:`list`
         A list of strings that can be appended to the main document.
     """
-    from sys import version_info
-    from cgi import escape
+    from . import PY3
+    if PY3:
+        from html import escape
+    else:
+        from cgi import escape
     section = list()
     keywords = list()
-    if version_info.major == 3:
+    if PY3:
         str_types = (str,)
     else:
         str_types = (str, unicode)
