@@ -68,8 +68,7 @@ class TestCheck(unittest.TestCase):
                       join(self.data_dir, 'sdR-01234567.fits'),
                       join(self.data_dir, 'spPlate-1234-54321.fits'))
         for f in test_files:
-            with open(f, 'wb') as t:
-                t.write('')
+            open(f, 'a').close()
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
         f2r = files_to_regex(root, self.data_dir, files)
@@ -86,8 +85,7 @@ class TestCheck(unittest.TestCase):
         test_files = (join(self.data_dir, 'sdR-12345678.fits'),
                       join(self.data_dir, 'sdR-01234567.fits'))
         for f in test_files:
-            with open(f, 'wb') as t:
-                t.write('')
+            open(f, 'a').close()
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
         f2r = files_to_regex(root, self.data_dir, files)
