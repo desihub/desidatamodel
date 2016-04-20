@@ -6,10 +6,10 @@
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 #
-from os import environ
+from os import environ, remove
 from os.path import dirname, isdir, join
 import unittest
-from ..check import files_to_regex, scan_model
+from ..check import collect_files, files_to_regex, scan_model
 from .. import PY3
 
 class TestCheck(unittest.TestCase):
@@ -60,3 +60,38 @@ class TestCheck(unittest.TestCase):
                                      ("{0} does not match " +
                                       "{1}").format(f2r[k].pattern,
                                                     expected_f2r[k]))
+
+    def test_collect_files(self):
+        """Test finding files that correspond to data model files.
+        """
+        test_files = (join(self.data_dir, 'sdR-12345678.fits'),
+                      join(self.data_dir, 'sdR-01234567.fits'),
+                      join(self.data_dir, 'spPlate-1234-54321.fits'))
+        for f in test_files:
+            with open(f, 'wb') as t:
+                t.write('')
+        root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
+        files = scan_model(root)
+        f2r = files_to_regex(root, self.data_dir, files)
+        p, e, m = collect_files(self.data_dir, f2r)
+        for r in f2r:
+            self.assertIn(r, p)
+        self.assertEqual(len(e), 5)
+        for f in test_files:
+            remove(f)
+
+    def test_collect_files_missing(self):
+        """Test finding files when some are missing.
+        """
+        test_files = (join(self.data_dir, 'sdR-12345678.fits'),
+                      join(self.data_dir, 'sdR-01234567.fits'))
+        for f in test_files:
+            with open(f, 'wb') as t:
+                t.write('')
+        root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
+        files = scan_model(root)
+        f2r = files_to_regex(root, self.data_dir, files)
+        p, e, m = collect_files(self.data_dir, f2r)
+        self.assertEqual(len(m), 1)
+        for f in test_files:
+            remove(f)

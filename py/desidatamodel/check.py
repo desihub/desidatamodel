@@ -12,13 +12,13 @@ from __future__ import (absolute_import, division, print_function,
 # The line above will help with 2to3 support.
 
 
-def scan_model(root):
+def scan_model(section):
     """Find all data model files in a top-level directory.
 
     Parameters
     ----------
-    root : :class:`str`
-        Directory to scan.
+    section : :class:`str`
+        Full path to a section of the data model.
 
     Returns
     -------
@@ -28,7 +28,7 @@ def scan_model(root):
     from os import walk
     from os.path import join
     scan = list()
-    for dirpath, dirnames, filenames in walk(root):
+    for dirpath, dirnames, filenames in walk(section):
         scan += [join(dirpath, f) for f in filenames
                  if f.endswith('.rst') and f != 'index.rst']
     return scan
@@ -74,6 +74,61 @@ def files_to_regex(section, root, files):
     return f2r
 
 
+def collect_files(root, regexes):
+    """Scan a directory tree for files that correspond to data model files.
+
+    Parameters
+    ----------
+    root : :class:`str`
+        Path to real files on disk.
+    regexes : :class:`dict`
+        A mapping of data model files to regular expressions that match.
+
+    Returns
+    -------
+    :func:`tuple`
+        A tuple containing the prototype files, a list of extraneous files,
+        and a list of missing files (defined below).
+
+    Notes
+    -----
+
+    Files are analyzed using this algorithm:
+
+    * The first file that matches a regex becomes the 'prototype' for that
+      data model file.
+    * If no files match a data model file, then files of that type are
+      'missing'.
+    * If a file does not match any regular expression, it is 'extraneous'.
+    * If a file matches a regular expression that already has a prototype,
+      it is 'ignored'.
+    """
+    from os import walk
+    from os.path import join
+    prototypes = dict()
+    extraneous = list()
+    for dirpath, dirnames, filenames in walk(root):
+        for f in filenames:
+            extraneous_file = True
+            fullname = join(dirpath, f)
+            for r in regexes:
+                m = regexes[r].match(fullname)
+                if m is not None:
+                    extraneous_file = False
+                    if r not in prototypes:
+                        prototypes[r] = fullname
+            if extraneous_file:
+                extraneous.append(fullname)
+    #
+    # Scan for missing files.
+    #
+    missing = list()
+    for r in regexes:
+        if r not in prototypes:
+            missing.append(r)
+    return (prototypes, extraneous, missing)
+
+
 def main():
     """Entry point for the check_model script.
 
@@ -108,7 +163,7 @@ def main():
             return 1
     scan_root = join(data_model_root, 'doc', options.root)
     files = scan_model(scan_root)
-    print(files)
+    # print(files)
     f2r = files_to_regex(scan_root, options.directory, files)
-    print([f2r[p].pattern for p in f2r])
+    # print([f2r[p].pattern for p in f2r])
     return 0
