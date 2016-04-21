@@ -33,7 +33,7 @@ Contents
 ========
 
 ====== ======== ======== ===================
-Number EXTNAME  Type     Contents           
+Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
 HDU0_           IMAGE    *Brief Description*
 HDU1_  Galaxies BINTABLE *Brief Description*
@@ -59,6 +59,8 @@ NAXIS2 100           int
 BSCALE 1             int
 BZERO  32768         int  Data are really unsigned 16-bit int.
 ====== ============= ==== ====================================
+
+Data: FITS image [int16, 100x100]
 
 HDU1
 ----
@@ -94,4 +96,3 @@ Notes and Examples
 ==================
 
 *Add notes and examples here.  You can also create links to example files.*
-
