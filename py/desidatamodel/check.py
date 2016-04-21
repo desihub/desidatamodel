@@ -77,6 +77,7 @@ def files_to_regex(section, root, files):
                         d = d.replace(k, d2r[k])
                     r = l.strip().split()[1].replace('``', '')
                     f2r[f] = re.compile(join(d, r))
+                    break
         if f2r[f] is None:
             warn("{0} has no file regex!".format(f), DataModelWarning)
     return f2r
@@ -144,6 +145,21 @@ def collect_files(root, regexes):
     return prototypes
 
 
+def validate_prototypes(prototypes):
+    """Compares a set of prototype data files to their data models.
+
+    Parameters
+    ----------
+    prototypes : :class:`dict`
+        A mapping of data model files to prototype data files.
+
+    Returns
+    -------
+    None
+    """
+    return
+
+
 def main():
     """Entry point for the check_model script.
 
@@ -191,5 +207,6 @@ def main():
     if len(w) > 0:
         for m in w:
             print('WARNING: ' + str(m.message))
-    print(p)
+    # print(p)
+    validate_prototypes(p)
     return 0
