@@ -10,7 +10,8 @@ Generate data model files from FITS files.
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 # The line above will help with 2to3 support.
-
+import os
+from astropy.io import fits
 
 #
 # This is a template.
@@ -62,6 +63,200 @@ Notes and Examples
 *Add notes and examples here.  You can also create links to example files.*
 
 """
+
+
+class Stub(object):
+    """This object contains metadata about a file and methods to print that
+    metadata.
+
+    Parameters
+    ----------
+    filename : :class:`str`
+        Name of the data file to convert to a data model file.
+
+    Attributes
+    ----------
+    contents_header : :class:`list`
+        The header of a table summarizing the HDUs.
+    filename : :class:`str`
+        Name of the file.
+    headers : :class:`list`
+        The HDUs read from the file.
+    nhdr : :class:`int`
+        Number of HDUs.
+    """
+    contents_header = [('Number', 'EXTNAME', 'Type', 'Contents')]
+
+    def __init__(self, filename):
+        self.filename = filename
+        self.nhdr = 0
+        self.headers = list()
+        self._basef = None
+        self._modelname = None
+        self._filesize = None
+        self._hduname = None
+        self._contents = None
+        self._parse()
+        return
+
+    @property
+    def basef(self):
+        """Base name of the file.
+        """
+        if self._basef is None:
+            self._basef = os.path.basename(self.filename)
+        return self._basef
+
+    @property
+    def modelname(self):
+        """Name to use for the data model file.
+        """
+        if self._modelname is None:
+            try:
+                self._modelname = self.basef[0:self.basef.index('-')]
+            except ValueError:
+                self._modelname = self.basef[0:self.basef.index('.')]
+        return self._modelname
+
+    @property
+    def filesize(self):
+        """Size of the file in human-readable format.
+        """
+        if self._filesize is None:
+            self._filesize = file_size(self.filename)
+        return self._filesize
+
+    @property
+    def hduname(self):
+        """Format of HDU names.
+        """
+        if self._hudname is None:
+            if self.nhdr > 99:
+                self._hduname = 'HDU{0:03d}'
+            elif self.nhdr > 9:
+                self._hduname = 'HDU{0:02d}'
+            else:
+                self._hduname = 'HDU{0:1d}'
+        return self._hduname
+
+    @property
+    def contents(self):
+        """A table summarizing the HDUs.
+        """
+        if self._contents is None:
+            self._contents = [] + self.contents_header
+            for k in range(self.nhdr):
+                if k > 0 and 'EXTNAME' in self.headers[k]:
+                    extname = self.headers[k]['EXTNAME'].strip()
+                else:
+                    extname = ''
+                if k > 0:
+                    exttype = self.headers[k]['XTENSION'].strip()
+                else:
+                    exttype = 'IMAGE'
+                self._contents.append((self.hduname.format(k)+'_',
+                                       extname, exttype,
+                                       '*Brief Description*'))
+        return self._contents
+
+    def colsizes(self, table):
+        """Compute the size (number of characters) of each column in a table.
+
+        Parameters
+        ----------
+        table : :class:`list`
+            A list representing a table.
+
+        Returns
+        -------
+        :class:`list`
+            The size of each column in the table.
+        """
+        return [max(map(len, col)) for col in zip(*table)]
+
+    def highlight(self, sizes):
+        """Return reStructuredText-compatible table highlights.
+
+        Parameters
+        ----------
+        sizes : :class:`list`
+            The width of each column.
+
+        Returns
+        -------
+        :class:`str`
+            A highlight string.
+        """
+        return ' '.join(['='*k for k in sizes])
+
+    def colformat(self, sizes):
+        """Return a string ready to be formatted.
+
+        Parameters
+        ----------
+        sizes : :class:`list`
+            The width of each column.
+
+        Returns
+        -------
+        :class:`str`
+            A string with format characters.
+        """
+        return ' '.join(['{{{0:d}:{1:d}}}'.format(i, s)
+                         for i, s in enumerate(sizes)])
+
+    def format_table(self, table):
+        """Convert tabular data into reStructuredText-compatible string.
+
+        Parameters
+        ----------
+        table : :class:`list`
+            A data table.
+
+        Returns
+        -------
+        :class:`str`
+            The table converted to a string.
+        """
+        sizes = self.colsizes(table)
+        highlight = self.highlight(sizes)
+        colformat = self.colformat(sizes)
+        t = [highlight]
+        for k in range(len(table)):
+            t.append(colformat.format(*table[0]))
+            if k == 0:
+                t.append(highlight)
+        t.append(highlight)
+        return "\n".join(t) + "\n"
+
+    def __str__(self):
+        rstkeywords = dict()
+        rstkeywords['title'] = self.modelname
+        rstkeywords['titlehighlight'] = '='*len(rstkeywords['title'])
+        rstkeywords['filename'] = self.basef
+        rstkeywords['filetype'] = 'FITS'
+        rstkeywords['filesize'] = self.file_size
+        rstkeywords['contents_table'] = self.format_table(self.contents)
+        rstkeywords['hdu_sections'] = ''
+        # sec_title = hduname.format(k)
+        # hdu_sections.append(sec_title)
+        # hdu_sections.append('-'*len(sec_title))
+        # hdu_sections.append('')
+        # if extname != '':
+        #     hdu_sections.append('EXTNAME = '+extname)
+        #     hdu_sections.append('')
+        # hdu_sections.append('*Summarize the contents of this HDU.*')
+        # hdu_sections.append('')
+        # hdu_sections += parse_header(headers[k])
+        # rstkeywords['hdu_sections'] = hdu_sections
+        return rst.format(**rstkeywords)
+
+    def _parse(self):
+        with fits.open(self.filename) as fx:
+            self.nhdr = len(fx)
+            for k in range(nhdr):
+                self.headers.append(fx[k].header)
+        return
 
 
 def binary_table_format(hdr):
@@ -177,19 +372,11 @@ def extrakey(key):
     True
     """
     from re import match
-    if match(r'TTYPE\d+', key) is not None:
-        return False
-    if match(r'TFORM\d+', key) is not None:
-        return False
-    if match(r'TUNIT\d+', key) is not None:
-        return False
-    if match(r'TCOMM\d+', key) is not None:
-        return False
-    if match(r'TDIM\d+', key) is not None:
-        return False
     # don't drop NAXIS1 and NAXIS2 since we want to document which is which
     if key in ('BITPIX', 'NAXIS', 'PCOUNT', 'GCOUNT', 'TFIELDS', 'XTENSION',
                'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY'):
+        return False
+    if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
         return False
     return True
 
@@ -355,72 +542,11 @@ def process_file(filename):
     """
     import re
     from astropy.io import fits
-    from os.path import basename
-    rstkeywords = dict()
-    #
-    # Create a title
-    #
-    basef = basename(filename)
-    try:
-        modelname = basef[0:basef.index('-')]
-    except ValueError:
-        modelname = basef[0:basef.index('.')]
-    rstkeywords['title'] = modelname
-    rstkeywords['titlehighlight'] = '='*len(rstkeywords['title'])
-    rstkeywords['filename'] = basef
-    rstkeywords['filetype'] = 'FITS'
-    rstkeywords['filesize'] = file_size(filename)
     #
     # Read the file and parse the headers
     #
-    with fits.open(filename) as fx:
-        nhdr = len(fx)
-        if nhdr > 99:
-            hduname = 'HDU{0:03d}'
-        elif nhdr > 9:
-            hduname = 'HDU{0:02d}'
-        else:
-            hduname = 'HDU{0:1d}'
-        contents_table = [('Number', 'EXTNAME', 'Type', 'Contents')]
-        headers = list()
-        hdu_sections = list()
-        for k in range(nhdr):
-            headers.append(fx[k].header)
-            if k > 0 and 'EXTNAME' in headers[k]:
-                extname = headers[k]['EXTNAME'].strip()
-            else:
-                extname = ''
-            if k > 0:
-                exttype = headers[k]['XTENSION'].strip()
-            else:
-                exttype = 'IMAGE'
-            contents_table.append((hduname.format(k)+'_', extname, exttype,
-                                   '*Brief Description*'))
-            sec_title = hduname.format(k)
-            hdu_sections.append(sec_title)
-            hdu_sections.append('-'*len(sec_title))
-            hdu_sections.append('')
-            if extname != '':
-                hdu_sections.append('EXTNAME = '+extname)
-                hdu_sections.append('')
-            hdu_sections.append('*Summarize the contents of this HDU.*')
-            hdu_sections.append('')
-            hdu_sections += parse_header(headers[k])
-    #
-    # Construct the contents table.
-    #
-    colsizes = [max(map(len, col)) for col in zip(*contents_table)]
-    highlight = ' '.join(['='*k for k in colsizes])+"\n"
-    colformat = ' '.join(['{{{0:d}:{1:d}}}'.format(i, s)
-                          for i, s in enumerate(colsizes)]) + "\n"
-    rstkeywords['contents_table'] = highlight
-    for k in range(nhdr+1):
-        rstkeywords['contents_table'] += colformat.format(*contents_table[k])
-        if k == 0:
-            rstkeywords['contents_table'] += highlight
-    rstkeywords['contents_table'] += highlight
-    rstkeywords['hdu_sections'] = '\n'.join(hdu_sections)
-    return (modelname, rst.format(**rstkeywords))
+    stub = Stub(filename)
+    return (stub.modelname, str(stub))
 
 
 def main():
