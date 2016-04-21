@@ -152,6 +152,7 @@ def main():
     from os.path import basename, join
     from sys import argv
     from argparse import ArgumentParser
+    from warnings import catch_warnings
     desc = """Check actual files against the data model for validity.
 """
     parser = ArgumentParser(description=desc, prog=basename(argv[0]))
@@ -175,9 +176,17 @@ def main():
     scan_root = join(data_model_root, 'doc', options.root)
     files = scan_model(scan_root)
     # print(files)
-    f2r = files_to_regex(scan_root, options.directory, files)
+    with catch_warnings(record=True) as w:
+        f2r = files_to_regex(scan_root, options.directory, files)
+    if len(w) > 0:
+        for m in w:
+            print('WARNING: ' + str(m.message))
     # print([f2r[p].pattern for p in f2r])
-    p, e = collect_files(options.directory, f2r)
+    with catch_warnings(record=True) as w:
+        p, e = collect_files(options.directory, f2r)
+    if len(w) > 0:
+        for m in w:
+            print('WARNING: ' + str(m.message))
     print(p)
     print(e)
     return 0
