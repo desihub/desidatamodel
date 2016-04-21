@@ -145,6 +145,46 @@ def collect_files(root, regexes):
     return prototypes
 
 
+def extract_metadata(filename):
+    """Extract metadata from a data model file.
+
+    Parameters
+    ----------
+    filename : :class:`str`
+        Name of a data model file.
+
+    Returns
+    -------
+    :class:`list`
+        Metadata in a form similar to :class:`~desidatamodel.stub.Stub`
+        metadata.
+    """
+    import re
+    with open(filename) as f:
+        data = f.read()
+    lines = data.split('\n')
+    hduline = re.compile(r'HDU\d+$')
+    tableboundary = re.compile(r'[= ]+$')
+    hdu_sections = [i for i, l in enumerate(lines)
+                    if hduline.match(l) is not None]
+    hdumeta = list()
+    for k in hdu_sections:
+        meta = dict()
+        meta['title'] = lines[k]
+        meta['extname'] = None
+        try:
+            rhk = lines[k:].index('Required Header Keywords')
+        except ValueError:
+            meta['keywords'] = []
+        else:
+            table = [i for i, l in enumerate(lines[rhk:])
+                     if tableboundary.match(l) is not None][1:3]
+            table_lines = lines[rhk:][table[0]+1:table[1]]
+            meta['keywords'] = [(t.split()[0],) for t in table_lines]
+
+    return
+
+
 def validate_prototypes(prototypes):
     """Compares a set of prototype data files to their data models.
 
@@ -157,6 +197,11 @@ def validate_prototypes(prototypes):
     -------
     None
     """
+    from .stub import Stub
+    for p in prototypes:
+        stub = Stub(prototypes[p])
+        modelmeta = extract_metadata(p)
+        
     return
 
 
