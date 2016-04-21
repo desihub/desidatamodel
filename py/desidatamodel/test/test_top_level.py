@@ -11,6 +11,7 @@ import re
 from .. import __version__ as theVersion
 from .. import PY3
 
+
 class TestTopLevel(unittest.TestCase):
 
     @classmethod

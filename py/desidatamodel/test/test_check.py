@@ -9,8 +9,10 @@ from __future__ import (absolute_import, division, print_function,
 from os import environ, remove
 from os.path import dirname, isdir, join
 import unittest
+import warnings
 from ..check import collect_files, files_to_regex, scan_model
 from .. import PY3
+
 
 class TestCheck(unittest.TestCase):
 
@@ -41,7 +43,8 @@ class TestCheck(unittest.TestCase):
         """
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
-        expected = set([join(root, f) for f in ('sdR.rst', 'spPlate.rst')])
+        expected = set([join(root, f) for f in ('badModel.rst',
+                                                'sdR.rst', 'spPlate.rst')])
         self.assertEqual(set(files), expected)
 
     def test_files_to_regex(self):
@@ -49,7 +52,8 @@ class TestCheck(unittest.TestCase):
         """
         root = join(environ['DESIDATAMODEL'], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
-        f2r = files_to_regex(root, '/desi/spectro/data', files)
+        with warnings.catch_warnings(record=True) as w:
+            f2r = files_to_regex(root, '/desi/spectro/data', files)
         regexes = ['/desi/spectro/data/20160703/desi-12345678.fits',
                    '/desi/spectro/data/20160703/fibermap-12345678.fits']
         expected = [join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
@@ -71,10 +75,17 @@ class TestCheck(unittest.TestCase):
             open(f, 'a').close()
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
-        f2r = files_to_regex(root, self.data_dir, files)
-        p, e, m = collect_files(self.data_dir, f2r)
+        with warnings.catch_warnings(record=True) as w:
+            f2r = files_to_regex(root, self.data_dir, files)
+            self.assertEqual(len(w), 1)
+            self.assertEqual(str(w[0].message),
+                            ("{0}/doc/examples/badModel.rst has no file " +
+                             "regex!").format(environ['DESIDATAMODEL']))
+        with warnings.catch_warnings(record=True) as w:
+            p, e = collect_files(self.data_dir, f2r)
         for r in f2r:
-            self.assertIn(r, p)
+            if f2r[r] is not None:
+                self.assertIn(r, p)
         self.assertEqual(len(e), 5)
         for f in test_files:
             remove(f)
@@ -88,8 +99,14 @@ class TestCheck(unittest.TestCase):
             open(f, 'a').close()
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
-        f2r = files_to_regex(root, self.data_dir, files)
-        p, e, m = collect_files(self.data_dir, f2r)
-        self.assertEqual(len(m), 1)
+        with warnings.catch_warnings(record=True) as w:
+            f2r = files_to_regex(root, self.data_dir, files)
+        with warnings.catch_warnings(record=True) as w:
+            p, e = collect_files(self.data_dir, f2r)
+            self.assertEqual(len(w), 1)
+            self.assertEqual(str(w[0].message),
+                             ('No files found matching {0}/doc/examples/' +
+                              'spPlate.rst!').format(environ['DESIDATAMODEL']))
+            # self.assertFalse(w and str(w[-1]))
         for f in test_files:
             remove(f)

@@ -9,3 +9,4 @@ This directory contains examples for use in constructing real data model files.
 
     sdR
     spPlate
+    badModel

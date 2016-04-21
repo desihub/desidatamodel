@@ -51,7 +51,8 @@ def files_to_regex(section, root, files):
     :class:`dict`
         A mapping of data model file name to regular expression.
     """
-    from . import PY3
+    from . import PY3, DataModelWarning
+    from warnings import warn
     from os.path import dirname, join
     import re
     d2r = {'NIGHT': '[0-9]{8}',  # YYYYMMDD
@@ -71,6 +72,8 @@ def files_to_regex(section, root, files):
                         d = d.replace(k, d2r[k])
                     r = l.strip().split()[1].replace('``', '')
                     f2r[f] = re.compile(join(d, r))
+        if f2r[f] is None:
+            warn("{0} has no file regex!".format(f), DataModelWarning)
     return f2r
 
 
@@ -87,12 +90,16 @@ def collect_files(root, regexes):
     Returns
     -------
     :func:`tuple`
-        A tuple containing the prototype files, a list of extraneous files,
-        and a list of missing files (defined below).
+        A tuple containing the prototype files and a list of extraneous files
+        (defined below).
+
+    Raises
+    ------
+    :class:`~desimodel.DataModelWarning`
+        If 'missing' files are detected (defined below).
 
     Notes
     -----
-
     Files are analyzed using this algorithm:
 
     * The first file that matches a regex becomes the 'prototype' for that
@@ -103,6 +110,8 @@ def collect_files(root, regexes):
     * If a file matches a regular expression that already has a prototype,
       it is 'ignored'.
     """
+    from warnings import warn
+    from . import DataModelWarning
     from os import walk
     from os.path import join
     prototypes = dict()
@@ -112,21 +121,23 @@ def collect_files(root, regexes):
             extraneous_file = True
             fullname = join(dirpath, f)
             for r in regexes:
-                m = regexes[r].match(fullname)
-                if m is not None:
-                    extraneous_file = False
-                    if r not in prototypes:
-                        prototypes[r] = fullname
+                if regexes[r] is not None:
+                    m = regexes[r].match(fullname)
+                    if m is not None:
+                        extraneous_file = False
+                        if r not in prototypes:
+                            prototypes[r] = fullname
             if extraneous_file:
                 extraneous.append(fullname)
     #
-    # Scan for missing files.
+    # Scan for missing files, but don't penalize (here) data models that
+    # don't have a valid regular expression.  Files with bad regexes will
+    # be flagged elsewhere.
     #
-    missing = list()
     for r in regexes:
-        if r not in prototypes:
-            missing.append(r)
-    return (prototypes, extraneous, missing)
+        if regexes[r] is not None and r not in prototypes:
+            warn("No files found matching {0}!".format(r), DataModelWarning)
+    return (prototypes, extraneous)
 
 
 def main():
@@ -166,8 +177,7 @@ def main():
     # print(files)
     f2r = files_to_regex(scan_root, options.directory, files)
     # print([f2r[p].pattern for p in f2r])
-    p, e, m = collect_files(options.directory, f2r)
+    p, e = collect_files(options.directory, f2r)
     print(p)
     print(e)
-    print(m)
     return 0

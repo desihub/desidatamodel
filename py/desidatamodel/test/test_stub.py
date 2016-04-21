@@ -8,7 +8,9 @@ from __future__ import (absolute_import, division, print_function,
 #
 import os
 import unittest
+import warnings
 from collections import OrderedDict
+from .. import PY3
 from ..stub import (data_format, extrakey, file_size, fits_column_format,
                     parse_header, process_file)
 
@@ -160,7 +162,15 @@ class TestStub(unittest.TestCase):
         modelfile = os.path.join(self.data_dir, 'fits_file.rst')
         with open(modelfile) as m:
             modeldata = m.read()
-        modelname, data = process_file(filename)
+        with warnings.catch_warnings(record=True) as w:
+            warnings.resetwarnings()
+            warnings.simplefilter('ignore')
+            if PY3:
+                warnings.simplefilter('always', ResourceWarning)
+            modelname, data = process_file(filename)
+            if PY3:
+                self.assertIsInstance(w[-1].message, ResourceWarning)
+            # self.assertFalse(w and str(w[-1]))
         self.assertEqual(modelname, 'fits_file')
         modellines = modeldata.split('\n')
         for i, l in enumerate(data.split('\n')):

@@ -20,3 +20,11 @@ from ._version import __version__
 from sys import version_info
 
 PY3 = version_info[0] > 2
+
+
+class DataModelWarning(UserWarning):
+    """Warnings related to missing or malformed data model files, etc.
+    """
+    pass
+
+__all__ = ['__version__', 'PY3', 'DataModelWarning']
