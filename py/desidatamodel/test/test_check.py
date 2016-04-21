@@ -76,17 +76,19 @@ class TestCheck(unittest.TestCase):
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter('always')
             f2r = files_to_regex(root, self.data_dir, files)
-            self.assertEqual(len(w), 1)
-            self.assertEqual(str(w[0].message),
-                            ("{0}/doc/examples/badModel.rst has no file " +
-                             "regex!").format(environ['DESIDATAMODEL']))
+        self.assertEqual(len(w), 1)
+        self.assertEqual(str(w[0].message),
+                         ("{0}/doc/examples/badModel.rst has no file " +
+                          "regex!").format(environ['DESIDATAMODEL']))
         with warnings.catch_warnings(record=True) as w:
-            p, e = collect_files(self.data_dir, f2r)
+            warnings.simplefilter('always')
+            p = collect_files(self.data_dir, f2r)
+        self.assertEqual(len(w), 5)
         for r in f2r:
             if f2r[r] is not None:
                 self.assertIn(r, p)
-        self.assertEqual(len(e), 5)
         for f in test_files:
             remove(f)
 
@@ -100,13 +102,16 @@ class TestCheck(unittest.TestCase):
         root = join(environ['DESIDATAMODEL'], 'doc', 'examples')
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter('always')
             f2r = files_to_regex(root, self.data_dir, files)
+        self.assertEqual(len(w), 1)
         with warnings.catch_warnings(record=True) as w:
-            p, e = collect_files(self.data_dir, f2r)
-            self.assertEqual(len(w), 1)
-            self.assertEqual(str(w[0].message),
-                             ('No files found matching {0}/doc/examples/' +
-                              'spPlate.rst!').format(environ['DESIDATAMODEL']))
-            # self.assertFalse(w and str(w[-1]))
+            warnings.simplefilter('always')
+            p = collect_files(self.data_dir, f2r)
+        self.assertEqual(len(w), 6)
+        self.assertEqual(str(w[-1].message),
+                         ('No files found matching {0}/doc/examples/' +
+                          'spPlate.rst!').format(environ['DESIDATAMODEL']))
+        # self.assertFalse(w and str(w[-1]))
         for f in test_files:
             remove(f)

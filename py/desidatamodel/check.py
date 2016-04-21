@@ -50,6 +50,11 @@ def files_to_regex(section, root, files):
     -------
     :class:`dict`
         A mapping of data model file name to regular expression.
+
+    Raises
+    ------
+    :class:`~desidatamodel.DataModelWarning`
+        If data model files with malformed regular expressions are detected.
     """
     from . import PY3, DataModelWarning
     from warnings import warn
@@ -89,14 +94,13 @@ def collect_files(root, regexes):
 
     Returns
     -------
-    :func:`tuple`
-        A tuple containing the prototype files and a list of extraneous files
-        (defined below).
+    :class:`dict`
+        A dictionary mapping data model files to the prototype files.
 
     Raises
     ------
     :class:`~desimodel.DataModelWarning`
-        If 'missing' files are detected (defined below).
+        If 'missing' or 'extraneous' files are detected (defined below).
 
     Notes
     -----
@@ -115,7 +119,6 @@ def collect_files(root, regexes):
     from os import walk
     from os.path import join
     prototypes = dict()
-    extraneous = list()
     for dirpath, dirnames, filenames in walk(root):
         for f in filenames:
             extraneous_file = True
@@ -128,7 +131,8 @@ def collect_files(root, regexes):
                         if r not in prototypes:
                             prototypes[r] = fullname
             if extraneous_file:
-                extraneous.append(fullname)
+                warn("Extraneous file detected: {0}".format(fullname),
+                     DataModelWarning)
     #
     # Scan for missing files, but don't penalize (here) data models that
     # don't have a valid regular expression.  Files with bad regexes will
@@ -137,7 +141,7 @@ def collect_files(root, regexes):
     for r in regexes:
         if regexes[r] is not None and r not in prototypes:
             warn("No files found matching {0}!".format(r), DataModelWarning)
-    return (prototypes, extraneous)
+    return prototypes
 
 
 def main():
@@ -183,10 +187,9 @@ def main():
             print('WARNING: ' + str(m.message))
     # print([f2r[p].pattern for p in f2r])
     with catch_warnings(record=True) as w:
-        p, e = collect_files(options.directory, f2r)
+        p = collect_files(options.directory, f2r)
     if len(w) > 0:
         for m in w:
             print('WARNING: ' + str(m.message))
     print(p)
-    print(e)
     return 0
