@@ -1,28 +1,12 @@
-===================
+========
 fibermap
-===================
+========
 
-General Description
-===================
-
-Summary
--------
-
-The fibermap contains the fiber positioner configuration information for
-each exposure: what fiber is placed where, what target that is, etc.
-
-
-Naming Convention
------------------
-
-``fibermap-{EXPID}.fits``, where {EXPID} is the 8-digit exposure ID.
-
-regex: ``fibermap-[0-9]{8}\.fits``
-
-File Type
----------
-
-FITS, 1 MB
+:Summary: The fibermap contains the fiber positioner configuration information for
+    each exposure: what fiber is placed where, what target that is, etc.
+:Naming Convention: ``fibermap-{EXPID}.fits``, where {EXPID} is the 8-digit exposure ID.
+:Regex: ``fibermap-[0-9]{8}\.fits``
+:File Type: FITS, 1 MB
 
 Contents
 ========

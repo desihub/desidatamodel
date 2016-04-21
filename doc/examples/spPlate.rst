@@ -2,32 +2,16 @@
 spPlate
 =======
 
-.. Add support for breadcrumb links
-
-.. This is a comment!
-
-General Description
-===================
-
-Summary
--------
-
-Combined spectra for one plate.
-
-The spPlate files contain the combined spectra for all exposures of
-a given plate.  There are typically four 900s exposures which may
-have been taken in a single night, or over multiple nights.  This page
-is an updated summary of the `SDSS2 spPlate data model`_ .
+:Summary: Combined spectra for one plate.
+    The spPlate files contain the combined spectra for all exposures of
+    a given plate.  There are typically four 900s exposures which may
+    have been taken in a single night, or over multiple nights.  This page
+    is an updated summary of the `SDSS2 spPlate data model`_ .
+:Naming Convention: ``spPlate-PLATE4-MJD5.fits``, where ``PLATE4`` is the
+    zero-padded, four-digit plate number and ``MJD5`` is the five-digit MJD.
+:Regex: ``spPlate-[0-9]{4}-[0-9]{5}\.fits``
 
 .. _`SDSS2 spPlate data model`: http://spectro.astro.princeton.edu/#dm_spplate
-
-Naming Convention
------------------
-
-``spPlate-PLATE4-MJD5.fits``, where ``PLATE4`` is the zero-padded, four-digit
-plate number and ``MJD5`` is the five-digit MJD.
-
-regex: ``spPlate-[0-9]{4}-[0-9]{5}\.fits``
 
 Contents
 ========

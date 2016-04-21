@@ -71,7 +71,7 @@ def files_to_regex(section, root, files):
                     l = le
                 else:
                     l = le.decode('utf-8')
-                if l.startswith('regex:'):
+                if l.startswith(':Regex:'):
                     d = dirname(f).replace(section, root)
                     for k in d2r:
                         d = d.replace(k, d2r[k])
