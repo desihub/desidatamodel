@@ -181,8 +181,8 @@ def extract_metadata(filename):
                      if tableboundary.match(l) is not None][1:3]
             table_lines = lines[rhk:][table[0]+1:table[1]]
             meta['keywords'] = [(t.split()[0],) for t in table_lines]
-
-    return
+        hdumeta.append(meta)
+    return hdumeta
 
 
 def validate_prototypes(prototypes):
@@ -197,11 +197,37 @@ def validate_prototypes(prototypes):
     -------
     None
     """
+    from warnings import warn
     from .stub import Stub
+    from . import DataModelWarning
     for p in prototypes:
         stub = Stub(prototypes[p])
         modelmeta = extract_metadata(p)
-        
+        if stub.nhdr == len(modelmeta):
+            for i in range(stub.nhdr):
+                nk = len(stub.hdumeta[i]['keywords'])
+                nm = len(modelmeta['keywords'])
+                if nk > 0:
+                    if nk == nm:
+                        for j in range(nk):
+                            if (stub.hdumeta[i]['keywords'][j][0] !=
+                                modelmeta[i]['keywords'][j][0]):
+                                w = ("Prototype file {0} has a keyword " +
+                                     "mismatch ({1} != {2}) according to " +
+                                     "{3}").format(prototypes[p],
+                                                   stub.hdumeta[i]['keywords'][j][0],
+                                                   modelmeta[i]['keywords'][j][0],
+                                                   p)
+                                warn(w, DataModelWarning)
+                    else:
+                        w = ("Prototype file {0} has the wrong number of " +
+                             "HDU{1:d} keywords according to " +
+                             "{2}.").format(prototypes[p], i, p)
+                        warn(w, DataModelWarning)
+        else:
+            w = ("Prototype file {0} has the wrong number of headers " +
+                 "according to {1}.").format(prototypes[p], p)
+            warn(w, DataModelWarning)
     return
 
 
@@ -243,15 +269,9 @@ def main():
     # print(files)
     with catch_warnings(record=True) as w:
         f2r = files_to_regex(scan_root, options.directory, files)
-    if len(w) > 0:
-        for m in w:
-            print('WARNING: ' + str(m.message))
-    # print([f2r[p].pattern for p in f2r])
-    with catch_warnings(record=True) as w:
         p = collect_files(options.directory, f2r)
+        validate_prototypes(p)
     if len(w) > 0:
         for m in w:
             print('WARNING: ' + str(m.message))
-    # print(p)
-    validate_prototypes(p)
     return 0
