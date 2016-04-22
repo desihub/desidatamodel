@@ -11,7 +11,8 @@ from os.path import dirname, isdir, join
 import unittest
 import warnings
 from ..check import (collect_files, files_to_regex, scan_model,
-                     extract_metadata, validate_prototypes)
+                     extract_metadata, validate_prototypes,
+                     extract_columns)
 from .. import PY3, DataModelWarning
 
 
@@ -122,12 +123,19 @@ class TestCheck(unittest.TestCase):
         """
         ex_meta = [{'title': 'HDU0',
                     'extname': '',
-                    'keywords': [('NAXIS1',), ('NAXIS2',),
-                                 ('BSCALE',), ('BZERO',)]},
+                    'keywords': [('NAXIS1', '100', 'int', ''),
+                                 ('NAXIS2', '100', 'int', ''),
+                                 ('BSCALE', '1', 'int', ''),
+                                 ('BZERO', '32768', 'int',
+                                  'Data are really unsigned 16-bit int.')]},
                    {'title': 'HDU1',
                     'extname': 'Galaxies',
-                    'keywords': [('NAXIS1',), ('NAXIS2',),
-                                 ('EXTNAME',)]}]
+                    'keywords': [('NAXIS1', '32', 'int',
+                                  'length of dimension 1'),
+                                 ('NAXIS2', '3', 'int',
+                                  'length of dimension 2'),
+                                 ('EXTNAME', 'Galaxies', 'str',
+                                  'Name of this HDU.')]}]
         modelfile = join(self.data_dir, 'fits_file.rst')
         meta = extract_metadata(modelfile)
         self.assertEqual(len(meta), 2)
@@ -146,3 +154,13 @@ class TestCheck(unittest.TestCase):
             warnings.simplefilter('always')
             validate_prototypes(prototypes)
         self.assertEqual(len(w), 0)
+
+    def test_extract_columns(self):
+        """Test extraction of columns from a row of data.
+        """
+        foo = '======= ============= ==== ====================='
+        columns = list(map(len, foo.split()))
+        row = 'NAXIS1  32            int  length of dimension 1'
+        exc = ('NAXIS1', '32', 'int', 'length of dimension 1')
+        c = extract_columns(row, columns)
+        self.assertEqual(c, exc)

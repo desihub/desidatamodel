@@ -187,10 +187,35 @@ def extract_metadata(filename):
         else:
             table = [i for i, l in enumerate(section[rhk:])
                      if tableboundary.match(l) is not None][1:3]
+            columns = list(map(len, section[rhk:][table[0]].split()))
             table_lines = section[rhk:][table[0]+1:table[1]]
-            meta['keywords'] = [(t.split()[0],) for t in table_lines]
+            meta['keywords'] = [extract_columns(t, columns)
+                                for t in table_lines]
         hdumeta.append(meta)
     return hdumeta
+
+
+def extract_columns(row, columns):
+    """Given column sizes, extract the data in each column.
+
+    Assumes a reStructuredText-compatible table.
+
+    Parameters
+    ----------
+    row : :class:`str`
+        A table row.
+    columns : :class:`list`
+        The sizes of the columns.
+
+    Returns
+    -------
+    :func:`tuple`
+        A tuple containing the extracted data.
+    """
+    lbound = [0] + [sum(columns[:i])+i for i in range(1, len(columns))]
+    ubound = [lbound[i] + c for i, c in enumerate(columns)]
+    data = [row[lbound[i]:ubound[i]].strip() for i in range(len(columns))]
+    return tuple(data)
 
 
 def validate_prototypes(prototypes):
