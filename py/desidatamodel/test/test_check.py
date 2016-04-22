@@ -10,8 +10,9 @@ from os import environ, remove
 from os.path import dirname, isdir, join
 import unittest
 import warnings
-from ..check import collect_files, files_to_regex, scan_model
-from .. import PY3
+from ..check import (collect_files, files_to_regex, scan_model,
+                     extract_metadata, validate_prototypes)
+from .. import PY3, DataModelWarning
 
 
 class TestCheck(unittest.TestCase):
@@ -115,3 +116,33 @@ class TestCheck(unittest.TestCase):
         # self.assertFalse(w and str(w[-1]))
         for f in test_files:
             remove(f)
+
+    def test_extract_metadata(self):
+        """Test reading metadata from data model files.
+        """
+        ex_meta = [{'title': 'HDU0',
+                    'extname': '',
+                    'keywords': [('NAXIS1',), ('NAXIS2',),
+                                 ('BSCALE',), ('BZERO',)]},
+                   {'title': 'HDU1',
+                    'extname': 'Galaxies',
+                    'keywords': [('NAXIS1',), ('NAXIS2',),
+                                 ('EXTNAME',)]}]
+        modelfile = join(self.data_dir, 'fits_file.rst')
+        meta = extract_metadata(modelfile)
+        self.assertEqual(len(meta), 2)
+        for i, m in enumerate(meta):
+            self.assertEqual(m['title'], ex_meta[i]['title'])
+            self.assertEqual(m['extname'], ex_meta[i]['extname'])
+            for k in range(len(m['keywords'])):
+                self.assertEqual(m['keywords'][k], ex_meta[i]['keywords'][k])
+
+    def test_validate_prototypes(self):
+        """Test the data model validation function.
+        """
+        prototypes = {join(self.data_dir, 'fits_file.rst'):
+                      join(self.data_dir, 'fits_file.fits')}
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter('always')
+            validate_prototypes(prototypes)
+        self.assertEqual(len(w), 0)

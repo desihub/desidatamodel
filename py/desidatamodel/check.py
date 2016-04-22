@@ -168,18 +168,26 @@ def extract_metadata(filename):
     hdu_sections = [i for i, l in enumerate(lines)
                     if hduline.match(l) is not None]
     hdumeta = list()
-    for k in hdu_sections:
-        meta = dict()
-        meta['title'] = lines[k]
-        meta['extname'] = None
+    for k in range(len(hdu_sections)):
         try:
-            rhk = lines[k:].index('Required Header Keywords')
+            section = lines[hdu_sections[k]:hdu_sections[k+1]]
+        except IndexError:
+            section = lines[hdu_sections[k]:]
+        meta = dict()
+        meta['title'] = section[0]
+        try:
+            meta['extname'] = [l.split()[2] for l in section
+                               if l.startswith('EXTNAME = ')][0]
+        except IndexError:
+            meta['extname'] = ''
+        try:
+            rhk = section.index('Required Header Keywords')
         except ValueError:
             meta['keywords'] = []
         else:
-            table = [i for i, l in enumerate(lines[rhk:])
+            table = [i for i, l in enumerate(section[rhk:])
                      if tableboundary.match(l) is not None][1:3]
-            table_lines = lines[rhk:][table[0]+1:table[1]]
+            table_lines = section[rhk:][table[0]+1:table[1]]
             meta['keywords'] = [(t.split()[0],) for t in table_lines]
         hdumeta.append(meta)
     return hdumeta
@@ -206,7 +214,7 @@ def validate_prototypes(prototypes):
         if stub.nhdr == len(modelmeta):
             for i in range(stub.nhdr):
                 nk = len(stub.hdumeta[i]['keywords'])
-                nm = len(modelmeta['keywords'])
+                nm = len(modelmeta[i]['keywords'])
                 if nk > 0:
                     if nk == nm:
                         for j in range(nk):
