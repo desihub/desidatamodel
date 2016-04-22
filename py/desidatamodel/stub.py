@@ -242,11 +242,7 @@ class Stub(object):
         :class:`list`
             The rows of the table.
         """
-        t = list()
-        t.append(self.keywords_header)
-        for kw in self.hdumeta[hdu]['keywords']:
-            t.append((kw['KEY'], kw['Value'], kw['Type'], kw['Comment']))
-        return t
+        return [self.keywords_header] + self.hdumeta[hdu]['keywords']
 
     def colsizes(self, table):
         """Compute the size (number of characters) of each column in a table.
@@ -521,7 +517,7 @@ def extract_keywords(hdr):
     Returns
     -------
     :class:`list`
-        A list of dictionaries containing the metadata of interesting keywords.
+        A list of tuples containing the metadata of interesting keywords.
     """
     keywords = list()
     for key in hdr:
@@ -547,8 +543,7 @@ def extract_keywords(hdr):
                 key = key[0:len(key)-1] + '\\_'
             if value.endswith('_'):
                 value = value[0:len(value)-1] + '\\_'
-            keywords.append(dict(KEY=key, Value=value, Type=ktype,
-                                 Comment=escape(hdr.comments[key])))
+            keywords.append((key, value, ktype, escape(hdr.comments[key])))
     return keywords
 
 

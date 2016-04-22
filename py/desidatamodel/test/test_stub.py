@@ -178,20 +178,18 @@ class TestStub(unittest.TestCase):
         hdr['FLOAT'] = 3.14159
         hdr['UNDR_'] = 'underscore_'
         lines = extract_keywords(hdr)
-        expected_lines = [{'KEY': 'BOOLEAN', 'Value': 'T', 'Type': 'bool',
-                           'Comment': 'This is the comment on BOOLEAN.'},
-                          {'KEY': 'VERSION', 'Value': '0.1.2', 'Type': 'str',
-                           'Comment': 'This is the comment on VERSION.'},
-                          {'KEY': 'INTEGER', 'Value': '12345', 'Type': 'int',
-                           'Comment': 'This is the comment on INTEGER.'},
-                          {'KEY': 'FLOAT', 'Value': '3.14159', 'Type': 'float',
-                           'Comment': 'This is the comment on FLOAT.'},
-                          {'KEY': 'UNDR\\_', 'Value': 'underscore\\_',
-                           'Type': 'str',
-                           'Comment': 'This is the comment on UNDR\\_.'}]
+        expected_lines = [('BOOLEAN', 'T', 'bool',
+                           'This is the comment on BOOLEAN.'),
+                          ('VERSION', '0.1.2', 'str',
+                           'This is the comment on VERSION.'),
+                          ('INTEGER', '12345', 'int',
+                           'This is the comment on INTEGER.'),
+                          ('FLOAT', '3.14159', 'float',
+                           'This is the comment on FLOAT.'),
+                          ('UNDR\\_', 'underscore\\_', 'str',
+                           'This is the comment on UNDR\\_.')]
         for k in range(len(lines)):
-            for key in lines[k]:
-                self.assertEqual(lines[k][key], expected_lines[k][key])
+            self.assertEqual(lines[k], expected_lines[k])
 
     def test_process_file(self):
         """Full test of parsing a FITS file.
