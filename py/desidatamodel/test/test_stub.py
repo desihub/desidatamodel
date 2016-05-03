@@ -72,6 +72,58 @@ class TestStub(unittest.TestCase):
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 11)
         self.assertEqual(stub.hduname, 'HDU{0:02d}')
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdulist.append(sim_hdu(hdr))
+        for k in range(100):
+            hdr = sim_header()
+            hdr['XTENSION'] = 'IMAGE'
+            hdr['BITPIX'] = -32
+            hdr['NAXIS'] = 2
+            hdr['NAXIS1'] = 10
+            hdr['NAXIS2'] = 10
+            hdr['EXTNAME'] = 'HDU{0:02d}'.format(k+1)
+            hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        self.assertEqual(stub.nhdr, 101)
+        self.assertEqual(stub.hduname, 'HDU{0:03d}')
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdulist.append(sim_hdu(hdr))
+        hdr = sim_header()
+        hdr['XTENSION'] = 'IMAGE'
+        hdr['BITPIX'] = -32
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 10
+        hdr['NAXIS2'] = 10
+        hdr['EXTNAME'] = 'HDU1'
+        hdulist.append(sim_hdu(hdr))
+        hdr = sim_header()
+        hdr['XTENSION'] = 'TABLE   '
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 10
+        hdr['NAXIS2'] = 10
+        hdr['EXTNAME'] = 'HDU2'
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        self.assertEqual(stub.nhdr, 2)
+        with warnings.catch_warnings(record=True) as w:
+            meta = stub.hdumeta
+            self.assertEqual(meta[1]['format'],
+                             'Data: FITS image [float32, 10x10]')
+            self.assertEqual(meta[2]['format'],
+                             'Unknown extension type: "TABLE".')
+            self.assertEqual(len(w), 1)
+            self.assertIsInstance(w[-1].message, DataModelWarning)
 
     def test_image_format(self):
         """Test format string for image HDUs.
