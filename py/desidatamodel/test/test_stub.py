@@ -9,6 +9,7 @@ from __future__ import (absolute_import, division, print_function,
 import os
 import unittest
 import warnings
+from astropy.io import fits
 from collections import OrderedDict
 from .. import PY3, DataModelWarning
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
@@ -44,6 +45,32 @@ class TestStub(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         pass
+
+    def test_Stub(self):
+        """Test aspects of initialization of Stub objects.
+        """
+        with fits.open(os.path.join(self.data_dir,
+                                    'fits_file.fits')) as hdulist:
+            stub = Stub(hdulist)
+            self.assertEqual(stub.nhdr, 2)
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdulist.append(sim_hdu(hdr))
+        for k in range(10):
+            hdr = sim_header()
+            hdr['XTENSION'] = 'IMAGE'
+            hdr['BITPIX'] = -32
+            hdr['NAXIS'] = 2
+            hdr['NAXIS1'] = 10
+            hdr['NAXIS2'] = 10
+            hdr['EXTNAME'] = 'HDU{0:02d}'.format(k+1)
+            hdulist.append(hdr)
+        stub = Stub(hdulist)
+        self.assertEqual(stub.nhdr, 11)
 
     def test_image_format(self):
         """Test format string for image HDUs.
