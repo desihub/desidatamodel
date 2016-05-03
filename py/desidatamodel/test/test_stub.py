@@ -132,7 +132,7 @@ class TestStub(unittest.TestCase):
         hdr['EXTEND'] = True
         hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
-        sec = sub.section(0)
+        sec = stub.section(0)
         expected_sec = ['HDU0',
                         '----',
                         '',
@@ -140,6 +140,7 @@ class TestStub(unittest.TestCase):
                         '',
                         'This HDU has no non-standard required keywords.',
                         '',
+                        'Empty HDU.',
                         '']
         self.assertEqual(len(sec), len(expected_sec))
         for k in range(len(sec)):

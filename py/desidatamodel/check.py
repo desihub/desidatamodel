@@ -159,9 +159,12 @@ def extract_metadata(filename):
         Metadata in a form similar to :class:`~desidatamodel.stub.Stub`
         metadata.
     """
+    from . import PY3
     import re
     with open(filename) as f:
         data = f.read()
+        if not PY3:
+            data = data.decode('utf-8')
     lines = data.split('\n')
     hduline = re.compile(r'HDU\d+$')
     tableboundary = re.compile(r'[= ]+$')
