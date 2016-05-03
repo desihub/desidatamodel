@@ -294,6 +294,22 @@ def validate_prototypes(prototypes):
                          "mismatch in HDU{1:d} " +
                          "according to {2}.").format(prototypes[p], i, p)
                     warn(w, DataModelWarning)
+            else:
+                dexf = dexf[1:]  # Get rid of header line.
+                if len(dexf) != len(mexf):
+                    w = ("Prototype file {0} has the wrong number of " +
+                         "HDU{1:d} columns according to " +
+                         "{2}.").format(prototypes[p], i, p)
+                    warn(w, DataModelWarning)
+                else:
+                    for j in range(len(dexf)):
+                        if dexf[j][0] != mexf[j][0]:
+                            w = ("Prototype file {0} has a column name " +
+                                 "mismatch ({1} != {2}) in HDU{3:d} " +
+                                 "according to {3}.").format(prototypes[p],
+                                                             dexf[j][0],
+                                                             mexf[j][0], i, p)
+                            warn(w, DataModelWarning)
     return
 
 
