@@ -68,9 +68,10 @@ class TestStub(unittest.TestCase):
             hdr['NAXIS1'] = 10
             hdr['NAXIS2'] = 10
             hdr['EXTNAME'] = 'HDU{0:02d}'.format(k+1)
-            hdulist.append(hdr)
+            hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 11)
+        self.assertEqual(stub.hduname, 'HDU{0:02d}')
 
     def test_image_format(self):
         """Test format string for image HDUs.
