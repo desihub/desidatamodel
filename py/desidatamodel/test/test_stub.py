@@ -124,6 +124,26 @@ class TestStub(unittest.TestCase):
                              'Unknown extension type: TABLE.')
             self.assertEqual(len(w), 1)
             self.assertIsInstance(w[-1].message, DataModelWarning)
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        sec = sub.section(0)
+        expected_sec = ['HDU0',
+                        '----',
+                        '',
+                        '*Summarize the contents of this HDU.*',
+                        '',
+                        'This HDU has no non-standard required keywords.',
+                        '',
+                        '']
+        self.assertEqual(len(sec), len(expected_sec))
+        for k in range(len(sec)):
+            self.assertEqual(sec[k], expected_sec[k])
 
     def test_image_format(self):
         """Test format string for image HDUs.
