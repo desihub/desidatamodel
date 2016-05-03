@@ -115,7 +115,7 @@ class TestStub(unittest.TestCase):
         hdr['EXTNAME'] = 'HDU2'
         hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
-        self.assertEqual(stub.nhdr, 2)
+        self.assertEqual(stub.nhdr, 3)
         with warnings.catch_warnings(record=True) as w:
             meta = stub.hdumeta
             self.assertEqual(meta[1]['format'],
