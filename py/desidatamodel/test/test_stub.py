@@ -121,7 +121,7 @@ class TestStub(unittest.TestCase):
             self.assertEqual(meta[1]['format'],
                              'Data: FITS image [float32, 10x10]')
             self.assertEqual(meta[2]['format'],
-                             'Unknown extension type: "TABLE".')
+                             'Unknown extension type: TABLE.')
             self.assertEqual(len(w), 1)
             self.assertIsInstance(w[-1].message, DataModelWarning)
 
