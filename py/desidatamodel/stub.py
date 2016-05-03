@@ -220,7 +220,8 @@ class Stub(object):
                 units = hdr[tunit].strip()
             else:
                 units = ''
-            # Check TCOMMnn keyword, otherwise use TTYPE comment for description
+            # Check TCOMMnn keyword, otherwise use TTYPE comment
+            # for description.
             commkey = 'TCOMM'+jj
             if commkey in hdr:
                 description = escape(hdr[commkey].strip())

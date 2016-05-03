@@ -36,6 +36,7 @@ class sim_hdu(object):
         self.header = header
         return
 
+
 class TestStub(unittest.TestCase):
 
     @classmethod
@@ -179,40 +180,6 @@ class TestStub(unittest.TestCase):
         hdr['NAXIS2'] = 1000
         i = image_format(hdr)
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
-
-    # def test_data_format(self):
-    #     """Test identification of images and tables.
-    #     """
-    #     hdr = sim_header()
-    #     lines = data_format(hdr)
-    #     self.assertEqual(lines, [])
-    #     hdr['XTENSION'] = 'FOOBAR'
-    #     lines = data_format(hdr)
-    #     self.assertEqual(lines,
-    #                      ["Unknown extension type {0}".format(hdr['XTENSION']),
-    #                       ''])
-    #     hdr['XTENSION'] = 'IMAGE'
-    #     bitpix = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
-    #               -32: 'float32', -64: 'float64', 99: 'BITPIX=99'}
-    #     for k in bitpix:
-    #         hdr['BITPIX'] = k
-    #         self.assertEqual(data_format(hdr),
-    #                          ['Data: FITS image [{0}]'.format(bitpix[k]), ''])
-    #     del hdr['BITPIX']
-    #     hdr['XTENSION'] = 'BINTABLE'
-    #     hdr['TFIELDS'] = 3
-    #     hdr['TTYPE1'] = 'one'
-    #     hdr['TTYPE2'] = 'two'
-    #     hdr['TTYPE3'] = 'three'
-    #     hdr['TFORM1'] = '1A'
-    #     hdr['TFORM2'] = '2J'
-    #     hdr['TFORM3'] = '3D'
-    #     hdr['TUNIT3'] = 'km/s'
-    #     hdr['TCOMM3'] = 'The units are km/s.'
-    #     lines = data_format(hdr)
-    #     with open(os.path.join(self.data_dir, 'data_table.txt')) as dt:
-    #         table = dt.read().split('\n')
-    #     self.assertEqual(lines, table)
 
     def test_extrakey(self):
         """Test the identification of non-boring keys.

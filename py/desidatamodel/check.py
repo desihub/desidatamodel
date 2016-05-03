@@ -178,6 +178,25 @@ def extract_metadata(filename):
             section = lines[hdu_sections[k]:]
         meta = dict()
         meta['title'] = section[0]
+        if 'Empty HDU.' in section:
+            meta['extension'] = 'IMAGE'
+            meta['format'] = 'Empty HDU.'
+        image_data = [l for l in section if l.startswith('Data:')]
+        if image_data:
+            meta['extension'] = 'IMAGE'
+            meta['format'] = image_data[0]
+        try:
+            rdtc = section.index('Required Data Table Columns')
+        except ValueError:
+            rdtc = None
+        if rdtc is not None:
+            meta['extension'] = 'BINTABLE'
+            table = [i for i, l in enumerate(section[rdtc:])
+                     if tableboundary.match(l) is not None][1:3]
+            columns = list(map(len, section[rdtc:][table[0]].split()))
+            table_lines = section[rdtc:][table[0]+1:table[1]]
+            meta['format'] = [extract_columns(t, columns)
+                              for t in table_lines]
         try:
             meta['extname'] = [l.split()[2] for l in section
                                if l.startswith('EXTNAME = ')][0]
@@ -239,31 +258,42 @@ def validate_prototypes(prototypes):
     for p in prototypes:
         stub = Stub(prototypes[p])
         modelmeta = extract_metadata(p)
-        if stub.nhdr == len(modelmeta):
-            for i in range(stub.nhdr):
-                nk = len(stub.hdumeta[i]['keywords'])
-                nm = len(modelmeta[i]['keywords'])
-                if nk > 0:
-                    if nk == nm:
-                        for j in range(nk):
-                            if (stub.hdumeta[i]['keywords'][j][0] !=
-                                modelmeta[i]['keywords'][j][0]):
-                                w = ("Prototype file {0} has a keyword " +
-                                     "mismatch ({1} != {2}) according to " +
-                                     "{3}").format(prototypes[p],
-                                                   stub.hdumeta[i]['keywords'][j][0],
-                                                   modelmeta[i]['keywords'][j][0],
-                                                   p)
-                                warn(w, DataModelWarning)
-                    else:
-                        w = ("Prototype file {0} has the wrong number of " +
-                             "HDU{1:d} keywords according to " +
-                             "{2}.").format(prototypes[p], i, p)
-                        warn(w, DataModelWarning)
-        else:
+        if stub.nhdr != len(modelmeta):
             w = ("Prototype file {0} has the wrong number of headers " +
                  "according to {1}.").format(prototypes[p], p)
             warn(w, DataModelWarning)
+            return
+        for i in range(stub.nhdr):
+            dkw = stub.hdumeta[i]['keywords']
+            mkw = modelmeta[i]['keywords']
+            if len(dkw) != len(mkw):
+                w = ("Prototype file {0} has the wrong number of " +
+                     "HDU{1:d} keywords according to " +
+                     "{2}.").format(prototypes[p], i, p)
+                warn(w, DataModelWarning)
+                return
+            for j in range(len(dkw)):
+                if dkw[j][0] != mkw[j][0]:
+                    w = ("Prototype file {0} has a keyword " +
+                         "mismatch ({1} != {2}) in HDU{3:d} according to " +
+                         "{3}.").format(prototypes[p],
+                                        dkw[j][0], mkw[j][0], i, p)
+                    warn(w, DataModelWarning)
+            dex = stub.hdumeta[i]['extension']
+            mex = modelmeta[i]['extension']
+            if dex != mex:
+                w = ("Prototype file {0} has an extension type mismatch in " +
+                     "HDU{1:d} ({2} != {3}) " +
+                     "according to {4}.").format(protoypes[p], i, dex, mex, p)
+                warn(w, DataModelWarning)
+            dexf = stub.hdumeta[i]['format']
+            mexf = modelmeta[i]['format']
+            if dex == 'IMAGE':
+                if dexf != mexf:
+                    w = ("Prototype file {0} has an extension format " +
+                         "mismatch in HDU{1:d} " +
+                         "according to {2}.").format(prototypes[p], i, p)
+                    warn(w, DataModelWarning)
     return
 
 

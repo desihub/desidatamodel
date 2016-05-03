@@ -9,32 +9,34 @@ from __future__ import (absolute_import, division, print_function,
 from os import environ, listdir, remove
 from os.path import dirname, isdir, join
 import unittest
-# import warnings
-from ..check import scan_model, extract_metadata
-from .. import PY3, DataModelWarning
+import warnings
+from ..check import scan_model, files_to_regex, extract_metadata
+from .. import PY3, DataModelError, DataModelWarning
+
+DM = 'DESIDATAMODEL'
+
 
 class TestModel(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         cls.data_dir = join(dirname(__file__), 't')
-        if 'DESIDATAMODEL' in environ:
-            cls.old_env = environ['DESIDATAMODEL']
+        if DM in environ:
+            cls.old_env = environ[DM]
         else:
             cls.old_env = None
-        environ['DESIDATAMODEL'] = dirname(  # root/
-                                           dirname(  # py/
-                                           dirname(  # desidatamodel/
-                                           dirname(__file__)  # test/
-                                           )))
-        cls.doc_dir = join(environ['DESIDATAMODEL'], 'doc')
+        environ[DM] = dirname(  # root/
+                              dirname(  # py/
+                                      dirname(  # desidatamodel/
+                                              dirname(__file__))))  # test/
+        cls.doc_dir = join(environ[DM], 'doc')
 
     @classmethod
     def tearDownClass(cls):
         if cls.old_env is None:
-            del environ['DESIDATAMODEL']
+            del environ[DM]
         else:
-            environ['DESIDATAMODEL'] = cls.old_env
+            environ[DM] = cls.old_env
 
     def test_model(self):
         """Validate all data model files.
@@ -43,5 +45,16 @@ class TestModel(unittest.TestCase):
                  if join(self.doc_dir, d)]
         for root in roots:
             files = scan_model(root)
+            #
+            # Python has a warnings registry and will not re-issue warnings
+            # in some cases.
+            #
+            # with warnings.catch_warnings(record=True) as w:
+            #     warnings.simplefilter('always')
+            #     f2r = files_to_regex(root, '/desi/spectro/data', files)
+            #     if len(w) > 0:
+            #         m = str(w[0].message)
+            #         if 'badModel.rst' not in m:
+            #             raise DataModelError(str(w[0].message))
             for f in files:
                 meta = extract_metadata(f)
