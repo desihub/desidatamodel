@@ -3,7 +3,7 @@ Welcome to the DESI Data Model!
 ===============================
 
 The DESI Data Tree
-==================
+------------------
 
 DESI data are grouped broadly by category, using environment variables to
 define the base directory under which files of that category are kept.
@@ -14,26 +14,42 @@ for testing.
 .. toctree::
    :maxdepth: 1
 
-   $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
    $DESI_SPECTRO_DATA : raw data <DESI_SPECTRO_DATA/index>
-   $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_SPECTRO_REDUX : processed spectro data <DESI_SPECTRO_REDUX/index>
+   $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
+   $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
 
 
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
 
-To do:
-
-* LSS catalog
-
 -------------------------------------------------------------------------
+
+Documentation of desidatamodel
+------------------------------
+
+Introduction
+~~~~~~~~~~~~
 
 The rest of the documentation on this page is about contributing to this
 DESI data model documentation; it is not about the data model itself.
 
+Examples and Other Documents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. toctree::
+    :maxdepth: 1
+
+    examples/index
+
+To Do List
+~~~~~~~~~~
+
+* LSS catalog
+* DESIMODEL
+
 Directory Tree
-==============
+~~~~~~~~~~~~~~
 
 Please follow these rules when creating or updating directories within the
 data model.
@@ -52,7 +68,7 @@ data model.
     ===================
 
 Tips and Tests
-==============
+~~~~~~~~~~~~~~
 
 You can browse some :doc:`examples <examples/index>`.
 
@@ -78,16 +94,19 @@ Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`::
     Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`
 
 desidatamodel Python Package
-============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. automodule:: desidatamodel
    :members:
 
+.. automodule:: desidatamodel.check
+  :members:
+
 .. automodule:: desidatamodel.stub
    :members:
 
-Indices and tables
-==================
+Indices and Tables
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`

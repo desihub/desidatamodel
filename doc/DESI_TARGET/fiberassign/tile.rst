@@ -29,11 +29,15 @@ HDU2_  POTENTIAL_ASSIGNMENTS BINTABLE All targets that could have been assigned
 FITS Header Units
 =================
 
-HDU0 - Blank
-------------
+HDU0
+----
 
-HDU1 - FIBER_ASSIGNMENTS
-------------------------
+Empty header.
+
+HDU1
+----
+
+Fiber assignments.
 
 The target assignments for each fiber of this tile.
 
@@ -74,8 +78,10 @@ Notes:
     be; this is non-authoritative and more detailed downstream code may have a
     refined answer
 
-HDU2 - POTENTIAL_ASSIGNMENTS
-----------------------------
+HDU2
+----
+
+Potential assignments.
 
 A list of targets that could have been assigned to each fiber.
 See DESI-1049 (https://desi.lbl.gov/DocDB/cgi-bin/private/ShowDocument?docid=1049) for
