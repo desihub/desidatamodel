@@ -382,5 +382,5 @@ def main():
     w = validate_prototypes(p)
     if len(w) > 0:
         for m in w:
-            print('WARNING: ' + w)
+            print('WARNING: ' + m)
     return 0
