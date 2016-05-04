@@ -166,9 +166,7 @@ class TestCheck(unittest.TestCase):
         """
         prototypes = {join(self.data_dir, 'fits_file.rst'):
                       join(self.data_dir, 'fits_file.fits')}
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            validate_prototypes(prototypes)
+        w = validate_prototypes(prototypes)
         self.assertEqual(len(w), 0)
 
     def test_extract_columns(self):

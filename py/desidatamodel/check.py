@@ -63,6 +63,7 @@ def files_to_regex(section, root, files):
     d2r = {'NIGHT': '[0-9]{8}',  # YYYYMMDD
            'EXPID': '[0-9]{8}'}  # YYYYMMDD
     f2r = dict()
+    rline = re.compile(r':?regexp?:', re.I)
     for f in files:
         f2r[f] = None
         with open(f) as dm:
@@ -71,7 +72,7 @@ def files_to_regex(section, root, files):
                     l = le
                 else:
                     l = le.decode('utf-8')
-                if l.startswith(':Regex:'):
+                if rline.match(l) is not None:
                     d = dirname(f).replace(section, root)
                     for k in d2r:
                         d = d.replace(k, d2r[k])
@@ -250,42 +251,60 @@ def validate_prototypes(prototypes):
 
     Returns
     -------
-    None
+    :class:`list`
+        A list of warning messages.  If there were no warnings, the list
+        will be empty.
     """
-    from warnings import warn
     from .stub import Stub
-    from . import DataModelWarning
+    wlist = list()
     for p in prototypes:
         stub = Stub(prototypes[p])
         modelmeta = extract_metadata(p)
+        #
+        # Check number of headers.
+        #
         if stub.nhdr != len(modelmeta):
             w = ("Prototype file {0} has the wrong number of headers " +
                  "according to {1}.").format(prototypes[p], p)
-            warn(w, DataModelWarning)
-            return
+            wlist.append(w)
+            continue
         for i in range(stub.nhdr):
             dkw = stub.hdumeta[i]['keywords']
             mkw = modelmeta[i]['keywords']
+            #
+            # Check number of keywords.
+            #
             if len(dkw) != len(mkw):
                 w = ("Prototype file {0} has the wrong number of " +
                      "HDU{1:d} keywords according to " +
                      "{2}.").format(prototypes[p], i, p)
-                warn(w, DataModelWarning)
-                return
+                wlist.append(w)
+                continue
+            #
+            # If number of keywords is correct, check them individually.
+            #
             for j in range(len(dkw)):
                 if dkw[j][0] != mkw[j][0]:
                     w = ("Prototype file {0} has a keyword " +
                          "mismatch ({1} != {2}) in HDU{3:d} according to " +
                          "{3}.").format(prototypes[p],
                                         dkw[j][0], mkw[j][0], i, p)
-                    warn(w, DataModelWarning)
+                    wlist.append(w)
+            #
+            # Check the extension type.
+            #
             dex = stub.hdumeta[i]['extension']
             mex = modelmeta[i]['extension']
             if dex != mex:
                 w = ("Prototype file {0} has an extension type mismatch in " +
                      "HDU{1:d} ({2} != {3}) " +
                      "according to {4}.").format(protoypes[p], i, dex, mex, p)
-                warn(w, DataModelWarning)
+                wlist.append(w)
+                continue
+            #
+            # If the extension type is correct, check the contents of the
+            # extension.
+            #
             dexf = stub.hdumeta[i]['format']
             mexf = modelmeta[i]['format']
             if dex == 'IMAGE':
@@ -293,14 +312,14 @@ def validate_prototypes(prototypes):
                     w = ("Prototype file {0} has an extension format " +
                          "mismatch in HDU{1:d} " +
                          "according to {2}.").format(prototypes[p], i, p)
-                    warn(w, DataModelWarning)
+                    wlist.append(w)
             else:
                 dexf = dexf[1:]  # Get rid of header line.
                 if len(dexf) != len(mexf):
                     w = ("Prototype file {0} has the wrong number of " +
                          "HDU{1:d} columns according to " +
                          "{2}.").format(prototypes[p], i, p)
-                    warn(w, DataModelWarning)
+                    wlist.append(w)
                 else:
                     for j in range(len(dexf)):
                         if dexf[j][0] != mexf[j][0]:
@@ -309,8 +328,8 @@ def validate_prototypes(prototypes):
                                  "according to {3}.").format(prototypes[p],
                                                              dexf[j][0],
                                                              mexf[j][0], i, p)
-                            warn(w, DataModelWarning)
-    return
+                            wlist.append(w)
+    return wlist
 
 
 def main():
@@ -352,8 +371,11 @@ def main():
     with catch_warnings(record=True) as w:
         f2r = files_to_regex(scan_root, options.directory, files)
         p = collect_files(options.directory, f2r)
-        validate_prototypes(p)
     if len(w) > 0:
         for m in w:
             print('WARNING: ' + str(m.message))
+    w = validate_prototypes(p)
+    if len(w) > 0:
+        for m in w:
+            print('WARNING: ' + w)
     return 0
