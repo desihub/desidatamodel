@@ -60,8 +60,13 @@ def files_to_regex(section, root, files):
     from warnings import warn
     from os.path import dirname, join
     import re
-    d2r = {'NIGHT': '[0-9]{8}',  # YYYYMMDD
-           'EXPID': '[0-9]{8}'}  # YYYYMMDD
+    d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
+           'EXPID': '[0-9]{8}',  # YYYYMMDD
+           'NIGHT': '[0-9]{8}',  # YYYYMMDD
+           'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
+           'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
+           'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
+           }
     f2r = dict()
     rline = re.compile(r':?regexp?:', re.I)
     for f in files:
