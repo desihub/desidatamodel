@@ -1,12 +1,12 @@
-===========================
-fluxcalib-CAMERA-EXPID.fits
-===========================
+=======================
+calib-CAMERA-EXPID.fits
+=======================
 
 *The current pipeline calls this file calib-CAMERA-EXPID.fits rather
 than fluxcalib...  The data format also doesn't match what is outlined
 below.*
 
-regex: ``fluxcalib-[brz][0-9]-[0-9]{8}\.fits``
+regex: ``calib-[brz][0-9]-[0-9]{8}\.fits``
 
 This holds the flux calibration model for a given camera and exposure.
 Nominally the HDUs will be:
