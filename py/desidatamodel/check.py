@@ -126,8 +126,18 @@ def collect_files(root, regexes):
     from os import walk
     from os.path import join
     prototypes = dict()
+    ignore_directories = ('logs', 'scripts')
+    include_extensions = ('.fits', '.fits.fz')
     for dirpath, dirnames, filenames in walk(root):
-        for f in filenames:
+        for d in ignore_directories:
+            try:
+                dirnames.remove(d)
+            except ValueError:
+                pass
+        include_filenames = list()
+        for e in include_extensions:
+            include_filenames += [f for f in filenames if f.endswith(e)]
+        for f in include_filenames:
             extraneous_file = True
             fullname = join(dirpath, f)
             for r in regexes:

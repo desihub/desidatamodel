@@ -90,7 +90,7 @@ class TestCheck(unittest.TestCase):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
             p = collect_files(self.data_dir, f2r)
-        self.assertEqual(len(w), 5)
+        self.assertEqual(len(w), 1)
         for r in f2r:
             if f2r[r] is not None:
                 self.assertIn(r, p)
@@ -114,7 +114,7 @@ class TestCheck(unittest.TestCase):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
             p = collect_files(self.data_dir, f2r)
-        self.assertEqual(len(w), 6)
+        self.assertEqual(len(w), 2)
         self.assertEqual(str(w[-1].message),
                          ('No files found matching {0}/doc/examples/' +
                           'spPlate.rst!').format(environ[DM]))
