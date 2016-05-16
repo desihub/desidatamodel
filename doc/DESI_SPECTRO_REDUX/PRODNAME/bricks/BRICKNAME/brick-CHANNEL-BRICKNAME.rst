@@ -2,10 +2,15 @@
 brick-CHANNEL-BRICKNAME.fits
 ============================
 
-
-This should contain the same information as cframe files, just differently
-organized.  They should be complete enough to generate a coadd based only
-on information in this file.
+:Summary: Brick files hold the calibrated individual exposure spectra organized by
+    location on the sky (brick).  This should contain the same information as
+    cframe files, just differently organized.  They should be complete enough
+    to generate a coadd based only on information in this file.
+:Naming Convention: ``brick-{channel}-{brickname}.fits``, where
+    ``{channel}`` is 'b', 'r', or 'z', and
+    ``{brickname}`` is the brick name string as given by targeting, *e.g.* "1234p567".
+:Regex: ``brick-[brz]-[0-9]{4}[pm][0-9]{3}\.fits``
+:File Type: FITS, 31 MB
 
 Inputs
 ======
@@ -14,32 +19,6 @@ Written by desi_make_bricks.py, using:
 
 - cframe
 - fibermap
-
-General Description
-===================
-
-Summary
--------
-
-Brick files hold the calibrated individual exposure spectra organized by
-location on the sky (brick).  They contain the same information as cframe
-files, just differently organized.  They should be complete enough to
-generate a coadd based only on information in this file.
-
-
-Naming Convention
------------------
-
-``brick-{channel}-{brickname}.fits``, where
-``{channel}`` is `b`, `r`, or `z`, and
-``{brickname}`` is the brick name string as given by targeting, e.g. "1234p567"
-
-regex: ``brick-[brz]-[0-9]{4}[pm][0-9]{3}\.fits``
-
-File Type
----------
-
-FITS, 31 MB
 
 Contents
 ========
@@ -66,13 +45,15 @@ Spectral flux[nspec, nwave] in erg/s/cm^2/Angstrom
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== ============
-KEY     Example Value Type Comment
-======= ============= ==== ============
-NAXIS1  3494          int  Number of wavelength bins
-NAXIS2  51            int  Number of spectra
-EXTNAME FLUX          str  erg/s/cm^2/Angstrom
-======= ============= ==== ============
+======== ============= ==== ============
+KEY      Example Value Type Comment
+======== ============= ==== ============
+NAXIS1   3494          int  Number of wavelength bins
+NAXIS2   51            int  Number of spectra
+BRICKNAM 3321p125      str  Imaging brick name
+CHANNEL  r             str  Spectrograph channel [b,r,z]
+EXTNAME  FLUX          str  erg/s/cm^2/Angstrom
+======== ============= ==== ============
 
 Data: FITS image [float64]
 
@@ -86,13 +67,15 @@ Inverse variance of the flux
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== ============
-KEY     Example Value Type Comment
-======= ============= ==== ============
-NAXIS1  3494          int  Number of wavelength bins
-NAXIS2  51            int  Number of spectra
-EXTNAME IVAR          str  1 / (erg/s/cm^2/A)^2
-======= ============= ==== ============
+======== ============= ==== ============
+KEY      Example Value Type Comment
+======== ============= ==== ============
+NAXIS1   3494          int  Number of wavelength bins
+NAXIS2   51            int  Number of spectra
+BRICKNAM 3321p125      str  Imaging brick name
+CHANNEL  r             str  Spectrograph channel [b,r,z]
+EXTNAME  IVAR          str  1 / (erg/s/cm^2/A)^2
+======== ============= ==== ============
 
 Data: FITS image [float64]
 
@@ -106,12 +89,14 @@ Common wavelength grid in Angstroms
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== ===========
-KEY     Example Value Type Comment
-======= ============= ==== ===========
-NAXIS1  3494          int  wavelength [Angstroms]
-EXTNAME WAVELENGTH    str  [Angstroms]
-======= ============= ==== ===========
+======== ============= ==== ===========
+KEY      Example Value Type Comment
+======== ============= ==== ===========
+NAXIS1   3494          int  wavelength [Angstroms]
+BRICKNAM 3321p125      str  Imaging brick name
+CHANNEL  r             str  Spectrograph channel [b,r,z]
+EXTNAME  WAVELENGTH    str  [Angstroms]
+======== ============= ==== ===========
 
 Data: FITS image [float64]
 
@@ -125,31 +110,38 @@ Resolution matrix data.  TODO: define this.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== ============
-KEY     Example Value Type Comment
-======= ============= ==== ============
-NAXIS1  3494          int  Number of wavelength bins
-NAXIS2  21            int  Number of diagonals
-NAXIS3  51            int  Number of spectra
-EXTNAME RESOLUTION    str  no dimension
-======= ============= ==== ============
+======== ============= ==== ============
+KEY      Example Value Type Comment
+======== ============= ==== ============
+NAXIS1   3494          int  Number of wavelength bins
+NAXIS2   21            int  Number of diagonals
+NAXIS3   51            int  Number of spectra
+BRICKNAM 3321p125      str  Imaging brick name
+CHANNEL  r             str  Spectrograph channel [b,r,z]
+EXTNAME  RESOLUTION    str  no dimension
+======== ============= ==== ============
 
 Data: FITS image [float64]
 
 HDU4
 ----
 
+EXTNAME = FIBERMAP
+
 Fibermap data, copied here to allow the bricks to be self-contained.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 224           int  length of dimension 1
-NAXIS2 51            int  Number of spectra
-====== ============= ==== =====================
+======== ============= ==== =====================
+KEY      Example Value Type Comment
+======== ============= ==== =====================
+NAXIS1   224           int  length of dimension 1
+NAXIS2   51            int  Number of spectra
+BRICKNAM 3321p125      str  Imaging brick name
+CHANNEL  r             str  Spectrograph channel [b,r,z]
+EXTNAME  FIBERMAP      str
+======== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
