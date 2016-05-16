@@ -9,5 +9,5 @@ EXPID
     fluxcalib-CAMERA-EXPID.rst
     frame-CAMERA-EXPID.rst
     psf-CAMERA-EXPID.rst
-    skymodel-CAMERA-EXPID.rst
+    sky-CAMERA-EXPID.rst
     stdstars-CAMERA-EXPID.rst
