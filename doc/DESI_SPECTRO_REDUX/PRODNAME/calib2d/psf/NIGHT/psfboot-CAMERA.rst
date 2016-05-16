@@ -1,17 +1,12 @@
-=======
-psfboot
-=======
+==============
+psfboot-CAMERA
+==============
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``psfboot-r1.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``psfboot-r1.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 64 KB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: psfboot file.
+:Naming Convention: ``psfboot-CAMERA.fits``, where ``CAMERA`` is *e.g.*,
+    "b0", "r1", "z2".
+:Regex: ``psfboot-[brz][0-9]\.fits``
+:File Type: FITS, 64 KB
 
 Contents
 ========
