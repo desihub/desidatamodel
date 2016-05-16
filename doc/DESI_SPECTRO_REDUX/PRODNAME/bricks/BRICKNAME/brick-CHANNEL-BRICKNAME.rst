@@ -151,8 +151,11 @@ Name         Type       Units Description
 ============ ========== ===== ===========
 OBJTYPE      char[10]
 TARGETCAT    char[20]
+BRICKNAME    char[8]
 TARGETID     int64
-TARGET_MASK0 int64
+DESI_TARGET  int64
+BGS_TARGET   int64
+MWS_TARGET   int64
 MAG          float32[5]
 FILTER       char[50]
 SPECTROID    int64
