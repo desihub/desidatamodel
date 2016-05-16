@@ -330,7 +330,11 @@ def validate_prototypes(prototypes):
             except KeyError:
                 mexf = "Extension format not found"
             if dex == 'IMAGE':
-                if dexf != mexf:
+                try:
+                    icomma = mexf.index(',')
+                except ValueError:
+                    icomma = len(dexf)
+                if dexf[:icomma] != mexf[:icomma]:
                     w = ("Prototype file {0} has an extension format " +
                          "mismatch in HDU{1:d} " +
                          "according to {2}.").format(prototypes[p], i, p)
