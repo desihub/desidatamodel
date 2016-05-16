@@ -1,8 +1,11 @@
-==========================
-skymodel-CAMERA-EXPID.fits
-==========================
+=====================
+sky-CAMERA-EXPID.fits
+=====================
 
 *This is a placeholder*
+
+
+regex: ``sky-[brz][0-9]-[0-9]{8}\.fits``
 
 This holds the sky model for a given camera and exposure.
 Nominally the HDUs will be:

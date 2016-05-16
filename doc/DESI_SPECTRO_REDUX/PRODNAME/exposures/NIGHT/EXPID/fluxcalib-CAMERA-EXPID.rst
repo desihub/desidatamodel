@@ -6,6 +6,8 @@ fluxcalib-CAMERA-EXPID.fits
 than fluxcalib...  The data format also doesn't match what is outlined
 below.*
 
+regex: ``fluxcalib-[brz][0-9]-[0-9]{8}\.fits``
+
 This holds the flux calibration model for a given camera and exposure.
 Nominally the HDUs will be:
 
@@ -15,4 +17,3 @@ Nominally the HDUs will be:
   - HDU3 (WAVELENGTH) : wavelength[nwave] in Angstroms
   - HDU4 (METADATA) : binary table with one row per standard star giving
     the details of which model was used, etc.  Details TBD.
-

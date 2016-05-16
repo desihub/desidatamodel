@@ -9,6 +9,8 @@ frame data.
 
 Naming convention: stdstars-sp{SPECTROGRAPH}-{EXPID}.fits
 
+regex: ``stdstars-[brz][0-9]-[0-9]{8}\.fits``
+
 HDUS:
 
   - HDU0 FLUX : stdstar flux[nstd, nwave] in erg/s/cm^2/Angstrom

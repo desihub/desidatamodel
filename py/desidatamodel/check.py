@@ -61,8 +61,9 @@ def files_to_regex(section, root, files):
     from os.path import dirname, join
     import re
     d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
-           'EXPID': '[0-9]{8}',  # YYYYMMDD
+           'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
            'NIGHT': '[0-9]{8}',  # YYYYMMDD
+           'CAMERA': '[brz][0-9]', # e.g. b0, r7
            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
