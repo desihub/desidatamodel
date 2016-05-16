@@ -310,7 +310,10 @@ def validate_prototypes(prototypes):
             # Check the extension type.
             #
             dex = stub.hdumeta[i]['extension']
-            mex = modelmeta[i]['extension']
+            try:
+                mex = modelmeta[i]['extension']
+            except KeyError:
+                mex = "Extension type not found"
             if dex != mex:
                 w = ("Prototype file {0} has an extension type mismatch in " +
                      "HDU{1:d} ({2} != {3}) " +
