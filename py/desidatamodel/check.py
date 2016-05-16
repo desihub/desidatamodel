@@ -325,7 +325,10 @@ def validate_prototypes(prototypes):
             # extension.
             #
             dexf = stub.hdumeta[i]['format']
-            mexf = modelmeta[i]['format']
+            try:
+                mexf = modelmeta[i]['format']
+            except KeyError:
+                mexf = "Extension format not found"
             if dex == 'IMAGE':
                 if dexf != mexf:
                     w = ("Prototype file {0} has an extension format " +
