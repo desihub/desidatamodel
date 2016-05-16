@@ -18,7 +18,7 @@ for testing.
    $DESI_SPECTRO_REDUX : processed spectro data <DESI_SPECTRO_REDUX/index>
    $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
-
+   $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
 
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
