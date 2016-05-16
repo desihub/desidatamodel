@@ -280,8 +280,8 @@ def validate_prototypes(prototypes):
         # Check number of headers.
         #
         if stub.nhdr != len(modelmeta):
-            w = ("Prototype file {0} has the wrong number of headers " +
-                 "according to {1}.").format(prototypes[p], p)
+            w = ("Prototype file {0} has the wrong number of sections " +
+                 "(HDUs) according to {1}.").format(prototypes[p], p)
             wlist.append(w)
             continue
         for i in range(stub.nhdr):
