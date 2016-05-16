@@ -331,7 +331,7 @@ def validate_prototypes(prototypes):
                 mexf = "Extension format not found"
             if dex == 'IMAGE':
                 try:
-                    icomma = mexf.index(',')
+                    icomma = dexf.index(',')
                 except ValueError:
                     icomma = len(dexf)
                 if dexf[:icomma] != mexf[:icomma]:
