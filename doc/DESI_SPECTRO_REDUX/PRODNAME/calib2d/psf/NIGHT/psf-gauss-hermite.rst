@@ -16,7 +16,7 @@ Naming Convention
 ``psf-AS-EXPNUM.fits``, where A is the spectrograph arm ('b','r' or 'z'),
 S the spectrograph identifier [0-9], and EXPNUM the exposure number.
 
-regex: ``psf-[brz]{1}[0-9]{1}-[0-9]{8}.fits``
+regex: ``psf-[brz][0-9]-[0-9]{8}\.fits``
 
 File Type
 ---------
@@ -27,7 +27,7 @@ Contents
 ========
 
 ====== ======= ======== ===================
-Number EXTNAME Type     Contents           
+Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Blank data.  Header keywords PSFTYPE and PSFVER.
 HDU1_          IMAGE    Coefficients for Gauss-Hermite PSF
@@ -48,8 +48,8 @@ Required Header Keywords
 ======= ============= ==== =======
 KEY     Value         Type Comment
 ======= ============= ==== =======
-PSFTYPE GAUSS-HERMITE str  Type of PSF (several PSF models in specex)       
-PSFVER  2             str  Version of the fits format for this PSFTYPE       
+PSFTYPE GAUSS-HERMITE str  Type of PSF (several PSF models in specex)
+PSFVER  2             str  Version of the fits format for this PSFTYPE
 ======= ============= ==== =======
 
 HDU1
@@ -59,71 +59,71 @@ This HDU contains all the data that describe the spectrograph PSF for
 a given spectrograph arm/CCD. Each row of the table contains the data
 vector of one PSF parameter.
 
-The size of the vector is ((FIBERMAX-FIBERMIN+1)*(LEGDEG+1))            
+The size of the vector is ((FIBERMAX-FIBERMIN+1)*(LEGDEG+1))
 
-Description of  the NPARAMS parameters :                                
+Description of  the NPARAMS parameters :
 
 X        : CCD column coordinate (as a function of fiber and wavelength)
 
-Y        : CCD row coordinate (as a function of fiber and wavelength) 
+Y        : CCD row coordinate (as a function of fiber and wavelength)
 (X,Y)=(0,0) means that PSF is centered on center of first pixel
 
-GHSIGX   : Sigma of first Gaussian along CCD columns for PSF core       
+GHSIGX   : Sigma of first Gaussian along CCD columns for PSF core
 
-GHSIGY   : Sigma of first Gaussian along CCD rows for PSF core          
+GHSIGY   : Sigma of first Gaussian along CCD rows for PSF core
 
-GH-i-j   : Hermite pol. coefficents, i along columns, j along rows,     
-i is integer from 0 to GHDEGX, j is integer from 0 to GHDEGY,  
-there are (GHDEGX+1)*(GHDEGY+1) such coefficents.              
+GH-i-j   : Hermite pol. coefficents, i along columns, j along rows,
+i is integer from 0 to GHDEGX, j is integer from 0 to GHDEGY,
+there are (GHDEGX+1)*(GHDEGY+1) such coefficents.
 
-TAILAMP  : Amplitude of PSF tail                                        
+TAILAMP  : Amplitude of PSF tail
 
-TAILCORE : Size in pixels of PSF tail saturation in PSF core            
+TAILCORE : Size in pixels of PSF tail saturation in PSF core
 
-TAILXSCA : Scaling apply to CCD coordinate along columns for PSF tail   
+TAILXSCA : Scaling apply to CCD coordinate along columns for PSF tail
 
-TAILYSCA : Scaling apply to CCD coordinate along rows for PSF tail      
+TAILYSCA : Scaling apply to CCD coordinate along rows for PSF tail
 
-TAILINDE : Asymptotic power law index of PSF tail                       
+TAILINDE : Asymptotic power law index of PSF tail
 
-CONT     : Continuum flux in arc image (not part of PSF)                
+CONT     : Continuum flux in arc image (not part of PSF)
 
 
-PSF_core(X,Y) = [ SUM_ij (GH-i-j)*HERM(i,X/GHSIGX)*HERM(j,Y/GHSIGX) ]*GAUS(X,GHSIGX)*GAUS(Y,GHSIGY)   
+PSF_core(X,Y) = [ SUM_ij (GH-i-j)*HERM(i,X/GHSIGX)*HERM(j,Y/GHSIGX) ]*GAUS(X,GHSIGX)*GAUS(Y,GHSIGY)
 
 PSF_tail(X,Y) = TAILAMP*R^2/(TAILCORE^2+R^2)^(1+TAILINDE/2) with R^2=(X/TAILXSCA)^2+(Y/TAILYSCA)^2
 
-PSF_core is integrated in pixel, PSF_tail is not, it is evaluated at center of pixel.   
+PSF_core is integrated in pixel, PSF_tail is not, it is evaluated at center of pixel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ============= ===== ===============================================
-KEY      Value         Type  Comment                                        
+KEY      Value         Type  Comment
 ======== ============= ===== ===============================================
 PSFTYPE  GAUSS-HERMITE str   Type of PSF (several PSF models in specex)
 PSFVER   2             str   Version of the fits format for this PSFTYPE
-MJD      0             int   MJD of arc lamp exposure                       
-PLATEID  0             int   plate ID of arc lamp exposure                  
-CAMERA                 str   camera ID                                      
-ARCEXP   0             int   ID of arc lamp exposure used to fit PSF        
-NPIX_X   4096          int   number of columns in input CCD image           
-NPIX_Y   4096          int   number of rows in input CCD image              
-HSIZEX   14            int   Half size of PSF in fit, NX=2*HSIZEX+1         
-HSIZEY   8             int   Half size of PSF in fit, NY=2*HSIZEY+1         
-BUNDLMIN 0             int   first bundle of fibers (starting at 0)         
-BUNDLMAX 19            int   last bundle of fibers (included)               
-FIBERMIN 0             int   first fiber (starting at 0)                    
-FIBERMAX 499           int   last fiber (included)                          
-NPARAMS  91            int   number of PSF parameters                       
-LEGDEG   7             int   degree of Legendre pol.(wave) for parameters   
-GHDEGX   8             int   degree of Hermite polynomial along CCD columns 
-GHDEGY   8             int   degree of Hermite polynomial along CCD rows    
-PSFERROR 0.0           float assumed PSF fractional error in chi2           
-READNOIS 3.0           float assumed read out noise in chi2                 
-GAIN     1.0           float assumed gain in chi2                           
-BnnRCHI2 1.08258523592 float best fit chi2/ndf for fiber bundle 0           
-BnnNDATA 108113        int   number of pixels in fit for fiber bundle nn     
+MJD      0             int   MJD of arc lamp exposure
+PLATEID  0             int   plate ID of arc lamp exposure
+CAMERA                 str   camera ID
+ARCEXP   0             int   ID of arc lamp exposure used to fit PSF
+NPIX_X   4096          int   number of columns in input CCD image
+NPIX_Y   4096          int   number of rows in input CCD image
+HSIZEX   14            int   Half size of PSF in fit, NX=2*HSIZEX+1
+HSIZEY   8             int   Half size of PSF in fit, NY=2*HSIZEY+1
+BUNDLMIN 0             int   first bundle of fibers (starting at 0)
+BUNDLMAX 19            int   last bundle of fibers (included)
+FIBERMIN 0             int   first fiber (starting at 0)
+FIBERMAX 499           int   last fiber (included)
+NPARAMS  91            int   number of PSF parameters
+LEGDEG   7             int   degree of Legendre pol.(wave) for parameters
+GHDEGX   8             int   degree of Hermite polynomial along CCD columns
+GHDEGY   8             int   degree of Hermite polynomial along CCD rows
+PSFERROR 0.0           float assumed PSF fractional error in chi2
+READNOIS 3.0           float assumed read out noise in chi2
+GAIN     1.0           float assumed gain in chi2
+BnnRCHI2 1.08258523592 float best fit chi2/ndf for fiber bundle 0
+BnnNDATA 108113        int   number of pixels in fit for fiber bundle nn
 BnnNPAR  300           int   number of parameters in fit for fiber bundle nn
 ======== ============= ===== ===============================================
 
@@ -131,7 +131,7 @@ Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ================== ===== ===================
-Name    Type               Units Description        
+Name    Type               Units Description
 ======= ================== ===== ===================
 PARAM   char[8]                  Name of parameter
 WAVEMIN float64                  Min wavelength for mapping to [-1,1] domain

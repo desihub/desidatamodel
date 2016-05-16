@@ -19,9 +19,7 @@ Naming Convention
 *Give a human readable description of the filename, e.g.
 ``blat-{EXPID}`` where ``{EXPID}`` is the 8-digit exposure ID.*
 
-regex: ``fiberflat-b0-00000001.fits``
-*Give a regular expression for this filename.
-For example, a six-digit number would correspond to ``[0-9]{6}``.*
+regex: ``fiberflat-[brz][0-9]-[0-9]{8}\.fits``
 
 File Type
 ---------
