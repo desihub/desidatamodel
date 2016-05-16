@@ -8,6 +8,8 @@ This holds the classification and redshift information for targets.
 The formats are TBD, but it should be row-matched to the spectra in
 coadd-BRICKNAME.rst .  This is not yet the case.
 
+regex: ``zbest-[0-9]{4}[pm][0-9]{3}\.fits``
+
 Nominally the HDUs will be:
 
   - HDU0 (empty)
@@ -21,14 +23,14 @@ Written by XXX, using:
 
   - coadd (coadded spectra)
   - brick (individual spectra)
-  
+
 HDU1
 ----
 
 EXTNAME = ZBEST
 
 *Current description of ZBEST; this will evolve*
-  
+
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

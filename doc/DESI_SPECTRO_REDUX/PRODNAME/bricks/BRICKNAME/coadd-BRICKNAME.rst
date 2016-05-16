@@ -7,6 +7,8 @@ coadd-BRICKNAME.fits
 This holds the calibrated coadded spectra organized by location
 on the sky (brick).
 
+regex: ``coadd-[0-9]{4}[pm][0-9]{3}\.fits``
+
 Nominally the HDUs will be:
 
   - HDU0 (FLUX) : flux[nspec, nwave] - erg/s/cm2/A

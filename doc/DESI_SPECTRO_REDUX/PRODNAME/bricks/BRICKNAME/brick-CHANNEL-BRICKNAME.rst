@@ -34,7 +34,7 @@ Naming Convention
 ``{channel}`` is `b`, `r`, or `z`, and
 ``{brickname}`` is the brick name string as given by targeting, e.g. "1234p567"
 
-regex: ``brick-[brz]-[0-9]{4}[pm][0-9]{3}.fits``
+regex: ``brick-[brz]-[0-9]{4}[pm][0-9]{3}\.fits``
 
 File Type
 ---------
