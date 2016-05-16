@@ -29,6 +29,8 @@ FITS Header Units
 HDU0
 ----
 
+Empty HDU.
+
 Blank except for keywords PSFTYPE and PSFVER.
 
 Required Header Keywords
