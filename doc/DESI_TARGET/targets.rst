@@ -10,15 +10,17 @@ Summary
 
 DESI target selection files contain a single binary table covering the
 entire footprint.  They contain the variables used by target selection
-(e.g. fluxes), variables needed by fiber assignment (e.g. RA, DEC),
-and variables needed for traceability (e.g. TARGETFLAG, TARGETID).
+(*e.g.* fluxes), variables needed by fiber assignment (*e.g.* RA, DEC),
+and variables needed for traceability (*e.g.* TARGETFLAG, TARGETID).
 
 Naming Convention
 -----------------
 
-TBD, let's try `targets-{source}-{version}.fits` where `source` is where the
-input data came from (e.g. 'dr1', 'dr2') and `version` is the code version
+TBD, let's try ``targets-{source}-{version}.fits`` where ``source`` is where the
+input data came from (*e.g.* 'dr1', 'dr2') and ``version`` is the code version
 that wrote this, preferably a git tag of desitargets.
+
+regex: ``targets-dr[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
 
 Contents
 ========

@@ -34,7 +34,35 @@ def scan_model(section):
     return scan
 
 
-def files_to_regex(section, root, files):
+def cross_reference(filename, line):
+    """Obtain the path to a file referred to in another file.
+
+    Parameters
+    ----------
+    filename : :class:`str`
+        Name of the file containing the cross-reference.
+    line : :class:`str`
+        Line from `filename` that *is* the cross-reference.
+
+    Returns
+    -------
+    :class:`str`
+        The path to the referenced file.
+    """
+    import re
+    from os.path import abspath, exists, dirname, join
+    ref = None
+    m = re.match(r'See :doc:`[^<]+<([^>]+)>`', line)
+    if m is not None:
+        newname = abspath(join(dirname(filename), m.groups()[0]))
+        if not newname.endswith('.rst'):
+            newname += '.rst'
+        if exists(newname):
+            ref = newname
+    return ref
+
+
+def files_to_regex(section, root, files, error=False):
     """Convert a list of data model files into a list of regular expressions.
 
     Parameters
@@ -45,6 +73,9 @@ def files_to_regex(section, root, files):
         Path to real files on disk.
     files : :class:`list`
         List of files obtained from the data model.
+    error : :class:`bool`, optional
+        If ``True``, failure to find a regular expression raises an
+        exception instead of just a warning.
 
     Returns
     -------
@@ -55,8 +86,10 @@ def files_to_regex(section, root, files):
     ------
     :class:`~desidatamodel.DataModelWarning`
         If data model files with malformed regular expressions are detected.
+    :class:`~desimodel.DataModelError`
+        If `error` is set.
     """
-    from . import PY3, DataModelWarning
+    from . import PY3, DataModelWarning, DataModelError
     from warnings import warn
     from os.path import dirname, join
     import re
@@ -70,6 +103,7 @@ def files_to_regex(section, root, files):
            }
     f2r = dict()
     rline = re.compile(r':?regexp?:', re.I)
+    deferred = dict()
     for f in files:
         f2r[f] = None
         with open(f) as dm:
@@ -78,6 +112,10 @@ def files_to_regex(section, root, files):
                     l = le
                 else:
                     l = le.decode('utf-8')
+                if l.startswith('See :doc:'):
+                    ref = cross_reference(f, l)
+                    deferred[f] = ref
+                    break
                 if rline.match(l) is not None:
                     d = dirname(f).replace(section, root)
                     for k in d2r:
@@ -85,8 +123,26 @@ def files_to_regex(section, root, files):
                     r = l.strip().split()[1].replace('``', '')
                     f2r[f] = re.compile(join(d, r))
                     break
+        if f in deferred:
+            with open(deferred[f]) as dm:
+                for le in dm.readlines():
+                    if PY3:
+                        l = le
+                    else:
+                        l = le.decode('utf-8')
+                    if rline.match(l) is not None:
+                        d = dirname(f).replace(section, root)
+                        for k in d2r:
+                            d = d.replace(k, d2r[k])
+                        r = l.strip().split()[1].replace('``', '')
+                        f2r[f] = re.compile(join(d, r))
+                        break
         if f2r[f] is None:
-            warn("{0} has no file regex!".format(f), DataModelWarning)
+            m = "{0} has no file regex!".format(f)
+            if error:
+                raise DataModelError(m)
+            else:
+                warn(m, DataModelWarning)
     return f2r
 
 
@@ -162,21 +218,29 @@ def collect_files(root, regexes):
     return prototypes
 
 
-def extract_metadata(filename):
+def extract_metadata(filename, error=False):
     """Extract metadata from a data model file.
 
     Parameters
     ----------
     filename : :class:`str`
         Name of a data model file.
+    error : :class:`bool`, optional
+        If ``True``, failure to extract certain required metadata raises an
+        exception.
 
     Returns
     -------
     :class:`list`
         Metadata in a form similar to :class:`~desidatamodel.stub.Stub`
         metadata.
+
+    Raises
+    ------
+    :class:`~desimodel.DataModelError`
+        If `error` is set.
     """
-    from . import PY3
+    from . import PY3, DataModelError
     import re
     with open(filename) as f:
         data = f.read()

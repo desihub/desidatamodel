@@ -14,6 +14,8 @@ TBD.  We should group under subdirectories of
 $DESI_TARGET/fiberassign/, but the naming for the subdirectories and for the
 files themselves is TBD.
 
+regex: ``tile-[0-9]{8}\.fits``
+
 Contents
 ========
 

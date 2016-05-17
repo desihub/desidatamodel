@@ -7,7 +7,7 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 #
 from os import environ, listdir, remove
-from os.path import dirname, isdir, join
+from os.path import basename, dirname, isdir, join
 import unittest
 import warnings
 from ..check import scan_model, files_to_regex, extract_metadata
@@ -42,7 +42,7 @@ class TestModel(unittest.TestCase):
         """Validate all data model files.
         """
         roots = [join(self.doc_dir, d) for d in listdir(self.doc_dir)
-                 if join(self.doc_dir, d)]
+                 if isdir(join(self.doc_dir, d))]
         for root in roots:
             files = scan_model(root)
             #
@@ -56,5 +56,12 @@ class TestModel(unittest.TestCase):
             #         m = str(w[0].message)
             #         if 'badModel.rst' not in m:
             #             raise DataModelError(str(w[0].message))
+            if basename(root) == 'examples':
+                with self.assertRaises(DataModelError):
+                    f2r = files_to_regex(root, '/desi/spectro/data', files,
+                                         error=True)
+            else:
+                f2r = files_to_regex(root, '/desi/spectro/data', files,
+                                     error=True)
             for f in files:
-                meta = extract_metadata(f)
+                meta = extract_metadata(f, error=True)

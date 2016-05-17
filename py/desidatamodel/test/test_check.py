@@ -12,7 +12,7 @@ import unittest
 import warnings
 from ..check import (collect_files, files_to_regex, scan_model,
                      extract_metadata, validate_prototypes,
-                     extract_columns)
+                     extract_columns, cross_reference)
 from .. import PY3, DataModelWarning
 
 DM = 'DESIDATAMODEL'
@@ -178,3 +178,8 @@ class TestCheck(unittest.TestCase):
         exc = ('NAXIS1', '32', 'int', 'length of dimension 1')
         c = extract_columns(row, columns)
         self.assertEqual(c, exc)
+
+    def test_cross_reference(self):
+        line = "See :doc:`Other file <fits_file>`"
+        ref = cross_reference(join(self.data_dir, 'fits_file.fits'), line)
+        self.assertEqual(ref, join(self.data_dir, 'fits_file.rst'))
