@@ -334,6 +334,11 @@ def validate_prototypes(prototypes):
     :class:`list`
         A list of warning messages.  If there were no warnings, the list
         will be empty.
+
+    Notes
+    -----
+    * Use set theory to compare the data headers to model headers.  This should
+      automatically find missing headers, extraneous headers, etc.
     """
     from .stub import Stub
     wlist = list()
