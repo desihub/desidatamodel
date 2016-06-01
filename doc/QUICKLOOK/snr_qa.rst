@@ -1,6 +1,5 @@
 ====================
 qa-CAMERA-EXPID.yaml
-desi-QL_SNR_QA
 ====================
 
 :Summary: This QA for QuickLook first includes the calculation of 
