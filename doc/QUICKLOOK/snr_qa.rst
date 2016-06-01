@@ -1,12 +1,14 @@
-==============
+====================
+qa-CAMERA-EXPID.yaml
 desi-QL_SNR_QA
-==============
+====================
 
 :Summary: This QA for QuickLook first includes the calculation of 
         signal-to-noise in the spectrum after sky subtraction. 
 :Naming Convention: ``qa-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
         {ARM} is the 1-char arm name (r,b,z), {SPECTROGRAPH} indexes 
-        CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.
+        CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
+        Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
 :Regex: ``qa-[brz][0-9]-[0-9]{8}\.yaml``
 :File Type:  YAML
 
