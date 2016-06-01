@@ -30,8 +30,8 @@ SNR        Py dictionary    Spectral signal-to-noise
 
 
 
-FITS Header Units
-=================
+Dictionary Contents
+===================
 
 KEYNAME = SNR
 
