@@ -58,10 +58,7 @@ Example YAML Output (10 spectra)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 {'Calculate Signal-to-Noise ratio': 
-{'EXPID': '00000002', 
- 'SPECTROGRAPH': 0, 
- 'ARM': 'r', 
- 'QANAME': 'SNR', 
+{'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'QANAME': 'SNR', 
  'VALUE': {'MED_AMP_SNR': array([ 1.79059346,  1.62490338,  0.        ,  0.        ]), 
  	   'TOT_SNR': array([  69.310733  ,   44.4842588 ,   60.21988334,   43.65503276,
         	467.18695762,   45.44668542,   46.36697513,   37.60920791,
@@ -70,4 +67,5 @@ Example YAML Output (10 spectra)
  	   'MED_SNR': array([ 1.32332343,  1.15160778,  1.37505349,  1.46805151,  8.56809804,
         	1.38577165,  1.32318437,  1.4029771 ,  1.15329144,  1.3964762 ])
 	  }
-}}
+}
+}

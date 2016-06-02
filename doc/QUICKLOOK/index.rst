@@ -1,8 +1,8 @@
 =========
-quicklook
+QUICKLOOK
 =========
 
 .. toctree::
    :maxdepth: 1
 
-   QUICKLOOK/index
+   $qa-sky-{camera}-{expid}.yaml : QA output after sky subtraction <qa-sky-CAMERA-EXPID>
