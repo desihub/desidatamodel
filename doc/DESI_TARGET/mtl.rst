@@ -29,7 +29,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Blank
-HDU1_  TARGETS BINTABLE Merged Target List table
+HDU1_  MTL     BINTABLE Merged Target List table
 ====== ======= ======== ===================
 
 
@@ -52,7 +52,7 @@ Required Header Keywords
 ======== ======================================================== ==== ===================================
 KEY      Example Value                                            Type Comment
 ======== ======================================================== ==== ===================================
-EXTNAME  TARGETS                                                  str  name of this binary table extension
+EXTNAME  MTL                                                      str  name of this binary table extension
 DEPNAM00 desitarget                                               str
 DEPVER00 0.1.0                                                    str  desitarget.__version__
 DEPNAM01 desitarget-git                                           str
