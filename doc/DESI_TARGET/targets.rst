@@ -83,23 +83,21 @@ WISE_MW_TRANSMISSION  float32[4]       Milky Way transmission
 SHAPEEXP_R            float32          Half-light radius of exponential model (>0)
 SHAPEDEV_R            float32          Half-light radius of deVaucouleurs model (>0)
 TARGETID              int64            Unique target ID
-TARGETFLAG            int64            Target selection bitmask
-NUMOBS                int32            Number of observations requested
+DESI_TARGET           int64            DESI (dark time program) target selection bitmask
+BGS_TARGET            int64            BGS (bright time program) target selection bitmask
+MWS_TARGET            int64            MWS (bright time program) target selection bitmask
 ===================== ========== ===== ===================
 
 
 Notes and Examples
 ==================
 
-NUMOBS may be deprecated in future versions.
-
 In general, the above format contains:
 
 * Columns that were used by target selection (e.g. DECAM_FLUX)
 * Columns needed by fiber assignment (e.g. RA, DEC)
-* Columns needed for traceability (e.g. BRICKNAME, TARGETID, TARGETFLAG)
+* Columns needed for traceability (e.g. BRICKNAME, TARGETID, DESI_TARGET, BGS_TARGET, MWS_TARGET)
 
-
-TARGETID, TARGETFLAG, and NUMOBS are created by target selection; the rest are pass through from the original input tractor files
+TARGETID, DESI_TARGET, BGS_TARGET and MWS_TARGET are created by target selection; the rest are pass through from the original input tractor files
 
 See http://legacysurvey.org for more details about the columns from input tractor files
