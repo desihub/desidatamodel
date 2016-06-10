@@ -1,5 +1,5 @@
 ===============
-targets-\*.fits
+mtl-\*.fits
 ===============
 
 General Description
@@ -8,19 +8,19 @@ General Description
 Summary
 -------
 
-DESI target selection files contain a single binary table covering the
-entire footprint.  They contain the variables used by target selection
-(*e.g.* fluxes), variables needed by fiber assignment (*e.g.* RA, DEC),
-and variables needed for traceability (*e.g.* TARGETFLAG, TARGETID).
+DESI Merged Target List files contains a single binary table covering the
+entire footprint.  They contain the variables in the Targets files plus 
+other variables that define the priority and number of observations as
+required by fiber assignement. These variables are computed using the 
+available information both in the target and the DESI redshift catalogs.
 
 Naming Convention
 -----------------
 
-TBD, let's try ``targets-{source}-{version}.fits`` where ``source`` is where the
-input data came from (*e.g.* 'dr1', 'dr2') and ``version`` is the code version
+TBD, let's try ``mtl-{version}.fits`` where ``version`` is the code version
 that wrote this, preferably a git tag of desitargets.
 
-regex: ``targets-dr[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
+regex: ``mtl-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
 
 Contents
 ========
@@ -29,7 +29,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Blank
-HDU1_  TARGETS BINTABLE Target selection table
+HDU1_  MTL     BINTABLE Merged Target List table
 ====== ======= ======== ===================
 
 
@@ -44,7 +44,7 @@ Empty header.
 HDU1
 ----
 
-Targets.
+MTL.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,7 +52,7 @@ Required Header Keywords
 ======== ======================================================== ==== ===================================
 KEY      Example Value                                            Type Comment
 ======== ======================================================== ==== ===================================
-EXTNAME  TARGETS                                                  str  name of this binary table extension
+EXTNAME  MTL                                                      str  name of this binary table extension
 DEPNAM00 desitarget                                               str
 DEPVER00 0.1.0                                                    str  desitarget.__version__
 DEPNAM01 desitarget-git                                           str
@@ -82,22 +82,27 @@ WISE_FLUX             float32[4]       WISE flux (W1, W2, W3, W4)
 WISE_MW_TRANSMISSION  float32[4]       Milky Way transmission
 SHAPEEXP_R            float32          Half-light radius of exponential model (>0)
 SHAPEDEV_R            float32          Half-light radius of deVaucouleurs model (>0)
-TARGETID              int64            Unique target ID
 DESI_TARGET           int64            DESI (dark time program) target selection bitmask
 BGS_TARGET            int64            BGS (bright time program) target selection bitmask
 MWS_TARGET            int64            MWS (bright time program) target selection bitmask
+NUMOBS_MORE           int32            Number of observations requested
+PRIORITY              int32            Target priority (larger number, higher priority)
+GRAYLAYER             int32            Flag the target to be observed in graytime.
 ===================== ========== ===== ===================
 
 
 Notes and Examples
 ==================
 
+NUMOBS may be deprecated in future versions.
+
 In general, the above format contains:
 
 * Columns that were used by target selection (e.g. DECAM_FLUX)
-* Columns needed by fiber assignment (e.g. RA, DEC)
+* Columns needed by fiber assignment (e.g. RA, DEC, NUMOBS_MORE, PRIORITY, GRAYLAYER)
 * Columns needed for traceability (e.g. BRICKNAME, TARGETID, DESI_TARGET, BGS_TARGET, MWS_TARGET)
 
-TARGETID, DESI_TARGET, BGS_TARGET and MWS_TARGET are created by target selection; the rest are pass through from the original input tractor files
+TARGETID, DESI_TARGET, BGS_TARGET and MWS_TARGET are created by target selection; NUMOBS_MORE, PRIORITY and GRAYLAYER
+are created by the targets.mtl submodule;  the rest are pass through from the original input tractor files
 
 See http://legacysurvey.org for more details about the columns from input tractor files
