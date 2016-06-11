@@ -82,7 +82,7 @@ WISE_FLUX             float32[4]       WISE flux (W1, W2, W3, W4)
 WISE_MW_TRANSMISSION  float32[4]       Milky Way transmission
 SHAPEEXP_R            float32          Half-light radius of exponential model (>0)
 SHAPEDEV_R            float32          Half-light radius of deVaucouleurs model (>0)
-TARGETID              int64            Unique target ID
+TARGETID              int64            ID (unique to file and the whole survey)
 DESI_TARGET           int64            DESI (dark time program) target selection bitmask
 BGS_TARGET            int64            BGS (bright time program) target selection bitmask
 MWS_TARGET            int64            MWS (bright time program) target selection bitmask
