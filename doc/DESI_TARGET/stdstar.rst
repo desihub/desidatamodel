@@ -17,7 +17,7 @@ Naming Convention
 TBD, let's try ``stdstar-{version}.fits`` where ``version`` is the code version
 that wrote this, preferably a git tag of desitargets.
 
-regex: ``stadstar-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
+regex: ``stdstar-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
 
 Contents
 ========
