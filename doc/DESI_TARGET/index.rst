@@ -12,4 +12,5 @@ with the canonical location of ``$DESI_ROOT/target``
    mtl-{version}.fits : merged target list catalog <mtl>
    truth-{version}.fits : truth mock catalog <truth>
    stdstar-{version}.fits : standard star catalog <stdstar>
+   sky-{version}.fits : sky positions catalog <sky>
    fiberassign/index
