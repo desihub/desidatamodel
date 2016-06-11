@@ -56,8 +56,8 @@ DEPNAM00 desitarget                                               str
 DEPVER00 0.1.0                                                    str  desitarget.__version__
 DEPNAM01 desitarget-git                                           str
 DEPVAL01 0.1.0                                                    str  git revision
-DEPNAM02 tractor-files                                            str
-DEPVER02 /project/projectdirs/cosmo/data/legacysurvey/dr1/tractor str  input directory
+DEPNAM02 mock-files                                               str
+DEPVER02 /global/project/projectdirs/desi/mocks/preliminary       str  input directory
 ======== ======================================================== ==== ===================================
 
 Required Data Table Columns
