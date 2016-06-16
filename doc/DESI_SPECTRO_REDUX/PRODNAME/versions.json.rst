@@ -17,3 +17,7 @@ this production, *e.g.* ::
     "harp": "0.9.8",
     "desispec": "2.3.4"
   }
+  
+Note: the pipeline currently does not write this file.  The code versions
+used are included in the header keywords of the data files, and the commands
+to configure that environment are kept in the ``setup.sh`` file instead.

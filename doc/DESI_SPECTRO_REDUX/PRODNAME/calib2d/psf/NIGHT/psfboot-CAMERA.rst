@@ -8,16 +8,20 @@ psfboot-CAMERA
 :Regex: ``psfboot-[brz][0-9]\.fits``
 :File Type: FITS, 64 KB
 
+This file is a first fit to the x vs. y vs. wavelength solutions and
+the mean Gaussian sigma wavelength dispersion per fiber.  It is used as
+a starting point for more refined fits.
+
 Contents
 ========
 
-====== ======= ===== ===================
+====== ======= ===== ==========================================
 Number EXTNAME Type  Contents
-====== ======= ===== ===================
-HDU0_          IMAGE *Brief Description*
-HDU1_          IMAGE *Brief Description*
-HDU2_          IMAGE *Brief Description*
-====== ======= ===== ===================
+====== ======= ===== ==========================================
+HDU0_          IMAGE Legendre coefficients for x vs. wavelength
+HDU1_          IMAGE Legendre coefficients for y vs. wavelength
+HDU2_          IMAGE Gaussian sigma per fiber
+====== ======= ===== ==========================================
 
 
 FITS Header Units
@@ -26,54 +30,61 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
+Legendre coefficients for x vs. wavelength.  Header keywords
+WAVEMIN and WAVEMAX provide the mapping from wavelength to the
+[-1,1] domain used for the Legenre polynomials.  i.e. starting
+with wavelength w::
+
+    wx = 2.0*(w-WAVEMIN)/(WAVEMAX-WAVEMIN) - 1.0  #- Map to [-1,1]
+    x[i] = Sum_j XCOEFF[i,j] L_j(wx)              #- evaluate Legendre series
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ===== =======
+======= ============= ===== ===============================
 KEY     Example Value Type  Comment
-======= ============= ===== =======
-NAXIS1  6             int
-NAXIS2  500           int
-WAVEMIN 5563.41034186 float
+======= ============= ===== ===============================
+NAXIS1  6             int   Number of Legendre coefficients
+NAXIS2  500           int   Number of spectra
+WAVEMIN 5563.41034186 float 
 WAVEMAX 7807.04444877 float
-======= ============= ===== =======
+======= ============= ===== ===============================
 
 Data: FITS image [float64, 6x500]
 
 HDU1
 ----
 
-*Summarize the contents of this HDU.*
+Legendre coefficients for y vs. wavelength; see the HDU0 description
+for how to interpret these.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ===== =======
+======= ============= ===== ===============================
 KEY     Example Value Type  Comment
-======= ============= ===== =======
-NAXIS1  6             int
-NAXIS2  500           int
+======= ============= ===== ===============================
+NAXIS1  6             int   Number of Legendre coefficients
+NAXIS2  500           int   Number of spectra
 WAVEMIN 5563.41034186 float
 WAVEMAX 7807.04444877 float
-======= ============= ===== =======
+======= ============= ===== ===============================
 
 Data: FITS image [float64, 6x500]
 
 HDU2
 ----
 
-*Summarize the contents of this HDU.*
+Mean Gaussian sigma wavelength dispersion per fiber.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======
+====== ============= ==== =================================================
 KEY    Example Value Type Comment
-====== ============= ==== =======
-NAXIS1 500           int
-====== ============= ==== =======
+====== ============= ==== =================================================
+NAXIS1 500           int  Mean wavelength dispersion per fiber in Angstroms
+====== ============= ==== =================================================
 
 Data: FITS image [float64, 500]
 
