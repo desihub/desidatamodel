@@ -5,8 +5,8 @@ zbest-BRICKNAME.fits
 *This is a placeholder for the redshift data model*
 
 This holds the classification and redshift information for targets.
-The formats are TBD, but it should be row-matched to the spectra in
-coadd-BRICKNAME.rst .  This is not yet the case.
+It contains the same TARGETIDs as the input brick-{camera}-{brickname}.fits
+files, but they could be in a different order.
 
 regex: ``zbest-[0-9]{4}[pm][0-9]{3}\.fits``
 
@@ -14,15 +14,11 @@ Nominally the HDUs will be:
 
   - HDU0 (empty)
   - HDU1 (ZBEST) : binary table with best redshift fit results
-  - ...
 
 Inputs
 ======
 
-Written by XXX, using:
-
-  - coadd (coadded spectra)
-  - brick (individual spectra)
+Written by ``desi_zfind.py``, using individual brick-{channel}-{expid}.fits files.
 
 HDU1
 ----

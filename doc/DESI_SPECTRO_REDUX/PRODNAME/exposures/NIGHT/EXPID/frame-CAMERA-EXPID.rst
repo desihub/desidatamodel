@@ -29,14 +29,16 @@ FITS, *TBD* MB
 Contents
 ========
 
-====== ========== ===== ===================
-Number EXTNAME    Type  Contents
-====== ========== ===== ===================
-HDU0_             IMAGE Extracted electrons (photons)
-HDU1_  IVAR       IMAGE Inverse variance of extracted electrons
-HDU2_  WAVELENGTH IMAGE Wavelength grid of the extraction
-HDU3_  RESOLUTION IMAGE Resolution matrix
-====== ========== ===== ===================
+====== ========== ======== ===================
+Number EXTNAME    Type     Contents
+====== ========== ======== ===================
+HDU0_  FLUX       IMAGE    Extracted electrons (photons)
+HDU1_  IVAR       IMAGE    Inverse variance of extracted electrons
+HDU2_  MASK       IMAGE    Bad value mask; 0=good
+HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction
+HDU3_  RESOLUTION IMAGE    Resolution matrix
+HDU5_  FIBERMAP   BINTABLE Fibermap
+====== ========== ======== ===================
 
 FITS Header Units
 =================
@@ -99,6 +101,30 @@ Data: FITS image [float64]
 HDU2
 ----
 
+EXTNAME = MASK
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   2951             int  length of original image axis
+NAXIS2   500              int  length of original image axis
+BSCALE   1                int
+BZERO    2147483648       int
+EXTNAME  MASK             str  name of this binary table extension
+CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
+DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
+======== ================ ==== ==============================================
+
+Data: FITS image [int32, 2951x500]
+
+HDU3
+----
+
 EXTNAME = WAVELENGTH
 
 1D array of wavelengths.  NAXIS1 here is the same length as NAXIS2 of
@@ -116,7 +142,7 @@ EXTNAME WAVELENGTH    str
 
 Data: FITS image [float64]
 
-HDU3
+HDU4
 ----
 
 EXTNAME = RESOLUTION
@@ -161,6 +187,14 @@ EXTNAME RESOLUTION    str
 ======= ============= ==== =====================
 
 Data: FITS image [float64]
+
+HDU5
+----
+
+EXTNAME = FIBERMAP
+
+Fibermap propagated from the raw data inputs; see
+DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID.rst.
 
 Notes and Examples
 ==================

@@ -15,5 +15,8 @@ Nominally the HDUs will be:
   - HDU1 (IVAR) : inverse variance[nspec, nwave] of fluxcalib
   - HDU2 (MASK) : mask[nspec, nwave] of fluxcalib (0=good)
   - HDU3 (WAVELENGTH) : wavelength[nwave] in Angstroms
-  - HDU4 (METADATA) : binary table with one row per standard star giving
-    the details of which model was used, etc.  Details TBD.
+
+We may add an additional HDU with EXTNAME=METADATA containing a
+binary table with one row per standard star giving
+the details of which model was used, etc.
+This is not yet implemented and details TBD.
