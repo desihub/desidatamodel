@@ -41,20 +41,20 @@ Spectral signal-to-noise calculations per fiber and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ============
-KEY              Example Value Type       Comment
-================ ============= ========== ============
-ARM              r             char       Spectrograph arm b,r,z
-SPECTROGRAPH     0             int  	  Camera index 0..9
-EXPID            00000002      int  	  exposure ID
-QANAME		 SNR           string     name of QA algorithm
-PANAME           SKYSUB       string     name of preceding PA
-TIMESTAMP      12.1012     float        time of processing in hours UTC
-TOTAL_SNR        44.484        float[500] summed S/N per fiber 
-MEDIAN_SNR       1.3233        float[500] median S/N per fiber
-TOT_AMP_SNR	 382.74	       float[4]   summed S/N averaged over each amplifier
-MEDIAN_AMP_SNR	 1.7905	       float[4]   median S/N averaged over each amplifier
-================ ============= ========== ============
+=============== ============= ========== ============
+KEY                                   Example Value           Type                     Comment
+=============== ============= ========== ============
+ARM                                  r                                char                        Spectrograph arm b,r,z
+SPECTROGRAPH                0                                int                       Camera index 0..9
+EXPID                                00000002                  int                      exposure ID
+QANAME		                 SNR                           string                  name of QA algorithm
+PANAME                            SKYSUB                     string                    name of preceding PA
+TIMESTAMP                       12.1012                    float                     time of processing in hrs UTC
+TOTAL_SNR                      44.484                      float[500]              summed S/N per fiber 
+MEDIAN_SNR                    1.3233                      float[500]              median S/N per fiber
+TOT_AMP_SNR	                 382.74	                  float[4]                 summed S/N averaged over each amplifier
+MEDIAN_AMP_SNR	         1.7905	                  float[4]                 median S/N averaged over each amplifier
+=============== ============= ========== ============
 
 Example YAML Output (10 spectra)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
