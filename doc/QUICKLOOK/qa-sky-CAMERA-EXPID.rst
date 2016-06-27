@@ -4,7 +4,7 @@ qa-sky-CAMERA-EXPID.yaml
 
 :Summary: This QA for QuickLook first includes the calculation of 
         signal-to-noise in the spectrum after sky subtraction. 
-:Naming Convention: ``qa-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
+:Naming Convention: ``qa-sky-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
         {ARM} is the 1-char arm name (r,b,z), {SPECTROGRAPH} indexes 
         CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
         Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
@@ -48,6 +48,8 @@ ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
 QANAME		 SNR           string     name of QA algorithm
+PANAME           SKYSUB       string     name of preceding PA
+TIMESTAMP      12.1012     float        time of processing in hours UTC
 TOTAL_SNR        44.484        float[500] summed S/N per fiber 
 MEDIAN_SNR       1.3233        float[500] median S/N per fiber
 TOT_AMP_SNR	 382.74	       float[4]   summed S/N averaged over each amplifier
@@ -59,8 +61,8 @@ Example YAML Output (10 spectra)
 
 ::
 
-    {'Calculate Signal-to-Noise ratio': 
-        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'QANAME': 'SNR', 
+    {'SNR': 
+        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'PANAME': 'SKYSUB', 'TIMESTAMP': 12.1012, 
          'VALUE': 
              {'MED_AMP_SNR': array([ 1.79059346,  1.62490338,  0.        ,  0.        ]), 
  	      'TOT_SNR': array([  69.310733  ,   44.4842588 ,   60.21988334,   43.65503276,
