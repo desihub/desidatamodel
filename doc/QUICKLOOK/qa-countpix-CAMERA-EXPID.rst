@@ -46,15 +46,15 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 COUNTPIX           string     name of QA algorithm
-PANAME            PREPROC         string     name of pipeline algorihm
-TIMESTAMP       12.01234        float       time in hours of the day (UTC) of QA execution
-NPIX3SIG                   1000                int      number of pixels above 3 sigma
-NPIX3SIG_AMP           900               int[4]    number of pixelsabove 3 sigma over each amplifier
-NPIX100                   100                int      number of pixels above 100 counts
-NPIX100_AMP           90               int[4]    number of pixels above 100 over each amplifier
-NPIX500                   20                int      number of pixels above 500 counts
-NPIX500_AMP           20               int[4]    number of pixelsabove 500 over each amplifier
+QANAME		 COUNTPIX      string     name of QA algorithm
+PANAME           PREPROC       string     name of pipeline algorihm
+TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
+NPIX3SIG         1000          int        number of pixels above 3 sigma
+NPIX3SIG_AMP     900           int[4]     number of pixelsabove 3 sigma over each amplifier
+NPIX100          100           int        number of pixels above 100 counts
+NPIX100_AMP      90            int[4]     number of pixels above 100 over each amplifier
+NPIX500          20            int        number of pixels above 500 counts
+NPIX500_AMP      20            int[4]     number of pixelsabove 500 over each amplifier
 ================ ============= ========== ============
 
 Example YAML Output

@@ -47,11 +47,11 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 SKYCONT           string     name of QA algorithm
-PANAME            FIBERFLAT         string     name of pipeline algorihm
-TIMESTAMP       12.01234        float       time in hours of the day (UTC) of QA execution
-SKY                   210.0                float      value of bias across image
-SKY_AMP           199.12               float[4]       value of bias averaged over each amplifier
+QANAME		 SKYCONT       string     name of QA algorithm
+PANAME           FIBERFLAT     string     name of pipeline algorihm
+TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
+SKY              210.0         float      value of bias across image
+SKY_AMP          199.12        float[4]   value of bias averaged over each amplifier
 ================ ============= ========== ============
 
 Example YAML Output

@@ -44,18 +44,18 @@ Keyword Description
 ================ ============= ========== ============
 KEY              Example Value Type       Comment
 ================ ============= ========== ============
-ARM              r             char                Spectrograph arm b,r,z
+ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 COUNTBINS           string     name of QA algorithm
-PANAME            BOXCAR         string     name of pipeline algorihm
-TIMESTAMP       12.01234        float       time in hours of the day (UTC) of QA execution
-NBINS100                   200                int[500]      number of bins above 100 counts per fiber
-NBINS100_AMP           190               float[4]          number of bins above 100 counts averaged over each amplifier
-NBINS250                   100                int[500]      number of bins above 250 cts per fiber
-NBINS250_AMP           90               float[4]            number of bins above 250 cts averaged over each amplifier
-NBINS500                   10                int[500]        number of bins above 500 cts per fiber
-NBINS500_AMP           9               float[4]              number of bins above 500 cts averaged over each amplifier
+QANAME		 COUNTBINS     string     name of QA algorithm
+PANAME           BOXCAR        string     name of pipeline algorihm
+TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
+NBINS100         200           int[500]   number of bins above 100 counts per fiber
+NBINS100_AMP     190           float[4]   number of bins above 100 counts averaged over each amplifier
+NBINS250         100           int[500]   number of bins above 250 cts per fiber
+NBINS250_AMP     90            float[4]   number of bins above 250 cts averaged over each amplifier
+NBINS500         10            int[500]   number of bins above 500 cts per fiber
+NBINS500_AMP     9             float[4]   number of bins above 500 cts averaged over each amplifier
 ================ ============= ========== ============
 
 Example YAML Output
