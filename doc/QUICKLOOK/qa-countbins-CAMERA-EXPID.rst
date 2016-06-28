@@ -1,6 +1,6 @@
-========================
+==============================
 qa-countbins-CAMERA-EXPID.yaml
-========================
+==============================
 
 :Summary: This QA for QuickLook includes the calculation of the number
 	  of spectral bins above threshold.
@@ -23,11 +23,11 @@ Written by qa_quicklook.py, with Count_Spectral_bins using:
 Contents
 ========
 
-========== ================ ===========================
-KEYNAME     Type                 Contents
-========== ================ ===========================
-COUNTBINS        Py dictionary       number of bins per spectrum above threshold
-========== ================ ===========================
+========== ================ ===========================================
+KEYNAME    Type             Contents
+========== ================ ===========================================
+COUNTBINS  Py dictionary    Number of bins per spectrum above threshold
+========== ================ ===========================================
 
 
 
@@ -41,9 +41,9 @@ Calculation of number of bins above a threshold per spectrum.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ============
+================ ============= ========== ============================================================
 KEY              Example Value Type       Comment
-================ ============= ========== ============
+================ ============= ========== ============================================================
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
@@ -56,10 +56,10 @@ NBINS250         100           int[500]   number of bins above 250 cts per fiber
 NBINS250_AMP     90            float[4]   number of bins above 250 cts averaged over each amplifier
 NBINS500         10            int[500]   number of bins above 500 cts per fiber
 NBINS500_AMP     9             float[4]   number of bins above 500 cts averaged over each amplifier
-================ ============= ========== ============
+================ ============= ========== ============================================================
 
 Example YAML Output
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 ::
 

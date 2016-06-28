@@ -1,6 +1,6 @@
-========================
+=============================
 qa-countpix-CAMERA-EXPID.yaml
-========================
+=============================
 
 :Summary: This QA for QuickLook includes the calculation of the number of
         pixels above three thresholds in the 2-D pix file after the preprocessing stage. 
@@ -22,11 +22,11 @@ Written by qa_quicklook.py, with Count_Pixels using:
 Contents
 ========
 
-========== ================ ===========================
-KEYNAME     Type                 Contents
-========== ================ ===========================
-COUNTPIX        Py dictionary    Number of pixels above threshold
-========== ================ ===========================
+========== ================ ================================
+KEYNAME    Type             Contents
+========== ================ ================================
+COUNTPIX   Py dictionary    Number of pixels above threshold
+========== ================ ================================
 
 
 
@@ -40,9 +40,9 @@ Integral counts of pixels above three thresholds per image and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ============
+================ ============= ========== ==================================================
 KEY              Example Value Type       Comment
-================ ============= ========== ============
+================ ============= ========== ==================================================
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
@@ -55,10 +55,10 @@ NPIX100          100           int        number of pixels above 100 counts
 NPIX100_AMP      90            int[4]     number of pixels above 100 over each amplifier
 NPIX500          20            int        number of pixels above 500 counts
 NPIX500_AMP      20            int[4]     number of pixelsabove 500 over each amplifier
-================ ============= ========== ============
+================ ============= ========== ==================================================
 
 Example YAML Output
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 ::
 
