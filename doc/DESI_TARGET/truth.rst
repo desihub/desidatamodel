@@ -70,7 +70,7 @@ TARGETID              int64            ID (unique to file and the whole survey)
 BRICKNAME             char[8]          Brick name from tractor input
 RA                    float64          Right ascension [degrees]
 DEC                   float64          Declination [degrees]
-TRUEZ                 float64          True redshift in mock catalog (without peculiar velocity)
+TRUEZ                 float64          True redshift in mock catalog (with peculiar velocity)
 TRUETYPE              char[10]         True object type in mock catalog
 ===================== ========== ===== ===================
 
