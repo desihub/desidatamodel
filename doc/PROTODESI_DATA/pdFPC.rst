@@ -3,21 +3,20 @@ pdFPC
 =======
 
 :Summary: Fiber Photometry Camera images for ProtoDESI.
-:Naming Convention: ``pd-FPC#-MJD5.fits``, where ``#`` is the
+:Naming Convention: ``pdFPC-ID#-MJD5.fits``, where ``ID#`` is the
    image ID and ``MJD5`` is the five-digit MJD.
-:Regex: ``pd-FPC#-MJD5\.fits``
+:Regex: ``pdFPC-[0-9]{3}-[0-9]{5}\.fits``
 
 
 Contents
 ========
 
-====== ========== ====== ================================================================
-Number EXTNAME    Type   Contents
-====== ========== ====== ================================================================
-HDU0_  NPIXxNPIX  image  raw image
-HDU1_  NPIXxNPIX  image  Analyzed image?
-
-====== ========== ====== ================================================================
+====== ========== ======================= ================================================================
+Number EXTNAME    Type                    Contents
+====== ========== ======================= ================================================================
+HDU0_             NPIX1xNPIX2 float image  raw image
+HDU1_                                      Analyzed image/postage stamps?
+====== ========== ======================= ================================================================
 
 FITS Header Units
 =================
@@ -50,17 +49,18 @@ Required Columns
 ================= ======== =======
 Column            Type     Comment
 ================= ======== =======
-FILE              char[?]  Filename
 TAI-BEG           float    Timestamp
 EXPTIME           float    Exposure Time
 BIN               int32    binning
+TEMP              float    Temp of camera
 IMG-X             int64    Image size -x
 IMG-Y             float    Image size -y
 TEL-RA            float    Telescope RA
 TEL-DEC           float    Tel.DEC
 AMASS             float    Airmass
-F0-RA             float    Fiber 1 RA
-F0-DEC            float    Fiber 1 DEC
+FIELD             int64    Field ID
+F0-RA             float    Fiber 0 RA
+F0-DEC            float    Fiber 0 DEC
 F1-RA             float    Fiber 1 RA
 F1-DEC            float    Fiber 1 DEC
 F2-RA             float    Fiber 2 RA
