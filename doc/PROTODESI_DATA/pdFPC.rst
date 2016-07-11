@@ -75,6 +75,7 @@ GS-RA             float    Guide ref pixel RA
 GS-DEC            float    Guide ref pixel DEC
 GS-X              float    Guide ref pixel X
 GS-Y              float    Guide ref pixel Y
+FRAMETYPE         str      Frame type: bias, dark, flat, object
 ================= ======== =======
 
 
