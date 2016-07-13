@@ -47,9 +47,8 @@ KEY             Example Value Type       Comment
 ARM             r             char       Spectrograph arm b,r,z
 SPECTROGRAPH    0             int        Camera index 0..9
 EXPID           00000002      int        exposure ID
-QANAME		SNR           string     name of QA algorithm
 PANAME          SKYSUB        string     name of preceding PA
-TIMESTAMP       12.1012       float      time of processing in hrs UTC
+MJD              57578.78099   float      Modified Julian Date (JD-2400000.5) in days of the time of QA execution
 MEDIAN_SNR      1.3233        float[500] median S/N per fiber
 MEDIAN_AMP_SNR	1.7905	      float[4]   median S/N averaged over each amplifier
 =============== ============= ========== =======================================
@@ -60,11 +59,11 @@ Example YAML Output (10 spectra)
 ::
 
     {'SNR': 
-        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'PANAME': 'SKYSUB', 'TIMESTAMP': 12.1012, 
-         'VALUE': 
-             {'MED_AMP_SNR': array([ 1.79059346,  1.62490338,  0.        ,  0.        ]), 
- 	      'MED_SNR': array([ 1.32332343,  1.15160778,  1.37505349,  1.46805151,  8.56809804,
-        	   1.38577165,  1.32318437,  1.4029771 ,  1.15329144,  1.3964762 ])
-	     }
+         {'ARM': 'r', 'EXPID': '00000006', 'MJD': 57578.78131121235, 'PANAME': 'SKYSUB', 'SPECTROGRAPH': 0,
+          'VALUE': 
+             {'MEDIAN_AMP_SNR': array([ 11.28466596,   0.        ,  13.18927372,   0.        ]),
+              'MEDIAN_SNR': array([ 26.29012459,  35.02498105,   3.30635973,   7.69106173,
+                    0.586899  ,   3.59830798,  11.75768833,   8.276959  ,  16.70907383,   4.82177165])
+             }
          }
      }

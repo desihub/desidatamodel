@@ -47,11 +47,12 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 SKYCONT       string     name of QA algorithm
 PANAME           FIBERFLAT     string     name of pipeline algorihm
-TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
-SKY              210.0         float      value of bias across image
-SKY_AMP          199.12        float[4]   value of bias averaged over each amplifier
+MJD              57578.78099   float      Modified Julian Date (JD-2400000.5) in days of the time of QA execution
+SKYCONT          210.0         float      sky continuum in all configured continuum areas averaged over all sky fibers
+SKYCONT_FIBER    357.238       float[n]   sky continuum per sky fiber averaged over two continuum regions, 'n' is number of sky fibers
+SKYFIBERID       4             int[n]     FIBERID of sky fibers 
+SKYCONT_AMP      199.12        float[4]   sky continuum per amp averaged over all overlaying sky fibers
 ================ ============= ========== ==============================================
 
 Example YAML Output
@@ -60,10 +61,13 @@ Example YAML Output
 ::
 
     {'SKYCONT': 
-        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'PANAME': 'FIBERFLAT', 'TIMESTAMP', 12.0123, 
-         'VALUE': 
-             {'SKY': 210.0,
-	      'SKY_AMP': array([199.12, 210.88, 0., 0. ])
-	     }
+         {'ARM': 'r', 'EXPID': '00000006', 'MJD': 57582.49011861168, 'PANAME': 'APPLY_FIBERFLAT', 'SPECTROGRAPH': 0,
+          'VALUE': 
+              {'SKYCONT': 359.70078667259668,
+                    'SKYCONT_AMP': array([ 374.19163643,    0.        ,  344.76184662,    0.        ]),
+                    'SKYCONT_FIBER': [357.23814787655738,   358.14982775192709,   359.34380640332847,   361.55526717275529,
+                         360.46690568746544,   360.49561926858325,   359.08761654248656,   361.26910267767016],
+                    'SKYFIBERID': [4, 19, 30, 38, 54, 55, 57, 62]
+              }
          }
-     }
+    }
