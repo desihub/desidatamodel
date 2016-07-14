@@ -47,7 +47,8 @@ ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
 PANAME           PREPROC       string     name of pipeline algorihm
-MJD              57578.78099   float      Modified Julian Date (JD-2400000.5) in days of the time of QA execution
+QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
+                 06:05:34.555
 NPIX3SIG         1000          int        number of pixels above 3 sigma
 NPIX3SIG_AMP     900           int[4]     number of pixelsabove 3 sigma over each amplifier
 NPIX100          100           int        number of pixels above 100 counts
@@ -62,7 +63,7 @@ Example YAML Output
 ::
 
     {'COUNTPIX': 
-         {'ARM': 'r', 'EXPID': '00000006', 'MJD': 57578.780697648355, 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
+         {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
           'VALUE':
               {'NPIX100': 0,
                'NPIX100_AMP': [254549, 0, 242623, 0],

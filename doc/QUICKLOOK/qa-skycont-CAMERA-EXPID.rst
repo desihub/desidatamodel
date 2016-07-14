@@ -48,7 +48,8 @@ ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
 PANAME           FIBERFLAT     string     name of pipeline algorihm
-MJD              57578.78099   float      Modified Julian Date (JD-2400000.5) in days of the time of QA execution
+QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
+                 06:05:34.555
 SKYCONT          210.0         float      sky continuum in all configured continuum areas averaged over all sky fibers
 SKYCONT_FIBER    357.238       float[n]   sky continuum per sky fiber averaged over two continuum regions, 'n' is number of sky fibers
 SKYFIBERID       4             int[n]     FIBERID of sky fibers 
@@ -61,7 +62,7 @@ Example YAML Output
 ::
 
     {'SKYCONT': 
-         {'ARM': 'r', 'EXPID': '00000006', 'MJD': 57582.49011861168, 'PANAME': 'APPLY_FIBERFLAT', 'SPECTROGRAPH': 0,
+         {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'APPLY_FIBERFLAT', 'SPECTROGRAPH': 0,
           'VALUE': 
               {'SKYCONT': 359.70078667259668,
                     'SKYCONT_AMP': array([ 374.19163643,    0.        ,  344.76184662,    0.        ]),
