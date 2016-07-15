@@ -46,9 +46,9 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 COUNTPIX      string     name of QA algorithm
 PANAME           PREPROC       string     name of pipeline algorihm
-TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
+QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
+                 06:05:34.555
 NPIX3SIG         1000          int        number of pixels above 3 sigma
 NPIX3SIG_AMP     900           int[4]     number of pixelsabove 3 sigma over each amplifier
 NPIX100          100           int        number of pixels above 100 counts
@@ -63,14 +63,14 @@ Example YAML Output
 ::
 
     {'COUNTPIX': 
-        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'PANAME': 'PREPROC', 'TIMESTAMP', 12.0123, 
-         'VALUE': 
-             {'NPIX3SIG': 1000,
-	      'NPIX3SIG_AMP': array([900, 1100, 0., 0. ])
-	      'NPIX100': 100,
-	      'NPIX100_AMP': array([90, 110, 0., 0. ])
-	      'NPIX500': 20,
-	      'NPIX500_AMP': array([20, 20, 0., 0. ])
-	      }
+         {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
+          'VALUE':
+              {'NPIX100': 0,
+               'NPIX100_AMP': [254549, 0, 242623, 0],
+               'NPIX3SIG': 3713,
+               'NPIX3SIG_AMP': [128158, 2949, 132594, 3713],
+               'NPIX500': 0,
+               'NPIX500_AMP': [1566, 0, 1017, 0]
+              }
          }
-     }
+    }

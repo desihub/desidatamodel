@@ -47,15 +47,16 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 COUNTBINS     string     name of QA algorithm
 PANAME           BOXCAR        string     name of pipeline algorihm
-TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
+QATIME           2016-07-08T   float	  timestamp (UTC) of time of QA execution
+		 06:05:34.555
 NBINS100         200           int[500]   number of bins above 100 counts per fiber
 NBINS100_AMP     190           float[4]   number of bins above 100 counts averaged over each amplifier
 NBINS250         100           int[500]   number of bins above 250 cts per fiber
 NBINS250_AMP     90            float[4]   number of bins above 250 cts averaged over each amplifier
 NBINS500         10            int[500]   number of bins above 500 cts per fiber
 NBINS500_AMP     9             float[4]   number of bins above 500 cts averaged over each amplifier
+NGOODFIBERS      10            int        number of fibers with a nonzero number of bins above highest threshold 
 ================ ============= ========== ============================================================
 
 Example YAML Output
@@ -64,14 +65,14 @@ Example YAML Output
 ::
 
     {'COUNTBINS': 
-        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'PANAME': 'BOXCAR', 'TIMESTAMP', 12.0123, 
-         'VALUE': 
-             {'NBINS100': 200.0,
-	      'NBINS100_AMP': array([190.12, 200.88, 0., 0. ])
-	      'NBINS250': 100.0,
-	      'NBINS250_AMP': array([90.12, 100.88, 0., 0. ])
-	      'NBINS500': 10.0,
-	      'NBINS500_AMP': array([9.12, 10.88, 0., 0. ])
-	      }
-         }
-     }
+       {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'BOXCAR', 'SPECTROGRAPH': 0,
+        'VALUE': 
+            {'NBINS100': array([ 2575.,  2611.,  2451.,  2495.,  2357.,  2452.,  2528.,  2501.,  2548.,  2461.]),
+             'NBINS100_AMP': array([ 1249.74,     0.  ,  1198.01,     0.  ]),
+             'NBINS250': array([ 2503.,  2539.,  2161.,  2259.,  2077.,  2163.,  2284.,  2268.,  2387.,  2210.]),
+             'NBINS250_AMP': array([ 1149.55,     0.  ,  1095.02,     0.  ]),
+             'NBINS500': array([ 2307.,  2448.,   229.,  1910.,    94.,   306.,  2056.,  1941.,  2164.,   785.]),
+             'NBINS500_AMP': array([ 688.85,    0.  ,  648.75,    0.  ])
+            }
+       }
+    }

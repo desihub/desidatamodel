@@ -46,9 +46,9 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-QANAME		 GETRMS        string     name of QA algorithm
 PANAME           PREPROC       string     name of pipeline algorihm
-TIMESTAMP        12.01234      float      time in hours of the day (UTC) of QA execution
+QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
+                 06:05:34.555
 RMS              10.0          float      value of RMS across image
 RMS_AMP          9.12          float[4]   value of RMS averagedover each amplifier
 ================ ============= ========== ==============================================
@@ -59,10 +59,10 @@ Example YAML Output
 ::
 
     {'GETRMS': 
-        {'EXPID': '00000002', 'SPECTROGRAPH': 0, 'ARM': 'r', 'PANAME': 'PREPROC', 'TIMESTAMP', 12.0123, 
+        {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
          'VALUE': 
-             {'RMS': 10.0,
-	      'RMS_AMP': array([9.12, 10.88, 0., 0. ])
-	     }
-         }
-     }
+             {'RMS': 40.218151021598679,
+              'RMS_AMP': array([ 55.16847779,   2.91397089,  55.26686528,   2.91535373])
+             }
+        }
+    }
