@@ -52,6 +52,14 @@ QATIME           2016-07-08T   float      timestamp (UTC) of time of QA executio
                  06:05:34.555
 MEDIAN_SNR      1.3233        float[500] median S/N per fiber
 MEDIAN_AMP_SNR	1.7905	      float[4]   median S/N averaged over each amplifier
+ELG_SNR_MAG     1.3, 23.5     float[500, S/N for ELGs in (SNR,magnitude) pairs
+                                500]     for S/N vs. magnitude plots
+LRG_SNR_MAG     2.4, 23.0     float[500, S/N for LRGs in (SNR,magnitude) pairs
+                                500]
+QSO_SNR_MAG     2.4, 23.0     float[500, S/N for QSOs in (SNR,magnitude) pairs
+                                500]     
+STAR_SNR_MAG    2.4, 23.0     float[500, S/N for STARs in (SNR,magnitude) pairs
+                                500]
 =============== ============= ========== =======================================
 
 Example YAML Output (10 spectra)
@@ -65,6 +73,10 @@ Example YAML Output (10 spectra)
              {'MEDIAN_AMP_SNR': array([ 11.28466596,   0.        ,  13.18927372,   0.        ]),
               'MEDIAN_SNR': array([ 26.29012459,  35.02498105,   3.30635973,   7.69106173,
                     0.586899  ,   3.59830798,  11.75768833,   8.276959  ,  16.70907383,   4.82177165])
+              'ELG_SNR_MAG': array([1.3, 23.5, 1.7, 23.4,...]),
+              'LRG_SNR_MAG': array([1.3, 23.5, 1.7, 23.4,...]),
+              'QSO_SNR_MAG': array([1.3, 23.5, 1.7, 23.4,...]),
+              'STAR_SNR_MAG': array([1.3, 23.5, 1.7, 23.4,...])
              }
          }
      }
