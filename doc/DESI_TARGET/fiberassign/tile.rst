@@ -71,6 +71,7 @@ yfocal_design float32 mm       Y location on focal plane
 desi_target0  int64            TARGETFLAG for that target
 numtarget     int32            number of targets that this fiber covers
 t_priority    int32            target priority [deprecated?]
+BRICKNAME     char[8]          Brick name from tractor input
 ============= ======= ======== ===================
 
 Notes:
