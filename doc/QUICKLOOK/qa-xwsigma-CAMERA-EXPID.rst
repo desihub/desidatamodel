@@ -49,7 +49,7 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-PANAME           PREPROC     string     name of pipeline algorihm
+PANAME           PREPROC       string     name of pipeline algorihm
 QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
                  06:05:34.555
 XSIGMA		 1.9           float[500] fitted XSIGMA averaged over isolated bright 
