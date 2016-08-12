@@ -1,14 +1,14 @@
 ============================
-qa-xysigma-CAMERA-EXPID.yaml
+qa-xwsigma-CAMERA-EXPID.yaml
 ============================
 
 :Summary: This QA for QuickLook includes the calculation of the X and W
           sigmas from the 2D image file.
-:Naming Convention: ``qa-xysigma-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
+:Naming Convention: ``qa-xwsigma-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
         {ARM} is the 1-char arm name (r,b,z), {SPECTROGRAPH} indexes 
         CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
         Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
-:Regex: ``qa-xysigma-[brz][0-9]-[0-9]{8}\.yaml``
+:Regex: ``qa-xwsigma-[brz][0-9]-[0-9]{8}\.yaml``
 :File Type:  YAML
 
 
@@ -26,7 +26,7 @@ Contents
 ========== ================ ==============================================
 KEYNAME    Type             Contents
 ========== ================ ==============================================
-XYSIGMA    Py dictionary    sigma calculation at peak sky wavelengths
+XWSIGMA    Py dictionary    sigma calculation at peak sky wavelengths
 ========== ================ ==============================================
 
 
@@ -34,10 +34,10 @@ XYSIGMA    Py dictionary    sigma calculation at peak sky wavelengths
 Dictionary Contents
 ===================
 
-KEYNAME = XYSIGMA
+KEYNAME = XWSIGMA
 
-Calculation of standard deviation of Gaussian fit to X and Y profiles at
-peak sky wavelengths.  
+Calculation of standard deviation of Gaussian fit to X and W (i.e. 'wavelength')
+profiles at peak sky wavelengths.  
 
 
 Keyword Description
@@ -49,7 +49,7 @@ KEY              Example Value Type       Comment
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
-PANAME           FIBERFLAT     string     name of pipeline algorihm
+PANAME           PREPROC     string     name of pipeline algorihm
 QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
                  06:05:34.555
 XSIGMA		 1.9           float[500] fitted XSIGMA averaged over isolated bright 
@@ -69,7 +69,7 @@ Example YAML Output
 
 ::
 
-    {'XYSIGMA': 
+    {'XWSIGMA': 
          {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
           'VALUE': 
               {'XSIGMA': array([ 1.9, 1.81, 1.2...]),

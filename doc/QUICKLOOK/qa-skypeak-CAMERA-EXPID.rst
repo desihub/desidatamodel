@@ -4,7 +4,7 @@ qa-skypeak-CAMERA-EXPID.yaml
 
 :Summary: This QA for QuickLook includes the calculation of the counts and RMS 
 	  at peak sky wavelengths in a 1D spectrum.
-:Naming Convention: ``qa-skypeaks-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
+:Naming Convention: ``qa-skypeak-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
         {ARM} is the 1-char arm name (r,b,z), {SPECTROGRAPH} indexes 
         CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
         Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
@@ -62,7 +62,7 @@ Example YAML Output
 
 ::
 
-    {'SKYCONT': 
+    {'SKYPEAK': 
          {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'APPLY_FIBERFLAT', 'SPECTROGRAPH': 0,
           'VALUE': 
               {'SUMCOUNT': array([ 1500.0,  1400.0, ....]),
