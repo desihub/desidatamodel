@@ -150,4 +150,4 @@ Notes and Examples
 The missing keywords listed above in the Other Keywords section, grouped roughly by categories, 
 are either found in an older version of data model, or defined in DESI-1229 and deemed relevant for protoDESI run.
 
-While this data model is up to date, FPC and GFA images may not be in their final shape and subject to change.
+While this data model is up to date, FPC and GFA images may not be in their final shape and are subject to change.
