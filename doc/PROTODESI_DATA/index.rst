@@ -13,6 +13,6 @@ Subdirectories:
 .. toctree::
    :maxdepth: 1
 
-   pdFPC/index
-   pdGFA/index
-   pdFVC/index
+   pdFPC
+   pdGFA
+   pdFVC
