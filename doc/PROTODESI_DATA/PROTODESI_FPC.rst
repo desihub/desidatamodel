@@ -47,7 +47,7 @@ OPENSHUT 2016-08-17T17:49:22.235092               str   time at shutter open (UT
 LST      08:09:06.860                             str   LST at observation start (HH:mm:ss.ss)
 EXPREQ   1.0                                      float [s] Requested Exposure duration, also defined as REQTIME
 FILENAME /data/images/PROTODESI_FPC_00000050.fits str   absolute path of file on desirpi1
-CCDTEMP  -1.907                                   float CCD temperature *before or after exposure?*
+CCDTEMP  -1.907                                   float CCD temperature **before or after exposure?**
 CCDSET   -9.788                                   float setpoint of CCD TEC
 CCDPOWER 100.0                                    float cooling power of TEC
 TECFROZE F                                        bool  whether TEC is frozen or not
