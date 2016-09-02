@@ -40,9 +40,9 @@ Spectral root-mean-squared calculations per image and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ==============================================
+================ ============= ========== ==================================================
 KEY              Example Value Type       Comment
-================ ============= ========== ==============================================
+================ ============= ========== ==================================================
 ARM              r             char       Spectrograph arm b,r,z
 SPECTROGRAPH     0             int  	  Camera index 0..9
 EXPID            00000002      int  	  exposure ID
@@ -50,8 +50,10 @@ PANAME           PREPROC       string     name of pipeline algorihm
 QATIME           2016-07-08T   float      timestamp (UTC) of time of QA execution
                  06:05:34.555
 RMS              10.0          float      value of RMS across image
-RMS_AMP          9.12          float[4]   value of RMS averagedover each amplifier
-================ ============= ========== ==============================================
+RMS_AMP          9.12          float[4]   value of RMS for each amplifier
+RMS_OVER         10.0          float      value of RMS across whole overscan region
+RMS_OVER_AMP     9.12          float[4]   value of RMS in overscan region for each amplifier
+================ ============= ========== ==================================================
 
 Example YAML Output
 ~~~~~~~~~~~~~~~~~~~
@@ -62,7 +64,9 @@ Example YAML Output
         {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
          'VALUE': 
              {'RMS': 40.218151021598679,
-              'RMS_AMP': array([ 55.16847779,   2.91397089,  55.26686528,   2.91535373])
+              'RMS_AMP': array([ 55.16847779,   2.91397089,  55.26686528,   2.91535373]),
+	      'RMS_OVER': 40.21815,
+	      'RMS_OVER_AMP': array([ 55.168,   2.913,   55.266,  2.915])
              }
         }
     }
