@@ -1,6 +1,6 @@
-============================
+=============================
 qa-skyresid-CAMERA-EXPID.yaml
-============================
+=============================
 
 :Summary: This QA for QuickLook includes the calculation of the sky
 	  continuum level in sky fibers.
@@ -58,14 +58,14 @@ NREJ		 0             int              number of rejected fibers
 NSKY_FIB         34	       int              number of good sky fibers
 RESID_PER	 -28.83, 31.75 float[2]         95% c.l. boundaries of residuals distribution
 WAVELENGTH	 5630...7740.  float[NWAVE]     wavelength (Ang.) in NWAVE bins
-================ ============= ================ ==============================================
+================ ============= ================ ================================================
 
 Example YAML Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    {'SKYCONT': 
+    {'SKYRESID': 
          {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'APPLY_FIBERFLAT', 'SPECTROGRAPH': 0,
           'VALUE': 
 	      {'MED_RESID': 0.786,
