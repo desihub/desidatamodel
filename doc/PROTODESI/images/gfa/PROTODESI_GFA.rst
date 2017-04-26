@@ -1,11 +1,10 @@
-=======
-pdGFA
-=======
+=============
+PROTODESI_GFA
+=============
 
-:Summary: GFA images for ProtoDESI, including guider `postage stamps`. Should we also save full frame images?
-:Naming Convention: ``pdGFA-ID#-MJD5.fits``, where ``ID#`` is the
-   image ID and ``MJD5`` is the five-digit MJD.
-:Regex: ``pdGFA-[0-9]{3}-[0-9]{5}\.fits``
+:Summary: GFA images for ProtoDESI, including guider "postage stamps". Should we also save full frame images?
+:Naming Convention: ``PROTODESI_GFA[01]G_roi_[0-9]{8}_[0-9]{4}\.fits``.
+:Regex: ``PROTODESI_GFA[01]G_roi_[0-9]{8}_[0-9]{4}\.fits``
 
 
 Contents
@@ -69,6 +68,3 @@ GS-X              float    Guide ref pixel X
 GS-Y              float    Guide ref pixel Y
 GS-PSF            float    FWHM of PSF size for guide star
 ================= ======== =======
-
-
-
