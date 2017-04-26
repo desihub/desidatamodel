@@ -19,8 +19,8 @@ for testing.
    $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
+   $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $QUICKLOOK : data outputs form QUICKLOOK algorithms <QUICKLOOK/index>
-   $PROTODESI_DATA : data from ProtoDESI campaign <PROTODESI_DATA/index>
 
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
