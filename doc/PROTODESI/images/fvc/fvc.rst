@@ -3,8 +3,8 @@ fvc
 ===
 
 :Summary: Fiber View Camera images for ProtoDESI.
-:Naming Convention: ``fvc\.[0-9]{8}(_[0-9]{4}|[0-9]{6}\.fits``
-:Regex: ``fvc\.[0-9]{8}(_[0-9]{4}|[0-9]{6}\.fits``
+:Naming Convention: ``fvc\.[0-9]{8}(_[0-9]{4}|[0-9]{6})\.fits``
+:Regex: ``fvc\.[0-9]{8}(_[0-9]{4}|[0-9]{6})\.fits``
 
 
 Contents
