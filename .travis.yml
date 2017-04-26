@@ -79,10 +79,10 @@ matrix:
 #     - curl ipinfo.io
 
 install:
-    - if [[ $MAIN_CMD == 'pycodestyle' ]]; then pip install pycodestyle; fi
-    - if [[ $SETUP_CMD == 'build_sphinx' ]]; then pip install Sphinx; fi
-    - if [[ $MAIN_CMD == 'coverage' ]]; then pip install coverage coveralls; fi
-    - if [[ $SETUP_CMD == 'test' || $MAIN_CMD == 'coverage' ]]; pip install -r requirements.txt; fi
+    - [[ $MAIN_CMD == 'pycodestyle' ]] && pip install pycodestyle
+    - [[ $SETUP_CMD == 'build_sphinx' ]] && pip install Sphinx
+    - [[ $MAIN_CMD == 'coverage' ]] && pip install coverage coveralls
+    - [[ $SETUP_CMD == 'test' || $MAIN_CMD == 'coverage' ]] && pip install -r requirements.txt
 
 script:
     - $MAIN_CMD $SETUP_CMD
