@@ -1,11 +1,10 @@
-=======
-pdFVC
-=======
+===
+fvc
+===
 
 :Summary: Fiber View Camera images for ProtoDESI.
-:Naming Convention: ``pdFVC-ID#-MJD5.fits``, where ``ID#`` is the
-   image ID and ``MJD5`` is the five-digit MJD.
-:Regex: ``pdFVC-[0-9]{3}-[0-9]{5}\.fits``
+:Naming Convention: ``fvc\.[0-9]{8}(_[0-9]{4}|[0-9]{6}\.fits``
+:Regex: ``fvc\.[0-9]{8}(_[0-9]{4}|[0-9]{6}\.fits``
 
 
 Contents
@@ -73,5 +72,3 @@ F3-Y              float    Fiber 3 Y pixel value
 MAG3              float    Mag of Fiber 3
 PSF3              float    Size of PSF for Fiber 3
 ================= ======== =======
-
-
