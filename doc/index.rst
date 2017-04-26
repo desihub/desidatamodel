@@ -20,7 +20,6 @@ for testing.
    $DESI_TARGET : target selection and fiber assignment <DESI_TARGET/index>
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
-   $PROTODESI_LOGS : logs from ProtoDESI campaign <PROTODESI_LOGS/index>
    $QUICKLOOK : data outputs form QUICKLOOK algorithms <QUICKLOOK/index>
 
 Imaging data and their catalogs are documented separatedly by the
