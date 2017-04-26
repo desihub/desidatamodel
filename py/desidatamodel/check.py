@@ -96,7 +96,7 @@ def files_to_regex(section, root, files, error=False):
     d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
            'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
            'NIGHT': '[0-9]{8}',  # YYYYMMDD
-           'CAMERA': '[brz][0-9]', # e.g. b0, r7
+           'CAMERA': '[brz][0-9]',  # e.g. b0, r7
            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
@@ -109,32 +109,32 @@ def files_to_regex(section, root, files, error=False):
         with open(f) as dm:
             for le in dm.readlines():
                 if PY3:
-                    l = le
+                    line = le
                 else:
-                    l = le.decode('utf-8')
-                if l.startswith('See :doc:'):
-                    ref = cross_reference(f, l)
+                    line = le.decode('utf-8')
+                if line.startswith('See :doc:'):
+                    ref = cross_reference(f, line)
                     deferred[f] = ref
                     break
-                if rline.match(l) is not None:
+                if rline.match(line) is not None:
                     d = dirname(f).replace(section, root)
                     for k in d2r:
                         d = d.replace(k, d2r[k])
-                    r = l.strip().split()[1].replace('``', '')
+                    r = line.strip().split()[1].replace('``', '')
                     f2r[f] = re.compile(join(d, r))
                     break
         if f in deferred:
             with open(deferred[f]) as dm:
                 for le in dm.readlines():
                     if PY3:
-                        l = le
+                        line = le
                     else:
-                        l = le.decode('utf-8')
-                    if rline.match(l) is not None:
+                        line = le.decode('utf-8')
+                    if rline.match(line) is not None:
                         d = dirname(f).replace(section, root)
                         for k in d2r:
                             d = d.replace(k, d2r[k])
-                        r = l.strip().split()[1].replace('``', '')
+                        r = line.strip().split()[1].replace('``', '')
                         f2r[f] = re.compile(join(d, r))
                         break
         if f2r[f] is None:

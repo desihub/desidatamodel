@@ -116,7 +116,7 @@ IN_PSF   ...st/calib2d/psf/20160726/psfnight-z0.fits                            
 IN_IMG   .../dailytest/20160726/pix-z0-00000000.fits                                                            str   Input image
 FIBERMIN 0                                                                                                      int
 DEPNAM00 python                                                                                                 str
-DEPVER00 2.7.11 |Anaconda 2.0.1 (x86_64)| (default, Dec  6 2015, 18:57:58)  [GCC 4.2.1 (Apple Inc. build 5577)] str
+DEPVER00 2.7.11 \|Anaconda 2.0.1 (x86_64)\| (default, Dec  6 2015, 18:57:58) ...                                str
 DEPNAM01 numpy                                                                                                  str
 DEPVER01 1.10.4                                                                                                 str
 DEPNAM02 scipy                                                                                                  str
