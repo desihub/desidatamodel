@@ -33,4 +33,5 @@ class DataModelWarning(UserWarning):
     """
     pass
 
+
 __all__ = ['__version__', 'PY3', 'DataModelError', 'DataModelWarning']
