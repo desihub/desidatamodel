@@ -73,7 +73,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'desidatamodel'
-copyright = u'2014-2016, DESI Collaboration'
+copyright = u'2014-2017, DESI Collaboration'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -127,6 +127,11 @@ keep_warnings = True
 
 # Include functions that begin with an underscore, e.g. _private().
 napoleon_include_private_with_doc = True
+
+# This value contains a list of modules to be mocked up. This is useful when
+# some external dependencies are not met at build time and break the
+# building process.
+autodoc_mock_imports = ['astropy', 'astropy.io']
 
 # -- Options for HTML output ----------------------------------------------
 

@@ -42,13 +42,7 @@ module-whatis "Sets up $product/$version in your environment."
 # A mandatory dependency is a module load command followed by a prereq
 # command.  An optional dependency is not followed by a prereq statement.
 #
-# module load desiUtil
-# prereq desiUtil
-# if {{[info exists env(NERSC_HOST)]}} {{
-#     module load fitsio-hpcp
-# }} else {{
-#     module load fitsio
-# }}
+# NO DEPENDENCIES
 #
 # ENVIRONMENT SECTION
 #
