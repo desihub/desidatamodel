@@ -11,5 +11,4 @@ environment variable :envvar:`PROTODESI_DATA` to point anywhere.
 .. toctree::
    :maxdepth: 1
 
-   pdGFA
    pdFVC
