@@ -1,6 +1,6 @@
-=================
+==============
 PROTODESI_DATA
-=================
+==============
 
 :envvar:`PROTODESI_DATA` contains raw data as produced by the telescope during
 the ProtoDESI campaign.
