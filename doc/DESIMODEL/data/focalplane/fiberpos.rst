@@ -2,10 +2,13 @@
 fiberpos
 ========
 
-:Summary: A random mapping of positioner number to fiber number.
+:Summary: A random mapping of positioner number to fiber number. ECSV_
+          and plain text versions of this file might also be present.
 :Naming Convention: ``fiberpos.fits``
 :Regex: ``fiberpos\.fits``
-:File Type: FITS, 241 KB
+:File Type: FITS, 440 KB
+
+.. _ECSV: https://github.com/astropy/astropy-APEs/blob/master/APE6.rst
 
 Contents
 ========
@@ -41,7 +44,7 @@ Required Header Keywords
 ======= ============= ==== ===================================
 KEY     Example Value Type Comment
 ======= ============= ==== ===================================
-NAXIS1  48            int  width of table in bytes
+NAXIS1  87            int  width of table in bytes
 NAXIS2  5000          int  number of rows in table
 EXTNAME FIBERPOS      str  name of this binary table extension
 ======= ============= ==== ===================================
@@ -49,16 +52,24 @@ EXTNAME FIBERPOS      str  name of this binary table extension
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-============ ======= ===== ==========================
-Name         Type    Units Description
-============ ======= ===== ==========================
-fiber        int64         fiber number [0-4999]
-positioner   int64         positioner number [0-4999]
-spectrograph int64         spectrograph number [0-9]
-x            float64       positioner x center [mm]
-y            float64       positioner y center [mm]
-z            float64       positioner z location [mm]
-============ ======= ===== ==========================
+=========== ======= ===== ==========================
+Name        Type    Units Description
+=========== ======= ===== ==========================
+PETAL       int32
+DEVICE      int32
+DEVICE_TYPE char[3]
+LOCATION    int64
+FIBER       int32         fiber number [0-4999]
+X           float64 mm    positioner x center [mm]
+Y           float64 mm    positioner y center [mm]
+Z           float64 mm    positioner z location [mm]
+Q           float64 deg
+S           float64 mm
+SPECTRO     int32         spectrograph number [0-9]
+SLIT        int32
+SLITBLOCK   int64
+BLOCKFIBER  int64
+=========== ======= ===== ==========================
 
 
 Notes and Examples
