@@ -66,16 +66,10 @@ positioner    int32            Positioner id on the focal plane [0-4999]
 targetid      int64            Selected target ID
 ra            float64 deg      Right ascension of target
 dec           float64 deg      Declination of target
-ra_fiber      float64 deg      Right ascension of fiber center measured by FVC
-dec_fiber     float64 deg      Declination of fiber center measured by FVC
 xfocal_design float32 mm       Designed X location on focal plane
 yfocal_design float32 mm       Designed Y location on focal plane
-xfocal_fiber  float32 mm       Measured X location on focal plane
-yfocal_fiber  float32 mm       Measured Y location on focal plane
 xfvc_design   float32 pix      Designed X location on FVC CCD
 yfvc_design   float32 pix      Designed Y location on FVC CCD
-xfvc_fiber    float32 pix      Measured X location on FVC CCD
-yfvc_fiber    float32 pix      Measured Y location on FVC CCD
 desi_target0  int64            TARGETFLAG for that target
 numtarget     int32            number of targets that this fiber covers
 t_priority    int32            target priority [deprecated?]
