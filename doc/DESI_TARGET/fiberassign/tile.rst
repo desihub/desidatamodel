@@ -61,6 +61,8 @@ Data Table Columns
 ============= ======= ======== ===================
 Name          Type    Units    Description
 ============= ======= ======== ===================
+MJD           int64            Modified Julian Days
+TAI           float64  sec     Time determined at Kitt Peak using GPS-based NTP servers
 fiber         int32            Fiber id on the CCDs [0-4999]
 positioner    int32            Positioner id on the focal plane [0-4999]
 targetid      int64            Selected target ID
@@ -68,8 +70,13 @@ ra            float64 deg      Right ascension of target
 dec           float64 deg      Declination of target
 xfocal_design float32 mm       Designed X location on focal plane
 yfocal_design float32 mm       Designed Y location on focal plane
+Q_design      float32 mm       Designed Q location on petal
+S_design      float32 mm       Designed S location on petal
 xfvc_design   float32 pix      Designed X location on FVC CCD
 yfvc_design   float32 pix      Designed Y location on FVC CCD
+ha            float32 deg      Expected Hour Angle at the middle of each exposure
+airtemp       float32 C        Air Temperature
+trustemp      float32 C        Temperature of telescope
 desi_target0  int64            TARGETFLAG for that target
 numtarget     int32            number of targets that this fiber covers
 t_priority    int32            target priority [deprecated?]
