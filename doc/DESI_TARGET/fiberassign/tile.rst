@@ -64,7 +64,7 @@ Name          Type    Units    Description
 MJD           int64            Modified Julian Days
 TAI           float64  sec     Time determined at Kitt Peak using GPS-based NTP servers
 fiber         int32            Fiber id on the CCDs [0-4999]
-positioner    int32            Positioner id on the focal plane [0-4999]
+location      int32            Positioner id on the focal plane [0-4999]
 targetid      int64            Selected target ID
 ra            float64 deg      Right ascension of target
 dec           float64 deg      Declination of target
