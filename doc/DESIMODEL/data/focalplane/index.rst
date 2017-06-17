@@ -8,3 +8,5 @@ Contains focal plane plate scale and fiber position parameters.
     :maxdepth: 1
 
     fiberpos
+    fiberpos-all
+    platescale
