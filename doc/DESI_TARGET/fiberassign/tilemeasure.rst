@@ -82,5 +82,7 @@ t_priority    int32            target priority [deprecated?]
 BRICKNAME     char[8]          Brick name from tractor input
 ============= ======= ======== ===================
 
+HDU2
+----
 
 To do...
