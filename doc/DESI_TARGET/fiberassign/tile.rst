@@ -70,8 +70,8 @@ ra            float64 deg      Right ascension of target
 dec           float64 deg      Declination of target
 xfocal_design float32 mm       Designed X location on focal plane
 yfocal_design float32 mm       Designed Y location on focal plane
-Q_design      float32 mm       Designed Q location on petal
-S_design      float32 mm       Designed S location on petal
+Q_design      float32 deg      Designed Q on petal
+S_design      float32 mm       Designed S on petal
 xfvc_design   float32 pix      Designed X location on FVC CCD
 yfvc_design   float32 pix      Designed Y location on FVC CCD
 ha            float32 deg      Expected Hour Angle at the middle of each exposure

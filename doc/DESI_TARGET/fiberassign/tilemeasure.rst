@@ -68,6 +68,10 @@ ra            float64 deg      Right ascension of target
 dec           float64 deg      Declination of target
 ra_fiber      float64 deg      Right ascension of fiber center measured by FVC
 dec_fiber     float64 deg      Declination of fiber center measured by FVC
+Q_design      float32 deg      Designed Q on petal
+S_design      float32 mm       Designed S on petal
+Q_fiber       float32 deg      Measured Q on petal
+S_fiber       float32 mm       Measured S on petal
 xfocal_design float32 mm       Designed X location on focal plane
 yfocal_design float32 mm       Designed Y location on focal plane
 xfocal_fiber  float32 mm       Measured X location on focal plane
