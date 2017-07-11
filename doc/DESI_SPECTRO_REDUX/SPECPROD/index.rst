@@ -1,5 +1,5 @@
 ========
-PRODNAME
+SPECPROD
 ========
 
 Input files for spectroscopic reduction::
@@ -17,7 +17,7 @@ Input files for spectroscopic reduction::
 
 Output files::
 
-    $DESI_SPECTRO_REDUX/$PRODNAME/
+    $DESI_SPECTRO_REDUX/$SPECPROD/
     exposures/{night}/{expid}/
     pix-{camera}-{expid}.fits               -- optional
     frame-{camera}-{expid}.fits
