@@ -1,5 +1,6 @@
+=============================
 Contributing to desidatamodel
------------------------------
+=============================
 
 Introduction
 ~~~~~~~~~~~~
@@ -63,17 +64,15 @@ Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`::
 To build the docs::
 
     python setup.py build_sphinx
-    
+
 Then view ``build/sphinx/html/index.html`` in a web browser.  If you have
-installed the sphinx_rtd_theme python package, the docs will be formatted
+installed the sphinx_rtd_theme Python package, the docs will be formatted
 using the ReadTheDocs theme as they will appear at
-https://desidatamodel.readthedocs.org
+https://desidatamodel.readthedocs.io
 
-sphinx will often print warnings and claim that the "build succeeded" when
-in fact there were syntax errors that break the output.  i.e. pay attention
-to the warnings and fix them.
-
--------------------------------------------------------------------------
+Sphinx will often print warnings and claim that the "build succeeded" when
+in fact there were syntax errors that break the output. You must pay attention
+to the warnings and fix them!
 
 desidatamodel Python Package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,4 +91,3 @@ and checking datamodel files.
 
 .. automodule:: desidatamodel.stub
    :members:
-

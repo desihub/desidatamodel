@@ -26,14 +26,6 @@ for testing.
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
 
-Other Documentation
--------------------
-
-.. toctree::
-    :maxdepth: 1
-
-    Guidance about adding entries to the datamodel itself <datamodel>.
-
 Indices and Tables
 ------------------
 
