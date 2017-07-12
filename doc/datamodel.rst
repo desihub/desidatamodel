@@ -64,7 +64,7 @@ To build the docs::
 
     python setup.py build_sphinx
     
-Then view build/sphinx/html/index.html in a web browser.  If you have
+Then view ``build/sphinx/html/index.html`` in a web browser.  If you have
 installed the sphinx_rtd_theme python package, the docs will be formatted
 using the ReadTheDocs theme as they will appear at
 https://desidatamodel.readthedocs.org
