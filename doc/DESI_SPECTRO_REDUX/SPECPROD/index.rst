@@ -26,8 +26,9 @@ Output files::
             fluxcalib-{camera}-{expid}.fits
             cframe-{camera}-{expid}.fits
         spectra-{nside}/{group}/{pixnum}/
+            spectra-{nside}-{pixnum}.fits
+            zbest-{nside}-{pixnum}.fits
             coadd-{nside}-{pixnum}.fits     -- does not yet exist
-            zbest-{nside}-{pixnum}.fits     -- zbest, zall?
         calib1d/{night}/
             fiberflat-{camera}-{expid}.fits
         calib2d/{night}/
@@ -41,7 +42,7 @@ Deprecated::
 .. toctree::
    :maxdepth: 1
 
-   spectra-{NSIDE}/ <spectra/index>
+   spectra/index
    calib1d/index
    calib2d/index
    exposures/index
