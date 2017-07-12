@@ -10,5 +10,6 @@ Each exposure id (expid) has two files:
 .. toctree::
    :maxdepth: 1
 
-   desi-{expid}.fits : Raw data <desi-EXPID>
+   desi-{expid}.fits.fz : Raw data <desi-EXPID>
    fibermap-{expid}.fits : Table of which fibers were assigned to which targets <fibermap-EXPID>
+   gfa-{expid}.fits : Placeholder for GFA data <gfa-EXPID>
