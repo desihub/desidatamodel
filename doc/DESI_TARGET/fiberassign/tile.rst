@@ -1,6 +1,6 @@
-=============
-tile_{tileid}
-=============
+===========
+tile_TILEID
+===========
 
 General Description
 ===================
@@ -12,9 +12,9 @@ Naming Convention
 
 TBD.  We should group under subdirectories of
 $DESI_TARGET/fiberassign/, but the naming for the subdirectories and for the
-files themselves is TBD.
+files themselves is TBD.  The filename may also change to be more descriptive.
 
-regex: ``tile-[0-9]{8}\.fits``
+regex: ``tile_[0-9]{8}\.fits``
 
 Contents
 ========
@@ -61,34 +61,37 @@ Data Table Columns
 ============= ======= ======== ===================
 Name          Type    Units    Description
 ============= ======= ======== ===================
-MJD           int64            Modified Julian Days
-TAI           float64  sec     Time determined at Kitt Peak using GPS-based NTP servers
-fiber         int32            Fiber id on the CCDs [0-4999]
-location      int32            Positioner id on the focal plane [0-4999]
-targetid      int64            Selected target ID
-ra            float64 deg      Right ascension of target
-dec           float64 deg      Declination of target
-xfocal_design float32 mm       Designed X location on focal plane
-yfocal_design float32 mm       Designed Y location on focal plane
-Q_design      float32 mm       Designed Q location on petal
-S_design      float32 mm       Designed S location on petal
-xfvc_design   float32 pix      Designed X location on FVC CCD
-yfvc_design   float32 pix      Designed Y location on FVC CCD
-ha            float32 deg      Expected Hour Angle at the middle of each exposure
-airtemp       float32 C        Air Temperature
-trustemp      float32 C        Temperature of telescope
-desi_target0  int64            TARGETFLAG for that target
-numtarget     int32            number of targets that this fiber covers
-t_priority    int32            target priority [deprecated?]
+FIBER         int32            Fiber ID on the CCDs [0-4999]
+LOCATION      int32            Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+TARGETID      int64            Selected target ID
+RA            float64 deg      Right ascension of target
+DEC           float64 deg      Declination of target
+XFOCAL_DESIGN float32 mm       Designed X location on focal plane
+YFOCAL_DESIGN float32 mm       Designed Y location on focal plane
+DESI_TARGET   int64            Dark survey + calibration targeting bits
+BGS_TARGET    int64            Bright Galaxy Survey targeting bits
+MWS_TARGET    int64            Milky Way Survey targeting bits
+NUMTARGET     int32            number of targets that this fiber covers
+PRIORITY      int32            priority that was used while placing this target
 BRICKNAME     char[8]          Brick name from tractor input
 ============= ======= ======== ===================
 
 Notes:
 
-  * we will probably change these to UPPERCASE and adjust some names (e.g. t_priority to PRIORITY)
-  * x/yfocal_design are where fiber assignment thought the targets would
-    be; this is non-authoritative and more detailed downstream code may have a
-    refined answer
+  * X/YFOCAL_DESIGN are where fiber assignment thought the targets would
+    be; this is non-authoritative and more detailed downstream code will have
+    a refined answer for each actual observation of this tile.
+  * This table defines the *requested* fiber assignments.  See
+    :doc:`fiberassign <../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>` for the
+    actual observed assignments.
+
+Expected changes:
+
+  * Add columns Q_DESIGN, S_DESIGN; perhaps remove XFOCAL_DESIGN, YFOCAL_DESIGN.
+    (radius S and angle Q are the preferred coordinates in the curved focal
+    surface; X and Y are the projections to the tangent plane)
+  * Add columns PETAL_LOC [0-10] and DEVICE_LOC [0-542]; See
+    `DESI-0530 <https://desi.lbl.gov/DocDB/cgi-bin/private/ShowDocument?docid=530>`_.
 
 HDU2
 ----
@@ -96,7 +99,7 @@ HDU2
 Potential assignments.
 
 A list of targets that could have been assigned to each fiber.
-See DESI-1049 (https://desi.lbl.gov/DocDB/cgi-bin/private/ShowDocument?docid=1049) for
+See `DESI-1049 <https://desi.lbl.gov/DocDB/cgi-bin/private/ShowDocument?docid=1049>`_ for
 how to interpret this HDU.
 
 Data Table Columns
@@ -105,7 +108,7 @@ Data Table Columns
 ================= ===== ===== ===================
 Name              Type  Units Description
 ================= ===== ===== ===================
-potentialtargetid int64       label for field   1
+POTENTIALTARGETID int64       label for field   1
 ================= ===== ===== ===================
 
 Notes and Examples
