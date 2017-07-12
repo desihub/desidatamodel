@@ -21,6 +21,7 @@ for testing.
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $QUICKLOOK : data outputs form QUICKLOOK algorithms <QUICKLOOK/index>
+   datamodel
 
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
