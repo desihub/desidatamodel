@@ -58,9 +58,11 @@ class TestCheck(unittest.TestCase):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
             f2r = files_to_regex(root, '/desi/spectro/data', files)
-        regexes = ['/desi/spectro/data/20160703/desi-12345678.fits',
+        regexes = ['/desi/spectro/data/20160703/desi-12345678.fits.fz',
+                   '/desi/spectro/data/20160703/gfa-12345678.fits',
                    '/desi/spectro/data/20160703/fibermap-12345678.fits']
         expected = [join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
+                                                     'gfa-EXPID.rst',
                                                      'fibermap-EXPID.rst')]
         expected_f2r = dict(zip(expected, regexes))
         for k in f2r:

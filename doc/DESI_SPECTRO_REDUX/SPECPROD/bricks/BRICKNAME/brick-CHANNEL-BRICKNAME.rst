@@ -2,6 +2,8 @@
 brick-CHANNEL-BRICKNAME.fits
 ============================
 
+**Organization of spectra by brick is deprecated; see spectra/ instead.**
+
 :Summary: Brick files hold the calibrated individual exposure spectra organized by
     location on the sky (brick).  This should contain the same information as
     cframe files, just differently organized.  They should be complete enough

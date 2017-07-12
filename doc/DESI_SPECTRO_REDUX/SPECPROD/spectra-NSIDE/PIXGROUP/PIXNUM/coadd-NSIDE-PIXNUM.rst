@@ -1,11 +1,11 @@
-====================
-coadd-BRICKNAME.fits
-====================
+=======================
+coadd-NSIDE-PIXNUM.fits
+=======================
 
-*This is a placeholder for the coadd data model*
+*This is a placeholder for the coadd data model; these are not yet generated*
 
-This holds the calibrated coadded spectra organized by location
-on the sky (brick).
+This holds the calibrated coadded spectra organized by healpix location
+on the sky.
 
 regex: ``coadd-[0-9]{4}[pm][0-9]{3}\.fits``
 
