@@ -42,7 +42,7 @@ Deprecated::
 .. toctree::
    :maxdepth: 1
 
-   spectra/index
+   spectra-NSIDE/index
    calib1d/index
    calib2d/index
    exposures/index
