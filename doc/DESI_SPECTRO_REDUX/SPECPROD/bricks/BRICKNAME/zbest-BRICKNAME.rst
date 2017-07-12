@@ -2,6 +2,8 @@
 zbest-BRICKNAME.fits
 ====================
 
+**Organization of spectra by brick is deprecated; see spectra/ instead.**
+
 *This is a placeholder for the redshift data model*
 
 This holds the classification and redshift information for targets.
