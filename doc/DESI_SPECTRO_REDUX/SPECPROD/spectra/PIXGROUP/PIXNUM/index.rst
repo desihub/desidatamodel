@@ -7,4 +7,4 @@ PIXNUM
 
    spectra
    zbest
-   coadd-NSIDE-PIXNUM
+   coadd
