@@ -14,3 +14,4 @@ with the canonical location of ``$DESI_ROOT/target``
    stdstar-{version}.fits : standard star catalog <stdstar>
    sky-{version}.fits : sky positions catalog <sky>
    fiberassign/index
+   deprecated: DR3 target catalog format <targets-dr3>
