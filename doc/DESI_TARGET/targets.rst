@@ -129,6 +129,7 @@ HPXPIXEL           int64                      Healpixel ID (NESTED)
 PHOTSYS            char[1]                    N or S
 ================== ========== =============== ==================================
 
+TODO: finish documenting all columns; in the meantime see http://legacysurvey.org .
 
 Notes and Examples
 ==================
@@ -139,6 +140,6 @@ In general, the above format contains:
 * Columns needed by fiber assignment (e.g. RA, DEC)
 * Columns needed for traceability (e.g. BRICKNAME, TARGETID, DESI_TARGET, BGS_TARGET, MWS_TARGET)
 
-TARGETID, HPXPIXEL, PHOTSYS, DESI_TARGET, BGS_TARGET and MWS_TARGET are created by target selection; the rest are pass through from the original input tractor files
+TARGETID, HPXPIXEL, PHOTSYS, DESI_TARGET, BGS_TARGET and MWS_TARGET are created by target selection; the rest are passed through from the original input tractor files
 
 See http://legacysurvey.org for more details about the columns from input tractor files
