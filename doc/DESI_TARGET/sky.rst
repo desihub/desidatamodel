@@ -8,8 +8,8 @@ General Description
 Summary
 -------
 
-DESI sky files contain a single binary table covering the entire footprint.  
-They contain the positions of sky regions void of targets that must be targeted for calibration. 
+DESI sky files contain a single binary table covering the entire footprint.
+They contain the positions of sky regions void of targets that must be targeted for calibration.
 
 Naming Convention
 -----------------
@@ -25,7 +25,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    Blank
+HDU0_  PRIMARY IMAGE    Blank
 HDU1_  SKY     BINTABLE Sky table
 ====== ======= ======== ===================
 
@@ -36,12 +36,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Empty header.
 
 HDU1
 ----
 
-SKY.
+EXTNAME = SKY
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

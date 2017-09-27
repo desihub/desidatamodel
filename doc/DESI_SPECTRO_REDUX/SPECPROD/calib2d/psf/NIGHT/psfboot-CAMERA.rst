@@ -18,9 +18,9 @@ Contents
 ====== ======= ===== ==========================================
 Number EXTNAME Type  Contents
 ====== ======= ===== ==========================================
-HDU0_          IMAGE Legendre coefficients for x vs. wavelength
-HDU1_          IMAGE Legendre coefficients for y vs. wavelength
-HDU2_          IMAGE Gaussian sigma per fiber
+HDU0_  COEFFX  IMAGE Legendre coefficients for x vs. wavelength
+HDU1_  COEFFY  IMAGE Legendre coefficients for y vs. wavelength
+HDU2_  SIGMA   IMAGE Gaussian sigma per fiber
 ====== ======= ===== ==========================================
 
 
@@ -29,6 +29,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = COEFFX
 
 Legendre coefficients for x vs. wavelength.  Header keywords
 WAVEMIN and WAVEMAX provide the mapping from wavelength to the
@@ -46,7 +48,7 @@ KEY     Example Value Type  Comment
 ======= ============= ===== ===============================
 NAXIS1  6             int   Number of Legendre coefficients
 NAXIS2  500           int   Number of spectra
-WAVEMIN 5563.41034186 float 
+WAVEMIN 5563.41034186 float
 WAVEMAX 7807.04444877 float
 ======= ============= ===== ===============================
 
@@ -54,6 +56,8 @@ Data: FITS image [float64, 6x500]
 
 HDU1
 ----
+
+EXTNAME = COEFFY
 
 Legendre coefficients for y vs. wavelength; see the HDU0 description
 for how to interpret these.
@@ -74,6 +78,8 @@ Data: FITS image [float64, 6x500]
 
 HDU2
 ----
+
+EXTNAME = SIGMA
 
 Mean Gaussian sigma wavelength dispersion per fiber.
 

@@ -10,6 +10,7 @@ from os import environ, remove
 from os.path import dirname, isdir, join
 import unittest
 import warnings
+from pkg_resources import resource_filename
 from ..check import (collect_files, files_to_regex, scan_model,
                      extract_metadata, validate_prototypes,
                      extract_columns, cross_reference)
@@ -129,13 +130,14 @@ class TestCheck(unittest.TestCase):
         """
         ex_meta = [{'title': 'HDU0',
                     'extension': 'IMAGE',
-                    'extname': '',
+                    'extname': 'PRIMARY',
                     'format': 'Data: FITS image [int16, 100x100]',
                     'keywords': [('NAXIS1', '100', 'int', ''),
                                  ('NAXIS2', '100', 'int', ''),
                                  ('BSCALE', '1', 'int', ''),
                                  ('BZERO', '32768', 'int',
-                                  'Data are really unsigned 16-bit int.')]},
+                                  'Data are really unsigned 16-bit int.'),
+                                 ('EXTNAME', 'PRIMARY', 'str', '')]},
                    {'title': 'HDU1',
                     'extension': 'BINTABLE',
                     'extname': 'Galaxies',
@@ -145,10 +147,8 @@ class TestCheck(unittest.TestCase):
                     'keywords': [('NAXIS1', '32', 'int',
                                   'length of dimension 1'),
                                  ('NAXIS2', '3', 'int',
-                                  'length of dimension 2'),
-                                 ('EXTNAME', 'Galaxies', 'str',
-                                  'Name of this HDU.')]}]
-        modelfile = join(self.data_dir, 'fits_file.rst')
+                                  'length of dimension 2')]}]
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         meta = extract_metadata(modelfile)
         self.assertEqual(len(meta), 2)
         for i, m in enumerate(meta):
@@ -166,8 +166,10 @@ class TestCheck(unittest.TestCase):
     def test_validate_prototypes(self):
         """Test the data model validation function.
         """
-        prototypes = {join(self.data_dir, 'fits_file.rst'):
-                      join(self.data_dir, 'fits_file.fits')}
+        prototypes = {resource_filename('desidatamodel.test',
+                                        't/fits_file.rst'):
+                      resource_filename('desidatamodel.test',
+                                        't/fits_file.fits')}
         w = validate_prototypes(prototypes)
         self.assertEqual(len(w), 0)
 
@@ -183,5 +185,15 @@ class TestCheck(unittest.TestCase):
 
     def test_cross_reference(self):
         line = "See :doc:`Other file <fits_file>`"
-        ref = cross_reference(join(self.data_dir, 'fits_file.fits'), line)
-        self.assertEqual(ref, join(self.data_dir, 'fits_file.rst'))
+        ref = cross_reference(resource_filename('desidatamodel.test',
+                                                't/fits_file.fits'), line)
+        self.assertEqual(ref, resource_filename('desidatamodel.test',
+                                                't/fits_file.rst'))
+
+
+def test_suite():
+    """Allows testing of only this module with the command::
+
+        python setup.py test -m <modulename>
+    """
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)

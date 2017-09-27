@@ -42,6 +42,8 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = FLUX
+
 Spectral flux[nspec, nwave] in erg/s/cm^2/Angstrom
 
 Required Header Keywords

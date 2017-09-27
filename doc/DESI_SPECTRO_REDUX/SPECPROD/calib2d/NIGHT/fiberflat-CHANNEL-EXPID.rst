@@ -49,6 +49,8 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = FIBERFLAT
+
 Mean fiberflat.
 
 Required Header Keywords

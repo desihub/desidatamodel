@@ -3,7 +3,7 @@ spectra-NSIDE-PIXNUM.fits
 =========================
 
 :Summary: DESI spectra grouped by nested healpix number
-:Naming Convention: ``spectra-{nside}-{pixnum}.fits``, where 
+:Naming Convention: ``spectra-{nside}-{pixnum}.fits``, where
     ``{nside}`` is the healpix nside and ``{pixnum}`` is the nested scheme
     healpix number.
 :Regex: ``spectra-[0-9]+-[0-9]+\.fits``
@@ -15,7 +15,7 @@ Contents
 ====== ============ ======== ========================================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ========================================
-HDU00_              IMAGE    Empty
+HDU00_ PRIMARY      IMAGE    Empty
 HDU01_ FIBERMAP     BINTABLE fibermap table
 HDU02_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
 HDU03_ B_FLUX       IMAGE    Flux of b-channel spectra
@@ -40,6 +40,8 @@ FITS Header Units
 
 HDU00
 -----
+
+EXTNAME = PRIMARY
 
 Empty data, just header keywords with code versions
 
@@ -267,7 +269,7 @@ A sparse resolution matrix may be created for spectrum ``i`` with::
 
     from desispec.resolution import Resolution
     R = Resolution(data[i])
-    
+
 Or using lower-level scipy.sparse matrices:
 
     import scipy.sparse

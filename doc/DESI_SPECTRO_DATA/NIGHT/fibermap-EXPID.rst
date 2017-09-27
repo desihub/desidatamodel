@@ -20,7 +20,7 @@ Contents
 ====== ======== ======== ===================
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
-HDU0_           IMAGE    Blank
+HDU0_  PRIMARY  IMAGE    Blank
 HDU1_  FIBERMAP BINTABLE Fiber map table
 ====== ======== ======== ===================
 
@@ -30,6 +30,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 Blank; this HDU has no non-standard required keywords.
 

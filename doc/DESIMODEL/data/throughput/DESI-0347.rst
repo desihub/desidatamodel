@@ -16,7 +16,7 @@ Contents
 ====== ======= ===== ===================
 Number EXTNAME Type  Contents
 ====== ======= ===== ===================
-HDU0_          IMAGE *Brief Description*
+HDU0_  PRIMARY IMAGE *Brief Description*
 HDU1_  XOFFSET IMAGE *Brief Description*
 HDU2_  YOFFSET IMAGE *Brief Description*
 ====== ======= ===== ===================
@@ -27,6 +27,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 *Summarize the contents of this HDU.*
 

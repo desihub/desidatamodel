@@ -21,7 +21,7 @@ Contents
 ====== ======= ======== ============
 Number EXTNAME Type     Contents
 ====== ======= ======== ============
-HDU0_          IMAGE    Empty
+HDU0_  PRIMARY IMAGE    Empty
 HDU1_  TARGETS BINTABLE Target table
 ====== ======= ======== ============
 
@@ -31,6 +31,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 Empty HDU.
 
@@ -81,13 +83,13 @@ BRICKID            int32                      Integer brick ID
 BRICKNAME          char[8]                    String brick name
 BRICK_OBJID        int32                      ObjectID on that brick
 TYPE               char[4]                    PSF, SIMP, DEV, EXP
-RA                 float64    deg             Right Ascension      
+RA                 float64    deg             Right Ascension
 DEC                float64    deg             Declination
-RA_IVAR            float32    1/deg2          Inverse variance of RA     
-DEC_IVAR           float32    1/deg2          Inverse variance of dec     
-DCHISQ             float32[5]                 
+RA_IVAR            float32    1/deg2          Inverse variance of RA
+DEC_IVAR           float32    1/deg2          Inverse variance of dec
+DCHISQ             float32[5]
 FLUX_G             float32    nanomaggies     g-band flux
-FLUX_R             float32    nanomaggies     r-band flux      
+FLUX_R             float32    nanomaggies     r-band flux
 FLUX_Z             float32    nanomaggies     z-band flux
 FLUX_W1            float32    nanomaggies     WISE W1-band flux
 FLUX_W2            float32    nanomaggies     WISE W2-band flux
@@ -101,26 +103,26 @@ FLUX_IVAR_W2       float32    1/nanomaggies2  inverse variance of FLUX_W2
 FLUX_IVAR_W3       float32    1/nanomaggies2  inverse variance of FLUX_W3
 FLUX_IVAR_W4       float32    1/nanomaggies2  inverse variance of FLUX_W4
 MW_TRANSMISSION_G  float32                    Milky Way transmission in g
-MW_TRANSMISSION_R  float32          
-MW_TRANSMISSION_Z  float32          
-MW_TRANSMISSION_W1 float32          
-MW_TRANSMISSION_W2 float32          
-MW_TRANSMISSION_W3 float32          
-MW_TRANSMISSION_W4 float32          
-NOBS_G             int16                      Number of g-band obs     
-NOBS_R             int16                      Number of r-band obs  
+MW_TRANSMISSION_R  float32
+MW_TRANSMISSION_Z  float32
+MW_TRANSMISSION_W1 float32
+MW_TRANSMISSION_W2 float32
+MW_TRANSMISSION_W3 float32
+MW_TRANSMISSION_W4 float32
+NOBS_G             int16                      Number of g-band obs
+NOBS_R             int16                      Number of r-band obs
 NOBS_Z             int16                      Number of z-band obs
-FRACFLUX_G         float32          
-FRACFLUX_R         float32          
-FRACFLUX_Z         float32          
-PSFDEPTH_G         float32          
-PSFDEPTH_R         float32          
-PSFDEPTH_Z         float32          
-GALDEPTH_G         float32          
-GALDEPTH_R         float32          
-GALDEPTH_Z         float32          
-SHAPEDEV_R         float32          
-SHAPEEXP_R         float32          
+FRACFLUX_G         float32
+FRACFLUX_R         float32
+FRACFLUX_Z         float32
+PSFDEPTH_G         float32
+PSFDEPTH_R         float32
+PSFDEPTH_Z         float32
+GALDEPTH_G         float32
+GALDEPTH_R         float32
+GALDEPTH_Z         float32
+SHAPEDEV_R         float32
+SHAPEEXP_R         float32
 TARGETID           int64                      Unique target ID
 DESI_TARGET        int64                      Dark + calib target selection bits
 BGS_TARGET         int64                      Bright Galaxy Survey TS bits

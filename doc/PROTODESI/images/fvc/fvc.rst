@@ -13,7 +13,7 @@ Contents
 ====== ======== ============================== ================================================================
 Number EXTNAME  Type                           Contents
 ====== ======== ============================== ================================================================
-HDU0_           NPIXxNPIX float image          raw image
+HDU0_  PRIMARY  NPIXxNPIX float image          raw image
 ====== ======== ============================== ================================================================
 
 FITS Header Units
@@ -21,6 +21,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 FITS Image: Raw
 

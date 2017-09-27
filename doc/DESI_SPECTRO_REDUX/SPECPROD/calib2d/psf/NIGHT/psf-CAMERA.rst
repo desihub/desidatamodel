@@ -18,8 +18,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    Blank data.  Header keywords PSFTYPE and PSFVER.
-HDU1_          IMAGE    Coefficients for Gauss-Hermite PSF
+HDU0_  PRIMARY IMAGE    Blank data.  Header keywords PSFTYPE and PSFVER.
+HDU1_  PSF     IMAGE    Coefficients for Gauss-Hermite PSF
 ====== ======= ======== ===================
 
 
@@ -28,6 +28,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 Empty HDU.
 
@@ -45,6 +47,8 @@ PSFVER  2             str  Version of the fits format for this PSFTYPE
 
 HDU1
 ----
+
+EXTNAME = PSF
 
 This HDU contains all the data that describe the spectrograph PSF for
 a given spectrograph arm/CCD. Each row of the table contains the data

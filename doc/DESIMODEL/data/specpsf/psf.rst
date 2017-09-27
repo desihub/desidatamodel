@@ -13,7 +13,7 @@ Contents
 ====== ======== ===== ===================
 Number EXTNAME  Type  Contents
 ====== ======== ===== ===================
-HDU0_           IMAGE *Brief Description*
+HDU0_  XCOEFF   IMAGE *Brief Description*
 HDU1_  YCOEFF   IMAGE *Brief Description*
 HDU2_  SPOTS    IMAGE *Brief Description*
 HDU3_  SPOTX    IMAGE *Brief Description*
@@ -29,6 +29,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = XCOEFF
 
 *Summarize the contents of this HDU.*
 

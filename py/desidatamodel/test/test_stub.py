@@ -9,6 +9,7 @@ from __future__ import (absolute_import, division, print_function,
 import os
 import unittest
 import warnings
+from pkg_resources import resource_filename
 from astropy.io import fits
 from collections import OrderedDict
 from .. import PY3, DataModelWarning
@@ -41,7 +42,7 @@ class TestStub(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.data_dir = os.path.join(os.path.dirname(__file__), 't')
+        pass
 
     @classmethod
     def tearDownClass(cls):
@@ -50,8 +51,8 @@ class TestStub(unittest.TestCase):
     def test_Stub(self):
         """Test aspects of initialization of Stub objects.
         """
-        with fits.open(os.path.join(self.data_dir,
-                                    'fits_file.fits')) as hdulist:
+        with fits.open(resource_filename('desidatamodel.test',
+                                         't/fits_file.fits')) as hdulist:
             stub = Stub(hdulist)
             self.assertEqual(stub.nhdr, 2)
         hdulist = list()
@@ -123,19 +124,26 @@ class TestStub(unittest.TestCase):
                              'Data: FITS image [float32, 10x10]')
             self.assertEqual(meta[2]['format'],
                              'Unknown extension type: TABLE.')
-            self.assertEqual(len(w), 1)
+            self.assertEqual(len(w), 2)
             self.assertIsInstance(w[-1].message, DataModelWarning)
+            self.assertEqual(str(w[-1].message),
+                             'Unknown extension type: TABLE.')
+            self.assertEqual(str(w[-2].message),
+                             'HDU0 has no EXTNAME set!')
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
         hdr['BITPIX'] = 8
         hdr['NAXIS'] = 0
         hdr['EXTEND'] = True
+        hdr['EXTNAME'] = 'PRIMARY'
         hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
         sec = stub.section(0)
         expected_sec = ['HDU0',
                         '----',
+                        '',
+                        'EXTNAME = PRIMARY',
                         '',
                         '*Summarize the contents of this HDU.*',
                         '',
@@ -200,12 +208,12 @@ class TestStub(unittest.TestCase):
     def test_file_size(self):
         """Test the determination and formatting of file size.
         """
-        filename = os.path.join(self.data_dir,
-                                'this-file-contains-five-bytes.txt')
+        filename = resource_filename('desidatamodel.test',
+                                     't/this-file-contains-five-bytes.txt')
         s = file_size(filename)
         self.assertEqual(s, '5 bytes')
-        filename = os.path.join(self.data_dir,
-                                'this-file-contains-2048-bytes.txt')
+        filename = resource_filename('desidatamodel.test',
+                                     't/this-file-contains-2048-bytes.txt')
         s = file_size(filename)
         self.assertEqual(s, '2 KB')
 
@@ -262,8 +270,8 @@ class TestStub(unittest.TestCase):
     def test_process_file(self):
         """Full test of parsing a FITS file.
         """
-        filename = os.path.join(self.data_dir, 'fits_file.fits')
-        modelfile = os.path.join(self.data_dir, 'fits_file.rst')
+        filename = resource_filename('desidatamodel.test', 't/fits_file.fits')
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         with open(modelfile) as m:
             modeldata = m.read()
         with warnings.catch_warnings(record=True) as w:
@@ -280,3 +288,11 @@ class TestStub(unittest.TestCase):
         modellines = modeldata.split('\n')
         for i, l in enumerate(data.split('\n')):
             self.assertEqual(l, modellines[i])
+
+
+def test_suite():
+    """Allows testing of only this module with the command::
+
+        python setup.py test -m <modulename>
+    """
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)

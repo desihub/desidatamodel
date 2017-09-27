@@ -17,7 +17,7 @@ Contents
 ====== ======= ======================== ===================
 Number EXTNAME Type                     Contents
 ====== ======= ======================== ===================
-HDU0_          NPIX1xNPIX2 float image  Raw image
+HDU0_  PRIMARY NPIX1xNPIX2 float image  Raw image
 ====== ======= ======================== ===================
 
 
@@ -26,6 +26,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 Raw image
 
@@ -147,7 +149,7 @@ Data: FITS image [int16, 3352x2532]
 Notes and Examples
 ==================
 
-The missing keywords listed above in the Other Keywords section, grouped roughly by categories, 
+The missing keywords listed above in the Other Keywords section, grouped roughly by categories,
 are either found in an older version of data model, or defined in DESI-1229 and deemed relevant for protoDESI run.
 
 While this data model is up to date, FPC and GFA images may not be in their final shape and are subject to change.

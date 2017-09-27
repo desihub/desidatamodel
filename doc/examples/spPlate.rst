@@ -19,7 +19,7 @@ Contents
 ====== ======== ============================== ================================================================
 Number EXTNAME  Type                           Contents
 ====== ======== ============================== ================================================================
-HDU0_           NPIX x NFIBER float image      Flux in units of |flux|.
+HDU0_  FLUX     NPIX x NFIBER float image      Flux in units of |flux|.
 HDU1_  IVAR     NPIX x NFIBER float image      Inverse variance (\ :math:`1/\sigma^2`) for HDU 0
 HDU2_  ANDMASK  NPIX x NFIBER 32-bit int image AND mask
 HDU3_  ORMASK   NPIX x NFIBER 32-bit int image OR mask
@@ -37,30 +37,42 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = FLUX
+
 FITS Image: Spectra
 
 HDU1
 ----
+
+EXTNAME = IVAR
 
 FITS Image: Inverse variance
 
 HDU2
 ----
 
+EXTNAME = ANDMASK
+
 FITS Image: AND mask
 
 HDU3
 ----
+
+EXTNAME = ORMASK
 
 FITS Image: OR mask
 
 HDU4
 ----
 
+EXTNAME = WAVEDISP
+
 FITS Image: Wavelength dispersion
 
 HDU5
 ----
+
+EXTNAME = PLUGMAP
 
 FITS Binary Table: Plugmap information
 
@@ -125,6 +137,8 @@ SFD_EBV           float
 
 HDU6
 ----
+
+EXTNAME = SKY
 
 FITS Image: Average sky flux
 

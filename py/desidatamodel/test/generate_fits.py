@@ -16,6 +16,7 @@ def generate_fits():
                                       size=(100, 100)).astype(np.uint16)
     hdu0 = fits.PrimaryHDU(image, uint=True)
     hdu0.header.comments['BZERO'] = 'Data are really unsigned 16-bit int.'
+    hdu0.header.append(('EXTNAME', 'PRIMARY', 'Name of this extension'))
     a1 = np.array(['NGC1001', 'NGC1002', 'NGC1003'])
     a2 = np.array([11.1, 12.3, 15.2], dtype='f')
     a3 = np.array([57.6, 99.43, 123.4])

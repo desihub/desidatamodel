@@ -8,7 +8,7 @@ General Description
 Summary
 -------
 
-DESI Stdstar files contain a single binary table covering the entire footprint.  
+DESI Stdstar files contain a single binary table covering the entire footprint.
 They contain the positions of standard stars that must be targeted for calibration.
 
 Naming Convention
@@ -25,7 +25,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    Blank
+HDU0_  PRIMARY IMAGE    Blank
 HDU1_  STDSTAR BINTABLE Standard Star table
 ====== ======= ======== ===================
 
@@ -36,12 +36,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Empty header.
 
 HDU1
 ----
 
-STDSTAR.
+EXTNAME = STDSTAR
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
