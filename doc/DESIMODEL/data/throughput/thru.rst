@@ -5,7 +5,7 @@ thru
 :Summary: Throughput data file.
 :Naming Convention: ``thru-{ARM}.fits``, where ``{ARM}`` is 'b', 'r', 'z'.
 :Regex: ``thru-[brz]\.fits``
-:File Type: FITS, 1 MB 
+:File Type: FITS, 1 MB
 
 Contents
 ========
@@ -13,7 +13,7 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_             IMAGE    *Brief Description*
+HDU0_  PRIMARY    IMAGE    *Brief Description*
 HDU1_  THROUGHPUT BINTABLE *Brief Description*
 HDU2_  FIBERINPUT BINTABLE *Brief Description*
 ====== ========== ======== ===================
@@ -24,6 +24,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 *Summarize the contents of this HDU.*
 

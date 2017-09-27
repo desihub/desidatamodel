@@ -13,12 +13,12 @@ fiberpos-all
 Contents
 ========
 
-====== ======= ======== ===================
-Number EXTNAME Type     Contents
-====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_          BINTABLE *Brief Description*
-====== ======= ======== ===================
+====== ======== ======== ===================
+Number EXTNAME  Type     Contents
+====== ======== ======== ===================
+HDU0_  PRIMARY  IMAGE    *Brief Description*
+HDU1_  FIBERPOS BINTABLE *Brief Description*
+====== ======== ======== ===================
 
 
 FITS Header Units
@@ -26,6 +26,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 *Summarize the contents of this HDU.*
 
@@ -35,6 +37,8 @@ Empty HDU.
 
 HDU1
 ----
+
+EXTNAME = FIBERPOS
 
 *Summarize the contents of this HDU.*
 

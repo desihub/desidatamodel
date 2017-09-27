@@ -17,8 +17,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    Empty Header
-HDU1_          BINTABLE Tile data
+HDU0_  PRIMARY IMAGE    Empty Header
+HDU1_  TILES   BINTABLE Tile data
 ====== ======= ======== ===================
 
 
@@ -28,6 +28,8 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 *Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
@@ -36,6 +38,8 @@ Empty HDU.
 
 HDU1
 ----
+
+EXTNAME = TILES
 
 *Summarize the contents of this HDU.*
 

@@ -26,9 +26,9 @@ Contents
 ========
 
 ====== ========= ======== ================================
-Number EXTNAME   Type     Contents           
+Number EXTNAME   Type     Contents
 ====== ========= ======== ================================
-HDU0_  PRIMARY   PRIMARY  Simulation inputs
+HDU0_  PRIMARY   IMAGE    Blank HDU with simulation input keywords
 HDU1_  WAVE      IMAGE    Input wavelength vector
 HDU2_  FLUX      IMAGE    Input object spectra
 HDU3_  SKYFLUX   IMAGE    Input sky flux
@@ -50,13 +50,15 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Simulation inputs as header cards.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== =================== ===== ==========================================
-KEY      Value               Type  Comment                           
+KEY      Value               Type  Comment
 ======== =================== ===== ==========================================
 NIGHT    YYYYMMDD            str   Night of observation
 AIRMASS  1.0                 float Airmass at middle of exposure
@@ -76,16 +78,18 @@ Data: None
 HDU1
 ----
 
+EXTNAME = WAVE
+
 Input wavelength vector.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==================
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==================
 BUNIT    Angstrom str   Wavelength unit
-AIRORVAC vac      str   Vacuum wavelengths                
+AIRORVAC vac      str   Vacuum wavelengths
 EXTNAME  WAVE     str   Extension name
 ======== ======== ===== ==================
 
@@ -94,15 +98,17 @@ Data: FITS image
 HDU2
 ----
 
+EXTNAME = FLUX
+
 Input object spectra.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ================= ===== ==============
-KEY      Value             Type  Comment                           
+KEY      Value             Type  Comment
 ======== ================= ===== ==============
-BUNIT    1e-17 erg/s/cm2/A str   Flux unit 
+BUNIT    1e-17 erg/s/cm2/A str   Flux unit
 EXTNAME  FLUX              str   Extension name
 ======== ================= ===== ==============
 
@@ -111,15 +117,17 @@ Data: FITS image
 HDU3
 ----
 
+EXTNAME = SKYFLUX
+
 Input sky flux.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ================= ===== ==============
-KEY      Value             Type  Comment                           
+KEY      Value             Type  Comment
 ======== ================= ===== ==============
-BUNIT    1e-17 erg/s/cm2/A str   Flux unit 
+BUNIT    1e-17 erg/s/cm2/A str   Flux unit
 EXTNAME  SKYFLUX           str   Extension name
 ======== ================= ===== ==============
 
@@ -128,16 +136,18 @@ Data: FITS image
 HDU4
 ----
 
+EXTNAME = WAVE_B
+
 Input wavelengths b-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==================
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==================
 BUNIT    Angstrom str   Wavelength unit
-AIRORVAC vac      str   Vacuum wavelengths                
+AIRORVAC vac      str   Vacuum wavelengths
 EXTNAME  WAVE_B   str   Extension name
 ======== ======== ===== ==================
 
@@ -146,13 +156,15 @@ Data: FITS image
 HDU5
 ----
 
+EXTNAME = PHOT_B
+
 Input object photons b-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==============
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==============
 EXTNAME  PHOT_B   str   Extension name
 ======== ======== ===== ==============
@@ -162,13 +174,15 @@ Data: FITS image
 HDU6
 ----
 
+EXTNAME = SKYPHOT_B
+
 Input object photons b-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ========= ===== ==============
-KEY      Value     Type  Comment                           
+KEY      Value     Type  Comment
 ======== ========= ===== ==============
 EXTNAME  SKYPHOT_B str   Extension name
 ======== ========= ===== ==============
@@ -178,16 +192,18 @@ Data: FITS image
 HDU7
 ----
 
+EXTNAME = WAVE_R
+
 Input wavelengths r-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==================
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==================
 BUNIT    Angstrom str   Wavelength unit
-AIRORVAC vac      str   Vacuum wavelengths                
+AIRORVAC vac      str   Vacuum wavelengths
 EXTNAME  WAVE_R   str   Extension name
 ======== ======== ===== ==================
 
@@ -196,13 +212,15 @@ Data: FITS image
 HDU8
 ----
 
+EXTNAME = PHOT_R
+
 Input object photons r-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==============
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==============
 EXTNAME  PHOT_R   str   Extension name
 ======== ======== ===== ==============
@@ -212,13 +230,15 @@ Data: FITS image
 HDU9
 ----
 
+EXTNAME = SKYPHOT_R
+
 Input object photons r-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ========= ===== ==============
-KEY      Value     Type  Comment                           
+KEY      Value     Type  Comment
 ======== ========= ===== ==============
 EXTNAME  SKYPHOT_R str   Extension name
 ======== ========= ===== ==============
@@ -228,16 +248,18 @@ Data: FITS image
 HDU10
 -----
 
+EXTNAME = WAVE_Z
+
 Input wavelengths z-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==================
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==================
 BUNIT    Angstrom str   Wavelength unit
-AIRORVAC vac      str   Vacuum wavelengths                
+AIRORVAC vac      str   Vacuum wavelengths
 EXTNAME  WAVE_Z   str   Extension name
 ======== ======== ===== ==================
 
@@ -246,13 +268,15 @@ Data: FITS image
 HDU11
 -----
 
+EXTNAME = PHOT_Z
+
 Input object photons z-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ======== ===== ==============
-KEY      Value    Type  Comment                           
+KEY      Value    Type  Comment
 ======== ======== ===== ==============
 EXTNAME  PHOT_Z   str   Extension name
 ======== ======== ===== ==============
@@ -262,13 +286,15 @@ Data: FITS image
 HDU12
 -----
 
+EXTNAME = SKYPHOT_Z
+
 Input object photons z-channel.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ========= ===== ==============
-KEY      Value     Type  Comment                           
+KEY      Value     Type  Comment
 ======== ========= ===== ==============
 EXTNAME  SKYPHOT_Z str   Extension name
 ======== ========= ===== ==============
@@ -278,11 +304,13 @@ Data: FITS image
 HDU13
 -----
 
+EXTNAME = Metadata
+
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ======== ==== ==============
-KEY     Value    Type Comment       
+KEY     Value    Type Comment
 ======= ======== ==== ==============
 EXTNAME METADATA str  extension name
 ======= ======== ==== ==============
@@ -291,7 +319,7 @@ Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ========== ========== ========= =====================================
-Name       Type       Units     Description                           
+Name       Type       Units     Description
 ========== ========== ========= =====================================
 OBJTYPE    char[10]             Object type (e.g., ELG, QSO, STD, WD)
 SUBTYPE    char[10]             Subtype (e.g., LYA, DA, DB)
@@ -323,4 +351,3 @@ Notes and Examples
 ==================
 
 *Add notes and examples here.  You can also create links to example files.*
-

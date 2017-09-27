@@ -15,7 +15,7 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_             IMAGE    *Brief Description*
+HDU0_  PRIMARY    IMAGE    *Brief Description*
 HDU1_  EXTINCTION BINTABLE *Brief Description*
 ====== ========== ======== ===================
 
@@ -25,6 +25,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

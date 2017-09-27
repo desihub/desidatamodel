@@ -8,8 +8,8 @@ General Description
 Summary
 -------
 
-DESI Truth files contain a single binary table covering the entire footprint.  
-They contain the variables that define the procedence of a target and its 
+DESI Truth files contain a single binary table covering the entire footprint.
+They contain the variables that define the procedence of a target and its
 true properties. This file goes together with a mock target catalog.
 
 
@@ -27,7 +27,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    Blank
+HDU0_  PRIMARY IMAGE    Blank
 HDU1_  TRUTH   BINTABLE Truth table
 ====== ======= ======== ===================
 
@@ -38,12 +38,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Empty header.
 
 HDU1
 ----
 
-TRUTH.
+EXTNAME = TRUTH
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -84,4 +86,4 @@ In general, the above format contains:
 * Columns needed by fiber assignment (e.g. RA, DEC)
 * Columns mimicking results from the spectroscopic pipeline (e.g. TRUEZ, TRUETYPE)
 
-This file is created by the targets.mock submodule. 
+This file is created by the targets.mock submodule.

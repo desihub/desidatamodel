@@ -240,8 +240,9 @@ def extract_metadata(filename, error=False):
     :class:`~desimodel.DataModelError`
         If `error` is set.
     """
-    from . import PY3, DataModelError
     import re
+    from warnings import warn
+    from . import PY3, DataModelError, DataModelWarning
     with open(filename) as f:
         data = f.read()
         if not PY3:
@@ -283,6 +284,11 @@ def extract_metadata(filename, error=False):
                                if l.startswith('EXTNAME = ')][0]
         except IndexError:
             meta['extname'] = ''
+            msg = "HDU {0:d} in {1} has no EXTNAME!".format(k, filename)
+            if error:
+                raise DataModelError(msg)
+            else:
+                warn(msg, DataModelWarning)
         try:
             rhk = section.index('Required Header Keywords')
         except ValueError:
@@ -341,10 +347,15 @@ def validate_prototypes(prototypes):
       automatically find missing headers, extraneous headers, etc.
     """
     from .stub import Stub
+    from warnings import catch_warnings
     wlist = list()
     for p in prototypes:
         stub = Stub(prototypes[p])
-        modelmeta = extract_metadata(p)
+        with catch_warnings(record=True) as w:
+            modelmeta = extract_metadata(p)
+        if len(w) > 0:
+            for m in w:
+                wlist.append(str(m.message))
         #
         # Check number of headers.
         #
@@ -389,6 +400,21 @@ def validate_prototypes(prototypes):
                      "according to {4}.").format(protoypes[p], i, dex, mex, p)
                 wlist.append(w)
                 continue
+            #
+            # Check for EXTNAME
+            #
+            dexex = stub.hdumeta[i]['extname']
+            mexex = modelmeta[i]['extname']
+            if dexex == '':
+                w = ("Prototype file {0} has no EXTNAME in " +
+                     "HDU{1:d}.").format(prototypes[p], i)
+                wlist.append(w)
+            if (dexex != '' and mexex != '' and dexex != mexex):
+                w = ("Prototype file {0} has an EXTNAME mismatch in " +
+                     "HDU{1:d} ({2} != {3}) " +
+                     "according to {4}.").format(prototypes[p], i,
+                                                 dexex, mexex, p)
+                wlist.append(w)
             #
             # If the extension type is correct, check the contents of the
             # extension.

@@ -13,7 +13,7 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_             IMAGE    *Brief Description*
+HDU0_  PRIMARY    IMAGE    *Brief Description*
 HDU1_  QUICKSIM-B BINTABLE *Brief Description*
 HDU2_  QUICKSIM-R BINTABLE *Brief Description*
 HDU3_  QUICKSIM-Z BINTABLE *Brief Description*
@@ -25,6 +25,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 *Summarize the contents of this HDU.*
 

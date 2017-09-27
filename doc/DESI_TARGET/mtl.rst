@@ -9,9 +9,9 @@ Summary
 -------
 
 DESI Merged Target List files contain a single binary table covering the
-entire footprint.  They contain the variables in the Targets files plus 
+entire footprint.  They contain the variables in the Targets files plus
 other variables that define the priority and number of observations as
-required by fiber assignement. These variables are computed using the 
+required by fiber assignement. These variables are computed using the
 available information both in the target and the DESI redshift catalogs.
 
 Naming Convention
@@ -28,7 +28,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    Blank
+HDU0_  PRIMARY IMAGE    Blank
 HDU1_  MTL     BINTABLE Merged Target List table
 ====== ======= ======== ===================
 
@@ -39,12 +39,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Empty header.
 
 HDU1
 ----
 
-MTL.
+EXTNAME = MTL
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

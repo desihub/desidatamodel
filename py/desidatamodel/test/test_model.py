@@ -65,3 +65,11 @@ class TestModel(unittest.TestCase):
                                      error=True)
             for f in files:
                 meta = extract_metadata(f, error=True)
+
+
+def test_suite():
+    """Allows testing of only this module with the command::
+
+        python setup.py test -m <modulename>
+    """
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)

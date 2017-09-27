@@ -16,7 +16,7 @@ Contents
 ====== ======== ======== ===================
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
-HDU0_           IMAGE    Empty
+HDU0_  PRIMARY  IMAGE    Empty
 HDU1_  FIBERPOS BINTABLE Map of positioner to fiber.
 ====== ======== ======== ===================
 
@@ -26,6 +26,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

@@ -22,7 +22,7 @@ Contents
 ====== ===================== ======== ===================
 Number EXTNAME               Type     Contents
 ====== ===================== ======== ===================
-HDU0_                        IMAGE    Blank
+HDU0_  PRIMARY               IMAGE    Blank
 HDU1_  FIBER_ASSIGNMENTS     BINTABLE Target assignment for each fiber
 HDU2_  POTENTIAL_ASSIGNMENTS BINTABLE All targets that could have been assigned
 ====== ===================== ======== ===================
@@ -34,12 +34,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Empty header.
 
 HDU1
 ----
 
-Fiber assignments.
+EXTNAME = FIBER_ASSIGNMENTS
 
 The target assignments for each fiber of this tile.
 
@@ -85,4 +87,4 @@ BRICKNAME     char[8]          Brick name from tractor input
 HDU2
 ----
 
-To do...
+EXTNAME = POTENTIAL_ASSIGNMENTS

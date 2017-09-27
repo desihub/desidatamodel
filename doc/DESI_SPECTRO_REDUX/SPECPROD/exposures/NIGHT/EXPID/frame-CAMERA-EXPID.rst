@@ -46,6 +46,8 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = FLUX
+
 Extracted electrons[nspec, nwave]
 
 Required Header Keywords

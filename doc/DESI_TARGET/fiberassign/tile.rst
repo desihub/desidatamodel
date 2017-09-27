@@ -22,7 +22,7 @@ Contents
 ====== ===================== ======== ===================
 Number EXTNAME               Type     Contents
 ====== ===================== ======== ===================
-HDU0_                        IMAGE    Blank
+HDU0_  PRIMARY               IMAGE    Blank
 HDU1_  FIBER_ASSIGNMENTS     BINTABLE Target assignment for each fiber
 HDU2_  POTENTIAL_ASSIGNMENTS BINTABLE All targets that could have been assigned
 ====== ===================== ======== ===================
@@ -34,12 +34,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 Empty header.
 
 HDU1
 ----
 
-Fiber assignments.
+EXTNAME = FIBER_ASSIGNMENTS
 
 The target assignments for each fiber of this tile.
 
@@ -96,7 +98,7 @@ Expected changes:
 HDU2
 ----
 
-Potential assignments.
+EXTNAME = POTENTIAL_ASSIGNMENTS
 
 A list of targets that could have been assigned to each fiber.
 See `DESI-1049 <https://desi.lbl.gov/DocDB/cgi-bin/private/ShowDocument?docid=1049>`_ for

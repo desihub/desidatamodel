@@ -19,7 +19,7 @@ Contents
 ====== ======= ======== =============================
 Number EXTNAME Type     Contents
 ====== ======= ======== =============================
-HDU0_          IMAGE    Blank HDU
+HDU0_  PRIMARY IMAGE    Blank HDU
 HDU1_  ZBEST   BINTABLE Table with best fit redshifts
 ====== ======= ======== =============================
 
@@ -30,6 +30,7 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
 Empty HDU.
 
 This HDU has no non-standard required keywords.

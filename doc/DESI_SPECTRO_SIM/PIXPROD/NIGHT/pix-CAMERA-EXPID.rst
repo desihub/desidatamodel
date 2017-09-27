@@ -26,13 +26,13 @@ FITS, 320 MB
 Contents
 ========
 
-====== ======= ===== ================================
-Number EXTNAME Type  Contents
-====== ======= ===== ================================
-HDU0_          IMAGE Pre-processed electrons
-HDU1_  IVAR    IMAGE Inverse variance [1/electrons^2]
-HDU2_  MASK    IMAGE Mask 0=good, non-0 is bad
-====== ======= ===== ================================
+====== ========= ===== ================================
+Number EXTNAME   Type  Contents
+====== ========= ===== ================================
+HDU0_  ELECTRONS IMAGE Pre-processed electrons
+HDU1_  IVAR      IMAGE Inverse variance [1/electrons^2]
+HDU2_  MASK      IMAGE Mask 0=good, non-0 is bad
+====== ========= ===== ================================
 
 
 FITS Header Units
@@ -42,6 +42,8 @@ FITS Header Units
 
 HDU0 - ELECTRONS
 ----------------
+
+EXTNAME = ELECTRONS
 
 Bias subtracted, pixel flat fielded, gain corrected CCD image in electrons.
 
@@ -65,6 +67,8 @@ Data: FITS image
 HDU1 - IVAR
 -----------
 
+EXTNAME = IVAR
+
 Inverse variance image of the electron image in HDU 0
 
 Required Header Keywords
@@ -81,6 +85,8 @@ Data: FITS image
 
 HDU2
 ----
+
+EXTNAME = MASK
 
 Mask image, where 0=good, non-0=bad.
 

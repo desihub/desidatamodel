@@ -19,7 +19,7 @@ Contents
 ====== ======== ======== ===================
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
-HDU0_           IMAGE    *Brief Description*
+HDU0_  PRIMARY  IMAGE    *Brief Description*
 HDU1_  Galaxies BINTABLE *Brief Description*
 ====== ======== ======== ===================
 
@@ -29,6 +29,8 @@ FITS Header Units
 
 HDU0
 ----
+
+EXTNAME = PRIMARY
 
 *Summarize the contents of this HDU.*
 
@@ -56,13 +58,12 @@ EXTNAME = Galaxies
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== =====================
-KEY     Example Value Type Comment
-======= ============= ==== =====================
-NAXIS1  32            int  length of dimension 1
-NAXIS2  3             int  length of dimension 2
-EXTNAME Galaxies      str  Name of this HDU.
-======= ============= ==== =====================
+====== ============= ==== =====================
+KEY    Example Value Type Comment
+====== ============= ==== =====================
+NAXIS1 32            int  length of dimension 1
+NAXIS2 3             int  length of dimension 2
+====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
