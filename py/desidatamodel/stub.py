@@ -177,14 +177,18 @@ class Stub(object):
     def contents(self):
         """A table summarizing the HDUs.
         """
+        from warnings import warn
+        from . import DataModelWarning
         if self._contents is None:
             self._contents = list()
             self._contents.append(self.contents_header)
             for k in range(self.nhdr):
-                if k > 0 and 'EXTNAME' in self.headers[k]:
+                if 'EXTNAME' in self.headers[k]:
                     extname = self.headers[k]['EXTNAME'].strip()
                 else:
                     extname = ''
+                    warn("HDU{0:d} has no EXTNAME set!".format(k),
+                         DataModelWarning)
                 if k > 0:
                     exttype = self.headers[k]['XTENSION'].strip()
                 else:
