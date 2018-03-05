@@ -17,6 +17,9 @@ export DESI_SPECTRO_DATA=${DESI_SPECTRO_SIM}/${PIXPROD}
 #
 # Run the tests
 #
-check_model DESI_SPECTRO_DATA ${DESI_SPECTRO_DATA} > ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log
-check_model DESI_SPECTRO_REDUX ${DESI_SPECTRO_REDUX} > ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log
-check_model DESI_SPECTRO_SIM ${DESI_SPECTRO_SIM} > ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log
+[[ -f ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log
+[[ -f ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log
+[[ -f ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log
+check_model DESI_SPECTRO_DATA ${DESI_SPECTRO_DATA} > ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log 2>&1
+check_model DESI_SPECTRO_REDUX ${DESI_SPECTRO_REDUX} > ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log 2>&1
+check_model DESI_SPECTRO_SIM ${DESI_SPECTRO_SIM} > ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log 2>&1
