@@ -100,6 +100,9 @@ def files_to_regex(section, root, files, error=False):
            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
+           'NSIDE': '[0-9]+', # Healpix sides, e.g. 64
+           'PIXGROUP': '[0-9]+', # Healpix group, e.g. 53
+           'PIXNUM': '[0-9]+', # Healpix pixel, e.g. 5302
            }
     f2r = dict()
     rline = re.compile(r':?regexp?:', re.I)
