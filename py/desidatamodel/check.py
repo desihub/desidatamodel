@@ -353,8 +353,8 @@ def validate_prototypes(prototypes):
     from warnings import catch_warnings
     wlist = list()
     for p in prototypes:
-        stub = Stub(prototypes[p])
         with catch_warnings(record=True) as w:
+            stub = Stub(prototypes[p])
             modelmeta = extract_metadata(p)
         if len(w) > 0:
             for m in w:
@@ -400,7 +400,7 @@ def validate_prototypes(prototypes):
             if dex != mex:
                 w = ("Prototype file {0} has an extension type mismatch in " +
                      "HDU{1:d} ({2} != {3}) " +
-                     "according to {4}.").format(protoypes[p], i, dex, mex, p)
+                     "according to {4}.").format(prototypes[p], i, dex, mex, p)
                 wlist.append(w)
                 continue
             #
