@@ -9,8 +9,8 @@ fi
 run=$1
 basedir=/global/project/projectdirs/desi/datachallenge/reference_runs/${run}
 export DESISURVEY_OUTPUT=${basedir}/survey
-export DESI_SPECTRO_REDUX=${basedir}/redux
-export DESI_SPECTRO_SIM=${basedir}/sim
+export DESI_SPECTRO_REDUX=${basedir}/spectro/redux
+export DESI_SPECTRO_SIM=${basedir}/spectro/sim
 export PIXPROD=mini
 export SPECPROD=mini
 export DESI_SPECTRO_DATA=${DESI_SPECTRO_SIM}/${PIXPROD}
