@@ -353,8 +353,9 @@ def validate_prototypes(prototypes):
     from warnings import catch_warnings
     wlist = list()
     for p in prototypes:
+        stub = Stub(prototypes[p])
         with catch_warnings(record=True) as w:
-            stub = Stub(prototypes[p])
+            stub_meta = stub.hdumeta
             modelmeta = extract_metadata(p)
         if len(w) > 0:
             for m in w:
@@ -368,7 +369,7 @@ def validate_prototypes(prototypes):
             wlist.append(w)
             continue
         for i in range(stub.nhdr):
-            dkw = stub.hdumeta[i]['keywords']
+            dkw = stub_meta[i]['keywords']
             mkw = modelmeta[i]['keywords']
             #
             # Check number of keywords.
@@ -392,7 +393,7 @@ def validate_prototypes(prototypes):
             #
             # Check the extension type.
             #
-            dex = stub.hdumeta[i]['extension']
+            dex = stub_meta[i]['extension']
             try:
                 mex = modelmeta[i]['extension']
             except KeyError:
@@ -406,7 +407,7 @@ def validate_prototypes(prototypes):
             #
             # Check for EXTNAME
             #
-            dexex = stub.hdumeta[i]['extname']
+            dexex = stub_meta[i]['extname']
             mexex = modelmeta[i]['extname']
             if dexex == '':
                 w = ("Prototype file {0} has no EXTNAME in " +
@@ -422,7 +423,7 @@ def validate_prototypes(prototypes):
             # If the extension type is correct, check the contents of the
             # extension.
             #
-            dexf = stub.hdumeta[i]['format']
+            dexf = stub_meta[i]['format']
             try:
                 mexf = modelmeta[i]['format']
             except KeyError:
