@@ -1,2 +1,2 @@
 astropy
-git+https://github.com/desihub/desiutil.git@1.9.3#egg=desiutil
+git+https://github.com/desihub/desiutil.git@1.9.9#egg=desiutil
