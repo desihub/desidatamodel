@@ -100,9 +100,9 @@ def files_to_regex(section, root, files, error=False):
            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
-           'NSIDE': '[0-9]+', # Healpix sides, e.g. 64
-           'PIXGROUP': '[0-9]+', # Healpix group, e.g. 53
-           'PIXNUM': '[0-9]+', # Healpix pixel, e.g. 5302
+           'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
+           'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
+           'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
            }
     f2r = dict()
     rline = re.compile(r':?regexp?:', re.I)
@@ -355,7 +355,10 @@ def validate_prototypes(prototypes):
     for p in prototypes:
         stub = Stub(prototypes[p])
         with catch_warnings(record=True) as w:
-            stub_meta = stub.hdumeta
+            try:
+                stub_meta = stub.hdumeta
+            except KeyError as e:
+                wlist.append(str(e.message))
             modelmeta = extract_metadata(p)
         if len(w) > 0:
             for m in w:
