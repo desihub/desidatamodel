@@ -358,7 +358,7 @@ def validate_prototypes(prototypes):
             try:
                 stub_meta = stub.hdumeta
             except KeyError as e:
-                wlist.append(str(e.message))
+                wlist.append(str(e))
             modelmeta = extract_metadata(p)
         if len(w) > 0:
             for m in w:
