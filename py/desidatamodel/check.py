@@ -358,11 +358,13 @@ def validate_prototypes(prototypes):
             try:
                 stub_meta = stub.hdumeta
             except KeyError as e:
-                wlist.append(str(e))
+                wlist.append(("Prototype file {0} threw KeyError: " +
+                              "{1}.").format(prototypes[p], e))
             modelmeta = extract_metadata(p)
         if len(w) > 0:
             for m in w:
-                wlist.append(str(m.message))
+                wlist.append(("Model file {0} issued a warning: " +
+                              "{1}").format(p, m.message))
         #
         # Check number of headers.
         #
