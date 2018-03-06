@@ -173,8 +173,8 @@ class TestCheck(unittest.TestCase):
         w = validate_prototypes(prototypes)
         # self.assertEqual(len(w), 2)
         if len(w) > 0:
-        print(w[0].message)
-        print(w[1].message)
+            print(w[0].message)
+            print(w[1].message)
 
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.
