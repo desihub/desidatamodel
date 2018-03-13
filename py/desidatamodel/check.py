@@ -387,6 +387,11 @@ def validate_prototypes(files, error=False):
       automatically find missing headers, extraneous headers, etc.
     """
     for p in files:
+        if p.prototype is None:
+            #
+            # A warning should have been issued already, so just skip silently.
+            #
+            continue
         stub = Stub(p.prototype)
         try:
             stub_meta = stub.hdumeta
