@@ -1,26 +1,11 @@
 ==================
-simspec
+simspec-EXPID.fits
 ==================
 
-General Description
-===================
-
-Summary
--------
-
-Input spectra to simulate with pixsim.
-
-Naming Convention
------------------
-
-``simspec-{EXPID}.fits``, where {EXPID} is the 8-digit exposure ID.
-
-regex: ``simspec-[0-9]{8}.fits``
-
-File Type
----------
-
-FITS, 2 GB
+:Summary: Input spectra to simulate with pixsim.
+:Naming Convention: ``simspec-{EXPID}.fits``, where {EXPID} is the 8-digit exposure ID.
+:Regex: ``simspec-[0-9]{8}\.fits``
+:File Type: FITS, 2 GB
 
 Contents
 ========

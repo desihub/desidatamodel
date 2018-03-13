@@ -1,6 +1,6 @@
-========
-fibermap
-========
+===================
+fibermap-EXPID.fits
+===================
 
 :Summary: The fibermap contains the fiber positioner configuration information for
     each exposure: what fiber is placed where, what target that is, etc.
@@ -33,7 +33,9 @@ HDU0
 
 EXTNAME = PRIMARY
 
-Blank; this HDU has no non-standard required keywords.
+Empty HDU.
+
+This HDU has no non-standard required keywords.
 
 HDU1
 ----

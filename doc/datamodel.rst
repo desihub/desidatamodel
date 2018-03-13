@@ -77,17 +77,17 @@ to the warnings and fix them!
 desidatamodel Python Package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The desidatamodel_ package on github includes the datamodel input files
-and some python utility code for generating
+The desidatamodel_ package on GitHub includes the datamodel input files
+and some Python utility code for generating
 and checking datamodel files.
 
 .. _desidatamodel: https://github.com/desihub/desidatamodel
 
 .. automodule:: desidatamodel
-   :members:
+    :members:
 
 .. automodule:: desidatamodel.check
-  :members:
+    :members:
 
 .. automodule:: desidatamodel.stub
-   :members:
+    :members:

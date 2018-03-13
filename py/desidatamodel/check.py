@@ -360,6 +360,11 @@ def validate_prototypes(prototypes):
             except KeyError as e:
                 wlist.append(("Prototype file {0} threw KeyError: " +
                               "{1}.").format(prototypes[p], e))
+        if len(w) > 0:
+            for m in w:
+                wlist.append(("Prototype file {0} issued a warning: " +
+                              "{1}").format(prototypes[p], m.message))
+        with catch_warnings(record=True) as w:
             modelmeta = extract_metadata(p)
         if len(w) > 0:
             for m in w:
