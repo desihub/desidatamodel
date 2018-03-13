@@ -131,7 +131,7 @@ class DataModel(object):
                         self.regexp = re.compile(os.path.join(d, r))
                         break
         if self.regexp is None:
-            m = "{0.filename} has no file regex!".format(self)
+            m = "{0.filename} has no file regexp!".format(self)
             if error:
                 raise DataModelError(m)
             else:
@@ -331,7 +331,7 @@ def collect_files(root, files):
     -----
     Files are analyzed using this algorithm:
 
-    * The first file that matches a regex becomes the 'prototype' for that
+    * The first file that matches a regexp becomes the 'prototype' for that
       data model file.
     * If no files match a data model file, then files of that type are
       'missing'.
@@ -365,7 +365,7 @@ def collect_files(root, files):
                      DataModelWarning)
     #
     # Scan for missing files, but don't penalize (here) data models that
-    # don't have a valid regular expression.  Files with bad regexes will
+    # don't have a valid regular expression.  Files with bad regexeps will
     # be flagged elsewhere.
     #
     for r in files:

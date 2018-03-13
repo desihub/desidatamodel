@@ -43,6 +43,12 @@ class TestCheck(unittest.TestCase):
             os.environ[DM] = cls.old_env
         shutil.rmtree(cls.data_dir)
 
+    def setUp(self):
+        warnings.resetwarnings()
+
+    def tearDown(self):
+        pass
+
     def test_scan_model(self):
         """Test identification of data model files.
         """
@@ -54,7 +60,7 @@ class TestCheck(unittest.TestCase):
         found = set([p.filename for p in files])
         self.assertEqual(expected, found)
 
-    def test_files_to_regex(self):
+    def test_files_to_regexp(self):
         """Test compilation of regular expressions.
         """
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
@@ -62,71 +68,71 @@ class TestCheck(unittest.TestCase):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
             files_to_regexp('/desi/spectro/data', files)
-        regexes = ['/desi/spectro/data/20160703/desi-12345678.fits.fz',
+        regexps = ['/desi/spectro/data/20160703/desi-12345678.fits.fz',
                    '/desi/spectro/data/20160703/gfa-12345678.fits',
                    '/desi/spectro/data/20160703/fibermap-12345678.fits']
         expected = [os.path.join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
                                                              'gfa-EXPID.rst',
                                                              'fibermap-EXPID.rst')]
-        expected_f2r = dict(zip(expected, regexes))
-        for k in f2r:
-            self.assertRegexpMatches(expected_f2r[k], f2r[k],
+        expected_f2r = dict(zip(expected, regexps))
+        for f in files:
+            self.assertRegexpMatches(expected_f2r[f.filename], f.regexp,
                                      ("{0} does not match " +
-                                      "{1}").format(f2r[k].pattern,
-                                                    expected_f2r[k]))
+                                      "{1}").format(f.regexp.pattern,
+                                                    expected_f2r[f.filename]))
 
     def test_collect_files(self):
         """Test finding files that correspond to data model files.
         """
-        test_files = (join(self.data_dir, 'sdR-12345678.fits'),
-                      join(self.data_dir, 'sdR-01234567.fits'),
-                      join(self.data_dir, 'spPlate-1234-54321.fits'))
+        test_files = (os.path.join(self.data_dir, 'sdR-12345678.fits'),
+                      os.path.join(self.data_dir, 'sdR-01234567.fits'),
+                      os.path.join(self.data_dir, 'spPlate-1234-54321.fits'))
         for f in test_files:
             open(f, 'a').close()
-        root = join(environ[DM], 'doc', 'examples')
+        root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            f2r = files_to_regexp(root, self.data_dir, files)
+            files_to_regexp(self.data_dir, files)
         self.assertEqual(len(w), 1)
         self.assertIsInstance(w[0].message, DataModelWarning)
         self.assertEqual(str(w[0].message),
                          ("{0}/doc/examples/badModel.rst has no file " +
-                          "regex!").format(environ[DM]))
+                          "regexp!").format(os.environ[DM]))
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            p = collect_files(self.data_dir, f2r)
+            collect_files(self.data_dir, files)
         self.assertEqual(len(w), 1)
-        for r in f2r:
-            if f2r[r] is not None:
-                self.assertIn(r, p)
+        for f in files:
+            self.assertIsNotNone(f.regexp)
+            self.assertIsNotNone(f.prototype)
         for f in test_files:
-            remove(f)
+            os.remove(f)
 
     def test_collect_files_missing(self):
         """Test finding files when some are missing.
         """
-        test_files = (join(self.data_dir, 'sdR-12345678.fits'),
-                      join(self.data_dir, 'sdR-01234567.fits'))
+        test_files = (os.path.join(self.data_dir, 'sdR-12345678.fits'),
+                      os.path.join(self.data_dir, 'sdR-01234567.fits'))
         for f in test_files:
             open(f, 'a').close()
-        root = join(environ[DM], 'doc', 'examples')
+        root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            f2r = files_to_regexp(root, self.data_dir, files)
+            files_to_regexp(self.data_dir, files, error=True)
         self.assertEqual(len(w), 1)
         self.assertIsInstance(w[0].message, DataModelWarning)
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            p = collect_files(self.data_dir, f2r)
+            collect_files(self.data_dir, files)
         self.assertEqual(len(w), 2)
         self.assertEqual(str(w[-1].message),
                          ('No files found matching {0}/doc/examples/' +
-                          'spPlate.rst!').format(environ[DM]))
+                          'spPlate.rst!').format(os.environ[DM]))
         # self.assertFalse(w and str(w[-1]))
         for f in test_files:
-            remove(f)
+            os.remove(f)
 
     def test_extract_metadata(self):
         """Test reading metadata from data model files.
@@ -152,7 +158,8 @@ class TestCheck(unittest.TestCase):
                                  ('NAXIS2', '3', 'int',
                                   'length of dimension 2')]}]
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
-        meta = extract_metadata(modelfile)
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        meta = model.extract_metadata()
         self.assertEqual(len(meta), 2)
         for i, m in enumerate(meta):
             self.assertEqual(m['title'], ex_meta[i]['title'])
@@ -169,11 +176,16 @@ class TestCheck(unittest.TestCase):
     def test_validate_prototypes(self):
         """Test the data model validation function.
         """
-        prototypes = {resource_filename('desidatamodel.test',
-                                        't/fits_file.rst'):
-                      resource_filename('desidatamodel.test',
-                                        't/fits_file.fits')}
-        w = validate_prototypes(prototypes)
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        # prototypes = {resource_filename('desidatamodel.test',
+        #                                 't/fits_file.rst'):
+        #               resource_filename('desidatamodel.test',
+        #                                 't/fits_file.fits')}
+        # w = validate_prototypes(prototypes)
+        w = validate_prototypes([f])
         # self.assertEqual(len(w), 2)
         if len(w) > 0:
             print(w[0].message)
@@ -182,17 +194,20 @@ class TestCheck(unittest.TestCase):
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.
         """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
         foo = '======= ============= ==== ====================='
         columns = list(map(len, foo.split()))
         row = 'NAXIS1  32            int  length of dimension 1'
         exc = ('NAXIS1', '32', 'int', 'length of dimension 1')
-        c = extract_columns(row, columns)
+        c = f._extract_columns(row, columns)
         self.assertEqual(c, exc)
 
     def test_cross_reference(self):
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
         line = "See :doc:`Other file <fits_file>`"
-        ref = cross_reference(resource_filename('desidatamodel.test',
-                                                't/fits_file.fits'), line)
+        ref = f._cross_reference(line)
         self.assertEqual(ref, resource_filename('desidatamodel.test',
                                                 't/fits_file.rst'))
 
