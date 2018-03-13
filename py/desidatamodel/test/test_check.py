@@ -6,14 +6,14 @@
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 #
-from os import environ, remove
-from os.path import dirname, isdir, join
+import os
 import unittest
 import warnings
+import tempfile
+import shutil
 from pkg_resources import resource_filename
-from ..check import (collect_files, files_to_regex, scan_model,
-                     extract_metadata, validate_prototypes,
-                     extract_columns, cross_reference)
+from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
+                     validate_prototypes)
 from .. import PY3, DataModelWarning
 
 DM = 'DESIDATAMODEL'
@@ -23,48 +23,51 @@ class TestCheck(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.data_dir = join(dirname(__file__), 't')
-        if DM in environ:
-            cls.old_env = environ[DM]
+        cls.data_dir = tempfile.mkdtemp()
+        if DM in os.environ:
+            cls.old_env = os.environ[DM]
         else:
             cls.old_env = None
-        environ[DM] = dirname(  # root/
-                              dirname(  # py/
-                                      dirname(  # desidatamodel/
-                                              dirname(__file__))))  # test/
+        os.environ[DM] = os.path.dirname(  # root/
+                                         os.path.dirname(  # py/
+                                                         os.path.dirname(  # desidatamodel/
+                                                                         os.path.dirname(__file__))))  # test/
         if PY3:
             cls.assertRegexpMatches = cls.assertRegex
 
     @classmethod
     def tearDownClass(cls):
         if cls.old_env is None:
-            del environ[DM]
+            del os.environ[DM]
         else:
-            environ[DM] = cls.old_env
+            os.environ[DM] = cls.old_env
+        shutil.rmtree(cls.data_dir)
 
     def test_scan_model(self):
         """Test identification of data model files.
         """
-        root = join(environ[DM], 'doc', 'examples')
+        root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
-        expected = set([join(root, f) for f in ('badModel.rst',
-                                                'sdR.rst', 'spPlate.rst')])
-        self.assertEqual(set(files), expected)
+        expected = set([os.path.join(root, f) for f in ('badModel.rst',
+                                                        'sdR.rst',
+                                                        'spPlate.rst')])
+        found = set([p.filename for p in files])
+        self.assertEqual(expected, found)
 
     def test_files_to_regex(self):
         """Test compilation of regular expressions.
         """
-        root = join(environ[DM], 'doc', 'DESI_SPECTRO_DATA')
+        root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            f2r = files_to_regex(root, '/desi/spectro/data', files)
+            files_to_regexp('/desi/spectro/data', files)
         regexes = ['/desi/spectro/data/20160703/desi-12345678.fits.fz',
                    '/desi/spectro/data/20160703/gfa-12345678.fits',
                    '/desi/spectro/data/20160703/fibermap-12345678.fits']
-        expected = [join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
-                                                     'gfa-EXPID.rst',
-                                                     'fibermap-EXPID.rst')]
+        expected = [os.path.join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
+                                                             'gfa-EXPID.rst',
+                                                             'fibermap-EXPID.rst')]
         expected_f2r = dict(zip(expected, regexes))
         for k in f2r:
             self.assertRegexpMatches(expected_f2r[k], f2r[k],
@@ -84,7 +87,7 @@ class TestCheck(unittest.TestCase):
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            f2r = files_to_regex(root, self.data_dir, files)
+            f2r = files_to_regexp(root, self.data_dir, files)
         self.assertEqual(len(w), 1)
         self.assertIsInstance(w[0].message, DataModelWarning)
         self.assertEqual(str(w[0].message),
@@ -111,7 +114,7 @@ class TestCheck(unittest.TestCase):
         files = scan_model(root)
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter('always')
-            f2r = files_to_regex(root, self.data_dir, files)
+            f2r = files_to_regexp(root, self.data_dir, files)
         self.assertEqual(len(w), 1)
         self.assertIsInstance(w[0].message, DataModelWarning)
         with warnings.catch_warnings(record=True) as w:
