@@ -26,6 +26,16 @@ for testing.
 Imaging data and their catalogs are documented separatedly by the
 `Legacy Survey <http://legacysurvey.org/>`_.
 
+Notes on Reference Run Validation
+---------------------------------
+
+- Ensure that cross-referenced data model files get parsed.
+- pix and simpix files are missing from reference runs.
+- desi and gfa files are missing from reference runs.
+- No description for zcatalog roll-up file.
+- versions.json missing from reference runs.
+
+
 Indices and Tables
 ------------------
 
