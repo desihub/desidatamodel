@@ -8,13 +8,15 @@ from __future__ import (absolute_import, division, print_function,
 #
 import os
 import unittest
-import warnings
 from pkg_resources import resource_filename
 from astropy.io import fits
 from collections import OrderedDict
-from .. import PY3, DataModelWarning
+
+from .datamodeltestcase import DataModelTestCase
+
+from .. import PY3
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
-                    extract_keywords, image_format)
+                    extract_keywords, image_format, log)
 
 
 class sim_comments(dict):
@@ -38,15 +40,7 @@ class sim_hdu(object):
         return
 
 
-class TestStub(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        pass
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+class TestStub(DataModelTestCase):
 
     def test_Stub(self):
         """Test aspects of initialization of Stub objects.
@@ -118,18 +112,14 @@ class TestStub(unittest.TestCase):
         hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 3)
-        with warnings.catch_warnings(record=True) as w:
+        with self.assertLogs('desiutil.log', level='DEBUG') as logs:
             meta = stub.hdumeta
-            self.assertEqual(meta[1]['format'],
-                             'Data: FITS image [float32, 10x10]')
-            self.assertEqual(meta[2]['format'],
-                             'Unknown extension type: TABLE.')
-            self.assertEqual(len(w), 2)
-            self.assertIsInstance(w[-1].message, DataModelWarning)
-            self.assertEqual(str(w[-1].message),
-                             'Unknown extension type: TABLE.')
-            self.assertEqual(str(w[-2].message),
-                             'HDU0 has no EXTNAME set!')
+        self.assertLog(log, 0, 'HDU0 has no EXTNAME set!')
+        self.assertLog(log, 1, 'Unknown extension type: TABLE.')
+        self.assertEqual(meta[1]['format'],
+                         'Data: FITS image [float32, 10x10]')
+        self.assertEqual(meta[2]['format'],
+                         'Unknown extension type: TABLE.')
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -274,16 +264,8 @@ class TestStub(unittest.TestCase):
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         with open(modelfile) as m:
             modeldata = m.read()
-        with warnings.catch_warnings(record=True) as w:
-            # warnings.resetwarnings()
-            # warnings.simplefilter('ignore')
-            # if PY3:
-            #     warnings.simplefilter('always', ResourceWarning)
-            stub = Stub(filename)
-            data = str(stub)
-            # if PY3:
-            #     self.assertIsInstance(w[-1].message, ResourceWarning)
-            # self.assertFalse(w and str(w[-1]))
+        stub = Stub(filename)
+        data = str(stub)
         self.assertEqual(stub.modelname, 'fits_file')
         modellines = modeldata.split('\n')
         for i, l in enumerate(data.split('\n')):

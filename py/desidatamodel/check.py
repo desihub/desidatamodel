@@ -12,9 +12,10 @@ from __future__ import (absolute_import, division, print_function,
 # The line above will help with 2to3 support.
 import os
 import re
-from warnings import warn, catch_warnings
 
-from . import PY3, DataModelWarning, DataModelError
+from desiutil.log import log, DEBUG
+
+from . import PY3, DataModelError
 from .stub import Stub
 
 
@@ -86,11 +87,9 @@ class DataModel(object):
 
         Raises
         ------
-        :class:`~desidatamodel.DataModelWarning`
-            If data model files with malformed regular expressions are
-            detected.
         :class:`~desimodel.DataModelError`
-        If `error` is set.
+            If `error` is set and problems with the data model file are
+            detected.
         """
         with open(self.filename) as dm:
             for le in dm.readlines():
@@ -100,6 +99,8 @@ class DataModel(object):
                     line = le.decode('utf-8')
                 if line.startswith('See :doc:'):
                     self.ref = self._cross_reference(line)
+                    log.debug("Cross reference detected %s -> %s.",
+                              self.filename, self.ref)
                     break
                 if self.regexpline.match(line) is not None:
                     d = os.path.dirname(self.filename).replace(self.section,
@@ -131,11 +132,12 @@ class DataModel(object):
                         self.regexp = re.compile(os.path.join(d, r))
                         break
         if self.regexp is None:
-            m = "{0.filename} has no file regexp!".format(self)
+            m = "%s has no file regexp!"
             if error:
-                raise DataModelError(m)
+                log.critical(m, self.filename)
+                raise DataModelError(m % self.filename)
             else:
-                warn(m, DataModelWarning)
+                log.warning(m, self.filename)
         return self.regexp
 
     def _cross_reference(self, line):
@@ -246,11 +248,12 @@ class DataModel(object):
                                    if l.startswith('EXTNAME = ')][0]
             except IndexError:
                 meta['extname'] = ''
-                msg = "HDU {0:d} in {1} has no EXTNAME!".format(k, filename)
+                m = "HDU %d in %s has no EXTNAME!"
                 if error:
-                    raise DataModelError(msg)
+                    log.critical(m, k, metafile)
+                    raise DataModelError(m % (k, metafile))
                 else:
-                    warn(msg, DataModelWarning)
+                    log.warning(m, k, metafile)
             try:
                 rhk = section.index('Required Header Keywords')
             except ValueError:
@@ -302,10 +305,9 @@ def files_to_regexp(root, files, error=False):
 
     Raises
     ------
-    :class:`~desidatamodel.DataModelWarning`
-        If data model files with malformed regular expressions are detected.
     :class:`~desimodel.DataModelError`
-        If `error` is set.
+        If `error` is set and data model files with malformed regular
+        expressions are detected.
     """
     for f in files:
         f.get_regexp(root, error)
@@ -321,11 +323,6 @@ def collect_files(root, files):
         Path to real files on disk.
     files : :class:`list`
         A list of data model files.
-
-    Raises
-    ------
-    :class:`~desimodel.DataModelWarning`
-        If 'missing' or 'extraneous' files are detected (defined below).
 
     Notes
     -----
@@ -361,8 +358,7 @@ def collect_files(root, files):
                         if r.prototype is None:
                             r.prototype = fullname
             if extraneous_file:
-                warn("Extraneous file detected: {0}".format(fullname),
-                     DataModelWarning)
+                log.warning("Extraneous file detected: %s", fullname)
     #
     # Scan for missing files, but don't penalize (here) data models that
     # don't have a valid regular expression.  Files with bad regexeps will
@@ -370,8 +366,7 @@ def collect_files(root, files):
     #
     for r in files:
         if r.regexp is not None and r.prototype is None:
-            warn("No files found matching {0.filename}!".format(r),
-                 DataModelWarning)
+            log.warning("No files found matching %s!", r.filename)
     return
 
 
@@ -386,43 +381,26 @@ def validate_prototypes(files, error=False):
         If ``True``, failure to extract certain required metadata raises an
         exception.
 
-    Returns
-    -------
-    :class:`list`
-        A list of warning messages.  If there were no warnings, the list
-        will be empty.
-
     Notes
     -----
     * Use set theory to compare the data headers to model headers.  This should
       automatically find missing headers, extraneous headers, etc.
     """
-    wlist = list()
     for p in files:
         stub = Stub(p.prototype)
-        with catch_warnings(record=True) as w:
-            try:
-                stub_meta = stub.hdumeta
-            except KeyError as e:
-                wlist.append(("Prototype file {0} threw KeyError: " +
-                              "{1}.").format(p.prototype, e))
-        if len(w) > 0:
-            for m in w:
-                wlist.append(("Prototype file {0} issued a warning: " +
-                              "{1}").format(p.prototype, m.message))
-        with catch_warnings(record=True) as w:
-            modelmeta = p.extract_metadata(error=error)
-        if len(w) > 0:
-            for m in w:
-                wlist.append(("Model file {0} issued a warning: " +
-                              "{1}").format(p.filename, m.message))
+        try:
+            stub_meta = stub.hdumeta
+        except KeyError as e:
+            log.warning("Prototype file %s threw KeyError: %s.",
+                        p.prototype, e)
+        modelmeta = p.extract_metadata(error=error)
         #
         # Check number of headers.
         #
         if stub.nhdr != len(modelmeta):
-            w = ("Prototype file {0.prototype} has the wrong number of " +
-                 "sections (HDUs) according to {0.filename}.").format(p)
-            wlist.append(w)
+            log.warning("Prototype file %s has the wrong number of " +
+                        "sections (HDUs) according to %s.",
+                        p.prototype, p.filename)
             continue
         for i in range(stub.nhdr):
             dkw = stub_meta[i]['keywords']
@@ -431,20 +409,19 @@ def validate_prototypes(files, error=False):
             # Check number of keywords.
             #
             if len(dkw) != len(mkw):
-                w = ("Prototype file {0.prototype} has the wrong number of " +
-                     "HDU{1:d} keywords according to " +
-                     "{0.filename}.").format(p, i)
-                wlist.append(w)
+                log.warning("Prototype file %s has the wrong number of " +
+                            "HDU%d keywords according to %s.",
+                            p.prototype, i, p.filename)
                 continue
             #
             # If number of keywords is correct, check them individually.
             #
             for j in range(len(dkw)):
                 if dkw[j][0] != mkw[j][0]:
-                    w = ("Prototype file {0.prototype} has a keyword " +
-                         "mismatch ({1} != {2}) in HDU{3:d} according to " +
-                         "{0.filename}.").format(p, dkw[j][0], mkw[j][0], i)
-                    wlist.append(w)
+                    log.warning("Prototype file %s has a keyword " +
+                                "mismatch (%s != %s) in HDU%d according to " +
+                                "%s.", p.prototype, dkw[j][0], mkw[j][0], i,
+                                p.filename)
             #
             # Check the extension type.
             #
@@ -454,10 +431,10 @@ def validate_prototypes(files, error=False):
             except KeyError:
                 mex = "Extension type not found"
             if dex != mex:
-                w = ("Prototype file {0.prototype} has an extension type " +
-                     "mismatch in HDU{1:d} ({2} != {3}) " +
-                     "according to {0.filename}.").format(p, i, dex, mex)
-                wlist.append(w)
+                log.warning("Prototype file %s has an extension type " +
+                            "mismatch in HDU%d (%s != %s) " +
+                            "according to %s.",
+                            p.prototype, i, dex, mex, p.filename)
                 continue
             #
             # Check for EXTNAME
@@ -465,14 +442,13 @@ def validate_prototypes(files, error=False):
             dexex = stub_meta[i]['extname']
             mexex = modelmeta[i]['extname']
             if dexex == '':
-                w = ("Prototype file {0.prototype} has no EXTNAME in " +
-                     "HDU{1:d}.").format(p, i)
-                wlist.append(w)
+                log.warning("Prototype file %s has no EXTNAME in HDU%d.",
+                            p.prototype, i)
             if (dexex != '' and mexex != '' and dexex != mexex):
-                w = ("Prototype file {0.prototype} has an EXTNAME mismatch " +
-                     "in HDU{1:d} ({2} != {3}) " +
-                     "according to {0.filename}.").format(p, i, dexex, mexex)
-                wlist.append(w)
+                log.warning("Prototype file %s has an EXTNAME mismatch " +
+                            "in HDU%d (%s != %s) " +
+                            "according to %s.",
+                            p.prototype, i, dexex, mexex, p.filename)
             #
             # If the extension type is correct, check the contents of the
             # extension.
@@ -488,27 +464,25 @@ def validate_prototypes(files, error=False):
                 except ValueError:
                     icomma = len(dexf)
                 if dexf[:icomma] != mexf[:icomma]:
-                    w = ("Prototype file {0.prototype} has an extension " +
-                         "format mismatch in HDU{1:d} " +
-                         "according to {0.filename}.").format(p, i)
-                    wlist.append(w)
+                    log.warning("Prototype file %s has an extension " +
+                                "format mismatch in HDU%d " +
+                                "according to %s.",
+                                p.prototype, i, p.filename)
             else:
                 dexf = dexf[1:]  # Get rid of header line.
                 if len(dexf) != len(mexf):
-                    w = ("Prototype file {0.prototype} has the wrong " +
-                         "number of HDU{1:d} columns according to " +
-                         "{0.filename}.").format(p, i)
-                    wlist.append(w)
+                    log.warning("Prototype file %s has the wrong " +
+                                "number of HDU%d columns according to %s.",
+                                p.prototype, i, p.filename)
                 else:
                     for j in range(len(dexf)):
                         if dexf[j][0] != mexf[j][0]:
-                            w = ("Prototype file {0.prototype} has a " +
-                                 "column name mismatch ({1} != {2}) " +
-                                 "in HDU{3:d} according to " +
-                                 "{0.filename}.").format(p, dexf[j][0],
-                                                         mexf[j][0], i)
-                            wlist.append(w)
-    return wlist
+                            log.warning("Prototype file %s has a " +
+                                        "column name mismatch (%s != %s) " +
+                                        "in HDU%d according to %s.",
+                                        p.prototype, dexf[j][0], mexf[j][0],
+                                        i, p.filename)
+    return
 
 
 def main():
@@ -528,33 +502,30 @@ def main():
                         metavar='DIR',
                         help='Override the value of DESIDATAMODEL.')
     parser.add_argument('-W', '--warning-is-error', dest='error',
+                        action='store_true',
                         help=('Data model errors raise exceptions, ' +
                               'not warnings.'))
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Set log level to DEBUG.')
     parser.add_argument('section', metavar='DIR',
                         help='Set the section of the data model.')
     parser.add_argument('directory', metavar='DIR',
                         help='Check files in this top-level directory.')
     options = parser.parse_args()
+    if options.verbose:
+        log.setLevel(DEBUG)
     if 'DESIDATAMODEL' in os.environ:
         data_model_root = os.environ['DESIDATAMODEL']
     else:
         if options.desidatamodel is not None:
             data_model_root = options.desidatamodel
         else:
-            print(("DESIDATAMODEL is not defined. " +
-                   "Cannot find data model files!"))
+            log.critical(("DESIDATAMODEL is not defined. " +
+                          "Cannot find data model files!"))
             return 1
     section = os.path.join(data_model_root, 'doc', options.section)
-    with catch_warnings(record=True) as w:
-        files = scan_model(section)
-        files_to_regexp(options.directory, files,
-                       error=options.error)
-        collect_files(options.directory, files)
-    if len(w) > 0:
-        for m in w:
-            print('WARNING: ' + str(m.message))
-    w = validate_prototypes(files, error=options.error)
-    if len(w) > 0:
-        for m in w:
-            print('WARNING: ' + m)
+    files = scan_model(section)
+    files_to_regexp(options.directory, files, error=options.error)
+    collect_files(options.directory, files)
+    validate_prototypes(files, error=options.error)
     return 0

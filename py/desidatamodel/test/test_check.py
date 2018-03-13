@@ -7,47 +7,15 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 #
 import os
-import unittest
-import warnings
-import tempfile
-import shutil
 from pkg_resources import resource_filename
+
+from .datamodeltestcase import DataModelTestCase, DM
+
 from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
-                     validate_prototypes)
-from .. import PY3, DataModelWarning
-
-DM = 'DESIDATAMODEL'
+                     validate_prototypes, log)
 
 
-class TestCheck(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        cls.data_dir = tempfile.mkdtemp()
-        if DM in os.environ:
-            cls.old_env = os.environ[DM]
-        else:
-            cls.old_env = None
-        os.environ[DM] = os.path.dirname(  # root/
-                                         os.path.dirname(  # py/
-                                                         os.path.dirname(  # desidatamodel/
-                                                                         os.path.dirname(__file__))))  # test/
-        if PY3:
-            cls.assertRegexpMatches = cls.assertRegex
-
-    @classmethod
-    def tearDownClass(cls):
-        if cls.old_env is None:
-            del os.environ[DM]
-        else:
-            os.environ[DM] = cls.old_env
-        shutil.rmtree(cls.data_dir)
-
-    def setUp(self):
-        warnings.resetwarnings()
-
-    def tearDown(self):
-        pass
+class TestCheck(DataModelTestCase):
 
     def test_scan_model(self):
         """Test identification of data model files.
@@ -65,9 +33,7 @@ class TestCheck(unittest.TestCase):
         """
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            files_to_regexp('/desi/spectro/data', files)
+        files_to_regexp('/desi/spectro/data', files)
         regexps = ['/desi/spectro/data/20160703/desi-12345678.fits.fz',
                    '/desi/spectro/data/20160703/gfa-12345678.fits',
                    '/desi/spectro/data/20160703/fibermap-12345678.fits']
@@ -91,21 +57,20 @@ class TestCheck(unittest.TestCase):
             open(f, 'a').close()
         root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            files_to_regexp(self.data_dir, files)
-        self.assertEqual(len(w), 1)
-        self.assertIsInstance(w[0].message, DataModelWarning)
-        self.assertEqual(str(w[0].message),
-                         ("{0}/doc/examples/badModel.rst has no file " +
-                          "regexp!").format(os.environ[DM]))
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            collect_files(self.data_dir, files)
-        self.assertEqual(len(w), 1)
+        files_to_regexp(self.data_dir, files)
+        self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
+                                "regexp!").format(os.environ[DM]))
+        collect_files(self.data_dir, files)
+        # collect_files should *not* log anything in this test.
+        self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
+                                "regexp!").format(os.environ[DM]))
         for f in files:
-            self.assertIsNotNone(f.regexp)
-            self.assertIsNotNone(f.prototype)
+            if os.path.basename(f.filename) == 'badModel.rst':
+                self.assertIsNone(f.regexp)
+                self.assertIsNone(f.prototype)
+            else:
+                self.assertIsNotNone(f.regexp)
+                self.assertIsNotNone(f.prototype)
         for f in test_files:
             os.remove(f)
 
@@ -118,19 +83,12 @@ class TestCheck(unittest.TestCase):
             open(f, 'a').close()
         root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            files_to_regexp(self.data_dir, files, error=True)
-        self.assertEqual(len(w), 1)
-        self.assertIsInstance(w[0].message, DataModelWarning)
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter('always')
-            collect_files(self.data_dir, files)
-        self.assertEqual(len(w), 2)
-        self.assertEqual(str(w[-1].message),
-                         ('No files found matching {0}/doc/examples/' +
-                          'spPlate.rst!').format(os.environ[DM]))
-        # self.assertFalse(w and str(w[-1]))
+        files_to_regexp(self.data_dir, files)
+        self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
+                                "regexp!").format(os.environ[DM]))
+        collect_files(self.data_dir, files)
+        self.assertLog(log, 1, ('No files found matching {0}/doc/examples/' +
+                                'spPlate.rst!').format(os.environ[DM]))
         for f in test_files:
             os.remove(f)
 
@@ -180,16 +138,8 @@ class TestCheck(unittest.TestCase):
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
-        # prototypes = {resource_filename('desidatamodel.test',
-        #                                 't/fits_file.rst'):
-        #               resource_filename('desidatamodel.test',
-        #                                 't/fits_file.fits')}
-        # w = validate_prototypes(prototypes)
-        w = validate_prototypes([f])
-        # self.assertEqual(len(w), 2)
-        if len(w) > 0:
-            print(w[0].message)
-            print(w[1].message)
+        validate_prototypes([f])
+        # self.assertLog(log, 0, 'foo')
 
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.

@@ -11,9 +11,12 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 # The line above will help with 2to3 support.
 import os
-import warnings
 from astropy.io import fits
-from . import PY3, DataModelWarning
+
+from desiutil.log import log, DEBUG
+
+from . import PY3
+
 if PY3:  # pragma: no cover
     from html import escape
     str_types = (str,)
@@ -153,7 +156,7 @@ class Stub(object):
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
                         meta['format'] = w
-                        warnings.warn(w, DataModelWarning)
+                        log.warning(w)
                 else:
                     meta['extension'] = 'IMAGE'
                     meta['format'] = image_format(self.headers[k])
@@ -177,8 +180,6 @@ class Stub(object):
     def contents(self):
         """A table summarizing the HDUs.
         """
-        from warnings import warn
-        from . import DataModelWarning
         if self._contents is None:
             self._contents = list()
             self._contents.append(self.contents_header)
@@ -187,8 +188,7 @@ class Stub(object):
                     extname = self.headers[k]['EXTNAME'].strip()
                 else:
                     extname = ''
-                    warn("HDU{0:d} has no EXTNAME set!".format(k),
-                         DataModelWarning)
+                    log.warning("HDU%d has no EXTNAME set!", k)
                 if k > 0:
                     exttype = self.headers[k]['XTENSION'].strip()
                 else:
@@ -464,8 +464,7 @@ def file_size(filename):
     >>> file_size('one-gb-file.dat')
     '1 GB'
     """
-    from os.path import getsize
-    n = getsize(filename)
+    n = os.path.getsize(filename)
     for unit in ['bytes', 'KB', 'MB', 'GB']:
         if n < 1024:
             return "{0:d} {1}".format(int(n), unit)
@@ -560,24 +559,28 @@ def main():
     :class:`int`
         An integer suitable for passing to :func:`sys.exit`.
     """
-    from os.path import basename
-    from sys import argv, stderr
+    from sys import argv
     from argparse import ArgumentParser
     try:
         from astropy.io import fits
     except ImportError:
-        print(("This script requires astropy.io.fits, available in your " +
-               "favourite Python distribution."), file=stderr)
+        log.critical("This script requires astropy.io.fits, " +
+                     "available in your " +
+                     "favourite Python distribution.")
         return 1
     desc = """Generate an DESI data model stub for a given FITS file.
 
     You will still need to hand edit the file to add descriptions, etc., but
     it gives you a good starting point in the correct format.
     """
-    parser = ArgumentParser(description=desc, prog=basename(argv[0]))
+    parser = ArgumentParser(description=desc, prog=os.path.basename(argv[0]))
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Set log level to DEBUG.')
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
     options = parser.parse_args()
+    if options.verbose:
+        log.setLevel(DEBUG)
     for f in options.filename:
         stub = Stub(f)
         data = str(stub)
