@@ -91,7 +91,7 @@ CHECKSUM LO9JNN89LN8GLN89 str   HDU checksum updated 2017-03-27T16:11:38
 DATASUM  4184538461       str   data unit checksum updated 2017-03-27T16:11:38
 ======== ================ ===== ==============================================
 
-TODO: standardize keywords with ICS, e.g. FLAVOR -> PROGRAM.
+TODO: standardize keywords with ICS, *e.g.* ``FLAVOR -> PROGRAM``.
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,9 +131,9 @@ This format is out of sync with the
 `Imaging Legacy Surveys datamodel <http://legacysurvey.org/dr4/files/>`_,
 and will be updated to have consistent names and formats for values that are
 propagated from the tractor / sweep files.
-e.g. MAG[5] -> FLUX_G, FLUX_R, FLUX_Z, FLUX_W1, FLUX_W2.
+*e.g.* ``MAG[5] -> FLUX_G, FLUX_R, FLUX_Z, FLUX_W1, FLUX_W2``.
 
 This format is out of sync with the
-:doc:`../../DESI_TARGET/fiberassign/tile` datamodel, and will be updated to
+:doc:`tile <../../DESI_TARGET/fiberassign/tile>` datamodel, and will be updated to
 be consistent for values that are propagated forward from fiber assignment.
-e.g. POSITIONER -> LOCATION.
+*e.g.* ``POSITIONER -> LOCATION``.
