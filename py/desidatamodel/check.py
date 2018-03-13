@@ -124,8 +124,8 @@ class DataModel(object):
                     #     self.ref = self._cross_reference(line)
                     #     break
                     if self.regexpline.match(line) is not None:
-                        d = os.path.dirname(self.ref).replace(self.section,
-                                                              root)
+                        d = os.path.dirname(self.filename).replace(self.section,
+                                                                   root)
                         for k in self.d2r:
                             d = d.replace(k, self.d2r[k])
                         r = line.strip().split()[1].replace('``', '')
