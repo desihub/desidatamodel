@@ -17,6 +17,7 @@ from .. import PY3
 
 DM = 'DESIDATAMODEL'
 
+
 class DataModelTestCase(unittest.TestCase):
 
     @classmethod

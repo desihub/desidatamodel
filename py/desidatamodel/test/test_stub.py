@@ -112,8 +112,7 @@ class TestStub(DataModelTestCase):
         hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 3)
-        with self.assertLogs('desiutil.log', level='DEBUG') as logs:
-            meta = stub.hdumeta
+        meta = stub.hdumeta
         self.assertLog(log, 0, 'HDU0 has no EXTNAME set!')
         self.assertLog(log, 1, 'Unknown extension type: TABLE.')
         self.assertEqual(meta[1]['format'],
