@@ -1,30 +1,14 @@
-=========================
+=======================
 frame-CAMERA-EXPID.fits
-=========================
+=======================
 
-General Description
-===================
-
-Summary
--------
-
-spframe files contain the raw extracted electrons from DESI data, without
-any further calibration.
-
-Naming Convention
------------------
-
-``frame-AS-EXPID.fits``, where
-A is the camera arm b, r, or z;
-S is the spectrograph number 0-9,
-and EXPID is the zero-padded 8-digit exposure ID.
-
-regex: ``frame-[brz][0-9]-[0-9]{8}\.fits``
-
-File Type
----------
-
-FITS, *TBD* MB
+:Summary: Frame files contain the raw extracted electrons from DESI data, without
+    any further calibration.
+:Naming Convention: ``frame-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``frame-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 70 MB
 
 Contents
 ========

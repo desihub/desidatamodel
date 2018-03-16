@@ -42,9 +42,10 @@ Deprecated::
 .. toctree::
    :maxdepth: 1
 
-   spectra-NSIDE/index
+   bricks/index
    calib1d/index
    calib2d/index
    exposures/index
+   spectra-NSIDE/index
    versions.json
-   bricks/index
+   zcatalog-SPECPROD

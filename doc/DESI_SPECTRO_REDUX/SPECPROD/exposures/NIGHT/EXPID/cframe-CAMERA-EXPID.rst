@@ -1,17 +1,15 @@
-======
-cframe
-======
+========================
+cframe-CAMERA-EXPID.fits
+========================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``cframe-z7-00000020.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``cframe-z7-00000020.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 86 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the calibrated spectra for a given camera and exposure.
+    See the datamodel for :doc:`frame-CAMERA-EXPID <frame-CAMERA-EXPID>`
+    files for details of the format.
+:Naming Convention: ``cframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``cframe-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 86 MB
 
 Contents
 ========
@@ -19,12 +17,12 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FLUX       IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       IMAGE    *Brief Description*
-HDU3_  WAVELENGTH IMAGE    *Brief Description*
-HDU4_  RESOLUTION IMAGE    *Brief Description*
-HDU5_  FIBERMAP   BINTABLE *Brief Description*
+HDU0_  FLUX       IMAGE    Flux, erg/s/cm2/A
+HDU1_  IVAR       IMAGE    Inverse variance, ``(erg/s/cm2/A)^-2``
+HDU2_  MASK       IMAGE    Mask (0 = good)
+HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
+HDU4_  RESOLUTION IMAGE    Resolution Matrix
+HDU5_  FIBERMAP   BINTABLE Fibermap details propagated from :doc:`fibermap-EXPID.fits <../../../../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>`
 HDU6_  SCORES     BINTABLE *Brief Description*
 ====== ========== ======== ===================
 

@@ -1,17 +1,13 @@
-=====
-calib
-=====
+=======================
+calib-CAMERA-EXPID.fits
+=======================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``calib-r3-00000020.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``calib-r3-00000020.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 10 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the flux calibration model for a given camera and exposure.
+:Naming Convention: ``calib-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``calib-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 10 MB
 
 Contents
 ========
@@ -19,10 +15,10 @@ Contents
 ====== ========== ===== ===================
 Number EXTNAME    Type  Contents
 ====== ========== ===== ===================
-HDU0_  FLUXCALIB  IMAGE *Brief Description*
-HDU1_  IVAR       IMAGE *Brief Description*
-HDU2_  MASK       IMAGE *Brief Description*
-HDU3_  WAVELENGTH IMAGE *Brief Description*
+HDU0_  FLUXCALIB  IMAGE Flux calibration model
+HDU1_  IVAR       IMAGE Inverse variance of flux
+HDU2_  MASK       IMAGE Mask (0 = good)
+HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
 ====== ========== ===== ===================
 
 
@@ -181,4 +177,7 @@ Data: FITS image [float32, 2645]
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+We may add an additional HDU with ``EXTNAME=METADATA`` containing a
+binary table with one row per standard star giving
+the details of which model was used, etc.
+This is not yet implemented and details TBD.
