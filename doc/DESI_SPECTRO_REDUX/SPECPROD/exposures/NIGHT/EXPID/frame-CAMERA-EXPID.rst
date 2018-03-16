@@ -64,7 +64,6 @@ MJD      58925.11304582807                           float
 TRANSPAR 0.7192993760108948                          float
 DOSVER   SIM                                         str
 FEEVER   SIM                                         str
-EXTNAME  FLUX                                        str
 BUNIT    electron/Angstrom                           str
 AIRORVAC vac                                         str   Vacuum wavelengths
 CAMERA   z7                                          str
@@ -83,15 +82,15 @@ Inverse variance of the electrons in HDU0.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ================= ==== =====================
-KEY     Example Value     Type Comment
-======= ================= ==== =====================
-NAXIS1  6001              int  Number of wavlengths
-NAXIS2  500               int  Number of spectra
-EXTNAME IVAR              str
-CHECKSUM BeFKEbFIBbFIBbFI str  HDU checksum
-DATASUM  2975688342       int  data unit checksum
-======= ================= ==== =====================
+======== ================= ==== =====================
+KEY      Example Value     Type Comment
+======== ================= ==== =====================
+NAXIS1   6001              int  Number of wavlengths
+NAXIS2   500               int  Number of spectra
+EXTNAME  IVAR              str
+CHECKSUM BeFKEbFIBbFIBbFI  str  HDU checksum
+DATASUM  2975688342        int  data unit checksum
+======== ================= ==== =====================
 
 Data: FITS image [float64]
 
