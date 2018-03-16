@@ -2,22 +2,154 @@
 stdstars
 ========
 
-*This is a placeholder description*
+:Summary: *This section should be filled in with a high-level description of
+    this file. In general, you should remove or replace the emphasized text
+    (\*this text is emphasized\*) in this document.*
+:Naming Convention: ``stdstars-7-00000020.fits``, where ... *Give a human readable
+    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
+    is the 8-digit exposure ID.*
+:Regex: ``stdstars-7-00000020.fits`` *Give a regular expression for this filename.
+    For example, a six-digit number would correspond to ``[0-9]{6}``.*
+:File Type: FITS, 5 MB  *This section gives the type of the file
+    and its approximate size.*
 
-This file contains the normalized standard star models fitted to the
-frame data.
+Contents
+========
 
-Naming convention: stdstars-{SPECTROGRAPH}-{EXPID}.fits wher
-{SPECTROGRAPH} is the single-digit spectrograph number 0-9, and
-{EXPID} is the zero-padded 8-digit exposure number.
+====== ========== ======== ===================
+Number EXTNAME    Type     Contents
+====== ========== ======== ===================
+HDU0_  FLUX       IMAGE    *Brief Description*
+HDU1_  WAVELENGTH IMAGE    *Brief Description*
+HDU2_  FIBERS     IMAGE    *Brief Description*
+HDU3_  METADATA   BINTABLE *Brief Description*
+HDU4_  COEFF      IMAGE    *Brief Description*
+====== ========== ======== ===================
 
-regex: ``stdstars-[0-9]-[0-9]{8}\.fits``
 
-HDUS:
+FITS Header Units
+=================
 
-  - HDU0 FLUX : stdstar flux[nstd, nwave] in erg/s/cm^2/Angstrom
-  - HDU1 WAVELENGTH : wavelength grid used, Angstroms
-  - HDU2 FIBERS : 1D array of which fibers these models correspond to
-  - HDU3 METADATA : metadata from input standard star templates
+HDU0
+----
 
-Note: dc3 productions used "WAVE" instead of "WAVELENGTH" for HDU 1.
+EXTNAME = FLUX
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ========================== ==== ==============================================
+KEY      Example Value              Type Comment
+======== ========================== ==== ==============================================
+NAXIS1   118466                     int
+NAXIS2   10                         int
+BUNIT    1e-17 erg/(s cm2 Angstrom) str  Flux units
+CHECKSUM 3pia4mgV3mga3mgU           str  HDU checksum updated 2018-03-01T15:07:19
+DATASUM  1249793481                 str  data unit checksum updated 2018-03-01T15:07:19
+======== ========================== ==== ==============================================
+
+Data: FITS image [float32, 118466x10]
+
+HDU1
+----
+
+EXTNAME = WAVELENGTH
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   118466           int
+BUNIT    Angstrom         str  Wavelength units
+CHECKSUM LNePONbMLNbMLNbM str  HDU checksum updated 2018-03-01T15:07:19
+DATASUM  439161490        str  data unit checksum updated 2018-03-01T15:07:19
+======== ================ ==== ==============================================
+
+Data: FITS image [float32, 118466]
+
+HDU2
+----
+
+EXTNAME = FIBERS
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   10               int
+CHECKSUM cg56ef23cf23cf23 str  HDU checksum updated 2018-03-01T15:07:19
+DATASUM  37951            str  data unit checksum updated 2018-03-01T15:07:19
+======== ================ ==== ==============================================
+
+Data: FITS image [int32, 10]
+
+HDU3
+----
+
+EXTNAME = METADATA
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   56               int  length of dimension 1
+NAXIS2   10               int  length of dimension 2
+CHECKSUM 1bNA1bN71bNA1bN7 str  HDU checksum updated 2018-03-01T15:07:19
+DATASUM  1348439413       str  data unit checksum updated 2018-03-01T15:07:19
+======== ================ ==== ==============================================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========= ======= ===== ===========
+Name      Type    Units Description
+========= ======= ===== ===========
+LOGG      float64
+TEFF      float64
+FEH       float64
+CHI2DOF   float64
+REDSHIFT  float64
+DATA_G-R  float64
+MODEL_G-R float64
+========= ======= ===== ===========
+
+HDU4
+----
+
+EXTNAME = COEFF
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   931              int
+NAXIS2   10               int
+CHECKSUM X5d6X2c6X2c6X2c6 str  HDU checksum updated 2018-03-01T15:07:19
+DATASUM  1138832925       str  data unit checksum updated 2018-03-01T15:07:19
+======== ================ ==== ==============================================
+
+Data: FITS image [float64, 931x10]
+
+
+Notes and Examples
+==================
+
+*Add notes and examples here.  You can also create links to example files.*
