@@ -72,6 +72,8 @@ CHECKSUM BeFKEbFIBbFIBbFI                            str   HDU checksum
 DATASUM  2975688342                                  int   data unit checksum
 ======== =========================================== ===== ==================================
 
+Data: FITS image [float32]
+
 HDU1
 ----
 

@@ -54,39 +54,12 @@ KEY      Example Value    Type  Comment
 NAXIS1   228              int   length of dimension 1
 NAXIS2   5                int   length of dimension 2
 ENCODING ascii            str
-EXTNAME  FIBERMAP         str
 TELRA    335.03           float Telescope pointing RA in J2000 degrees
 TELDEC   19.88            float Telescope pointing dec in J2000 degrees
 FLAVOR   dark             str
 NIGHT    20170327         str   YEARMMDD of sunset for this night
 EXPID    2                int   unique DESI exposure ID
 TILEID   4                int   DESI tile ID
-DEPNAM00 python           str
-DEPVER00 3.5.2            str
-DEPNAM01 numpy            str
-DEPVER01 1.11.2           str
-DEPNAM02 scipy            str
-DEPVER02 0.18.1           str
-DEPNAM03 astropy          str
-DEPVER03 1.2.1            str
-DEPNAM04 yaml             str
-DEPVER04 3.12             str
-DEPNAM05 fitsio           str
-DEPVER05 0.9.10           str
-DEPNAM06 desiutil         str
-DEPVER06 1.9.3.dev402     str
-DEPNAM07 desispec         str
-DEPVER07 0.13.1.dev1288   str
-DEPNAM08 desitarget       str
-DEPVER08 0.9.0.dev754     str
-DEPNAM09 desimodel        str
-DEPVER09 0.6.0.dev178     str
-DEPNAM10 desisim          str
-DEPVER10 0.18.1.dev825    str
-DEPNAM11 specter          str
-DEPVER11 0.7.0dev1        str
-DEPNAM12 speclite         str
-DEPVER12 0.5              str
 CHECKSUM LO9JNN89LN8GLN89 str   HDU checksum updated 2017-03-27T16:11:38
 DATASUM  4184538461       str   data unit checksum updated 2017-03-27T16:11:38
 ======== ================ ===== ==============================================
