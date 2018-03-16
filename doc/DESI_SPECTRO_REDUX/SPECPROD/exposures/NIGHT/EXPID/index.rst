@@ -10,4 +10,4 @@ EXPID
     frame-CAMERA-EXPID.rst
     psf-CAMERA-EXPID.rst
     sky-CAMERA-EXPID.rst
-    stdstars-CAMERA-EXPID.rst
+    stdstars-SPECTROGRAPH-EXPID.rst
