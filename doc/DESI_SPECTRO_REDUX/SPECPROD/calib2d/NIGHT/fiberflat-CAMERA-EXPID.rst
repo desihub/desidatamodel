@@ -139,7 +139,7 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2975             int  length of original image axis
+NAXIS1   8                int  length of original image axis
 NAXIS2   500              int  length of original image axis
 BSCALE   1                int
 BZERO    2147483648       int
@@ -147,7 +147,7 @@ CHECKSUM FcV3FZT2FbT2FZT2 str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  743774           str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32, 2975x500]
+Data: FITS image [int32 (compressed), 2975x500]
 
 HDU3
 ----

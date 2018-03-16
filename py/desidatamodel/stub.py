@@ -403,6 +403,11 @@ def image_format(hdr):
     dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
     bitmap = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
               -32: 'float32', -64: 'float64'}
+    if 'ZBITPIX' in hdr:
+        try:
+            datatype = bitmap[hdr['ZBITPIX']] + '(compressed)'
+        except KeyError:
+            datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
     try:
         datatype = bitmap[hdr['BITPIX']]
     except KeyError:
@@ -445,6 +450,9 @@ def extrakey(key):
         return False
     # Table-specific keywords
     if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
+        return False
+    # Compression-specific keywords
+    if match(r'Z(IMAGE|TENSION|BITPIX|NAXIS|NAXIS1|NAXIS2|PCOUNT|GCOUNT|TILE1|TILE2|CMPTYPE|NAME1|VAL1|NAME2|VAL2|HECKSUM|DATASUM)') is not None:
         return False
     # Dependency list
     if match(r'DEP(NAM|VER)\d+', key) is not None:
