@@ -89,7 +89,6 @@ KEY      Example Value     Type Comment
 ======== ================= ==== =====================
 NAXIS1   6001              int  Number of wavlengths
 NAXIS2   500               int  Number of spectra
-EXTNAME  IVAR              str
 CHECKSUM BeFKEbFIBbFIBbFI  str  HDU checksum
 DATASUM  2975688342        int  data unit checksum
 ======== ================= ==== =====================
@@ -113,7 +112,6 @@ NAXIS1   2951             int  length of original image axis
 NAXIS2   500              int  length of original image axis
 BSCALE   1                int
 BZERO    2147483648       int
-EXTNAME  MASK             str  name of this binary table extension
 CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
 DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
 ======== ================ ==== ==============================================
@@ -135,7 +133,6 @@ Required Header Keywords
 KEY     Example Value Type Comment
 ======= ============= ==== =====================
 NAXIS1  6001          int  Number of wavelengths
-EXTNAME WAVELENGTH    str
 BUNIT   Angstrom      str
 ======= ============= ==== =====================
 
@@ -182,7 +179,6 @@ KEY     Example Value Type Comment
 NAXIS1  6001          int  length of data axis 1
 NAXIS2  21            int  length of data axis 2
 NAXIS3  500           int  length of data axis 3
-EXTNAME RESOLUTION    str
 ======= ============= ==== =====================
 
 Data: FITS image [float64]

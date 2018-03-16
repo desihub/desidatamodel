@@ -1,27 +1,12 @@
-=========
-fiberflat
-=========
+===========================
+fiberflat-CAMERA-EXPID.fits
+===========================
 
-General Description
-===================
-
-Summary
--------
-
-This file contains the fiberflat such that newflux = rawflux/fiberflat.
-
-Naming Convention
------------------
-
-``fiberflat-{camera}-{expid}.fits``, where ``{camera}`` is the camera
-name (e.g. b0, r1, z9) and ``{expid}`` is the zero padded 8-digit exposure ID.
-
-regex: ``fiberflat-[brz][0-9]-[0-9]{8}\.fits``
-
-File Type
----------
-
-FITS, 45 MB
+:Summary: This file contains the fiberflat such that newflux = rawflux/fiberflat.
+:Naming Convention: ``fiberflat-{CAMERA}-{EXPID}.fits``, where ``{camera}`` is the camera
+    name (*e.g.* b0, r1, z9) and ``{EXPID}`` is the zero padded 8-digit exposure ID.
+:Regex: ``fiberflat-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 45 MB
 
 Contents
 ========
@@ -63,7 +48,6 @@ KEY      Example Value                                                          
 ======== ====================================================================================================== ===== ==============================================
 NAXIS1   2975                                                                                                   int
 NAXIS2   500                                                                                                    int
-EXTNAME  FLUX                                                                                                   str   name of this binary table extension
 TELRA    335.03                                                                                                 float Telescope pointing RA [degrees]
 EXPID    0                                                                                                      int   DESI exposure ID
 TILEID   4                                                                                                      int   DESI tile ID
@@ -117,26 +101,6 @@ SPECTER  0.5.0dev1                                                              
 IN_PSF   ...st/calib2d/psf/20160726/psfnight-z0.fits                                                            str   Input spectral PSF
 IN_IMG   .../dailytest/20160726/pix-z0-00000000.fits                                                            str   Input image
 FIBERMIN 0                                                                                                      int
-DEPNAM00 python                                                                                                 str
-DEPVER00 2.7.11 \|Anaconda 2.0.1 (x86_64)\| (default, Dec  6 2015, 18:57:58) ...                                str
-DEPNAM01 numpy                                                                                                  str
-DEPVER01 1.10.4                                                                                                 str
-DEPNAM02 scipy                                                                                                  str
-DEPVER02 0.17.0                                                                                                 str
-DEPNAM03 astropy                                                                                                str
-DEPVER03 1.1.1                                                                                                  str
-DEPNAM04 yaml                                                                                                   str
-DEPVER04 3.11                                                                                                   str
-DEPNAM05 matplotlib                                                                                             str
-DEPVER05 1.5.0                                                                                                  str
-DEPNAM06 desiutil                                                                                               str
-DEPVER06 1.5.0.dev325                                                                                           str
-DEPNAM07 desispec                                                                                               str
-DEPVER07 0.5.0.dev858                                                                                           str
-DEPNAM08 specter                                                                                                str
-DEPVER08 0.5.0dev1                                                                                              str
-DEPNAM09 speclite                                                                                               str
-DEPVER09 0.3dev271.dev351                                                                                       str
 ======== ====================================================================================================== ===== ==============================================
 
 Data: FITS image [float32, 2975x500]
@@ -156,7 +120,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2975             int
 NAXIS2   500              int
-EXTNAME  IVAR             str  extension name
 CHECKSUM 9PBADOB69OBAAOB3 str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  3462666130       str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================
@@ -180,7 +143,6 @@ NAXIS1   2975             int  length of original image axis
 NAXIS2   500              int  length of original image axis
 BSCALE   1                int
 BZERO    2147483648       int
-EXTNAME  MASK             str  name of this binary table extension
 CHECKSUM FcV3FZT2FbT2FZT2 str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  743774           str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================
@@ -201,7 +163,6 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2975             int
-EXTNAME  MEANSPEC         str  extension name
 CHECKSUM cBAJf94GcAAGc93G str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  2259023115       str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================
@@ -222,7 +183,6 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2975             int
-EXTNAME  WAVELENGTH       str  extension name
 CHECKSUM 9mXPJkUO9kUOGkUO str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  3037649504       str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================
