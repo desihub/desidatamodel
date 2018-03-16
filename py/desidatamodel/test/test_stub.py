@@ -187,6 +187,8 @@ class TestStub(DataModelTestCase):
                           'TCOMM33': False,
                           'TDIM11': False,
                           'BITPIX': False,
+                          'DEPNAM33': False,
+                          'DEPVER33': False,
                           'FOOBAR': True}
         for k in extrakey_tests:
             if extrakey_tests[k]:

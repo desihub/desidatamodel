@@ -42,26 +42,35 @@ KEY      Example Value                               Type  Comment
 ======== =========================================== ===== ==================================
 NAXIS1   6001                                        int   Number of wavelength samples
 NAXIS2   500                                         int   Number of extracted spectra
+NIGHT    20200316                                    str   Night of observation YEARMMDD
+EXPID    20                                          int   DESI exposure ID
+TILEID   11108                                       int   DESI tile ID
+PROGRAM  DARK                                        str   program [dark, bright, ...]
+FLAVOR   science                                     str   Flavor [arc, flat, science, zero, ...]
+TELRA    150.87                                      float Telescope pointing RA [degrees]
+TELDEC   31.23                                       float Telescope pointing dec [degrees]
+AIRMASS  1.307154717878038                           float Airmass at middle of exposure
+EXPTIME  1142.541228573218                           float Exposure time [sec]
+SEEING   0.7572662830352783                          float Seeing FWHM [arcsec]
+MOONFRAC 0.4083473802955095                          float Moon illumination fraction 0-1; 1=full
+MOONALT  -79.39563600071901                          float Moon altitude [degrees]
+MOONSEP  131.2947533254612                           float Moon:tile separation angle [degrees]
+DATE-OBS 2020-03-17T02:42:47.160'                    str   Start of exposure
+PASS     1                                           int
+RA       150.87                                      float
+DEC      31.23                                       float
+EBMV     0.0189034678041935                          float
+MJD      58925.11304582807                           float
+TRANSPAR 0.7192993760108948                          float
+DOSVER   SIM                                         str
+FEEVER   SIM                                         str
 EXTNAME  FLUX                                        str
-CRVAL1   7089.0                                      float Starting wavelength [Angstroms]
-CDELT1   0.2                                         float Wavelength step [Angstroms]
+BUNIT    electron/Angstrom                           str
 AIRORVAC vac                                         str   Vacuum wavelengths
-LOGLAM   0                                           int   linear wavelength steps, not log10
-SIMFILE  alpha-3/20150107/simspec-00000003.fits      str   Input simulation file
-CAMERA   r0                                          str   Spectograph Camera
-VSPECTER 0.0.0                                       str   TODO: Specter version
-EXPTIME  1000.0                                      float Exposure time [sec]
-RDNOISE  2.9                                         float Read noise [electrons]
-FLAVOR   science                                     str   Exposure type (arc, flat, science)
-SPECMIN  0                                           int   First spectrum
-SPECMAX  1                                           int   Last spectrum
-NSPEC    2                                           int   Number of spectra
-WAVEMIN  7089.0                                      float First wavelength [Angstroms]
-WAVEMAX  7110.5                                      float Last wavelength [Angstroms]
-WAVESTEP 0.5                                         float Wavelength step size [Angstroms]
-SPECTER  0.1.dev1                                    str   https://github.com/sbailey/specter
-IN_PSF   .../desimodel/trunk/data/specpsf/psf-r.fits str   Input spectral PSF
-IN_IMG   ...im/alpha-3/20150107/pix-r0-00000003.fits str   Input image
+CAMERA   z7                                          str
+FIBERMIN 3500                                        int
+CHECKSUM BeFKEbFIBbFIBbFI                            str   HDU checksum
+DATASUM  2975688342                                  int   data unit checksum
 ======== =========================================== ===== ==================================
 
 HDU1
@@ -74,13 +83,15 @@ Inverse variance of the electrons in HDU0.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== =====================
-KEY     Example Value Type Comment
-======= ============= ==== =====================
-NAXIS1  6001          int  Number of wavlengths
-NAXIS2  500           int  Number of spectra
-EXTNAME IVAR          str
-======= ============= ==== =====================
+======= ================= ==== =====================
+KEY     Example Value     Type Comment
+======= ================= ==== =====================
+NAXIS1  6001              int  Number of wavlengths
+NAXIS2  500               int  Number of spectra
+EXTNAME IVAR              str
+CHECKSUM BeFKEbFIBbFIBbFI str  HDU checksum
+DATASUM  2975688342       int  data unit checksum
+======= ================= ==== =====================
 
 Data: FITS image [float64]
 
@@ -124,6 +135,7 @@ KEY     Example Value Type Comment
 ======= ============= ==== =====================
 NAXIS1  6001          int  Number of wavelengths
 EXTNAME WAVELENGTH    str
+BUNIT   Angstrom      str
 ======= ============= ==== =====================
 
 Data: FITS image [float64]
@@ -180,7 +192,54 @@ HDU5
 EXTNAME = FIBERMAP
 
 Fibermap propagated from the raw data inputs; see
-DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID.rst.
+:doc:`fibermap file <../../../../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>`.
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   378              int  length of dimension 1
+NAXIS2   500              int  length of dimension 2
+ENCODING ascii            str
+CHECKSUM UUVAVUS8UUSAUUS5 str  HDU checksum updated 2018-03-01T15:08:15
+DATASUM  4154192770       str  data unit checksum updated 2018-03-01T15:08:15
+======== ================ ==== ==============================================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=========== ========== ===== ===========
+Name        Type       Units Description
+=========== ========== ===== ===========
+OBJTYPE     char[10]
+TARGETCAT   char[20]
+BRICKNAME   char[8]
+TARGETID    int64
+DESI_TARGET int64
+BGS_TARGET  int64
+MWS_TARGET  int64
+MAG         float32[5]
+FILTER      char[200]
+SPECTROID   int64
+POSITIONER  int32
+LOCATION    int32
+DEVICE_LOC  int32
+PETAL_LOC   int32
+FIBER       int32
+LAMBDAREF   float32
+RA_TARGET   float64
+DEC_TARGET  float64
+RA_OBS      float64
+DEC_OBS     float64
+X_TARGET    float32
+Y_TARGET    float32
+X_FVCOBS    float32
+Y_FVCOBS    float32
+Y_FVCERR    float32
+X_FVCERR    float32
+=========== ========== ===== ===========
 
 Notes and Examples
 ==================

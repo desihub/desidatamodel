@@ -3,7 +3,7 @@ zcatalog-SPECPROD
 =================
 
 :Summary: This file summarizes all
-    :doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM.rst>` files.
+    :doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM>` files.
 :Naming Convention: ``zcatalog-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
     :envvar:`SPECPROD` name of the reduction run.
 :Regex: ``zcatalog-[a-z0-9_-]+\.fits``
@@ -38,7 +38,7 @@ HDU1
 EXTNAME = ZCATALOG
 
 The summarized redshift data for all
-:doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM.rst>` files.
+:doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM>` files.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

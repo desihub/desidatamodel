@@ -441,7 +441,7 @@ def extrakey(key):
     from re import match
     # don't drop NAXIS1 and NAXIS2 since we want to document which is which
     if key in ('BITPIX', 'NAXIS', 'PCOUNT', 'GCOUNT', 'TFIELDS', 'XTENSION',
-               'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY'):
+               'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY', 'EXTNAME'):
         return False
     # Table-specific keywords
     if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
