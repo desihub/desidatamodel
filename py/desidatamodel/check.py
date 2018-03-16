@@ -313,7 +313,7 @@ class DataModel(object):
                 log.warning("Prototype file %s has the wrong number of " +
                             "HDU%d keywords according to %s.",
                             self.prototype, i, self.filename)
-                return
+                continue
             #
             # If number of keywords is correct, check them individually.
             #
@@ -336,7 +336,7 @@ class DataModel(object):
                             "mismatch in HDU%d (%s != %s) " +
                             "according to %s.",
                             self.prototype, i, dex, mex, self.filename)
-                return
+                continue
             #
             # Check for EXTNAME
             #
