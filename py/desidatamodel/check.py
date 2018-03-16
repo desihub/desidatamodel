@@ -268,6 +268,121 @@ class DataModel(object):
             self.hdumeta.append(meta)
         return self.hdumeta
 
+    def validate_prototype(self, error=False):
+        """Compares a model's prototype data file to the data models.
+
+        Parameters
+        ----------
+        error : :class:`bool`, optional
+            If ``True``, failure to extract certain required metadata raises an
+            exception.
+
+        Notes
+        -----
+        * Use set theory to compare the data headers to model headers.  This should
+          automatically find missing headers, extraneous headers, etc.
+        """
+        if self.prototype is None:
+            #
+            # A warning should have been issued already, so just skip silently.
+            #
+            return
+        stub = Stub(self.prototype)
+        try:
+            stub_meta = stub.hdumeta
+        except KeyError as e:
+            log.warning("Prototype file %s threw KeyError: %s.",
+                        self.prototype, e)
+        modelmeta = self.extract_metadata(error=error)
+        #
+        # Check number of headers.
+        #
+        if stub.nhdr != len(modelmeta):
+            log.warning("Prototype file %s has the wrong number of " +
+                        "sections (HDUs) according to %s.",
+                        self.prototype, self.filename)
+            return
+        for i in range(stub.nhdr):
+            dkw = stub_meta[i]['keywords']
+            mkw = modelmeta[i]['keywords']
+            #
+            # Check number of keywords.
+            #
+            if len(dkw) != len(mkw):
+                log.warning("Prototype file %s has the wrong number of " +
+                            "HDU%d keywords according to %s.",
+                            self.prototype, i, self.filename)
+                return
+            #
+            # If number of keywords is correct, check them individually.
+            #
+            for j in range(len(dkw)):
+                if dkw[j][0] != mkw[j][0]:
+                    log.warning("Prototype file %s has a keyword " +
+                                "mismatch (%s != %s) in HDU%d according to " +
+                                "%s.", self.prototype, dkw[j][0], mkw[j][0], i,
+                                self.filename)
+            #
+            # Check the extension type.
+            #
+            dex = stub_meta[i]['extension']
+            try:
+                mex = modelmeta[i]['extension']
+            except KeyError:
+                mex = "Extension type not found"
+            if dex != mex:
+                log.warning("Prototype file %s has an extension type " +
+                            "mismatch in HDU%d (%s != %s) " +
+                            "according to %s.",
+                            self.prototype, i, dex, mex, self.filename)
+                return
+            #
+            # Check for EXTNAME
+            #
+            dexex = stub_meta[i]['extname']
+            mexex = modelmeta[i]['extname']
+            if dexex == '':
+                log.warning("Prototype file %s has no EXTNAME in HDU%d.",
+                            self.prototype, i)
+            if (dexex != '' and mexex != '' and dexex != mexex):
+                log.warning("Prototype file %s has an EXTNAME mismatch " +
+                            "in HDU%d (%s != %s) " +
+                            "according to %s.",
+                            self.prototype, i, dexex, mexex, self.filename)
+            #
+            # If the extension type is correct, check the contents of the
+            # extension.
+            #
+            dexf = stub_meta[i]['format']
+            try:
+                mexf = modelmeta[i]['format']
+            except KeyError:
+                mexf = "Extension format not found"
+            if dex == 'IMAGE':
+                try:
+                    icomma = dexf.index(',')
+                except ValueError:
+                    icomma = len(dexf)
+                if dexf[:icomma] != mexf[:icomma]:
+                    log.warning("Prototype file %s has an extension " +
+                                "format mismatch in HDU%d " +
+                                "according to %s.",
+                                self.prototype, i, self.filename)
+            else:
+                dexf = dexf[1:]  # Get rid of header line.
+                if len(dexf) != len(mexf):
+                    log.warning("Prototype file %s has the wrong " +
+                                "number of HDU%d columns according to %s.",
+                                self.prototype, i, self.filename)
+                else:
+                    for j in range(len(dexf)):
+                        if dexf[j][0] != mexf[j][0]:
+                            log.warning("Prototype file %s has a " +
+                                        "column name mismatch (%s != %s) " +
+                                        "in HDU%d according to %s.",
+                                        self.prototype, dexf[j][0], mexf[j][0],
+                                        i, self.filename)
+        return
 
 def scan_model(section):
     """Find all data model files in a top-level directory.
@@ -386,107 +501,8 @@ def validate_prototypes(files, error=False):
     * Use set theory to compare the data headers to model headers.  This should
       automatically find missing headers, extraneous headers, etc.
     """
-    for p in files:
-        if p.prototype is None:
-            #
-            # A warning should have been issued already, so just skip silently.
-            #
-            continue
-        stub = Stub(p.prototype)
-        try:
-            stub_meta = stub.hdumeta
-        except KeyError as e:
-            log.warning("Prototype file %s threw KeyError: %s.",
-                        p.prototype, e)
-        modelmeta = p.extract_metadata(error=error)
-        #
-        # Check number of headers.
-        #
-        if stub.nhdr != len(modelmeta):
-            log.warning("Prototype file %s has the wrong number of " +
-                        "sections (HDUs) according to %s.",
-                        p.prototype, p.filename)
-            continue
-        for i in range(stub.nhdr):
-            dkw = stub_meta[i]['keywords']
-            mkw = modelmeta[i]['keywords']
-            #
-            # Check number of keywords.
-            #
-            if len(dkw) != len(mkw):
-                log.warning("Prototype file %s has the wrong number of " +
-                            "HDU%d keywords according to %s.",
-                            p.prototype, i, p.filename)
-                continue
-            #
-            # If number of keywords is correct, check them individually.
-            #
-            for j in range(len(dkw)):
-                if dkw[j][0] != mkw[j][0]:
-                    log.warning("Prototype file %s has a keyword " +
-                                "mismatch (%s != %s) in HDU%d according to " +
-                                "%s.", p.prototype, dkw[j][0], mkw[j][0], i,
-                                p.filename)
-            #
-            # Check the extension type.
-            #
-            dex = stub_meta[i]['extension']
-            try:
-                mex = modelmeta[i]['extension']
-            except KeyError:
-                mex = "Extension type not found"
-            if dex != mex:
-                log.warning("Prototype file %s has an extension type " +
-                            "mismatch in HDU%d (%s != %s) " +
-                            "according to %s.",
-                            p.prototype, i, dex, mex, p.filename)
-                continue
-            #
-            # Check for EXTNAME
-            #
-            dexex = stub_meta[i]['extname']
-            mexex = modelmeta[i]['extname']
-            if dexex == '':
-                log.warning("Prototype file %s has no EXTNAME in HDU%d.",
-                            p.prototype, i)
-            if (dexex != '' and mexex != '' and dexex != mexex):
-                log.warning("Prototype file %s has an EXTNAME mismatch " +
-                            "in HDU%d (%s != %s) " +
-                            "according to %s.",
-                            p.prototype, i, dexex, mexex, p.filename)
-            #
-            # If the extension type is correct, check the contents of the
-            # extension.
-            #
-            dexf = stub_meta[i]['format']
-            try:
-                mexf = modelmeta[i]['format']
-            except KeyError:
-                mexf = "Extension format not found"
-            if dex == 'IMAGE':
-                try:
-                    icomma = dexf.index(',')
-                except ValueError:
-                    icomma = len(dexf)
-                if dexf[:icomma] != mexf[:icomma]:
-                    log.warning("Prototype file %s has an extension " +
-                                "format mismatch in HDU%d " +
-                                "according to %s.",
-                                p.prototype, i, p.filename)
-            else:
-                dexf = dexf[1:]  # Get rid of header line.
-                if len(dexf) != len(mexf):
-                    log.warning("Prototype file %s has the wrong " +
-                                "number of HDU%d columns according to %s.",
-                                p.prototype, i, p.filename)
-                else:
-                    for j in range(len(dexf)):
-                        if dexf[j][0] != mexf[j][0]:
-                            log.warning("Prototype file %s has a " +
-                                        "column name mismatch (%s != %s) " +
-                                        "in HDU%d according to %s.",
-                                        p.prototype, dexf[j][0], mexf[j][0],
-                                        i, p.filename)
+    for f in files:
+        f.validate_prototype(error=error)
     return
 
 

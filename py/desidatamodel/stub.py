@@ -414,7 +414,9 @@ def extrakey(key):
     """Return True if key is not a boring standard FITS keyword.
 
     To make the data model more human readable, we don't overwhelm the output
-    with required keywords which are required by the FITS standard anyway.
+    with required keywords which are required by the FITS standard anyway, or
+    cases where the number of headers might change over time.
+
     This list isn't exhaustive.
 
     Parameters
@@ -431,15 +433,21 @@ def extrakey(key):
     --------
     >>> extrakey('SIMPLE')
     False
+    >>> extrakey('DEPNAM01')
+    False
     >>> extrakey('BZERO')
     True
     """
     from re import match
     # don't drop NAXIS1 and NAXIS2 since we want to document which is which
     if key in ('BITPIX', 'NAXIS', 'PCOUNT', 'GCOUNT', 'TFIELDS', 'XTENSION',
-               'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY', 'EXTNAME'):
+               'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY'):
         return False
+    # Table-specific keywords
     if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
+        return False
+    # Dependency list
+    if match(r'DEP(NAM|VER)\d+', key) is not None:
         return False
     return True
 
