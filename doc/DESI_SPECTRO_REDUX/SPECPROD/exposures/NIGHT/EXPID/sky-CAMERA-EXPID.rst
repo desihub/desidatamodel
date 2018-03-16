@@ -1,17 +1,13 @@
-===
-sky
-===
+=====================
+sky-CAMERA-EXPID.fits
+=====================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``sky-z1-00000020.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``sky-z1-00000020.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 17 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the sky model for a given camera and exposure.
+:Naming Convention: ``sky-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``sky-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 17 MB
 
 Contents
 ========
@@ -19,10 +15,10 @@ Contents
 ====== ========== ===== ===================
 Number EXTNAME    Type  Contents
 ====== ========== ===== ===================
-HDU0_  SKY        IMAGE *Brief Description*
-HDU1_  IVAR       IMAGE *Brief Description*
-HDU2_  MASK       IMAGE *Brief Description*
-HDU3_  WAVELENGTH IMAGE *Brief Description*
+HDU0_  SKY        IMAGE sky model in photons/bin
+HDU1_  IVAR       IMAGE inverse variance ``(photons/bin)^-2``
+HDU2_  MASK       IMAGE sky mask (0 = good)
+HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
 HDU4_  STATIVAR   IMAGE *Brief Description*
 ====== ========== ===== ===================
 

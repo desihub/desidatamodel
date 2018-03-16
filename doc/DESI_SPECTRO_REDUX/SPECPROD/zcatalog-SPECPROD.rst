@@ -1,17 +1,13 @@
-========
-zcatalog
-========
+=================
+zcatalog-SPECPROD
+=================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``zcatalog-mini.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``zcatalog-mini.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 14 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This file summarizes all
+    :doc:`zbest <spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM.rst>` files.
+:Naming Convention: ``zcatalog-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
+    :envvar:`SPECPROD` name of the reduction run.
+:Regex: ``zcatalog-[a-z0-9_-]+\.fits``
+:File Type: FITS, 14 MB
 
 Contents
 ========
@@ -19,7 +15,7 @@ Contents
 ====== ======== ======== ===================
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
-HDU0_           IMAGE    *Brief Description*
+HDU0_  PRIMARY  IMAGE    *Brief Description*
 HDU1_  ZCATALOG BINTABLE *Brief Description*
 ====== ======== ======== ===================
 
@@ -30,7 +26,7 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
+EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
@@ -41,7 +37,8 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-*Summarize the contents of this HDU.*
+The summarized redshift data for all
+:doc:`zbest <spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM.rst>` files.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
