@@ -46,6 +46,7 @@ class DataModel(object):
     d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
            'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
            'NIGHT': '[0-9]{8}',  # YYYYMMDD
+           'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
            'CAMERA': '[brz][0-9]',  # e.g. b0, r7
            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
@@ -383,6 +384,7 @@ class DataModel(object):
                                         self.prototype, dexf[j][0], mexf[j][0],
                                         i, self.filename)
         return
+
 
 def scan_model(section):
     """Find all data model files in a top-level directory.
