@@ -48,59 +48,20 @@ KEY      Example Value                                                          
 ======== ====================================================================================================== ===== ==============================================
 NAXIS1   2975                                                                                                   int
 NAXIS2   500                                                                                                    int
-TELRA    335.03                                                                                                 float Telescope pointing RA [degrees]
 EXPID    0                                                                                                      int   DESI exposure ID
-TILEID   4                                                                                                      int   DESI tile ID
-TELDEC   19.88                                                                                                  float Telescope pointing dec [degrees]
-DATE-OBS 2016-07-26T22:00:00                                                                                    str   Start of exposure
-FLAVOR   flat                                                                                                   str   Flavor [arc, flat, science, ...]
 NIGHT    20160726                                                                                               str   Night of observation YEARMMDD
-AIRMASS  1.0                                                                                                    float Airmass at middle of exposure
-EXPTIME  10                                                                                                     int   Exposure time [sec]
+FLAVOR   flat                                                                                                   str   Flavor [arc, flat, science, ...]
+DOSVER   SIM                                                                                                    str
+DATE-OBS 2016-07-26T22:00:00                                                                                    str   Start of exposure
+EXPTIME  10                                                                                                     float Exposure time [sec]
+FEEVER   SIM                                                                                                    str
+AIRTOVAC vac                                                                                                    str
 CAMERA   z0                                                                                                     str
-GAIN1    1.0                                                                                                    float
-GAIN2    1.0                                                                                                    float
-GAIN3    1.0                                                                                                    float
-GAIN4    1.0                                                                                                    float
-RDNOISE1 2.9                                                                                                    float
-RDNOISE2 2.9                                                                                                    float
-RDNOISE3 2.9                                                                                                    float
-RDNOISE4 2.9                                                                                                    float
-PRESEC1  [1:7,1:2064]                                                                                           str
-DATASEC1 [8:2064,1:2064]                                                                                        str
-BIASSEC1 [2065:2114,1:2064]                                                                                     str
-CCDSEC1  [1:2057,1:2064]                                                                                        str
-PRESEC2  [4222:4228,1:2064]                                                                                     str
-DATASEC2 [2165:4221,1:2064]                                                                                     str
-BIASSEC2 [2115:2164,1:2064]                                                                                     str
-CCDSEC2  [2058:4114,1:2064]                                                                                     str
-PRESEC3  [1:7,2065:4128]                                                                                        str
-DATASEC3 [8:2064,2065:4128]                                                                                     str
-BIASSEC3 [2065:2114,2065:4128]                                                                                  str
-CCDSEC3  [1:2057,2065:4128]                                                                                     str
-PRESEC4  [4222:4228,2065:4128]                                                                                  str
-DATASEC4 [2165:4221,2065:4128]                                                                                  str
-BIASSEC4 [2115:2164,2065:4128]                                                                                  str
-CCDSEC4  [2058:4114,2065:4128]                                                                                  str
-OVERSCN1 186.790687984                                                                                          float
-OBSRDN1  2.91374495497                                                                                          float
-OVERSCN2 142.624612403                                                                                          float
-OBSRDN2  2.91379123644                                                                                          float
-OVERSCN3 150.976618217                                                                                          float
-OBSRDN3  2.90516702412                                                                                          float
-OVERSCN4 166.076046512                                                                                          float
-OBSRDN4  2.92814520174                                                                                          float
-INHERIT  T                                                                                                      bool
+FIBERMIN 0                                                                                                      int
 CHECKSUM a6Zgc4Zga4Zga4Zg                                                                                       str   HDU checksum updated 2016-06-10T22:02:54
 DATASUM  4180184824                                                                                             str   data unit checksum updated 2016-06-10T22:02:54
-NSPEC    5                                                                                                      int   Number of spectra
-WAVEMIN  7445.0                                                                                                 float First wavelength [Angstroms]
-WAVEMAX  9824.0                                                                                                 float Last wavelength [Angstroms]
-WAVESTEP 0.8                                                                                                    float Wavelength step size [Angstroms]
-SPECTER  0.5.0dev1                                                                                              str   https://github.com/desihub/specter
-IN_PSF   ...st/calib2d/psf/20160726/psfnight-z0.fits                                                            str   Input spectral PSF
-IN_IMG   .../dailytest/20160726/pix-z0-00000000.fits                                                            str   Input image
-FIBERMIN 0                                                                                                      int
+TILEID   4                                                                                                      int   DESI tile ID
+CHI2PDF  1.054664427586549                                                                                      float
 ======== ====================================================================================================== ===== ==============================================
 
 Data: FITS image [float32, 2975x500]
