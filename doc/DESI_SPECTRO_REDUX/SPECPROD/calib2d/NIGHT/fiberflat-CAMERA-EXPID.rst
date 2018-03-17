@@ -60,7 +60,6 @@ CAMERA   z0                                                                     
 FIBERMIN 0                                                                                                      int
 CHECKSUM a6Zgc4Zga4Zga4Zg                                                                                       str   HDU checksum updated 2016-06-10T22:02:54
 DATASUM  4180184824                                                                                             str   data unit checksum updated 2016-06-10T22:02:54
-TILEID   4                                                                                                      int   DESI tile ID
 CHI2PDF  1.054664427586549                                                                                      float
 ======== ====================================================================================================== ===== ==============================================
 

@@ -93,7 +93,7 @@ CHECKSUM BeFKEbFIBbFIBbFI  str  HDU checksum
 DATASUM  2975688342        int  data unit checksum
 ======== ================= ==== =====================
 
-Data: FITS image [float64]
+Data: FITS image [float32]
 
 HDU2
 ----
@@ -116,7 +116,7 @@ CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
 DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32, 2951x500]
+Data: FITS image [int32 (compressed), 2951x500]
 
 HDU3
 ----
@@ -129,12 +129,14 @@ the first 2 HDUs.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== =====================
-KEY     Example Value Type Comment
-======= ============= ==== =====================
-NAXIS1  6001          int  Number of wavelengths
-BUNIT   Angstrom      str
-======= ============= ==== =====================
+======== ================ ==== =====================
+KEY      Example Value    Type Comment
+======== ================ ==== =====================
+NAXIS1   6001             int  Number of wavelengths
+BUNIT    Angstrom         str
+CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
+DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
+======== ================ ==== =====================
 
 Data: FITS image [float64]
 
@@ -173,13 +175,15 @@ at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ============= ==== =====================
-KEY     Example Value Type Comment
-======= ============= ==== =====================
-NAXIS1  6001          int  length of data axis 1
-NAXIS2  21            int  length of data axis 2
-NAXIS3  500           int  length of data axis 3
-======= ============= ==== =====================
+======== ================ ==== =====================
+KEY      Example Value    Type Comment
+======== ================ ==== =====================
+NAXIS1   6001             int  length of data axis 1
+NAXIS2   21               int  length of data axis 2
+NAXIS3   500              int  length of data axis 3
+CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
+DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
+======== ================ ==== =====================
 
 Data: FITS image [float64]
 
