@@ -55,7 +55,7 @@ DOSVER   SIM                                                                    
 DATE-OBS 2016-07-26T22:00:00                                                                                    str   Start of exposure
 EXPTIME  10                                                                                                     float Exposure time [sec]
 FEEVER   SIM                                                                                                    str
-AIRTOVAC vac                                                                                                    str
+AIRORVAC vac                                                                                                    str
 CAMERA   z0                                                                                                     str
 FIBERMIN 0                                                                                                      int
 CHECKSUM a6Zgc4Zga4Zga4Zg                                                                                       str   HDU checksum updated 2016-06-10T22:02:54

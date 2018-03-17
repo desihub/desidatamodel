@@ -185,7 +185,7 @@ CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
 DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
 ======== ================ ==== =====================
 
-Data: FITS image [float64]
+Data: FITS image [float32]
 
 HDU5
 ----
