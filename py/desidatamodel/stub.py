@@ -405,13 +405,14 @@ def image_format(hdr):
               -32: 'float32', -64: 'float64'}
     if 'ZBITPIX' in hdr:
         try:
-            datatype = bitmap[hdr['ZBITPIX']] + '(compressed)'
+            datatype = bitmap[hdr['ZBITPIX']] + ' (compressed)'
         except KeyError:
             datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
-    try:
-        datatype = bitmap[hdr['BITPIX']]
-    except KeyError:
-        datatype = 'BITPIX={}'.format(hdr['BITPIX'])
+    else:
+        try:
+            datatype = bitmap[hdr['BITPIX']]
+        except KeyError:
+            datatype = 'BITPIX={}'.format(hdr['BITPIX'])
     return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
 
 
