@@ -234,8 +234,8 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-BZERO    2147483648
-BSCALE   1
+BZERO    2147483648       int
+BSCALE   1                int
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
@@ -344,6 +344,8 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+BZERO    2147483648       int
+BSCALE   1                int
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
@@ -442,8 +444,8 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-BSCALE   1                int
 BZERO    2147483648       int
+BSCALE   1                int
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
