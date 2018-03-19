@@ -524,16 +524,18 @@ def main():
     parser.add_argument('-d', '--datamodel-dir', dest='desidatamodel',
                         metavar='DIR',
                         help='Override the value of DESIDATAMODEL.')
+    parser.add_argument('-F', '--compare-files', dest='files',
+                        action='store_true',
+                        help='Compare an individual data model to an individual file.')
     parser.add_argument('-W', '--warning-is-error', dest='error',
                         action='store_true',
-                        help=('Data model errors raise exceptions, ' +
-                              'not warnings.'))
+                        help='Data model warnings raise exceptions.')
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
                         help='Set log level to DEBUG.')
-    parser.add_argument('section', metavar='DIR',
-                        help='Set the section of the data model.')
-    parser.add_argument('directory', metavar='DIR',
-                        help='Check files in this top-level directory.')
+    parser.add_argument('section', metavar='DIR or FILE',
+                        help='Section of the data model or individual model file.')
+    parser.add_argument('directory', metavar='DIR or FILE',
+                        help='Check files in this top-level directory, or one individual file.')
     options = parser.parse_args()
     if options.verbose:
         log.setLevel(DEBUG)
@@ -546,9 +548,23 @@ def main():
             log.critical(("DESIDATAMODEL is not defined. " +
                           "Cannot find data model files!"))
             return 1
-    section = os.path.join(data_model_root, 'doc', options.section)
-    files = scan_model(section)
-    files_to_regexp(options.directory, files, error=options.error)
-    collect_files(options.directory, files)
+    log.debug("DESIDATAMODEL=%s", data_model_root)
+    if options.files:
+        filename = os.path.join(data_model_root, 'doc', options.section)
+        section = os.path.join(data_model_root, 'doc', options.section.split('/')[0])
+        log.info("Loading individual data model: %s.", filename)
+        files = [DataModel(filename, section)]
+        log.info("Skipping regular expression processing.")
+        # files[0].get_regexp(options.directory, error=options.error)
+        log.info("Setting prototype file for %s to %s.", filename, options.directory)
+        files[0].prototype = options.directory
+    else:
+        section = os.path.join(data_model_root, 'doc', options.section)
+        log.info("Loading data model file in %s.", section)
+        files = scan_model(section)
+        log.info("Searching for data files in %s.", options.directory)
+        files_to_regexp(options.directory, files, error=options.error)
+        log.info("Identifying prototype files in %s.", options.directory)
+        collect_files(options.directory, files)
     validate_prototypes(files, error=options.error)
     return 0

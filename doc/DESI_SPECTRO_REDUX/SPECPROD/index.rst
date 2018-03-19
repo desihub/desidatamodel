@@ -47,5 +47,4 @@ Deprecated::
    calib2d/index
    exposures/index
    spectra-NSIDE/index
-   versions.json
    zcatalog-SPECPROD
