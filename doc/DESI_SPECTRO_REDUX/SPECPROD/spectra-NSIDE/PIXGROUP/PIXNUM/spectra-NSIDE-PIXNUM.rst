@@ -252,7 +252,7 @@ CHECKSUM PaM2QVM1PZM1PZM1 str  HDU checksum updated 2017-06-12T23:41:39
 DATASUM  1460550          str  data unit checksum updated 2017-06-12T23:41:39
 ======== ================ ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [int32 (compressed), 2975x5550]
 
 HDU07
 -----
@@ -379,7 +379,7 @@ CHECKSUM ncKOnZIOnaIOnYIO str  HDU checksum updated 2017-06-12T23:41:43
 DATASUM  1298386          str  data unit checksum updated 2017-06-12T23:41:43
 ======== ================ ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [int32 (compressed), 2975x5550]
 
 HDU12
 -----
@@ -495,7 +495,7 @@ CHECKSUM U7IfV6GZU6GfU6GZ str  HDU checksum updated 2017-06-12T23:41:46
 DATASUM  2148956187       str  data unit checksum updated 2017-06-12T23:41:46
 ======== ================ ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [int32 (compressed), 2975x5550]
 
 HDU17
 -----
