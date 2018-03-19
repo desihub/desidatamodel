@@ -34,10 +34,6 @@ Output files::
         calib2d/{night}/
             psf/psf-{camera}-{expid}.fits
 
-Deprecated::
-
-    $DESI_SPECTRO_REDUX/$SPECPROD/
-        bricks/{brickid}/brick-{b|r|z}-{brickid}.fits
 
 .. toctree::
    :maxdepth: 1

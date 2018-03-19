@@ -56,6 +56,7 @@ NAXIS2   5000                    int   length of dimension 2
 NIGHT    20170327                str   YEARMMDD of sunset for this night
 EXPID    2                       int   unique DESI exposure ID
 TILEID   4                       int   DESI tile ID
+PROGRAM  DARK                    str   program [dark, bright, ...]
 FLAVOR   dark                    str   Flavor [arc, flat, science, zero, ...]
 TELRA    335.03                  float Telescope pointing RA in J2000 degrees
 TELDEC   19.88                   float Telescope pointing dec in J2000 degrees
