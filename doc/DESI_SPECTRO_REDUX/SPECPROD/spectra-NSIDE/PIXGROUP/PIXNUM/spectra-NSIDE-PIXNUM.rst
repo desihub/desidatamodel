@@ -386,7 +386,6 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
-EXTNAME  Z_WAVELENGTH     str  extension name
 ======== ================ ==== ==============================================
 
 Data: FITS image [float64, nwave]

@@ -94,7 +94,7 @@ class Stub(object):
             for k in range(self.nhdr):
                 self.headers.append(filename[k].header)
         else:
-            with fits.open(filename) as fx:
+            with fits.open(filename, disable_image_compression=True) as fx:
                 self.nhdr = len(fx)
                 for k in range(self.nhdr):
                     self.headers.append(fx[k].header)
@@ -149,11 +149,9 @@ class Stub(object):
                 if 'XTENSION' in self.headers[k]:
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
                     if meta['extension'] == 'BINTABLE':
-                        meta['format'] = self.columns(k)
-                        if meta['format'] is None:
-                            #
-                            # Maybe it's a compressed image.
-                            #
+                        try:
+                            meta['format'] = self.columns(k)
+                        except DataModelError:
                             meta['format'] = image_format(self.headers[k])
                     elif meta['extension'] == 'IMAGE':
                         meta['format'] = image_format(self.headers[k])
@@ -215,13 +213,16 @@ class Stub(object):
         -------
         :class:`list`
             The rows of the table.
+
+        Raises
+        ------
+        DataModelError
+            If the BINTABLE is actually a compressed image.
         """
         hdr = self.headers[hdu]
-        try:
-            ncol = hdr['TFIELDS']
-        except KeyError:
-            log.warning("HDU%d might actually be a compressed image.", hdu)
-            return None
+        if 'ZBITPIX' in hdr:
+            raise DataModelError("HDU{0:d} is actually a compressed image!".format(hdu))
+        ncol = hdr['TFIELDS']
         c = list()
         c.append(self.columns_header)
         for j in range(ncol):
