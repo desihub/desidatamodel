@@ -211,12 +211,16 @@ class Stub(object):
         :class:`list`
             The rows of the table.
         """
+        try:
+            ncol = hdr['TFIELDS']
+        except KeyError:
+            log.warning("HDU%d might actually be a compressed image.", hdu)
+            return None
         c = list()
         hdr = self.headers[hdu]
         c.append(self.columns_header)
-        jformat = '{0:d}'
-        for j in range(hdr['TFIELDS']):
-            jj = jformat.format(j+1)
+        for j in range(ncol):
+            jj = '{0:d}'.format(j+1)
             name = hdr['TTYPE'+jj].strip()
             ttype = fits_column_format(hdr['TFORM'+jj].strip())
             tunit = 'TUNIT'+jj
