@@ -289,11 +289,7 @@ class DataModel(object):
             #
             return
         stub = Stub(self.prototype)
-        try:
-            stub_meta = stub.hdumeta
-        except KeyError as e:
-            log.warning("Prototype file %s threw KeyError: %s.",
-                        self.prototype, e)
+        stub_meta = stub.hdumeta
         modelmeta = self.extract_metadata(error=error)
         #
         # Check number of headers.

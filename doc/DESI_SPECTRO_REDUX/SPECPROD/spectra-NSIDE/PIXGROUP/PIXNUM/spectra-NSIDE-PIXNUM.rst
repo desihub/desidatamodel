@@ -177,10 +177,6 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
-EXTNAME  B_WAVELENGTH     str  extension name
-BUNIT    Angstrom         str
-CHECKSUM IS7FJS5CIS5CIS5C str  HDU checksum updated 2017-06-12T23:41:38
-DATASUM  3517056679       str  data unit checksum updated 2017-06-12T23:41:38
 ======== ================ ==== ==============================================
 
 Data: 1D float32 image [nwave]
@@ -200,10 +196,6 @@ KEY      Example Value              Type Comment
 ======== ========================== ==== ==============================================
 NAXIS1   2380                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
-EXTNAME  B_FLUX                     str  extension name
-BUNIT    1e-17 erg/(s cm2 Angstrom) str
-CHECKSUM TeamUZWmTdamTZUm           str  HDU checksum updated 2017-06-12T23:41:39
-DATASUM  2960563931                 str  data unit checksum updated 2017-06-12T23:41:39
 ======== ========================== ==== ==============================================
 
 Data: 2D float32 image [nspec, nwave]
@@ -223,9 +215,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-EXTNAME  B_IVAR           str  extension name
-CHECKSUM 9VDdGTCZ9TCdETCZ str  HDU checksum updated 2017-06-12T23:41:39
-DATASUM  1834901626       str  data unit checksum updated 2017-06-12T23:41:39
 ======== ================ ==== ==============================================
 
 Data: 2D float32 image [nspec, nwave]
@@ -245,11 +234,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-BSCALE   1                int
-BZERO    2147483648       int
-EXTNAME  B_MASK           str  name of this binary table extension
-CHECKSUM PaM2QVM1PZM1PZM1 str  HDU checksum updated 2017-06-12T23:41:39
-DATASUM  1460550          str  data unit checksum updated 2017-06-12T23:41:39
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
@@ -270,9 +254,6 @@ KEY      Example Value    Type Comment
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   9                int  Number of diagonals
 NAXIS3   1225             int  Number of spectra
-EXTNAME  B_RESOLUTION     str  extension name
-CHECKSUM 7ALhA9Kf8AKfA9Kf str  HDU checksum updated 2017-06-12T23:41:41
-DATASUM  897957910        str  data unit checksum updated 2017-06-12T23:41:41
 ======== ================ ==== ==============================================
 
 Data: 3D float32 image [nspec, ndiag, nwave]
@@ -282,7 +263,7 @@ A sparse resolution matrix may be created for spectrum ``i`` with::
     from desispec.resolution import Resolution
     R = Resolution(data[i])
 
-Or using lower-level scipy.sparse matrices:
+Or using lower-level scipy.sparse matrices::
 
     import scipy.sparse
     import numpy as np
@@ -304,10 +285,6 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
-EXTNAME  R_WAVELENGTH     str  extension name
-BUNIT    Angstrom         str
-CHECKSUM 9MRYAKOX9KOXAKOX str  HDU checksum updated 2017-06-12T23:41:42
-DATASUM  305316813        str  data unit checksum updated 2017-06-12T23:41:42
 ======== ================ ==== ==============================================
 
 Data: 1D float32 image [nwave]
@@ -327,10 +304,6 @@ KEY      Example Value              Type Comment
 ======== ========================== ==== ==============================================
 NAXIS1   2116                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
-EXTNAME  R_FLUX                     str  extension name
-BUNIT    1e-17 erg/(s cm2 Angstrom) str  Flux units
-CHECKSUM EVZoGUYlEUYlEUYl           str  HDU checksum updated 2017-06-12T23:41:42
-DATASUM  3800150027                 str  data unit checksum updated 2017-06-12T23:41:42
 ======== ========================== ==== ==============================================
 
 Data: 2D float32 image [nspec, nwave]
@@ -350,9 +323,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-EXTNAME  R_IVAR           str  extension name
-CHECKSUM oHfIr9ZFoGfFo9ZF str  HDU checksum updated 2017-06-12T23:41:42
-DATASUM  3521235630       str  data unit checksum updated 2017-06-12T23:41:42
 ======== ================ ==== ==============================================
 
 Data: 2D float32 image [nspec, nwave]
@@ -372,11 +342,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-BSCALE   1                int
-BZERO    2147483648       int
-EXTNAME  R_MASK           str  name of this binary table extension
-CHECKSUM ncKOnZIOnaIOnYIO str  HDU checksum updated 2017-06-12T23:41:43
-DATASUM  1298386          str  data unit checksum updated 2017-06-12T23:41:43
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
@@ -399,9 +364,6 @@ KEY      Example Value    Type Comment
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   9                int  Number of diagonals
 NAXIS3   1225             int  Number of spectra
-EXTNAME  R_RESOLUTION     str  extension name
-CHECKSUM 9HQT99QQ9GQQ99QQ str  HDU checksum updated 2017-06-12T23:41:45
-DATASUM  695209495        str  data unit checksum updated 2017-06-12T23:41:45
 ======== ================ ==== ==============================================
 
 Data: 3D float32 image [nspec, ndiag, nwave]
@@ -421,9 +383,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
 EXTNAME  Z_WAVELENGTH     str  extension name
-BUNIT    Angstrom         str
-CHECKSUM cHLHe9KGcGKGc9KG str  HDU checksum updated 2017-06-12T23:41:45
-DATASUM  692648483        str  data unit checksum updated 2017-06-12T23:41:45
 ======== ================ ==== ==============================================
 
 Data: 1D float32 image [nwave]
@@ -443,10 +402,6 @@ KEY      Example Value              Type Comment
 ======== ========================== ==== ==============================================
 NAXIS1   2399                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
-EXTNAME  Z_FLUX                     str  extension name
-BUNIT    1e-17 erg/(s cm2 Angstrom) str
-CHECKSUM UARhW8RhUARhU7Rh           str  HDU checksum updated 2017-06-12T23:41:45
-DATASUM  1166849465                 str  data unit checksum updated 2017-06-12T23:41:45
 ======== ========================== ==== ==============================================
 
 Data: 2D float32 image [nspec, nwave]
@@ -466,9 +421,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-EXTNAME  Z_IVAR           str  extension name
-CHECKSUM fA44g713fA13f513 str  HDU checksum updated 2017-06-12T23:41:46
-DATASUM  3583056072       str  data unit checksum updated 2017-06-12T23:41:46
 ======== ================ ==== ==============================================
 
 Data: 2D float32 image [nspec, nwave]
@@ -490,9 +442,6 @@ NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
 BSCALE   1                int
 BZERO    2147483648       int
-EXTNAME  Z_MASK           str  name of this binary table extension
-CHECKSUM U7IfV6GZU6GfU6GZ str  HDU checksum updated 2017-06-12T23:41:46
-DATASUM  2148956187       str  data unit checksum updated 2017-06-12T23:41:46
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
@@ -515,9 +464,6 @@ KEY      Example Value    Type Comment
 NAXIS1   2399             int  Number of wavelengths
 NAXIS2   11               int  Number of diagonal elements
 NAXIS3   1225             int  Number of spectra
-EXTNAME  Z_RESOLUTION     str  extension name
-CHECKSUM gDaDiBX9gBaAgBU9 str  HDU checksum updated 2017-06-12T23:41:49
-DATASUM  256401500        str  data unit checksum updated 2017-06-12T23:41:49
 ======== ================ ==== ==============================================
 
 Data: 3D float32 image [nspec, ndiag, nwave]
