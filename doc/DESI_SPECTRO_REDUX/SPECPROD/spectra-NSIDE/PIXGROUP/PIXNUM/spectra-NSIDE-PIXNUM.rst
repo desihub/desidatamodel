@@ -179,7 +179,7 @@ KEY      Example Value    Type Comment
 NAXIS1   2380             int  Number of wavelengths
 ======== ================ ==== ==============================================
 
-Data: FITS image [float32, nwave]
+Data: FITS image [float64, nwave]
 
 HDU04
 -----
@@ -234,6 +234,8 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+BZERO    2147483648
+BSCALE   1
 ======== ================ ==== ==============================================
 
 Data: FITS image [int32 (compressed), 2975x5550]
@@ -287,7 +289,7 @@ KEY      Example Value    Type Comment
 NAXIS1   2116             int  Number of wavelengths
 ======== ================ ==== ==============================================
 
-Data: FITS image [float32, nwave]
+Data: FITS image [float64, nwave]
 
 HDU09
 -----
@@ -385,7 +387,7 @@ NAXIS1   2399             int  Number of wavelengths
 EXTNAME  Z_WAVELENGTH     str  extension name
 ======== ================ ==== ==============================================
 
-Data: FITS image [float32, nwave]
+Data: FITS image [float64, nwave]
 
 HDU14
 -----
