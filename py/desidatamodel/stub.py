@@ -150,6 +150,11 @@ class Stub(object):
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
                     if meta['extension'] == 'BINTABLE':
                         meta['format'] = self.columns(k)
+                        if meta['format'] is None:
+                            #
+                            # Maybe it's a compressed image.
+                            #
+                            meta['format'] = image_format(self.headers[k])
                     elif meta['extension'] == 'IMAGE':
                         meta['format'] = image_format(self.headers[k])
                     else:
@@ -211,13 +216,13 @@ class Stub(object):
         :class:`list`
             The rows of the table.
         """
+        hdr = self.headers[hdu]
         try:
             ncol = hdr['TFIELDS']
         except KeyError:
             log.warning("HDU%d might actually be a compressed image.", hdu)
             return None
         c = list()
-        hdr = self.headers[hdu]
         c.append(self.columns_header)
         for j in range(ncol):
             jj = '{0:d}'.format(j+1)
