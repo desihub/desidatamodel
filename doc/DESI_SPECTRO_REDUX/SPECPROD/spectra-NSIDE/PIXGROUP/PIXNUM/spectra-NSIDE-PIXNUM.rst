@@ -179,7 +179,7 @@ KEY      Example Value    Type Comment
 NAXIS1   2380             int  Number of wavelengths
 ======== ================ ==== ==============================================
 
-Data: 1D float32 image [nwave]
+Data: FITS image [float32, nwave]
 
 HDU04
 -----
@@ -198,7 +198,7 @@ NAXIS1   2380                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
 ======== ========================== ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [float32, nspec x nwave]
 
 HDU05
 -----
@@ -217,7 +217,7 @@ NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
 ======== ================ ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [float32, nspec x nwave]
 
 HDU06
 -----
@@ -256,7 +256,7 @@ NAXIS2   9                int  Number of diagonals
 NAXIS3   1225             int  Number of spectra
 ======== ================ ==== ==============================================
 
-Data: 3D float32 image [nspec, ndiag, nwave]
+Data: FITS image [float32, nspec x ndiag x nwave]
 
 A sparse resolution matrix may be created for spectrum ``i`` with::
 
@@ -287,7 +287,7 @@ KEY      Example Value    Type Comment
 NAXIS1   2116             int  Number of wavelengths
 ======== ================ ==== ==============================================
 
-Data: 1D float32 image [nwave]
+Data: FITS image [float32, nwave]
 
 HDU09
 -----
@@ -306,7 +306,7 @@ NAXIS1   2116                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
 ======== ========================== ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [float32, nspec x nwave]
 
 HDU10
 -----
@@ -325,7 +325,7 @@ NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
 ======== ================ ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [float32, nspec x nwave]
 
 HDU11
 -----
@@ -366,7 +366,7 @@ NAXIS2   9                int  Number of diagonals
 NAXIS3   1225             int  Number of spectra
 ======== ================ ==== ==============================================
 
-Data: 3D float32 image [nspec, ndiag, nwave]
+Data: FITS image [float32, nspec x ndiag x nwave]
 
 HDU13
 -----
@@ -385,7 +385,7 @@ NAXIS1   2399             int  Number of wavelengths
 EXTNAME  Z_WAVELENGTH     str  extension name
 ======== ================ ==== ==============================================
 
-Data: 1D float32 image [nwave]
+Data: FITS image [float32, nwave]
 
 HDU14
 -----
@@ -404,7 +404,7 @@ NAXIS1   2399                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
 ======== ========================== ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [float32, nspec x nwave]
 
 HDU15
 -----
@@ -423,7 +423,7 @@ NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
 ======== ================ ==== ==============================================
 
-Data: 2D float32 image [nspec, nwave]
+Data: FITS image [float32, nspec x nwave]
 
 HDU16
 -----
@@ -466,7 +466,7 @@ NAXIS2   11               int  Number of diagonal elements
 NAXIS3   1225             int  Number of spectra
 ======== ================ ==== ==============================================
 
-Data: 3D float32 image [nspec, ndiag, nwave]
+Data: FITS image [float32, nspec x ndiag x nwave]
 
 
 Notes and Examples
