@@ -17,21 +17,22 @@ Number EXTNAME      Type     Contents
 ====== ============ ======== ========================================
 HDU00_ PRIMARY      IMAGE    Empty
 HDU01_ FIBERMAP     BINTABLE fibermap table
-HDU02_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
-HDU03_ B_FLUX       IMAGE    Flux of b-channel spectra
-HDU04_ B_IVAR       IMAGE    Inverse variance of b-channel spectra
-HDU05_ B_MASK       IMAGE    Mask of b-channel spectra
-HDU06_ B_RESOLUTION IMAGE    Resolution matrices of b-channel spectra
-HDU07_ R_WAVELENGTH IMAGE    Wavelength array of r-channel spectra
-HDU08_ R_FLUX       IMAGE    Flux of r-channel spectra
-HDU09_ R_IVAR       IMAGE    Inverse variance of r-channel spectra
-HDU10_ R_MASK       IMAGE    Mask of r-channel spectra
-HDU11_ R_RESOLUTION IMAGE    Resolution matrices of r-channel spectra
-HDU12_ Z_WAVELENGTH IMAGE    Wavelength array of z-channel spectra
-HDU13_ Z_FLUX       IMAGE    Flux of z-channel spectra
-HDU14_ Z_IVAR       IMAGE    Inverse variance of z-channel spectra
-HDU15_ Z_MASK       IMAGE    Mask of z-channel spectra
-HDU16_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
+HDU02_ SCORES       BINTABLE scores table
+HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
+HDU04_ B_FLUX       IMAGE    Flux of b-channel spectra
+HDU05_ B_IVAR       IMAGE    Inverse variance of b-channel spectra
+HDU06_ B_MASK       IMAGE    Mask of b-channel spectra
+HDU07_ B_RESOLUTION IMAGE    Resolution matrices of b-channel spectra
+HDU08_ R_WAVELENGTH IMAGE    Wavelength array of r-channel spectra
+HDU09_ R_FLUX       IMAGE    Flux of r-channel spectra
+HDU10_ R_IVAR       IMAGE    Inverse variance of r-channel spectra
+HDU11_ R_MASK       IMAGE    Mask of r-channel spectra
+HDU12_ R_RESOLUTION IMAGE    Resolution matrices of r-channel spectra
+HDU13_ Z_WAVELENGTH IMAGE    Wavelength array of z-channel spectra
+HDU14_ Z_FLUX       IMAGE    Flux of z-channel spectra
+HDU15_ Z_IVAR       IMAGE    Inverse variance of z-channel spectra
+HDU16_ Z_MASK       IMAGE    Mask of z-channel spectra
+HDU17_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
 ====== ============ ======== ========================================
 
 
@@ -43,56 +44,11 @@ HDU00
 
 EXTNAME = PRIMARY
 
-Empty data, just header keywords with code versions
-
-Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-======== ================= ==== ==============================================
-KEY      Example Value     Type Comment
-======== ================= ==== ==============================================
-FLAVOR   science           str
-DEPNAM00 python            str
-DEPVER00 3.5.2             str
-DEPNAM01 numpy             str
-DEPVER01 1.11.3            str
-DEPNAM02 scipy             str
-DEPVER02 0.18.1            str
-DEPNAM03 astropy           str
-DEPVER03 1.3.2             str
-DEPNAM04 yaml              str
-DEPVER04 3.12              str
-DEPNAM05 mpi4py            str
-DEPVER05 2.0.0             str
-DEPNAM06 desiutil          str
-DEPVER06 1.9.4.dev498      str
-DEPNAM07 desispec          str
-DEPVER07 0.14.0.dev1348    str
-DEPNAM08 desitarget        str
-DEPVER08 0.11.0.dev801     str
-DEPNAM09 desimodel         str
-DEPVER09 0.6.0.dev178      str
-DEPNAM10 desisim           str
-DEPVER10 0.18.3.dev863     str
-DEPNAM11 specter           str
-DEPVER11 0.7.0dev1         str
-DEPNAM12 speclite          str
-DEPVER12 0.5               str
-DEPNAM13 specsim           str
-DEPVER13 0.10dev717.dev717 str
-DOSVER   SIM               str
-FEEVER   SIM               str
-FIBERMIN 50                int
-DEPNAM14 matplotlib        str
-DEPVER14 1.5.3             str
-CHECKSUM LFMPL9MNLCMNL9MN  str  HDU checksum updated 2017-06-17T17:32:16
-DATASUM  0                 str  data unit checksum updated 2017-06-17T17:32:16
-HPXPIXEL 16890             int  healpix pixel using NESTED ordering
-HPXNSIDE 64                int  healpix nside
-HPXNEST  T                 bool healpix NESTED ordering (not RING)
-======== ================= ==== ==============================================
-
 Empty HDU.
+
+Note: the original data model file said that there would be non-trivial
+keywords in this header, but as of reference run 18.2a, there are no such
+keywords.
 
 HDU01
 -----
@@ -109,10 +65,6 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   248              int  length of dimension 1
 NAXIS2   1225             int  length of dimension 2
-ENCODING ascii            str
-EXTNAME  FIBERMAP         str
-CHECKSUM CNEMCM9KCMEKCM9K str  HDU checksum updated 2017-06-12T23:41:38
-DATASUM  4109638159       str  data unit checksum updated 2017-06-12T23:41:38
 ======== ================ ==== ==============================================
 
 Required Data Table Columns
@@ -129,8 +81,8 @@ DESI_TARGET int64            DESI dark+calib targeting bit mask
 BGS_TARGET  int64            DESI Bright Galaxy Survey targeting bit mask
 MWS_TARGET  int64            DESI Milky Way Survey targeting bit mask
 MAG         float32[5]       magnitudes in each of the filters
-FILTER      char[50]         SDSS_R, DECAM_Z, WISE1, etc.
-SPECTROID   int32            Spectrograph ID [0-9]
+FILTER      char[200]        SDSS_R, DECAM_Z, WISE1, etc.
+SPECTROID   int64            Spectrograph ID [0-9]
 POSITIONER  int32            Positioner ID [0-4999] (deprecated)
 LOCATION    int32            Positioner location ID 1000*PETAL + DEVICE
 DEVICE_LOC  int32            Device location on petal [0-542]
@@ -149,9 +101,69 @@ Y_FVCERR    float32          Y location uncertainty from Fiber View Cam [mm]
 X_FVCERR    float32          X location uncertainty from Fiber View Cam [mm]
 NIGHT       int32            Night of exposure YYYYMMDD
 EXPID       int32            Exposure ID
+TILEID      int32            DESI tile ID
 =========== ========== ===== ===============================================
 
 HDU02
+-----
+
+EXTNAME = SCORES
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   288              int  width of table in bytes
+NAXIS2   3526             int  number of rows in table
+======== ================ ==== ==============================================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+===================== ======= ===== ===========
+Name                  Type    Units Description
+===================== ======= ===== ===========
+SUM_RAW_COUNT_B       float64
+MEDIAN_RAW_COUNT_B    float64
+MEDIAN_RAW_SNR_B      float64
+SUM_FFLAT_COUNT_B     float64
+MEDIAN_FFLAT_COUNT_B  float64
+MEDIAN_FFLAT_SNR_B    float64
+SUM_SKYSUB_COUNT_B    float64
+MEDIAN_SKYSUB_COUNT_B float64
+MEDIAN_SKYSUB_SNR_B   float64
+SUM_CALIB_COUNT_B     float64
+MEDIAN_CALIB_COUNT_B  float64
+MEDIAN_CALIB_SNR_B    float64
+SUM_RAW_COUNT_R       float64
+MEDIAN_RAW_COUNT_R    float64
+MEDIAN_RAW_SNR_R      float64
+SUM_FFLAT_COUNT_R     float64
+MEDIAN_FFLAT_COUNT_R  float64
+MEDIAN_FFLAT_SNR_R    float64
+SUM_SKYSUB_COUNT_R    float64
+MEDIAN_SKYSUB_COUNT_R float64
+MEDIAN_SKYSUB_SNR_R   float64
+SUM_CALIB_COUNT_R     float64
+MEDIAN_CALIB_COUNT_R  float64
+MEDIAN_CALIB_SNR_R    float64
+SUM_RAW_COUNT_Z       float64
+MEDIAN_RAW_COUNT_Z    float64
+MEDIAN_RAW_SNR_Z      float64
+SUM_FFLAT_COUNT_Z     float64
+MEDIAN_FFLAT_COUNT_Z  float64
+MEDIAN_FFLAT_SNR_Z    float64
+SUM_SKYSUB_COUNT_Z    float64
+MEDIAN_SKYSUB_COUNT_Z float64
+MEDIAN_SKYSUB_SNR_Z   float64
+SUM_CALIB_COUNT_Z     float64
+MEDIAN_CALIB_COUNT_Z  float64
+MEDIAN_CALIB_SNR_Z    float64
+===================== ======= ===== ===========
+
+HDU03
 -----
 
 EXTNAME = B_WAVELENGTH
@@ -173,7 +185,7 @@ DATASUM  3517056679       str  data unit checksum updated 2017-06-12T23:41:38
 
 Data: 1D float32 image [nwave]
 
-HDU03
+HDU04
 -----
 
 EXTNAME = B_FLUX
@@ -196,7 +208,7 @@ DATASUM  2960563931                 str  data unit checksum updated 2017-06-12T2
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU04
+HDU05
 -----
 
 EXTNAME = B_IVAR
@@ -218,7 +230,7 @@ DATASUM  1834901626       str  data unit checksum updated 2017-06-12T23:41:39
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU05
+HDU06
 -----
 
 EXTNAME = B_MASK
@@ -242,7 +254,7 @@ DATASUM  1460550          str  data unit checksum updated 2017-06-12T23:41:39
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU06
+HDU07
 -----
 
 EXTNAME = B_RESOLUTION
@@ -278,7 +290,7 @@ Or using lower-level scipy.sparse matrices:
     offsets = ndiag//2 - np.arange(ndiag, dtype=int)
     R = scipy.sparse.dia_matrix((data[i], offsets), shape=(nwave, nwave))
 
-HDU07
+HDU08
 -----
 
 EXTNAME = R_WAVELENGTH
@@ -300,7 +312,7 @@ DATASUM  305316813        str  data unit checksum updated 2017-06-12T23:41:42
 
 Data: 1D float32 image [nwave]
 
-HDU08
+HDU09
 -----
 
 EXTNAME = R_FLUX
@@ -323,7 +335,7 @@ DATASUM  3800150027                 str  data unit checksum updated 2017-06-12T2
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU09
+HDU10
 -----
 
 EXTNAME = R_IVAR
@@ -345,7 +357,7 @@ DATASUM  3521235630       str  data unit checksum updated 2017-06-12T23:41:42
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU10
+HDU11
 -----
 
 EXTNAME = R_MASK
@@ -369,7 +381,7 @@ DATASUM  1298386          str  data unit checksum updated 2017-06-12T23:41:43
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU11
+HDU12
 -----
 
 EXTNAME = R_RESOLUTION
@@ -394,7 +406,7 @@ DATASUM  695209495        str  data unit checksum updated 2017-06-12T23:41:45
 
 Data: 3D float32 image [nspec, ndiag, nwave]
 
-HDU12
+HDU13
 -----
 
 EXTNAME = Z_WAVELENGTH
@@ -416,7 +428,7 @@ DATASUM  692648483        str  data unit checksum updated 2017-06-12T23:41:45
 
 Data: 1D float32 image [nwave]
 
-HDU13
+HDU14
 -----
 
 EXTNAME = Z_FLUX
@@ -439,7 +451,7 @@ DATASUM  1166849465                 str  data unit checksum updated 2017-06-12T2
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU14
+HDU15
 -----
 
 EXTNAME = Z_IVAR
@@ -461,7 +473,7 @@ DATASUM  3583056072       str  data unit checksum updated 2017-06-12T23:41:46
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU15
+HDU16
 -----
 
 EXTNAME = Z_MASK
@@ -485,7 +497,7 @@ DATASUM  2148956187       str  data unit checksum updated 2017-06-12T23:41:46
 
 Data: 2D float32 image [nspec, nwave]
 
-HDU16
+HDU17
 -----
 
 EXTNAME = Z_RESOLUTION
@@ -524,5 +536,4 @@ Upcoming changes
 The following changes are not yet in the spectra files, but will be added in
 the future:
 
-  * signal-to-noise per band
-  * TILEID column added to FIBERMAP HDU
+* signal-to-noise per band
