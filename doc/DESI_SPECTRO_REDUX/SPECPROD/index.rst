@@ -42,7 +42,6 @@ Deprecated::
 .. toctree::
    :maxdepth: 1
 
-   bricks/index
    calib1d/index
    calib2d/index
    exposures/index
