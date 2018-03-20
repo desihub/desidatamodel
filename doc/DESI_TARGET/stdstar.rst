@@ -19,7 +19,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_  PRIMARY IMAGE    Blank
-HDU1_  STDSTAR BINTABLE Standard Star table
+HDU1_  STD     BINTABLE Standard Star table
 ====== ======= ======== ===================
 
 
@@ -38,7 +38,7 @@ Empty HDU.
 HDU1
 ----
 
-EXTNAME = STDSTAR
+EXTNAME = STD
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

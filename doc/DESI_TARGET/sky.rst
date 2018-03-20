@@ -40,12 +40,16 @@ EXTNAME = SKY
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 184           int  width of table in bytes
-NAXIS2 48128         int  number of rows in table
-====== ============= ==== =======================
+======== ============= ==== =======================
+KEY      Example Value Type Comment
+======== ============= ==== =======================
+NAXIS1   184           int  width of table in bytes
+NAXIS2   48128         int  number of rows in table
+ENCODING ascii         str
+SEED     1028862084    int  initial random seed
+HPXNSIDE 64            int  HEALPix nside
+HPXNEST  T             bool HEALPix nested (not ring) ordering
+======== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
