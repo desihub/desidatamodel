@@ -29,7 +29,8 @@ check_model DESI_SPECTRO_REDUX ${DESI_SPECTRO_REDUX} > ${SCRATCH}/DESI_SPECTRO_R
 check_model DESI_SPECTRO_SIM ${DESI_SPECTRO_SIM} > ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log 2>&1
 check_model -F DESI_TARGET/mtl.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/mtl.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
 check_model -F DESI_TARGET/sky.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/sky.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
-check_model -F DESI_TARGET/stdstar.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/stdstar-dark.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
-check_model -F DESI_TARGET/stdstar.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/stdstar-bright.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
+check_model -F DESI_TARGET/stdstar.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/standards-dark.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
+check_model -F DESI_TARGET/stdstar.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/standards-bright.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
 check_model -F DESI_TARGET/targets.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/targets.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
 check_model -F DESI_TARGET/truth.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/truth.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
+check_model -F DESI_TARGET/fiberassign/tile.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/fiberassign/tile_11108.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
