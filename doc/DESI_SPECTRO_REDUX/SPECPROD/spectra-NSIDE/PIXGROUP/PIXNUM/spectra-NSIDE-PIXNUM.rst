@@ -234,6 +234,7 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+ZSIMPLE  T                bool This keyword probably should not be here.
 BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
@@ -344,6 +345,7 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+ZSIMPLE  T                bool This keyword probably should not be here.
 BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
@@ -443,6 +445,7 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+ZSIMPLE  T                bool This keyword probably should not be here.
 BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
