@@ -573,8 +573,11 @@ def extract_keywords(hdr):
                 ktype = 'float'
             if key.endswith('_'):
                 key = key[0:len(key)-1] + '\\_'
-            if value.endswith('_'):
-                value = value[0:len(value)-1] + '\\_'
+            try:
+                if value.endswith('_'):
+                    value = value[0:len(value)-1] + '\\_'
+            except AttributeError:
+                log.warning("Raised AttributeError on %s = %s.", key, value)
             keywords.append((key, value, ktype, escape(hdr.comments[key])))
     return keywords
 
