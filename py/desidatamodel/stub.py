@@ -148,13 +148,14 @@ class Stub(object):
                 meta['keywords'] = extract_keywords(self.headers[k])
                 if 'XTENSION' in self.headers[k]:
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
-                    if meta['extension'] == 'BINTABLE':
+                    if meta['extension'] == 'IMAGE':
+                        meta['format'] = image_format(self.headers[k])
+                    elif meta['extension'] == 'BINTABLE':
                         try:
                             meta['format'] = self.columns(k)
                         except DataModelError:
                             meta['format'] = image_format(self.headers[k])
-                    elif meta['extension'] == 'IMAGE':
-                        meta['format'] = image_format(self.headers[k])
+                            meta['extension'] = 'IMAGE'
                     else:
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
