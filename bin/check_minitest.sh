@@ -20,6 +20,8 @@ export DESI_SPECTRO_DATA=${DESI_SPECTRO_SIM}/${PIXPROD}
 [[ -f ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log
 [[ -f ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log
 [[ -f ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log
+[[ -f ${SCRATCH}/DESI_TARGET_${run}.log ]] && /bin/rm -f ${SCRATCH}/DESI_TARGET_${run}.log && touch ${SCRATCH}/DESI_TARGET_${run}.log
 check_model DESI_SPECTRO_DATA ${DESI_SPECTRO_DATA} > ${SCRATCH}/DESI_SPECTRO_DATA_${run}.log 2>&1
 check_model DESI_SPECTRO_REDUX ${DESI_SPECTRO_REDUX} > ${SCRATCH}/DESI_SPECTRO_REDUX_${run}.log 2>&1
 check_model DESI_SPECTRO_SIM ${DESI_SPECTRO_SIM} > ${SCRATCH}/DESI_SPECTRO_SIM_${run}.log 2>&1
+check_model -F DESI_TARGET/mtl.rst /global/projecta/projectdirs/desi/datachallenge/reference_runs/18.2a/targets/mtl.fits >> ${SCRATCH}/DESI_TARGET_${run}.log 2>&1
