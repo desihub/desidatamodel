@@ -15,7 +15,7 @@ from astropy.io import fits
 
 from desiutil.log import log, DEBUG
 
-from . import PY3
+from . import PY3, DataModelError
 
 if PY3:  # pragma: no cover
     from html import escape
