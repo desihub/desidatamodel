@@ -40,7 +40,15 @@ HDU1
 
 EXTNAME = MTL
 
-This HDU has no non-standard required keywords.
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+====== ============= ==== ==============================================
+KEY    Example Value Type Comment
+====== ============= ==== ==============================================
+NAXIS1 192           int  length of dimension 1
+NAXIS2 241273        int  length of dimension 2
+====== ============= ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
