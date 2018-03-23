@@ -36,7 +36,7 @@ env:
         # overidden underneath. They are defined here in order to save having
         # to repeat them for all configurations.
         - MAIN_CMD='python setup.py'
-        - DESIUTIL_VERSION=1.9.3
+        - DESIUTIL_VERSION=1.9.9
     matrix:
         - SETUP_CMD='egg_info'
         - SETUP_CMD='bdist_egg'

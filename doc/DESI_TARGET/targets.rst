@@ -34,7 +34,10 @@ HDU0
 
 EXTNAME = PRIMARY
 
+This HDU has no non-standard required keywords.
+
 Empty HDU.
+
 
 HDU1
 ----
@@ -49,89 +52,56 @@ Required Header Keywords
 ======== ==================== ==== ===================================
 KEY      Example Value        Type Comment
 ======== ==================== ==== ===================================
-NAXIS1   243                  int  width of table in bytes
+NAXIS1   176                  int  width of table in bytes
 NAXIS2   15050911             int  number of rows in table
-EXTNAME  TARGETS              str  name of this binary table extension
-DEPNAM00 desitarget           str
-DEPVER00 0.14.0               str
-DEPNAM01 desitarget-git       str
-DEPVER01 unknown              str
-DEPNAM02 sandboxcuts          str
-DEPVER02 F                    bool sandbox cuts were used or not (T/F)
-DEPNAM03 photcat              str
-DEPVER03 dr4                  str
-DEPNAM04 tractor-files        str
-DEPVER04 /data/dr4/sweep/4.0/ str  Full path to input catalogs
-DEPNAM05 qso-selection        str
-DEPVER05 randomforest         str  QSO selection algorithm
-DEPNAM06 HPXNSIDE             str
-DEPVER06 64                   int
-DEPNAM07 HPXNEST              str
-DEPVER07 T                    bool
+ENCODING ascii                str
+SEED     1028862084           int  initial random seed
+HPXNSIDE 64                   int  HEALPix nside
+HPXNEST  T                    bool HEALPix nested (not ring) ordering
 ======== ==================== ==== ===================================
-
-TODO: HPXNSIDE and HPXNEST should be regular keywords, not DEP* keywords.
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================== ========== =============== ==================================
-Name               Type       Units           Description
-================== ========== =============== ==================================
-RELEASE            int32                      label for column  1
-BRICKID            int32                      Integer brick ID
-BRICKNAME          char[8]                    String brick name
-BRICK_OBJID        int32                      ObjectID on that brick
-TYPE               char[4]                    PSF, SIMP, DEV, EXP
-RA                 float64    deg             Right Ascension
-DEC                float64    deg             Declination
-RA_IVAR            float32    1/deg2          Inverse variance of RA
-DEC_IVAR           float32    1/deg2          Inverse variance of dec
-DCHISQ             float32[5]
-FLUX_G             float32    nanomaggies     g-band flux
-FLUX_R             float32    nanomaggies     r-band flux
-FLUX_Z             float32    nanomaggies     z-band flux
-FLUX_W1            float32    nanomaggies     WISE W1-band flux
-FLUX_W2            float32    nanomaggies     WISE W2-band flux
-FLUX_W3            float32    nanomaggies     WISE W3-band flux
-FLUX_W4            float32    nanomaggies     WISE W4-band flux
-FLUX_IVAR_G        float32    1/nanomaggies2  inverse variance of FLUX_G
-FLUX_IVAR_R        float32    1/nanomaggies2  inverse variance of FLUX_R
-FLUX_IVAR_Z        float32    1/nanomaggies2  inverse variance of FLUX_Z
-FLUX_IVAR_W1       float32    1/nanomaggies2  inverse variance of FLUX_W1
-FLUX_IVAR_W2       float32    1/nanomaggies2  inverse variance of FLUX_W2
-FLUX_IVAR_W3       float32    1/nanomaggies2  inverse variance of FLUX_W3
-FLUX_IVAR_W4       float32    1/nanomaggies2  inverse variance of FLUX_W4
-MW_TRANSMISSION_G  float32                    Milky Way transmission in g
-MW_TRANSMISSION_R  float32
-MW_TRANSMISSION_Z  float32
-MW_TRANSMISSION_W1 float32
-MW_TRANSMISSION_W2 float32
-MW_TRANSMISSION_W3 float32
-MW_TRANSMISSION_W4 float32
-NOBS_G             int16                      Number of g-band obs
-NOBS_R             int16                      Number of r-band obs
-NOBS_Z             int16                      Number of z-band obs
-FRACFLUX_G         float32
-FRACFLUX_R         float32
-FRACFLUX_Z         float32
-PSFDEPTH_G         float32
-PSFDEPTH_R         float32
-PSFDEPTH_Z         float32
-GALDEPTH_G         float32
-GALDEPTH_R         float32
-GALDEPTH_Z         float32
-SHAPEDEV_R         float32
-SHAPEEXP_R         float32
-TARGETID           int64                      Unique target ID
-DESI_TARGET        int64                      Dark + calib target selection bits
-BGS_TARGET         int64                      Bright Galaxy Survey TS bits
-MWS_TARGET         int64                      Milky Way Survey TS bits
-HPXPIXEL           int64                      Healpixel ID (NESTED)
-PHOTSYS            char[1]                    N or S
-================== ========== =============== ==================================
-
-TODO: finish documenting all columns; in the meantime see http://legacysurvey.org .
+================== ======= ===== ===================
+Name               Type    Units Description
+================== ======= ===== ===================
+BRICKID            int32         Brick ID from tractor input
+BRICKNAME          char[8]       Brick name from tractor input
+BRICK_OBJID        int32         OBJID (unique to brick, but not to file)
+RA                 float64       Right ascension [degrees]
+DEC                float64       Declination [degrees]
+FLUX_G             float32       DECaLS flux from tractor input (g)
+FLUX_R             float32       DECaLS flux from tractor input (r)
+FLUX_Z             float32       DECaLS flux from tractor input (z)
+FLUX_W1            float32       WISE flux in W1
+FLUX_W2            float32       WISE flux in W2
+MW_TRANSMISSION_G  float32       Milky Way dust transmission in DECaLS g
+MW_TRANSMISSION_R  float32       Milky Way dust transmission in DECaLS r
+MW_TRANSMISSION_Z  float32       Milky Way dust transmission in DECaLS z
+MW_TRANSMISSION_W1 float32       Milky Way transmission in WISE W1
+MW_TRANSMISSION_W2 float32       Milky Way transmission in WISE W2
+PSFDEPTH_G         float32       PSF-based depth in DECaLS g
+PSFDEPTH_R         float32       PSF-based depth in DECaLS r
+PSFDEPTH_Z         float32       PSF-based depth in DECaLS z
+GALDEPTH_G         float32       Model-based depth in DECaLS g
+GALDEPTH_R         float32       Model-based depth in DECaLS r
+GALDEPTH_Z         float32       Model-based depth in DECaLS z
+PSFDEPTH_W1        float32       PSF-based depth in WISE W1
+PSFDEPTH_W2        float32       PSF-based depth in WISE W2
+SHAPEDEV_R         float32       Half-light radius of deVaucouleurs model (>0)
+SHAPEDEV_E1        float32       Ellipticity parameter e1 of deVaucouleurs model
+SHAPEDEV_E2        float32       Ellipticity parameter e2 of deVaucouleurs model
+SHAPEEXP_R         float32       Half-light radius of exponential model (>0)
+SHAPEEXP_E1        float32       Ellipticity parameter e1 of exponential model
+SHAPEEXP_E2        float32       Ellipticity parameter e1 of exponential model
+SUBPRIORITY        float64
+TARGETID           int64         ID (unique to file and the whole survey)
+DESI_TARGET        int64         DESI (dark time program) target selection bitmask
+BGS_TARGET         int64         BGS (bright time program) target selection bitmask
+MWS_TARGET         int64         MWS (bright time program) target selection bitmask
+HPXPIXEL           int64         HEALPixel containing target.
+================== ======= ===== ===================
 
 Notes and Examples
 ==================

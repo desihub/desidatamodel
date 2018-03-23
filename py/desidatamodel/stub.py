@@ -11,9 +11,12 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 # The line above will help with 2to3 support.
 import os
-import warnings
 from astropy.io import fits
-from . import PY3, DataModelWarning
+
+from desiutil.log import log, DEBUG
+
+from . import PY3, DataModelError
+
 if PY3:  # pragma: no cover
     from html import escape
     str_types = (str,)
@@ -91,7 +94,7 @@ class Stub(object):
             for k in range(self.nhdr):
                 self.headers.append(filename[k].header)
         else:
-            with fits.open(filename) as fx:
+            with fits.open(filename, disable_image_compression=True) as fx:
                 self.nhdr = len(fx)
                 for k in range(self.nhdr):
                     self.headers.append(fx[k].header)
@@ -145,15 +148,19 @@ class Stub(object):
                 meta['keywords'] = extract_keywords(self.headers[k])
                 if 'XTENSION' in self.headers[k]:
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
-                    if meta['extension'] == 'BINTABLE':
-                        meta['format'] = self.columns(k)
-                    elif meta['extension'] == 'IMAGE':
+                    if meta['extension'] == 'IMAGE':
                         meta['format'] = image_format(self.headers[k])
+                    elif meta['extension'] == 'BINTABLE':
+                        try:
+                            meta['format'] = self.columns(k)
+                        except DataModelError:
+                            meta['format'] = image_format(self.headers[k])
+                            meta['extension'] = 'IMAGE'
                     else:
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
                         meta['format'] = w
-                        warnings.warn(w, DataModelWarning)
+                        log.warning(w)
                 else:
                     meta['extension'] = 'IMAGE'
                     meta['format'] = image_format(self.headers[k])
@@ -177,8 +184,6 @@ class Stub(object):
     def contents(self):
         """A table summarizing the HDUs.
         """
-        from warnings import warn
-        from . import DataModelWarning
         if self._contents is None:
             self._contents = list()
             self._contents.append(self.contents_header)
@@ -187,8 +192,7 @@ class Stub(object):
                     extname = self.headers[k]['EXTNAME'].strip()
                 else:
                     extname = ''
-                    warn("HDU{0:d} has no EXTNAME set!".format(k),
-                         DataModelWarning)
+                    log.warning("HDU%d has no EXTNAME set!", k)
                 if k > 0:
                     exttype = self.headers[k]['XTENSION'].strip()
                 else:
@@ -210,13 +214,20 @@ class Stub(object):
         -------
         :class:`list`
             The rows of the table.
+
+        Raises
+        ------
+        DataModelError
+            If the BINTABLE is actually a compressed image.
         """
-        c = list()
         hdr = self.headers[hdu]
+        if 'ZBITPIX' in hdr:
+            raise DataModelError("HDU{0:d} is actually a compressed image!".format(hdu))
+        ncol = hdr['TFIELDS']
+        c = list()
         c.append(self.columns_header)
-        jformat = '{0:d}'
-        for j in range(hdr['TFIELDS']):
-            jj = jformat.format(j+1)
+        for j in range(ncol):
+            jj = '{0:d}'.format(j+1)
             name = hdr['TTYPE'+jj].strip()
             ttype = fits_column_format(hdr['TFORM'+jj].strip())
             tunit = 'TUNIT'+jj
@@ -403,10 +414,16 @@ def image_format(hdr):
     dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
     bitmap = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
               -32: 'float32', -64: 'float64'}
-    try:
-        datatype = bitmap[hdr['BITPIX']]
-    except KeyError:
-        datatype = 'BITPIX={}'.format(hdr['BITPIX'])
+    if 'ZBITPIX' in hdr:
+        try:
+            datatype = bitmap[hdr['ZBITPIX']] + ' (compressed)'
+        except KeyError:
+            datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
+    else:
+        try:
+            datatype = bitmap[hdr['BITPIX']]
+        except KeyError:
+            datatype = 'BITPIX={}'.format(hdr['BITPIX'])
     return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
 
 
@@ -414,7 +431,9 @@ def extrakey(key):
     """Return True if key is not a boring standard FITS keyword.
 
     To make the data model more human readable, we don't overwhelm the output
-    with required keywords which are required by the FITS standard anyway.
+    with required keywords which are required by the FITS standard anyway, or
+    cases where the number of headers might change over time.
+
     This list isn't exhaustive.
 
     Parameters
@@ -431,15 +450,24 @@ def extrakey(key):
     --------
     >>> extrakey('SIMPLE')
     False
+    >>> extrakey('DEPNAM01')
+    False
     >>> extrakey('BZERO')
     True
     """
     from re import match
     # don't drop NAXIS1 and NAXIS2 since we want to document which is which
     if key in ('BITPIX', 'NAXIS', 'PCOUNT', 'GCOUNT', 'TFIELDS', 'XTENSION',
-               'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY', 'EXTNAME'):
+               'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY', 'EXTNAME', ''):
         return False
+    # Table-specific keywords
     if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
+        return False
+    # Compression-specific keywords
+    if match(r'Z(IMAGE|TENSION|BITPIX|NAXIS|NAXIS1|NAXIS2|PCOUNT|GCOUNT|TILE1|TILE2|CMPTYPE|NAME1|VAL1|NAME2|VAL2|HECKSUM|DATASUM)', key) is not None:
+        return False
+    # Dependency list
+    if match(r'DEP(NAM|VER)\d+', key) is not None:
         return False
     return True
 
@@ -464,8 +492,7 @@ def file_size(filename):
     >>> file_size('one-gb-file.dat')
     '1 GB'
     """
-    from os.path import getsize
-    n = getsize(filename)
+    n = os.path.getsize(filename)
     for unit in ['bytes', 'KB', 'MB', 'GB']:
         if n < 1024:
             return "{0:d} {1}".format(int(n), unit)
@@ -546,8 +573,11 @@ def extract_keywords(hdr):
                 ktype = 'float'
             if key.endswith('_'):
                 key = key[0:len(key)-1] + '\\_'
-            if value.endswith('_'):
-                value = value[0:len(value)-1] + '\\_'
+            try:
+                if value.endswith('_'):
+                    value = value[0:len(value)-1] + '\\_'
+            except AttributeError:
+                log.warning("Raised AttributeError on %s = %s.", key, value)
             keywords.append((key, value, ktype, escape(hdr.comments[key])))
     return keywords
 
@@ -560,24 +590,28 @@ def main():
     :class:`int`
         An integer suitable for passing to :func:`sys.exit`.
     """
-    from os.path import basename
-    from sys import argv, stderr
+    from sys import argv
     from argparse import ArgumentParser
     try:
         from astropy.io import fits
     except ImportError:
-        print(("This script requires astropy.io.fits, available in your " +
-               "favourite Python distribution."), file=stderr)
+        log.critical("This script requires astropy.io.fits, " +
+                     "available in your " +
+                     "favourite Python distribution.")
         return 1
     desc = """Generate an DESI data model stub for a given FITS file.
 
     You will still need to hand edit the file to add descriptions, etc., but
     it gives you a good starting point in the correct format.
     """
-    parser = ArgumentParser(description=desc, prog=basename(argv[0]))
+    parser = ArgumentParser(description=desc, prog=os.path.basename(argv[0]))
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Set log level to DEBUG.')
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
     options = parser.parse_args()
+    if options.verbose:
+        log.setLevel(DEBUG)
     for f in options.filename:
         stub = Stub(f)
         data = str(stub)

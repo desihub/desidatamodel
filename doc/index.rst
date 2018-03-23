@@ -22,8 +22,9 @@ for testing.
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $QUICKLOOK : data outputs form QUICKLOOK algorithms <QUICKLOOK/index>
    datamodel
+   changes
 
-Imaging data and their catalogs are documented separatedly by the
+Imaging data and their catalogs are documented separately by the
 `Legacy Survey <http://legacysurvey.org/>`_.
 
 Indices and Tables

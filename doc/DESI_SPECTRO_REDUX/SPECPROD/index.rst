@@ -34,17 +34,12 @@ Output files::
         calib2d/{night}/
             psf/psf-{camera}-{expid}.fits
 
-Deprecated::
-
-    $DESI_SPECTRO_REDUX/$SPECPROD/
-        bricks/{brickid}/brick-{b|r|z}-{brickid}.fits
 
 .. toctree::
    :maxdepth: 1
 
-   spectra-NSIDE/index
    calib1d/index
    calib2d/index
    exposures/index
-   versions.json
-   bricks/index
+   spectra-NSIDE/index
+   zcatalog-SPECPROD
