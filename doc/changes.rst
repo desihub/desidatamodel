@@ -2,11 +2,13 @@
 desidatamodel Change Log
 ========================
 
-1.2.0 (unreleased)
+1.2.0 (2018-03-23)
 ------------------
 
 * Vet data model against reference run 18.2a.  Numerous changes to data
-  model Python code to support, *e.g.* compressed HDUs.
+  model Python code to support, *e.g.* compressed HDUs (PR `#42`_).
+
+.. _`#42`: https://github.com/desihub/desidatamodel/pull/42
 
 1.1.1 (2015-11-06)
 ------------------
