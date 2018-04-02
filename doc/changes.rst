@@ -5,10 +5,10 @@ desidatamodel Change Log
 1.3.0 (unreleased)
 ------------------
 
-* Update data model to reflect reference run 18.3 (PR `#43`_).
+* Update data model to reflect reference run 18.3 (PR `#46`_).
 * Drop support for Python 2.
 
-.. _`#43`: https://github.com/desihub/desidatamodel/pull/43
+.. _`#46`: https://github.com/desihub/desidatamodel/pull/46
 
 1.2.0 (2018-03-23)
 ------------------
