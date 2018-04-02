@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 """Utility class used by other tests.
 """
-from __future__ import absolute_import
-
 import os
 import tempfile
 import unittest

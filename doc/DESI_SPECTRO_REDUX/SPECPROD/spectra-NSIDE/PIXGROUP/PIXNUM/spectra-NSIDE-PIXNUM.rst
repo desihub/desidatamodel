@@ -177,6 +177,7 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
+BUNIT    Angstrom         str
 ======== ================ ==== ==============================================
 
 Data: FITS image [float64, nwave]
@@ -191,12 +192,13 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of b-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ========================== ==== ==============================================
-KEY      Example Value              Type Comment
-======== ========================== ==== ==============================================
-NAXIS1   2380                       int  Number of wavelengths
-NAXIS2   1225                       int  Number of spectra
-======== ========================== ==== ==============================================
+======== =============================== ==== ==============================================
+KEY      Example Value                   Type Comment
+======== =============================== ==== ==============================================
+NAXIS1   2380                            int  Number of wavelengths
+NAXIS2   1225                            int  Number of spectra
+BUNIT    1e+34 (s2 cm4 Angstrom2) / erg2 str
+======== =============================== ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
 
@@ -215,6 +217,7 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+BUNIT    1e+34 (s2 cm4 Angstrom2) / erg2 str
 ======== ================ ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -288,6 +291,7 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
+BUNIT    Angstrom         str
 ======== ================ ==== ==============================================
 
 Data: FITS image [float64, nwave]
@@ -307,6 +311,7 @@ KEY      Example Value              Type Comment
 ======== ========================== ==== ==============================================
 NAXIS1   2116                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
+BUNIT    1e+34 (s2 cm4 Angstrom2) / erg2 str
 ======== ========================== ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -326,6 +331,7 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+BUNIT    1e+34 (s2 cm4 Angstrom2) / erg2 str
 ======== ================ ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -388,6 +394,7 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
+BUNIT    Angstrom         str
 ======== ================ ==== ==============================================
 
 Data: FITS image [float64, nwave]
@@ -407,6 +414,7 @@ KEY      Example Value              Type Comment
 ======== ========================== ==== ==============================================
 NAXIS1   2399                       int  Number of wavelengths
 NAXIS2   1225                       int  Number of spectra
+BUNIT    1e+34 (s2 cm4 Angstrom2) / erg2 str
 ======== ========================== ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -426,6 +434,7 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
+BUNIT    1e+34 (s2 cm4 Angstrom2) / erg2 str
 ======== ================ ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]

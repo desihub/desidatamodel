@@ -2,10 +2,6 @@
 # -*- coding: utf-8 -*-
 """Test desidatamodel.stub functions
 """
-#
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-#
 import os
 import unittest
 from pkg_resources import resource_filename
