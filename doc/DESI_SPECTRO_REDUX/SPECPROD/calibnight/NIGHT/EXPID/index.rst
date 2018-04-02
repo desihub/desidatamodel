@@ -1,8 +1,8 @@
 =====
-NIGHT
+EXPID
 =====
 
 .. toctree::
    :maxdepth: 1
 
-   EXPID/index
+   fiberflat-CAMERA-EXPID

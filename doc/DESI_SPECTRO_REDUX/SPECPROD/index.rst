@@ -31,7 +31,7 @@ Output files::
             coadd-{nside}-{pixnum}.fits     -- does not yet exist
         calib1d/{night}/
             fiberflat-{camera}-{expid}.fits
-        calib2d/{night}/
+        calibnight/{night}/
             psf/psf-{camera}-{expid}.fits
 
 
@@ -39,7 +39,7 @@ Output files::
    :maxdepth: 1
 
    calib1d/index
-   calib2d/index
+   calibnight/index
    exposures/index
    spectra-NSIDE/index
    zcatalog-SPECPROD
