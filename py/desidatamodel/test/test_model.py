@@ -11,7 +11,7 @@ import os
 from .datamodeltestcase import DataModelTestCase
 
 from ..check import scan_model, files_to_regexp
-from .. import PY3, DataModelError
+from .. import DataModelError
 
 
 class TestModel(DataModelTestCase):

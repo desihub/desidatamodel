@@ -14,7 +14,6 @@ from collections import OrderedDict
 
 from .datamodeltestcase import DataModelTestCase
 
-from .. import PY3
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
                     extract_keywords, image_format, log)
 

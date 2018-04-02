@@ -7,15 +7,12 @@ desidatamodel.check
 
 Check actual files against the data model for validity.
 """
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-# The line above will help with 2to3 support.
 import os
 import re
 
 from desiutil.log import log, DEBUG
 
-from . import PY3, DataModelError
+from . import DataModelError
 from .stub import Stub
 
 
@@ -93,11 +90,7 @@ class DataModel(object):
             detected.
         """
         with open(self.filename) as dm:
-            for le in dm.readlines():
-                if PY3:
-                    line = le
-                else:
-                    line = le.decode('utf-8')
+            for line in dm.readlines():
                 if line.startswith('See :doc:'):
                     self.ref = self._cross_reference(line)
                     log.debug("Cross reference detected %s -> %s.",
@@ -113,11 +106,7 @@ class DataModel(object):
                     break
         if self.regexp is None and self.ref is not None:
             with open(self.ref) as dm:
-                for le in dm.readlines():
-                    if PY3:
-                        line = le
-                    else:
-                        line = le.decode('utf-8')
+                for line in dm.readlines():
                     #
                     # Hopefully cross-references are not nested.
                     #
@@ -212,8 +201,6 @@ class DataModel(object):
             metafile = self.ref
         with open(metafile) as f:
             data = f.read()
-            if not PY3:
-                data = data.decode('utf-8')
         lines = data.split('\n')
         hdu_sections = [i for i, l in enumerate(lines)
                         if self.hduline.match(l) is not None]

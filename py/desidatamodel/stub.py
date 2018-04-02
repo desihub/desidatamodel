@@ -7,22 +7,14 @@ desidatamodel.stub
 
 Generate data model files from FITS files.
 """
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-# The line above will help with 2to3 support.
 import os
+from html import escape
 from astropy.io import fits
 
 from desiutil.log import log, DEBUG
 
-from . import PY3, DataModelError
+from . import DataModelError
 
-if PY3:  # pragma: no cover
-    from html import escape
-    str_types = (str,)
-else:
-    from cgi import escape
-    str_types = (str, unicode)
 #
 # This is a template.
 #
@@ -98,7 +90,7 @@ class Stub(object):
                 self.nhdr = len(fx)
                 for k in range(self.nhdr):
                     self.headers.append(fx[k].header)
-            if isinstance(filename, str_types):
+            if isinstance(filename, (str,)):
                 self.filename = filename
         self._basef = None
         self._modelname = None
@@ -559,7 +551,7 @@ def extract_keywords(hdr):
             if isinstance(value, bool):
                 ktype = 'bool'
                 value = ('F', 'T')[int(value)]
-            if isinstance(value, str_types):
+            if isinstance(value, (str,)):
                 value = escape(value)
                 if value == 'T' or value == 'F':
                     ktype = 'bool'
