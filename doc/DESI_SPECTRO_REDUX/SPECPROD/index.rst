@@ -19,8 +19,8 @@ Output files::
 
     $DESI_SPECTRO_REDUX/$SPECPROD/
         pix-{camera}-{expid}.fits               -- optional
-        calibnight/{night}/{expid}/
-            fiberflatnight-{camera}-{expid}.fits
+        calibnight/{night}/
+            fiberflatnight-{camera}-{night}.fits
         calibnight/psf/{night}/
             psf-{camera}.fits
         exposures/{night}/{expid}/
