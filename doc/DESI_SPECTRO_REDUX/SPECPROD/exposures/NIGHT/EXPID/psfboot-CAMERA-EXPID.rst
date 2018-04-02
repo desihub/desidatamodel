@@ -1,11 +1,11 @@
-==============
-psfboot-CAMERA
-==============
+====================
+psfboot-CAMERA-EXPID
+====================
 
 :Summary: psfboot file.
-:Naming Convention: ``psfboot-CAMERA.fits``, where ``CAMERA`` is *e.g.*,
-    "b0", "r1", "z2".
-:Regex: ``psfboot-[brz][0-9]\.fits``
+:Naming Convention: ``psfboot-CAMERA-EXPID.fits``, where ``CAMERA`` is *e.g.*,
+    "b0", "r1", "z2", and ``EXPID`` is an 8 digit exposure number.
+:Regex: ``psfboot-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 64 KB
 
 This file is a first fit to the x vs. y vs. wavelength solutions and

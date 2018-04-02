@@ -18,7 +18,6 @@ Input files for spectroscopic reduction::
 Output files::
 
     $DESI_SPECTRO_REDUX/$SPECPROD/
-        config-{expid}.json
         pix-{camera}-{expid}.fits               -- optional
         exposures/{night}/{expid}/
             frame-{camera}-{expid}.fits
