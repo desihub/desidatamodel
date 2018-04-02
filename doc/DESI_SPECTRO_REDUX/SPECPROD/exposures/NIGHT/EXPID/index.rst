@@ -7,6 +7,7 @@ EXPID
 
     calib-CAMERA-EXPID.rst
     cframe-CAMERA-EXPID.rst
+    fiberflat-CAMERA-EXPID.rst
     frame-CAMERA-EXPID.rst
     psf-CAMERA-EXPID.rst
     psfboot-CAMERA-EXPID.rst
