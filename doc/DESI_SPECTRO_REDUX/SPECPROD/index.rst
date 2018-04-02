@@ -19,19 +19,23 @@ Output files::
 
     $DESI_SPECTRO_REDUX/$SPECPROD/
         pix-{camera}-{expid}.fits               -- optional
+        calibnight/{night}/{expid}/
+            fiberflatnight-{camera}-{expid}.fits
+        calibnight/psf/{night}/
+            psf-{camera}.fits
         exposures/{night}/{expid}/
-            frame-{camera}-{expid}.fits
-            skymodel-{camera}-{expid}.fits
-            fluxcalib-{camera}-{expid}.fits
+            calib-{camera}-{expid}.fits
             cframe-{camera}-{expid}.fits
+            frame-{camera}-{expid}.fits
+            psf-{camera}-{expid}.fits
+            psfboot-{camera}-{expid}.fits
+            sky-{camera}-{expid}.fits
+            stdstars-{spectrograph}-{expid}.fits
         spectra-{nside}/{group}/{pixnum}/
+            coadd-{nside}-{pixnum}.fits     -- does not yet exist
             spectra-{nside}-{pixnum}.fits
             zbest-{nside}-{pixnum}.fits
-            coadd-{nside}-{pixnum}.fits     -- does not yet exist
-        calib1d/{night}/
-            fiberflat-{camera}-{expid}.fits
-        calibnight/{night}/
-            psf/psf-{camera}-{expid}.fits
+        zcatalog-{specprod}.fits
 
 
 .. toctree::
