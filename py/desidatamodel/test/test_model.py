@@ -2,16 +2,12 @@
 # -*- coding: utf-8 -*-
 """Test data model files for validity.
 """
-#
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-#
 import os
 
 from .datamodeltestcase import DataModelTestCase
 
 from ..check import scan_model, files_to_regexp
-from .. import PY3, DataModelError
+from .. import DataModelError
 
 
 class TestModel(DataModelTestCase):

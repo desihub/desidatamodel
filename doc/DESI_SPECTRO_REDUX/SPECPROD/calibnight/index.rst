@@ -1,6 +1,6 @@
-=======
-calib2d
-=======
+==========
+calibnight
+==========
 
 .. toctree::
    :maxdepth: 1

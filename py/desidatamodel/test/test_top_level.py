@@ -2,14 +2,9 @@
 # -*- coding: utf-8 -*-
 """test top-level desidatamodel functions
 """
-#
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-#
 import unittest
 import re
 from .. import __version__ as theVersion
-from .. import PY3
 
 
 class TestTopLevel(unittest.TestCase):
@@ -18,8 +13,6 @@ class TestTopLevel(unittest.TestCase):
     def setUpClass(cls):
         cls.versionre = re.compile(
             r'([0-9]+!)?([0-9]+)(\.[0-9]+)*((a|b|rc|\.post|\.dev)[0-9]+)?')
-        if PY3:
-            cls.assertRegexpMatches = cls.assertRegex
 
     @classmethod
     def tearDownClass(cls):
@@ -28,7 +21,7 @@ class TestTopLevel(unittest.TestCase):
     def test_version(self):
         """Ensure the version conforms to PEP386/PEP440.
         """
-        self.assertRegexpMatches(theVersion, self.versionre)
+        self.assertRegex(theVersion, self.versionre)
 
 
 def test_suite():

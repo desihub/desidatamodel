@@ -18,28 +18,31 @@ Input files for spectroscopic reduction::
 Output files::
 
     $DESI_SPECTRO_REDUX/$SPECPROD/
-        config-{expid}.json
         pix-{camera}-{expid}.fits               -- optional
+        calibnight/{night}/
+            fiberflatnight-{camera}-{night}.fits
+        calibnight/psf/{night}/
+            psf-{camera}.fits
         exposures/{night}/{expid}/
-            frame-{camera}-{expid}.fits
-            skymodel-{camera}-{expid}.fits
-            fluxcalib-{camera}-{expid}.fits
+            calib-{camera}-{expid}.fits
             cframe-{camera}-{expid}.fits
+            frame-{camera}-{expid}.fits
+            psf-{camera}-{expid}.fits
+            psfboot-{camera}-{expid}.fits
+            sky-{camera}-{expid}.fits
+            stdstars-{spectrograph}-{expid}.fits
         spectra-{nside}/{group}/{pixnum}/
+            coadd-{nside}-{pixnum}.fits     -- does not yet exist
             spectra-{nside}-{pixnum}.fits
             zbest-{nside}-{pixnum}.fits
-            coadd-{nside}-{pixnum}.fits     -- does not yet exist
-        calib1d/{night}/
-            fiberflat-{camera}-{expid}.fits
-        calib2d/{night}/
-            psf/psf-{camera}-{expid}.fits
+        zcatalog-{specprod}.fits
 
 
 .. toctree::
    :maxdepth: 1
 
    calib1d/index
-   calib2d/index
+   calibnight/index
    exposures/index
    spectra-NSIDE/index
    zcatalog-SPECPROD

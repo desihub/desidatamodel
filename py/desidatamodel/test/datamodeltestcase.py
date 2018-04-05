@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 """Utility class used by other tests.
 """
-from __future__ import absolute_import
-
 import os
 import tempfile
 import unittest
@@ -12,8 +10,6 @@ import shutil
 
 from desiutil.log import log
 from desiutil.test.test_log import TestHandler
-
-from .. import PY3
 
 DM = 'DESIDATAMODEL'
 
@@ -31,8 +27,6 @@ class DataModelTestCase(unittest.TestCase):
                                          os.path.dirname(  # py/
                                                          os.path.dirname(  # desidatamodel/
                                                                          os.path.dirname(__file__))))  # test/
-        if PY3:
-            cls.assertRegexpMatches = cls.assertRegex
         cls.doc_dir = os.path.join(os.environ[DM], 'doc')
 
     @classmethod
