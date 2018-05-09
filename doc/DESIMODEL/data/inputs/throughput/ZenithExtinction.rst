@@ -12,12 +12,12 @@ ZenithExtinction
 Contents
 ========
 
-====== ========== ======== ===================
+====== ========== ======== ======================
 Number EXTNAME    Type     Contents
-====== ========== ======== ===================
-HDU0_  PRIMARY    IMAGE    *Brief Description*
-HDU1_  EXTINCTION BINTABLE *Brief Description*
-====== ========== ======== ===================
+====== ========== ======== ======================
+HDU0_  PRIMARY    IMAGE    Empty
+HDU1_  EXTINCTION BINTABLE Atmospheric Extinction
+====== ========== ======== ======================
 
 
 FITS Header Units
@@ -37,7 +37,7 @@ HDU1
 
 EXTNAME = EXTINCTION
 
-*Summarize the contents of this HDU.*
+Atmospheric extinction in magnitudes per airmass.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

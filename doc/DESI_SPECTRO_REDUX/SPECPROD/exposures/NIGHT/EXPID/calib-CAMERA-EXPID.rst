@@ -30,7 +30,7 @@ HDU0
 
 EXTNAME = FLUXCALIB
 
-*Summarize the contents of this HDU.*
+Flux calibration model such that calibrated flux = uncalibrated photons / model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,7 +62,7 @@ MJD      58925.11304582807          float
 TRANSPAR 0.7192993760108948         float
 DOSVER   SIM                        str
 FEEVER   SIM                        str
-BUNIT    1e+17 cm2 electron s / erg str   i.e. (electron/Angstrom) / (1e-17 erg/s
+BUNIT    1e+17 cm2 electron s / erg str   i.e. (electron/Angstrom) / (1e-17 erg/(s cm2 Angstrom))
 AIRORVAC vac                        str   Vacuum wavelengths
 CAMERA   r3                         str
 FIBERMIN 1557                       int
@@ -77,7 +77,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux calibration model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,7 +98,7 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of flux calibration model; 0=good.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -121,7 +121,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelengths at which the flux calibration model is evaluated.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

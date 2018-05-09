@@ -2,8 +2,9 @@
 zcatalog-SPECPROD
 =================
 
-:Summary: This file summarizes all
-    :doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM>` files.
+:Summary: This file concatenates all
+    :doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM>` files
+    and then cross matches them with the input target catalog.
 :Naming Convention: ``zcatalog-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
     :envvar:`SPECPROD` name of the reduction run.
 :Regex: ``zcatalog-[a-z0-9_-]+\.fits``
@@ -12,12 +13,12 @@ zcatalog-SPECPROD
 Contents
 ========
 
-====== ======== ======== ===================
+====== ======== ======== ===========================================
 Number EXTNAME  Type     Contents
-====== ======== ======== ===================
-HDU0_  PRIMARY  IMAGE    *Brief Description*
-HDU1_  ZCATALOG BINTABLE *Brief Description*
-====== ======== ======== ===================
+====== ======== ======== ===========================================
+HDU0_  PRIMARY  IMAGE    Empty
+HDU1_  ZCATALOG BINTABLE Redshift catalog joined with target catalog
+====== ======== ======== ===========================================
 
 
 FITS Header Units
@@ -37,18 +38,19 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-The summarized redshift data for all
-:doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM>` files.
+The concatenated redshift data for all
+:doc:`zbest <./spectra-NSIDE/PIXGROUP/PIXNUM/zbest-NSIDE-PIXNUM>` files,
+cross matched with the original input target catalog.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
+====== ============= ==== =================================
 KEY    Example Value Type Comment
-====== ============= ==== =======================
+====== ============= ==== =================================
 NAXIS1 332           int  width of table in bytes
-NAXIS2 44215         int  number of rows in table
-====== ============= ==== =======================
+NAXIS2 44215         int  number of targets (rows) in table
+====== ============= ==== =================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

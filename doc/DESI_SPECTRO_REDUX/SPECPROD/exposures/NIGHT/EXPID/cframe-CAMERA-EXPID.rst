@@ -23,7 +23,7 @@ HDU2_  MASK       IMAGE    Mask (0 = good)
 HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
 HDU4_  RESOLUTION IMAGE    Resolution Matrix
 HDU5_  FIBERMAP   BINTABLE Fibermap details propagated from :doc:`fibermap-EXPID.fits <../../../../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>`
-HDU6_  SCORES     BINTABLE *Brief Description*
+HDU6_  SCORES     BINTABLE Quality Assurance scores
 ====== ========== ======== ===================
 
 
@@ -35,7 +35,7 @@ HDU0
 
 EXTNAME = FLUX
 
-*Summarize the contents of this HDU.*
+Calibrated spectral flux in 1e-17 erg / (s cm2 Angstrom).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +82,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux (i.e. 1/error^2).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,7 +103,9 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectra; 0=good.
+
+TODO: add documentation link to what bits mean what.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -126,7 +128,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelengths at which flux is measured.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -147,7 +149,9 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-*Summarize the contents of this HDU.*
+Diagonal elements of convolution matrix describing spectral resolution.
+
+TODO: add code example for using this.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -169,7 +173,9 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap of what targets were assigned to what fibers.
+
+NOTE: This format will be updated soon, e.g. to track FLUX instead of MAG.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,7 +229,8 @@ HDU6
 
 EXTNAME = SCORES
 
-*Summarize the contents of this HDU.*
+Scores / metrics measured from the spectra for use in QA and systematics
+studies.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

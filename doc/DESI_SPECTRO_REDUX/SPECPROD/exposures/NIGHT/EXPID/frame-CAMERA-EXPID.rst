@@ -100,7 +100,9 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectral data; 0=good.
+
+TODO: Add link to definition of which bits mean what.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

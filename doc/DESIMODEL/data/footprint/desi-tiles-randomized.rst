@@ -30,8 +30,6 @@ HDU0
 
 EXTNAME = PRIMARY
 
-*Summarize the contents of this HDU.*
-
 This HDU has no non-standard required keywords.
 
 Empty HDU.
@@ -41,7 +39,8 @@ HDU1
 
 EXTNAME = TILES
 
-*Summarize the contents of this HDU.*
+Tile centers with randomized offsets to wash out large scale patterns from
+regular overlaps.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

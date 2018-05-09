@@ -10,14 +10,13 @@ thru
 Contents
 ========
 
-====== ========== ======== ===================
+====== ========== ======== =============================
 Number EXTNAME    Type     Contents
-====== ========== ======== ===================
-HDU0_  PRIMARY    IMAGE    *Brief Description*
-HDU1_  THROUGHPUT BINTABLE *Brief Description*
-HDU2_  FIBERINPUT BINTABLE *Brief Description*
-====== ========== ======== ===================
-
+====== ========== ======== =============================
+HDU0_  PRIMARY    IMAGE    Empty
+HDU1_  THROUGHPUT BINTABLE Throughput model
+HDU2_  FIBERINPUT BINTABLE Geometric loss at fiber input
+====== ========== ======== =============================
 
 FITS Header Units
 =================
@@ -26,8 +25,6 @@ HDU0
 ----
 
 EXTNAME = PRIMARY
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -38,7 +35,7 @@ HDU1
 
 EXTNAME = THROUGHPUT
 
-*Summarize the contents of this HDU.*
+Throughput model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,21 +56,22 @@ EXTNAME  THROUGHPUT        str   extension name
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-========== ======= ===== ===========
-Name       Type    Units Description
-========== ======= ===== ===========
-wavelength float64
-throughput float64
-extinction float64
-fiberinput float64
-========== ======= ===== ===========
+========== ======= ======== ===========
+Name       Type    Units    Description
+========== ======= ======== ===========
+wavelength float64 Angstrom Wavelengths
+throughput float64          Throughput losses not due to atmosphere or fiber inputs
+extinction float64          Atmospheric extinction
+fiberinput float64          DEPRECATED; fiber input losses (point-source?)
+========== ======= ======== ===========
 
 HDU2
 ----
 
 EXTNAME = FIBERINPUT
 
-*Summarize the contents of this HDU.*
+Typical fiber input geometric throughput for various object types.
+0 = no transmission; 1 = all light makes it into the fibers.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,15 +87,15 @@ EXTNAME FIBERINPUT    str  extension name
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-========== ======= ===== ===========
-Name       Type    Units Description
-========== ======= ===== ===========
-wavelength float64
-elg        float64
-lrg        float64
-star       float64
-sky        float64
-========== ======= ===== ===========
+========== ======= ======== ===========
+Name       Type    Units    Description
+========== ======= ======== ===========
+wavelength float64 Angstrom Wavelengths at which loss is modeled
+elg        float64          throughput for typical ELG
+lrg        float64          throughput for typical LRG
+star       float64          throughput for typical point source
+sky        float64          throughput for uniform source
+========== ======= ======== ===========
 
 
 Notes and Examples

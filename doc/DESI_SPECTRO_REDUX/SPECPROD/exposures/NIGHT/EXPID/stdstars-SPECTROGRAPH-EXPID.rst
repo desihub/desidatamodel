@@ -20,7 +20,7 @@ HDU0_  FLUX       IMAGE    stdstar flux[nstd, nwave] in erg/s/cm^2/Angstrom
 HDU1_  WAVELENGTH IMAGE    wavelength grid used, Angstroms
 HDU2_  FIBERS     IMAGE    1D array of which fibers these models correspond to
 HDU3_  METADATA   BINTABLE metadata from input standard star templates
-HDU4_  COEFF      IMAGE    *Brief Description*
+HDU4_  COEFF      IMAGE    Linear coefficients of stdstar model fit
 ====== ========== ======== ===================
 
 
@@ -32,7 +32,7 @@ HDU0
 
 EXTNAME = FLUX
 
-*Summarize the contents of this HDU.*
+Best fit standard star model flux.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,7 +54,7 @@ HDU1
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength grid used in Angstroms.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,7 +75,7 @@ HDU2
 
 EXTNAME = FIBERS
 
-*Summarize the contents of this HDU.*
+Fibers used for fit.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,7 +95,7 @@ HDU3
 
 EXTNAME = METADATA
 
-*Summarize the contents of this HDU.*
+Metadata about best fit standard star models.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -129,7 +129,9 @@ HDU4
 
 EXTNAME = COEFF
 
-*Summarize the contents of this HDU.*
+Linear coefficients of stdstar model fit
+
+TODO: add example of what that means
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
