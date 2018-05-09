@@ -21,7 +21,7 @@ HDU3_  MEANSPEC   IMAGE average spectrum[nwave]
 HDU4_  WAVELENGTH IMAGE wavelength grid[nwave] in Angstroms
 ====== ========== ===== ===================
 
-Current pipeline (as of 2016-06-16) writes HDU0 with EXTNAME=FLUX, having
+TODO: Current pipeline (as of 2016-06-16) writes HDU0 with EXTNAME=FLUX, having
 inherited that from the input frame.  That should be changed to FIBERFLAT
 (as described above) or no HDU 0 EXTNAME (formal FITS standard).
 
@@ -114,7 +114,8 @@ HDU3
 
 EXTNAME = MEANSPEC
 
-*Summarize the contents of this HDU.*
+Average flat lamp spectrum of fibers in this frame.  Fiberflat is relative
+to this mean spectrum.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

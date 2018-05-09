@@ -2,7 +2,7 @@
 DESI-0347
 =========
 
-:Summary: Data related to image spot size. ECSV_ files may also be present.
+:Summary: Focal plane distortion maps. ECSV_ files may also be present.
 :Naming Convention: ``DESI-0347_random_offset_{N}.fits``, where ``{N}`` is
                     the (arbitrary) number of the random realization.
 :Regex: ``DESI-0347_random_offset_[0-9]+\.fits``
@@ -13,14 +13,15 @@ DESI-0347
 Contents
 ========
 
-====== ======= ===== ===================
+====== ======= ===== ========================================
 Number EXTNAME Type  Contents
-====== ======= ===== ===================
-HDU0_  PRIMARY IMAGE *Brief Description*
-HDU1_  XOFFSET IMAGE *Brief Description*
-HDU2_  YOFFSET IMAGE *Brief Description*
-====== ======= ===== ===================
+====== ======= ===== ========================================
+HDU0_  PRIMARY IMAGE Empty
+HDU1_  XOFFSET IMAGE 2D image of x-offsets on the focal plane
+HDU2_  YOFFSET IMAGE 2D image of y-offsets on the focal plane
+====== ======= ===== ========================================
 
+TODO: expand description with links to documentation about how this is used.
 
 FITS Header Units
 =================
@@ -29,8 +30,6 @@ HDU0
 ----
 
 EXTNAME = PRIMARY
-
-*Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,7 +47,7 @@ HDU1
 
 EXTNAME = XOFFSET
 
-*Summarize the contents of this HDU.*
+2D image of x-offsets on the focal plane.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,7 +78,7 @@ HDU2
 
 EXTNAME = YOFFSET
 
-*Summarize the contents of this HDU.*
+2D image of x-offsets on the focal plane.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

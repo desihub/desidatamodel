@@ -2,9 +2,9 @@
 fiberflatnight-CAMERA-NIGHT
 ===========================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: Relative fiber-to-fiber variations ("fiberflat") as measured by
+    continuum lamp calibration spectra, combined across multiple exposures.
+    Corrected flux = original flux / fiberflat.
 :Naming Convention: ``fiberflatnight-CAMERA-NIGHT.fits``, where ``CAMERA`` is
     *e.g.*, "b0", "r5", etc. and ``NIGHT`` is the observation night in
     YYYYMMDD format.
@@ -14,15 +14,15 @@ fiberflatnight-CAMERA-NIGHT
 Contents
 ========
 
-====== ========== ======== ===================
+====== ========== ======== =================================
 Number EXTNAME    Type     Contents
-====== ========== ======== ===================
-HDU0_  FIBERFLAT  IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       BINTABLE *Brief Description*
-HDU3_  MEANSPEC   IMAGE    *Brief Description*
-HDU4_  WAVELENGTH IMAGE    *Brief Description*
-====== ========== ======== ===================
+====== ========== ======== =================================
+HDU0_  FIBERFLAT  IMAGE    Relative fiber-to-fiber variation
+HDU1_  IVAR       IMAGE    Inverse variance of fiberflat
+HDU2_  MASK       BINTABLE Mask of fiberflat (0=good)
+HDU3_  MEANSPEC   IMAGE    Average spectrum
+HDU4_  WAVELENGTH IMAGE    Wavelength
+====== ========== ======== =================================
 
 
 FITS Header Units
@@ -33,7 +33,7 @@ HDU0
 
 EXTNAME = FIBERFLAT
 
-*Summarize the contents of this HDU.*
+Relative fiber-to-fiber variation.  Corrected flux = original flux / fiberflat.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,7 +65,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of fiberflat
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,7 +86,7 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of fiberflat (0=good)
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,7 +109,7 @@ HDU3
 
 EXTNAME = MEANSPEC
 
-*Summarize the contents of this HDU.*
+Average continuum lamp spectrum
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -129,7 +129,7 @@ HDU4
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelengths at which the fiberflat is measured
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -149,4 +149,9 @@ Data: FITS image [float32, 2645]
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Corrected flux = original flux / fiberflat.
+
+.. code::
+
+  fiberflat = desispec.fiberflat.compute_fiberflat(flatframe)
+  desispec.fiberflat.apply_fiberflat(scienceframe, fiberflat)

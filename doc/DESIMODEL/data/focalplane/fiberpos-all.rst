@@ -2,8 +2,9 @@
 fiberpos-all
 ============
 
-:Summary: A mapping of positioner number to fiber number. An ECSV_
-          version of this file might also be present.
+:Summary: A mapping of positioner number to fiber number, including
+    positions from DESI-0530.
+    An ECSV_ version of this file might also be present.
 :Naming Convention: ``fiberpos-all.fits``
 :Regex: ``fiberpos-all\.fits``
 :File Type: FITS, 472 KB
@@ -13,12 +14,12 @@ fiberpos-all
 Contents
 ========
 
-====== ======== ======== ===================
+====== ======== ======== ==============================
 Number EXTNAME  Type     Contents
-====== ======== ======== ===================
-HDU0_  PRIMARY  IMAGE    *Brief Description*
-HDU1_  FIBERPOS BINTABLE *Brief Description*
-====== ======== ======== ===================
+====== ======== ======== ==============================
+HDU0_  PRIMARY  IMAGE    Empty
+HDU1_  FIBERPOS BINTABLE Fiber positions on focal plane
+====== ======== ======== ==============================
 
 
 FITS Header Units
@@ -29,8 +30,6 @@ HDU0
 
 EXTNAME = PRIMARY
 
-*Summarize the contents of this HDU.*
-
 This HDU has no non-standard required keywords.
 
 Empty HDU.
@@ -40,7 +39,7 @@ HDU1
 
 EXTNAME = FIBERPOS
 
-*Summarize the contents of this HDU.*
+Fiber positions on focal plane
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

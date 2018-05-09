@@ -10,19 +10,21 @@ psf
 Contents
 ========
 
-====== ======== ===== ===================
+====== ======== ===== ===============================================
 Number EXTNAME  Type  Contents
-====== ======== ===== ===================
-HDU0_  XCOEFF   IMAGE *Brief Description*
-HDU1_  YCOEFF   IMAGE *Brief Description*
-HDU2_  SPOTS    IMAGE *Brief Description*
-HDU3_  SPOTX    IMAGE *Brief Description*
-HDU4_  SPOTY    IMAGE *Brief Description*
-HDU5_  FIBERPOS IMAGE *Brief Description*
-HDU6_  SPOTPOS  IMAGE *Brief Description*
-HDU7_  SPOTWAVE IMAGE *Brief Description*
-====== ======== ===== ===================
+====== ======== ===== ===============================================
+HDU0_  XCOEFF   IMAGE Legendre coeff for CCD x vs. wavelength
+HDU1_  YCOEFF   IMAGE Legendre coeff for CCD y vs. wavelength
+HDU2_  SPOTS    IMAGE Zemax PSF spots
+HDU3_  SPOTX    IMAGE CCD x locations of spots
+HDU4_  SPOTY    IMAGE CCD y locations of spots
+HDU5_  FIBERPOS IMAGE Location of each fiber along slit
+HDU6_  SPOTPOS  IMAGE Locations along slit where spots were generated
+HDU7_  SPOTWAVE IMAGE Wavelength of generated spots
+====== ======== ===== ===============================================
 
+SPOTS[i,j] is 2D image[y,x] of Zemax spot on the CCD at SPOTX[j], SPOTY[i]
+and along the slit at SPOTPOS[i] which is wavelength SPOTWAVE[i].
 
 FITS Header Units
 =================
@@ -32,7 +34,7 @@ HDU0
 
 EXTNAME = XCOEFF
 
-*Summarize the contents of this HDU.*
+Legendre coeff for CCD x vs. wavelength.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,7 +98,7 @@ HDU1
 
 EXTNAME = YCOEFF
 
-*Summarize the contents of this HDU.*
+Legendre coeff for CCD y vs. wavelength.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,7 +122,10 @@ HDU2
 
 EXTNAME = SPOTS
 
-*Summarize the contents of this HDU.*
+Zemax simulated spots.
+
+SPOTS[i,j] is 2D image[y,x] of Zemax spot on the CCD at SPOTX[j], SPOTY[i]
+and along the slit at SPOTPOS[i] which is wavelength SPOTWAVE[i].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,7 +147,10 @@ HDU3
 
 EXTNAME = SPOTX
 
-*Summarize the contents of this HDU.*
+X locations of spots.
+
+SPOTS[i,j] is 2D image[y,x] of Zemax spot on the CCD at SPOTX[j], SPOTY[i]
+and along the slit at SPOTPOS[i] which is wavelength SPOTWAVE[i].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -162,7 +170,10 @@ HDU4
 
 EXTNAME = SPOTY
 
-*Summarize the contents of this HDU.*
+Y locations of spots.
+
+SPOTS[i,j] is 2D image[y,x] of Zemax spot on the CCD at SPOTX[j], SPOTY[i]
+and along the slit at SPOTPOS[i] which is wavelength SPOTWAVE[i].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -182,7 +193,7 @@ HDU5
 
 EXTNAME = FIBERPOS
 
-*Summarize the contents of this HDU.*
+Location along the slit of each fiber.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,7 +212,10 @@ HDU6
 
 EXTNAME = SPOTPOS
 
-*Summarize the contents of this HDU.*
+Location along the slit of each spot.
+
+SPOTS[i,j] is 2D image[y,x] of Zemax spot on the CCD at SPOTX[j], SPOTY[i]
+and along the slit at SPOTPOS[i] which is wavelength SPOTWAVE[i].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -220,7 +234,10 @@ HDU7
 
 EXTNAME = SPOTWAVE
 
-*Summarize the contents of this HDU.*
+Wavelengths at which each spot was measured.
+
+SPOTS[i,j] is 2D image[y,x] of Zemax spot on the CCD at SPOTX[j], SPOTY[i]
+and along the slit at SPOTPOS[i] which is wavelength SPOTWAVE[i].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

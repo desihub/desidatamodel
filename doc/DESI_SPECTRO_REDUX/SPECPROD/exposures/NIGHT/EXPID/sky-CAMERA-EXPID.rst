@@ -19,7 +19,7 @@ HDU0_  SKY        IMAGE sky model in photons/bin
 HDU1_  IVAR       IMAGE inverse variance ``(photons/bin)^-2``
 HDU2_  MASK       IMAGE sky mask (0 = good)
 HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
-HDU4_  STATIVAR   IMAGE *Brief Description*
+HDU4_  STATIVAR   IMAGE statistical-only inverse variance of sky model
 ====== ========== ===== ===================
 
 
@@ -31,7 +31,7 @@ HDU0
 
 EXTNAME = SKY
 
-*Summarize the contents of this HDU.*
+sky model in photons/bin
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,7 +78,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+inverse variance of sky model ``(photons/bin)^-2``
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,7 +99,7 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+sky mask (0 = good)
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,7 +122,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+wavelength in Angstrom
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,7 +142,7 @@ HDU4
 
 EXTNAME = STATIVAR
 
-*Summarize the contents of this HDU.*
+statistical-only inverse variance of sky model
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

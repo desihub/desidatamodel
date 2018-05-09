@@ -10,14 +10,14 @@ psf
 Contents
 ========
 
-====== ========== ======== ===================
+====== ========== ======== =======================
 Number EXTNAME    Type     Contents
-====== ========== ======== ===================
-HDU0_  PRIMARY    IMAGE    *Brief Description*
-HDU1_  QUICKSIM-B BINTABLE *Brief Description*
-HDU2_  QUICKSIM-R BINTABLE *Brief Description*
-HDU3_  QUICKSIM-Z BINTABLE *Brief Description*
-====== ========== ======== ===================
+====== ========== ======== =======================
+HDU0_  PRIMARY    IMAGE    Empty
+HDU1_  QUICKSIM-B BINTABLE b-camera PSF parameters
+HDU2_  QUICKSIM-R BINTABLE r-camera PSF parameters
+HDU3_  QUICKSIM-Z BINTABLE z-camera PSF parameters
+====== ========== ======== =======================
 
 
 FITS Header Units
@@ -28,8 +28,6 @@ HDU0
 
 EXTNAME = PRIMARY
 
-*Summarize the contents of this HDU.*
-
 This HDU has no non-standard required keywords.
 
 Empty HDU.
@@ -39,7 +37,7 @@ HDU1
 
 EXTNAME = QUICKSIM-B
 
-*Summarize the contents of this HDU.*
+b-camera PSF parameters.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,22 +58,22 @@ WAVEUNIT Angstrom                                 str  Wavelengths in Angstroms
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================= ======= ============ ===================
+================= ======= ============ ===========================================
 Name              Type    Units        Description
-================= ======= ============ ===================
-wavelength        float64 Angstrom     label for field   1
-fwhm_wave         float64 Angstrom     label for field   2
-fwhm_spatial      float64 pixel        label for field   3
-neff_spatial      float64 pixel        label for field   4
-angstroms_per_row float64 Angstrom/row label for field   5
-================= ======= ============ ===================
+================= ======= ============ ===========================================
+wavelength        float64 Angstrom     wavelength
+fwhm_wave         float64 Angstrom     FWHM in wavelength (y) direction
+fwhm_spatial      float64 pixel        FWHM in cross-dispersion (x) direction
+neff_spatial      float64 pixel        Number of effective pixels covered
+angstroms_per_row float64 Angstrom/row Angstroms per CCD pixels at this wavelength
+================= ======= ============ ===========================================
 
 HDU2
 ----
 
 EXTNAME = QUICKSIM-R
 
-*Summarize the contents of this HDU.*
+r-camera PSF parameters.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,22 +94,22 @@ WAVEUNIT Angstrom                                 str  Wavelengths in Angstroms
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================= ======= ============ ===================
+================= ======= ============ ===========================================
 Name              Type    Units        Description
-================= ======= ============ ===================
-wavelength        float64 Angstrom     label for field   1
-fwhm_wave         float64 Angstrom     label for field   2
-fwhm_spatial      float64 pixel        label for field   3
-neff_spatial      float64 pixel        label for field   4
-angstroms_per_row float64 Angstrom/row label for field   5
-================= ======= ============ ===================
+================= ======= ============ ===========================================
+wavelength        float64 Angstrom     wavelength
+fwhm_wave         float64 Angstrom     FWHM in wavelength (y) direction
+fwhm_spatial      float64 pixel        FWHM in cross-dispersion (x) direction
+neff_spatial      float64 pixel        Number of effective pixels covered
+angstroms_per_row float64 Angstrom/row Angstroms per CCD pixels at this wavelength
+================= ======= ============ ===========================================
 
 HDU3
 ----
 
 EXTNAME = QUICKSIM-Z
 
-*Summarize the contents of this HDU.*
+z-camera PSF parameters.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,15 +130,15 @@ WAVEUNIT Angstrom                                 str  Wavelengths in Angstroms
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================= ======= ============ ===================
+================= ======= ============ ===========================================
 Name              Type    Units        Description
-================= ======= ============ ===================
-wavelength        float64 Angstrom     label for field   1
-fwhm_wave         float64 Angstrom     label for field   2
-fwhm_spatial      float64 pixel        label for field   3
-neff_spatial      float64 pixel        label for field   4
-angstroms_per_row float64 Angstrom/row label for field   5
-================= ======= ============ ===================
+================= ======= ============ ===========================================
+wavelength        float64 Angstrom     wavelength
+fwhm_wave         float64 Angstrom     FWHM in wavelength (y) direction
+fwhm_spatial      float64 pixel        FWHM in cross-dispersion (x) direction
+neff_spatial      float64 pixel        Number of effective pixels covered
+angstroms_per_row float64 Angstrom/row Angstroms per CCD pixels at this wavelength
+================= ======= ============ ===========================================
 
 
 Notes and Examples
