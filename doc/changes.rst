@@ -2,13 +2,23 @@
 desidatamodel Change Log
 ========================
 
-1.3.0 (unreleased)
-------------------
+18.6 (unreleased)
+-----------------
 
+* No changes yet
+
+18.3 (2018-05-09)
+-----------------
+
+Tag for 18.3 software release (albeit 1.5 months later).
+
+* Switching to YY.[M]M versioning to match software releases.
+* Fill in missing file summaries and HDU descriptions (PR `#47`_).
 * Update data model to reflect reference run 18.3 (PR `#46`_).
 * Drop support for Python 2.
 
 .. _`#46`: https://github.com/desihub/desidatamodel/pull/46
+.. _`#47`: https://github.com/desihub/desidatamodel/pull/47
 
 1.2.0 (2018-03-23)
 ------------------
