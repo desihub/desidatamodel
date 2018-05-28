@@ -64,8 +64,8 @@ SNR_RESID        436               float[Nobj] List of the SNR values for the ta
 FIDSNR_TGT       4                 float[4]    List of fiducial SNR per target type 
 RA               500               float[500]  List of 500 RA for the 500 fibers 
 DEC              500               float[500]  List of 500 DEC for the 500 fibers 
-FITCOEFF_TGT     4,2               float[8]    Best fit values of "a" and sky b/g "B" per target type [[a,B],[a,B],[a,B],...]
-FITCOVAR_TGT     4,2x2             float[16]   List of 2x2 covariance matrices for the fitting process per target type [[[c1,c2],[c3,c4]],[[c1,c2],[c3,c4]], ...]  
+FITCOEFF_TGT     4,2               float[8]    Best fit values of "a" and sky b/g "B" per target type 
+FITCOVAR_TGT     4,2x2             float[16]   List of 2x2 covariance matrices [[[c1,c2],[c3,c4]],[[c1,c2],[c3,c4]], ...]  
 FIDSNR_STATUS    ALARM             string      reports the status of FIDSNR_TGT
 ===============  ===============   ==========  =======================================
 
