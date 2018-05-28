@@ -43,7 +43,7 @@ Keyword Description
 
 ================ =================  ================ ================================================
 KEY              Example Value      Type             Comment
-================ =================  ================ ================================================
+================ =================  ================ ===================================================
 CAMERA           b4                 string           b0-b9, r0-r9, z0-z9
 EXPID            00003900           int  	     Exposure ID
 FLAVOR           science            string           The type of exposure that can flat, arc or science 
@@ -59,14 +59,14 @@ MED_RESID_WAVE   0.426..0.371       float[NWAVE]     Median of residuals vs. wav
 NBAD_PCHI        0	            int		     Number of fibers with bad chi^2
 NREJ		 0                  int              Number of rejected fibers
 NSKY_FIB         34	            int              Number of good sky fibers
-RESID_PER	 28.83, 31.75      float[2]          95% c.l. boundaries of residuals distribution
+RESID_PER	 28.83, 31.75       float[2]         95% c.l. boundaries of residuals distribution
 WAVELENGTH	 5630...7740.       float[NWAVE]     Wavelength (Ang.) in NWAVE bins
 RA               [500RA]            float[500]
 DEC              [500DEC]           float[500]
 SKYFIBERID       [37FIBERID]        int[N]           N is number of sky fibers 
 WAVG_RES_WAVE    [2701]             float[NWAVE]     Wavelength (Ang.)in NWAVE bins for the sky residual 
 RESID_STATUS     NORMAL             string           Reports the status of MED_RESID
-================ =================  ===============  ===============================================
+================ =================  ===============  ===================================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
