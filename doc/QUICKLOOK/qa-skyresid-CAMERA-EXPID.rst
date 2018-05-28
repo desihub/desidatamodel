@@ -59,7 +59,7 @@ MED_RESID_WAVE   0.426..0.371       float[NWAVE]     Median of residuals vs. wav
 NBAD_PCHI        0	            int		     Number of fibers with bad chi^2
 NREJ		 0                  int              Number of rejected fibers
 NSKY_FIB         34	            int              Number of good sky fibers
-RESID_PER	 -28.83, 31.75      float[2]         95% c.l. boundaries of residuals distribution
+RESID_PER	 28.83, 31.75      float[2]          95% c.l. boundaries of residuals distribution
 WAVELENGTH	 5630...7740.       float[NWAVE]     Wavelength (Ang.) in NWAVE bins
 RA               [500RA]            float[500]
 DEC              [500DEC]           float[500]
