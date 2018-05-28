@@ -41,9 +41,9 @@ Spectral signal-to-noise calculations per fiber and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-=============== ================   ==========  =======================================
-KEY             Example Value      Type        Comment
-=============== ================   ==========  =======================================
+=============== ================== ==========  =======================================
+KEY              Example Value      Type        Comment
+================ ================= ==========  =======================================
 CAMERA           b4                string      b0-b9, r0-r9, z0-z9
 EXPID            00003900          int         Exposure ID
 FLAVOR           science           string      The type of exposure that can flat, arc or science 
@@ -67,7 +67,7 @@ DEC              500               float[500]  List of 500 DEC for the 500 fiber
 FITCOEFF_TGT     4,2               float[8]    Best fit values of "a" and sky b/g "B" per target type 
 FITCOVAR_TGT     4,2x2             float[16]   List of 2x2 covariance matrices [[[c1,c2],[c3,c4]],[[c1,c2],[c3,c4]], ...]  
 FIDSNR_STATUS    ALARM             string      reports the status of FIDSNR_TGT
-===============  ===============   ==========  =======================================
+================ ================= ==========  =======================================
 
 Example JSON Output 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
