@@ -60,12 +60,12 @@ NREJ		 0                  int              Number of rejected fibers
 NSKY_FIB         34	            int              Number of good sky fibers
 RESID_PER	 28.83, 31.75       float[2]         95% c.l. boundaries of residuals distribution
 WAVELENGTH	 5630...7740.       float[NWAVE]     Wavelength (Ang.) in NWAVE bins
-RA               [500RA]            float[500]       Right ascention of 500 targets from the fibermap
-DEC              [500DEC]           float[500]       Declination of 500 targets from the fibermap
-SKYFIBERID       [37FIBERID]        int[N]           N is number of sky fibers 
-WAVG_RES_WAVE    [2701]             float[NWAVE]     Wavelength (Ang.)in NWAVE bins for the sky residual 
+RA               500RA              float[500]       Right ascention of 500 targets from the fibermap
+DEC              500DEC             float[500]       Declination of 500 targets from the fibermap
+SKYFIBERID       37FIBERID          int[N]           N is number of sky fibers 
+WAVG_RES_WAVE    2701               float[NWAVE]     Wavelength (Ang.)in NWAVE bins for the sky residual 
 RESID_STATUS     NORMAL             string           Reports the status of MED_RESID
-================ =================  ===============  ===================================================
+================ =================  ================ ===================================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
