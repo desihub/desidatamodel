@@ -41,8 +41,8 @@ Spectral signal-to-noise calculations per fiber and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-=============== ================== ==========  =======================================
-KEY              Example Value      Type        Comment
+================ ================= ==========  =======================================
+KEY              Example Value     Type        Comment
 ================ ================= ==========  =======================================
 CAMERA           b4                string      b0-b9, r0-r9, z0-z9
 EXPID            00003900          int         Exposure ID
