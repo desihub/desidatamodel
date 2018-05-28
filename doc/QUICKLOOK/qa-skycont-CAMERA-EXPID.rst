@@ -60,7 +60,7 @@ Sky_Rband        1000              float
 Sky_fib_Rband    1000              float      Average sky fiber magnitude in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
 Sky_Rflux_diff   []                float[N]   Difference between flux from sky monitor and the calculated magnitude from the sky fibers
 SKYCONT_STATUS   NORMAL            string     Reports the status of the SKYCONT 
-================ =============     ========== ==============================================
+================ ================= ========== ==============================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
