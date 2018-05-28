@@ -56,8 +56,8 @@ FIBER_MAG        [18.22, ...]  float[500] Magnitude of the 500 fibers
 RA               [266.49, ...] floar[500] List of right ascention for all the 500 targets assigned to the fibers in this camera
 DEC              [21.97,...]   float[500] List of declinations for all the 500 targets assigned to the fibers in this camera 
 STD_FIBERID      [11, 63,...]  int[NS]    List of the fiber IDs assigned to NS standard stars
-DELTAMAG         [0.,0.,...]   float[500] List of mag differences between the fibermag and the imaging magnitude for the associated target in the fibermap
-DELTAMAG_TGT     [-2.92,...]   float[N]   List of the average fiber magnitudes for each of the N target types in this camera: QSO, LRG, ELG, STD, MWS, etc
+DELTAMAG         [0.,0.,...]   float[500] List of mag diff b/w the fibermag and the imaging mag from the fibermap
+DELTAMAG_TGT     [-2.92,...]   float[N]   List of the average fiber mag for each of N target types in this camera
 DELTAMAG_STATUS  ALARM         string     Status of DELTAMAG_TGT
 ================ ============= ========== ==============================================
 
@@ -66,7 +66,7 @@ Example JSON Output
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
