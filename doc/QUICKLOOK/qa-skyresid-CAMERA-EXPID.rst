@@ -41,7 +41,7 @@ Sky residuals calculations over each sky fiber and averaged over sky fibers.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ =================  ================ ================================================
+================ =================  ================ ===================================================
 KEY              Example Value      Type             Comment
 ================ =================  ================ ===================================================
 CAMERA           b4                 string           b0-b9, r0-r9, z0-z9
@@ -52,7 +52,6 @@ QATIME           2018-05-27T        float            Timestamp (UTC) of time of 
                  11:35:45.62
 NIGHT            20191017           int              The night of observation
 PROGRAM          dark               string           Name of the observing program: dark, grey, bright 
-
 MED_RESID	 0.786	            float      	     Median of residuals over all sky fibers
 MED_RESID_FIBER  0.548..0.001       float[NSKY_FIB]  Median of residuals per sky fiber
 MED_RESID_WAVE   0.426..0.371       float[NWAVE]     Median of residuals vs. wavelength in NWAVE bins
