@@ -41,33 +41,33 @@ Sky level calculations in continuum regions averaged over sky fibers, and per CC
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ==============================================
-KEY              Example Value Type       Comment
-================ ============= ========== ==============================================
-CAMERA           b4            string     b0-b9, r0-r9, z0-z9
-EXPID            00003900      int  	  Exposure ID
-FLAVOR           science       string     The type of exposure that can flat, arc or science 
+================ ================= ========== ==============================================
+KEY              Example Value     Type       Comment
+================ ================= ========== ==============================================
+CAMERA           b4                string     b0-b9, r0-r9, z0-z9
+EXPID            00003900          int  	  Exposure ID
+FLAVOR           science           string     The type of exposure that can flat, arc or science 
 PANAME           ApplyFiberFlat_QL string     Name of pipeline algorihm
-QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
-                 11:33:21.646358
-NIGHT            20191017      int        The night of observation
-PROGRAM          dark          string     Name of the observing program: dark, grey, bright 
+QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA execution
+                 11:33:21.646
+NIGHT            20191017          int        The night of observation
+PROGRAM          dark              string     Name of the observing program: dark, grey, bright 
                  06:05:34.555
-SKYCONT          210.0         float      Sky continuum in all configured continuum areas averaged over all sky fibers
-SKYCONT_FIBER    357.238       float[N]   Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers
-SKYFIBERID       4             int[N]     FIBERID of sky fibers 
-Sky_Rband        1000          float
-Sky_fib_Rband    1000          float      Average sky fiber magnitude in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
-Sky_Rflux_diff   []            float[N]   Difference between flux from sky monitor and the calculated magnitude from the sky fibers
-SKYCONT_STATUS   NORMAL        string     Reports the status of the SKYCONT 
-================ ============= ========== ==============================================
+SKYCONT          210.0             float      Sky continuum in all configured continuum areas averaged over all sky fibers
+SKYCONT_FIBER    357.238           float[N]   Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers
+SKYFIBERID       4                 int[N]     FIBERID of sky fibers 
+Sky_Rband        1000              float
+Sky_fib_Rband    1000              float      Average sky fiber magnitude in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
+Sky_Rflux_diff   []                float[N]   Difference between flux from sky monitor and the calculated magnitude from the sky fibers
+SKYCONT_STATUS   NORMAL            string     Reports the status of the SKYCONT 
+================ =============     ========== ==============================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
