@@ -53,7 +53,7 @@ QATIME           2018-05-27T       float       Timestamp (UTC) of time of QA exe
 NIGHT            20191017          int         The night of observation
 PROGRAM          dark              string      name of the observing program: dark, grey, bright 
 MEDIAN_SNR       1.3233            float[500]  median S/N per fiber
-NUM_NEGATIVE_SNR 0                 int  
+NUM_NEGATIVE_SNR 0                 int         Number of targets with negative SNR
 MAGNITUDES       3,500             float[500]  list of 3 imaging mags [DECAM_G,DECAM_R,DECAM_Z] for all the 500 fibers 
 ELG_FIBERID      331               int[ne]     fiber IDs for ELG candidates, ne is number of the ELGs
 LRG_FIBERID      65                int[nl]     fiber IDs for LRG candidates, nl is number of the LRGs
