@@ -41,31 +41,31 @@ Sky level calculations in regions of peak sky emission lines.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ==============================================
-KEY              Example Value Type       Comment
-================ ============= ========== ==============================================
-CAMERA           b4            string     b0-b9, r0-r9, z0-z9
-EXPID            00003900      int  	  Exposure ID
-FLAVOR           science       string     The type of exposure that can flat, arc or science 
+================ ================= ========== ==============================================
+KEY              Example Value     Type       Comment
+================ ================= ========== ==============================================
+CAMERA           b4                string     b0-b9, r0-r9, z0-z9
+EXPID            00003900          int  	  Exposure ID
+FLAVOR           science           string     The type of exposure that can flat, arc or science 
 PANAME           ApplyFiberFlat_QL string     Name of pipeline algorihm
-QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
-                 11:33:21.646358
-NIGHT            20191017      int        The night of observation
-PROGRAM          dark          string     name of the observing program: dark, grey, bright 
+QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA execution
+                 11:33:21.646
+NIGHT            20191017          int        The night of observation
+PROGRAM          dark              string     name of the observing program: dark, grey, bright 
                  
-SUMCOUNT         1500.0        float[500] summed counts over specified peak sky 
+SUMCOUNT         1500.0            float[500] summed counts over specified peak sky 
                                           wavelengths
-SUMCOUNT_RMS     1445.0        float      rms of summed counts over sky peaks
-SUMCOUNT_RMS_SKY 1455.0        float      rms of summed counts over sky peaks on sky fibers
-SUMCOUNT_RMS_AMP 1444.0        float[4]   rms of summed counts on sky fibers per AMP
-================ ============= ========== ==============================================
+SUMCOUNT_RMS     1445.0            float      rms of summed counts over sky peaks
+SUMCOUNT_RMS_SKY 1455.0            float      rms of summed counts over sky peaks on sky fibers
+SUMCOUNT_RMS_AMP 1444.0            float[4]   rms of summed counts on sky fibers per AMP
+================ ================= ========== ==============================================
 
-Example YAML Output
+Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
