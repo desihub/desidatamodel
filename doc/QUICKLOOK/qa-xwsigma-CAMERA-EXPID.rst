@@ -43,39 +43,29 @@ profiles at peak sky wavelengths.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ==============================================
-KEY              Example Value Type       Comment
-================ ============= ========== ==============================================
-CAMERA           b4            string     b0-b9, r0-r9, z0-z9
-EXPID            00003900      int  	  Exposure ID
-FLAVOR           science       string     The type of exposure that can flat, arc or science 
-PANAME           PREPROC       string     Name of pipeline algorihm
-QATIME           2018-05-25T   float      Timestamp (UTC) of time of QA execution
-                 09:59:29.102591
-NIGHT            20191017      int        The night of observation
-            
-PARAMS           'XWSIGMA_WARN_RANGE': [-4.0, 4.0]    float[2]  Two representing the lower and upper limts of the warning range
-                 'XWSIGMA_NORMAL_RANGE': [-2.0, 2.0]  float[2]  Two floats representing the lower and upper limts of the warning range
-                 'XWSIGMA_REF': [0.0, 0.0]            float[2]  Two reference numbers (one for X, one for W direction)
-                 'B_PEAKS': [3914.4, 5199.3, 5578.9]  float[3]
-                 'R_PEAKS': [6301.9, 6365.4, 7318.2, 7342.8, 7371.3]    float[5]  
-                 'Z_PEAKS': [8401.5, 8432.4, 8467.5, 9479.4]            float[4]  
-                 
-PROGRAM          dark          string     name of the observing program: dark, grey, bright
-
-XWSIGMA		 1.9           float[500] fitted XSIGMA averaged over isolated bright sky wavelengths
-XWSIGMA_AMP      1.81          float      median of XSIGMAs for all fibers
-XWSIGMA_FIB      1.9           float[4]   median of XSIGMAs for all fibers per amp
-XWSIGMA_STATUS   1.9           float[4]   median of XSIGMAs for all fibers per amp
-
-================ ============= ========== ==============================================
+================ ============= =========== ==============================================
+KEY              Example Value Type        Comment
+================ ============= =========== ==============================================
+CAMERA           b4            string      b0-b9, r0-r9, z0-z9
+EXPID            00003900      int  	   Exposure ID
+FLAVOR           science       string      The type of exposure that can flat, arc or science 
+PANAME           PREPROC       string      Name of pipeline algorihm
+QATIME           2018-05-25T   float       Timestamp (UTC) of time of QA execution
+                 09:59:29.102
+NIGHT            20191017      int         The night of observation
+PROGRAM          dark          string      name of the observing program: dark, grey, bright
+XWSIGMA          1.9           float[500]  fitted XSIGMA averaged over isolated bright sky wavelengths
+XWSIGMA_AMP      1.81          float       median of XSIGMAs for all fibers
+XWSIGMA_FIB      500,2         float[1000] median of XSIGMAs for all fibers per amp
+XWSIGMA_STATUS   ALARM         string      Reports the status of XWSIGMA
+================ ============= =========== ==============================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
