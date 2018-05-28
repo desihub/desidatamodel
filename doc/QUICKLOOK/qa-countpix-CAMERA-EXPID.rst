@@ -48,7 +48,7 @@ EXPID            00003900      int  	  Exposure ID
 FLAVOR           science       string     The type of exposure that can flat, arc or science 
 PANAME           BoxcarExtract string     Name of pipeline algorihm
 QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
-                 11:33:21.646358
+                 11:33:21.6463
 NIGHT            20191017      int        The night of observation
             
 PROGRAM          dark          string     name of the observing program: dark, grey, bright
@@ -66,15 +66,40 @@ Example JSON Output
 
 ::
 
-    {'COUNTPIX': 
-         {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'PREPROC', 'SPECTROGRAPH': 0,
-          'VALUE':
-              {'NPIX100': 0,
-               'NPIX100_AMP': [254549, 0, 242623, 0],
-               'NPIX3SIG': 3713,
-               'NPIX3SIG_AMP': [128158, 2949, 132594, 3713],
-               'NPIX500': 0,
-               'NPIX500_AMP': [1566, 0, 1017, 0]
-              }
-         }
-    }
+    {
+    "CAMERA": "b4",
+    "EXPID": "00003900",
+    "FLAVOR": "science",
+    "METRICS": {
+        "LITFRAC_AMP": [
+            0.35,
+            0.34,
+            0.4,
+            0.37
+        ],
+        "LITFRAC_STATUS": "ALARM"
+    },
+    "NIGHT": "20191017",
+    "PANAME": "Preproc",
+    "PARAMS": {
+        "CUTPIX": 5,
+        "LITFRAC_AMP_REF": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "LITFRAC_NORMAL_RANGE": [
+            -0.1,
+            0.1
+        ],
+        "LITFRAC_WARN_RANGE": [
+            -0.2,
+            0.2
+        ]
+    },
+    "PROGRAM": "dark",
+    "QATIME": "2018-05-27T11:31:44.047383",
+    "QA_STATUS": "UNKNOWN"
+}
+
