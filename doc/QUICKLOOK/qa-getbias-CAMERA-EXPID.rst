@@ -61,7 +61,8 @@ Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
-{
+
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "EXPTIME": 1000.0,
