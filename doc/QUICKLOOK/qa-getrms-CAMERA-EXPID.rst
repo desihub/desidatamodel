@@ -40,32 +40,32 @@ Spectral root-mean-squared calculations per image and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ========== ==================================================
-KEY              Example Value Type       Comment
-================ ============= ========== ==================================================
-CAMERA           b4            string     b0-b9, r0-r9, z0-z9
-EXPID            00003900      int  	  Exposure ID
-FLAVOR           science       string     The type of exposure that can flat, arc or science 
-PANAME           PREPROC       string     Name of pipeline algorihm
-QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
-                 11:31:42.766594
-NIGHT            20191017      int        The night of observation            
-PROGRAM          dark          string     name of the observing program: dark, grey, bright
+================== ============= ========== ==================================================
+KEY                Example Value Type       Comment
+================== ============= ========== ==================================================
+CAMERA             b4            string     b0-b9, r0-r9, z0-z9
+EXPID              00003900      int  	    Exposure ID
+FLAVOR             science       string     The type of exposure that can flat, arc or science 
+PANAME             PREPROC       string     Name of pipeline algorihm
+QATIME             2018-05-27T   float      Timestamp (UTC) of time of QA execution
+                   11:31:42.766
+NIGHT              20191017      int        The night of observation            
+PROGRAM            dark          string     name of the observing program: dark, grey, bright
 
 
-NOISE            2.009         float      value of RMS across image 
-NOISE_AMP          [1.916, 2.014, 2.050, 2.146]     float[4]   value of RMS for each amplifier read directly from the header of the preproc image  
-NOISE_OVERSCAN_AMP [1.887, 1.996, 2.032, 2.122]     float[4]
-BIAS_PATNOISE    [0.0020, 0.0021, 0.0134, 0.0133]   float[4]    value of RMS of the overscan region for each amplifier read directly from the header of the preproc image  
-NOISE_STATUS     ALARM         string     status of NOISE_AMP 
-================ ============= ========== ==================================================
+NOISE              2.009         float      value of RMS across image 
+NOISE_AMP          4             float[4]   value of RMS for each amplifier read directly from the header of the preproc image  
+NOISE_OVERSCAN_AMP 4             float[4]
+BIAS_PATNOISE      4             float[4]    value of RMS of the overscan region per amp from the header of the preproc image  
+NOISE_STATUS       ALARM         string     status of NOISE_AMP 
+================== ============= ========== ==================================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
