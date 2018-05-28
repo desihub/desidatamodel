@@ -41,44 +41,40 @@ Spectral signal-to-noise calculations per fiber and per CCD amp.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-=============== ============= ========== =======================================
-KEY             Example Value Type       Comment
-=============== ============= ========== =======================================
-CAMERA           b4            string     b0-b9, r0-r9, z0-z9
-EXPID            00003900      int  	  Exposure ID
-FLAVOR           science       string     The type of exposure that can flat, arc or science 
-PANAME           ApplyFiberFlat_QL string     Name of pipeline algorihm
-QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
-                 1:35:46.731521
-NIGHT            20191017      int        The night of observation
-PROGRAM          dark          string     name of the observing program: dark, grey, bright 
-
-
-
-MEDIAN_SNR       1.3233        float[500] median S/N per fiber
-NUM_NEGATIVE_SNR 0             int  
-MAGNITUDES       3,500         list of 3 imaging magnitudes [DECAM_G,DECAM_R,DECAM_Z] for all the 500 fibers                             
-
-ELG_FIBERID      331           int[ne]   fiber IDs for ELG candidates, ne is number of the ELGs
-LRG_FIBERID      65            int[nl]   fiber IDs for LRG candidates, nl is number of the LRGs
-QSO_FIBERID      56            int[nq]   fiber IDs for QSO candidates, nq is number of the QSOs
-STAR_FIBERID     11            int[ns]   fiber IDs for standard STARs, ns is number of the STARs
-SNR_MAG_TGT      4             float[N]   List of average SNR for target type, N is number of target types   
-SNR_RESID        436             
-FIDSNR_TGT       4              List of fiducial SNR per target type 
-RA               500            List of 500 RA for the 500 fibers 
-DEC              500            List of 500 DEC for the 500 fibers 
-FITCOEFF_TGT     4,2            List of two best fit values of throughput "a" and sky background "B" for each target type [[a,B],[a,B],[a,B],...]
-FITCOVAR_TGT     4,2x2          List of 2 by 2 covariance matrices for the fitting process for each target type [[[c1,c2],[c3,c4]],[[c1,c2],[c3,c4]], ...]  
-FIDSNR_STATUS    ALARM          string    reports the status of FIDSNR_TGT
-=============== ============= ========== =======================================
+=============== ================   ==========  =======================================
+KEY             Example Value      Type        Comment
+=============== ================   ==========  =======================================
+CAMERA           b4                string      b0-b9, r0-r9, z0-z9
+EXPID            00003900          int         Exposure ID
+FLAVOR           science           string      The type of exposure that can flat, arc or science 
+PANAME           ApplyFiberFlat_QL string      Name of pipeline algorihm
+QATIME           2018-05-27T       float       Timestamp (UTC) of time of QA execution
+                 1:35:46.731
+NIGHT            20191017          int         The night of observation
+PROGRAM          dark              string      name of the observing program: dark, grey, bright 
+MEDIAN_SNR       1.3233            float[500]  median S/N per fiber
+NUM_NEGATIVE_SNR 0                 int  
+MAGNITUDES       3,500             float[500]  list of 3 imaging mags [DECAM_G,DECAM_R,DECAM_Z] for all the 500 fibers 
+ELG_FIBERID      331               int[ne]     fiber IDs for ELG candidates, ne is number of the ELGs
+LRG_FIBERID      65                int[nl]     fiber IDs for LRG candidates, nl is number of the LRGs
+QSO_FIBERID      56                int[nq]     fiber IDs for QSO candidates, nq is number of the QSOs
+STAR_FIBERID     11                int[ns]     fiber IDs for standard STARs, ns is number of the STARs
+SNR_MAG_TGT      4                 float[N]    List of average SNR for target type, N is number of target types   
+SNR_RESID        436               float[Nobj] List of the SNR values for the targets, Nobj is 500-Nskyfibers
+FIDSNR_TGT       4                 float[4]    List of fiducial SNR per target type 
+RA               500               float[500]  List of 500 RA for the 500 fibers 
+DEC              500               float[500]  List of 500 DEC for the 500 fibers 
+FITCOEFF_TGT     4,2               float[8]    Best fit values of "a" and sky b/g "B" per target type [[a,B],[a,B],[a,B],...]
+FITCOVAR_TGT     4,2x2             float[16]   List of 2x2 covariance matrices for the fitting process per target type [[[c1,c2],[c3,c4]],[[c1,c2],[c3,c4]], ...]  
+FIDSNR_STATUS    ALARM             string      reports the status of FIDSNR_TGT
+===============  ===============   ==========  =======================================
 
 Example JSON Output 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
