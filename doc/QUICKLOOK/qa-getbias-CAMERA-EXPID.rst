@@ -53,7 +53,7 @@ NIGHT            20191017      int        The night of observation
 PROGRAM          dark          string     name of the observing program: dark, grey, bright
 
 BIAS             147.041,      float      value of bias across image
-BIAS_AMP         [166.859, 150.606, 155.208, 115.488]        float[4]   value of bias averaged over each amplifier
+BIAS_AMP         4             float[4]   value of bias averaged over each amplifier
 BIAS_STATUS      ALARM         string     status of BIAS_AMP 
 ================ ============= ========== ==============================================
 
