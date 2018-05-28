@@ -41,39 +41,39 @@ Sky residuals calculations over each sky fiber and averaged over sky fibers.
 Keyword Description
 ~~~~~~~~~~~~~~~~~~~
 
-================ ============= ================ ================================================
-KEY              Example Value Type             Comment
-================ ============= ================ ================================================
-CAMERA           b4            string     b0-b9, r0-r9, z0-z9
-EXPID            00003900      int  	  Exposure ID
-FLAVOR           science       string     The type of exposure that can flat, arc or science 
-PANAME           ApplyFiberFlat_QL string     Name of pipeline algorihm
-QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
-                 11:35:45.625958
-NIGHT            20191017      int        The night of observation
-PROGRAM          dark          string     name of the observing program: dark, grey, bright 
+================ =================  ================ ================================================
+KEY              Example Value      Type             Comment
+================ =================  ================ ================================================
+CAMERA           b4                 string           b0-b9, r0-r9, z0-z9
+EXPID            00003900           int  	     Exposure ID
+FLAVOR           science            string           The type of exposure that can flat, arc or science 
+PANAME           ApplyFiberFlat_QL  string           Name of pipeline algorihm
+QATIME           2018-05-27T        float            Timestamp (UTC) of time of QA execution
+                 11:35:45.62
+NIGHT            20191017           int              The night of observation
+PROGRAM          dark               string           Name of the observing program: dark, grey, bright 
 
-MED_RESID	 0.786	       float      	median of residuals over all sky fibers
-MED_RESID_FIBER  0.548..0.001  float[NSKY_FIB]  median of residuals per sky fiber
-MED_RESID_WAVE   0.426..0.371  float[NWAVE]     median of residuals vs. wavelength in NWAVE bins
-NBAD_PCHI        0	       int		number of fibers with bad chi^2
-NREJ		 0             int              number of rejected fibers
-NSKY_FIB         34	       int              number of good sky fibers
-RESID_PER	 -28.83, 31.75 float[2]         95% c.l. boundaries of residuals distribution
-WAVELENGTH	 5630...7740.  float[NWAVE]     wavelength (Ang.) in NWAVE bins
-RA               [500RA]       float[500]
-DEC              [500DEC]      float[500]
-SKYFIBERID       [37FIBERID]   int[N]           N is number of sky fibers 
-WAVG_RES_WAVE    [2701]        float[NWAVE]     float[NWAVE]     wavelength (Ang.) in NWAVE bins for the sky residual 
-RESID_STATUS     NORMAL        string           reports the status of MED_RESID
-================ ============= ================ ================================================
+MED_RESID	 0.786	            float      	     Median of residuals over all sky fibers
+MED_RESID_FIBER  0.548..0.001       float[NSKY_FIB]  Median of residuals per sky fiber
+MED_RESID_WAVE   0.426..0.371       float[NWAVE]     Median of residuals vs. wavelength in NWAVE bins
+NBAD_PCHI        0	            int		     Number of fibers with bad chi^2
+NREJ		 0                  int              Number of rejected fibers
+NSKY_FIB         34	            int              Number of good sky fibers
+RESID_PER	 -28.83, 31.75      float[2]         95% c.l. boundaries of residuals distribution
+WAVELENGTH	 5630...7740.       float[NWAVE]     Wavelength (Ang.) in NWAVE bins
+RA               [500RA]            float[500]
+DEC              [500DEC]           float[500]
+SKYFIBERID       [37FIBERID]        int[N]           N is number of sky fibers 
+WAVG_RES_WAVE    [2701]             float[NWAVE]     Wavelength (Ang.)in NWAVE bins for the sky residual 
+RESID_STATUS     NORMAL             string           Reports the status of MED_RESID
+================ =================  ===============  ===============================================
 
 Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-{
+    {
     "CAMERA": "b4",
     "EXPID": "00003900",
     "FLAVOR": "science",
