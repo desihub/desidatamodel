@@ -4,11 +4,11 @@ ql-countbins-CAMERA-EXPID.json
 
 :Summary: This QA for QuickLook includes the calculation of the number
 	  of spectral bins above threshold.
-:Naming Convention: ``qa-countbins-{ARM}{SPECTROGRAPH}-{EXPID}.yaml``, where 
+:Naming Convention: ``ql-countbins-{ARM}{SPECTROGRAPH}-{EXPID}.json``, where 
         {ARM} is the 1-char arm name (r,b,z), {SPECTROGRAPH} indexes 
         CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
         Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
-:Regex: ``qa-countbins-[brz][0-9]-[0-9]{8}\.yaml``
+:Regex: ``ql-countbins-[brz][0-9]-[0-9]{8}\.json``
 :File Type:  JSON
 
 
@@ -44,26 +44,18 @@ Keyword Description
 ================ ============= ========== ============================================================
 KEY              Example Value Type       Comment
 ================ ============= ========== ============================================================
-CAMERA           b4            string     b0-9, r0-r9, z0-z9
+CAMERA           b4            string     b0-b9, r0-r9, z0-z9
 EXPID            00003900      int  	  Exposure ID
 FLAVOR           science       string     The type of exposure that can flat, arc or science 
 PANAME           BoxcarExtract string     Name of pipeline algorihm
 QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
                  11:33:21.646358
 NIGHT            20191017      int        The night of observation
-            
-PROGRAM          dark          string     name of the obsrving program: dark, grey, bright
-PARAMS           NGOODFIB_WARN_RANGE : [-2, 2]
-                 NGOODFIB_NORMAL_RANGE : [-1, 1]
-                 NGOODFIB_REF : 0
-                 'B_PEAKS': [3914.4, 5199.3, 5578.9]  float[3]
-                 'R_PEAKS': [6301.9, 6365.4, 7318.2, 7342.8, 7371.3]    float[5]  
-                 'Z_PEAKS': [8401.5, 8432.4, 8467.5, 9479.4]            float[4]  
- 
+PROGRAM          dark          string     name of the observing program: dark, grey, bright 
+
 NGOODFIB         500            int        number of fibers with a nonzero number of bins above highest threshold 
 N_KNOWN_BROKEN_FIBERS 0         int        number od known broken fibers
 NGOODFIB_STATUS "ALARM"         string   
-QA_STATUS        UNKNOWN
 ================ ============= ========== ============================================================
 
 Example JSON Output

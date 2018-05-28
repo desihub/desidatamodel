@@ -4,11 +4,11 @@ ql-xwsigma-CAMERA-EXPID.json
 
 :Summary: This QA for QuickLook includes the calculation of the X and W
           sigmas from the 2D image file.
-:Naming Convention: ``qa-xwsigma-{ARM}{SPECTROGRAPH}-{EXPID}.json``, where 
+:Naming Convention: ``ql-xwsigma-{ARM}{SPECTROGRAPH}-{EXPID}.json``, where 
         {ARM} is the 1-char arm name (r,b,z), {SPECTROGRAPH} indexes 
         CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
         Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
-:Regex: ``qa-xwsigma-[brz][0-9]-[0-9]{8}\.json``
+:Regex: ``ql-xwsigma-[brz][0-9]-[0-9]{8}\.json``
 :File Type:  JSON
 
 
@@ -46,7 +46,7 @@ Keyword Description
 ================ ============= ========== ==============================================
 KEY              Example Value Type       Comment
 ================ ============= ========== ==============================================
-CAMERA           b4            string     b0-9, r0-r9, z0-z9
+CAMERA           b4            string     b0-b9, r0-r9, z0-z9
 EXPID            00003900      int  	  Exposure ID
 FLAVOR           science       string     The type of exposure that can flat, arc or science 
 PANAME           PREPROC       string     Name of pipeline algorihm
@@ -61,7 +61,7 @@ PARAMS           'XWSIGMA_WARN_RANGE': [-4.0, 4.0]    float[2]  Two representing
                  'R_PEAKS': [6301.9, 6365.4, 7318.2, 7342.8, 7371.3]    float[5]  
                  'Z_PEAKS': [8401.5, 8432.4, 8467.5, 9479.4]            float[4]  
                  
-PROGRAM          dark          string     name of the obsrving program: dark, grey, bright
+PROGRAM          dark          string     name of the observing program: dark, grey, bright
 
 XWSIGMA		 1.9           float[500] fitted XSIGMA averaged over isolated bright sky wavelengths
 XWSIGMA_AMP      1.81          float      median of XSIGMAs for all fibers
