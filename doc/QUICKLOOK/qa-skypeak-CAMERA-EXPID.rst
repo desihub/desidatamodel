@@ -53,8 +53,7 @@ QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA exec
 NIGHT            20191017          int        The night of observation
 PROGRAM          dark              string     name of the observing program: dark, grey, bright 
                  
-SUMCOUNT         1500.0            float[500] summed counts over specified peak sky 
-                                          wavelengths
+SUMCOUNT         1500.0            float[500] summed counts over specified peak sky wavelengths
 SUMCOUNT_RMS     1445.0            float      rms of summed counts over sky peaks
 SUMCOUNT_RMS_SKY 1455.0            float      rms of summed counts over sky peaks on sky fibers
 SUMCOUNT_RMS_AMP 1444.0            float[4]   rms of summed counts on sky fibers per AMP
