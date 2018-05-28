@@ -1,5 +1,5 @@
 ==============================
-qa-countbins-CAMERA-EXPID.yaml
+ql-countbins-CAMERA-EXPID.json
 ==============================
 
 :Summary: This QA for QuickLook includes the calculation of the number
@@ -9,13 +9,13 @@ qa-countbins-CAMERA-EXPID.yaml
         CCDs 0-9 on that arm, and {EXPID} is the 8-digit exposure ID.  
         Together, {ARM}{SPECTROGRAPH} specify a {CAMERA}.
 :Regex: ``qa-countbins-[brz][0-9]-[0-9]{8}\.yaml``
-:File Type:  YAML
+:File Type:  JSON
 
 
 Inputs
 ======
 
-Written by qa_quicklook.py, with Count_Spectral_bins using:
+Written by qa_quicklook.py, with CountSpectralBins using:
 
 - frame
 - psfboot
@@ -44,36 +44,59 @@ Keyword Description
 ================ ============= ========== ============================================================
 KEY              Example Value Type       Comment
 ================ ============= ========== ============================================================
-ARM              r             char       Spectrograph arm b,r,z
-SPECTROGRAPH     0             int  	  Camera index 0..9
-EXPID            00000002      int  	  exposure ID
-PANAME           BOXCAR        string     name of pipeline algorihm
-QATIME           2016-07-08T   float	  timestamp (UTC) of time of QA execution
-		 06:05:34.555
-NBINS100         200           int[500]   number of bins above 100 counts per fiber
-NBINS100_AMP     190           float[4]   number of bins above 100 counts averaged over each amplifier
-NBINS250         100           int[500]   number of bins above 250 cts per fiber
-NBINS250_AMP     90            float[4]   number of bins above 250 cts averaged over each amplifier
-NBINS500         10            int[500]   number of bins above 500 cts per fiber
-NBINS500_AMP     9             float[4]   number of bins above 500 cts averaged over each amplifier
-NGOODFIBERS      10            int        number of fibers with a nonzero number of bins above highest threshold 
+CAMERA           b4            string     b0-9, r0-r9, z0-z9
+EXPID            00003900      int  	  Exposure ID
+FLAVOR           science       string     The type of exposure that can flat, arc or science 
+PANAME           BoxcarExtract string     Name of pipeline algorihm
+QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
+                 11:33:21.646358
+NIGHT            20191017      int        The night of observation
+            
+PROGRAM          dark          string     name of the obsrving program: dark, grey, bright
+PARAMS           NGOODFIB_WARN_RANGE : [-2, 2]
+                 NGOODFIB_NORMAL_RANGE : [-1, 1]
+                 NGOODFIB_REF : 0
+                 'B_PEAKS': [3914.4, 5199.3, 5578.9]  float[3]
+                 'R_PEAKS': [6301.9, 6365.4, 7318.2, 7342.8, 7371.3]    float[5]  
+                 'Z_PEAKS': [8401.5, 8432.4, 8467.5, 9479.4]            float[4]  
+ 
+NGOODFIB         500            int        number of fibers with a nonzero number of bins above highest threshold 
+N_KNOWN_BROKEN_FIBERS 0         int        number od known broken fibers
+NGOODFIB_STATUS "ALARM"         string   
+QA_STATUS        UNKNOWN
 ================ ============= ========== ============================================================
 
-Example YAML Output
+Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    {'COUNTBINS': 
-       {'ARM': 'r', 'EXPID': '00000006', 'QATIME': '2016-07-08T06:05:34.56', 'PANAME': 'BOXCAR', 'SPECTROGRAPH': 0,
-        'VALUE': 
-            {'NBINS100': array([ 2575.,  2611.,  2451.,  2495.,  2357.,  2452.,  2528.,  2501.,  2548.,  2461.]),
-             'NBINS100_AMP': array([ 1249.74,     0.  ,  1198.01,     0.  ]),
-             'NBINS250': array([ 2503.,  2539.,  2161.,  2259.,  2077.,  2163.,  2284.,  2268.,  2387.,  2210.]),
-             'NBINS250_AMP': array([ 1149.55,     0.  ,  1095.02,     0.  ]),
-             'NBINS500': array([ 2307.,  2448.,   229.,  1910.,    94.,   306.,  2056.,  1941.,  2164.,   785.]),
-             'NBINS500_AMP': array([ 688.85,    0.  ,  648.75,    0.  ]),
-             'NGOODFIBERS': 10
-            }
-       }
-    }
+{
+    "CAMERA": "b4",
+    "EXPID": "00003900",
+    "FLAVOR": "science",
+    "METRICS": {
+        "GOOD_FIBER": [500
+        ]        
+        "NGOODFIB": 500,
+        "NGOODFIB_STATUS": "ALARM"
+    },
+    "NIGHT": "20191017",
+    "PANAME": "BoxcarExtract",
+    "PARAMS": {
+        "CUTBINS": 5,
+        "NGOODFIB_NORMAL_RANGE": [
+            -1,
+            1
+        ],
+        "NGOODFIB_REF": 0,
+        "NGOODFIB_WARN_RANGE": [
+            -2,
+            2
+        ],
+        "N_KNOWN_BROKEN_FIBERS": 0
+    },
+    "PROGRAM": "dark",
+    "QATIME": "2018-05-27T11:33:21.646358",
+    "QA_STATUS": "UNKNOWN"
+}
