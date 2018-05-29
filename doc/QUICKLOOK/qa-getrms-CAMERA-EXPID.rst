@@ -55,8 +55,8 @@ PROGRAM            dark          string     name of the observing program: dark,
 
 NOISE              2.009         float      value of RMS across image 
 NOISE_AMP          4             float[4]   value of RMS for each amplifier read directly from the header of the preproc image  
-NOISE_OVERSCAN_AMP 4             float[4]
-BIAS_PATNOISE      4             float[4]    value of RMS of the overscan region per amp from the header of the preproc image  
+NOISE_OVERSCAN_AMP 4             float[4]   value of RMS of the onerscan region per amplifier read directly from the header of the preproc image
+BIAS_PATNOISE      4             float[4]   rms of the row by row bias difference divided by the noise of that amp   
 NOISE_STATUS       ALARM         string     status of NOISE_AMP 
 ================== ============= ========== ==================================================
 
