@@ -135,7 +135,7 @@ Example JSON Output
 ~~~~~~~~~~~~~~~~~~~
 
 ::
-{
+   {
     "CAMERA": "b4",
     "EXPID": 3900,
     "FLAVOR": "science",
