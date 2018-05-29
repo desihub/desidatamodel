@@ -77,7 +77,7 @@ HDU_STATUS              NORMAL             string           Reports the result o
 **CHECK_CCDs  KEY       Example Value      Type             Comment**
 
 BIAS_AMP                4                  float[4]         value of bias averaged over each amplifier
-BIAS_STATUS             1                  ALARM            Reports the status of BIAS_AMP
+BIAS_STATUS             ALARM              string           Reports the status of BIAS_AMP
 BIAS_PATNOISE           4                  float[4]         rms of the row by row bias difference divided by the noise of 
                                                             that amp
 DATA5SIG                1                  int              Number of pixels with counts 5sigma below bias in region of CCD
