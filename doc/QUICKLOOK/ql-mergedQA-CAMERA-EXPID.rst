@@ -104,12 +104,12 @@ CHECK_SPECTRA
 ======================= =================  ================ ===================================================
 DELTAMAG                500	           float[500]	    List of mag diff b/w the fibermag and the imaging mag from the fibermap
 DELTAMAG_STATUS         ALARM              string	    Status of DELTAMAG_TGT
-DELTAMAG_TGT            [-2.92,...]	   float[N]	    List of the average fiber mag for each of N target types in this camera
+DELTAMAG_TGT            [-2.92,...]	   float[N]	    List of the average fiber mag per target types in this camera
 FIBER_MAG               [18.22, ...]	   float[500]       Magnitude of the 500 fibers
 FIDSNR_STATUS           ALARM	           string	    Reports the status of FIDSNR_TGT
 FIDSNR_TGT              4	           float[4]	    List of fiducial SNR per target type
-FITCOEFF_TGT            4,2	           float[4,2]	    List of 4 [a,B] Best fit throughput("a") and sky b/g ("B") per target type
-FITCOVAR_TGT            4,2x2	           float[16]	    List of 2x2 covariance matrices [[[c1,c2],[c3,c4]],[[c1,c2],[c3,c4]], ...]
+FITCOEFF_TGT            4,2	           float[4,2]	    List of 4[a,B] Best fit throughput("a") & sky b/g "B" per target
+FITCOVAR_TGT            4,2x2	           float[16]	    List of 2x2 covariance matrices [[[c1,c2],[c3,c4]], ...]
 MEDIAN_SNR              [1.3,...]	   float[500]       Median S/N per fiber
 NSKY_FIB                37                 int              Number of sky fibers 
 NUM_NEGATIVE_SNR        0	           int	            Number of targets with negative SNR
@@ -117,16 +117,16 @@ PEAKCOUNT               500                float[500]       Sum of counts in pea
 PEAKCOUNT_MED_SKY       []                 float[]          Median of PEAKCOUNT over sky fibers
 PEAKCOUNT_NOISE         0.072              float            rms of PEAKCOUNT over sky fibers FOR SCIENCE EXPOSURES
 PEAKCOUNT_STATUS        ALARM              string           reports the status of the PEAKCOUNT 
-SKYCONT                 210.0	           float	    Sky continuum in all configured continuum areas averaged over all sky fibers
+SKYCONT                 210.0	           float	    Sky cont. in all configured continuum areas averaged over all sky fibers
 SKYCONT_FIBER           357.238	           float[N]	    Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers
 SKYCONT_STATUS          NORMAL	           string	    Reports the status of the SKYCONT
 SNR_MAG_TGT             4	           float[N]	    List of average SNR for target type, N is number of target types
 SNR_RESID               436	           float[Nobj]	    List of the SNR values for the targets, Nobj is 500-Nskyfibers
 STAR_FIBERID            11	           int[ns]  	    Fiber IDs for standard STARs, ns is number of the STARs
 STD_FIBERID             11                 int[n]           Star Fiber IDs 
-Sky_Rband               1000	           float            Average value of sky background in R band- to come from ETC (current value is a place holder)
-Sky_Rflux_diff          []                 float[N]         Difference between flux from sky monitor and the calculated magnitude from the sky fibers
-Sky_fib_Rband           1000	           float	    Average sky fiber magnitude in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
+Sky_Rband               1000	           float            Average value of sky bg in R-band-> to come from ETC (current value is a place holder)
+Sky_Rflux_diff          []                 float[N]         Diff b/w flux from sky monitor and the calculated mag from the sky fibers
+Sky_fib_Rband           1000	           float	    Average sky fiber mag in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
 WAVELENGTH              5630...7740	   float[NWAVE]     Wavelength (Ang.) in NWAVE bins
 WAVG_RES_WAVE           2701	           float[NWAVE]     Wavelength (Ang.)in NWAVE bins for the sky residual                                      
 ======================= =================  ================ ===================================================
