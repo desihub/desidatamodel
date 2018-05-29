@@ -52,13 +52,8 @@ QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA executio
 NIGHT            20191017      int        The night of observation
             
 PROGRAM          dark          string     name of the observing program: dark, grey, bright
-
-NPIX3SIG         1000          int        number of pixels above 3 sigma
-NPIX3SIG_AMP     900           int[4]     number of pixelsabove 3 sigma over each amplifier
-NPIX100          100           int        number of pixels above 100 counts
-NPIX100_AMP      90            int[4]     number of pixels above 100 over each amplifier
-NPIX500          20            int        number of pixels above 500 counts
-NPIX500_AMP      20            int[4]     number of pixelsabove 500 over each amplifier
+LITFRAC_AMP      [0.35,...]    float[4]   Fraction of the pixels per amp that are above CUTPIX = 5sigmas
+LITFRAC_STATUS   ALARM         string     Reports the status of LITFRAC_AMP
 ================ ============= ========== ==================================================
 
 Example JSON Output
