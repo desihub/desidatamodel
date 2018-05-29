@@ -73,7 +73,7 @@ FITS_DESISPEC_VERSION   0.21.0.dev2590     string           version of the desis
 PROC_QuickLook_VERSION  05.18.0            string           version of the Quicklook software that was ran 
 PROC_DESISPEC_VERSION   0.21.0.dev2590     string           versopn of the desispec software created the preproc image
 QLrun_datime_UTC        2018-05-27         string           date and time of the merger as the last of quicklook step  
-                        18:35:48.415       string			
+                        18:35:48.415      			
 ======================= =================  ================ ===================================================
 CHECK_HDUs         
 ======================= =================  ================ ===================================================
