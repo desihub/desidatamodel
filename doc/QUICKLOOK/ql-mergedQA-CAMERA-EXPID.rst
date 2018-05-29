@@ -54,24 +54,24 @@ GENERAL_INFO
 ======================= =================  ================ ===================================================
 KEY                     Example Value      Type             Comment
 ======================= =================  ================ ===================================================
-SEEING                  1.1                float
-EXPTIME                 1000.0             float
-AIRMASS                 1.0                float
-ELG_FIBERID             331                int
-LRG_FIBERID             65                 int
-QSO_FIBERID             56                 int
-SKY_FIBERID             37                 int
-STAR_FIBERID            11                 int
-IMAGING_MAGS            500, 3             float[500,3]
-RA                      500                float[500]
-DEC                     500                float[500]
-B_PEAKS                 3                  float[3]
-R_PEAKS                 5                  float[5]
-Z_PEAKS                 6                  float[6]
-FITS_DESISPEC_VERSION   0.21.0.dev2590     string
-PROC_QuickLook_VERSION  05.18.0            string
-PROC_DESISPEC_VERSION   0.21.0.dev2590     string
-QLrun_datime_UTC        2018-05-27         string
+SEEING                  1.1                float            From the header of the proproc image 
+EXPTIME                 1000.0             float            From the header of the proproc image 
+AIRMASS                 1.0                float            From the header of the proproc image 
+ELG_FIBERID             331                int[ne]          From the fibermap, ne is number of ELGs
+LRG_FIBERID             65                 int[nl]          From the fibermap, nl is number of LRGs
+QSO_FIBERID             56                 int[nq]          From the fibermap, nq is number of QSOs
+SKY_FIBERID             37                 int[nsky]        From the fibermap, nsky is number of Sky fibers
+STAR_FIBERID            11                 int[ns]          From the fibermap, nsky is number STARs
+IMAGING_MAGS            500, 3             float[500,3]     From the fibermap [DECAM_G, DECAM_R, DECAM_Z]
+RA                      500                float[500]       Right ascention of all the 500 targets
+DEC                     500                float[500]       Declination of all the 500 targets
+B_PEAKS                 3                  float[3]         configured peak sky wavelengths in b band
+R_PEAKS                 5                  float[5]         configured peak sky wavelengths in r band
+Z_PEAKS                 6                  float[6]         configured peak sky wavelengths in z band
+FITS_DESISPEC_VERSION   0.21.0.dev2590     string           version of the desispec software that created the fits
+PROC_QuickLook_VERSION  05.18.0            string           version of the Quicklook software that was ran 
+PROC_DESISPEC_VERSION   0.21.0.dev2590     string           versopn of the desispec software created the preproc image
+QLrun_datime_UTC        2018-05-27         string           date and time of the merger as the last of quicklook step  
                         18:35:48.415       string
 			
 ======================= =================  ================ ===================================================
