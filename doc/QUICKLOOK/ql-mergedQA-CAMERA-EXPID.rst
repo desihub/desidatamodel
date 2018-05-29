@@ -48,6 +48,7 @@ EXPID                   00003900           int  	    Exposure ID
 FLAVOR                  science            string           The type of exposure that can flat, arc or science 
 NIGHT                   20191017           int              The night of observation
 PROGRAM                 dark               string           Name of the observing program: dark, grey, bright 
+
 ======================= =================  ================ ===================================================
 GENERAL_INFO         
 ======================= =================  ================ ===================================================
@@ -70,6 +71,7 @@ PROC_QuickLook_VERSION  05.18.0            string
 PROC_DESISPEC_VERSION   0.21.0.dev2590     string
 QLrun_datime_UTC        2018-05-27         string
                         18:35:48.415       string
+			
 ======================= =================  ================ ===================================================
 CHECK_HDUs         
 ======================= =================  ================ ===================================================
