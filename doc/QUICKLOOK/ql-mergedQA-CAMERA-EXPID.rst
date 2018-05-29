@@ -48,13 +48,6 @@ EXPID                   00003900           int  	    Exposure ID
 FLAVOR                  science            string           The type of exposure that can flat, arc or science 
 NIGHT                   20191017           int              The night of observation
 PROGRAM                 dark               string           Name of the observing program: dark, grey, bright 
-======================= =================  ================ ===================================================
-
-======================= =================  ================ ===================================================
-GENERAL_INFO         
-======================= =================  ================ ===================================================
-KEY                     Example Value      Type             Comment
-======================= =================  ================ ===================================================
 SEEING                  1.1                float            From the header of the proproc image 
 EXPTIME                 1000.0             float            From the header of the proproc image 
 AIRMASS                 1.0                float            From the header of the proproc image 
