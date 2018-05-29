@@ -49,7 +49,7 @@ FLAVOR                  science            string           The type of exposure
 NIGHT                   20191017           int              The night of observation
 PROGRAM                 dark               string           Name of the observing program: dark, grey, bright 
 ======================= =================  ================ ===================================================
-
+~~~~~~~~~~~~~~~~~~~
 ======================= =================  ================ ===================================================
 GENERAL_INFO         
 ======================= =================  ================ ===================================================
@@ -72,8 +72,7 @@ Z_PEAKS                 6                  float[6]         configured peak sky 
 FITS_DESISPEC_VERSION   0.21.0.dev2590     string           version of the desispec software that created the fits
 PROC_QuickLook_VERSION  05.18.0            string           version of the Quicklook software that was ran 
 PROC_DESISPEC_VERSION   0.21.0.dev2590     string           versopn of the desispec software created the preproc image
-QLrun_datime_UTC        2018-05-27         string           date and time of the merger as the last of quicklook step  
-                        18:35:48.415      			
+QLrun_datime_UTC        2018-05-27         string           date and time of the merger as the last of quicklook step 
 ======================= =================  ================ ===================================================
 CHECK_HDUs         
 ======================= =================  ================ ===================================================
