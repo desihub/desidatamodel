@@ -132,5 +132,4 @@ Example JSON Output
     "PROGRAM": "dark",
     "QATIME": "2018-05-25T09:59:29.102591",
     "QA_STATUS": "UNKNOWN"
-}
-
+    }
