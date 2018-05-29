@@ -1,6 +1,6 @@
-============================
+==============================
 ql-checkHDUs-CAMERA-EXPID.json
-============================
+==============================
 
 :Summary: This QA for QuickLook includes the calculation of the total
         number of counts on standard star fibers..
@@ -31,7 +31,7 @@ HDU_STATUS Py dictionary    Matching EXPNUM and CAMERA from the args and the hea
 
 
 Dictionary Contents
-===================
+====================
 
 KEYNAME = CHECK_HDUs
 
