@@ -66,10 +66,20 @@ FITS_DESISPEC_VERSION   0.21.0.dev2590     string           version of the desis
 PROC_QuickLook_VERSION  05.18.0            string           version of the Quicklook software that was ran 
 PROC_DESISPEC_VERSION   0.21.0.dev2590     string           versopn of the desispec software created the preproc image
 QLrun_datime_UTC        2018-05-27         string           date and time of the merger as the last of quicklook step 
+======================= =================  ================ ===================================================
+CHECK_HDUs         
+======================= =================  ================ ===================================================
+KEY                     Example Value      Type             Comment
+======================= =================  ================ ===================================================
 EXPNUM_STATUS           NORMAL             string           Reports the result of a match between exposures number in the 
                                                             header and the 
                                                             one given in the argument
 HDU_STATUS              NORMAL             string           Reports the result of finding the camera in the header 
+======================= =================  ================ ===================================================
+CHECK_CCDs         
+======================= =================  ================ ===================================================
+KEY                     Example Value      Type             Comment
+======================= =================  ================ ===================================================
 BIAS_AMP                4                  float[4]         value of bias averaged over each amplifier
 BIAS_STATUS             1                  ALARM            Reports the status of BIAS_AMP
 BIAS_PATNOISE           4                  float[4]         rms of the row by row bias difference divided by the noise of 
@@ -84,6 +94,11 @@ NOISE_AMP               4                  float[4]         value of RMS per amp
 NOISE_OVERSCAN_AMP      4                  float[4]         value of RMS of the onerscan region per amp read directly from 
                                                             the header of the preproc image
 NOISE_STATUS            ALARM              string           Reports the status pf NOISE_AMP
+======================= =================  ================ ===================================================
+CHECK_FIBERSs         
+======================= =================  ================ ===================================================
+KEY                     Example Value      Type             Comment
+======================= =================  ================ ===================================================
 XWSIGMA_FIB             2,500              float[500,2]     median of XSIGMAs for all fibers per amp
 GOOD_FIBER              500                boolean          List of boolians for good[1] and bad[0] fibers
 NGOODFIB                <=500              int              Number of good fibers
@@ -91,6 +106,11 @@ NGOODFIB_STATUS         ALARM              string           Reports the status o
 XWSIGMA                 2                  float            List of median X and W sigmas
 XWSIGMA_AMP             4,2                float[4,2]       List of four [X,W]sigmas
 XWSIGMA_STATUS          ALARM              string           Reports the status of XWSIGMA
+======================= =================  ================ ===================================================
+CHECK_SPECTRA         
+======================= =================  ================ ===================================================
+KEY                     Example Value      Type             Comment
+======================= =================  ================ ===================================================
 DELTAMAG                500	           float[500]	    List of mag diff b/w the fibermag and the imaging mag from the 
                                                             fibermap
 DELTAMAG_STATUS         ALARM              string	    Status of DELTAMAG_TGT
