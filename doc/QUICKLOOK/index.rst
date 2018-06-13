@@ -5,13 +5,15 @@ QUICKLOOK
 .. toctree::
    :maxdepth: 1
 
-   $qa-snr-{camera}-{expid}.yaml : QA output after sky subtraction <qa-snr-CAMERA-EXPID>
-   $qa-skycont-{camera}-{expid}.yaml : QA output from sky continuum calculation <qa-skycont-CAMERA-EXPID>
-   $qa-getbias-{camera}-{expid}.yaml : QA output concerning bias in oversan <qa-getbias-CAMERA-EXPID>
-   $qa-getrms-{camera}-{expid}.yaml : QA output concerning RMS in preprocessed image <qa-getrms-CAMERA-EXPID>
-   $qa-countpix-{camera}-{expid}.yaml : QA output counting pixels above threshold in preprocessed image <qa-countpix-CAMERA-EXPID>
-   $qa-countbins-{camera}-{expid}.yaml : QA output counting bins in spectrum above thresholds <qa-countbins-CAMERA-EXPID>
-   $qa-xwsigma-{camera}-{expid}.yaml : QA output fitting X and W sigmas to preprocessed spectra <qa-xwsigma-CAMERA-EXPID>
-   $qa-skypeak-{camera}-{expid}.yaml : QA output calculating statistics at peak sky wavelengths <qa-skypeak-CAMERA-EXPID>   
-   $qa-integ-{camera}-{expid}.yaml : QA output calculating total counts for standard stars <qa-integ-CAMERA-EXPID>
-   $qa-skyresid-{caera}-{expid}.yaml : QA output providing residuals for sky fibers after subtraction <qa-skyresid-CAMERA-EXPID>
+   $ql-checkHDUs-{camera}-{expid}.json : QA Result of matching camera and expid in the raw header <ql-checkHDUs-CAMERA-EXPID>
+   $ql-getbias-{camera}-{expid}.json : QA output concerning bias in oversan <ql-getbias-CAMERA-EXPID>
+   $ql-getrms-{camera}-{expid}.json : QA output concerning RMS in preprocessed image <ql-getrms-CAMERA-EXPID>
+   $ql-countpix-{camera}-{expid}.json : QA output counting pixels above threshold  <ql-countpix-CAMERA-EXPID>
+   $ql-xwsigma-{camera}-{expid}.json : QA output fitting X and W sigmas to preprocessed spectra <ql-xwsigma-CAMERA-EXPID>
+   $ql-countbins-{camera}-{expid}.json : QA output counting bins in spectrum above thresholds <ql-countbins-CAMERA-EXPID>
+   $ql-skycont-{camera}-{expid}.json : QA output from sky continuum calculation <ql-skycont-CAMERA-EXPID>
+   $ql-skypeak-{camera}-{expid}.json : QA output calculating statistics at peak sky wavelengths <ql-skypeak-CAMERA-EXPID>
+   $ql-skyresid-{camera}-{expid}.json : QA Residuals for sky fibers after subtraction <ql-skyresid-CAMERA-EXPID>
+   $ql-integ-{camera}-{expid}.json : QA output calculating total counts for standard stars <ql-integ-CAMERA-EXPID>
+   $ql-snr-{camera}-{expid}.json : QA output for the signal to noise calculation after sky subtraction <ql-snr-CAMERA-EXPID>
+   $ql-mergedQA-{camera}-{expid}.json : QAs grouped by tasks CHECK_HDUs, CHECK_CCDs, CHECK_FIBERS, CHECK_SPECTRA <ql-mergedQA-CAMERA-EXPID>
