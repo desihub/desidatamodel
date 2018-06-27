@@ -53,12 +53,9 @@ QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA exec
 NIGHT            20191017          int        The night of observation
 PROGRAM          dark              string     Name of the observing program: dark, grey, bright 
                  06:05:34.555
-SKYCONT          210.0             float      Sky continuum in all configured continuum areas averaged over all sky fibers
+SKYCONT          218.084           float      Sky continuum in all configured continuum areas averaged over all sky fibers
 SKYCONT_FIBER    [357.238,...]     float[N]   Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers
 SKYFIBERID       4                 int[N]     FIBERID of sky fibers 
-SKYRBAND         100              float
-Sky_fib_Rband    1000              float      Average sky fiber magnitude in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
-Sky_Rflux_diff   []                float[N]   Difference between flux from sky monitor and the calculated magnitude from the sky fibers
 SKYCONT_STATUS   NORMAL            string     Reports the status of the SKYCONT 
 ================ ================= ========== ==============================================
 
