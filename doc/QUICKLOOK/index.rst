@@ -13,8 +13,8 @@ QUICKLOOK
    $ql-countbins-{camera}-{expid}.json : QA output counting bins in spectrum above thresholds <ql-countbins-CAMERA-EXPID>
    $ql-skycont-{camera}-{expid}.json : QA output from sky continuum calculation <ql-skycont-CAMERA-EXPID>
    $ql-skypeak-{camera}-{expid}.json : QA output calculating statistics at peak sky wavelengths <ql-skypeak-CAMERA-EXPID>
-   $ql-skypeak-{camera}-{expid}.json : QA output calculating statistics at peak sky wavelengths <ql-skypeak-CAMERA-EXPID>
-   $ql-skyresid-{camera}-{expid}.json : QA output comparing skyflux in Rband with that of the skymonitor <ql-skyRband-CAMERA-EXPID>
+   $ql-skyRband-{camera}-{expid}.json : QA output comparing skyflux in Rband with that of the skymonitor <ql-skyRband-CAMERA-EXPID>
+   $ql-skyresid-{camera}-{expid}.json : QA Residuals for sky fibers after subtraction <ql-skyresid-CAMERA-EXPID>
    $ql-integ-{camera}-{expid}.json : QA output calculating total counts for standard stars <ql-integ-CAMERA-EXPID>
    $ql-snr-{camera}-{expid}.json : QA output for the signal to noise calculation after sky subtraction <ql-snr-CAMERA-EXPID>
    $ql-mergedQA-{camera}-{expid}.json : QAs grouped by tasks CHECK_HDUs, CHECK_CCDs, CHECK_FIBERS, CHECK_SPECTRA <ql-mergedQA-CAMERA-EXPID>
