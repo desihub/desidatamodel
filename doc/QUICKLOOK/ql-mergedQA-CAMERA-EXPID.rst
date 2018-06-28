@@ -102,7 +102,7 @@ CHECK FIBERS KEY        Example Value      Type             Comment
 
 XWSIGMA_FIB             2,500              float[500,2]     median of XSIGMAs for all fibers per amp
 GOOD_FIBER              500                boolean          List of boolians for good[1] and bad[0] fibers
-NGOODFIB                <=500              int              Number of good fibers
+NGOODFIB                N                  int              Number of good fibers
 NGOODFIB_STATUS         NORMAL             string           Reports the status of NGOODFIB
 XWSIGMA                 2                  float[2]         List of median X and W sigmas
 XWSIGMA_AMP             4,2                float[4,2]       List of four [X,W]sigmas
