@@ -44,19 +44,19 @@ Keyword Description
 ================ ================= ========== ==============================================
 KEY              Example Value     Type       Comment
 ================ ================= ========== ==============================================
-CAMERA           b4                string     b0-b9, r0-r9, z0-z9
-EXPID            00003900          int  	  Exposure ID
+CAMERA           r5                string     b0-b9, r0-r9, z0-z9
+EXPID            00003580          int        Exposure ID
 FLAVOR           science           string     The type of exposure that can flat, arc or science 
 PANAME           ApplyFiberFlat_QL string     Name of pipeline algorihm
-QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA execution
-                 11:33:21.646
-NIGHT            20191017          int        The night of observation
+QATIME           2018-06-26T       float      Timestamp (UTC) of time of QA execution
+                 13:29:24.3386
+NIGHT            20191001          int        The night of observation
 PROGRAM          dark              string     name of the observing program: dark, grey, bright 
                  
-SUMCOUNT         1500.0            float[500] summed counts over specified peak sky wavelengths
-SUMCOUNT_RMS     1445.0            float      rms of summed counts over sky peaks
-SUMCOUNT_RMS_SKY 1455.0            float      rms of summed counts over sky peaks on sky fibers
-SUMCOUNT_RMS_AMP 1444.0            float[4]   rms of summed counts on sky fibers per AMP
+PEAKCOUNT        91.101398         float      Averaged summed counts for sky fibers over specified peak sky wavelengths
+PEAKCOUNT_NOISE  2.75402           float      rms of the summed counts over sky peaks for sky fibers
+PEAKCOUNT_FIB    [91.56,...]       float[500] summed counts over sky peaks on ALL the 500 fibers
+PEAKCOUNT_STATUS NORMAL            string     
 ================ ================= ========== ==============================================
 
 Example JSON Output
@@ -65,24 +65,24 @@ Example JSON Output
 ::
 
     {
-    "CAMERA": "b4",
-    "EXPID": "00003900",
+    "CAMERA": "r5",
+    "EXPID": "00003580",
     "FLAVOR": "science",
     "METRICS": {
-        "PEAKCOUNT": [
-            4.282293116542009,
-            4.0728734401088325,
-            4.193777093245643,...
-            4.480814131904552,
-            4.087671032323141,
-            4.044146000897669,
-            3.998570825525542
+        "PEAKCOUNT": 91.10139893832053,
+        "PEAKCOUNT_FIB": [
+            91.5586785206275,
+            92.08538403353383,
+            91.82304492364685,
+            ...,
+            91.55562535769134,
+            91.59545990233539,
+            91.39342572026013
         ],
-        "PEAKCOUNT_MED_SKY": [],
-        "PEAKCOUNT_NOISE": 0.07211437189013367,
-        "PEAKCOUNT_STATUS": "ALARM"
+        "PEAKCOUNT_NOISE": 2.754024873572926,
+        "PEAKCOUNT_STATUS": "NORMAL"
     },
-    "NIGHT": "20191017",
+    "NIGHT": "20191001",
     "PANAME": "ApplyFiberFlat_QL",
     "PARAMS": {
         "B_PEAKS": [
@@ -91,25 +91,13 @@ Example JSON Output
             5201.8
         ],
         "PEAKCOUNT_NORMAL_RANGE": [
-            1000.0,
-            20000.0
+            -1.0,
+            1.0
         ],
-        "PEAKCOUNT_REF": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,...
-            0.0,
-            0.0,
-            0.0,
-            0.0
-        ],
+        "PEAKCOUNT_REF": 91.40821918751547,
         "PEAKCOUNT_WARN_RANGE": [
-            500.0,
-            40000.0
+            -2.0,
+            2.0
         ],
         "R_PEAKS": [
             6301.9,
@@ -128,6 +116,5 @@ Example JSON Output
         ]
     },
     "PROGRAM": "dark",
-    "QATIME": "2018-05-27T11:33:22.465071",
-    "QA_STATUS": "UNKNOWN"
+    "QATIME": "2018-06-26T13:29:24.338629"
     }

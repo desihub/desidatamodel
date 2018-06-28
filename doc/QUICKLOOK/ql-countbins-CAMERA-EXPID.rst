@@ -55,7 +55,7 @@ PROGRAM               dark          string     name of the observing program: da
 
 NGOODFIB              500           int        number of fibers with a nonzero number of bins above highest threshold 
 N_KNOWN_BROKEN_FIBERS 0             int        number od known broken fibers
-NGOODFIB_STATUS       "ALARM"       string   
+NGOODFIB_STATUS       "NORMAL"      string   
 ===================== ============= ========== ============================================================
 
 Example JSON Output
@@ -71,7 +71,7 @@ Example JSON Output
         "GOOD_FIBER": [500
         ]        
         "NGOODFIB": 500,
-        "NGOODFIB_STATUS": "ALARM"
+        "NGOODFIB_STATUS": "NORMAL"
     },
     "NIGHT": "20191017",
     "PANAME": "BoxcarExtract",
@@ -81,7 +81,7 @@ Example JSON Output
             -1,
             1
         ],
-        "NGOODFIB_REF": 0,
+        "NGOODFIB_REF": 500,
         "NGOODFIB_WARN_RANGE": [
             -2,
             2
@@ -89,6 +89,5 @@ Example JSON Output
         "N_KNOWN_BROKEN_FIBERS": 0
     },
     "PROGRAM": "dark",
-    "QATIME": "2018-05-27T11:33:21.646358",
-    "QA_STATUS": "UNKNOWN"
+    "QATIME": "2018-05-27T11:33:21.646358"
     }

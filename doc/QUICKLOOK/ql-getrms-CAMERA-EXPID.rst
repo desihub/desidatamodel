@@ -58,6 +58,9 @@ NOISE_AMP          4             float[4]   value of RMS for each amplifier read
 NOISE_OVERSCAN_AMP 4             float[4]   value of RMS of the onerscan region per amplifier read directly from the header of the preproc image
 BIAS_PATNOISE      4             float[4]   rms of the row by row bias difference divided by the noise of that amp   
 NOISE_STATUS       ALARM         string     status of NOISE_AMP 
+DATA5SIG           1             float      number of pixels more than 5 sigma below bias in data region of CCD (BOSS)
+DIFF1SIG           0.045         float      difference between 1 sigma low and high percentile bounds
+DIFF2SIG           0.129         float      difference between 2 sigma low and high percentile bounds
 ================== ============= ========== ==================================================
 
 Example JSON Output
@@ -92,16 +95,16 @@ Example JSON Output
             2.032141125973641,
             2.121880270752116
         ],
-        "NOISE_STATUS": "ALARM"
+        "NOISE_STATUS": "NORMAL"
     },
     "NIGHT": "20191017",
     "PANAME": "Preproc",
     "PARAMS": {
         "NOISE_AMP_REF": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            1.3184224194929928,
+            1.390981338461623,
+            2.078279428799927,
+            1.6012346133106736
         ],
         "NOISE_NORMAL_RANGE": [
             -1.0,
@@ -119,5 +122,4 @@ Example JSON Output
     },
     "PROGRAM": "dark",
     "QATIME": "2018-05-27T11:31:43.342882",
-    "QA_STATUS": "UNKNOWN"
      }

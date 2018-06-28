@@ -46,7 +46,7 @@ KEY              Example Value Type       Comment
 CAMERA           b4            string     b0-9, r0-r9, z0-z9
 EXPID            00003900      int  	  Exposure ID
 FLAVOR           science       string     The type of exposure that can flat, arc or science 
-PANAME           SkySub_QL     string     Name of pipeline algorihm
+PANAME           Initialize    string     Name of pipeline algorihm
 QATIME           2018-05-27T   float      Timestamp (UTC) of time of QA execution
                  11:35:46.0285
 NIGHT            20191017      int        The night of observation
@@ -77,6 +77,5 @@ Example JSON Output
         "SEEING": 1.1
     },
     "PROGRAM": "dark",
-    "QATIME": "2018-05-27T11:31:29.246245",
-    "QA_STATUS": "UNKNOWN"
+    "QATIME": "2018-05-27T11:31:29.246245"
     }

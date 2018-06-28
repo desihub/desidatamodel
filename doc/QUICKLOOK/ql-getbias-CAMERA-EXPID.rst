@@ -54,7 +54,7 @@ PROGRAM          dark          string     name of the observing program: dark, g
 
 BIAS             147.041,      float      value of bias across image
 BIAS_AMP         4             float[4]   value of bias averaged over each amplifier
-BIAS_STATUS      ALARM         string     status of BIAS_AMP 
+BIAS_STATUS      NORMAL        string     status of BIAS_AMP 
 ================ ============= ========== ==============================================
 
 Example JSON Output
@@ -81,10 +81,10 @@ Example JSON Output
     "PANAME": "Preproc",
     "PARAMS": {
         "BIAS_AMP_REF": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            166.859,
+            150.606,
+            155.208,
+            115.488
         ],
         "BIAS_NORMAL_RANGE": [
             -1.0,
@@ -99,6 +99,5 @@ Example JSON Output
         "PROC_QuickLook_VERSION": "05.18.0"
     },
     "PROGRAM": "dark",
-    "QATIME": "2018-05-27T11:31:42.766594",
-    "QA_STATUS": "UNKNOWN"
+    "QATIME": "2018-05-27T11:31:42.766594"
     }

@@ -58,7 +58,7 @@ DEC              [21.97,...]   float[500] List of declinations for all the 500 t
 STD_FIBERID      [11, 63,...]  int[NS]    List of the fiber IDs assigned to NS standard stars
 DELTAMAG         [0.,0.,...]   float[500] List of mag diff b/w the fibermag and the imaging mag from the fibermap
 DELTAMAG_TGT     [-2.92,...]   float[N]   List of the average fiber mag for each of N target types in this camera
-DELTAMAG_STATUS  ALARM         string     Status of DELTAMAG_TGT
+DELTAMAG_STATUS  NORMAL        string     Status of DELTAMAG_TGT
 ================ ============= ========== ==============================================
 
 Example JSON Output
@@ -80,25 +80,28 @@ Example JSON Output
             21.927311569249582
         ],
         "DELTAMAG": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
+            3.0353081235137225,
+            3.403078925212945,
+            2.5281561278539044,
+            1.7672550687206403,
             ...,
-            0.0,
-            0.0
+            2.5318920110836416,
+            3.419798185738788
         ],
-        "DELTAMAG_STATUS": "ALARM",
+        "DELTAMAG_STATUS": "NORMAL",
         "DELTAMAG_TGT": [
-            -2.9209345331080705,
-            NaN,
-            -0.9617997285914122,
-            -4.5797822546440585
+            2.9209345331080705,
+            2.5172154402224542,
+            0.9617997285914122,
+            4.5797822546440585
         ],
         "FIBER_MAG": [
             18.22211846792697,
             18.294963907355225,
-            21.828487269112493
+            21.828487269112493,
+            ...,
+            24.524279782690087,
+            25.031647016915546
         ],
         "RA": [
             266.4916642633111,
@@ -133,10 +136,10 @@ Example JSON Output
             0.5
         ],
         "DELTAMAG_TGT_REF": [
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            2.9209345331080705,
+            2.5172154402224542,
+            0.9617997285914122,
+            4.5797822546440585
         ],
         "DELTAMAG_WARN_RANGE": [
             -1.0,
@@ -144,6 +147,5 @@ Example JSON Output
         ]
     },
     "PROGRAM": "dark",
-    "QATIME": "2018-05-27T11:35:46.028467",
-    "QA_STATUS": "UNKNOWN"
+    "QATIME": "2018-05-27T11:35:46.028467"
     }

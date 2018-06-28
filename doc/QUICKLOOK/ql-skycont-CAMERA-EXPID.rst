@@ -53,12 +53,9 @@ QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA exec
 NIGHT            20191017          int        The night of observation
 PROGRAM          dark              string     Name of the observing program: dark, grey, bright 
                  06:05:34.555
-SKYCONT          210.0             float      Sky continuum in all configured continuum areas averaged over all sky fibers
-SKYCONT_FIBER    357.238           float[N]   Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers
+SKYCONT          218.084           float      Sky continuum in all configured continuum areas averaged over all sky fibers
+SKYCONT_FIBER    [357.238,...]     float[N]   Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers
 SKYFIBERID       4                 int[N]     FIBERID of sky fibers 
-Sky_Rband        1000              float
-Sky_fib_Rband    1000              float      Average sky fiber magnitude in camera r [if the camera is not r, this is equal to the value of the Sky_Rband]
-Sky_Rflux_diff   []                float[N]   Difference between flux from sky monitor and the calculated magnitude from the sky fibers
 SKYCONT_STATUS   NORMAL            string     Reports the status of the SKYCONT 
 ================ ================= ========== ==============================================
 
@@ -151,10 +148,7 @@ Example JSON Output
             495,
             498,
             499
-        ],
-        "Sky_Rband": 1000,
-        "Sky_Rflux_diff": 1000,
-        "Sky_fib_Rband": []
+        ]
     },
     "NIGHT": "20191017",
     "PANAME": "ApplyFiberFlat_QL",
@@ -171,7 +165,7 @@ Example JSON Output
             100.0,
             400.0
         ],
-        "SKYCONT_REF": 0,
+        "SKYCONT_REF": 218.1339805589502,
         "SKYCONT_WARN_RANGE": [
             50.0,
             600.0
@@ -182,6 +176,5 @@ Example JSON Output
         ]
     },
     "PROGRAM": "dark",
-    "QATIME": "2018-05-27T11:33:22.157139",
-    "QA_STATUS": "UNKNOWN"
+    "QATIME": "2018-05-27T11:33:22.157139"
     }
