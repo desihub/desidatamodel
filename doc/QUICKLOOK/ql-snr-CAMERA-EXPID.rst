@@ -74,7 +74,7 @@ Example JSON Output
 
 ::
 
-{
+    {
     "CAMERA": "r5",
     "EXPID": "00003580",
     "FLAVOR": "science",
@@ -255,4 +255,4 @@ Example JSON Output
     },
     "PROGRAM": "dark",
     "QATIME": "2018-06-26T13:30:59.536560"
-}
+    }
