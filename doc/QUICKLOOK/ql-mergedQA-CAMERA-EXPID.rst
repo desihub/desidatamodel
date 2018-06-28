@@ -99,7 +99,6 @@ NOISE_STATUS            NORMAL             string           Reports the status p
 ======================= =================  ================ ===================================================
 CHECK FIBERS KEY        Example Value      Type             Comment
 ======================= =================  ================ ===================================================
-
 XWSIGMA_FIB             2,500              float[500,2]     median of XSIGMAs for all fibers per amp
 GOOD_FIBER              500                boolean          List of boolians for good[1] and bad[0] fibers
 NGOODFIB                N                  int              Number of good fibers
