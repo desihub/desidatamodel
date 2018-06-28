@@ -65,7 +65,7 @@ Example JSON Output
 
 ::
 
-{
+    {
     "CAMERA": "r5",
     "EXPID": "00003580",
     "FLAVOR": "science",
