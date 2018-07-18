@@ -1,5 +1,5 @@
 =====
-NIGHT
+EXPID
 =====
 
 $DESI_SPECTRO_SIM contains simulated raw data, with the canonical location
@@ -12,6 +12,8 @@ DESI_SPECTRO_DATA=$DESI_SPECTRO_SIM/$PIXPROD and run the pipeline.
 The simulator does not yet output truly raw data (only preprocessed data)
 so this is not yet possible.
 
+Within each NIGHT (YEARMMDD), individual exposures are grouped in subdirectories
+by EXPID.
 
 .. toctree::
    :maxdepth: 1

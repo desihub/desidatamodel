@@ -9,17 +9,26 @@ tile_TILEID
 :Regex: ``tile_[0-9]{8}\.fits``
 :File Type: FITS, 800 kB
 
+NOTE: this data model describes the format of the fiberassign output files
+for the 18.6 DESI software release (fiberassign/0.9.0), but this is not yet
+the format that we intend to use for real observing.  See the mockobserving
+branch of desidatamodel for that file.
+
 Contents
 ========
 
-====== ===================== ======== ===================
-Number EXTNAME               Type     Contents
-====== ===================== ======== ===================
-HDU0_  PRIMARY               IMAGE    Blank
-HDU1_  FIBER_ASSIGNMENTS     BINTABLE Target assignment for each fiber
-HDU2_  POTENTIAL_ASSIGNMENTS BINTABLE All targets that could have been assigned
-====== ===================== ======== ===================
+====== ============= ======== ===================
+Number EXTNAME       Type     Contents
+====== ============= ======== ===================
+HDU0_  PRIMARY       IMAGE    Blank
+HDU1_  FIBERASSIGN   BINTABLE Target assignment for each fiber
+HDU2_  POTENTIAL     BINTABLE All targets that could have been assigned
+HDU3_  SKYETC        BINTABLE Fiber assignments for the sky monitor fibers
+====== ============= ======== ===================
 
+The final format will also include HDUs for `TARGETS` (from target selection)
+and `GFA_TARGETS` (for guiding/focus).  `SKYETC` will likely be renamed
+to `SKY_MONITOR`.
 
 FITS Header Units
 =================
@@ -36,7 +45,7 @@ Empty HDU.
 HDU1
 ----
 
-EXTNAME = FIBER_ASSIGNMENTS
+EXTNAME = FIBERASSIGN
 
 The target assignments for each fiber of this tile.
 
@@ -72,6 +81,7 @@ DEC           float64 deg      Declination of target
 XFOCAL_DESIGN float32 mm       Designed X location on focal plane
 YFOCAL_DESIGN float32 mm       Designed Y location on focal plane
 BRICKNAME     char[8]          Brick name from tractor input
+FIBERMASK     int32            mask of known fiber problems; 0=good
 ============= ======= ======== ===================
 
 Notes:
@@ -80,7 +90,7 @@ Notes:
   be; this is non-authoritative and more detailed downstream code will have
   a refined answer for each actual observation of this tile.
 * This table defines the *requested* fiber assignments.  See
-  :doc:`fiberassign <../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>` for the
+  :doc:`fiberassign <../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>` for the
   actual observed assignments.
 
 Expected changes:
@@ -118,6 +128,49 @@ Name              Type  Units Description
 ================= ===== ===== ===================
 POTENTIALTARGETID int64       label for field   1
 ================= ===== ===== ===================
+
+HDU3
+----
+
+EXTNAME = SKYETC
+
+Fiber assignments for the 20 sky monitor fibers used by the
+Exposure Time Calculator (ETC).  This has the same structure
+as the FIBERASSIGN HDU, but it is kept separate since these fibers
+go to the sky monitor camera instead of the spectrographs.
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ============= ==== ===================================
+KEY     Example Value Type Comment
+======= ============= ==== ===================================
+NAXIS1  82            int  width of table in bytes
+NAXIS2  20            int  number of rows in table
+EXTNAME SKYETC        str  name of this binary table extension
+======= ============= ==== ===================================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+============= ======= ======== ===================
+Name          Type    Units    Description
+============= ======= ======== ===================
+FIBER         int32            Fiber ID [0-19, TBD]
+LOCATION      int32            Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+NUMTARGET     int16            number of targets that this fiber covers
+PRIORITY      int32            priority that was used while placing this target
+TARGETID      int64            Selected target ID
+DESI_TARGET   int64            Dark survey + calibration targeting bits
+BGS_TARGET    int64            Bright Galaxy Survey targeting bits
+MWS_TARGET    int64            Milky Way Survey targeting bits
+RA            float64 deg      Right ascension of target
+DEC           float64 deg      Declination of target
+XFOCAL_DESIGN float32 mm       Designed X location on focal plane
+YFOCAL_DESIGN float32 mm       Designed Y location on focal plane
+BRICKNAME     char[8]          Brick name from tractor input
+FIBERMASK     int32            mask of known fiber problems; 0=good
+============= ======= ======== ===================
 
 Notes and Examples
 ==================

@@ -22,7 +22,7 @@ HDU1_  IVAR       IMAGE    Inverse variance, ``(erg/s/cm2/A)^-2``
 HDU2_  MASK       IMAGE    Mask (0 = good)
 HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
 HDU4_  RESOLUTION IMAGE    Resolution Matrix
-HDU5_  FIBERMAP   BINTABLE Fibermap details propagated from :doc:`fibermap-EXPID.fits <../../../../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>`
+HDU5_  FIBERMAP   BINTABLE Fibermap details propagated from :doc:`fibermap-EXPID.fits <../../../../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>`
 HDU6_  SCORES     BINTABLE Quality Assurance scores
 ====== ========== ======== ===================
 

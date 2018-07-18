@@ -195,7 +195,7 @@ HDU5
 EXTNAME = FIBERMAP
 
 Fibermap propagated from the raw data inputs; see
-:doc:`fibermap file <../../../../../DESI_SPECTRO_DATA/NIGHT/fibermap-EXPID>`.
+:doc:`fibermap file <../../../../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>`.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

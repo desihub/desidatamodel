@@ -9,9 +9,9 @@ fibermap-EXPID.fits
 :File Type: FITS, 1 MB
 
 This table is also propagated forward to the
-:doc:`frame <../../DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`,
-:doc:`cframe <../../DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`, and
-:doc:`spectra <../../DESI_SPECTRO_REDUX/SPECPROD/spectra-NSIDE/PIXGROUP/PIXNUM/spectra-NSIDE-PIXNUM>`
+:doc:`frame <../../../DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`,
+:doc:`cframe <../../../DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`, and
+:doc:`spectra <../../../DESI_SPECTRO_REDUX/SPECPROD/spectra-NSIDE/PIXGROUP/PIXNUM/spectra-NSIDE-PIXNUM>`
 files.
 
 Contents
@@ -115,6 +115,6 @@ propagated from the tractor / sweep files.
 *e.g.* ``MAG[5] -> FLUX_G, FLUX_R, FLUX_Z, FLUX_W1, FLUX_W2``.
 
 This format is out of sync with the
-:doc:`tile <../../DESI_TARGET/fiberassign/tile>` datamodel, and will be updated to
+:doc:`tile <../../../DESI_TARGET/fiberassign/tile>` datamodel, and will be updated to
 be consistent for values that are propagated forward from fiber assignment.
 *e.g.* ``POSITIONER -> LOCATION``.
