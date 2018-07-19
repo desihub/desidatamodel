@@ -1,5 +1,5 @@
 =====
-NIGHT
+EXPID
 =====
 
 $DESI_SPECTRO_SIM contains simulated raw data, with the canonical location
@@ -9,6 +9,8 @@ a $PIXPROD subdirectory to isolate different simulation runs.
 The intention is that $DESI_SPECTRO_SIM/$PIXPROD will contain a superset of
 the files in $DESI_SPECTRO_DATA, such that one could set
 DESI_SPECTRO_DATA=$DESI_SPECTRO_SIM/$PIXPROD and run the pipeline.
+The simulator does not yet output truly raw data (only preprocessed data)
+so this is not yet possible.
 
 Within each NIGHT (YEARMMDD), individual exposures are grouped in subdirectories
 by EXPID.
@@ -16,4 +18,7 @@ by EXPID.
 .. toctree::
    :maxdepth: 1
 
-   EXPID/index
+   fibermap-EXPID.rst
+   pix-CAMERA-EXPID.rst
+   simpix-CAMERA-EXPID.rst
+   simspec-EXPID.rst

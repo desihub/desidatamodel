@@ -30,12 +30,17 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         files_to_regexp('/desi/spectro/data', files)
-        regexps = ['/desi/spectro/data/20160703/desi-12345678.fits.fz',
-                   '/desi/spectro/data/20160703/gfa-12345678.fits',
-                   '/desi/spectro/data/20160703/fibermap-12345678.fits']
-        expected = [os.path.join(root, 'NIGHT', f) for f in ('desi-EXPID.rst',
-                                                             'gfa-EXPID.rst',
-                                                             'fibermap-EXPID.rst')]
+        regexps = ['/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/focus-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/guide-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/12345678/fibermap-12345678.fits']
+        expected = [os.path.join(root, 'NIGHT', 'EXPID', f) for f in (
+            'desi-EXPID.rst',
+            'focus-EXPID.rst',
+            'guide-EXPID.rst',
+            'sky-EXPID.rst',
+            'fibermap-EXPID.rst')]
         expected_f2r = dict(zip(expected, regexps))
         for f in files:
             self.assertRegexpMatches(expected_f2r[f.filename], f.regexp,
