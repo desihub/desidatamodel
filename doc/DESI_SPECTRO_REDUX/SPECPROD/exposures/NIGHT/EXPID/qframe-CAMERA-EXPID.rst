@@ -1,5 +1,5 @@
 =======================
-frame-CAMERA-EXPID.fits
+qframe-CAMERA-EXPID.fits
 =======================
 
 :Summary: QFrame files contain the raw extracted electrons or calibrated flux from DESI data. They are the output of the fast row-by-row extractions, such that each fiber has a different wavelength array. 
