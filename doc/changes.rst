@@ -2,10 +2,17 @@
 desidatamodel Change Log
 ========================
 
-18.6 (unreleased)
+18.6 (2018-07-20)
 -----------------
 
-* No changes yet
+Tag for 18.6 software release (with a slight delay).
+
+* Updates for quicklook pipeline (PR `#48`_, `#50`_).
+* Raw data now stored in ``NIGHT``/``EXPID`` directories (PR `#52`_)
+
+.. _`#48`: https://github.com/desihub/desidatamodel/pull/48
+.. _`#50`: https://github.com/desihub/desidatamodel/pull/50
+.. _`#52`: https://github.com/desihub/desidatamodel/pull/52
 
 18.3 (2018-05-09)
 -----------------
