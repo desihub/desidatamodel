@@ -275,7 +275,7 @@ class DataModel(object):
             # A warning should have been issued already, so just skip silently.
             #
             return
-        stub = Stub(self.prototype)
+        stub = Stub(self.prototype, error=error)
         stub_meta = stub.hdumeta
         modelmeta = self.extract_metadata(error=error)
         #

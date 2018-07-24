@@ -43,10 +43,10 @@ class TestCheck(DataModelTestCase):
             'fibermap-EXPID.rst')]
         expected_f2r = dict(zip(expected, regexps))
         for f in files:
-            self.assertRegexpMatches(expected_f2r[f.filename], f.regexp,
-                                     ("{0} does not match " +
-                                      "{1}").format(f.regexp.pattern,
-                                                    expected_f2r[f.filename]))
+            self.assertRegex(expected_f2r[f.filename], f.regexp,
+                             ("{0} does not " +
+                              "match {1}").format(f.regexp.pattern,
+                                                  expected_f2r[f.filename]))
 
     def test_collect_files(self):
         """Test finding files that correspond to data model files.

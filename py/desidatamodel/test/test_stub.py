@@ -9,7 +9,7 @@ from astropy.io import fits
 from collections import OrderedDict
 
 from .datamodeltestcase import DataModelTestCase
-
+from .. import DataModelError
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
                     extract_keywords, image_format, log)
 
@@ -171,6 +171,29 @@ class TestStub(DataModelTestCase):
         hdr['NAXIS1'] = 1000
         hdr['NAXIS2'] = 1000
         i = image_format(hdr)
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 128
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 1000
+        hdr['NAXIS2'] = 1000
+        hdr['BUNIT'] = '10**-17 ergs/(cm**2*s*Angstrom)'
+        with self.assertRaises(DataModelError) as e:
+            i = image_format(hdr, True)
+        self.assertEqual(str(e.exception), "'10**-17 ergs/(cm**2*s*Angstrom)' did not parse as fits unit: At col 8, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        i = image_format(hdr, False)
+        self.assertLog(log, 0, "'10**-17 ergs/(cm**2*s*Angstrom)' did not parse as fits unit: At col 8, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 128
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 1000
+        hdr['NAXIS2'] = 1000
+        hdr['BUNIT'] = '10**-17 erg/(cm**2*s*Angstrom)'
+        i = image_format(hdr, False)
+        self.assertLog(log, 1, "BUNIT   = '1e-17 erg / (Angstrom cm2 s)'")
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
 
     def test_extrakey(self):

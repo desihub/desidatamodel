@@ -9,6 +9,7 @@ Generate data model files from FITS files.
 """
 import os
 from html import escape
+from astropy.units import Unit
 from astropy.io import fits
 
 from desiutil.log import log, DEBUG
@@ -58,6 +59,9 @@ class Stub(object):
     ----------
     filename : file path, file-like object or :class:`~astropy.io.fits.HDUList`
         Data file to convert to a data model file.
+    error : :class:`bool`, optional
+        If ``True``, failure to extract certain required metadata raises an
+        exception.
 
     Attributes
     ----------
@@ -78,8 +82,9 @@ class Stub(object):
     keywords_header = ('KEY', 'Example Value', 'Type', 'Comment')
     columns_header = ('Name', 'Type', 'Units', 'Description')
 
-    def __init__(self, filename):
+    def __init__(self, filename, error=False):
         self.filename = None
+        self.error = error
         self.headers = list()
         if isinstance(filename, (list, fits.HDUList)):
             self.nhdr = len(filename)
@@ -141,12 +146,14 @@ class Stub(object):
                 if 'XTENSION' in self.headers[k]:
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
                     if meta['extension'] == 'IMAGE':
-                        meta['format'] = image_format(self.headers[k])
+                        meta['format'] = image_format(self.headers[k],
+                                                      self.error)
                     elif meta['extension'] == 'BINTABLE':
                         try:
-                            meta['format'] = self.columns(k)
+                            meta['format'] = self.columns(k, self.error)
                         except DataModelError:
-                            meta['format'] = image_format(self.headers[k])
+                            meta['format'] = image_format(self.headers[k],
+                                                          self.error)
                             meta['extension'] = 'IMAGE'
                     else:
                         w = ("Unknown extension type: " +
@@ -194,13 +201,16 @@ class Stub(object):
                                        '*Brief Description*'))
         return self._contents
 
-    def columns(self, hdu):
+    def columns(self, hdu, error=False):
         """Describe the columns of a BINTABLE HDU.
 
         Parameters
         ----------
         hdu : :class:`int`
             The HDU number (zero-indexed).
+        error : :class:`bool`, optional
+            If ``True``, failure to extract certain required metadata raises an
+            exception.
 
         Returns
         -------
@@ -225,6 +235,15 @@ class Stub(object):
             tunit = 'TUNIT'+jj
             if tunit in hdr:
                 units = hdr[tunit].strip()
+                try:
+                    au = Unit(units, format='fits')
+                except ValueError:
+                    if error:
+                        raise DataModelError(str(e))
+                    else:
+                        log.warning(str(e))
+                else:
+                    log.debug("%s = %s", tunit, au)
             else:
                 units = ''
             # Check TCOMMnn keyword, otherwise use TTYPE comment
@@ -387,13 +406,16 @@ class Stub(object):
         return rst.format(**kw)
 
 
-def image_format(hdr):
+def image_format(hdr, error=True):
     """Obtain format of an image HDU.
 
     Parameters
     ----------
     hdr : :class:`~astropy.io.fits.Header`
         The header to parse.
+    error : :class:`bool`, optional
+        If ``True``, failure to extract certain required metadata raises an
+        exception.
 
     Returns
     -------
@@ -416,6 +438,16 @@ def image_format(hdr):
             datatype = bitmap[hdr['BITPIX']]
         except KeyError:
             datatype = 'BITPIX={}'.format(hdr['BITPIX'])
+    if 'BUNIT' in hdr:
+        try:
+            au = Unit(hdr['BUNIT'], format='fits')
+        except ValueError as e:
+            if error:
+                raise DataModelError(str(e))
+            else:
+                log.warning(str(e))
+        else:
+            log.debug("BUNIT   = '%s'", au)
     return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
 
 
