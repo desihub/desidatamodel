@@ -196,6 +196,26 @@ class TestStub(DataModelTestCase):
         i = image_format(hdr, False)
         self.assertLog(log, 1, "BUNIT   = '1e-17 erg / (Angstrom cm2 s)'")
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
+        #
+        # Check compressed HDU
+        #
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['ZBITPIX'] = 16
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 1000
+        hdr['NAXIS2'] = 1000
+        i = image_format(hdr)
+        self.assertEqual(i, 'Data: FITS image [int16 (compressed), 1000x1000]')
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['ZBITPIX'] = 128
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 1000
+        hdr['NAXIS2'] = 1000
+        i = image_format(hdr)
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128 (compressed), 1000x1000]')
+
 
     def test_extrakey(self):
         """Test the identification of non-boring keys.
