@@ -222,7 +222,7 @@ class TestStub(DataModelTestCase):
         """Test the determination and formatting of file size.
         """
         sizes = {5: '5 bytes',
-                 2048 : '2 KB',
+                 2048: '2 KB',
                  3145728: '3 MB',
                  6442450944: '6 GB',
                  7696581394432: '7.0 TB'}
