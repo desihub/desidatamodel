@@ -90,12 +90,12 @@ Input object spectra.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================= ===== ==============
-KEY      Value             Type  Comment
-======== ================= ===== ==============
-BUNIT    1e-17 erg/s/cm2/A str   Flux unit
-EXTNAME  FLUX              str   Extension name
-======== ================= ===== ==============
+======== ========================== ===== ==============
+KEY      Value                      Type  Comment
+======== ========================== ===== ==============
+BUNIT    10-17 erg/(s cm2 Angstrom) str   Flux unit
+EXTNAME  FLUX                       str   Extension name
+======== ========================== ===== ==============
 
 Data: FITS image
 
@@ -109,12 +109,12 @@ Input sky flux.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================= ===== ==============
-KEY      Value             Type  Comment
-======== ================= ===== ==============
-BUNIT    1e-17 erg/s/cm2/A str   Flux unit
-EXTNAME  SKYFLUX           str   Extension name
-======== ================= ===== ==============
+======== ========================== ===== ==============
+KEY      Value                      Type  Comment
+======== ========================== ===== ==============
+BUNIT    10-17 erg/(s cm2 Angstrom) str   Flux unit
+EXTNAME  SKYFLUX                    str   Extension name
+======== ========================== ===== ==============
 
 Data: FITS image
 

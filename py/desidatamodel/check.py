@@ -10,6 +10,7 @@ Check actual files against the data model for validity.
 import os
 import re
 
+from astropy.units import Unit
 from desiutil.log import log, DEBUG
 
 from . import DataModelError
@@ -253,6 +254,23 @@ class DataModel(object):
                 table_lines = section[rhk:][table[0]+1:table[1]]
                 meta['keywords'] = [self._extract_columns(t, columns)
                                     for t in table_lines]
+                for mk in meta['keywords']:
+                    if not mk[2]:
+                        m = "Missing type for keyword %s in HDU %d of %s!"
+                        if error:
+                            log.critical(m, mk[0], k, metafile)
+                            raise DataModelError(m % (mk[0], k, metafile))
+                        else:
+                            log.warning(m, mk[0], k, metafile)
+                    if mk[0] == 'BUNIT':
+                        try:
+                            au = Unit(mk[1], format='fits')
+                        except ValueError as e:
+                            if error:
+                                log.critical(str(e))
+                                raise DataModelError(str(e))
+                            else:
+                                log.warning(str(e))
             self.hdumeta.append(meta)
         return self.hdumeta
 
