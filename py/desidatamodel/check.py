@@ -85,7 +85,7 @@ class DataModel(object):
 
         Raises
         ------
-        :class:`~desimodel.DataModelError`
+        :exc:`~desimodel.DataModelError`
             If `error` is set and problems with the data model file are
             detected.
         """
@@ -193,8 +193,8 @@ class DataModel(object):
 
         Raises
         ------
-        :class:`~desimodel.DataModelError`
-            If `error` is set.
+        :exc:`~desidatamodel.DataModelError`
+            If `error` is set and the HDU has no `EXTNAME` keyword.
         """
         metafile = self.filename
         if self.ref is not None:
@@ -405,7 +405,7 @@ def files_to_regexp(root, files, error=False):
 
     Raises
     ------
-    :class:`~desimodel.DataModelError`
+    :exc:`~desidatamodel.DataModelError`
         If `error` is set and data model files with malformed regular
         expressions are detected.
     """

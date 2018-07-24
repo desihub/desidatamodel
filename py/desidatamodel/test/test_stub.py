@@ -274,7 +274,6 @@ class TestStub(DataModelTestCase):
         i = image_format(hdr)
         self.assertEqual(i, 'Data: FITS image [BITPIX=128 (compressed), 1000x1000x1000]')
 
-
     def test_extrakey(self):
         """Test the identification of non-boring keys.
         """

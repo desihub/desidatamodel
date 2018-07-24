@@ -222,11 +222,11 @@ class Stub(object):
 
         Raises
         ------
-        DataModelError
+        :exc:`~desidatamodel.DataModelError`
             If the BINTABLE is actually a compressed image.
-        ValueError
-            If ``error=True`` and a ``TUNIT`` value does not have FITS-standard
-            units
+        :exc:`ValueError`
+            If `error` and a ``TUNIT`` value does not have FITS-standard
+            units.
         """
         hdr = self.headers[hdu]
         if 'ZBITPIX' in hdr:
@@ -427,6 +427,12 @@ def image_format(hdr, error=True):
     -------
     :class:`str`
         A string describing the image format.
+
+    Raises
+    ------
+    :exc:`~desidatamodel.DataModelError`
+        If `error` is set a `BUNIT` header with units that do not follow
+        the FITS standard is detected.
     """
     n = hdr['NAXIS']
     if n == 0:
@@ -451,6 +457,7 @@ def image_format(hdr, error=True):
             au = Unit(hdr['BUNIT'], format='fits')
         except ValueError as e:
             if error:
+                log.critical(str(e))
                 raise DataModelError(str(e))
             else:
                 log.warning(str(e))
