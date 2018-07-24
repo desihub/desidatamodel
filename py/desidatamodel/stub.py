@@ -154,7 +154,7 @@ class Stub(object):
                         except DataModelError:
                             meta['format'] = image_format(self.headers[k],
                                                           self.error)
-                            meta['extension'] = 'IMAGE'
+                            meta['extension'] = self.headers[k]['ZTENSION'].strip()
                     else:
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
@@ -193,7 +193,10 @@ class Stub(object):
                     extname = ''
                     log.warning("HDU%d has no EXTNAME set!", k)
                 if k > 0:
-                    exttype = self.headers[k]['XTENSION'].strip()
+                    if 'ZTENSION' in self.headers[k]:
+                        exttype = self.headers[k]['ZTENSION'].strip()
+                    else:
+                        exttype = self.headers[k]['XTENSION'].strip()
                 else:
                     exttype = 'IMAGE'
                 self._contents.append((self.hduname.format(k)+'_',
@@ -221,6 +224,9 @@ class Stub(object):
         ------
         DataModelError
             If the BINTABLE is actually a compressed image.
+        ValueError
+            If ``error=True`` and a ``TUNIT`` value does not have FITS-standard
+            units
         """
         hdr = self.headers[hdu]
         if 'ZBITPIX' in hdr:
@@ -239,7 +245,7 @@ class Stub(object):
                     au = Unit(units, format='fits')
                 except ValueError:
                     if error:
-                        raise DataModelError(str(e))
+                        raise
                     else:
                         log.warning(str(e))
                 else:
@@ -425,15 +431,17 @@ def image_format(hdr, error=True):
     n = hdr['NAXIS']
     if n == 0:
         return 'Empty HDU.'
-    dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
     bitmap = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
               -32: 'float32', -64: 'float64'}
     if 'ZBITPIX' in hdr:
+        n = hdr['ZNAXIS']
+        dims = [str(hdr['ZNAXIS{0:d}'.format(k+1)]) for k in range(n)]
         try:
             datatype = bitmap[hdr['ZBITPIX']] + ' (compressed)'
         except KeyError:
             datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
     else:
+        dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
         try:
             datatype = bitmap[hdr['BITPIX']]
         except KeyError:

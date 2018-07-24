@@ -41,10 +41,16 @@ class TestStub(DataModelTestCase):
     def test_Stub(self):
         """Test aspects of initialization of Stub objects.
         """
+        #
+        # Use a real file, and make sure no exceptions are raised.
+        #
         with fits.open(resource_filename('desidatamodel.test',
                                          't/fits_file.fits')) as hdulist:
             stub = Stub(hdulist)
             self.assertEqual(stub.nhdr, 2)
+        #
+        # Several image extensions.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -64,6 +70,9 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 11)
         self.assertEqual(stub.hduname, 'HDU{0:02d}')
+        #
+        # Test a lot of image extensions.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -83,6 +92,9 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 101)
         self.assertEqual(stub.hduname, 'HDU{0:03d}')
+        #
+        # Test warnings for missing EXTNAME, etc.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -115,6 +127,9 @@ class TestStub(DataModelTestCase):
                          'Data: FITS image [float32, 10x10]')
         self.assertEqual(meta[2]['format'],
                          'Unknown extension type: TABLE.')
+        #
+        # Empty HDU.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -139,6 +154,42 @@ class TestStub(DataModelTestCase):
         self.assertEqual(len(sec), len(expected_sec))
         for k in range(len(sec)):
             self.assertEqual(sec[k], expected_sec[k])
+        #
+        # Compressed image.
+        #
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdr['EXTNAME'] = 'PRIMARY'
+        hdulist.append(sim_hdu(hdr))
+        hdr = sim_header()
+        hdr['XTENSION'] = 'BINTABLE'
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 8
+        hdr['NAXIS2'] = 10
+        hdr['PCOUNT'] = 60
+        hdr['GCOUNT'] = 1
+        hdr['TFIELDS'] = 1
+        hdr['TTYPE1'] = 'COMPRESSED_DATA'
+        hdr['TFORM1'] = '1PB(6)'
+        hdr['ZIMAGE'] = True
+        hdr['ZTENSION'] = 'IMAGE'
+        hdr['ZBITPIX'] = 16
+        hdr['ZNAXIS'] = 2
+        hdr['ZNAXIS1'] = 10
+        hdr['ZNAXIS2'] = 10
+        hdr['ZPCOUNT'] = 0
+        hdr['ZGCOUNT'] = 1
+        hdr['EXTNAME'] = 'COMPRESSED_IMAGE'
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        self.assertEqual(stub.hdumeta[1]['format'], 'Data: FITS image [int16 (compressed), 10x10]')
 
     def test_image_format(self):
         """Test format string for image HDUs.
@@ -203,18 +254,25 @@ class TestStub(DataModelTestCase):
         hdr['SIMPLE'] = True
         hdr['ZBITPIX'] = 16
         hdr['NAXIS'] = 2
-        hdr['NAXIS1'] = 1000
-        hdr['NAXIS2'] = 1000
+        hdr['NAXIS1'] = 8
+        hdr['NAXIS2'] = 10
+        hdr['ZNAXIS'] = 2
+        hdr['ZNAXIS1'] = 1000
+        hdr['ZNAXIS2'] = 1000
         i = image_format(hdr)
         self.assertEqual(i, 'Data: FITS image [int16 (compressed), 1000x1000]')
         hdr = sim_header()
         hdr['SIMPLE'] = True
         hdr['ZBITPIX'] = 128
         hdr['NAXIS'] = 2
-        hdr['NAXIS1'] = 1000
-        hdr['NAXIS2'] = 1000
+        hdr['NAXIS1'] = 8
+        hdr['NAXIS2'] = 10
+        hdr['ZNAXIS'] = 3
+        hdr['ZNAXIS1'] = 1000
+        hdr['ZNAXIS2'] = 1000
+        hdr['ZNAXIS3'] = 1000
         i = image_format(hdr)
-        self.assertEqual(i, 'Data: FITS image [BITPIX=128 (compressed), 1000x1000]')
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128 (compressed), 1000x1000x1000]')
 
 
     def test_extrakey(self):
