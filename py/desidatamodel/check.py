@@ -65,6 +65,9 @@ class DataModel(object):
         self.regexp = None
         self.hdumeta = None
         self.prototype = None
+        self._metafile_data = None
+        self._stub = None
+        self._stub_meta = None
         return
 
     def get_regexp(self, root, error=False):
@@ -200,9 +203,10 @@ class DataModel(object):
         metafile = self.filename
         if self.ref is not None:
             metafile = self.ref
-        with open(metafile) as f:
-            data = f.read()
-        lines = data.split('\n')
+        if self._metafile_data is None:
+            with open(metafile) as f:
+                self._metafile_data = f.read()
+        lines = self._metafile_data.split('\n')
         hdu_sections = [i for i, l in enumerate(lines)
                         if self.hduline.match(l) is not None]
         self.hdumeta = list()
@@ -310,18 +314,19 @@ class DataModel(object):
             # A warning should have been issued already, so just skip silently.
             #
             return
-        stub = Stub(self.prototype, error=error)
-        stub_meta = stub.hdumeta
+        if self._stub is None:
+            self._stub = Stub(self.prototype, error=error)
+        stub_meta = self._stub_meta = self._stub.hdumeta
         modelmeta = self.extract_metadata(error=error)
         #
         # Check number of headers.
         #
-        if stub.nhdr != len(modelmeta):
+        if self._stub.nhdr != len(modelmeta):
             log.warning("Prototype file %s has the wrong number of " +
                         "sections (HDUs) according to %s.",
                         self.prototype, self.filename)
             return
-        for i in range(stub.nhdr):
+        for i in range(self._stub.nhdr):
             dkw = stub_meta[i]['keywords']
             mkw = modelmeta[i]['keywords']
             #

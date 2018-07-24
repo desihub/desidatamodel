@@ -65,7 +65,7 @@ wavelength        float64 Angstrom       wavelength
 fwhm_wave         float64 Angstrom       FWHM in wavelength (y) direction
 fwhm_spatial      float64 pixel          FWHM in cross-dispersion (x) direction
 neff_spatial      float64 pixel          Number of effective pixels covered
-angstroms_per_row float64 Angstrom/pixel Angstroms per CCD pixels at this wavelength
+angstroms_per_row float64 Angstrom/bin   Angstroms per CCD pixels at this wavelength
 ================= ======= ============== ===========================================
 
 HDU2
@@ -101,7 +101,7 @@ wavelength        float64 Angstrom       wavelength
 fwhm_wave         float64 Angstrom       FWHM in wavelength (y) direction
 fwhm_spatial      float64 pixel          FWHM in cross-dispersion (x) direction
 neff_spatial      float64 pixel          Number of effective pixels covered
-angstroms_per_row float64 Angstrom/pixel Angstroms per CCD pixels at this wavelength
+angstroms_per_row float64 Angstrom/bin   Angstroms per CCD pixels at this wavelength
 ================= ======= ============== ===========================================
 
 HDU3
@@ -137,7 +137,7 @@ wavelength        float64 Angstrom       wavelength
 fwhm_wave         float64 Angstrom       FWHM in wavelength (y) direction
 fwhm_spatial      float64 pixel          FWHM in cross-dispersion (x) direction
 neff_spatial      float64 pixel          Number of effective pixels covered
-angstroms_per_row float64 Angstrom/pixel Angstroms per CCD pixels at this wavelength
+angstroms_per_row float64 Angstrom/bin   Angstroms per CCD pixels at this wavelength
 ================= ======= ============== ===========================================
 
 
