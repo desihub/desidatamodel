@@ -4,6 +4,7 @@
 """
 import os
 import unittest
+from unittest.mock import patch
 from pkg_resources import resource_filename
 from astropy.io import fits
 from collections import OrderedDict
@@ -207,6 +208,8 @@ class TestStub(DataModelTestCase):
                           'BITPIX': False,
                           'DEPNAM33': False,
                           'DEPVER33': False,
+                          'ZTENSION': False,
+                          'ZBITPIX': False,
                           'FOOBAR': True}
         for k in extrakey_tests:
             if extrakey_tests[k]:
@@ -214,17 +217,18 @@ class TestStub(DataModelTestCase):
             else:
                 self.assertFalse(extrakey(k))
 
-    def test_file_size(self):
+    @patch('os.path.getsize')
+    def test_file_size(self, mock_size):
         """Test the determination and formatting of file size.
         """
-        filename = resource_filename('desidatamodel.test',
-                                     't/this-file-contains-five-bytes.txt')
-        s = file_size(filename)
-        self.assertEqual(s, '5 bytes')
-        filename = resource_filename('desidatamodel.test',
-                                     't/this-file-contains-2048-bytes.txt')
-        s = file_size(filename)
-        self.assertEqual(s, '2 KB')
+        sizes = {5: '5 bytes',
+                 2048 : '2 KB',
+                 3145728: '3 MB',
+                 6442450944: '6 GB',
+                 7696581394432: '7.0 TB'}
+        for s in sizes:
+            mock_size.return_value = s
+            self.assertEqual(file_size(s), sizes[s])
 
     def test_fits_column_format(self):
         """Test the translation of FITS column format strings.
@@ -273,6 +277,19 @@ class TestStub(DataModelTestCase):
                            'This is the comment on FLOAT.'),
                           ('UNDR\\_', 'underscore\\_', 'str',
                            'This is the comment on UNDR\\_.')]
+        for k in range(len(lines)):
+            self.assertEqual(lines[k], expected_lines[k])
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        # Artificial example, but needed to trigger an exception
+        hdr['FOOBAR'] = (3.14159, 2.71828)
+        lines = extract_keywords(hdr)
+        expected_lines = [('FOOBAR', (3.14159, 2.71828),
+                           'Unknown', 'This is the comment on FOOBAR.')]
+        self.assertLog(log, 0, "Raised AttributeError on FOOBAR = (3.14159, 2.71828).")
         for k in range(len(lines)):
             self.assertEqual(lines[k], expected_lines[k])
 
