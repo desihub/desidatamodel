@@ -303,34 +303,34 @@ EXTNAME METADATA str  extension name
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-========== ========== ========= =====================================
-Name       Type       Units     Description
-========== ========== ========= =====================================
-OBJTYPE    char[10]             Object type (e.g., ELG, QSO, STD, WD)
-SUBTYPE    char[10]             Subtype (e.g., LYA, DA, DB)
-TEMPLATEID int32                Template ID
-SEED       int64                Random seed
-REDSHIFT   float32              True object redshift.
-MAG        float32              True object magnitude.
-DECAM_FLUX float32[6]           Synthesized DECam ugrizY nanomaggies
-WISE_FLUX  float32[2]           Synthesized WISE W1, W2 nanomaggies
-OIIFLUX    float32    erg/s/cm2 [OII] flux
-HBETAFLUX  float32    erg/s/cm2 H-BETA flux
-EWOII      float32    Angstrom  Rest-frame equivalent width of [OII]
-EWHBETA    float32    Angstrom  Rest-frame equivalent width of H-beta
-D4000      float32              4000-A break index
-VDISP      float32    km/s      Stellar velocity dispersion
-OIIDOUBLET float32              [OII] doublet ratio
-OIIIHBETA  float32              [OIII]/H-beta flux ratio
-OIIHBETA   float32              [OII]/H-beta flux ratio
-NIIHBETA   float32              [NII]/H-beta flux ratio
-SIIHBETA   float32              [SII]/H-beta flux ratio
-ZMETAL     float32              Stellar metallicity of SSP
-AGE        float32    Gyr       Age of SSP
-TEFF       float32    K         Effective temperature
-LOGG       float32    cm/s2     Surface gravity
-FEH        float32              Iron abundance with respect to solar
-========== ========== ========= =====================================
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
+SUBTYPE    char[10]               Subtype (e.g., LYA, DA, DB)
+TEMPLATEID int32                  Template ID
+SEED       int64                  Random seed
+REDSHIFT   float32                True object redshift.
+MAG        float32                True object magnitude.
+DECAM_FLUX float32[6]             Synthesized DECam ugrizY nanomaggies
+WISE_FLUX  float32[2]             Synthesized WISE W1, W2 nanomaggies
+OIIFLUX    float32    erg/(s cm2) [OII] flux
+HBETAFLUX  float32    erg/(s cm2) H-BETA flux
+EWOII      float32    Angstrom    Rest-frame equivalent width of [OII]
+EWHBETA    float32    Angstrom    Rest-frame equivalent width of H-beta
+D4000      float32                4000-A break index
+VDISP      float32    km/s        Stellar velocity dispersion
+OIIDOUBLET float32                [OII] doublet ratio
+OIIIHBETA  float32                [OIII]/H-beta flux ratio
+OIIHBETA   float32                [OII]/H-beta flux ratio
+NIIHBETA   float32                [NII]/H-beta flux ratio
+SIIHBETA   float32                [SII]/H-beta flux ratio
+ZMETAL     float32                Stellar metallicity of SSP
+AGE        float32    Gyr         Age of SSP
+TEFF       float32    K           Effective temperature
+LOGG       float32    cm/s2       Surface gravity
+FEH        float32                Iron abundance with respect to solar
+========== ========== =========== =====================================
 
 Notes and Examples
 ==================

@@ -232,6 +232,23 @@ class DataModel(object):
                 table_lines = section[rdtc:][table[0]+1:table[1]]
                 meta['format'] = [self._extract_columns(t, columns)
                                   for t in table_lines]
+                for mk in meta['format']:
+                    if not mk[1]:
+                        m = "Missing type for column %s in HDU %d of %s!"
+                        if error:
+                            log.critical(m, mk[0], k, metafile)
+                            raise DataModelError(m % (mk[0], k, metafile))
+                        else:
+                            log.warning(m, mk[0], k, metafile)
+                    if mk[2]:
+                        try:
+                            au = Unit(mk[2], format='fits')
+                        except ValueError as e:
+                            if error:
+                                log.critical(str(e))
+                                raise DataModelError(str(e))
+                            else:
+                                log.warning(str(e))
             try:
                 meta['extname'] = [l.split()[2] for l in section
                                    if l.startswith('EXTNAME = ')][0]
