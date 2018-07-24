@@ -243,7 +243,7 @@ class Stub(object):
                 units = hdr[tunit].strip()
                 try:
                     au = Unit(units, format='fits')
-                except ValueError:
+                except ValueError as e:
                     if error:
                         raise
                     else:
