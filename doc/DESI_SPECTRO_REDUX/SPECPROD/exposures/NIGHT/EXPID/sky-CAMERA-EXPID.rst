@@ -63,7 +63,7 @@ MJD      58925.11304582807       float
 TRANSPAR 0.7192993760108948      float
 DOSVER   SIM                     str
 FEEVER   SIM                     str
-BUNIT    adu/Angstrom            str
+BUNIT    count/Angstrom          str
 AIRORVAC vac                     str   Vacuum wavelengths
 CAMERA   z1                      str
 FIBERMIN 500                     int

@@ -5,7 +5,10 @@ desidatamodel Change Log
 18.9 (unreleased)
 -----------------
 
-* No changes yet.
+* Ensure that ``BUNIT`` and ``TUNIT*`` values obey the FITS standard (PR `#54`_).
+
+.. _`#54`: https://github.com/desihub/desidatamodel/pull/54
+
 
 18.6 (2018-07-20)
 -----------------

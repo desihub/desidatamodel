@@ -53,7 +53,8 @@ class TestCheck(DataModelTestCase):
         """
         test_files = (os.path.join(self.data_dir, 'sdR-12345678.fits'),
                       os.path.join(self.data_dir, 'sdR-01234567.fits'),
-                      os.path.join(self.data_dir, 'spPlate-1234-54321.fits'))
+                      os.path.join(self.data_dir, 'spPlate-1234-54321.fits'),
+                      os.path.join(self.data_dir, 'extraneous.fits'))
         for f in test_files:
             open(f, 'a').close()
         root = os.path.join(os.environ[DM], 'doc', 'examples')
@@ -62,9 +63,7 @@ class TestCheck(DataModelTestCase):
         self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
                                 "regexp!").format(os.environ[DM]))
         collect_files(self.data_dir, files)
-        # collect_files should *not* log anything in this test.
-        self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
-                                "regexp!").format(os.environ[DM]))
+        self.assertLog(log, 1, 'Extraneous file detected: {0}'.format(test_files[3]))
         for f in files:
             if os.path.basename(f.filename) == 'badModel.rst':
                 self.assertIsNone(f.regexp)
