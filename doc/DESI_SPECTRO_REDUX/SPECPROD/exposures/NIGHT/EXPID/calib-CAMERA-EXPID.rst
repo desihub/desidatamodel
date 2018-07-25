@@ -62,7 +62,7 @@ MJD      58925.11304582807          float
 TRANSPAR 0.7192993760108948         float
 DOSVER   SIM                        str
 FEEVER   SIM                        str
-BUNIT    10+17 cm2 count s / erg    str   i.e. (electron/Angstrom) / (1e-17 erg/(s cm2 Angstrom))
+BUNIT    10**+17 cm2 count s / erg  str   i.e. (electron/Angstrom) / (1e-17 erg/(s cm2 Angstrom))
 AIRORVAC vac                        str   Vacuum wavelengths
 CAMERA   r3                         str
 FIBERMIN 1557                       int

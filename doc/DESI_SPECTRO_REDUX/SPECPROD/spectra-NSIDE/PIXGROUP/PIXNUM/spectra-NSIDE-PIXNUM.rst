@@ -205,7 +205,7 @@ KEY      Example Value                   Type Comment
 ======== =============================== ==== ==============================================
 NAXIS1   2380                            int  Number of wavelengths
 NAXIS2   1225                            int  Number of spectra
-BUNIT    10-17 erg/(s cm2 Angstrom)      str
+BUNIT    10**-17 erg/(s cm2 Angstrom)    str
 ======== =============================== ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -220,13 +220,13 @@ Inverse variance of b-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =============================== ==== ==============================================
-KEY      Example Value                   Type Comment
-======== =============================== ==== ==============================================
-NAXIS1   2380                            int  Number of wavelengths
-NAXIS2   1225                            int  Number of spectra
-BUNIT    10+34 (s2 cm4 Angstrom2) / erg2 str
-======== =============================== ==== ==============================================
+======== ================================= ==== ==============================================
+KEY      Example Value                     Type Comment
+======== ================================= ==== ==============================================
+NAXIS1   2380                              int  Number of wavelengths
+NAXIS2   1225                              int  Number of spectra
+BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+======== ================================= ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
 
@@ -319,7 +319,7 @@ KEY      Example Value                   Type Comment
 ======== =============================== ==== ==============================================
 NAXIS1   2380                            int  Number of wavelengths
 NAXIS2   1225                            int  Number of spectra
-BUNIT    10-17 erg/(s cm2 Angstrom)      str
+BUNIT    10**-17 erg/(s cm2 Angstrom)    str
 ======== =============================== ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -334,13 +334,13 @@ Inverse variance of r-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =============================== ==== ==============================================
-KEY      Example Value                   Type Comment
-======== =============================== ==== ==============================================
-NAXIS1   2380                            int  Number of wavelengths
-NAXIS2   1225                            int  Number of spectra
-BUNIT    10+34 (s2 cm4 Angstrom2) / erg2 str
-======== =============================== ==== ==============================================
+======== ================================= ==== ==============================================
+KEY      Example Value                     Type Comment
+======== ================================= ==== ==============================================
+NAXIS1   2380                              int  Number of wavelengths
+NAXIS2   1225                              int  Number of spectra
+BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+======== ================================= ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
 
@@ -422,7 +422,7 @@ KEY      Example Value                   Type Comment
 ======== =============================== ==== ==============================================
 NAXIS1   2380                            int  Number of wavelengths
 NAXIS2   1225                            int  Number of spectra
-BUNIT    10-17 erg/(s cm2 Angstrom)      str
+BUNIT    10**-17 erg/(s cm2 Angstrom)    str
 ======== =============================== ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
@@ -437,13 +437,13 @@ Inverse variance of z-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =============================== ==== ==============================================
-KEY      Example Value                   Type Comment
-======== =============================== ==== ==============================================
-NAXIS1   2380                            int  Number of wavelengths
-NAXIS2   1225                            int  Number of spectra
-BUNIT    10+34 (s2 cm4 Angstrom2) / erg2 str
-======== =============================== ==== ==============================================
+======== ================================= ==== ==============================================
+KEY      Example Value                     Type Comment
+======== ================================= ==== ==============================================
+NAXIS1   2380                              int  Number of wavelengths
+NAXIS2   1225                              int  Number of spectra
+BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+======== ================================= ==== ==============================================
 
 Data: FITS image [float32, nspec x nwave]
 

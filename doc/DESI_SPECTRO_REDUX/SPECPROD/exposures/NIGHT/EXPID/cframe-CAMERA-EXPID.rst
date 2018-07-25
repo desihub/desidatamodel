@@ -40,40 +40,40 @@ Calibrated spectral flux in 1e-17 erg / (s cm2 Angstrom).
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ========================== ===== ==============================================
-KEY      Example Value              Type  Comment
-======== ========================== ===== ==============================================
-NAXIS1   2999                       int
-NAXIS2   500                        int
-NIGHT    20200316                   str   Night of observation YEARMMDD
-EXPID    20                         int   DESI exposure ID
-TILEID   11108                      int   DESI tile ID
-PROGRAM  DARK                       str   program [dark, bright, ...]
-FLAVOR   science                    str   Flavor [arc, flat, science, zero, ...]
-TELRA    150.87                     float Telescope pointing RA [degrees]
-TELDEC   31.23                      float Telescope pointing dec [degrees]
-AIRMASS  1.307154717878038          float Airmass at middle of exposure
-EXPTIME  1142.541228573218          float Exposure time [sec]
-SEEING   0.7572662830352783         float Seeing FWHM [arcsec]
-MOONFRAC 0.4083473802955095         float Moon illumination fraction 0-1; 1=full
-MOONALT  -79.39563600071901         float Moon altitude [degrees]
-MOONSEP  131.2947533254612          float Moon:tile separation angle [degrees]
-DATE-OBS 2020-03-17T02:42:47.160    str   Start of exposure
-PASS     1                          int
-RA       150.87                     float
-DEC      31.23                      float
-EBMV     0.0189034678041935         float
-MJD      58925.11304582807          float
-TRANSPAR 0.7192993760108948         float
-DOSVER   SIM                        str
-FEEVER   SIM                        str
-BUNIT    10-17 erg/(s cm2 Angstrom) str
-AIRORVAC vac                        str   Vacuum wavelengths
-CAMERA   z7                         str
-FIBERMIN 3500                       int
-CHECKSUM 9GKaD9HU9EHZC9HZ           str   HDU checksum updated 2018-03-01T15:08:14
-DATASUM  1412099935                 str   data unit checksum updated 2018-03-01T15:08:14
-======== ========================== ===== ==============================================
+======== ============================ ===== ==============================================
+KEY      Example Value                Type  Comment
+======== ============================ ===== ==============================================
+NAXIS1   2999                         int
+NAXIS2   500                          int
+NIGHT    20200316                     str   Night of observation YEARMMDD
+EXPID    20                           int   DESI exposure ID
+TILEID   11108                        int   DESI tile ID
+PROGRAM  DARK                         str   program [dark, bright, ...]
+FLAVOR   science                      str   Flavor [arc, flat, science, zero, ...]
+TELRA    150.87                       float Telescope pointing RA [degrees]
+TELDEC   31.23                        float Telescope pointing dec [degrees]
+AIRMASS  1.307154717878038            float Airmass at middle of exposure
+EXPTIME  1142.541228573218            float Exposure time [sec]
+SEEING   0.7572662830352783           float Seeing FWHM [arcsec]
+MOONFRAC 0.4083473802955095           float Moon illumination fraction 0-1; 1=full
+MOONALT  -79.39563600071901           float Moon altitude [degrees]
+MOONSEP  131.2947533254612            float Moon:tile separation angle [degrees]
+DATE-OBS 2020-03-17T02:42:47.160      str   Start of exposure
+PASS     1                            int
+RA       150.87                       float
+DEC      31.23                        float
+EBMV     0.0189034678041935           float
+MJD      58925.11304582807            float
+TRANSPAR 0.7192993760108948           float
+DOSVER   SIM                          str
+FEEVER   SIM                          str
+BUNIT    10**-17 erg/(s cm2 Angstrom) str
+AIRORVAC vac                          str   Vacuum wavelengths
+CAMERA   z7                           str
+FIBERMIN 3500                         int
+CHECKSUM 9GKaD9HU9EHZC9HZ             str   HDU checksum updated 2018-03-01T15:08:14
+DATASUM  1412099935                   str   data unit checksum updated 2018-03-01T15:08:14
+======== ============================ ===== ==============================================
 
 Data: FITS image [float32, 2999x500]
 
