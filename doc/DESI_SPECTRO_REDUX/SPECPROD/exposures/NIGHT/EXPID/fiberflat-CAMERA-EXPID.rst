@@ -144,7 +144,7 @@ Required Header Keywords
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2975             int
-BUNIT    Angstrom
+BUNIT    Angstrom         str
 CHECKSUM 9mXPJkUO9kUOGkUO str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  3037649504       str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================

@@ -4,12 +4,13 @@
 """
 import os
 import unittest
+from unittest.mock import patch
 from pkg_resources import resource_filename
 from astropy.io import fits
 from collections import OrderedDict
 
 from .datamodeltestcase import DataModelTestCase
-
+from .. import DataModelError
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
                     extract_keywords, image_format, log)
 
@@ -40,10 +41,16 @@ class TestStub(DataModelTestCase):
     def test_Stub(self):
         """Test aspects of initialization of Stub objects.
         """
+        #
+        # Use a real file, and make sure no exceptions are raised.
+        #
         with fits.open(resource_filename('desidatamodel.test',
                                          't/fits_file.fits')) as hdulist:
             stub = Stub(hdulist)
             self.assertEqual(stub.nhdr, 2)
+        #
+        # Several image extensions.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -63,6 +70,9 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 11)
         self.assertEqual(stub.hduname, 'HDU{0:02d}')
+        #
+        # Test a lot of image extensions.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -82,6 +92,9 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 101)
         self.assertEqual(stub.hduname, 'HDU{0:03d}')
+        #
+        # Test warnings for missing EXTNAME, etc.
+        #
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -114,6 +127,10 @@ class TestStub(DataModelTestCase):
                          'Data: FITS image [float32, 10x10]')
         self.assertEqual(meta[2]['format'],
                          'Unknown extension type: TABLE.')
+
+    def test_Stub_empty_HDU(self):
+        """Test with an empty HDU.
+        """
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -138,6 +155,122 @@ class TestStub(DataModelTestCase):
         self.assertEqual(len(sec), len(expected_sec))
         for k in range(len(sec)):
             self.assertEqual(sec[k], expected_sec[k])
+
+    def test_Stub_compressed_image(self):
+        """Test with a compressed image HDU.
+        """
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdr['EXTNAME'] = 'PRIMARY'
+        hdulist.append(sim_hdu(hdr))
+        hdr = sim_header()
+        hdr['XTENSION'] = 'BINTABLE'
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 8
+        hdr['NAXIS2'] = 10
+        hdr['PCOUNT'] = 60
+        hdr['GCOUNT'] = 1
+        hdr['TFIELDS'] = 1
+        hdr['TTYPE1'] = 'COMPRESSED_DATA'
+        hdr['TFORM1'] = '1PB(6)'
+        hdr['ZIMAGE'] = True
+        hdr['ZTENSION'] = 'IMAGE'
+        hdr['ZBITPIX'] = 16
+        hdr['ZNAXIS'] = 2
+        hdr['ZNAXIS1'] = 10
+        hdr['ZNAXIS2'] = 10
+        hdr['ZPCOUNT'] = 0
+        hdr['ZGCOUNT'] = 1
+        hdr['EXTNAME'] = 'COMPRESSED_IMAGE'
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        self.assertEqual(stub.hdumeta[1]['format'], 'Data: FITS image [int16 (compressed), 10x10]')
+
+    def test_Stub_BINTABLE_with_units(self):
+        """Test BINTABLE HDU with units.
+        """
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdr['EXTNAME'] = 'PRIMARY'
+        hdulist.append(sim_hdu(hdr))
+        hdr = sim_header()
+        hdr['XTENSION'] = 'BINTABLE'
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 32
+        hdr['NAXIS2'] = 3
+        hdr['PCOUNT'] = 0
+        hdr['GCOUNT'] = 1
+        hdr['TFIELDS'] = 3
+        hdr['TTYPE1'] = 'target'
+        hdr['TFORM1'] = '20A'
+        hdr['TTYPE2'] = 'V_mag'
+        hdr['TFORM2'] = 'E'
+        hdr['TUNIT2'] = 'mag'
+        hdr['TCOMM2'] = 'This is a TCOMM comment on V_mag.'
+        hdr['TTYPE3'] = 'vdisp'
+        hdr['TFORM3'] = 'D'
+        hdr['TUNIT3'] = 'km/s'
+        hdr['EXTNAME'] = 'Galaxies'
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        self.assertEqual(stub.hdumeta[1]['format'][2], ('V_mag', 'float32', 'mag', 'This is a TCOMM comment on V_mag.'))
+
+    def test_Stub_BINTABLE_with_bad_units(self):
+        """Test BINTABLE HDU with bad units.
+        """
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdr['EXTNAME'] = 'PRIMARY'
+        hdulist.append(sim_hdu(hdr))
+        hdr = sim_header()
+        hdr['XTENSION'] = 'BINTABLE'
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 32
+        hdr['NAXIS2'] = 3
+        hdr['PCOUNT'] = 0
+        hdr['GCOUNT'] = 1
+        hdr['TFIELDS'] = 3
+        hdr['TTYPE1'] = 'target'
+        hdr['TFORM1'] = '20A'
+        hdr['TTYPE2'] = 'luminosity'
+        hdr['TFORM2'] = 'E'
+        hdr['TUNIT2'] = 'ergs'
+        hdr['TCOMM2'] = 'This is a TCOMM comment on luminosity.'
+        hdr['TTYPE3'] = 'vdisp'
+        hdr['TFORM3'] = 'D'
+        hdr['TUNIT3'] = 'km/s'
+        hdr['EXTNAME'] = 'Galaxies'
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist, error=False)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        self.assertEqual(stub.hdumeta[1]['format'][2], ('luminosity', 'float32', 'ergs', 'This is a TCOMM comment on luminosity.'))
+        self.assertLog(log, -2, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        stub = Stub(hdulist, error=True)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        with self.assertRaises(ValueError) as e:
+            foo = stub.hdumeta[1]['format'][2]
+        self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
 
     def test_image_format(self):
         """Test format string for image HDUs.
@@ -172,6 +305,55 @@ class TestStub(DataModelTestCase):
         hdr['NAXIS2'] = 1000
         i = image_format(hdr)
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 128
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 1000
+        hdr['NAXIS2'] = 1000
+        hdr['BUNIT'] = '10**-17 ergs/(cm**2*s*Angstrom)'
+        with self.assertRaises(DataModelError) as e:
+            i = image_format(hdr, True)
+        self.assertEqual(str(e.exception), "'10**-17 ergs/(cm**2*s*Angstrom)' did not parse as fits unit: At col 8, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        i = image_format(hdr, False)
+        self.assertLog(log, 0, "'10**-17 ergs/(cm**2*s*Angstrom)' did not parse as fits unit: At col 8, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 128
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 1000
+        hdr['NAXIS2'] = 1000
+        hdr['BUNIT'] = '10**-17 erg/(cm**2*s*Angstrom)'
+        i = image_format(hdr, False)
+        self.assertLog(log, 2, "BUNIT   = '1e-17 erg / (Angstrom cm2 s)'")
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
+        #
+        # Check compressed HDU
+        #
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['ZBITPIX'] = 16
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 8
+        hdr['NAXIS2'] = 10
+        hdr['ZNAXIS'] = 2
+        hdr['ZNAXIS1'] = 1000
+        hdr['ZNAXIS2'] = 1000
+        i = image_format(hdr)
+        self.assertEqual(i, 'Data: FITS image [int16 (compressed), 1000x1000]')
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['ZBITPIX'] = 128
+        hdr['NAXIS'] = 2
+        hdr['NAXIS1'] = 8
+        hdr['NAXIS2'] = 10
+        hdr['ZNAXIS'] = 3
+        hdr['ZNAXIS1'] = 1000
+        hdr['ZNAXIS2'] = 1000
+        hdr['ZNAXIS3'] = 1000
+        i = image_format(hdr)
+        self.assertEqual(i, 'Data: FITS image [BITPIX=128 (compressed), 1000x1000x1000]')
 
     def test_extrakey(self):
         """Test the identification of non-boring keys.
@@ -184,6 +366,8 @@ class TestStub(DataModelTestCase):
                           'BITPIX': False,
                           'DEPNAM33': False,
                           'DEPVER33': False,
+                          'ZTENSION': False,
+                          'ZBITPIX': False,
                           'FOOBAR': True}
         for k in extrakey_tests:
             if extrakey_tests[k]:
@@ -191,17 +375,18 @@ class TestStub(DataModelTestCase):
             else:
                 self.assertFalse(extrakey(k))
 
-    def test_file_size(self):
+    @patch('os.path.getsize')
+    def test_file_size(self, mock_size):
         """Test the determination and formatting of file size.
         """
-        filename = resource_filename('desidatamodel.test',
-                                     't/this-file-contains-five-bytes.txt')
-        s = file_size(filename)
-        self.assertEqual(s, '5 bytes')
-        filename = resource_filename('desidatamodel.test',
-                                     't/this-file-contains-2048-bytes.txt')
-        s = file_size(filename)
-        self.assertEqual(s, '2 KB')
+        sizes = {5: '5 bytes',
+                 2048: '2 KB',
+                 3145728: '3 MB',
+                 6442450944: '6 GB',
+                 7696581394432: '7.0 TB'}
+        for s in sizes:
+            mock_size.return_value = s
+            self.assertEqual(file_size(s), sizes[s])
 
     def test_fits_column_format(self):
         """Test the translation of FITS column format strings.
@@ -250,6 +435,19 @@ class TestStub(DataModelTestCase):
                            'This is the comment on FLOAT.'),
                           ('UNDR\\_', 'underscore\\_', 'str',
                            'This is the comment on UNDR\\_.')]
+        for k in range(len(lines)):
+            self.assertEqual(lines[k], expected_lines[k])
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        # Artificial example, but needed to trigger an exception
+        hdr['FOOBAR'] = (3.14159, 2.71828)
+        lines = extract_keywords(hdr)
+        expected_lines = [('FOOBAR', (3.14159, 2.71828),
+                           'Unknown', 'This is the comment on FOOBAR.')]
+        self.assertLog(log, 0, "Raised AttributeError on FOOBAR = (3.14159, 2.71828).")
         for k in range(len(lines)):
             self.assertEqual(lines[k], expected_lines[k])
 

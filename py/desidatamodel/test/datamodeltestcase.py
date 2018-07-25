@@ -18,6 +18,7 @@ class DataModelTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.maxDiff = None
         cls.data_dir = tempfile.mkdtemp()
         if DM in os.environ:
             cls.old_env = os.environ[DM]

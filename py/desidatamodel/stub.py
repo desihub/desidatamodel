@@ -9,6 +9,7 @@ Generate data model files from FITS files.
 """
 import os
 from html import escape
+from astropy.units import Unit
 from astropy.io import fits
 
 from desiutil.log import log, DEBUG
@@ -24,7 +25,7 @@ rst = """{titlehighlight}
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+    (\\*this text is emphasized\\*) in this document.*
 :Naming Convention: ``{filename}``, where ... *Give a human readable
     description of the filename, e.g. ``blat-{{EXPID}}`` where ``{{EXPID}}``
     is the 8-digit exposure ID.*
@@ -58,6 +59,9 @@ class Stub(object):
     ----------
     filename : file path, file-like object or :class:`~astropy.io.fits.HDUList`
         Data file to convert to a data model file.
+    error : :class:`bool`, optional
+        If ``True``, failure to extract certain required metadata raises an
+        exception.
 
     Attributes
     ----------
@@ -78,8 +82,9 @@ class Stub(object):
     keywords_header = ('KEY', 'Example Value', 'Type', 'Comment')
     columns_header = ('Name', 'Type', 'Units', 'Description')
 
-    def __init__(self, filename):
+    def __init__(self, filename, error=False):
         self.filename = None
+        self.error = error
         self.headers = list()
         if isinstance(filename, (list, fits.HDUList)):
             self.nhdr = len(filename)
@@ -141,13 +146,15 @@ class Stub(object):
                 if 'XTENSION' in self.headers[k]:
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
                     if meta['extension'] == 'IMAGE':
-                        meta['format'] = image_format(self.headers[k])
+                        meta['format'] = image_format(self.headers[k],
+                                                      self.error)
                     elif meta['extension'] == 'BINTABLE':
                         try:
-                            meta['format'] = self.columns(k)
+                            meta['format'] = self.columns(k, self.error)
                         except DataModelError:
-                            meta['format'] = image_format(self.headers[k])
-                            meta['extension'] = 'IMAGE'
+                            meta['format'] = image_format(self.headers[k],
+                                                          self.error)
+                            meta['extension'] = self.headers[k]['ZTENSION'].strip()
                     else:
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
@@ -186,7 +193,10 @@ class Stub(object):
                     extname = ''
                     log.warning("HDU%d has no EXTNAME set!", k)
                 if k > 0:
-                    exttype = self.headers[k]['XTENSION'].strip()
+                    if 'ZTENSION' in self.headers[k]:
+                        exttype = self.headers[k]['ZTENSION'].strip()
+                    else:
+                        exttype = self.headers[k]['XTENSION'].strip()
                 else:
                     exttype = 'IMAGE'
                 self._contents.append((self.hduname.format(k)+'_',
@@ -194,13 +204,16 @@ class Stub(object):
                                        '*Brief Description*'))
         return self._contents
 
-    def columns(self, hdu):
+    def columns(self, hdu, error=False):
         """Describe the columns of a BINTABLE HDU.
 
         Parameters
         ----------
         hdu : :class:`int`
             The HDU number (zero-indexed).
+        error : :class:`bool`, optional
+            If ``True``, failure to extract certain required metadata raises an
+            exception.
 
         Returns
         -------
@@ -209,8 +222,11 @@ class Stub(object):
 
         Raises
         ------
-        DataModelError
+        :exc:`~desidatamodel.DataModelError`
             If the BINTABLE is actually a compressed image.
+        :exc:`ValueError`
+            If `error` and a ``TUNIT`` value does not have FITS-standard
+            units.
         """
         hdr = self.headers[hdu]
         if 'ZBITPIX' in hdr:
@@ -225,6 +241,15 @@ class Stub(object):
             tunit = 'TUNIT'+jj
             if tunit in hdr:
                 units = hdr[tunit].strip()
+                try:
+                    au = Unit(units, format='fits')
+                except ValueError as e:
+                    if error:
+                        raise
+                    else:
+                        log.warning(str(e))
+                else:
+                    log.debug("%s = %s", tunit, au)
             else:
                 units = ''
             # Check TCOMMnn keyword, otherwise use TTYPE comment
@@ -387,35 +412,57 @@ class Stub(object):
         return rst.format(**kw)
 
 
-def image_format(hdr):
+def image_format(hdr, error=True):
     """Obtain format of an image HDU.
 
     Parameters
     ----------
     hdr : :class:`~astropy.io.fits.Header`
         The header to parse.
+    error : :class:`bool`, optional
+        If ``True``, failure to extract certain required metadata raises an
+        exception.
 
     Returns
     -------
     :class:`str`
         A string describing the image format.
+
+    Raises
+    ------
+    :exc:`~desidatamodel.DataModelError`
+        If `error` is set a `BUNIT` header with units that do not follow
+        the FITS standard is detected.
     """
     n = hdr['NAXIS']
     if n == 0:
         return 'Empty HDU.'
-    dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
     bitmap = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
               -32: 'float32', -64: 'float64'}
     if 'ZBITPIX' in hdr:
+        n = hdr['ZNAXIS']
+        dims = [str(hdr['ZNAXIS{0:d}'.format(k+1)]) for k in range(n)]
         try:
             datatype = bitmap[hdr['ZBITPIX']] + ' (compressed)'
         except KeyError:
             datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
     else:
+        dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
         try:
             datatype = bitmap[hdr['BITPIX']]
         except KeyError:
             datatype = 'BITPIX={}'.format(hdr['BITPIX'])
+    if 'BUNIT' in hdr:
+        try:
+            au = Unit(hdr['BUNIT'], format='fits')
+        except ValueError as e:
+            if error:
+                log.critical(str(e))
+                raise DataModelError(str(e))
+            else:
+                log.warning(str(e))
+        else:
+            log.debug("BUNIT   = '%s'", au)
     return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
 
 
@@ -569,6 +616,7 @@ def extract_keywords(hdr):
                 if value.endswith('_'):
                     value = value[0:len(value)-1] + '\\_'
             except AttributeError:
+                ktype = 'Unknown'
                 log.warning("Raised AttributeError on %s = %s.", key, value)
             keywords.append((key, value, ktype, escape(hdr.comments[key])))
     return keywords
