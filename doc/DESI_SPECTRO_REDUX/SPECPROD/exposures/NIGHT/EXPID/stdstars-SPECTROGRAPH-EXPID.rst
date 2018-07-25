@@ -37,15 +37,15 @@ Best fit standard star model flux.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =========================== ==== ==============================================
-KEY      Example Value               Type Comment
-======== =========================== ==== ==============================================
-NAXIS1   118466                      int
-NAXIS2   10                          int
-BUNIT    10 -17 erg/(s cm2 Angstrom) str  Flux units
-CHECKSUM 3pia4mgV3mga3mgU            str  HDU checksum updated 2018-03-01T15:07:19
-DATASUM  1249793481                  str  data unit checksum updated 2018-03-01T15:07:19
-======== =========================== ==== ==============================================
+======== ============================ ==== ==============================================
+KEY      Example Value                Type Comment
+======== ============================ ==== ==============================================
+NAXIS1   118466                       int
+NAXIS2   10                           int
+BUNIT    10**-17 erg/(s cm2 Angstrom) str  Flux units
+CHECKSUM 3pia4mgV3mga3mgU             str  HDU checksum updated 2018-03-01T15:07:19
+DATASUM  1249793481                   str  data unit checksum updated 2018-03-01T15:07:19
+======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 118466x10]
 
