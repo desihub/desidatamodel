@@ -1,6 +1,6 @@
-=======================
+========================
 qframe-CAMERA-EXPID.fits
-=======================
+========================
 
 :Summary: QFrame files contain the raw extracted electrons or calibrated flux from DESI data. They are the output of the fast row-by-row extractions, such that each fiber has a different wavelength array. 
 :Naming Convention: ``qframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
@@ -63,7 +63,7 @@ MJD      58925.11304582807                           float
 TRANSPAR 0.7192993760108948                          float
 DOSVER   SIM                                         str
 FEEVER   SIM                                         str
-BUNIT    electron/Angstrom                           str
+BUNIT    count/Angstrom                              str
 AIRORVAC vac                                         str   Vacuum wavelengths
 CAMERA   z7                                          str
 FIBERMIN 3500                                        int
@@ -188,36 +188,36 @@ DATASUM  4154192770       str  data unit checksum updated 2018-03-01T15:08:15
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=========== ========== ===== ===========
+=========== ========== ===== ===============================================
 Name        Type       Units Description
-=========== ========== ===== ===========
-OBJTYPE     char[10]
-TARGETCAT   char[20]
-BRICKNAME   char[8]
-TARGETID    int64
-DESI_TARGET int64
-BGS_TARGET  int64
-MWS_TARGET  int64
-MAG         float32[5]
-FILTER      char[200]
-SPECTROID   int64
-POSITIONER  int32
+=========== ========== ===== ===============================================
+OBJTYPE     char[10]         Target type [ELG, LRG, QSO, STD, STAR, SKY]
+TARGETCAT   char[20]         Name/version of the target catalog
+BRICKNAME   char[8]          Brickname from target imaging
+TARGETID    int64            Unique target ID
+DESI_TARGET int64            DESI dark+calib targeting bit mask
+BGS_TARGET  int64            DESI Bright Galaxy Survey targeting bit mask
+MWS_TARGET  int64            DESI Milky Way Survey targeting bit mask
+MAG         float32[5]       magnitudes in each of the filters
+FILTER      char[200]        SDSS_R, DECAM_Z, WISE1, etc.
+SPECTROID   int64            Spectrograph ID [0-9]
+POSITIONER  int32            Positioner Location ID [0-9542]
 LOCATION    int32
 DEVICE_LOC  int32
 PETAL_LOC   int32
-FIBER       int32
-LAMBDAREF   float32
-RA_TARGET   float64
-DEC_TARGET  float64
-RA_OBS      float64
-DEC_OBS     float64
-X_TARGET    float32
-Y_TARGET    float32
-X_FVCOBS    float32
-Y_FVCOBS    float32
-Y_FVCERR    float32
-X_FVCERR    float32
-=========== ========== ===== ===========
+FIBER       int32            Fiber ID [0-4999]
+LAMBDAREF   float32          Reference wavelength at which to align fiber
+RA_TARGET   float64          Target right ascension [degrees]
+DEC_TARGET  float64          Target declination [degrees]
+RA_OBS      float64          RA of obs from (X,Y)_FVCOBS and optics [deg]
+DEC_OBS     float64          dec of obs from (X,Y)_FVCOBS and optics [deg]
+X_TARGET    float32          X on focal plane derived from (RA,DEC)_TARGET
+Y_TARGET    float32          Y on focal plane derived from (RA,DEC)_TARGET
+X_FVCOBS    float32          X location observed by Fiber View Cam [mm]
+Y_FVCOBS    float32          Y location observed by Fiber View Cam [mm]
+Y_FVCERR    float32          Y location uncertainty from Fiber View Cam [mm]
+X_FVCERR    float32          X location uncertainty from Fiber View Cam [mm]
+=========== ========== ===== ===============================================
 
 Notes and Examples
 ==================
