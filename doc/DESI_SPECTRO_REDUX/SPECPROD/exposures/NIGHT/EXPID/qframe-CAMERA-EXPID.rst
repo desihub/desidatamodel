@@ -1,13 +1,12 @@
-=======================
-frame-CAMERA-EXPID.fits
-=======================
+========================
+qframe-CAMERA-EXPID.fits
+========================
 
-:Summary: Frame files contain the raw extracted electrons from DESI data, without
-    any further calibration.
-:Naming Convention: ``frame-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+:Summary: QFrame files contain the raw extracted electrons or calibrated flux from DESI data. They are the output of the fast row-by-row extractions, such that each fiber has a different wavelength array. 
+:Naming Convention: ``qframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
     one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
     is the 8-digit exposure ID.
-:Regex: ``frame-[brz][0-9]-[0-9]{8}\.fits``
+:Regex: ``qframe-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 70 MB
 
 Contents
@@ -19,8 +18,8 @@ Number EXTNAME    Type     Contents
 HDU0_  FLUX       IMAGE    Extracted electrons (photons)
 HDU1_  IVAR       IMAGE    Inverse variance of extracted electrons
 HDU2_  MASK       IMAGE    Bad value mask; 0=good
-HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction
-HDU3_  RESOLUTION IMAGE    Resolution matrix
+HDU3_  SIGMA      IMAGE    LSF sigma in CCD pixel units
+HDU4_  WAVELENGTH IMAGE    Wavelength grid of the extraction
 HDU5_  FIBERMAP   BINTABLE Fibermap
 ====== ========== ======== ===================
 
@@ -123,10 +122,32 @@ Data: FITS image [int32 (compressed), 2951x500]
 HDU3
 ----
 
+EXTNAME = SIGMA
+
+LSF sigma[nspec, nwave], in CCD pixel units. 
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   2951             int  length of original image axis
+NAXIS2   500              int  length of original image axis
+BSCALE   1                int
+BZERO    2147483648       int
+CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
+DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
+======== ================ ==== ==============================================
+
+Data: FITS image [float32]
+
+HDU4
+----
+
 EXTNAME = WAVELENGTH
 
-1D array of wavelengths.  NAXIS1 here is the same length as NAXIS2 of
-the first 2 HDUs.
+2D array of wavelengths[nspec, nwave]
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,60 +155,14 @@ Required Header Keywords
 ======== ================ ==== =====================
 KEY      Example Value    Type Comment
 ======== ================ ==== =====================
-NAXIS1   6001             int  Number of wavelengths
+NAXIS1   2951             int  length of original image axis
+NAXIS2   500              int  length of original image axis
 BUNIT    Angstrom         str
 CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
 DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
 ======== ================ ==== =====================
 
 Data: FITS image [float64]
-
-HDU4
-----
-
-EXTNAME = RESOLUTION
-
-Resolution matrix stored as a 3D sparse matrix:
-
-Rdata[nspec, ndiag, nwave]
-
-To convert this into sparse matrices for convolving a model that is sampled
-at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
-
-.. code::
-
-    from scipy.sparse import spdiags
-    from astropy.io import fits
-    import numpy as np
-
-    #- read a model and its wavelength vector from somewhere
-    #- IMPORTANT: cast them to .astype(np.float64) to get native endian
-
-    #- read the resolution data
-    resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
-
-    nspec, nwave = model.shape
-    convolvedmodel = np.zeros((nspec, nwave))
-    diags = np.arange(10, -11, -1)
-
-    for i in range(nspec):
-        R = spdiags(resdata[i], diags, nwave, nwave)
-        convolvedmodel[i] = R.dot(model)
-
-Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-======== ================ ==== =====================
-KEY      Example Value    Type Comment
-======== ================ ==== =====================
-NAXIS1   6001             int  length of data axis 1
-NAXIS2   21               int  length of data axis 2
-NAXIS3   500              int  length of data axis 3
-CHECKSUM gaU7iZS4gaS4gWS4 str  HDU checksum updated 2016-06-10T16:57:58
-DATASUM  737750           str  data unit checksum updated 2016-06-10T16:57:58
-======== ================ ==== =====================
-
-Data: FITS image [float32]
 
 HDU5
 ----

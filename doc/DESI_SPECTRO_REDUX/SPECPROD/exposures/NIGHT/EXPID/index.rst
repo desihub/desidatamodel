@@ -13,3 +13,4 @@ EXPID
     psfboot-CAMERA-EXPID.rst
     sky-CAMERA-EXPID.rst
     stdstars-SPECTROGRAPH-EXPID.rst
+    qframe-CAMERA-EXPID.rst
