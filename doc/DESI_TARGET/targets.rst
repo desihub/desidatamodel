@@ -128,7 +128,7 @@ SHAPEEXP_E1                       float32          `Ellipticity component`_ 1 of
 SHAPEEXP_E1_IVAR                  float32          Inverse variance of SHAPEEXP_E1
 SHAPEEXP_E2                       float32          `Ellipticity component`_ 2 of exponential model
 SHAPEEXP_E2_IVAR                  float32          Inverse variance of SHAPEEXP_E2
-REF_ID                            int64            Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho2`_; "sourceid" for `Gaia`_ DR2 
+REF_ID                            int64            Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2 
 GAIA_PHOT_G_MEAN_MAG              float32          `Gaia`_ G band magnitude
 GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32          `Gaia`_ G band signal-to-noise
 GAIA_PHOT_BP_MEAN_MAG             float32          `Gaia`_ BP band magnitude
@@ -143,6 +143,7 @@ PMRA                              float32          Reference catalog proper moti
 PMRA_IVAR                         float32          Inverse variance of PMRA
 PMDEC                             float32          Reference catalog proper motion in the Dec direction
 PMDEC_IVAR                        float32          Inverse variance of PMDEC
+BRIGHTSTARINBLOB                  logical          ``True`` if the object shares a blob with a "bright" (`Tycho-2`_) star
 SUBPRIORITY                       float32          Priority that is used to break ties during fiber assignment
 PHOTSYS                           char[1]          'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 TARGETID                          int64            ID (unique to file and the whole survey)
@@ -172,6 +173,6 @@ See http://legacysurvey.org for more details about the columns from input tracto
 .. _`ellipticity component`: http://legacysurvey.org/dr7/catalogs/
 .. _`Release`: http://legacysurvey.org/release/
 .. _`Morphological Model`: http://legacysurvey.org/dr7/catalogs/
-.. _`Tycho2`: https://heasarc.nasa.gov/W3Browse/all/tycho2.html
+.. _`Tycho-2`: https://heasarc.nasa.gov/W3Browse/all/tycho2.html
 .. _`Gaia`: https://gea.esac.esa.int/archive/documentation//GDR2/Gaia_archive/chap_datamodel/sec_dm_main_tables/ssec_dm_gaia_source.html
 
