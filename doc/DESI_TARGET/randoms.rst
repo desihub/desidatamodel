@@ -6,7 +6,7 @@ randoms
     Legacy Surveys footprint. They contain meta-information (the number of
     observations, the depth, etc.) derived from pixels in Legacy Surveys CCDs at
     random RA/Dec coordinates.
-:Naming Convention: ``randoms-DRX-VERSION.fits``, where ``DRX`` is the
+:Naming Convention: ```DRX/VERSION/randoms-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
     desitarget code version defining the cuts. Sometimes split into smaller
     subsets of random points named ``randoms-DRX-VERSION-N.fits`` where
