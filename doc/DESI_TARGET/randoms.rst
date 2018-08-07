@@ -95,7 +95,7 @@ Notes and Examples
 ==================
 
 See http://legacysurvey.org for more details about the corresponding columns for sources extracted by 
-the Tractor in the Legacy Surveys
+the Tractor in the Legacy Surveys, e.g. the units of the depth quantities.
 
 .. _`SFD98`: http://adsabs.harvard.edu/abs/1998ApJ...500..525S
 .. _`Legacy Surveys`: http://legacysurvey.org
