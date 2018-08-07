@@ -7,7 +7,7 @@ skies
     a requisite number of sky locations per sq. deg. Sky locations are placed
     within the bisected grid as far from blobs that contain sources as is
     possible. Apertures are sunk to derive the flux at each sky location.
-:Naming Convention: ```DRX/VERSION/skies-DRX-VERSION.fits``, where ``DRX`` is the
+:Naming Convention: ``DRX/VERSION/skies-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
     desitarget code version.
 :Regex: ``randoms-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits`` or

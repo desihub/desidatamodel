@@ -6,7 +6,7 @@ targets
     entire footprint.  They contain the variables used by target selection
     (*e.g.* fluxes), variables needed by fiber assignment (*e.g.* RA, DEC),
     and variables needed for traceability (*e.g.* TARGETFLAG, TARGETID).
-:Naming Convention: ```DRX/VERSION/targets-DRX-VERSION.fits``, where ``DRX`` is the
+:Naming Convention: ``DRX/VERSION/targets-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
     desitarget code version defining the cuts (e.g. 0.22.0).
 :Regex: ``targets-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
