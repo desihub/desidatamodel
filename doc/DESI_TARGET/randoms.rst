@@ -7,10 +7,9 @@ randoms
     observations, the depth, etc.) derived from pixels in Legacy Surveys CCDs at
     random RA/Dec coordinates.
 :Naming Convention: ```DRX/VERSION/randoms-DRX-VERSION.fits``, where ``DRX`` is the
-    imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
-    desitarget code version defining the cuts. Sometimes split into smaller
-    subsets of random points named ``randoms-DRX-VERSION-N.fits`` where
-    ``N`` is an integer.
+    imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the desitarget 
+    code version. The randoms file may be split into smaller subsets of random points 
+    named ``DRX/VERSION/randoms-DRX-VERSION-N.fits`` where ``N`` is an integer.
 :Regex: ``randoms-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits`` or
     :Regex: ``targets-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\+-[0-9].fits``
 :File Type: FITS, 70 GB

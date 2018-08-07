@@ -8,7 +8,7 @@ gfas
     assignment to select sources for guiding and focus.
 :Naming Convention: ``DRX/VERSION/gfas-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
-    desitarget code version defining the cuts (e.g. 0.22.0).
+    desitarget code version.
 :Regex: ``gfas-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
 :File Type: FITS, 3 GB
 
