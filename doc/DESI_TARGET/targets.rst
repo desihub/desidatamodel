@@ -69,7 +69,7 @@ RELEASE                           int32            Legacy Surveys (`LS`_) `Relea
 BRICKID                           int32            Brick ID from tractor input
 BRICKNAME                         char[8]          Brick name from tractor input
 BRICK_OBJID                       int32            OBJID (unique to brick, but not to file)
-TYPE                              char[4]          `Morphological Model`_
+TYPE                              char[4]          `Morphological Model`_ type
 RA                                float64          Right ascension [degrees]
 DEC                               float64          Declination [degrees]
 RA_IVAR                           float32          Inverse Variance of RA [degrees]
