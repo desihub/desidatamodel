@@ -52,8 +52,8 @@ KEY      Example Value Type  Comment
 ======== ============= ===== =======================
 NAXIS1   136           int   width of table in bytes
 NAXIS2   25936848      int   number of rows in table
-AP0      0.75          float size of aperture sunk at sky location [arcsec]
-AP1      1.0           float size of aperture sunk at sky location [arcsec]
+AP0      0.75          float radius of aperture sunk at sky location [arcsec]
+AP1      1.0           float radius of aperture sunk at sky location [arcsec]
 BADFLUX0 1000.0        float amount of flux in AP0 to define a BAD sky location
 BADFLUX1 1000.0        float amount of flux in AP1 to define a BAD sky location
 HPXNSIDE 64            int   HEALPix nside
