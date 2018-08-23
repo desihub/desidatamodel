@@ -6,7 +6,7 @@ skies
     Legacy Surveys footprint. The imaging "blob maps" are bisected to achieve
     a requisite number of sky locations per sq. deg. Sky locations are placed
     within the bisected grid as far from blobs that contain sources as is
-    possible. Apertures are sunk to derive the flux at each sky location.
+    possible. Flux is measured in an aperture at each sky location.
 :Naming Convention: ``DRX/VERSION/skies-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
     desitarget code version.
@@ -52,10 +52,10 @@ KEY      Example Value Type  Comment
 ======== ============= ===== =======================
 NAXIS1   136           int   width of table in bytes
 NAXIS2   25936848      int   number of rows in table
-AP0      0.75          float size of aperture sunk at sky location [arcsec]
-AP1      1.0           float size of aperture sunk at sky location [arcsec]
-BADFLUX0 1000.0        float amount of flux in AP0 to define a BAD sky location
-BADFLUX1 1000.0        float amount of flux in AP1 to define a BAD sky location
+AP0      0.75          float radius of aperture at sky location [arcsec]
+AP1      1.0           float radius of aperture at sky location [arcsec]
+BADFLUX0 1000.0        float amount of flux in AP0 to define a BAD sky location [nanomaggies]
+BADFLUX1 1000.0        float amount of flux in AP1 to define a BAD sky location [nanomaggies]
 HPXNSIDE 64            int   HEALPix nside
 HPXNEST  T             bool  HEALPix nested (not ring) ordering
 ======== ============= ===== =======================

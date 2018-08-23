@@ -15,8 +15,6 @@ with the canonical location of ``$DESI_ROOT/target``
    gfas-{source}-{version}.fits : catalog of GFA targets <gfas>
    mtl-{version}.fits : merged target list catalog <mtl>
    truth-{version}.fits : truth mock catalog <truth>
-   stdstar-{version}.fits : standard star catalog <stdstar>
-   sky-{version}.fits : sky positions catalog <sky>
    fiberassign/index
    deprecated: DR3 target catalog format <targets-dr3>
    deprecated: DR6 target catalog format <targets-dr6>

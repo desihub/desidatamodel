@@ -5,12 +5,15 @@ desidatamodel Change Log
 18.9 (unreleased)
 -----------------
 
+* Deprecate ``DESI_TARGET`` files (``sky``, ``stdstar``) that aren't in use (PR `#59`_).
+* Describe apertures in the skies file as "radius" not "size" (PR `#59`_).
 * Add randoms/gfas/skies/pixweight files to the ``DESI_TARGET`` model (PR `#57`_).
 * Update the targets file in the ``DESI_TARGET`` model (PR `#57`_).
 * Ensure that ``BUNIT`` and ``TUNIT*`` values obey the FITS standard (PR `#54`_).
 
 .. _`#54`: https://github.com/desihub/desidatamodel/pull/54
 .. _`#57`: https://github.com/desihub/desidatamodel/pull/57
+.. _`#59`: https://github.com/desihub/desidatamodel/pull/59
 
 18.6 (2018-07-20)
 -----------------
