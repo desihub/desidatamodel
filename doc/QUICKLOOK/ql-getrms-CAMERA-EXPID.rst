@@ -17,7 +17,7 @@ Inputs
 
 Written by qa_quicklook.py, with Get_RMS using:
 
-- pix 2D file
+- preproc image
 
 Contents
 ========
