@@ -45,13 +45,13 @@ Keyword Description
 KEY              Example Value     Type       Comment
 ================ ================= ========== ==============================================
 CAMERA           b4                string     b0-b9, r0-r9, z0-z9
-EXPID            00003900          int  	  Exposure ID
+EXPID            00003900          int        Exposure ID
 FLAVOR           science           string     The type of exposure that can flat, arc or science 
-PANAME           ApplyFiberFlat_QL string     Name of pipeline algorihm
+PANAME           ApplyFiberFlat_QL string     Name of pipeline algorithm
 QATIME           2018-05-27T       float      Timestamp (UTC) of time of QA execution
                  11:33:21.646
 NIGHT            20191017          int        The night of observation
-PROGRAM          dark              string     Name of the observing program: dark, grey, bright 
+PROGRAM          dark              string     Name of the observing program: dark, gray, bright 
                  06:05:34.555
 SKYCONT          218.084           float      Sky continuum in all configured continuum areas averaged over all sky fibers
 SKYCONT_FIBER    [357.238,...]     float[N]   Sky continuum per sky fiber averaged over two continuum regions, 'N' is number of sky fibers

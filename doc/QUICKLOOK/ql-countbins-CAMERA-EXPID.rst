@@ -46,15 +46,15 @@ KEY                   Example Value Type       Comment
 ===================== ============= ========== ============================================================
 CAMERA                b4            string     b0-b9, r0-r9, z0-z9
 EXPID                 00003900      int        Exposure ID
-FLAVOR                science       string     The type of exposure that can flat, arc or science 
+FLAVOR                science       string     The type of exposure that can be flat, arc or science 
 PANAME                BoxcarExtract string     Name of pipeline algorihm
 QATIME                2018-05-27T   float      Timestamp (UTC) of time of QA execution
                       11:33:21.646
 NIGHT                 20191017      int        The night of observation
-PROGRAM               dark          string     name of the observing program: dark, grey, bright 
+PROGRAM               dark          string     name of the observing program: dark, gray, bright 
 
 NGOODFIB              500           int        number of fibers with a nonzero number of bins above highest threshold 
-N_KNOWN_BROKEN_FIBERS 0             int        number od known broken fibers
+N_KNOWN_BROKEN_FIBERS 0             int        number of known broken fibers
 NGOODFIB_STATUS       "NORMAL"      string   
 ===================== ============= ========== ============================================================
 
