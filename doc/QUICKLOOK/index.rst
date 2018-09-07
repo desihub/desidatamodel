@@ -16,7 +16,6 @@ QUICKLOOK
    $ql-skycont-{camera}-{expid}.json : QA output from sky continuum calculation <ql-skycont-CAMERA-EXPID>
    $ql-skypeak-{camera}-{expid}.json : QA output calculating statistics at peak sky wavelengths <ql-skypeak-CAMERA-EXPID>
    $ql-skyRband-{camera}-{expid}.json : QA output comparing skyflux in Rband with that of the skymonitor <ql-skyRband-CAMERA-EXPID>
-   $ql-skyresid-{camera}-{expid}.json : QA Residuals for sky fibers after subtraction <ql-skyresid-CAMERA-EXPID>
    $ql-snr-{camera}-{expid}.json : QA output for the signal to noise calculation after sky subtraction <ql-snr-CAMERA-EXPID>
    $ql-trace-{camera}-{expid}.json : QA output calculating the average shifts in pixels in X and Y directions over all 500 fibers <ql-trace-CAMERA-EXPID>
    $ql-xwsigma-{camera}-{expid}.json : QA output fitting X and W sigmas to preprocessed spectra <ql-xwsigma-CAMERA-EXPID>
