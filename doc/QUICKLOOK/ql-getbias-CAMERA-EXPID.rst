@@ -17,7 +17,7 @@ Inputs
 
 Written by qa_quicklook.py, with Bias_From_Overscan using:
 
-- pix 2D file
+- preproc image
 
 Contents
 ========
