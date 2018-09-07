@@ -43,10 +43,10 @@ Keyword Description
 ======================= =================  ================ ===================================================
 KEY                     Example Value      Type             Comment
 ======================= =================  ================ ===================================================
-CAMERA                  b4                 string           b0-b9, r0-r9, z0-z9
-EXPID                   00003900           int  	    Exposure ID
+CAMERA                  r1                 string           b0-b9, r0-r9, z0-z9
+EXPID                   00003577           int  	    Exposure ID
 FLAVOR                  science            string           The type of exposure that can flat, arc or science 
-NIGHT                   20191017           int              The night of observation
+NIGHT                   20191001           int              The night of observation
 PROGRAM                 dark               string           Name of the observing program: dark, grey, bright 
 SEEING                  1.1                float            From the header of the proproc image 
 EXPTIME                 1000.0             float            From the header of the proproc image 
@@ -62,10 +62,10 @@ DEC                     500                float[500]       Declination of all t
 B_PEAKS                 3                  float[3]         configured peak sky wavelengths in b band
 R_PEAKS                 5                  float[5]         configured peak sky wavelengths in r band
 Z_PEAKS                 6                  float[6]         configured peak sky wavelengths in z band
-FITS_DESISPEC_VERSION   0.21.0.dev2590     string           version of the desispec software that created the fits
-PROC_QuickLook_VERSION  05.18.0            string           version of the Quicklook software that was ran 
-PROC_DESISPEC_VERSION   0.21.0.dev2590     string           versopn of the desispec software created the preproc image
-QLrun_datime_UTC        2018-05-27         string           date and time of the merger as the last of quicklook step 
+FITS_DESISPEC_VERSION   0.23.1.dev2840     string           version of the desispec software that created the fits
+PROC_QuickLook_VERSION  09.18.0            string           version of the Quicklook software that was ran 
+PROC_DESISPEC_VERSION   0.23.1.dev2840     string           versopn of the desispec software created the preproc image
+QLrun_datime_UTC        2018-09-07         string           date and time of the merger as the last of quicklook step 
 ======================= =================  ================ ===================================================
 
 ======================= =================  ================ ===================================================
@@ -74,33 +74,33 @@ CHECK HDUs KEY          Example Value      Type             Comment
 EXPNUM_STATUS           NORMAL             string           Reports the result of a match between exposures number in the 
                                                             header and the 
                                                             one given in the argument
-HDU_STATUS              NORMAL             string           Reports the result of finding the camera in the header 
+CHECKHDUS_STATUS        NORMAL             string           Reports the result of finding the camera in the header 
 ======================= =================  ================ ===================================================
 
 ======================= =================  ================ ===================================================
 CHECK CCDs KEY          Example Value      Type             Comment
 ======================= =================  ================ ===================================================
 BIAS_AMP                4                  float[4]         value of bias averaged over each amplifier
-BIAS_STATUS             NORMAL             string           Reports the status of BIAS_AMP
+BIAS_AMP_STATUS         NORMAL             string           Reports the status of BIAS_AMP
 BIAS_PATNOISE           4                  float[4]         rms of the row by row bias difference divided by the noise of 
                                                             that amp
 DATA5SIG                1                  int              Number of pixels with counts 5sigma below bias in region of CCD
 DIFF1SIG                0.032              float            Diff. between 1 sigma low and high percentile bounds 
 DIFF2SIG                0.057              float            Diff. between 2 sigma low and high percentile bounds
 LITFRAC_AMP             4                  float[4]         Fraction of the pixels per amp that are above CUTPIX = 5sigmas
-LITFRAC_STATUS          NORMAL             string           Reports the status of LITFRAC_AMP
+LITFRAC_AMP_STATUS      NORMAL             string           Reports the status of LITFRAC_AMP
 NOISE_AMP               4                  float[4]         value of RMS per amp read directly from the header of the 
                                                             preproc image
 NOISE_OVERSCAN_AMP      4                  float[4]         value of RMS of the onerscan region per amp read directly from 
                                                             the header of the preproc image
-NOISE_STATUS            NORMAL             string           Reports the status pf NOISE_AMP
+NOISE_AMP_STATUS            NORMAL             string       Reports the status pf NOISE_AMP
 ======================= =================  ================ ===================================================
 
 ======================= =================  ================ ===================================================
 CHECK FIBERS KEY        Example Value      Type             Comment
 ======================= =================  ================ ===================================================
 XWSIGMA_FIB             2,500              float[500,2]     median of XSIGMAs for all fibers per amp
-GOOD_FIBER              500                boolean          List of boolians for good[1] and bad[0] fibers
+GOOD_FIBERS             500                boolean          List of boolians for good[1] and bad[0] fibers
 NGOODFIB                N                  int              Number of good fibers
 NGOODFIB_STATUS         NORMAL             string           Reports the status of NGOODFIB
 XWSIGMA                 2                  float[2]         List of median X and W sigmas
@@ -135,15 +135,16 @@ SNR_MAG_TGT             4	           float[N]	    List of average SNR for target
 SNR_RESID               436	           float[Nobj]	    List of the SNR values for the targets, Nobj is 500-Nskyfibers
 STAR_FIBERID            11	           int[ns]  	    Fiber IDs for standard STARs, ns is number of the STARs
 STD_FIBERID             11                 int[n]           Star Fiber IDs 
-SKYRBAND                100	           float            Average value of sky bg in R-band-> to come from ETC (current 
+SKYRBAND                100.	           float            Average value of sky bg in R-band-> to come from ETC (current 
                                                             value is a place holder)
-SKYRBAND_STATUS         ALARM              string            Reports the status of the SKYRBAND 
+SKYRBAND_STATUS         NORMAL             string           Reports the status of the SKYRBAND 
 SKY_RFLUX_DIFF          31.744744          float            Diff b/w flux from sky monitor and the averaged calculated mag from the 
                                                             sky fibers
 SKY_FIB_RBAND           [64.109,...]	   float[N]	    Sky fiber mags in camera r [if the camera is not r, this 
                                                             is equal to the value of the SKYRBAND]
 WAVELENGTH              5630...7740	   float[NWAVE]     Wavelength (Ang.) in NWAVE bins
-WAVG_RES_WAVE           2701	           float[NWAVE]     Wavelength (Ang.)in NWAVE bins for the sky residual 
+XYSHIFTS                []                 float[2]         List of two averaged values (in pixel unit) for the fiber traces in X,Y directions
+XYSHIFTS_STATUS         ALARM              string           Reports the status of the XYSHIFTS
 ======================= =================  ================ ===================================================
 
 Example JSON Output
