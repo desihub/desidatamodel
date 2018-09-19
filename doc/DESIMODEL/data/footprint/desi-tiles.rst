@@ -48,7 +48,7 @@ Required Header Keywords
 ====== ============= ==== =====================
 KEY    Example Value Type Comment
 ====== ============= ==== =====================
-NAXIS1 90            int  length of dimension 1
+NAXIS1 114           int  length of dimension 1
 NAXIS2 57620         int  length of dimension 2
 ====== ============= ==== =====================
 
