@@ -4,7 +4,7 @@ desi-tiles
 
 :Summary: The DESI footprint, described in terms of tiles.  ECSV_
           versions of this file might also be present, lacking
-	  vector-valued columns (BRIGHT*).
+          vector-valued columns (BRIGHT*).
 :Naming Convention: ``desi-tiles.fits``
 :Regex: ``desi-tiles\.fits``
 :File Type: FITS, 2 MB
