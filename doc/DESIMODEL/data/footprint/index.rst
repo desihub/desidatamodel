@@ -8,4 +8,3 @@ Files describing the DESI footprint.
     :maxdepth: 1
 
     desi-tiles
-    desi-tiles-randomized
