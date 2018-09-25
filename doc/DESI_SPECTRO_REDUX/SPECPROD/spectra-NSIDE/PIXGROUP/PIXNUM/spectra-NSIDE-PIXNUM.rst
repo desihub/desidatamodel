@@ -235,7 +235,9 @@ HDU06
 
 EXTNAME = B_MASK
 
-Mask[nspec,nwave] of b-channel flux array
+Mask[nspec,nwave] of b-channel flux array.
+
+Prior to desispec/0.24.0 and software release 18.9, the B_MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -349,7 +351,9 @@ HDU11
 
 EXTNAME = R_MASK
 
-Mask[nspec,nwave] of r-channel flux array
+Mask[nspec,nwave] of r-channel flux array.
+
+Prior to desispec/0.24.0 and software release 18.9, the R_MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -452,7 +456,9 @@ HDU16
 
 EXTNAME = Z_MASK
 
-Mask[nspec,nwave] of z-channel flux array
+Mask[nspec,nwave] of z-channel flux array.
+
+Prior to desispec/0.24.0 and software release 18.9, the Z_MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

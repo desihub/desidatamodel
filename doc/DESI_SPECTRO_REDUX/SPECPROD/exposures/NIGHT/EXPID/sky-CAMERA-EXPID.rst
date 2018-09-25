@@ -99,7 +99,9 @@ HDU2
 
 EXTNAME = MASK
 
-sky mask (0 = good)
+Sky mask (0 = good).
+
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

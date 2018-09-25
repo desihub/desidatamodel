@@ -105,6 +105,8 @@ EXTNAME = MASK
 
 Mask of spectra; 0=good.
 
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
+
 TODO: add documentation link to what bits mean what.
 
 Required Header Keywords

@@ -93,6 +93,8 @@ EXTNAME = MASK
 
 Mask of the fiberflat; 0=good.
 
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
+
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
