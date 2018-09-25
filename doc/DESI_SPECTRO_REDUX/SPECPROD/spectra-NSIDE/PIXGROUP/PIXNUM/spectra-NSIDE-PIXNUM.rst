@@ -250,7 +250,7 @@ BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x5550]
+Data: FITS image [int32, 2975x5550]
 
 HDU07
 -----
@@ -364,7 +364,7 @@ BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x5550]
+Data: FITS image [int32, 2975x5550]
 
 HDU12
 -----
@@ -467,7 +467,7 @@ BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x5550]
+Data: FITS image [int32, 2975x5550]
 
 HDU17
 -----

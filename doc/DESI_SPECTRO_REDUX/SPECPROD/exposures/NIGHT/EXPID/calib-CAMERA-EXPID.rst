@@ -114,7 +114,7 @@ CHECKSUM YeVDcZTCZbTCaZTC str  HDU checksum updated 2018-03-01T15:08:08
 DATASUM  661250           str  data unit checksum updated 2018-03-01T15:08:08
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2645x500]
+Data: FITS image [int32, 2645x500]
 
 HDU3
 ----
