@@ -105,6 +105,8 @@ EXTNAME = MASK
 
 Mask of spectra; 0=good.
 
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
+
 TODO: add documentation link to what bits mean what.
 
 Required Header Keywords
@@ -121,7 +123,7 @@ CHECKSUM odSnqZPlodPloZPl str  HDU checksum updated 2018-03-01T15:08:14
 DATASUM  749750           str  data unit checksum updated 2018-03-01T15:08:14
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2999x500]
+Data: FITS image [int32, 2999x500]
 
 HDU3
 ----

@@ -93,6 +93,8 @@ EXTNAME = MASK
 
 Mask of the fiberflat; 0=good.
 
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
+
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -107,7 +109,7 @@ CHECKSUM FcV3FZT2FbT2FZT2 str  HDU checksum updated 2016-06-10T22:02:54
 DATASUM  743774           str  data unit checksum updated 2016-06-10T22:02:54
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x500]
+Data: FITS image [int32, 2975x500]
 
 HDU3
 ----

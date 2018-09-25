@@ -5,6 +5,7 @@ desidatamodel Change Log
 18.9 (unreleased)
 -----------------
 
+* ``MASK`` HDUs will no longer be compressed (PR `#60`_).
 * Deprecate ``DESI_TARGET`` files (``sky``, ``stdstar``) that aren't in use (PR `#59`_).
 * Describe apertures in the skies file as "radius" not "size" (PR `#59`_).
 * Add randoms/gfas/skies/pixweight files to the ``DESI_TARGET`` model (PR `#57`_).
@@ -14,6 +15,7 @@ desidatamodel Change Log
 .. _`#54`: https://github.com/desihub/desidatamodel/pull/54
 .. _`#57`: https://github.com/desihub/desidatamodel/pull/57
 .. _`#59`: https://github.com/desihub/desidatamodel/pull/59
+.. _`#60`: https://github.com/desihub/desidatamodel/pull/60
 
 18.6 (2018-07-20)
 -----------------

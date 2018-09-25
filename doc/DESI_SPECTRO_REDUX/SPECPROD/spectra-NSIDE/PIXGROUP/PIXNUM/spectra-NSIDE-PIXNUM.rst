@@ -235,7 +235,9 @@ HDU06
 
 EXTNAME = B_MASK
 
-Mask[nspec,nwave] of b-channel flux array
+Mask[nspec,nwave] of b-channel flux array.
+
+Prior to desispec/0.24.0 and software release 18.9, the B_MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -250,7 +252,7 @@ BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x5550]
+Data: FITS image [int32, 2975x5550]
 
 HDU07
 -----
@@ -349,7 +351,9 @@ HDU11
 
 EXTNAME = R_MASK
 
-Mask[nspec,nwave] of r-channel flux array
+Mask[nspec,nwave] of r-channel flux array.
+
+Prior to desispec/0.24.0 and software release 18.9, the R_MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -364,7 +368,7 @@ BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x5550]
+Data: FITS image [int32, 2975x5550]
 
 HDU12
 -----
@@ -452,7 +456,9 @@ HDU16
 
 EXTNAME = Z_MASK
 
-Mask[nspec,nwave] of z-channel flux array
+Mask[nspec,nwave] of z-channel flux array.
+
+Prior to desispec/0.24.0 and software release 18.9, the Z_MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -467,7 +473,7 @@ BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32 (compressed), 2975x5550]
+Data: FITS image [int32, 2975x5550]
 
 HDU17
 -----
