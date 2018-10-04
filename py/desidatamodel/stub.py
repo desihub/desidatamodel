@@ -162,7 +162,8 @@ class Stub(object):
                         log.warning(w)
                 else:
                     meta['extension'] = 'IMAGE'
-                    meta['format'] = image_format(self.headers[k])
+                    meta['format'] = image_format(self.headers[k],
+                                                  self.error)
                 self._hdumeta.append(meta)
         return self._hdumeta
 
