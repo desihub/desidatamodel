@@ -7,7 +7,7 @@ tile-TILEID-FIELDNUM
     pre-defined tile ID or 999999 for pointings without a pre-defined ID;
     and FIELDNUM is the 4-digit field number for this tile
     (typically 0, see notes below).
-    
+
 :Regex: ``tile-[0-9]{6}-[0-9]{4}\.fits``
 :File Type: FITS, 2 MB
 
@@ -71,7 +71,7 @@ Required Header Keywords
 ======== ============= ===== =====================
 KEY      Example Value Type  Comment
 ======== ============= ===== =====================
-NAXIS1   258           int   
+NAXIS1   258           int
 NAXIS2   5000          int   Number of fibers
 TILEID   1165          int   Unique Tile ID
 REQRA    150.69        float Requested telescope RA [degees]
@@ -102,14 +102,14 @@ COMM_TARGET      int64                Commissioning targeting bits
 SV1_DESI_TARGET  int64                Survey Validation targeting bits
 SV1_BGS_TARGET   int64                Survey Validation targeting bits
 SV1_MWS_TARGET   int64                Survey Validation targeting bits
-TARGET_RA        float64 degrees      Target Right Ascension [degrees]
-TARGET_DEC       float64 degrees      Target declination [degrees]
-TARGET_RA_IVAR   float32 1/degrees^2  Inverse variance of TARGET_RA
-TARGET_DEC_IVAR  float32 1/degrees^2  Inverse variance of TARGET_DEC
+TARGET_RA        float64 deg          Target Right Ascension [degrees]
+TARGET_DEC       float64 deg          Target declination [degrees]
+TARGET_RA_IVAR   float32 deg^-2       Inverse variance of TARGET_RA
+TARGET_DEC_IVAR  float32 deg^-2       Inverse variance of TARGET_DEC
 LAMBDA_REF       float32 Angstrom     Wavelength at which targets should be centered on fibers
 DESIGN_X         float32 mm           Expected CS5 X location on focal plane
 DESIGN_Y         float32 mm           Expected CS5 Y location on focal plane
-DESIGN_Q         float32 degrees      CS5 Q azimuthal coordinate
+DESIGN_Q         float32 deg          CS5 Q azimuthal coordinate
 DESIGN_S         float32 mm           CS5 S radial distance along curved focal surface
 BRICKID          int64                Imaging Surveys brick ID
 BRICK_OBJID      int64                Imaging surveys OBJID on that brick
@@ -118,8 +118,8 @@ PRIORITY         int32                Assignment priority; larger = higher prior
 SUBPRIORITY      float64              Assignment subpriority [0-1]
 NUMTARGET        int16                Total number of targets that this positioner covered
 REF_ID           int64                Astrometric catalog reference ID (SOURCE_ID from GAIA)
-PMRA             float32 marcsec/year Proper motion in the RA direction (already including cosDec term)
-PMDEC            float32 marcsec/year Proper motion in the dec direction
+PMRA             float32 mas/yr       Proper motion in the RA direction (already including cosDec term)
+PMDEC            float32 mas/yr       Proper motion in the dec direction
 PMRA_IVAR        float32              Inverse variance of PMRA
 PMDEC_IVAR       float32              Inverse variance of PMDEC
 FLUX_G           float32 nanomaggies  Flux in g-band
@@ -167,7 +167,7 @@ Required Header Keywords
 ======== ============= ===== =====================
 KEY      Example Value Type  Comment
 ======== ============= ===== =====================
-NAXIS1   116           int   
+NAXIS1   116           int
 NAXIS2   72            int   Number of targets
 REQRA    150.69        float
 REQDEC   33.86         float
@@ -364,7 +364,7 @@ Required Header Keywords
 ====== ============= ==== =====================
 KEY    Example Value Type Comment
 ====== ============= ==== =====================
-NAXIS1 16            int  
+NAXIS1 16            int
 NAXIS2 52351         int  Number of targets covered by this tile
 ====== ============= ==== =====================
 

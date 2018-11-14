@@ -180,6 +180,44 @@ class DataModel(object):
         data = [row[lbound[i]:ubound[i]].strip() for i in range(len(columns))]
         return tuple(data)
 
+    def _check_unit(self, unit, error=False):
+        """Check units for consistency with FITS standard, while allowing
+        some special exceptions.
+
+        Parameters
+        ----------
+        unit : :class:`str`
+            The unit to parse.
+        error : :class:`bool`, optional
+            If ``True``, failure to interpret the unit raises an
+            exception.
+
+        Returns
+        -------
+        :class:`str`
+            If a special exception is detected, the name of the unit
+            is returned.  Otherwise, ``None``.
+
+        Raises
+        ------
+        :exc:`~desidatamodel.DataModelError`
+            If `error` is set and the unit can't be parsed.
+        """
+        try:
+            au = Unit(unit, format='fits')
+        except ValueError as e:
+            bad_unit = str(e).split()[0]
+            if 'maggie' in bad_unit or 'mgy' in bad_unit:
+                return bad_unit
+            else:
+                if error:
+                    log.critical(str(e))
+                    raise DataModelError(str(e))
+                else:
+                    log.warning(str(e))
+        return None
+
+
     def extract_metadata(self, error=False):
         """Extract metadata from a data model file.
 
@@ -245,14 +283,10 @@ class DataModel(object):
                         else:
                             log.warning(m, mk[0], k, metafile)
                     if mk[2]:
-                        try:
-                            au = Unit(mk[2], format='fits')
-                        except ValueError as e:
-                            if error:
-                                log.critical(str(e))
-                                raise DataModelError(str(e))
-                            else:
-                                log.warning(str(e))
+                        bad_unit = self._check_unit(mk[2], error=error)
+                        if bad_unit:
+                            log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                                      bad_unit, mk[0], k, metafile)
             try:
                 meta['extname'] = [l.split()[2] for l in section
                                    if l.startswith('EXTNAME = ')][0]
@@ -284,14 +318,10 @@ class DataModel(object):
                         else:
                             log.warning(m, mk[0], k, metafile)
                     if mk[0] == 'BUNIT':
-                        try:
-                            au = Unit(mk[1], format='fits')
-                        except ValueError as e:
-                            if error:
-                                log.critical(str(e))
-                                raise DataModelError(str(e))
-                            else:
-                                log.warning(str(e))
+                        bad_unit = self._check_unit(mk[1], error=error)
+                        if bad_unit:
+                            log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                                      bad_unit, mk[0], k, metafile)
             self.hdumeta.append(meta)
         return self.hdumeta
 

@@ -3,6 +3,7 @@
 """Test desidatamodel.check functions
 """
 import os
+import unittest
 from pkg_resources import resource_filename
 
 from .datamodeltestcase import DataModelTestCase, DM

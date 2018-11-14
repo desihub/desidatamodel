@@ -121,14 +121,14 @@ COMM_TARGET      int64                Commissioning targeting bits
 SV1_DESI_TARGET  int64                Survey Validation targeting bits
 SV1_BGS_TARGET   int64                Survey Validation targeting bits
 SV1_MWS_TARGET   int64                Survey Validation targeting bits
-TARGET_RA        float64 degrees      Target Right Ascension [degrees]
-TARGET_DEC       float64 degrees      Target declination [degrees]
-TARGET_RA_IVAR   float32 1/degrees^2  Inverse variance of TARGET_RA
-TARGET_DEC_IVAR  float32 1/degrees^2  Inverse variance of TARGET_DEC
+TARGET_RA        float64 deg          Target Right Ascension [degrees]
+TARGET_DEC       float64 deg          Target declination [degrees]
+TARGET_RA_IVAR   float32 deg^-2       Inverse variance of TARGET_RA
+TARGET_DEC_IVAR  float32 deg^-2       Inverse variance of TARGET_DEC
 LAMBDA_REF       float32 Angstrom     Wavelength at which targets should be centered on fibers
 DESIGN_X         float32 mm           Expected CS5 X location on focal plane
 DESIGN_Y         float32 mm           Expected CS5 Y location on focal plane
-DESIGN_Q         float32 degrees      CS5 Q azimuthal coordinate
+DESIGN_Q         float32 deg          CS5 Q azimuthal coordinate
 DESIGN_S         float32 mm           CS5 S radial distance along curved focal surface
 BRICKID          int64                Imaging Surveys brick ID
 BRICK_OBJID      int64                Imaging surveys OBJID on that brick
@@ -137,34 +137,34 @@ PRIORITY         int32                Assignment priority; larger = higher prior
 SUBPRIORITY      float64              Assignment subpriority [0-1]
 NUMTARGET        int16                Total number of targets that this positioner covered
 REF_ID           int64                Astrometric catalog reference ID (SOURCE_ID from GAIA)
-PMRA             float32 marcsec/year Proper motion in the RA direction (already including cosDec term)
-PMDEC            float32 marcsec/year Proper motion in the dec direction
+PMRA             float32 mas/yr       Proper motion in the RA direction (already including cosDec term)
+PMDEC            float32 mas/yr       Proper motion in the dec direction
 PMRA_IVAR        float32              Inverse variance of PMRA
 PMDEC_IVAR       float32              Inverse variance of PMDEC
-FLUX_G           float32 nanomaggies  Flux in g-band
-FLUX_R           float32 nanomaggies  Flux in r-band
-FLUX_Z           float32 nanomaggies  Flux in z-band
-FLUX_W1          float32 nanomaggies  Flux in WISE W1-band
-FLUX_W2          float32 nanomaggies  Flux in WISE W2-band
+FLUX_G           float32 mag          Flux in g-band
+FLUX_R           float32 mag          Flux in r-band
+FLUX_Z           float32 mag          Flux in z-band
+FLUX_W1          float32 mag          Flux in WISE W1-band
+FLUX_W2          float32 mag          Flux in WISE W2-band
 FLUX_IVAR_G      float32              Inverse variance of FLUX_G
 FLUX_IVAR_R      float32              Inverse variance of FLUX_R
 FLUX_IVAR_Z      float32              Inverse variance of FLUX_Z
 FLUX_IVAR_W1     float32              Inverse variance of FLUX_W1
 FLUX_IVAR_W2     float32              Inverse variance of FLUX_W2
-FIBERFLUX_G      float32 nanomaggies  g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_R      float32 nanomaggies  r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_Z      float32 nanomaggies  z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERTOTFLUX_G   float32 nanomaggies  like FIBERFLUX_G but including all objects overlapping this location
-FIBERTOTFLUX_R   float32 nanomaggies  like FIBERFLUX_R but including all objects overlapping this location
-FIBERTOTFLUX_Z   float32 nanomaggies  like FIBERFLUX_Z but including all objects overlapping this location
-FIBER_RA         float64 degrees      RA of actual fiber position
-FIBER_DEC        float64 degrees      DEC of actual fiber position
-FIBER_RA_IVAR    float32 1/degrees^2  Inverse variance of FIBER_RA [not meaningful yet]
-FIBER_DEC_IVAR   float32 1/degrees^2  Inverse variance of FIBER_DEC [not meaningful yet]
+FIBERFLUX_G      float32 mag          g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_R      float32 mag          r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_Z      float32 mag          z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERTOTFLUX_G   float32 mag          like FIBERFLUX_G but including all objects overlapping this location
+FIBERTOTFLUX_R   float32 mag          like FIBERFLUX_R but including all objects overlapping this location
+FIBERTOTFLUX_Z   float32 mag          like FIBERFLUX_Z but including all objects overlapping this location
+FIBER_RA         float64 deg          RA of actual fiber position
+FIBER_DEC        float64 deg          DEC of actual fiber position
+FIBER_RA_IVAR    float32 deg^-2       Inverse variance of FIBER_RA [not meaningful yet]
+FIBER_DEC_IVAR   float32 deg^-2       Inverse variance of FIBER_DEC [not meaningful yet]
 DELTA_X          float32 mm           CS5 x difference between requested and actual position
 DELTA_Y          float32 mm           CS5 y difference between requested and actual position
-DELTA_X_IVAR     float32 1/mm^2       Inverse variance of DELTA_X [not meaningful yet]
-DELTA_Y_IVAR     float32 1/mm^2       Inverse variance of DELTA_Y [not meaningful yet]
+DELTA_X_IVAR     float32 mm^-2        Inverse variance of DELTA_X [not meaningful yet]
+DELTA_Y_IVAR     float32 mm^-2        Inverse variance of DELTA_Y [not meaningful yet]
 NUM_ITER         int16                Number of positioner iterations
 SPECTROID        int16                Hardware ID of spectrograph
 ================ ======= ============ ===========
