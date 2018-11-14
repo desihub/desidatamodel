@@ -57,6 +57,7 @@ class DataModel(object):
     regexpline = re.compile(r':?regexp?:', re.I)
     refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
     tableboundary = re.compile(r'[= ]+$')
+    _acceptable_units = ('maggie', 'mgy')
 
     def __init__(self, filename, section):
         self.filename = filename
@@ -207,7 +208,7 @@ class DataModel(object):
             au = Unit(unit, format='fits')
         except ValueError as e:
             bad_unit = str(e).split()[0]
-            if 'maggie' in bad_unit or 'mgy' in bad_unit:
+            if any([u in bad_unit for u in self._acceptable_units]):
                 return bad_unit
             else:
                 if error:

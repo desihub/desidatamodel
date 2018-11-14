@@ -141,22 +141,22 @@ PMRA             float32 mas/yr       Proper motion in the RA direction (already
 PMDEC            float32 mas/yr       Proper motion in the dec direction
 PMRA_IVAR        float32              Inverse variance of PMRA
 PMDEC_IVAR       float32              Inverse variance of PMDEC
-FLUX_G           float32 mag          Flux in g-band
-FLUX_R           float32 mag          Flux in r-band
-FLUX_Z           float32 mag          Flux in z-band
-FLUX_W1          float32 mag          Flux in WISE W1-band
-FLUX_W2          float32 mag          Flux in WISE W2-band
+FLUX_G           float32 nanomaggies  Flux in g-band
+FLUX_R           float32 nanomaggies  Flux in r-band
+FLUX_Z           float32 nanomaggies  Flux in z-band
+FLUX_W1          float32 nanomaggies  Flux in WISE W1-band
+FLUX_W2          float32 nanomaggies  Flux in WISE W2-band
 FLUX_IVAR_G      float32              Inverse variance of FLUX_G
 FLUX_IVAR_R      float32              Inverse variance of FLUX_R
 FLUX_IVAR_Z      float32              Inverse variance of FLUX_Z
 FLUX_IVAR_W1     float32              Inverse variance of FLUX_W1
 FLUX_IVAR_W2     float32              Inverse variance of FLUX_W2
-FIBERFLUX_G      float32 mag          g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_R      float32 mag          r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_Z      float32 mag          z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERTOTFLUX_G   float32 mag          like FIBERFLUX_G but including all objects overlapping this location
-FIBERTOTFLUX_R   float32 mag          like FIBERFLUX_R but including all objects overlapping this location
-FIBERTOTFLUX_Z   float32 mag          like FIBERFLUX_Z but including all objects overlapping this location
+FIBERFLUX_G      float32 nanomaggies  g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_R      float32 nanomaggies  r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_Z      float32 nanomaggies  z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERTOTFLUX_G   float32 nanomaggies  like FIBERFLUX_G but including all objects overlapping this location
+FIBERTOTFLUX_R   float32 nanomaggies  like FIBERFLUX_R but including all objects overlapping this location
+FIBERTOTFLUX_Z   float32 nanomaggies  like FIBERFLUX_Z but including all objects overlapping this location
 FIBER_RA         float64 deg          RA of actual fiber position
 FIBER_DEC        float64 deg          DEC of actual fiber position
 FIBER_RA_IVAR    float32 deg^-2       Inverse variance of FIBER_RA [not meaningful yet]
