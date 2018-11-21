@@ -18,7 +18,7 @@ Number EXTNAME    Type     Contents
 HDU0_  FLUX       IMAGE    Extracted electrons (photons)
 HDU1_  IVAR       IMAGE    Inverse variance of extracted electrons
 HDU2_  MASK       IMAGE    Bad value mask; 0=good
-HDU3_  SIGMA      IMAGE    LSF sigma in CCD pixel units
+HDU3_  YSIGMA     IMAGE    LSF sigma in CCD pixel units
 HDU4_  WAVELENGTH IMAGE    Wavelength grid of the extraction
 HDU5_  FIBERMAP   BINTABLE Fibermap
 ====== ========== ======== ===================
@@ -124,7 +124,7 @@ Data: FITS image [int32, 2951x500]
 HDU3
 ----
 
-EXTNAME = SIGMA
+EXTNAME = YSIGMA
 
 LSF sigma[nspec, nwave], in CCD pixel units.
 
