@@ -14,12 +14,12 @@ Contents
 ====== ================================== ===== ===================
 Number EXTNAME                            Type  Contents
 ====== ================================== ===== ===================
-HDU0_  AVERAGEFLUXCALIB                   IMAGE Average flux calibration
-HDU1_  ATMOSPHERIC_EXTINCTION             IMAGE Airmass dependent term
-HDU2_  SEEING_TERM                        IMAGE Seeing dependent term
+HDU0_  FLUXCALIB                          IMAGE Average flux calibration
+HDU1_  ATERM                              IMAGE Airmass dependent term
+HDU2_  STERM                              IMAGE Seeing dependent term
 HDU3_  WAVELENGTH                         IMAGE Wavelength grid
-HDU4_  ATMOSPHERIC_EXTINCTION_UNCERTAINTY IMAGE Uncertainty on airmass dependent term
-HDU5_  SEEING_TERM_UNCERTAINTY            IMAGE Uncertainty on seeing dependent term
+HDU4_  ATERM_ERR                          IMAGE Uncertainty on airmass dependent term
+HDU5_  STERM_ERR                          IMAGE Uncertainty on seeing dependent term
 ====== ================================== ===== ===================
 
 
@@ -29,7 +29,7 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = AVERAGEFLUXCALIB
+EXTNAME = FLUXCALIB
 
 Average flux calibration model such that calibrated flux = uncalibrated photons / model.
 
@@ -51,7 +51,7 @@ Data: FITS image [float32, 2380]
 HDU1
 ----
 
-EXTNAME = ATMOSPHERIC_EXTINCTION
+EXTNAME = ATERM
 
 Atmospheric extinction term
 
@@ -72,7 +72,7 @@ Data: FITS image [float32, 2380]
 HDU2
 ----
 
-EXTNAME = SEEING_TERM
+EXTNAME = STERM
 
 Seeing term
 
@@ -114,7 +114,7 @@ Data: FITS image [float32, 2380]
 HDU4
 ----
 
-EXTNAME = ATMOSPHERIC_EXTINCTION_UNCERTAINTY
+EXTNAME = ATERM_ERR
 
 Uncertainty on atmospheric extinction term
 
@@ -134,7 +134,7 @@ Data: FITS image [float32, 2380]
 HDU5
 ----
 
-EXTNAME = SEEING_TERM_UNCERTAINTY
+EXTNAME = STERM_ERR
 
 Uncertainty on seeing dependent term
 
