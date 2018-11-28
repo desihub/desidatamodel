@@ -9,13 +9,12 @@ Generate data model files from FITS files.
 """
 import os
 from html import escape
-from astropy.units import Unit
 from astropy.io import fits
 
 from desiutil.log import log, DEBUG
 
 from . import DataModelError
-
+from .unit import DataModelUnit
 #
 # This is a template.
 #
@@ -51,7 +50,7 @@ Notes and Examples
 """
 
 
-class Stub(object):
+class Stub(DataModelUnit):
     """This object contains metadata about a file and methods to print that
     metadata.
 
@@ -242,15 +241,10 @@ class Stub(object):
             tunit = 'TUNIT'+jj
             if tunit in hdr:
                 units = hdr[tunit].strip()
-                try:
-                    au = Unit(units, format='fits')
-                except ValueError as e:
-                    if error:
-                        raise
-                    else:
-                        log.warning(str(e))
-                else:
-                    log.debug("%s = %s", tunit, au)
+                bad_unit = self.check_unit(units, error=error)
+                if bad_unit:
+                    log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                              bad_unit, j, hdu, self.filename)
             else:
                 units = ''
             # Check TCOMMnn keyword, otherwise use TTYPE comment
@@ -454,16 +448,10 @@ def image_format(hdr, error=True):
         except KeyError:
             datatype = 'BITPIX={}'.format(hdr['BITPIX'])
     if 'BUNIT' in hdr:
-        try:
-            au = Unit(hdr['BUNIT'], format='fits')
-        except ValueError as e:
-            if error:
-                log.critical(str(e))
-                raise DataModelError(str(e))
-            else:
-                log.warning(str(e))
-        else:
-            log.debug("BUNIT   = '%s'", au)
+        bad_unit = self.check_unit(hdr['BUNIT'], error=error)
+        if bad_unit:
+            log.debug("Non-standard (but acceptable) unit %s detected.",
+                      bad_unit)
     return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
 
 

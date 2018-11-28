@@ -91,3 +91,6 @@ and checking datamodel files.
 
 .. automodule:: desidatamodel.stub
     :members:
+
+.. automodule:: desidatamodel.unit
+    :members:
