@@ -286,9 +286,9 @@ Required Header Keywords
 ======== ========= ===== ==============
 KEY      Value     Type  Comment
 ======== ========= ===== ==============
-NAXIS1   11996    int
-NAXIS2   5000     int
-BUNIT    photon   str
+NAXIS1   11996     int
+NAXIS2   5000      int
+BUNIT    photon    str
 ======== ========= ===== ==============
 
 Data: FITS image [float32, 11996x5000]
@@ -367,9 +367,9 @@ DATE-OBS 2020-03-17T09:21:24.031 str   Start of exposure
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================= ======= ================== ===========
-Name              Type    Units              Description
-================= ======= ================== ===========
+================= ======= =================== ===========
+Name              Type    Units               Description
+================= ======= =================== ===========
 TARGETID          int64
 DESI_TARGET       int64
 BGS_TARGET        int64
@@ -438,7 +438,7 @@ NUM_ITER          int32
 SPECTROID         int32
 BRICKNAME         char[8]
 LAMBDAREF         float64
-================= ======= ================== ===========
+================= ======= =================== ===========
 
 HDU14
 -----

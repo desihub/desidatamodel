@@ -151,7 +151,16 @@ class Stub(DataModelUnit):
                             meta['format'] = self.columns(k, self.error)
                         except DataModelError:
                             meta['format'] = self.image_format(self.headers[k])
-                            meta['extension'] = self.headers[k]['ZTENSION'].strip()
+                            try:
+                                meta['extension'] = self.headers[k]['ZTENSION'].strip()
+                            except KeyError:
+                                try:
+                                    i = self.headers[k]['ZIMAGE']
+                                    if i:
+                                        meta['extension'] = 'IMAGE'
+                                except KeyError:
+                                    log.warning("Possible malformed compressed data in HDU %d of %s.",
+                                                k, self.filename)
                     else:
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
