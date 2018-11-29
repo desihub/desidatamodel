@@ -50,6 +50,7 @@ KEY    Example Value Type Comment
 ====== ============= ==== =================================
 NAXIS1 332           int  width of table in bytes
 NAXIS2 44215         int  number of targets (rows) in table
+RRVER  0.13.2        str  Redrock version
 ====== ============= ==== =================================
 
 Required Data Table Columns

@@ -2,6 +2,9 @@
 skies
 =====
 
+*Warning* this file might not be compatible with the data model, because it contains
+two `:Regex:` sections.  This should be two separate files.
+
 :Summary: DESI sky locations contain a single binary table covering the entire
     Legacy Surveys footprint. The imaging "blob maps" are bisected to achieve
     a requisite number of sky locations per sq. deg. Sky locations are placed
@@ -93,4 +96,3 @@ Notes and Examples
 
 .. _`LS`: http://legacysurvey.org/dr7/catalogs/
 .. _`Release`: http://legacysurvey.org/release/
-
