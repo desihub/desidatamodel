@@ -6,12 +6,10 @@
 import unittest
 # from pkg_resources import resource_filename
 
-from .datamodeltestcase import DataModelTestCase, DM
-
 # from .. import DataModelError
-# from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
-#                      validate_prototypes, log)
-from ..unit import DataModelUnit
+from .datamodeltestcase import DataModelTestCase
+from ..unit import DataModelUnit, log
+
 
 class TestUnit(DataModelTestCase):
     """Test desidatamodel.unit functions
@@ -20,7 +18,18 @@ class TestUnit(DataModelTestCase):
     def test_check_model(self):
         """Test method to validate units.
         """
-        pass
+        u = DataModelUnit()
+        c = u.check_unit('erg')
+        self.assertIsNone(c)
+        c = u.check_unit('ergs', error=False)
+        self.assertIsNone(c)
+        c = u.check_unit('nanomaggies', error=True)
+        self.assertEqual(c, "'nanomaggies'")
+        self.assertLog(log, -1, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        with self.assertRaises(ValueError) as e:
+            c = u.check_unit('ergs', error=True)
+        self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertLog(log, -1, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
 
 
 def test_suite():

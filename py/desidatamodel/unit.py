@@ -37,7 +37,7 @@ class DataModelUnit(object):
 
         Raises
         ------
-        :exc:`~desidatamodel.DataModelError`
+        :exc:`ValueError`
             If `error` is set and the unit can't be parsed.
         """
         try:
@@ -49,7 +49,7 @@ class DataModelUnit(object):
             else:
                 if error:
                     log.critical(str(e))
-                    raise DataModelError(str(e))
+                    raise
                 else:
                     log.warning(str(e))
         return None
