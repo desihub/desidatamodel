@@ -286,9 +286,9 @@ Required Header Keywords
 ======== ========= ===== ==============
 KEY      Value     Type  Comment
 ======== ========= ===== ==============
-NAXIS1   11996    int
-NAXIS2   5000     int
-BUNIT    photon   str
+NAXIS1   11996     int
+NAXIS2   5000      int
+BUNIT    photon    str
 ======== ========= ===== ==============
 
 Data: FITS image [float32, 11996x5000]
