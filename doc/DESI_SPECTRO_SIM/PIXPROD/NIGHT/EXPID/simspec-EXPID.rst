@@ -60,6 +60,7 @@ TELRA    0.0                 float Telescope pointing RA [degrees]
 TELDEC   0.0                 float Telescope pointing Dec [degrees]
 AIRMASS  1.0                 float Airmass at middle of exposure
 EXPTIME  1000.0              float Exposure time [sec]
+SEEING   1.080542206764221   float Seeing FWHM [arcsec]
 MOONFRAC 0.4083473802955095  float Moon illumination fraction 0-1; 1=full
 MOONALT  -4.92578905244666   float Moon altitude [degrees]
 MOONSEP  135.3911422523808   float Moon:tile separation angle [degrees]
@@ -385,8 +386,8 @@ SUBPRIORITY       float64
 REF_ID            int64
 PMRA              float32 10**-3 arcsec yr-1
 PMDEC             float32 10**-3 arcsec yr-1
-PMRA_IVAR         float32 10**6 arcsec-2 yr2
-PMDEC_IVAR        float32 10**6 arcsec-2 yr2
+PMRA_IVAR         float32 10**+6 arcsec-2 yr2
+PMDEC_IVAR        float32 10**+6 arcsec-2 yr2
 FLUX_G            float32
 FLUX_R            float32
 FLUX_Z            float32
