@@ -306,6 +306,7 @@ class DataModel(DataModelUnit):
             # A warning should have been issued already, so just skip silently.
             #
             return
+        log.info("Comparing %s to %s.", self.prototype, self.filename)
         if self._stub is None:
             self._stub = Stub(self.prototype, error=error)
         stub_meta = self._stub_meta = self._stub.hdumeta

@@ -10,24 +10,29 @@ simspec-EXPID.fits
 Contents
 ========
 
-====== ========= ======== ================================
-Number EXTNAME   Type     Contents
-====== ========= ======== ================================
-HDU0_  PRIMARY   IMAGE    Blank HDU with simulation input keywords
-HDU1_  WAVE      IMAGE    Input wavelength vector
-HDU2_  FLUX      IMAGE    Input object spectra
-HDU3_  SKYFLUX   IMAGE    Input sky flux
-HDU4_  WAVE_B    IMAGE    Input wavelengths b-channel
-HDU5_  PHOT_B    IMAGE    Input object photons b-channel
-HDU6_  SKYPHOT_B IMAGE    Input sky photons b-channel
-HDU7_  WAVE_R    IMAGE    Input wavelengths r-channel
-HDU8_  PHOT_R    IMAGE    Input object photons r-channel
-HDU9_  SKYPHOT_R IMAGE    Input sky photons r-channel
-HDU10_ WAVE_Z    IMAGE    Input wavelengths z-channel
-HDU11_ PHOT_Z    IMAGE    Input object photons z-channel
-HDU12_ SKYPHOT_Z IMAGE    Input sky photons z-channel
-HDU13_ METADATA  BINTABLE Metadata about the input spectra
-====== ========= ======== ================================
+====== ============= ======== ================================
+Number EXTNAME       Type     Contents
+====== ============= ======== ================================
+HDU0_  WAVE          IMAGE    Input wavelength vector
+HDU1_  FLUX          IMAGE    Input object spectra
+HDU2_  SKYFLUX       IMAGE    Input sky flux
+HDU3_  WAVE_B        IMAGE    Input wavelengths b-channel
+HDU4_  PHOT_B        IMAGE    Input object photons b-channel
+HDU5_  SKYPHOT_B     IMAGE    Input sky photons b-channel
+HDU6_  WAVE_R        IMAGE    Input wavelengths r-channel
+HDU7_  PHOT_R        IMAGE    Input object photons r-channel
+HDU8_  SKYPHOT_R     IMAGE    Input sky photons r-channel
+HDU9_  WAVE_Z        IMAGE    Input wavelengths z-channel
+HDU10_ PHOT_Z        IMAGE    Input object photons z-channel
+HDU11_ SKYPHOT_Z     IMAGE    Input sky photons z-channel
+HDU12_ TRUTH         BINTABLE Metadata about the input spectra
+HDU13_ FIBERMAP      BINTABLE Metadata about the input spectra
+HDU14_ OBSCONDITIONS BINTABLE Metadata about the input spectra
+HDU15_ TRUTH_BGS     BINTABLE Metadata about the input spectra
+HDU16_ TRUTH_ELG     BINTABLE Metadata about the input spectra
+HDU17_ TRUTH_STAR    BINTABLE Metadata about the input spectra
+HDU18_ TRUTH_WD      BINTABLE Metadata about the input spectra
+====== ============= ======== ================================
 
 FITS Header Units
 =================
@@ -35,9 +40,9 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = PRIMARY
+EXTNAME = WAVE
 
-Simulation inputs as header cards.
+Input wavelength vector.  Simulation inputs are stored in header cards.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,31 +61,14 @@ TELDEC   0.0                 float Telescope pointing Dec [degrees]
 DATE-OBS 2017-06-15T22:00:00 str   Start of exposure
 FLAVOR   science             str   Flavor of observation (arc, flat, science)
 DOSVER   SIM                 str   ???
+BUNIT    Angstrom            str   Wavelength unit
+AIRORVAC vac                 str   Vacuum wavelengths
+EXTNAME  WAVE                str   Extension name
 ======== =================== ===== ==========================================
-
-Data: None
-
-HDU1
-----
-
-EXTNAME = WAVE
-
-Input wavelength vector.
-
-Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-======== ======== ===== ==================
-KEY      Value    Type  Comment
-======== ======== ===== ==================
-BUNIT    Angstrom str   Wavelength unit
-AIRORVAC vac      str   Vacuum wavelengths
-EXTNAME  WAVE     str   Extension name
-======== ======== ===== ==================
 
 Data: FITS image
 
-HDU2
+HDU1
 ----
 
 EXTNAME = FLUX
@@ -99,7 +87,7 @@ EXTNAME  FLUX                         str   Extension name
 
 Data: FITS image
 
-HDU3
+HDU2
 ----
 
 EXTNAME = SKYFLUX
@@ -118,7 +106,7 @@ EXTNAME  SKYFLUX                      str   Extension name
 
 Data: FITS image
 
-HDU4
+HDU3
 ----
 
 EXTNAME = WAVE_B
@@ -138,7 +126,7 @@ EXTNAME  WAVE_B   str   Extension name
 
 Data: FITS image
 
-HDU5
+HDU4
 ----
 
 EXTNAME = PHOT_B
@@ -156,7 +144,7 @@ EXTNAME  PHOT_B   str   Extension name
 
 Data: FITS image
 
-HDU6
+HDU5
 ----
 
 EXTNAME = SKYPHOT_B
@@ -174,7 +162,7 @@ EXTNAME  SKYPHOT_B str   Extension name
 
 Data: FITS image
 
-HDU7
+HDU6
 ----
 
 EXTNAME = WAVE_R
@@ -194,7 +182,7 @@ EXTNAME  WAVE_R   str   Extension name
 
 Data: FITS image
 
-HDU8
+HDU7
 ----
 
 EXTNAME = PHOT_R
@@ -212,7 +200,7 @@ EXTNAME  PHOT_R   str   Extension name
 
 Data: FITS image
 
-HDU9
+HDU8
 ----
 
 EXTNAME = SKYPHOT_R
@@ -230,8 +218,8 @@ EXTNAME  SKYPHOT_R str   Extension name
 
 Data: FITS image
 
-HDU10
------
+HDU9
+----
 
 EXTNAME = WAVE_Z
 
@@ -250,7 +238,7 @@ EXTNAME  WAVE_Z   str   Extension name
 
 Data: FITS image
 
-HDU11
+HDU10
 -----
 
 EXTNAME = PHOT_Z
@@ -268,7 +256,7 @@ EXTNAME  PHOT_Z   str   Extension name
 
 Data: FITS image
 
-HDU12
+HDU11
 -----
 
 EXTNAME = SKYPHOT_Z
@@ -286,10 +274,10 @@ EXTNAME  SKYPHOT_Z str   Extension name
 
 Data: FITS image
 
-HDU13
+HDU12
 -----
 
-EXTNAME = Metadata
+EXTNAME = TRUTH
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -297,7 +285,7 @@ Required Header Keywords
 ======= ======== ==== ==============
 KEY     Value    Type Comment
 ======= ======== ==== ==============
-EXTNAME METADATA str  extension name
+EXTNAME TRUTH    str  extension name
 ======= ======== ==== ==============
 
 Required Data Table Columns
@@ -330,6 +318,144 @@ AGE        float32    Gyr         Age of SSP
 TEFF       float32    K           Effective temperature
 LOGG       float32    cm/s2       Surface gravity
 FEH        float32                Iron abundance with respect to solar
+========== ========== =========== =====================================
+
+HDU13
+-----
+
+EXTNAME = FIBERMAP
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ======== ==== ==============
+KEY     Value    Type Comment
+======= ======== ==== ==============
+EXTNAME FIBERMAP str  extension name
+======= ======== ==== ==============
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
+========== ========== =========== =====================================
+
+HDU14
+-----
+
+EXTNAME = OBSCONDITIONS
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ============= ==== ==============
+KEY     Value         Type Comment
+======= ============= ==== ==============
+EXTNAME OBSCONDITIONS str  extension name
+======= ============= ==== ==============
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
+========== ========== =========== =====================================
+
+HDU15
+-----
+
+EXTNAME = TRUTH_BGS
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ========= ==== ==============
+KEY     Value     Type Comment
+======= ========= ==== ==============
+EXTNAME TRUTH_BGS str  extension name
+======= ========= ==== ==============
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
+========== ========== =========== =====================================
+
+HDU16
+-----
+
+EXTNAME = TRUTH_ELG
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ========= ==== ==============
+KEY     Value     Type Comment
+======= ========= ==== ==============
+EXTNAME TRUTH_ELG str  extension name
+======= ========= ==== ==============
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
+========== ========== =========== =====================================
+
+HDU17
+-----
+
+EXTNAME = TRUTH_STAR
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ========== ==== ==============
+KEY     Value      Type Comment
+======= ========== ==== ==============
+EXTNAME TRUTH_STAR str  extension name
+======= ========== ==== ==============
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
+========== ========== =========== =====================================
+
+HDU18
+-----
+
+EXTNAME = TRUTH_WD
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======= ======== ==== ==============
+KEY     Value    Type Comment
+======= ======== ==== ==============
+EXTNAME TRUTH_WD str  extension name
+======= ======== ==== ==============
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+========== ========== =========== =====================================
+Name       Type       Units       Description
+========== ========== =========== =====================================
+OBJTYPE    char[10]               Object type (e.g., ELG, QSO, STD, WD)
 ========== ========== =========== =====================================
 
 Notes and Examples
