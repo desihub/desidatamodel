@@ -45,12 +45,12 @@ cross matched with the original input target catalog.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== =================================
-KEY      Example Value Type Comment
-======== ============= ==== =================================
-NAXIS1   332           int  width of table in bytes
-NAXIS2   44215         int  number of targets (rows) in table
-RRVER    0.13.2        str  Redrock version
+======== ============= ===== =================================
+KEY      Example Value Type  Comment
+======== ============= ===== =================================
+NAXIS1   332           int   width of table in bytes
+NAXIS2   44215         int   number of targets (rows) in table
+RRVER    0.13.2        str   Redrock version
 TEMNAM00 GALAXY        str
 TEMVER00 2.6           float
 TEMNAM01 QSO           str
@@ -71,7 +71,7 @@ TEMNAM08 STAR:::M      str
 TEMVER08 unknown       str
 TEMNAM09 STAR:::WD     str
 TEMVER09 unknown       str
-======== ============= ==== =================================
+======== ============= ===== =================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
