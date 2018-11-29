@@ -1,12 +1,19 @@
-=====
+=====================
 fluxcalib-CAMERA.fits
-=====
+=====================
 
-:Summary: Flux calibration file contains an average calibration vector for a given camera
+:Summary: Flux calibration file contains an average calibration model for a
+    given camera including airmass and seeing dependencies.
 :Naming Convention: ``fluxcalib-{CAMERA}.fits``, where where ``{CAMERA}`` is
     one of the spectrograph cameras (*e.g.* ``z1``).
 :Regex: ``fluxcalib-{brz][0-9].fits``
 :File Type: FITS, 84 KB
+
+The model is parameterized as
+
+calibration_model(lambda) = average_cal(lambda) * 10^( -0.4*( (seeing-pivot_seeing)*seeing_term(lambda) + (airmass-pivot_airmass)*atm_ext(lambda) ))
+
+calib_flux [1e-17 erg/s/cm2/Angstrom] = uncalib_flux [counts/Angstrom] / (calibration_model * exptime [s])
 
 Contents
 ========

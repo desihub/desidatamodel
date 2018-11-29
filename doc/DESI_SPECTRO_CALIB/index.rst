@@ -1,6 +1,6 @@
-=================
+==================
 DESI_SPECTRO_CALIB
-=================
+==================
 
 :envvar:`DESI_SPECTRO_CALIB` contains spectrographs calibration data.
 
