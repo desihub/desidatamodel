@@ -177,6 +177,9 @@ EXTNAME = TARGETS
 Target catalog row-matched to the FIBERASSIGN table entries.  Unassigned
 fibers will have TARGETID=-1 here.
 
+Note: Software release 18.11 (desispec/0.26.0 desisim/0.31.0) does not include
+this HDU.  In the future it will either be included or deprecated and removed.
+
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 

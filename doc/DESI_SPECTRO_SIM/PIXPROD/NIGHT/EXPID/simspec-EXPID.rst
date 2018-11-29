@@ -25,13 +25,13 @@ HDU8_  SKYPHOT_R     IMAGE    Input sky photons r-channel
 HDU9_  WAVE_Z        IMAGE    Input wavelengths z-channel
 HDU10_ PHOT_Z        IMAGE    Input object photons z-channel
 HDU11_ SKYPHOT_Z     IMAGE    Input sky photons z-channel
-HDU12_ TRUTH         BINTABLE Metadata about the input spectra
-HDU13_ FIBERMAP      BINTABLE Metadata about the input spectra
-HDU14_ OBSCONDITIONS BINTABLE Metadata about the input spectra
-HDU15_ TRUTH_BGS     BINTABLE Metadata about the input spectra
-HDU16_ TRUTH_ELG     BINTABLE Metadata about the input spectra
-HDU17_ TRUTH_STAR    BINTABLE Metadata about the input spectra
-HDU18_ TRUTH_WD      BINTABLE Metadata about the input spectra
+HDU12_ TRUTH         BINTABLE Truth metadata about the targets
+HDU13_ FIBERMAP      BINTABLE Fibermap
+HDU14_ OBSCONDITIONS BINTABLE Observing conditions metadata
+HDU15_ TRUTH_BGS     BINTABLE BGS-specific truth metadata
+HDU16_ TRUTH_ELG     BINTABLE ELG-specific truth metadata
+HDU17_ TRUTH_STAR    BINTABLE STAR-specific truth metadata
+HDU18_ TRUTH_WD      BINTABLE WD-specific truth metadata
 ====== ============= ======== ================================
 
 FITS Header Units
@@ -124,7 +124,7 @@ HDU3
 
 EXTNAME = WAVE_B
 
-Input wavelengths b-channel.
+Input wavelengths b-channel [Angstrom].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -182,7 +182,7 @@ HDU6
 
 EXTNAME = WAVE_R
 
-Input wavelengths r-channel.
+Input wavelengths r-channel [Angstrom].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -240,7 +240,7 @@ HDU9
 
 EXTNAME = WAVE_Z
 
-Input wavelengths z-channel.
+Input wavelengths z-channel [Angstrom].
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -337,7 +337,8 @@ HDU13
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Map of which fibers are on which targets.
+See See :doc:`DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID <../../../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>`.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -444,7 +445,8 @@ HDU14
 
 EXTNAME = OBSCONDITIONS
 
-*Summarize the contents of this HDU.*
+Table with a single row defining the observing conditions for this exposure,
+e.g. SEEING, AIRMASS, lunar conditions.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -462,31 +464,33 @@ Required Data Table Columns
 ============ ======= ====== ===========
 Name         Type    Units  Description
 ============ ======= ====== ===========
-EXPID        int32
-TILEID       int32
-PASS         int16
-RA           float64 deg
-DEC          float64 deg
-EBMV         float32
-NIGHT        char[8]
-MJD          float64
-EXPTIME      float64 s
-SEEING       float64 arcsec
-TRANSPARENCY float64
-AIRMASS      float64
-MOONFRAC     float64
-MOONALT      float64 deg
-MOONSEP      float64 deg
-PROGRAM      char[6]
-FLAVOR       char[7]
+EXPID        int32          Exposure ID
+TILEID       int32          Tile ID
+PASS         int16          tiling pass number
+RA           float64 deg    Right ascension
+DEC          float64 deg    Declination
+EBMV         float32        Median Milky Way dust E(B-V) extinction
+NIGHT        char[8]        Night 'YEARMMDD'
+MJD          float64        Modified Julian Date
+EXPTIME      float64 s      Exposure time
+SEEING       float64 arcsec Atmospheric seeing FWHM
+TRANSPARENCY float64        Transparency [0-1]; 0=no photons
+AIRMASS      float64        Airmass
+MOONFRAC     float64        Moon illumination fraction [0-1]; 1=full moon
+MOONALT      float64 deg    Moon altitude
+MOONSEP      float64 deg    Separation angle between moon and center of tile
+PROGRAM      char[6]        DESI program name (e.g. DARK/GRAY/BRIGHT)
+FLAVOR       char[7]        Exposure flavor (e.g. science or calib)
 ============ ======= ====== ===========
+
+TODO: define if AIRMASS etc. are at middle of exposure, averaged, etc.
 
 HDU15
 -----
 
 EXTNAME = TRUTH_BGS
 
-*Summarize the contents of this HDU.*
+Truth metadata that are specific to BGS targets.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -524,7 +528,7 @@ HDU16
 
 EXTNAME = TRUTH_ELG
 
-*Summarize the contents of this HDU.*
+Truth metadata that are specific to ELG targets.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -562,7 +566,7 @@ HDU17
 
 EXTNAME = TRUTH_STAR
 
-*Summarize the contents of this HDU.*
+Truth metadata that are specific to STAR targets.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -591,7 +595,7 @@ HDU18
 
 EXTNAME = TRUTH_WD
 
-*Summarize the contents of this HDU.*
+Truth metadata that are specific to White Dwarf targets.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -85,7 +85,7 @@ SHAPEDEV_E2        float32       Ellipticity parameter e2 of deVaucouleurs model
 SHAPEEXP_R         float32       Half-light radius of exponential model (>0)
 SHAPEEXP_E1        float32       Ellipticity parameter e1 of exponential model
 SHAPEEXP_E2        float32       Ellipticity parameter e1 of exponential model
-SUBPRIORITY        float64
+SUBPRIORITY        float64       Random subpriority [0-1] to break assignment ties
 TARGETID           int64         ID (unique to file and the whole survey)
 DESI_TARGET        int64         DESI (dark time program) target selection bitmask
 BGS_TARGET         int64         BGS (bright time program) target selection bitmask
@@ -96,6 +96,9 @@ PRIORITY           int64         Target priority (larger number, higher priority
 OBSCONDITIONS      int32         Flag the target to be observed in graytime.
 ================== ======= ===== ===================
 
+Note: as of software release 18.11 (desitarget/0.25.0), this HDU has many
+more columns inherited from the input targets; these are not yet documented
+here.
 
 Notes and Examples
 ==================

@@ -13,8 +13,7 @@ two `:Regex:` sections.  This should be two separate files.
 :Naming Convention: ``DRX/VERSION/skies-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
     desitarget code version.
-:Regex: ``randoms-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits`` or
-    :Regex: ``targets-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\+-[0-9].fits``
+:Regex: ``skies-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
 :File Type: FITS, 3 GB
 
 Contents
