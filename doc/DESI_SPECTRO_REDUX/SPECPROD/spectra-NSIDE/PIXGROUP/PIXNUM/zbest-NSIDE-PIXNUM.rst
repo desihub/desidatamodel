@@ -190,6 +190,9 @@ NUM_ITER          int32
 SPECTROID         int32
 BRICKNAME         char[8]       Brickname from target imaging
 LAMBDAREF         float64       Reference wavelength at which to align fiber
+NIGHT             int32
+EXPID             int32
+TILEID            int32
 ================= ======= ===== ============================================
 
 Upcoming Changes
@@ -198,5 +201,4 @@ Upcoming Changes
 The following changes are not yet in the zbest files, but will be added in
 the future:
 
-* Code versions in HDU 0
 * Coadded signal-to-noise per band
