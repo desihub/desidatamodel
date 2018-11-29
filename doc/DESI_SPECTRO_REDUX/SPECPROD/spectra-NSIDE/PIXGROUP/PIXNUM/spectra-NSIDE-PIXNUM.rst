@@ -149,6 +149,9 @@ NUM_ITER          int32
 SPECTROID         int32
 BRICKNAME         char[8]       Brickname from target imaging
 LAMBDAREF         float64       Reference wavelength at which to align fiber
+NIGHT             int32
+EXPID             int32
+TILEID            int32
 ================= ======= ===== ============================================
 
 HDU02
