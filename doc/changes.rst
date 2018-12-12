@@ -2,9 +2,15 @@
 desidatamodel Change Log
 ========================
 
-18.9 (unreleased)
------------------
+18.12 (unreleased)
+------------------
 
+* No changes yet.  Expecting updates for desisurvey and surveysim outputs.
+
+18.11 (2018-12-11)
+------------------
+
+* Lots of format cleanup updates (PR `#68`_).
 * ``MASK`` HDUs will no longer be compressed (PR `#60`_).
 * Deprecate ``DESI_TARGET`` files (``sky``, ``stdstar``) that aren't in use (PR `#59`_).
 * Describe apertures in the skies file as "radius" not "size" (PR `#59`_).
@@ -16,6 +22,7 @@ desidatamodel Change Log
 .. _`#57`: https://github.com/desihub/desidatamodel/pull/57
 .. _`#59`: https://github.com/desihub/desidatamodel/pull/59
 .. _`#60`: https://github.com/desihub/desidatamodel/pull/60
+.. _`#68`: https://github.com/desihub/desidatamodel/pull/68
 
 18.6 (2018-07-20)
 -----------------
