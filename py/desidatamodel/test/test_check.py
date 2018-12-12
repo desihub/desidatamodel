@@ -3,6 +3,7 @@
 """Test desidatamodel.check functions
 """
 import os
+import unittest
 from pkg_resources import resource_filename
 
 from .datamodeltestcase import DataModelTestCase, DM
@@ -156,7 +157,7 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines.insert(46, "BUNIT  ergs          str  This is a bad unit.")
         model._metafile_data = '\n'.join(lines) + '\n'
-        with self.assertRaises(DataModelError) as e:
+        with self.assertRaises(ValueError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
         meta = model.extract_metadata(error=False)
@@ -186,7 +187,7 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines[75] = 'vdisp  float64  ergs'
         model._metafile_data = '\n'.join(lines) + '\n'
-        with self.assertRaises(DataModelError) as e:
+        with self.assertRaises(ValueError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
         meta = model.extract_metadata(error=False)

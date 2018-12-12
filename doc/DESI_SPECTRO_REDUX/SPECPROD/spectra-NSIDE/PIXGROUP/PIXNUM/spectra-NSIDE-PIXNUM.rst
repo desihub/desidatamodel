@@ -78,39 +78,81 @@ DATASUM  0                str  data unit checksum updated 2018-03-29T22:45:34
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=========== ========== ===== ===============================================
-Name        Type       Units Description
-=========== ========== ===== ===============================================
-OBJTYPE     char[10]         Target type [ELG, LRG, QSO, STD, STAR, SKY]
-TARGETCAT   char[20]         Name/version of the target catalog
-BRICKNAME   char[8]          Brickname from target imaging
-TARGETID    int64            Unique target ID
-DESI_TARGET int64            DESI dark+calib targeting bit mask
-BGS_TARGET  int64            DESI Bright Galaxy Survey targeting bit mask
-MWS_TARGET  int64            DESI Milky Way Survey targeting bit mask
-MAG         float32[5]       magnitudes in each of the filters
-FILTER      char[200]        SDSS_R, DECAM_Z, WISE1, etc.
-SPECTROID   int64            Spectrograph ID [0-9]
-POSITIONER  int32            Positioner ID [0-4999] (deprecated)
-LOCATION    int32            Positioner location ID 1000*PETAL + DEVICE
-DEVICE_LOC  int32            Device location on petal [0-542]
-PETAL_LOC   int32            Petal location on focal plane [0-9]
-FIBER       int32            Fiber ID [0-4999]
-LAMBDAREF   float32          Reference wavelength at which to align fiber
-RA_TARGET   float64          Target right ascension [degrees]
-DEC_TARGET  float64          Target declination [degrees]
-RA_OBS      float64          RA of obs from (X,Y)_FVCOBS and optics [deg]
-DEC_OBS     float64          dec of obs from (X,Y)_FVCOBS and optics [deg]
-X_TARGET    float64          X on focal plane derived from (RA,DEC)_TARGET
-Y_TARGET    float64          Y on focal plane derived from (RA,DEC)_TARGET
-X_FVCOBS    float64          X location observed by Fiber View Cam [mm]
-Y_FVCOBS    float64          Y location observed by Fiber View Cam [mm]
-Y_FVCERR    float32          Y location uncertainty from Fiber View Cam [mm]
-X_FVCERR    float32          X location uncertainty from Fiber View Cam [mm]
-NIGHT       int32            Night of exposure YYYYMMDD
-EXPID       int32            Exposure ID
-TILEID      int32            DESI tile ID
-=========== ========== ===== ===============================================
+================= ======= ===== ============================================
+Name              Type    Units Description
+================= ======= ===== ============================================
+TARGETID          int64         Unique target ID
+DESI_TARGET       int64         DESI dark+calib targeting bit mask
+BGS_TARGET        int64         DESI Bright Galaxy Survey targeting bit mask
+MWS_TARGET        int64         DESI Milky Way Survey targeting bit mask
+SECONDARY_TARGET  int64
+TARGET_RA         float64       Target right ascension [degrees]
+TARGET_DEC        float64       Target declination [degrees]
+TARGET_RA_IVAR    float64
+TARGET_DEC_IVAR   float64
+BRICKID           int64
+BRICK_OBJID       int64
+MORPHTYPE         char[4]
+PRIORITY          int32
+SUBPRIORITY       float64
+REF_ID            int64
+PMRA              float32
+PMDEC             float32
+PMRA_IVAR         float32
+PMDEC_IVAR        float32
+FLUX_G            float32
+FLUX_R            float32
+FLUX_Z            float32
+FLUX_W1           float32
+FLUX_W2           float32
+FLUX_IVAR_G       float32
+FLUX_IVAR_R       float32
+FLUX_IVAR_Z       float32
+FLUX_IVAR_W1      float32
+FLUX_IVAR_W2      float32
+FIBERFLUX_G       float32
+FIBERFLUX_R       float32
+FIBERFLUX_Z       float32
+FIBERFLUX_W1      float32
+FIBERFLUX_W2      float32
+FIBERTOTFLUX_G    float32
+FIBERTOTFLUX_R    float32
+FIBERTOTFLUX_Z    float32
+FIBERTOTFLUX_W1   float32
+FIBERTOTFLUX_W2   float32
+MW_TRANSMISSION_G float32
+MW_TRANSMISSION_R float32
+MW_TRANSMISSION_Z float32
+EBV               float32
+PHOTSYS           char[1]
+FIBER             int32         Fiber ID [0-4999]
+PETAL_LOC         int32
+DEVICE_LOC        int32
+LOCATION          int32
+FIBERSTATUS       int32
+OBJTYPE           char[3]
+LAMBDA_REF        float32
+DESIGN_X          float32
+DESIGN_Y          float32
+DESIGN_Q          float32
+DESIGN_S          float32
+NUMTARGET         int16
+FIBER_RA          float64
+FIBER_DEC         float64
+FIBER_RA_IVAR     float32
+FIBER_DEC_IVAR    float32
+DELTA_X           float32
+DELTA_Y           float32
+DELTA_X_IVAR      float32
+DELTA_Y_IVAR      float32
+NUM_ITER          int32
+SPECTROID         int32
+BRICKNAME         char[8]       Brickname from target imaging
+LAMBDAREF         float64       Reference wavelength at which to align fiber
+NIGHT             int32
+EXPID             int32
+TILEID            int32
+================= ======= ===== ============================================
 
 HDU02
 -----

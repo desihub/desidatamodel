@@ -144,12 +144,15 @@ PMRA_IVAR                         float32          Inverse variance of PMRA
 PMDEC                             float32          Reference catalog proper motion in the Dec direction
 PMDEC_IVAR                        float32          Inverse variance of PMDEC
 BRIGHTSTARINBLOB                  logical          ``True`` if the object shares a blob with a "bright" (`Tycho-2`_) star
-SUBPRIORITY                       float32          Priority that is used to break ties during fiber assignment
+EBV                               float32          Median (average?) Milky Way dust E(B-V) extinction
 PHOTSYS                           char[1]          'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 TARGETID                          int64            ID (unique to file and the whole survey)
 DESI_TARGET                       int64            DESI (dark time program) target selection bitmask
 BGS_TARGET                        int64            BGS (bright time program) target selection bitmask
 MWS_TARGET                        int64            MWS (bright time program) target selection bitmask
+PRIORITY                          int32            Initial targeting priority
+SUBPRIORITY                       float64          Priority that is used to break ties during fiber assignment
+NUMOBS                            int16            Initial number of requested observations
 HPXPIXEL                          int64            HEALPixel containing target
 ================================= ========== ===== ===================
 

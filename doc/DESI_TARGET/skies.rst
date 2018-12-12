@@ -2,6 +2,9 @@
 skies
 =====
 
+*Warning* this file might not be compatible with the data model, because it contains
+two `:Regex:` sections.  This should be two separate files.
+
 :Summary: DESI sky locations contain a single binary table covering the entire
     Legacy Surveys footprint. The imaging "blob maps" are bisected to achieve
     a requisite number of sky locations per sq. deg. Sky locations are placed
@@ -10,8 +13,7 @@ skies
 :Naming Convention: ``DRX/VERSION/skies-DRX-VERSION.fits``, where ``DRX`` is the
     imaging surveys data release name (e.g. dr7.1) and ``VERSION`` is the
     desitarget code version.
-:Regex: ``randoms-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits`` or
-    :Regex: ``targets-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\+-[0-9].fits``
+:Regex: ``skies-dr[0.9]+\.[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
 :File Type: FITS, 3 GB
 
 Contents
@@ -93,4 +95,3 @@ Notes and Examples
 
 .. _`LS`: http://legacysurvey.org/dr7/catalogs/
 .. _`Release`: http://legacysurvey.org/release/
-

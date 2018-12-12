@@ -10,14 +10,14 @@ Check actual files against the data model for validity.
 import os
 import re
 
-from astropy.units import Unit
 from desiutil.log import log, DEBUG
 
 from . import DataModelError
 from .stub import Stub
+from .unit import DataModelUnit
 
 
-class DataModel(object):
+class DataModel(DataModelUnit):
     """Simple object to store data model data and metadata.
 
     Parameters
@@ -245,14 +245,10 @@ class DataModel(object):
                         else:
                             log.warning(m, mk[0], k, metafile)
                     if mk[2]:
-                        try:
-                            au = Unit(mk[2], format='fits')
-                        except ValueError as e:
-                            if error:
-                                log.critical(str(e))
-                                raise DataModelError(str(e))
-                            else:
-                                log.warning(str(e))
+                        bad_unit = self.check_unit(mk[2], error=error)
+                        if bad_unit:
+                            log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                                      bad_unit, mk[0], k, metafile)
             try:
                 meta['extname'] = [l.split()[2] for l in section
                                    if l.startswith('EXTNAME = ')][0]
@@ -284,14 +280,10 @@ class DataModel(object):
                         else:
                             log.warning(m, mk[0], k, metafile)
                     if mk[0] == 'BUNIT':
-                        try:
-                            au = Unit(mk[1], format='fits')
-                        except ValueError as e:
-                            if error:
-                                log.critical(str(e))
-                                raise DataModelError(str(e))
-                            else:
-                                log.warning(str(e))
+                        bad_unit = self.check_unit(mk[1], error=error)
+                        if bad_unit:
+                            log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                                      bad_unit, mk[0], k, metafile)
             self.hdumeta.append(meta)
         return self.hdumeta
 
@@ -314,6 +306,7 @@ class DataModel(object):
             # A warning should have been issued already, so just skip silently.
             #
             return
+        log.info("Comparing %s to %s.", self.prototype, self.filename)
         if self._stub is None:
             self._stub = Stub(self.prototype, error=error)
         stub_meta = self._stub_meta = self._stub.hdumeta

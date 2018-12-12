@@ -9,13 +9,12 @@ Generate data model files from FITS files.
 """
 import os
 from html import escape
-from astropy.units import Unit
 from astropy.io import fits
 
 from desiutil.log import log, DEBUG
 
 from . import DataModelError
-
+from .unit import DataModelUnit
 #
 # This is a template.
 #
@@ -51,7 +50,7 @@ Notes and Examples
 """
 
 
-class Stub(object):
+class Stub(DataModelUnit):
     """This object contains metadata about a file and methods to print that
     metadata.
 
@@ -146,15 +145,22 @@ class Stub(object):
                 if 'XTENSION' in self.headers[k]:
                     meta['extension'] = self.headers[k]['XTENSION'].strip()
                     if meta['extension'] == 'IMAGE':
-                        meta['format'] = image_format(self.headers[k],
-                                                      self.error)
+                        meta['format'] = self.image_format(self.headers[k])
                     elif meta['extension'] == 'BINTABLE':
                         try:
                             meta['format'] = self.columns(k, self.error)
                         except DataModelError:
-                            meta['format'] = image_format(self.headers[k],
-                                                          self.error)
-                            meta['extension'] = self.headers[k]['ZTENSION'].strip()
+                            meta['format'] = self.image_format(self.headers[k])
+                            try:
+                                meta['extension'] = self.headers[k]['ZTENSION'].strip()
+                            except KeyError:
+                                try:
+                                    i = self.headers[k]['ZIMAGE']
+                                    if i:
+                                        meta['extension'] = 'IMAGE'
+                                except KeyError:
+                                    log.warning("Possible malformed compressed data in HDU %d of %s.",
+                                                k, self.filename)
                     else:
                         w = ("Unknown extension type: " +
                              "{extension}.").format(**meta)
@@ -162,7 +168,7 @@ class Stub(object):
                         log.warning(w)
                 else:
                     meta['extension'] = 'IMAGE'
-                    meta['format'] = image_format(self.headers[k])
+                    meta['format'] = self.image_format(self.headers[k])
                 self._hdumeta.append(meta)
         return self._hdumeta
 
@@ -241,15 +247,10 @@ class Stub(object):
             tunit = 'TUNIT'+jj
             if tunit in hdr:
                 units = hdr[tunit].strip()
-                try:
-                    au = Unit(units, format='fits')
-                except ValueError as e:
-                    if error:
-                        raise
-                    else:
-                        log.warning(str(e))
-                else:
-                    log.debug("%s = %s", tunit, au)
+                bad_unit = self.check_unit(units, error=error)
+                if bad_unit:
+                    log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                              bad_unit, j, hdu, self.filename)
             else:
                 units = ''
             # Check TCOMMnn keyword, otherwise use TTYPE comment
@@ -411,59 +412,50 @@ class Stub(object):
         kw['hdu_sections'] = "\n".join(hdu_sections)
         return rst.format(**kw)
 
+    def image_format(self, hdr):
+        """Obtain format of an image HDU.
 
-def image_format(hdr, error=True):
-    """Obtain format of an image HDU.
+        Parameters
+        ----------
+        hdr : :class:`~astropy.io.fits.Header`
+            The header to parse.
 
-    Parameters
-    ----------
-    hdr : :class:`~astropy.io.fits.Header`
-        The header to parse.
-    error : :class:`bool`, optional
-        If ``True``, failure to extract certain required metadata raises an
-        exception.
+        Returns
+        -------
+        :class:`str`
+            A string describing the image format.
 
-    Returns
-    -------
-    :class:`str`
-        A string describing the image format.
-
-    Raises
-    ------
-    :exc:`~desidatamodel.DataModelError`
-        If `error` is set a `BUNIT` header with units that do not follow
-        the FITS standard is detected.
-    """
-    n = hdr['NAXIS']
-    if n == 0:
-        return 'Empty HDU.'
-    bitmap = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
-              -32: 'float32', -64: 'float64'}
-    if 'ZBITPIX' in hdr:
-        n = hdr['ZNAXIS']
-        dims = [str(hdr['ZNAXIS{0:d}'.format(k+1)]) for k in range(n)]
-        try:
-            datatype = bitmap[hdr['ZBITPIX']] + ' (compressed)'
-        except KeyError:
-            datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
-    else:
-        dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
-        try:
-            datatype = bitmap[hdr['BITPIX']]
-        except KeyError:
-            datatype = 'BITPIX={}'.format(hdr['BITPIX'])
-    if 'BUNIT' in hdr:
-        try:
-            au = Unit(hdr['BUNIT'], format='fits')
-        except ValueError as e:
-            if error:
-                log.critical(str(e))
-                raise DataModelError(str(e))
-            else:
-                log.warning(str(e))
+        Raises
+        ------
+        :exc:`~desidatamodel.DataModelError`
+            If ``self.error`` is set a `BUNIT` header with units that do not
+            follow the FITS standard is detected.
+        """
+        n = hdr['NAXIS']
+        if n == 0:
+            return 'Empty HDU.'
+        bitmap = {8: 'char', 16: 'int16', 32: 'int32', 64: 'int64',
+                  -32: 'float32', -64: 'float64'}
+        if 'ZBITPIX' in hdr:
+            n = hdr['ZNAXIS']
+            dims = [str(hdr['ZNAXIS{0:d}'.format(k+1)]) for k in range(n)]
+            try:
+                datatype = bitmap[hdr['ZBITPIX']] + ' (compressed)'
+            except KeyError:
+                datatype = 'BITPIX={0} (compressed)'.format(hdr['ZBITPIX'])
         else:
-            log.debug("BUNIT   = '%s'", au)
-    return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
+            dims = [str(hdr['NAXIS{0:d}'.format(k+1)]) for k in range(n)]
+            try:
+                datatype = bitmap[hdr['BITPIX']]
+            except KeyError:
+                datatype = 'BITPIX={}'.format(hdr['BITPIX'])
+        if 'BUNIT' in hdr:
+            log.debug("BUNIT   = '%s'", hdr['BUNIT'])
+            bad_unit = self.check_unit(hdr['BUNIT'], error=self.error)
+            if bad_unit:
+                log.debug("Non-standard (but acceptable) unit %s detected in %s.",
+                          bad_unit, self.filename)
+        return 'Data: FITS image [{0}, {1}]'.format(datatype, 'x'.join(dims))
 
 
 def extrakey(key):

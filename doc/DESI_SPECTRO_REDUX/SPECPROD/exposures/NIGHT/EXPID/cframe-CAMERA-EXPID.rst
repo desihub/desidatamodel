@@ -177,8 +177,6 @@ EXTNAME = FIBERMAP
 
 Fibermap of what targets were assigned to what fibers.
 
-NOTE: This format will be updated soon, e.g. to track FLUX instead of MAG.
-
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -195,36 +193,78 @@ DATASUM  4154192770       str  data unit checksum updated 2018-03-01T15:08:15
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=========== ========== ===== ===========
-Name        Type       Units Description
-=========== ========== ===== ===========
-OBJTYPE     char[10]
-TARGETCAT   char[20]
-BRICKNAME   char[8]
-TARGETID    int64
-DESI_TARGET int64
-BGS_TARGET  int64
-MWS_TARGET  int64
-MAG         float32[5]
-FILTER      char[200]
-SPECTROID   int64
-POSITIONER  int32
-LOCATION    int32
-DEVICE_LOC  int32
-PETAL_LOC   int32
-FIBER       int32
-LAMBDAREF   float32
-RA_TARGET   float64
-DEC_TARGET  float64
-RA_OBS      float64
-DEC_OBS     float64
-X_TARGET    float32
-Y_TARGET    float32
-X_FVCOBS    float32
-Y_FVCOBS    float32
-Y_FVCERR    float32
-X_FVCERR    float32
-=========== ========== ===== ===========
+================= ======= ===== ===========
+Name              Type    Units Description
+================= ======= ===== ===========
+TARGETID          int64
+DESI_TARGET       int64
+BGS_TARGET        int64
+MWS_TARGET        int64
+SECONDARY_TARGET  int64
+TARGET_RA         float64
+TARGET_DEC        float64
+TARGET_RA_IVAR    float64
+TARGET_DEC_IVAR   float64
+BRICKID           int64
+BRICK_OBJID       int64
+MORPHTYPE         char[4]
+PRIORITY          int32
+SUBPRIORITY       float64
+REF_ID            int64
+PMRA              float32
+PMDEC             float32
+PMRA_IVAR         float32
+PMDEC_IVAR        float32
+FLUX_G            float32
+FLUX_R            float32
+FLUX_Z            float32
+FLUX_W1           float32
+FLUX_W2           float32
+FLUX_IVAR_G       float32
+FLUX_IVAR_R       float32
+FLUX_IVAR_Z       float32
+FLUX_IVAR_W1      float32
+FLUX_IVAR_W2      float32
+FIBERFLUX_G       float32
+FIBERFLUX_R       float32
+FIBERFLUX_Z       float32
+FIBERFLUX_W1      float32
+FIBERFLUX_W2      float32
+FIBERTOTFLUX_G    float32
+FIBERTOTFLUX_R    float32
+FIBERTOTFLUX_Z    float32
+FIBERTOTFLUX_W1   float32
+FIBERTOTFLUX_W2   float32
+MW_TRANSMISSION_G float32
+MW_TRANSMISSION_R float32
+MW_TRANSMISSION_Z float32
+EBV               float32
+PHOTSYS           char[1]
+FIBER             int32
+PETAL_LOC         int32
+DEVICE_LOC        int32
+LOCATION          int32
+FIBERSTATUS       int32
+OBJTYPE           char[3]
+LAMBDA_REF        float32
+DESIGN_X          float32
+DESIGN_Y          float32
+DESIGN_Q          float32
+DESIGN_S          float32
+NUMTARGET         int16
+FIBER_RA          float64
+FIBER_DEC         float64
+FIBER_RA_IVAR     float32
+FIBER_DEC_IVAR    float32
+DELTA_X           float32
+DELTA_Y           float32
+DELTA_X_IVAR      float32
+DELTA_Y_IVAR      float32
+NUM_ITER          int32
+SPECTROID         int32
+BRICKNAME         char[8]
+LAMBDAREF         float64
+================= ======= ===== ===========
 
 HDU6
 ----
