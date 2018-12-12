@@ -28,7 +28,7 @@ Number EXTNAME               Type     Contents
 HDU0_  --                    IMAGE    Blank
 HDU1_  FIBERASSIGN           BINTABLE Target assignments for each fiber
 HDU2_  POTENTIAL             BINTABLE All targets that could have been assigned
-HDU3_  SKYETC                 BINTABLE Sky assignments for sky monitor positioners
+HDU3_  SKYETC                BINTABLE Sky assignments for sky monitor positioners
 HDU4_  TARGETS               BINTABLE Target catalog row-matched to FIBERASSIGN table
 HDU5_  GFA_TARGETS           BINTABLE Targets on GFAs (OPTIONAL)
 ====== ===================== ======== ===================
