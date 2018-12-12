@@ -24,7 +24,11 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = (None)
+
 *Summarize the contents of this HDU.*
+
+*TODO*: add a meaningful EXTNAME to the output file
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -30,6 +30,8 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = (None)
+
 *Summarize the contents of this HDU.*
 
 Required Header Keywords

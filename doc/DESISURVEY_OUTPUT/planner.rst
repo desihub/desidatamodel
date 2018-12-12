@@ -26,6 +26,8 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = (None)
+
 *Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
@@ -34,6 +36,8 @@ Empty HDU.
 
 HDU1
 ----
+
+EXTNAME = PLAN
 
 *Summarize the contents of this HDU.*
 

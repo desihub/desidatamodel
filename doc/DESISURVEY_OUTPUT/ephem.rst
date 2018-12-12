@@ -26,10 +26,14 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = (None)
+
 Empty HDU.
 
 HDU1
 ----
+
+EXTNAME = (None)
 
 Ephemeris table
 
@@ -48,23 +52,25 @@ STOP   2020-04-15         str  Last date of ephemeris calculations
 
 *TODO*: clarify if last day is inclusive
 
+*TODO*: add an EXTNAME to the output
+
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ================= =========== ===== ===========
 Name              Type        Units Description
 ================= =========== ===== ===========
-noon              float64     day
-dusk              float64     day
-dawn              float64     day
-brightdusk        float64     day
-brightdawn        float64     day
-brightdusk_LST    float64     day
-brightdawn_LST    float64     day
-moonrise          float64     day
-moonset           float64     day
-moon_illum_frac   float64     day
-nearest_full_moon float64     day
+noon              float64
+dusk              float64
+dawn              float64
+brightdusk        float64
+brightdawn        float64
+brightdusk_LST    float64
+brightdawn_LST    float64
+moonrise          float64
+moonset           float64
+moon_illum_frac   float64
+nearest_full_moon float64
 programs          int16[4]
 changes           float64[3]
 moon_ra           float64[25] deg
@@ -83,7 +89,8 @@ uranus_ra         float64[25] deg
 uranus_dec        float64[25] deg
 ================= =========== ===== ===========
 
-*TODO*: is "day" the right unit for MJD days?
+*TODO*: what is the right unit for MJD days?  "day" isn't a valid FITS
+standard unit.
 
 *TODO*: clarify what MJD/date corresponds to the ra/dec values, e.g.
 is that the RA/dec at noon, dusk, integer MJD, etc.
