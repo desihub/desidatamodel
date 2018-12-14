@@ -105,7 +105,7 @@ table use, for example::
 
 The integer codes used for the nightly program sequence are DARK=0, GRAY=1, BRIGHT=2.
 Use program names where possible, instead of integer codes: the mapping between them
-is defined in the ``desisurvey.tiles`` module:
+is defined in the ``desisurvey.tiles`` module::
 
     import desisurvey.tiles
     assert deisurvey.tiles.Tiles.PROGRAM_INDEX['GRAY'] == 1
