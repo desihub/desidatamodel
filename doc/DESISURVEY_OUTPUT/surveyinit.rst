@@ -29,8 +29,7 @@ HDU0
 EXTNAME = WEATHER
 
 Nightly dome-open fractions due to weather that are are assumed when calculating
-the available LST per program, as in input to the design hour-angle optimization.
-These are obtained 
+the available LST per program, as an input to the design hour-angle optimization.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
