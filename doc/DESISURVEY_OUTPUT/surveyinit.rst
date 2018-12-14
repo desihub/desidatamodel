@@ -2,16 +2,10 @@
 surveyinit
 ==========
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``surveyinit.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``surveyinit.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 36 KB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: Design hour angles calculated during survey initialization.
+:Naming Convention: ``surveyinit.fits``
+:Regex: ``surveyinit.fits``
+:File Type: FITS, 36 KB
 
 Contents
 ========
@@ -19,13 +13,12 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  DARK    BINTABLE *Brief Description*
-HDU2_  GRAY    BINTABLE *Brief Description*
-HDU3_  BRIGHT  BINTABLE *Brief Description*
-HDU4_  DESIGN  BINTABLE *Brief Description*
+HDU0_  WEATHER IMAGE    Nightly dome-open fractions assumed to calculate available LST.
+HDU1_  DARK    BINTABLE Summary of hour angle optimization for the DARK program.
+HDU2_  GRAY    BINTABLE Summary of hour angle optimization for the GRAY program.
+HDU3_  BRIGHT  BINTABLE Summary of hour angle optimization for the BRIGHT program.
+HDU4_  DESIGN  BINTABLE Design hours angles for all programs.
 ====== ======= ======== ===================
-
 
 FITS Header Units
 =================
@@ -33,9 +26,11 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = (None)
+EXTNAME = WEATHER
 
-*Summarize the contents of this HDU.*
+Nightly dome-open fractions due to weather that are are assumed when calculating
+the available LST per program, as in input to the design hour-angle optimization.
+These are obtained 
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,23 +38,25 @@ Required Header Keywords
 ======== ====================================================== ==== ==============
 KEY      Example Value                                          Type Comment
 ======== ====================================================== ==== ==============
-NAXIS1   31                                                     int
-FIRST    2020-03-15                                             str
-YEARS    2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017 str
-START    2020-03-15                                             str
-STOP     2020-04-15                                             str
-TWILIGHT F                                                      bool
-EXTNAME  WEATHER                                                str  extension name
+NAXIS1   2556                                                   int  Length of dimension 1.
+FIRST    2019-01-01                                             str  Date of the first tabulated night.
+YEARS    2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017 str  List of years averaged to calculate predicted dome-open fractions.
+START    2019-12-01                                             str  Nominal survey start date used for hour-angle optimization.
+STOP     2024-11-30                                             str  Nominal survey stop date used for hour-angle optimization.
+TWILIGHT F                                                      bool Was twilight included in the BRIGHT program schedule for optimzation?
 ======== ====================================================== ==== ==============
 
-Data: FITS image [float64, 31]
+Data: FITS image [float64, 2556]
+
+The HDU data consists of a 1D array of dome-open fractions estimated by averaging historical weather data. The value at index ``K`` corresponds to the night of ``FIRST`` plus ``K`` days.  Note that dome-open fractions are tabulated for an extended date range
+that covers the nominal survey dates but also commissioning and survey validation.
 
 HDU1
 ----
 
 EXTNAME = DARK
 
-*Summarize the contents of this HDU.*
+Summary of hour angle optimization for the DARK program.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
