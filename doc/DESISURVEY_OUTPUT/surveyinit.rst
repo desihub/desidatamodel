@@ -53,6 +53,9 @@ The HDU data consists of a 1D array of dome-open fractions estimated by averagin
 The value at index ``K`` corresponds to the night of ``FIRST`` plus ``K`` days.  Note that dome-open fractions
 are tabulated for an extended date range that covers the nominal survey dates but also commissioning and survey validation.
 
+Use `load_weather <https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.plan.load_weather>`__
+to read the dome-open fractions as a 1D array, optionally sliced to a specified range of dates.
+
 HDU1
 ----
 
@@ -162,8 +165,7 @@ Required Header Keywords
 ======= ============= ==== =====================
 KEY     Example Value Type Comment
 ======= ============= ==== =====================
-NAXIS1  24            int  length of dimension 1
-NAXIS2  10            int  length of dimension 2
+NAXIS1  16071          int  length of dimension 1
 EXTNAME DESIGN        str  extension name
 ======= ============= ==== =====================
 
@@ -177,6 +179,12 @@ INIT float64 deg   Initial hour angles before optimization.
 HA   float64 deg   Final hour angles after optimization.
 TEXP float64 sec   Irreducible exposure time due to dust extinction and airmass at the design hour angle.
 ==== ======= ===== ===========
+
+Each row of the table corresponds to one tile with indexing that matches ``desisurvey.tiles.Tiles``.
+
+Use `load_design_hourangle
+<https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.plan.load_weather>`__ to read
+the ``HA`` column as a 1D array.
 
 Notes and Examples
 ==================
