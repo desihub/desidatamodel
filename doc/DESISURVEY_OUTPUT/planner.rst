@@ -34,7 +34,7 @@ HDU1
 EXTNAME = PLAN
 
 Snapshot of the internal state of a `desisurvey.plan.Planner
-<https://desisurvey.readthedocs.io/en/latest/api.html?highlight=Planner#desisurvey.plan.Planner>`__
+<https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.plan.Planner>`__
 object.
 
 Required Header Keywords
@@ -66,13 +66,14 @@ PRIORITY  float64       Relative priority for scheduling this tile. Must be >= 0
 The meaning of "covered" is specified by the ``fiber_assignment_order`` configuration parameter,
 which also specifies the starting ``COUNTDOWN`` value for each pass.
 
-Each row of the table corresponds to one tile with indexing that matches ``desisurvey.tiles.Tiles``.
+Each row of the table corresponds to one tile with indexing that matches `desisurvey.tiles.Tiles 
+<https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.tiles.Tiles>`__.
 
 Notes and Examples
 ==================
 
 A `Planner object
-<https://desisurvey.readthedocs.io/en/latest/api.html?highlight=Planner#desisurvey.plan.Planner>`__
+<https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.plan.Planner>`__
 manages updates during afternoon planning::
 
     import desisurvey.rules
