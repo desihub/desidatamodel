@@ -3,8 +3,8 @@ exposures_surveysim
 ===================
 
 :Summary: Record of simulated exposures.
-:Naming Convention: ``explist.fits``
-:Regex: ``explist\.fits``
+:Naming Convention: ``exposures.fits``
+:Regex: ``exposures\.fits``
 :File Type: FITS, 2 MB  (scales with the number of exposures)
 
 *Note*: currently this is only an output from surveysim, but it may become an
@@ -138,8 +138,8 @@ object records exposures during simulation::
     
 Its internal state after a simulation (or each night) can be saved using, for example::
 
-    explist.save('explist.fits', comment='Baseline (seed=1)')
+    explist.save('exposures.fits', comment='Baseline (seed=1)')
     
 This state can then later be restored using::
 
-    explist = surveysim.exposures.ExposureList(restore='explist.fits')
+    explist = surveysim.exposures.ExposureList(restore='exposures.fits')
