@@ -165,7 +165,7 @@ Required Header Keywords
 ======= ============= ==== =====================
 KEY     Example Value Type Comment
 ======= ============= ==== =====================
-NAXIS1  16071          int  length of dimension 1
+NAXIS1  16071         int  length of dimension 1
 EXTNAME DESIGN        str  extension name
 ======= ============= ==== =====================
 
@@ -177,7 +177,7 @@ Name Type    Units Description
 ==== ======= ===== ===========
 INIT float64 deg   Initial hour angles before optimization.
 HA   float64 deg   Final hour angles after optimization.
-TEXP float64 sec   Irreducible exposure time due to dust extinction and airmass at the design hour angle.
+TEXP float64 s     Irreducible exposure time due to dust extinction and airmass at the design hour angle.
 ==== ======= ===== ===========
 
 Each row of the table corresponds to one tile with indexing that matches ``desisurvey.tiles.Tiles``.
