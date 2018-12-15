@@ -21,6 +21,7 @@ for testing.
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $QUICKLOOK : data outputs form QUICKLOOK algorithms <QUICKLOOK/index>
+   $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
    datamodel
    changes
 
