@@ -1,6 +1,6 @@
-===================
-exposures_surveysim
-===================
+=========
+exposures
+=========
 
 :Summary: Record of simulated exposures.
 :Naming Convention: ``exposures.fits``
