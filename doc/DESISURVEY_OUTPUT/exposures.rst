@@ -130,7 +130,7 @@ Notes and Examples
 ==================
 
 An `ExposuresList
-<https://surveysim.readthedocs.io/en/latest/api.html?highlight=ExposureList#surveysim.exposures.ExposureList>`__
+<https://surveysim.readthedocs.io/en/latest/api.html#surveysim.exposures.ExposureList>`__
 object records exposures during simulation::
 
     import surveysim.exposures
