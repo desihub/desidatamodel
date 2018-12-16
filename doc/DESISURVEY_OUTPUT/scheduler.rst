@@ -27,7 +27,7 @@ HDU0
 EXTNAME = SCHED
 
 Snapshot of the internal state of a `Scheduler object
-<https://desisurvey.readthedocs.io/en/latest/api.html?highlight=Planner#desisurvey.scheduler.Scheduler>`__.
+<https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.scheduler.Scheduler>`__.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,12 +42,13 @@ NDONE  3             int  Total number of completed tiles.
 
 Data: FITS image [float64, 16071]
 
-The data is a 1D array of the integrated squared signal-to-noise ratio (SNR) accumulated on each tile so far, relative to the target value.  Tile indexing matches ``desisurvey.tiles.Tiles``.
+The data is a 1D array of the integrated squared signal-to-noise ratio (SNR) accumulated on each tile so far, relative to the target value.  Tile indexing matches `desisurvey.tiles.Tiles 
+<https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.tiles.Tiles>`__.
 
 Notes and Examples
 ==================
 
-A `Scheduler object <https://desisurvey.readthedocs.io/en/latest/api.html?highlight=Planner#desisurvey.scheduler.Scheduler>`__
+A `Scheduler object <https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.scheduler.Scheduler>`__
 schedules observations during each night::
 
     import desisurvey.scheduler
