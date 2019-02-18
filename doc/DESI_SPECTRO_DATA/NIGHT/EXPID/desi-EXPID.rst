@@ -133,7 +133,7 @@ PRESEC4  [4201:4204,2049:4096] str
 DATASEC4 [2153:4200,2049:4096] str
 BIASSEC4 [2103:2152,2049:4096] str
 CCDSEC4  [2049:4096,2049:4096] str
-INHERIT  T                     bool
+INHERIT  T                     bool  https://fits.gsfc.nasa.gov/registry/inherit.html
 ======== ===================== ===== =========================================================
 
 Data: int32 FITS image [ny, nx]
