@@ -6,7 +6,7 @@ desi-EXPID
     HDU per spectrograph camera
 :Naming Convention: ``desi-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
-:Regex: ``desi-[0-9]{8}\.fits.fz``
+:Regex: ``desi-[0-9]{8}\.fits\.fz``
 :File Type: FITS, 500 MB
 
 Contents
@@ -31,7 +31,7 @@ HDU0
 
 EXTNAME = PRIMARY
 
-Blank except for header keywords
+Blank except for header keywords.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,9 +79,6 @@ DEPVER11 0.5                 str
 
 Empty HDU.
 
-TODO:
-
-  * Synchronize with ICS for keywords (e.g. FLAVOR -> PROGRAM)
 
 HDU1
 ----
@@ -149,5 +146,5 @@ Notes and Examples
 Expected Changes
 ================
 
-* Coordinate with ICS for header keywords
-* Add telemetry HDU with contents TBD
+* Coordinate with ICS for header keywords (*e.g.* ``FLAVOR`` -> ``PROGRAM``).
+* Add telemetry HDU with contents TBD.
