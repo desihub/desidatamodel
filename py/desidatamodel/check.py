@@ -278,6 +278,10 @@ class DataModel(DataModelUnit):
             # the detailed policy on EXTNAME.
             #
             try:
+                foo = meta['format']
+            except KeyError:
+                print(metafile)
+            try:
                 meta['extname'] = [l.split()[2] for l in section
                                    if l.startswith('EXTNAME = ')][0]
             except IndexError:
