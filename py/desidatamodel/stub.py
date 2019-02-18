@@ -197,7 +197,12 @@ class Stub(DataModelUnit):
                     extname = self.headers[k]['EXTNAME'].strip()
                 else:
                     extname = ''
-                    log.warning("HDU%d has no EXTNAME set!", k)
+                    #
+                    # Don't complain about missing EXTNAME on primary, empty HDUs.
+                    # See https://github.com/desihub/desidatamodel/issues/69
+                    #
+                    if k > 0:
+                        log.warning("HDU%d has no EXTNAME set!", k)
                 if k > 0:
                     if 'ZTENSION' in self.headers[k]:
                         exttype = self.headers[k]['ZTENSION'].strip()

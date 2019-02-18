@@ -250,17 +250,6 @@ class DataModel(DataModelUnit):
                             log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                                       bad_unit, mk[0], k, metafile)
             try:
-                meta['extname'] = [l.split()[2] for l in section
-                                   if l.startswith('EXTNAME = ')][0]
-            except IndexError:
-                meta['extname'] = ''
-                m = "HDU %d in %s has no EXTNAME!"
-                if error:
-                    log.critical(m, k, metafile)
-                    raise DataModelError(m % (k, metafile))
-                else:
-                    log.warning(m, k, metafile)
-            try:
                 rhk = section.index('Required Header Keywords')
             except ValueError:
                 meta['keywords'] = []
@@ -284,6 +273,37 @@ class DataModel(DataModelUnit):
                         if bad_unit:
                             log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                                       bad_unit, mk[0], k, metafile)
+            #
+            # See https://github.com/desihub/desidatamodel/issues/69 for
+            # the detailed policy on EXTNAME.
+            #
+            try:
+                meta['extname'] = [l.split()[2] for l in section
+                                   if l.startswith('EXTNAME = ')][0]
+            except IndexError:
+                meta['extname'] = ''
+                if (k > 0 or (k == 0 and meta['format'] != 'Empty HDU.')):
+                    m = "HDU %d in %s has no EXTNAME!"
+                    if error:
+                        log.critical(m, k, metafile)
+                        raise DataModelError(m % (k, metafile))
+                    else:
+                        log.warning(m, k, metafile)
+                else:
+                    if k == 0 and meta['format'] == 'Empty HDU.':
+                        if len(meta['keywords']) > 0:
+                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY'."
+                            log.warning(m, k, metafile)
+            else:
+                if k == 0:
+                    if meta['format'] == 'Empty HDU.':
+                        if len(meta['keywords']) > 0:
+                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY'."
+                            log.warning(m, k, metafile)
+                    else:
+                        if meta['extname'] == 'PRIMARY':
+                            m = "HDU %d in %s should have a more meaningful EXTNAME than 'PRIMARY'."
+                            log.warning(m, k, metafile)
             self.hdumeta.append(meta)
         return self.hdumeta
 
@@ -358,7 +378,7 @@ class DataModel(DataModelUnit):
             #
             dexex = stub_meta[i]['extname']
             mexex = modelmeta[i]['extname']
-            if dexex == '':
+            if dexex == '' and i > 0:
                 log.warning("Prototype file %s has no EXTNAME in HDU%d.",
                             self.prototype, i)
             if (dexex != '' and mexex != '' and dexex != mexex):
