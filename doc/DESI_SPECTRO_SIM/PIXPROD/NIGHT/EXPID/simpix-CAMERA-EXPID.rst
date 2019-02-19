@@ -1,30 +1,16 @@
-=================
+======
 simpix
-=================
+======
 
-General Description
-===================
+:Summary: simpix files contain the noiseless CCD pixel image.
+    The corresponding pix-\*.fits files contain the noisy realization of this
+    image like the real data would see.  It optionally contains the x and y
+    trace locations vs. wavelength.
+:Naming Convention: ``simpix-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is the spectrograph
+    camera, *e.g.* b0, r1, z9; and ``{EXPID}`` is the 8-digit exposure ID.
+:Regex: ``simpix-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 128 MB
 
-Summary
--------
-
-simpix files contain the noiseless CCD pixel image.
-The corresponding pix-\*.fits files contain the noisy realization of this
-image like the real data would see.  It optionally contains the x and y
-trace locations vs. wavelength.
-
-Naming Convention
------------------
-
-``simpix-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is the spectrograph
-camera, e.g. b0, r1, z9; and ``{EXPID}`` is the 8-digit exposure ID.
-
-regex: ``simpix-[brz][0-9]{1}-[0-9]{8}.fits``
-
-File Type
----------
-
-FITS, 128 MB
 Contents
 ========
 
@@ -57,6 +43,8 @@ NAXIS1   4096          int  Number of pixels in y (wavelength direction)
 NAXIS2   4096          int  Number of pixels in x (fiber direction)
 VSPECTER 0.0.0         str  Specter version used to simulate this image
 ======== ============= ==== =====================
+
+Data: FITS image [float64]
 
 HDU1
 ----

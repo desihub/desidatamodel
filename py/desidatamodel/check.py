@@ -274,13 +274,18 @@ class DataModel(DataModelUnit):
                             log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                                       bad_unit, mk[0], k, metafile)
             #
-            # See https://github.com/desihub/desidatamodel/issues/69 for
-            # the detailed policy on EXTNAME.
+            # Need to know the format by this point!
             #
             try:
                 foo = meta['format']
             except KeyError:
-                print(metafile)
+                m = "Unable to determine format for HDU %d in %s!"
+                log.critical(m, k, metafile)
+                raise DataModelError(m % (k, metafile))
+            #
+            # See https://github.com/desihub/desidatamodel/issues/69 for
+            # the detailed policy on EXTNAME.
+            #
             try:
                 meta['extname'] = [l.split()[2] for l in section
                                    if l.startswith('EXTNAME = ')][0]

@@ -16,17 +16,17 @@ spPlate
 Contents
 ========
 
-====== ======== ============================== ================================================================
-Number EXTNAME  Type                           Contents
-====== ======== ============================== ================================================================
-HDU0_  FLUX     NPIX x NFIBER float image      Flux in units of |flux|.
-HDU1_  IVAR     NPIX x NFIBER float image      Inverse variance (\ :math:`1/\sigma^2`) for HDU 0
-HDU2_  ANDMASK  NPIX x NFIBER 32-bit int image AND mask
-HDU3_  ORMASK   NPIX x NFIBER 32-bit int image OR mask
-HDU4_  WAVEDISP NPIX x NFIBER float image      Wavelength dispersion in pixels
-HDU5_  PLUGMAP  binary table                   Plug-map structure from plPlugMapM file
-HDU6_  SKY      NPIX x NFIBER float image      Average sky flux in units of |flux|.
-====== ======== ============================== ================================================================
+====== ======== ======== =================================================
+Number EXTNAME  Type     Contents
+====== ======== ======== =================================================
+HDU0_  FLUX     IMAGE    Flux in units of |flux|.
+HDU1_  IVAR     IMAGE    Inverse variance (\ :math:`1/\sigma^2`) for HDU 0
+HDU2_  ANDMASK  IMAGE    AND mask
+HDU3_  ORMASK   IMAGE    OR mask
+HDU4_  WAVEDISP IMAGE    Wavelength dispersion in pixels
+HDU5_  PLUGMAP  BINTABLE Plug-map structure from plPlugMapM file
+HDU6_  SKY      IMAGE    Average sky flux in units of |flux|.
+====== ======== ======== =================================================
 
 .. |flux| replace:: 10\ :sup:`-17` erg/s/cm\ :sup:`2`\ /Å
 
@@ -39,42 +39,40 @@ HDU0
 
 EXTNAME = FLUX
 
-FITS Image: Spectra
+Data: FITS image [float64]
 
 HDU1
 ----
 
 EXTNAME = IVAR
 
-FITS Image: Inverse variance
+Data: FITS image [float64]
 
 HDU2
 ----
 
 EXTNAME = ANDMASK
 
-FITS Image: AND mask
+Data: FITS image [int32]
 
 HDU3
 ----
 
 EXTNAME = ORMASK
 
-FITS Image: OR mask
+Data: FITS image [int32]
 
 HDU4
 ----
 
 EXTNAME = WAVEDISP
 
-FITS Image: Wavelength dispersion
+Data: FITS image [float64]
 
 HDU5
 ----
 
 EXTNAME = PLUGMAP
-
-FITS Binary Table: Plugmap information
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,8 +90,8 @@ GCOUNT   1         int  Required value
 TFIELDS  34        int  Number of columns in table
 ======== ========= ==== ========================================
 
-Required Columns
-~~~~~~~~~~~~~~~~
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ================= ======== =======
 Column            Type     Comment
@@ -154,6 +152,9 @@ NAXIS    2      int  Number of data axes
 NAXIS1   NPIX   int  Width
 NAXIS2   NFIBER int  Height
 ======== ====== ==== ========================================
+
+Data: FITS image [float64]
+
 
 Notes and Examples
 ==================
