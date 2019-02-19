@@ -161,7 +161,7 @@ class TestCheck(DataModelTestCase):
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
         meta = model.extract_metadata(error=False)
-        self.assertLog(log, -1, "HDU 0 in /home/weaver/Documents/Code/git/desihub/desidatamodel/py/desidatamodel/test/t/fits_file.rst should have a more meaningful EXTNAME than 'PRIMARY'.")
+        self.assertLog(log, -1, "HDU 0 in {0} should have a more meaningful EXTNAME than 'PRIMARY'.".format(modelfile))
         self.assertLog(log, -2, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
 
     def test_extract_metadata_missing_keyword_unit(self):
@@ -177,7 +177,7 @@ class TestCheck(DataModelTestCase):
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "Missing type for keyword BUNIT in HDU 0 of {0}!".format(modelfile))
         meta = model.extract_metadata(error=False)
-        self.assertLog(log, -1, "HDU 0 in /home/weaver/Documents/Code/git/desihub/desidatamodel/py/desidatamodel/test/t/fits_file.rst should have a more meaningful EXTNAME than 'PRIMARY'.")
+        self.assertLog(log, -1, "HDU 0 in {0} should have a more meaningful EXTNAME than 'PRIMARY'.".format(modelfile))
         self.assertLog(log, -2, "Missing type for keyword BUNIT in HDU 0 of {0}!".format(modelfile))
 
     def test_extract_metadata_bad_column_unit(self):
