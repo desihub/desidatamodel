@@ -16,12 +16,13 @@ There is one HDU per spectrograph camera with EXTNAMEs like
 B0, B1, ... R0, R1, ... Z8, Z9.  The structure of each of these is
 the same; only one is explicitly documented below.
 
-====== ======= ===== ===================
-Number EXTNAME Type  Contents
-====== ======= ===== ===================
-HDU0_  PRIMARY IMAGE Blank except for header keywords
-HDU1_  B0      IMAGE Raw data from the b0 spectrograph
-====== ======= ===== ===================
+================= ======= ===== ====================================
+Number            EXTNAME Type  Contents
+================= ======= ===== ====================================
+HDU0_             PRIMARY IMAGE Blank except for header keywords
+HDU1_             B0      IMAGE Raw data from the b0 spectrograph
+`HDU2 -- HDU30`_  various IMAGE Raw data similar to b0 spectrograph.
+================= ======= ===== ====================================
 
 FITS Header Units
 =================
@@ -137,6 +138,13 @@ INHERIT  T                     bool  https://fits.gsfc.nasa.gov/registry/inherit
 ======== ===================== ===== =========================================================
 
 Data: int32 FITS image [ny, nx]
+
+HDU2 -- HDU30
+-------------
+
+EXTNAME = spectrographs(B1, Z9)
+
+Data: See B0.
 
 Notes and Examples
 ==================

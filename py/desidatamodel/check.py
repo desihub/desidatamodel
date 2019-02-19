@@ -26,37 +26,31 @@ class DataModel(DataModelUnit):
         The full path of the data model file.
     section : :class:`str`
         The full path to the section of the data model containing the file.
-
-    Attributes
-    ----------
-    d2r : :class:`dict`
-        A mapping of human-readable metavariables to regular expressions.
-    hduline : regular expression
-        Matches HDU section headers.
-    refline : regular expression
-        Matches lines that contain cross-references.
-    regexpline : regular expression
-        Matches lines that contain regular expressions.
-    tableboundary : regular expression
-        Matches table borders.
     """
 
-    d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
-           'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
-           'NIGHT': '[0-9]{8}',  # YYYYMMDD
-           'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
-           'CAMERA': '[brz][0-9]',  # e.g. b0, r7
-           'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
-           'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
-           'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
-           'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
-           'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
-           'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
-           }
-    hduline = re.compile(r'HDU\d+$')
-    regexpline = re.compile(r':?regexp?:', re.I)
-    refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
-    tableboundary = re.compile(r'[= ]+$')
+    # A mapping of human-readable metavariables to regular expressions.
+    _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
+            'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
+            'NIGHT': '[0-9]{8}',  # YYYYMMDD
+            'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
+            'CAMERA': '[brz][0-9]',  # e.g. b0, r7
+            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
+            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
+            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
+            'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
+            'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
+            'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
+            }
+    # Matches HDU section headers.
+    _hduline = re.compile(r'HDU(\d+)$')
+    # Match HDU range specifications.
+    _hduspan = re.compile(r'HDU(\d+)[-: ]+HDU(\d+)$')
+    # Matches lines that contain regular expressions.
+    _regexpline = re.compile(r':?regexp?:', re.I)
+    # Matches lines that contain cross-references.
+    _refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
+    # Matches table borders.
+    _tableboundary = re.compile(r'[= ]+$')
 
     def __init__(self, filename, section):
         self.filename = filename
@@ -100,11 +94,11 @@ class DataModel(DataModelUnit):
                     log.debug("Cross reference detected %s -> %s.",
                               self.filename, self.ref)
                     break
-                if self.regexpline.match(line) is not None:
+                if self._regexpline.match(line) is not None:
                     d = os.path.dirname(self.filename).replace(self.section,
                                                                root)
-                    for k in self.d2r:
-                        d = d.replace(k, self.d2r[k])
+                    for k in self._d2r:
+                        d = d.replace(k, self._d2r[k])
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
                     break
@@ -117,11 +111,11 @@ class DataModel(DataModelUnit):
                     # if line.startswith('See :doc:'):
                     #     self.ref = self._cross_reference(line)
                     #     break
-                    if self.regexpline.match(line) is not None:
+                    if self._regexpline.match(line) is not None:
                         d = os.path.dirname(self.filename).replace(self.section,
                                                                    root)
-                        for k in self.d2r:
-                            d = d.replace(k, self.d2r[k])
+                        for k in self._d2r:
+                            d = d.replace(k, self._d2r[k])
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
                         break
@@ -148,7 +142,7 @@ class DataModel(DataModelUnit):
             The path to the referenced file.
         """
         ref = None
-        m = self.refline.match(line)
+        m = self._refline.match(line)
         if m is not None:
             r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
                                              m.groups()[0]))
@@ -208,13 +202,45 @@ class DataModel(DataModelUnit):
                 self._metafile_data = f.read()
         lines = self._metafile_data.split('\n')
         hdu_sections = [i for i, l in enumerate(lines)
-                        if self.hduline.match(l) is not None]
+                        if (self._hduline.match(l) is not None or
+                            self._hduspan.match(l) is not None)]
         self.hdumeta = list()
         for k in range(len(hdu_sections)):
             try:
                 section = lines[hdu_sections[k]:hdu_sections[k+1]]
             except IndexError:
                 section = lines[hdu_sections[k]:]
+            m = self._hduspan.match(section[0])
+            if m is not None:
+                #
+                # Detected HDU span.
+                #
+                g = m.groups()
+                spanstart = int(g[0])
+                spanend = int(g[1])
+                log.debug('Detected range specification from HDU %d to HDU %d',
+                          spanstart, spanend)
+                spanref = [l for l in section if l.startswith('Data:')][0]
+                spanext = spanref[spanref.lower().index('see') + 4:].replace('.', '')
+                spanmeta = [m for m in self.hdumeta if m['extname'] == spanext][0]
+                spanname = [l.split('=')[1].strip() for l in section
+                            if l.startswith('EXTNAME = ')][0]
+                if spanname.startswith('spectrographs'):
+                    extnames = list()
+                    for c in 'BRZ':
+                        for n in range(10):
+                            extnames.append('{0}{1:d}'.format(c, n))
+                else:
+                    extnames = [p.strip() for p in spanname.split(',')]
+                for l in range(spanstart, spanend+1):
+                    meta = dict()
+                    meta['title'] = 'HDU{0:d}'.format(l)
+                    meta['extname'] = extnames[l-1]
+                    meta['extension'] = spanmeta['extension']
+                    meta['format'] = spanmeta['format']
+                    meta['keywords'] = spanmeta['keywords']
+                    self.hdumeta.append(meta)
+                continue
             meta = dict()
             meta['title'] = section[0]
             if 'Empty HDU.' in section:
@@ -231,7 +257,7 @@ class DataModel(DataModelUnit):
             if rdtc is not None:
                 meta['extension'] = 'BINTABLE'
                 table = [i for i, l in enumerate(section[rdtc:])
-                         if self.tableboundary.match(l) is not None][1:3]
+                         if self._tableboundary.match(l) is not None][1:3]
                 columns = list(map(len, section[rdtc:][table[0]].split()))
                 table_lines = section[rdtc:][table[0]+1:table[1]]
                 meta['format'] = [self._extract_columns(t, columns)
@@ -255,7 +281,7 @@ class DataModel(DataModelUnit):
                 meta['keywords'] = []
             else:
                 table = [i for i, l in enumerate(section[rhk:])
-                         if self.tableboundary.match(l) is not None][1:3]
+                         if self._tableboundary.match(l) is not None][1:3]
                 columns = list(map(len, section[rhk:][table[0]].split()))
                 table_lines = section[rhk:][table[0]+1:table[1]]
                 meta['keywords'] = [self._extract_columns(t, columns)
