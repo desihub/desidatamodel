@@ -149,10 +149,8 @@ Data: See B0.
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
-
 Expected Changes
-================
+----------------
 
 * Coordinate with ICS for header keywords (*e.g.* ``FLAVOR`` -> ``PROGRAM``).
 * Add telemetry HDU with contents TBD.
