@@ -272,15 +272,15 @@ VESSEL    2                                   int
 CDSPARAMS na, na, na, na                      str
 CHECKSUM  9aEAAZB53aBA9YB5                    str   HDU checksum updated 2019-02-20T21:27:58
 DATASUM   1562144619                          str   data unit checksum updated 2019-02-20T21:27:58
-GAINA    1.0                                  float Gains from ICS **MISSING**
-GAINB    1.0                                  float **MISSING**
-GAINC    1.0                                  float **MISSING**
-GAIND    1.0                                  float **MISSING**
-RDNOISEA 3.0                                  float Expected readnoise from ICS, not measured from these data **MISSING**
-RDNOISEB 3.0                                  float **MISSING**
-RDNOISEC 3.0                                  float **MISSING**
-RDNOISED 3.0                                  float **MISSING**
-INHERIT  T                                    bool  https://fits.gsfc.nasa.gov/registry/inherit.html **MISSING**
+GAINA     1.0                                 float Gains from ICS **MISSING**
+GAINB     1.0                                 float **MISSING**
+GAINC     1.0                                 float **MISSING**
+GAIND     1.0                                 float **MISSING**
+RDNOISEA  3.0                                 float Expected readnoise from ICS, not measured from these data **MISSING**
+RDNOISEB  3.0                                 float **MISSING**
+RDNOISEC  3.0                                 float **MISSING**
+RDNOISED  3.0                                 float **MISSING**
+INHERIT   T                                   bool  https://fits.gsfc.nasa.gov/registry/inherit.html **MISSING**
 ========= =================================== ===== ==============================================
 
 Data: FITS image [int16 (compressed), 4256x4194]
@@ -288,7 +288,7 @@ Data: FITS image [int16 (compressed), 4256x4194]
 HDU3 -- HDU31
 -------------
 
-EXTNAME = spectrographs(B1, Z9)
+EXTNAME = B1, B2, B3, B4, B5, B6, B7, B8, B9, R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, Z0, Z1, Z2, Z3, Z4, Z5, Z6, Z7, Z8, Z9
 
 Data: See B0.
 
@@ -308,6 +308,7 @@ Problems
   Make sure that the images are actually compressed *as extensions*, not as
   individual images that are then shoved into an HDU.
 * See also notes on individual HDUs.
+* How will the spectrographs actually be ordered in the file?
 
 Expected Changes
 ----------------

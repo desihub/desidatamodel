@@ -225,21 +225,20 @@ class DataModel(DataModelUnit):
                 spanmeta = [m for m in self.hdumeta if m['extname'] == spanext][0]
                 spanname = [l.split('=')[1].strip() for l in section
                             if l.startswith('EXTNAME = ')][0]
-                if spanname.startswith('spectrographs'):
-                    extnames = list()
-                    for c in 'BRZ':
-                        for n in range(10):
-                            extnames.append('{0}{1:d}'.format(c, n))
+                extnames = [p.strip() for p in spanname.split(',')]
+                if len(range(spanstart, spanend+1)) == len(extnames):
+                    for i, l in enumerate(range(spanstart, spanend+1)):
+                        meta = dict()
+                        meta['title'] = 'HDU{0:d}'.format(l)
+                        meta['extname'] = extnames[i]
+                        meta['extension'] = spanmeta['extension']
+                        meta['format'] = spanmeta['format']
+                        meta['keywords'] = spanmeta['keywords']
+                        self.hdumeta.append(meta)
                 else:
-                    extnames = [p.strip() for p in spanname.split(',')]
-                for l in range(spanstart, spanend+1):
-                    meta = dict()
-                    meta['title'] = 'HDU{0:d}'.format(l)
-                    meta['extname'] = extnames[l-1]
-                    meta['extension'] = spanmeta['extension']
-                    meta['format'] = spanmeta['format']
-                    meta['keywords'] = spanmeta['keywords']
-                    self.hdumeta.append(meta)
+                    log.warning(('Range specification from HDU %d to HDU %d ' +
+                                 'does not have a matching EXTNAME specification'),
+                                 spanstart, spanend)
                 continue
             meta = dict()
             meta['title'] = section[0]
