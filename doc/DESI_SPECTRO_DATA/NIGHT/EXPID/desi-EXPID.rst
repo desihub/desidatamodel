@@ -19,10 +19,10 @@ the same; only one is explicitly documented below.
 ================= ========= ======== ====================================
 Number            EXTNAME   Type     Contents
 ================= ========= ======== ====================================
-HDU0_             SP0       IMAGE    Blank except for header keywords
-HDU1_             SPECTCON0 BINTABLE Telemetry data
-HDU2_             B0        IMAGE    Raw data from the b0 spectrograph
-`HDU3 -- HDU31`_  various   IMAGE    Raw data similar to b0 spectrograph.
+HDU0_             SPS       IMAGE    Blank except for header keywords
+HDU1_             B0        IMAGE    Raw data from the b0 spectrograph
+`HDU2 -- HDU30`_  various   IMAGE    Raw data similar to b0 spectrograph.
+HDU31_            SPECCONS  BINTABLE Telemetry data
 ================= ========= ======== ====================================
 
 FITS Header Units
@@ -31,7 +31,7 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = SP0
+EXTNAME = SPS
 
 Blank except for header keywords.
 
@@ -80,75 +80,6 @@ DEPVER00 3.5.2                                                      str   **MISS
 Empty HDU.
 
 HDU1
-----
-
-EXTNAME = SPECTCON0
-
-This is a telemetry table.  Note that some of the column names contain a hyphen,
-*e.g.* ``DATE-OBS``.  This not a great idea, because some FITS readers may
-interpret the hyphen as a minus sign.  Also note that all the columns are
-upper-case except for ``unit``.
-
-Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   208              int  width of table in bytes
-NAXIS2   1                int  number of rows in table
-EXPID    1000             int  Exposure number
-EXPFRAME 0                int  Frame number
-SPECGRPH SP0              str  Spectrograph name
-DEVICE   SPECTCON0        str  Device/controller name
-CHECKSUM BEcVECcUBCcUBCcU str  HDU checksum updated 2019-02-20T21:27:57
-DATASUM  1390334580       str  data unit checksum updated 2019-02-20T21:27:57
-======== ================ ==== ==============================================
-
-Required Data Table Columns
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-======== ======== ===== ===================
-Name     Type     Units Description
-======== ======== ===== ===================
-unit     int32          label for field   1
-DATE-OBS char[26]       label for field   2
-TIME-OBS char[15]       label for field   3
-MJD-OBS  float32        label for field   4
-ST       char[12]       label for field   5
-OBSID    char[19]       label for field   6
-STATUS   char[5]        label for field   7
-HARTL    char[4]        label for field   8
-HARTLP   char[3]        label for field   9
-HARTR    char[4]        label for field  10
-HARTRP   char[3]        label for field  11
-WAGO     char[5]        label for field  12
-NIRSHUT  char[4]        label for field  13
-NIRSEAL  char[8]        label for field  14
-NIRPOW   char[2]        label for field  15
-EXPSHUT  char[6]        label for field  16
-EXPSEAL  char[8]        label for field  17
-EXPPOW   char[2]        label for field  18
-ILLUM    char[8]        label for field  19
-NIRTEMP  float32        label for field  20
-NIRHUMID float32        label for field  21
-BLUTEMP  float32        label for field  22
-BLUHUMID float32        label for field  23
-REDTEMP  float32        label for field  24
-REDHUMID float32        label for field  25
-MIRROR   char[3]        label for field  26
-MOUNT    char[3]        label for field  27
-NIRDICHR char[3]        label for field  28
-REDDICHR char[3]        label for field  29
-BLUEVPHG char[7]        label for field  30
-REDVPHG  char[7]        label for field  31
-NIRVPHG  char[7]        label for field  32
-BLUECAM  char[3]        label for field  33
-REDCAM   char[3]        label for field  34
-NIRCAM   char[3]        label for field  35
-======== ======== ===== ===================
-
-HDU2
 ----
 
 EXTNAME = B0
@@ -285,12 +216,82 @@ INHERIT   T                                   bool  https://fits.gsfc.nasa.gov/r
 
 Data: FITS image [int16 (compressed), 4256x4194]
 
-HDU3 -- HDU31
+HDU2 -- HDU30
 -------------
 
 EXTNAME = B1, B2, B3, B4, B5, B6, B7, B8, B9, R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, Z0, Z1, Z2, Z3, Z4, Z5, Z6, Z7, Z8, Z9
 
 Data: See B0.
+
+HDU31
+-----
+
+EXTNAME = SPECCONS
+
+This is a telemetry table.  Note that some of the column names contain a hyphen,
+*e.g.* ``DATE-OBS``.  This not a great idea, because some FITS readers may
+interpret the hyphen as a minus sign.  Also note that all the columns are
+upper-case except for ``unit``.
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   208              int  width of table in bytes
+NAXIS2   1                int  number of rows in table
+EXPID    1000             int  Exposure number
+EXPFRAME 0                int  Frame number
+SPECGRPH SP0              str  Spectrograph name
+DEVICE   SPECTCON0        str  Device/controller name
+CHECKSUM BEcVECcUBCcUBCcU str  HDU checksum updated 2019-02-20T21:27:57
+DATASUM  1390334580       str  data unit checksum updated 2019-02-20T21:27:57
+======== ================ ==== ==============================================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ======== ===== ===================
+Name     Type     Units Description
+======== ======== ===== ===================
+unit     int32          label for field   1
+DATE-OBS char[26]       label for field   2
+TIME-OBS char[15]       label for field   3
+MJD-OBS  float32        label for field   4
+ST       char[12]       label for field   5
+OBSID    char[19]       label for field   6
+STATUS   char[5]        label for field   7
+HARTL    char[4]        label for field   8
+HARTLP   char[3]        label for field   9
+HARTR    char[4]        label for field  10
+HARTRP   char[3]        label for field  11
+WAGO     char[5]        label for field  12
+NIRSHUT  char[4]        label for field  13
+NIRSEAL  char[8]        label for field  14
+NIRPOW   char[2]        label for field  15
+EXPSHUT  char[6]        label for field  16
+EXPSEAL  char[8]        label for field  17
+EXPPOW   char[2]        label for field  18
+ILLUM    char[8]        label for field  19
+NIRTEMP  float32        label for field  20
+NIRHUMID float32        label for field  21
+BLUTEMP  float32        label for field  22
+BLUHUMID float32        label for field  23
+REDTEMP  float32        label for field  24
+REDHUMID float32        label for field  25
+MIRROR   char[3]        label for field  26
+MOUNT    char[3]        label for field  27
+NIRDICHR char[3]        label for field  28
+REDDICHR char[3]        label for field  29
+BLUEVPHG char[7]        label for field  30
+REDVPHG  char[7]        label for field  31
+NIRVPHG  char[7]        label for field  32
+BLUECAM  char[3]        label for field  33
+REDCAM   char[3]        label for field  34
+NIRCAM   char[3]        label for field  35
+======== ======== ===== ===================
+
 
 Notes and Examples
 ==================
