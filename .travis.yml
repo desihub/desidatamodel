@@ -36,7 +36,8 @@ env:
         # overidden underneath. They are defined here in order to save having
         # to repeat them for all configurations.
         - MAIN_CMD='python setup.py'
-        - DESIUTIL_VERSION=1.9.11
+        - DESIUTIL_VERSION=1.9.15
+        - SPHINX_VERSION=1.8.5
     matrix:
         - SETUP_CMD='egg_info'
         - SETUP_CMD='bdist_egg'
