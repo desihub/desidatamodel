@@ -222,10 +222,10 @@ NAXIS1   8                                   int   width of table in bytes
 NAXIS2   4194                                int   number of rows in table
 BZERO    32768                               int   offset data range to that of unsigned short
 BSCALE   1                                   int   default scaling factor
-INSTRUME DESI                                str  Instrument name
-PROCTYPE RAW                                 str  Data processing level
-PRODTYPE image                               str  Data product type
-PROGRAM  spec tests                          str  Program name
+INSTRUME DESI                                str   Instrument name
+PROCTYPE RAW                                 str   Data processing level
+PRODTYPE image                               str   Data product type
+PROGRAM  spec tests                          str   Program name
 EXPID    1209                                int   Exposure number
 EXPFRAME 0                                   int   Frame number
 FILENAME .../sp0-00001209.fits.fz            str   Name
