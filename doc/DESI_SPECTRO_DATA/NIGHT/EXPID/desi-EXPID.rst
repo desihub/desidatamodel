@@ -20,9 +20,9 @@ the same; only one is explicitly documented below.
 Number            EXTNAME   Type     Contents
 ================= ========= ======== ====================================
 HDU0_             SPS       IMAGE    Blank except for header keywords
-HDU1_             B0        IMAGE    Raw data from the b0 spectrograph
-`HDU2 -- HDU30`_  various   IMAGE    Raw data similar to b0 spectrograph.
-HDU31_            SPECTCONS BINTABLE Telemetry data
+HDU1_             z0        IMAGE    Raw data from the b0 spectrograph
+`HDU2 -- HDU6`_   various   IMAGE    Raw data similar to b0 spectrograph.
+HDU7_             SPECTCONS BINTABLE Telemetry data
 ================= ========= ======== ====================================
 
 FITS Header Units
@@ -353,15 +353,15 @@ INHERIT  T                                   bool  https://fits.gsfc.nasa.gov/re
 
 Data: FITS image [int16 (compressed), 4256x4194]
 
-HDU2 -- HDU30
--------------
+HDU2 -- HDU6
+------------
 
-EXTNAME = B1, B2, B3, B4, B5, B6, B7, B8, B9, R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, Z0, Z1, Z2, Z3, Z4, Z5, Z6, Z7, Z8, Z9
+EXTNAME = R0, B0, Z2, R2, B2
 
-Data: See B0.
+Data: See Z0.
 
-HDU31
------
+HDU7
+----
 
 EXTNAME = SPECTCONS
 
@@ -468,6 +468,8 @@ of spectrographs, why does the array length need to be variable.
 Why are many duplicate keywords present in SPECTCONS?  Can't we just use INHERIT?
 
 Does ``MJD-OBS`` save sufficient decimal precision to actually reconstruct ``DATE-OBS`` to microsecond precision?
+
+I have temporarily reduced the number of HDUs to match the available spectrographs as of April 2019.
 
 I have noted problems with individual header keywords or table columns using these terms:
 
