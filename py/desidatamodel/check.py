@@ -238,7 +238,7 @@ class DataModel(DataModelUnit):
                 else:
                     log.warning(('Range specification from HDU %d to HDU %d ' +
                                  'does not have a matching EXTNAME specification'),
-                                 spanstart, spanend)
+                                spanstart, spanend)
                 continue
             meta = dict()
             meta['title'] = section[0]
