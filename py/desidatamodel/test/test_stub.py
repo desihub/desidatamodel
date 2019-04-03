@@ -401,9 +401,9 @@ class TestStub(DataModelTestCase):
         """Test the translation of FITS column format strings.
         """
         formats = {
-            '1PB': '8-bit stream',
-            '1PI': '16-bit stream',
-            '1PJ': '32-bit stream',
+            '1PB(5)': '8-bit stream',
+            '1PI(10)': '16-bit stream',
+            '1PJ(15)': '32-bit stream',
             'A': 'char[1]',
             'B': 'binary',
             'L': 'logical',
