@@ -560,7 +560,7 @@ def fits_column_format(format):
     >>> fits_column_format('12E')
     'float32[12]'
     """
-    m = re.match(r'(0|1|)P([A-Z])\([0-9]+\)', format)
+    m = re.match(r'(0|1|)[PQ]([A-Z])\([0-9]+\)', format)
     if m is not None:
         t = m.groups()
         cmap = {'A': 'char stream',

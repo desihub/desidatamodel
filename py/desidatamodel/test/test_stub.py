@@ -403,7 +403,7 @@ class TestStub(DataModelTestCase):
         formats = {
             '1PB(5)': '8-bit stream',
             '1PI(10)': '16-bit stream',
-            '1PJ(15)': '32-bit stream',
+            '1QJ(15)': '32-bit stream',
             'A': 'char[1]',
             'B': 'binary',
             'L': 'logical',
