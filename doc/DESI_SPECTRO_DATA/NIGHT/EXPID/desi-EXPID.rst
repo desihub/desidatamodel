@@ -208,9 +208,9 @@ Empty HDU.
 HDU1
 ----
 
-EXTNAME = B0
+EXTNAME = Z0
 
-Unprocessed spectrograph raw data, including overscans, from camera B0.
+Unprocessed spectrograph raw data, including overscans, from camera Z0.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
