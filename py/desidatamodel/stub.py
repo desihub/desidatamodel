@@ -8,6 +8,7 @@ desidatamodel.stub
 Generate data model files from FITS files.
 """
 import os
+import re
 from html import escape
 from astropy.io import fits
 
@@ -559,10 +560,15 @@ def fits_column_format(format):
     >>> fits_column_format('12E')
     'float32[12]'
     """
-    if format.startswith('1P'):
-        cmap = {'B': '8-bit stream', 'I': '16-bit stream',
-                'J': '32-bit stream'}
-        return cmap[format[2]]
+    m = re.match(r'(0|1|)P([A-Z])\([0-9]+\)', format)
+    if m is not None:
+        t = m.groups()
+        cmap = {'A': 'char stream',
+                'B': '8-bit stream',
+                'I': '16-bit stream',
+                'J': '32-bit stream',
+                'K': '64-bit stream'}
+        return cmap[t[1]]
     fitstype = format[-1]
     if fitstype == 'A' and len(format) == 1:
         return 'char[1]'
