@@ -8,6 +8,7 @@ desidatamodel.stub
 Generate data model files from FITS files.
 """
 import os
+import re
 from html import escape
 from astropy.io import fits
 
@@ -197,7 +198,12 @@ class Stub(DataModelUnit):
                     extname = self.headers[k]['EXTNAME'].strip()
                 else:
                     extname = ''
-                    log.warning("HDU%d has no EXTNAME set!", k)
+                    #
+                    # Don't complain about missing EXTNAME on primary, empty HDUs.
+                    # See https://github.com/desihub/desidatamodel/issues/69
+                    #
+                    if k > 0:
+                        log.warning("HDU%d has no EXTNAME set!", k)
                 if k > 0:
                     if 'ZTENSION' in self.headers[k]:
                         exttype = self.headers[k]['ZTENSION'].strip()
@@ -495,7 +501,7 @@ def extrakey(key):
     if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
         return False
     # Compression-specific keywords
-    if match(r'Z(IMAGE|TENSION|BITPIX|NAXIS|NAXIS1|NAXIS2|PCOUNT|GCOUNT|TILE1|TILE2|CMPTYPE|NAME1|VAL1|NAME2|VAL2|HECKSUM|DATASUM)', key) is not None:
+    if match(r'Z(SIMPLE|IMAGE|TENSION|BITPIX|NAXIS|NAXIS1|NAXIS2|PCOUNT|GCOUNT|TILE1|TILE2|CMPTYPE|NAME1|VAL1|NAME2|VAL2|HECKSUM|DATASUM)', key) is not None:
         return False
     # Dependency list
     if match(r'DEP(NAM|VER)\d+', key) is not None:
@@ -554,10 +560,15 @@ def fits_column_format(format):
     >>> fits_column_format('12E')
     'float32[12]'
     """
-    if format.startswith('1P'):
-        cmap = {'B': '8-bit stream', 'I': '16-bit stream',
-                'J': '32-bit stream'}
-        return cmap[format[2]]
+    m = re.match(r'(0|1|)[PQ]([A-Z])\([0-9]+\)', format)
+    if m is not None:
+        t = m.groups()
+        cmap = {'A': 'char stream',
+                'B': '8-bit stream',
+                'I': '16-bit stream',
+                'J': '32-bit stream',
+                'K': '64-bit stream'}
+        return cmap[t[1]]
     fitstype = format[-1]
     if fitstype == 'A' and len(format) == 1:
         return 'char[1]'

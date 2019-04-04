@@ -121,8 +121,8 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist)
         self.assertEqual(stub.nhdr, 3)
         meta = stub.hdumeta
-        self.assertLog(log, 0, 'HDU0 has no EXTNAME set!')
-        self.assertLog(log, 1, 'Unknown extension type: TABLE.')
+        # self.assertLog(log, 0, 'HDU0 has no EXTNAME set!')
+        self.assertLog(log, 0, 'Unknown extension type: TABLE.')
         self.assertEqual(meta[1]['format'],
                          'Data: FITS image [float32, 10x10]')
         self.assertEqual(meta[2]['format'],
@@ -401,9 +401,9 @@ class TestStub(DataModelTestCase):
         """Test the translation of FITS column format strings.
         """
         formats = {
-            '1PB': '8-bit stream',
-            '1PI': '16-bit stream',
-            '1PJ': '32-bit stream',
+            '1PB(5)': '8-bit stream',
+            '1PI(10)': '16-bit stream',
+            '1QJ(15)': '32-bit stream',
             'A': 'char[1]',
             'B': 'binary',
             'L': 'logical',

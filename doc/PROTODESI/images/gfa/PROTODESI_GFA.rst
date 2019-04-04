@@ -10,11 +10,12 @@ PROTODESI_GFA
 Contents
 ========
 
-====== ======== ============================== ================================================================
-Number EXTNAME  Type                           Contents
-====== ======== ============================== ================================================================
-HDU0_  PRIMARY  NPIXxNPIX float image          raw image
-====== ======== ============================== ================================================================
+====== ======== ===== =========
+Number EXTNAME  Type  Contents
+====== ======== ===== =========
+HDU0_  PRIMARY  IMAGE Raw image
+HDU1_  GFA      IMAGE Raw image
+====== ======== ===== =========
 
 FITS Header Units
 =================
@@ -24,48 +25,56 @@ HDU0
 
 EXTNAME = PRIMARY
 
-FITS Image: Postage Stamp of guide star. Raw.
-
+Empty HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ========= ==== ========================================
-Header   Value     Type Comment
-======== ========= ==== ========================================
-XTENSION BINTABLE  str  Binary table written by MWRFITS v1.8
-BITPIX   8         int  Required value
-NAXIS    2         int  Required value
-NAXIS1   2048      int  Number of bytes per row
-NAXIS2   2064      int  Number of rows
-PCOUNT   0         int  Normally 0 (no varying arrays)
-GCOUNT   1         int  Required value
-TFIELDS            int  Number of columns in table
-======== ========= ==== ========================================
+======== ========================================================= ===== ==============================================
+Header   Value                                                     Type  Comment
+======== ========================================================= ===== ==============================================
+DEVICE   'GFA1G   '                                                str
+OBSNUM   1622                                                      int
+OBSFRAME 7                                                         int
+OBSTYPE  'ROI     '                                                str
+DATE-OBS '2016-08-31T03:10:47.945228'                              str
+TIME-OBS '03:10:47.945228'                                         str
+MJD-OBS  57631.13249937                                            float
+OPENSHUT '2016-08-31T03:10:47.945228'                              str
+LST      '18:23:19.990'                                            str
+EXPREQ   1.                                                        float
+EXPTIME  1.                                                        float
+FILENAME '/data/images/gfa/PROTODESI_GFA1G_roi_00001622_0007.fits' str
+ROI_LIST '(190.51099891749917, 124.5090160850238)'                 str
+CHECKSUM 'Y72la70kS70kY70k'                                        str   HDU checksum updated 2016-08-31T03:10:47
+DATASUM  '         0'                                              str   data unit checksum updated 2016-08-31T03:10:47
+======== ========================================================= ===== ==============================================
 
-Required Columns
-~~~~~~~~~~~~~~~~
+HDU1
+----
 
-================= ======== =======
-Column            Type     Comment
-================= ======== =======
-TAI-BEG           float    Timestamp
-EXPTIME           float    Exposure Time
-BIN               int32    binning
-IMG-X             int64    Image size -x
-IMG-Y             int64    Image size -y
-TEL-RA            float    Telescope RA
-TEL-DEC           float    Tel.DEC
-AMASS             float    Airmass
-TELFOC            float    Tel.Focus
-ZEN               float    Zenith Distance
-HA                float    Hour Angle
-FIELD             int64    Field ID
-TEMP              float    Camera Temperature
-MODE              str      Mode of Guider
-GS-RA             float    Guide ref pixel RA
-GS-DEC            float    Guide ref pixel DEC
-GS-X              float    Guide ref pixel X
-GS-Y              float    Guide ref pixel Y
-GS-PSF            float    FWHM of PSF size for guide star
-================= ======== =======
+EXTNAME = GFA
+
+This is the actual GFA image, which got stored in an extension instead
+of the primary.
+
+======== ================== ===== ==============================================
+Header   Value              Type  Comment
+======== ================== ===== ==============================================
+BITPIX   16                 int   number of bits per data pixel
+NAXIS    2                  int   number of data axes
+NAXIS1   64                 int   length of data axis 1
+NAXIS2   64                 int   length of data axis 2
+PCOUNT   0                  int   required keyword; must = 0
+GCOUNT   1                  int   required keyword; must = 1
+BZERO    32768              int   offset data range to that of unsigned short
+BSCALE   1                  int   default scaling factor
+ROI_X    190.510998917499   float
+ROI_Y    124.509016085024   float
+SHAPE    '64,64   '         str
+DTYPE    'uint16  '         str
+CHECKSUM 'EeRhFZQZEbQfEZQZ' str   HDU checksum updated 2016-08-31T03:10:47
+DATASUM  '1260997802'       str   data unit checksum updated 2016-08-31T03:10:47
+======== ================== ===== ==============================================
+
+Data: int16 FITS image [64, 64]

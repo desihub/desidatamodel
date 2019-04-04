@@ -12,7 +12,7 @@ Contents
 ====== ======== =========================== ===========
 Number EXTNAME  Type                        Contents
 ====== ======== =========================== ===========
-HDU0_  FLUX     NAXIS1 x NAXIS2 float image Flux in ADU
+HDU0_  FLUX     IMAGE                       Flux in ADU
 ====== ======== =========================== ===========
 
 HDU0
@@ -20,4 +20,4 @@ HDU0
 
 EXTNAME = FLUX
 
-Data.
+Data: FITS image [float64]
