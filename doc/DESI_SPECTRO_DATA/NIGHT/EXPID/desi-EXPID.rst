@@ -24,7 +24,7 @@ Number            EXTNAME   Type     Contents
 HDU0_             SPS       IMAGE    Blank except for header keywords
 HDU1_             Z0        IMAGE    Raw data from the Z0 spectrograph
 `HDU2 -- HDU30`_  various   IMAGE    Raw data similar to Z0 spectrograph.
-HDU31_             SPECTCONS BINTABLE Telemetry data
+HDU31_            SPECTCONS BINTABLE Telemetry data
 ================= ========= ======== ====================================
 
 FITS Header Units
