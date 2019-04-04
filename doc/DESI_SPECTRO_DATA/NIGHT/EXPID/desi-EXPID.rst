@@ -14,15 +14,17 @@ Contents
 
 There is one HDU per spectrograph camera with EXTNAMEs like
 B0, B1, ... R0, R1, ... Z8, Z9.  The structure of each of these is
-the same; only one is explicitly documented below.
+the same; only one is explicitly documented below.  These could appear
+in any order and individual cameras could be missing from a data file
+depending upon the state of the hardware and the ICS configuration.
 
 ================= ========= ======== ====================================
 Number            EXTNAME   Type     Contents
 ================= ========= ======== ====================================
 HDU0_             SPS       IMAGE    Blank except for header keywords
-HDU1_             z0        IMAGE    Raw data from the b0 spectrograph
-`HDU2 -- HDU6`_   various   IMAGE    Raw data similar to b0 spectrograph.
-HDU7_             SPECTCONS BINTABLE Telemetry data
+HDU1_             Z0        IMAGE    Raw data from the Z0 spectrograph
+`HDU2 -- HDU30`_  various   IMAGE    Raw data similar to Z0 spectrograph.
+HDU31_            SPECTCONS BINTABLE Telemetry data
 ================= ========= ======== ====================================
 
 FITS Header Units
@@ -353,19 +355,24 @@ INHERIT  T                                   bool  https://fits.gsfc.nasa.gov/re
 
 Data: FITS image [int16 (compressed), 4256x4194]
 
-HDU2 -- HDU6
-------------
+HDU2 -- HDU30
+-------------
 
-EXTNAME = R0, B0, Z2, R2, B2
+EXTNAME = B0, R0, B1, R1, Z1, B2, R2, Z2, B3, R3, Z3, B4, R4, Z4, B5, R5, Z5, B6, R6, Z6, B7, R7, Z7, B8, R8, Z8, B9, R9, Z9
 
 Data: See Z0.
 
-HDU7
-----
+Note: any combination of B0..Z9 could exist in any order.
+
+HDU31
+-----
 
 EXTNAME = SPECTCONS
 
 This is a telemetry table.
+
+Note: this is the last HDU, but its exact number will depend upon the number of
+cameras in included in the file.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -469,13 +476,14 @@ Why are many duplicate keywords present in SPECTCONS?  Can't we just use INHERIT
 
 Does ``MJD-OBS`` save sufficient decimal precision to actually reconstruct ``DATE-OBS`` to microsecond precision?
 
-I have temporarily reduced the number of HDUs to match the available spectrographs as of April 2019.
+This datamodel documents the format for a full set of 10 spectrographs, though
+no real data are available with all 10 yet.
 
 I have noted problems with individual header keywords or table columns using these terms:
 
 MISSING
     Listed in a previous version of this file, but are not present in the most recent ``desi`` file constructed
-    from spectrograph functional verification test ``sp`` files.
+    from spectrograph functional verification test ``desi-*.fits.fz`` files.
 UNEXPECTED
     These don't appear to be relevant to DESI.
 TYPE
