@@ -54,20 +54,21 @@ MOONFRAC 0.4083473802955095         float Moon illumination fraction 0-1; 1=full
 MOONALT  -79.39563600071901         float Moon altitude [degrees]
 MOONSEP  131.2947533254612          float Moon:tile separation angle [degrees]
 DATE-OBS 2020-03-17T02:42:47.160    str   Start of exposure
+MJD      58924.37858796309          float
+SNR2FRAC 0.501188337802887          float
+TRANSP   0.9980747699737549         float
+SKY      1.0                        float
+RA       150.73                     float
+DEC      30.52                      float
 PASS     1                          int
-RA       150.87                     float
-DEC      31.23                      float
-EBMV     0.0189034678041935         float
-MJD      58925.11304582807          float
-TRANSPAR 0.7192993760108948         float
 DOSVER   SIM                        str
 FEEVER   SIM                        str
-BUNIT    10**+17 cm2 count s / erg  str   i.e. (electron/Angstrom) / (1e-17 erg/(s cm2 Angstrom))
+BUNIT    10**+17 cm2 count s / erg  str   *i.e.* (elec/A) / (1e-17 erg/s/cm2/A)
 AIRORVAC vac                        str   Vacuum wavelengths
-CAMERA   r3                         str
-FIBERMIN 1557                       int
-CHECKSUM AXAlBW3iAWAiAW3i           str   HDU checksum updated 2018-03-01T15:08:08
-DATASUM  3423741220                 str   data unit checksum updated 2018-03-01T15:08:08
+CAMERA   z1                         str
+FIBERMIN 500                        int
+CHECKSUM 1HdW1GZU1GbU1GZU           str   HDU checksum updated 2018-03-01T15:04:16
+DATASUM  4250999040                 str   data unit checksum updated 2018-03-01T15:04:16
 ======== ========================== ===== ==============================================
 
 Data: FITS image [float32, 2645x500]

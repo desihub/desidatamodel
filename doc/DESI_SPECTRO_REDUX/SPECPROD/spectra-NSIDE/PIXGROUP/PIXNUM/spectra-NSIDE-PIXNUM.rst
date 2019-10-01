@@ -98,8 +98,10 @@ SUBPRIORITY       float64
 REF_ID            int64
 PMRA              float32
 PMDEC             float32
+REF_EPOCH         float32
 PMRA_IVAR         float32
 PMDEC_IVAR        float32
+RELEASE           int16
 FLUX_G            float32
 FLUX_R            float32
 FLUX_Z            float32
@@ -125,6 +127,11 @@ MW_TRANSMISSION_R float32
 MW_TRANSMISSION_Z float32
 EBV               float32
 PHOTSYS           char[1]
+OBSCONDITIONS     int32
+NUMOBS_INIT       int64
+PRIORITY_INIT     int64
+NUMOBS_MORE       int32
+HPXPIXEL          int64
 FIBER             int32         Fiber ID [0-4999]
 PETAL_LOC         int32
 DEVICE_LOC        int32
@@ -132,23 +139,25 @@ LOCATION          int32
 FIBERSTATUS       int32
 OBJTYPE           char[3]
 LAMBDA_REF        float32
-DESIGN_X          float32
-DESIGN_Y          float32
-DESIGN_Q          float32
-DESIGN_S          float32
+FIBERASSIGN_X     float32
+FIBERASSIGN_Y     float32
+FA_TARGET         int64
+FA_TYPE           byte
 NUMTARGET         int16
 FIBER_RA          float64
 FIBER_DEC         float64
 FIBER_RA_IVAR     float32
 FIBER_DEC_IVAR    float32
-DELTA_X           float32
-DELTA_Y           float32
-DELTA_X_IVAR      float32
-DELTA_Y_IVAR      float32
+PLATEMAKER_X      float32
+PLATEMAKER_Y      float32
+PLATEMAKER_RA     float32
+PLATEMAKER_DEC    float32
 NUM_ITER          int32
 SPECTROID         int32
 BRICKNAME         char[8]       Brickname from target imaging
 LAMBDAREF         float64       Reference wavelength at which to align fiber
+DELTA_X           float64
+DELTA_Y           float64
 NIGHT             int32
 EXPID             int32
 TILEID            int32
@@ -289,12 +298,11 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2380             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-ZSIMPLE  T                bool This keyword probably should not be here.
 BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32, 2975x5550]
+Data: FITS image [int32 (compressed), 2975x5550]
 
 HDU07
 -----
@@ -405,12 +413,11 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2116             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-ZSIMPLE  T                bool This keyword probably should not be here.
 BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32, 2975x5550]
+Data: FITS image [int32 (compressed), 2975x5550]
 
 HDU12
 -----
@@ -510,12 +517,11 @@ KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
 NAXIS1   2399             int  Number of wavelengths
 NAXIS2   1225             int  Number of spectra
-ZSIMPLE  T                bool This keyword probably should not be here.
 BZERO    2147483648       int
 BSCALE   1                int
 ======== ================ ==== ==============================================
 
-Data: FITS image [int32, 2975x5550]
+Data: FITS image [int32 (compressed), 2975x5550]
 
 HDU17
 -----

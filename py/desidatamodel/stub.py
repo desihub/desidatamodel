@@ -498,7 +498,7 @@ def extrakey(key):
                'SIMPLE', 'EXTEND', 'COMMENT', 'HISTORY', 'EXTNAME', ''):
         return False
     # Table-specific keywords
-    if match(r'T(TYPE|FORM|UNIT|COMM|DIM)\d+', key) is not None:
+    if match(r'T(TYPE|FORM|UNIT|COMM|DIM|NULL)\d+', key) is not None:
         return False
     # Compression-specific keywords
     if match(r'Z(SIMPLE|IMAGE|TENSION|BITPIX|NAXIS|NAXIS1|NAXIS2|PCOUNT|GCOUNT|TILE1|TILE2|CMPTYPE|NAME1|VAL1|NAME2|VAL2|HECKSUM|DATASUM)', key) is not None:

@@ -43,7 +43,6 @@ YEARS    2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017 str  List of yea
 START    2019-12-01                                             str  Nominal survey start date used for hour-angle optimization.
 STOP     2024-11-30                                             str  Nominal survey stop date used for hour-angle optimization.
 TWILIGHT F                                                      bool Was twilight included in the BRIGHT program schedule for optimzation?
-EXTNAME  WEATHER                                                str   extension name
 ======== ====================================================== ==== ==============
 
 Data: FITS image [float64, 2556]
@@ -72,7 +71,6 @@ KEY     Example Value Type  Comment
 NAXIS1  24            int   length of dimension 1
 NAXIS2  192           int   length of dimension 2
 ORIGIN  -60.0         float Low edge of first LST histogram bin in degrees.
-EXTNAME DARK          str   extension name
 ======= ============= ===== =====================
 
 Required Data Table Columns
@@ -104,7 +102,6 @@ KEY     Example Value Type  Comment
 NAXIS1  24            int   length of dimension 1
 NAXIS2  192           int   length of dimension 2
 ORIGIN  -60.0         float Low edge of first LST histogram bin in degrees.
-EXTNAME GRAY          str   extension name
 ======= ============= ===== =====================
 
 Required Data Table Columns
@@ -136,7 +133,6 @@ KEY     Example Value Type  Comment
 NAXIS1  24            int   length of dimension 1
 NAXIS2  192           int   length of dimension 2
 ORIGIN  -60.0         float Low edge of first LST histogram bin in degrees.
-EXTNAME BRIGHT        str   extension name
 ======= ============= ===== =====================
 
 Required Data Table Columns
@@ -166,7 +162,7 @@ Required Header Keywords
 KEY     Example Value Type Comment
 ======= ============= ==== =====================
 NAXIS1  16071         int  length of dimension 1
-EXTNAME DESIGN        str  extension name
+NAXIS2  10            int  length of dimension 2
 ======= ============= ==== =====================
 
 Required Data Table Columns
@@ -189,7 +185,7 @@ the ``HA`` column as a 1D array.
 Notes and Examples
 ==================
 
-The histograms of available LST in each program are calculated by `get_available_lst 
+The histograms of available LST in each program are calculated by `get_available_lst
 <https://desisurvey.readthedocs.io/en/latest/api.html#desisurvey.ephem.Ephemerides.get_available_lst>`__.
 
 Hour angle optimization is performed by `desisurvey.optimize.Optimizer

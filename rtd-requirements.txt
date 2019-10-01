@@ -1,3 +1,0 @@
-# This file is still needed for older versions to build, but will
-# eventually be removed.
-git+https://github.com/desihub/desiutil.git@1.9.11#egg=desiutil

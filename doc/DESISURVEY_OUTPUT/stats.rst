@@ -3,8 +3,8 @@ stats
 =====
 
 :Summary: Nightly summary statistics, recorded by pass, from a surveysim run.
-:Naming Convention: ``stats.fits``
-:Regex: ``stats\.fits``
+:Naming Convention: ``stats_surveysim.fits``
+:Regex: ``stats_surveysim\.fits``
 :File Type: FITS, 810 KB
 
 *Note*: currently this is an output of surveysim, but in the future may become
@@ -16,7 +16,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_  META    IMAGE    Blank.
+HDU0_          IMAGE    Blank.
 HDU1_  STATS   BINTABLE Nighly summary statistics by pass.
 ====== ======= ======== ===================
 
@@ -26,7 +26,7 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = (None)
+EXTNAME = PRIMARY
 
 Empty HDU.
 
@@ -48,8 +48,6 @@ NAXIS2  13                int  length of dimension 2
 TILES   desi-tiles.fits   str  Name of the tiles file specified in desisurvey config.
 START   2020-03-15        str  YEAR-MM-YY of the first night of the survey.
 STOP    2020-04-15        str  YEAR-MM-YY of the most recent night with statistics recorded.
-COMMENT Baseline (seed=1) str  Comment describing this simulation.
-EXTNAME STATS             str  extension name
 ======= ================= ==== =====================
 
 Required Data Table Columns
@@ -59,7 +57,7 @@ Required Data Table Columns
 Name         Type       Units Description
 ============ ========== ===== ===========
 MJD          float64          MJD of local noon before this night.
-tsched       float64    d     Total scheduled time for all programs during this night.      
+tsched       float64    d     Total scheduled time for all programs during this night.
 topen        float64[3] d     Actual time dome was open during this night, per program.
 tdead        float64[3] d     Deadtime during this night (dome open, but idling), per program.
 tscience     float64[8] d     Time spent with the shutter open for science exposures, per pass.
@@ -96,11 +94,11 @@ object tracks survey statistics during simulation::
 
     import surveysim.stats
     stats = surveysim.stats.SurveyStatistics()
-    
+
 Its internal state after a simulation (or each night) can be saved using, for example::
 
     stats.save('stats.fits', comment='Baseline (seed=1)')
-    
+
 This state can then later be restored using::
 
     stats = surveysim.stats.SurveyStatistics(restore='stats.fits')
