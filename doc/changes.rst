@@ -2,10 +2,22 @@
 desidatamodel Change Log
 ========================
 
-18.12 (unreleased)
+19.2 (2019-10-01)
 ------------------
 
-* No changes yet.  Expecting updates for desisurvey and surveysim outputs.
+*This is primarily a reference tag to capture changes prior to the planned
+19.9 release.*  The release date *does not* reflect the state of pipeline
+outputs as of October 2019.
+
+* Update raw data model based on spectrograph tests (PR `#73`_).
+* Allow documentation of similar ranges of HDUs (PR `#75`_).
+* Update data model for desisurvey and surveysim (PR `#70`_, `#71`_).
+
+.. _`#70`: https://github.com/desihub/desidatamodel/pull/70
+.. _`#71`: https://github.com/desihub/desidatamodel/pull/71
+.. _`#73`: https://github.com/desihub/desidatamodel/pull/73
+.. _`#75`: https://github.com/desihub/desidatamodel/pull/75
+
 
 18.11 (2018-12-11)
 ------------------
