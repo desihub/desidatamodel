@@ -329,11 +329,14 @@ class DataModel(DataModelUnit):
                             m = "HDU %d in %s should have EXTNAME = 'PRIMARY'."
                             log.warning(m, k, metafile)
             else:
+                #
+                # If we reach here, meta['extname'] *is* defined.
+                #
                 if k == 0:
                     if meta['format'] == 'Empty HDU.':
-                        if len(meta['keywords']) > 0:
-                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY'."
-                            log.warning(m, k, metafile)
+                        if len(meta['keywords']) > 0 and meta['extname'] != 'PRIMARY':
+                            m = "HDU %d in %s has acceptable alternative EXTNAME = '%d'."
+                            log.debug(m, k, metafile, meta['extname'])
                     else:
                         if meta['extname'] == 'PRIMARY':
                             m = "HDU %d in %s should have a more meaningful EXTNAME than 'PRIMARY'."

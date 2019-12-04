@@ -59,20 +59,21 @@ MOONFRAC 0.4083473802955095           float Moon illumination fraction 0-1; 1=fu
 MOONALT  -79.39563600071901           float Moon altitude [degrees]
 MOONSEP  131.2947533254612            float Moon:tile separation angle [degrees]
 DATE-OBS 2020-03-17T02:42:47.160      str   Start of exposure
+MJD      58924.37858796309            float
+SNR2FRAC 0.501188337802887            float
+TRANSP   0.9980747699737549           float
+SKY      1.0                          float
+RA       150.73                       float
+DEC      30.52                        float
 PASS     1                            int
-RA       150.87                       float
-DEC      31.23                        float
-EBMV     0.0189034678041935           float
-MJD      58925.11304582807            float
-TRANSPAR 0.7192993760108948           float
 DOSVER   SIM                          str
 FEEVER   SIM                          str
 BUNIT    10**-17 erg/(s cm2 Angstrom) str
 AIRORVAC vac                          str   Vacuum wavelengths
-CAMERA   z7                           str
-FIBERMIN 3500                         int
-CHECKSUM 9GKaD9HU9EHZC9HZ             str   HDU checksum updated 2018-03-01T15:08:14
-DATASUM  1412099935                   str   data unit checksum updated 2018-03-01T15:08:14
+CAMERA   z1                           str
+FIBERMIN 500                          int
+CHECKSUM 1HdW1GZU1GbU1GZU             str   HDU checksum updated 2018-03-01T15:04:16
+DATASUM  4250999040                   str   data unit checksum updated 2018-03-01T15:04:16
 ======== ============================ ===== ==============================================
 
 Data: FITS image [float32, 2999x500]
@@ -193,16 +194,16 @@ DATASUM  4154192770       str  data unit checksum updated 2018-03-01T15:08:15
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================= ======= ===== ===========
+================= ======= ===== ============================================
 Name              Type    Units Description
-================= ======= ===== ===========
-TARGETID          int64
-DESI_TARGET       int64
-BGS_TARGET        int64
-MWS_TARGET        int64
+================= ======= ===== ============================================
+TARGETID          int64         Unique target ID
+DESI_TARGET       int64         DESI dark+calib targeting bit mask
+BGS_TARGET        int64         DESI Bright Galaxy Survey targeting bit mask
+MWS_TARGET        int64         DESI Milky Way Survey targeting bit mask
 SECONDARY_TARGET  int64
-TARGET_RA         float64
-TARGET_DEC        float64
+TARGET_RA         float64       Target right ascension [degrees]
+TARGET_DEC        float64       Target declination [degrees]
 TARGET_RA_IVAR    float64
 TARGET_DEC_IVAR   float64
 BRICKID           int64
@@ -213,8 +214,10 @@ SUBPRIORITY       float64
 REF_ID            int64
 PMRA              float32
 PMDEC             float32
+REF_EPOCH         float32
 PMRA_IVAR         float32
 PMDEC_IVAR        float32
+RELEASE           int16
 FLUX_G            float32
 FLUX_R            float32
 FLUX_Z            float32
@@ -240,31 +243,38 @@ MW_TRANSMISSION_R float32
 MW_TRANSMISSION_Z float32
 EBV               float32
 PHOTSYS           char[1]
-FIBER             int32
+OBSCONDITIONS     int32
+NUMOBS_INIT       int64
+PRIORITY_INIT     int64
+NUMOBS_MORE       int32
+HPXPIXEL          int64
+FIBER             int32         Fiber ID [0-4999]
 PETAL_LOC         int32
 DEVICE_LOC        int32
 LOCATION          int32
 FIBERSTATUS       int32
 OBJTYPE           char[3]
-LAMBDA_REF        float32
-DESIGN_X          float32
-DESIGN_Y          float32
-DESIGN_Q          float32
-DESIGN_S          float32
+LAMBDA_REF        float32       Reference wavelength at which to align fiber
+FIBERASSIGN_X     float32
+FIBERASSIGN_Y     float32
+FA_TARGET         int64
+FA_TYPE           byte
 NUMTARGET         int16
 FIBER_RA          float64
 FIBER_DEC         float64
 FIBER_RA_IVAR     float32
 FIBER_DEC_IVAR    float32
-DELTA_X           float32
-DELTA_Y           float32
-DELTA_X_IVAR      float32
-DELTA_Y_IVAR      float32
+PLATEMAKER_X      float32
+PLATEMAKER_Y      float32
+PLATEMAKER_RA     float32
+PLATEMAKER_DEC    float32
 NUM_ITER          int32
 SPECTROID         int32
-BRICKNAME         char[8]
+BRICKNAME         char[8]       Brickname from target imaging
 LAMBDAREF         float64
-================= ======= ===== ===========
+DELTA_X           float32
+DELTA_Y           float32
+================= ======= ===== ============================================
 
 HDU6
 ----

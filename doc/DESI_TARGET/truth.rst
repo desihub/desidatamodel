@@ -55,12 +55,22 @@ Target truth metadata for properties that apply to all targets.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ===================================
-KEY      Example Value Type Comment
-======== ============= ==== ===================================
-NAXIS1   118           int  width of table in bytes
-NAXIS2   241273        int  number of rows in table
-======== ============= ==== ===================================
+======== ================================ ==== ===================================
+KEY      Example Value                    Type Comment
+======== ================================ ==== ===================================
+NAXIS1   118                              int  width of table in bytes
+NAXIS2   241273                           int  number of rows in table
+OBSCON   DARK|GRAY                        str
+HPXNSIDE 64                               int  HEALPix nside
+HPXNEST  T                                bool HEALPix nested (not ring) ordering
+SURVEY   main                             str
+RESOLVE  T                                bool
+MASKBITS T                                bool
+FILENSID 64                               int
+FILENEST T                                bool
+FILEHPX  5261                             int
+SEED     1028862084,initial random seed   str
+======== ================================ ==== ===================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +80,6 @@ Name            Type     Units Description
 =============== ======== ===== ===================
 TARGETID        int64          ID (unique to file and the whole survey)
 MOCKID          int64          Mock ID
-CONTAM_TARGET   int64
 TRUEZ           float64        True redshift in mock catalog (including peculiar velocity)
 TRUESPECTYPE    char[10]       True object type in mock catalog
 TEMPLATETYPE    char[10]
@@ -84,6 +93,8 @@ FLUX_R          float32        DECaLS flux from tractor input (r)
 FLUX_Z          float32        DECaLS flux from tractor input (z)
 FLUX_W1         float32        WISE flux in W1
 FLUX_W2         float32        WISE flux in W2
+FLUX_W3         float32        WISE flux in W3
+FLUX_W4         float32        WISE flux in W4
 =============== ======== ===== ===================
 
 HDU2
@@ -110,19 +121,19 @@ Required Data Table Columns
 =========== ======= ===== ===================
 Name        Type    Units Description
 =========== ======= ===== ===================
-TARGETID    int64         
+TARGETID    int64
 OIIFLUX     float32       Flux in [OII] line
 HBETAFLUX   float32       Flux in Hbeta line
-EWOII       float32       
-EWHBETA     float32       
-D4000       float32       
+EWOII       float32
+EWHBETA     float32
+D4000       float32
 VDISP       float32       Velocity dispersion
-OIIDOUBLET  float32       
-OIIIHBETA   float32       
-OIIHBETA    float32       
-NIIHBETA    float32       
-SIIHBETA    float32       
-TRUEZ_NORSD float32       
+OIIDOUBLET  float32
+OIIIHBETA   float32
+OIIHBETA    float32
+NIIHBETA    float32
+SIIHBETA    float32
+TRUEZ_NORSD float32
 =========== ======= ===== ===================
 
 HDU3
@@ -149,19 +160,19 @@ Required Data Table Columns
 =========== ======= ===== ===================
 Name        Type    Units Description
 =========== ======= ===== ===================
-TARGETID    int64         
+TARGETID    int64
 OIIFLUX     float32       Flux in [OII] line
 HBETAFLUX   float32       Flux in Hbeta line
-EWOII       float32       
-EWHBETA     float32       
-D4000       float32       
+EWOII       float32
+EWHBETA     float32
+D4000       float32
 VDISP       float32       Velocity dispersion
-OIIDOUBLET  float32       
-OIIIHBETA   float32       
-OIIHBETA    float32       
-NIIHBETA    float32       
-SIIHBETA    float32       
-TRUEZ_NORSD float32       
+OIIDOUBLET  float32
+OIIIHBETA   float32
+OIIHBETA    float32
+NIIHBETA    float32
+SIIHBETA    float32
+TRUEZ_NORSD float32
 =========== ======= ===== ===================
 
 HDU4
@@ -188,19 +199,19 @@ Required Data Table Columns
 =========== ======= ===== ===================
 Name        Type    Units Description
 =========== ======= ===== ===================
-TARGETID    int64         
+TARGETID    int64
 OIIFLUX     float32       Flux in [OII] line
 HBETAFLUX   float32       Flux in Hbeta line
-EWOII       float32       
-EWHBETA     float32       
-D4000       float32       
-VDISP       float32       
-OIIDOUBLET  float32       
-OIIIHBETA   float32       
-OIIHBETA    float32       
-NIIHBETA    float32       
-SIIHBETA    float32       
-TRUEZ_NORSD float32       
+EWOII       float32
+EWHBETA     float32
+D4000       float32
+VDISP       float32
+OIIDOUBLET  float32
+OIIIHBETA   float32
+OIIHBETA    float32
+NIIHBETA    float32
+SIIHBETA    float32
+TRUEZ_NORSD float32
 =========== ======= ===== ===================
 
 HDU5
@@ -227,12 +238,12 @@ Required Data Table Columns
 ============== ============ ===== ===================
 Name           Type         Units Description
 ============== ============ ===== ===================
-TARGETID       int64              
-MABS_1450      float32            
-SLOPES         float32[5]         
-EMLINES        float32[186]       
-BAL_TEMPLATEID int16              
-TRUEZ_NORSD    float32            
+TARGETID       int64
+MABS_1450      float32
+SLOPES         float32[5]
+EMLINES        float32[186]
+BAL_TEMPLATEID int16
+TRUEZ_NORSD    float32
 ============== ============ ===== ===================
 
 HDU6
@@ -259,7 +270,7 @@ Required Data Table Columns
 ======== ======= ===== ===================
 Name     Type    Units Description
 ======== ======= ===== ===================
-TARGETID int64         
+TARGETID int64
 TEFF     float32       Effective Temperature
 LOGG     float32       Surface Gravity
 FEH      float32       Metallicity
@@ -289,7 +300,7 @@ Required Data Table Columns
 ======== ======= ===== ===================
 Name     Type    Units Description
 ======== ======= ===== ===================
-TARGETID int64         
+TARGETID int64
 TEFF     float32       Effective Temperature
 LOGG     float32       Surface Gravity
 ======== ======= ===== ===================

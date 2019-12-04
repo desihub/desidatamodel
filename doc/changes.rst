@@ -5,7 +5,9 @@ desidatamodel Change Log
 19.9 (unreleased)
 -----------------
 
-* No changes yet.
+* Update data model to reflect 19.9 software release (PR `#78`_).
+
+.. _`#78`: https://github.com/desihub/desidatamodel/pull/78
 
 19.2 (2019-10-01)
 ------------------

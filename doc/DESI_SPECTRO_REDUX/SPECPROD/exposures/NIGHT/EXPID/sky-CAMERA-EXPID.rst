@@ -55,12 +55,13 @@ MOONFRAC 0.4083473802955095      float Moon illumination fraction 0-1; 1=full
 MOONALT  -79.39563600071901      float Moon altitude [degrees]
 MOONSEP  131.2947533254612       float Moon:tile separation angle [degrees]
 DATE-OBS 2020-03-17T02:42:47.160 str   Start of exposure
+MJD      58924.37858796309       float
+SNR2FRAC 0.501188337802887       float
+TRANSP   0.9980747699737549      float
+SKY      1.0                     float
+RA       150.73                  float
+DEC      30.52                   float
 PASS     1                       int
-RA       150.87                  float
-DEC      31.23                   float
-EBMV     0.0189034678041935      float
-MJD      58925.11304582807       float
-TRANSPAR 0.7192993760108948      float
 DOSVER   SIM                     str
 FEEVER   SIM                     str
 BUNIT    count/Angstrom          str

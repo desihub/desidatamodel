@@ -65,12 +65,13 @@ MOONFRAC 0.4083473802955095  float Moon illumination fraction 0-1; 1=full
 MOONALT  -4.92578905244666   float Moon altitude [degrees]
 MOONSEP  135.3911422523808   float Moon:tile separation angle [degrees]
 DATE-OBS 2017-06-15T22:00:00 str   Start of exposure
-PASS     4                   int
+MJD      58925.38986146489   float
+SNR2FRAC 0.501188337802887   float
+TRANSP   0.9904059171676636  float
+SKY      1.0                 float
 RA       150.73              float
 DEC      30.52               float
-EBMV     0.01967853307723999 float
-MJD      58925.38986146489   float
-TRANSPAR 0.9904059171676636  float
+PASS     4                   int
 DOSVER   SIM                 str
 FEEVER   SIM                 str
 BUNIT    Angstrom            str   Wavelength unit
@@ -316,7 +317,6 @@ Name            Type     Units Description
 =============== ======== ===== ===========
 TARGETID        int64
 MOCKID          int64
-CONTAM_TARGET   int64
 TRUEZ           float32
 TRUESPECTYPE    char[10]
 TEMPLATETYPE    char[10]
@@ -330,6 +330,8 @@ FLUX_R          float32
 FLUX_Z          float32
 FLUX_W1         float32
 FLUX_W2         float32
+FLUX_W3         float32
+FLUX_W4         float32
 =============== ======== ===== ===========
 
 HDU13
@@ -387,8 +389,10 @@ SUBPRIORITY       float64
 REF_ID            int64
 PMRA              float32 10**-3 arcsec yr-1
 PMDEC             float32 10**-3 arcsec yr-1
+REF_EPOCH         float32
 PMRA_IVAR         float32 10**+6 arcsec-2 yr2
 PMDEC_IVAR        float32 10**+6 arcsec-2 yr2
+RELEASE           int16
 FLUX_G            float32
 FLUX_R            float32
 FLUX_Z            float32
@@ -414,6 +418,11 @@ MW_TRANSMISSION_R float32
 MW_TRANSMISSION_Z float32
 EBV               float32
 PHOTSYS           char[1]
+OBSCONDITIONS     int32
+NUMOBS_INIT       int64
+PRIORITY_INIT     int64
+NUMOBS_MORE       int32
+HPXPIXEL          int64
 FIBER             int32
 PETAL_LOC         int32
 DEVICE_LOC        int32
@@ -421,23 +430,25 @@ LOCATION          int32
 FIBERSTATUS       int32
 OBJTYPE           char[3]
 LAMBDA_REF        float32 Angstrom
-DESIGN_X          float32
-DESIGN_Y          float32
-DESIGN_Q          float32 deg
-DESIGN_S          float32 mm
+FIBERASSIGN_X     float32
+FIBERASSIGN_Y     float32
+FA_TARGET         int64
+FA_TYPE           byte
 NUMTARGET         int16
 FIBER_RA          float64
 FIBER_DEC         float64
 FIBER_RA_IVAR     float32 deg-2
 FIBER_DEC_IVAR    float32 deg-2
-DELTA_X           float32 mm
-DELTA_Y           float32 mm
-DELTA_X_IVAR      float32 mm-2
-DELTA_Y_IVAR      float32 mm-2
+PLATEMAKER_X      float32 mm
+PLATEMAKER_Y      float32 mm
+PLATEMAKER_RA     float32 deg
+PLATEMAKER_DEC    float32 deg
 NUM_ITER          int32
 SPECTROID         int32
 BRICKNAME         char[8]
 LAMBDAREF         float64
+DELTA_X           float64
+DELTA_Y           float64
 ================= ======= =================== ===========
 
 HDU14
@@ -465,22 +476,23 @@ Required Data Table Columns
 Name         Type    Units  Description
 ============ ======= ====== ===========
 EXPID        int32          Exposure ID
-TILEID       int32          Tile ID
-PASS         int16          tiling pass number
-RA           float64 deg    Right ascension
-DEC          float64 deg    Declination
-EBMV         float32        Median Milky Way dust E(B-V) extinction
-NIGHT        char[8]        Night 'YEARMMDD'
 MJD          float64        Modified Julian Date
-EXPTIME      float64 s      Exposure time
-SEEING       float64 arcsec Atmospheric seeing FWHM
-TRANSPARENCY float64        Transparency [0-1]; 0=no photons
-AIRMASS      float64        Airmass
+EXPTIME      float32 s      Exposure time
+TILEID       int32          Tile ID
+SNR2FRAC     float32
+AIRMASS      float32        Airmass
+SEEING       float32 arcsec Atmospheric seeing FWHM
+TRANSP       float32        Transparency [0-1]; 0=no photons
+SKY          float32
+PROGRAM      char[6]        DESI program name (e.g. DARK/GRAY/BRIGHT)
+NIGHT        char[8]        Night 'YEARMMDD'
+FLAVOR       char[7]        Exposure flavor (e.g. science or calib)
 MOONFRAC     float64        Moon illumination fraction [0-1]; 1=full moon
 MOONALT      float64 deg    Moon altitude
 MOONSEP      float64 deg    Separation angle between moon and center of tile
-PROGRAM      char[6]        DESI program name (e.g. DARK/GRAY/BRIGHT)
-FLAVOR       char[7]        Exposure flavor (e.g. science or calib)
+RA           float64 deg    Right ascension
+DEC          float64 deg    Declination
+PASS         int16          tiling pass number
 ============ ======= ====== ===========
 
 TODO: define if AIRMASS etc. are at middle of exposure, averaged, etc.
