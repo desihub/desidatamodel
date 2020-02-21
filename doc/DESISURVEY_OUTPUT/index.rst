@@ -1,6 +1,6 @@
-===========
-DESI_TARGET
-===========
+=================
+DESISURVEY_OUTPUT
+=================
 
 :envvar:`DESISURVEY_OUTPUT` contains the outputs of desisurvey and surveysim,
 with the canonical location of ``$DESI_ROOT/survey``.  We expect this
