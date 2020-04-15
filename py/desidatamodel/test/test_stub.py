@@ -232,6 +232,7 @@ class TestStub(DataModelTestCase):
     def test_Stub_BINTABLE_with_bad_units(self):
         """Test BINTABLE HDU with bad units.
         """
+        erg_msg = self.badUnitMessage('ergs')
         hdulist = list()
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -264,17 +265,18 @@ class TestStub(DataModelTestCase):
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
         self.assertEqual(stub.hdumeta[1]['format'][2], ('luminosity', 'float32', 'ergs', 'This is a TCOMM comment on luminosity.'))
-        # self.assertLog(log, 1, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        # self.assertLog(log, 1, erg_msg)
         stub = Stub(hdulist, error=True)
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
         with self.assertRaises(ValueError) as e:
             foo = stub.hdumeta[1]['format'][2]
-        self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertEqual(str(e.exception), erg_msg)
 
     def test_Stub_image_format(self):
         """Test format string for image HDUs.
         """
+        erg_msg = self.badUnitMessage('10**-17 ergs/(cm**2*s*Angstrom)')
         hdr = sim_header()
         hdr['SIMPLE'] = True
         hdr['BITPIX'] = 8
@@ -319,10 +321,10 @@ class TestStub(DataModelTestCase):
         stub = Stub([sim_hdu(hdr)], error=True)
         with self.assertRaises(ValueError) as e:
             i = stub.image_format(hdr)
-        self.assertEqual(str(e.exception), "'10**-17 ergs/(cm**2*s*Angstrom)' did not parse as fits unit: At col 8, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertEqual(str(e.exception), erg_msg)
         stub = Stub([sim_hdu(hdr)], error=False)
         i = stub.image_format(hdr)
-        self.assertLog(log, 1, "'10**-17 ergs/(cm**2*s*Angstrom)' did not parse as fits unit: At col 8, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertLog(log, 1, erg_msg)
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
         hdr = sim_header()
         hdr['SIMPLE'] = True
