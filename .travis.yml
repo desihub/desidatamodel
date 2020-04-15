@@ -12,9 +12,9 @@ os:
     - linux
     # - osx
 
-# As of early 2017, the default Linux environment is Ubuntu 12.04 (precise).
-# This will soon change to 14.04 (trusty). To prepare, set it explicitly.
-dist: trusty
+# xenial = Ubuntu 16.04
+# bionic = Ubuntu 18.04
+dist: xenial
 # Setting sudo to false opts in to Travis-CI container-based builds.
 sudo: false
 
@@ -27,17 +27,17 @@ addons:
             - texlive-latex-extra
             - dvipng
 python:
-    - 3.5
+    # - 3.5
     - 3.6
-    # - 3.7
+    - 3.7
+    - 3.8
 env:
     global:
         # The following versions are the 'default' for tests, unless
         # overidden underneath. They are defined here in order to save having
         # to repeat them for all configurations.
         - MAIN_CMD='python setup.py'
-        - DESIUTIL_VERSION=2.0.1
-        - SPHINX_VERSION=1.8.5
+        - SPHINX_VERSION='<2.0'
     matrix:
         - SETUP_CMD='egg_info'
         - SETUP_CMD='bdist_egg'
@@ -65,12 +65,13 @@ matrix:
           python: 3.6
           env: MAIN_CMD='coverage' SETUP_CMD='run --source=desidatamodel setup.py test'
 
-        # Experimental OS X test.
-        # As of March 2017, Python builds on OS X are not available.
-        # See https://docs.travis-ci.com/user/languages/python/
-        # - os: osx
-        #   python: 3.5
-        #   env: SETUP_CMD='test'
+        - os: linux
+          python: 3.6
+          env: SETUP_CMD='test' ASTROPY_VERSION='>=4.0'
+
+        - os: linux
+          python: 3.6
+          env: SETUP_CMD='test' ASTROPY_VERSION='<4.0'
 
         # PEP 8 compliance.
         - os: linux
@@ -84,7 +85,6 @@ install:
     - if [[ $MAIN_CMD == 'pycodestyle' ]]; then pip install pycodestyle; fi
     - if [[ $SETUP_CMD == build_sphinx* ]]; then pip install Sphinx==${SPHINX_VERSION}; fi
     - if [[ $MAIN_CMD == 'coverage' ]]; then pip install coverage coveralls; fi
-    - pip install git+https://github.com/desihub/desiutil.git@${DESIUTIL_VERSION}#egg=desiutil
     - if [[ $SETUP_CMD == 'test' || $MAIN_CMD == 'coverage' ]]; then pip install -r requirements.txt; fi
 
 script:
