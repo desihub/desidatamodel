@@ -37,6 +37,7 @@ env:
         # overidden underneath. They are defined here in order to save having
         # to repeat them for all configurations.
         - MAIN_CMD='python setup.py'
+        - DESIUTIL_VERSION=2.0.3
         - SPHINX_VERSION='<2.0'
     matrix:
         - SETUP_CMD='egg_info'
@@ -85,6 +86,7 @@ install:
     - if [[ $MAIN_CMD == 'pycodestyle' ]]; then pip install pycodestyle; fi
     - if [[ $SETUP_CMD == build_sphinx* ]]; then pip install Sphinx==${SPHINX_VERSION}; fi
     - if [[ $MAIN_CMD == 'coverage' ]]; then pip install coverage coveralls; fi
+    - pip install git+https://github.com/desihub/desiutil.git@${DESIUTIL_VERSION}#egg=desiutil
     - if [[ $SETUP_CMD == 'test' || $MAIN_CMD == 'coverage' ]]; then pip install -r requirements.txt; fi
 
 script:
