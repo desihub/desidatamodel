@@ -2,12 +2,14 @@
 desidatamodel Change Log
 ========================
 
-19.9 (unreleased)
+20.4 (unreleased)
 -----------------
 
+* Update Travis test configuration (PR `#81`_).
 * Update data model to reflect 19.9 software release (PR `#78`_).
 
 .. _`#78`: https://github.com/desihub/desidatamodel/pull/78
+.. _`#81`: https://github.com/desihub/desidatamodel/pull/81
 
 19.2 (2019-10-01)
 ------------------
