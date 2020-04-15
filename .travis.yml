@@ -88,6 +88,7 @@ install:
     - if [[ $MAIN_CMD == 'coverage' ]]; then pip install coverage coveralls; fi
     - pip install git+https://github.com/desihub/desiutil.git@${DESIUTIL_VERSION}#egg=desiutil
     - if [[ $SETUP_CMD == 'test' || $MAIN_CMD == 'coverage' ]]; then pip install -r requirements.txt; fi
+    - if [[ -n "${ASTROPY_VERSION}" ]]; then pip install -U "astropy${ASTROPY_VERSION}"; fi
 
 script:
     - $MAIN_CMD $SETUP_CMD
