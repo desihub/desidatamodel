@@ -151,6 +151,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_bad_keyword_unit(self):
         """Test reading metadata with bad FITS BUNIT values.
         """
+        erg_msg = self.badUnitMessage('ergs')
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
@@ -159,10 +160,10 @@ class TestCheck(DataModelTestCase):
         model._metafile_data = '\n'.join(lines) + '\n'
         with self.assertRaises(ValueError) as e:
             meta = model.extract_metadata(error=True)
-        self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertEqual(str(e.exception), erg_msg)
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, "HDU 0 in {0} should have a more meaningful EXTNAME than 'PRIMARY'.".format(modelfile))
-        self.assertLog(log, -2, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertLog(log, -2, erg_msg)
 
     def test_extract_metadata_missing_keyword_unit(self):
         """Test reading metadata with missing units for header keywords.
@@ -183,6 +184,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_bad_column_unit(self):
         """Test reading metadata with bad FITS column units.
         """
+        erg_msg = self.badUnitMessage('ergs')
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
@@ -191,9 +193,9 @@ class TestCheck(DataModelTestCase):
         model._metafile_data = '\n'.join(lines) + '\n'
         with self.assertRaises(ValueError) as e:
             meta = model.extract_metadata(error=True)
-        self.assertEqual(str(e.exception), "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertEqual(str(e.exception), erg_msg)
         meta = model.extract_metadata(error=False)
-        self.assertLog(log, -1, "'ergs' did not parse as fits unit: At col 0, Unit 'ergs' not supported by the FITS standard. Did you mean erg?")
+        self.assertLog(log, -1, erg_msg)
 
     def test_extract_metadata_missing_column_type(self):
         """Test reading metadata with missing FITS column types.

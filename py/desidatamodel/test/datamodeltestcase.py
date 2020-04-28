@@ -8,6 +8,8 @@ import unittest
 import logging
 import shutil
 
+from astropy import __version__ as astropyVersion
+
 from desiutil.log import log
 from desiutil.test.test_log import TestHandler
 
@@ -18,6 +20,7 @@ class DataModelTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.astropyVersion = int(astropyVersion.split('.')[0])
         cls.maxDiff = None
         cls.data_dir = tempfile.mkdtemp()
         if DM in os.environ:
@@ -71,3 +74,11 @@ class DataModelTestCase(unittest.TestCase):
         handler = root_logger.handlers[0]
         record = handler.buffer[order]
         self.assertEqual(record.getMessage(), message)
+
+    def badUnitMessage(self, unit):
+        """Returns a string that can be used to match errors related to bad units.
+        """
+        m = "'{0}' did not parse as fits unit: At col {1:d}, Unit 'ergs' not supported by the FITS standard. Did you mean erg?".format(unit, unit.index('ergs'))
+        if self.astropyVersion >= 4:
+            m += " If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see http://docs.astropy.org/en/latest/units/combining_and_defining.html"
+        return m
