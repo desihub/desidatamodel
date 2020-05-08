@@ -361,7 +361,7 @@ EXTNAME = CHI2PIX
 chi2 of PSF fit to CCD pixels per spectrum wavelength bin.
 
 Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment

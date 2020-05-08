@@ -175,7 +175,7 @@ EXTNAME = THRPUTCORR
 Multiplicative achromatic throughput correction per fiber.
 
 Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
