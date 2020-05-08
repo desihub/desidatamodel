@@ -20,8 +20,13 @@ HDU1_  IVAR       IMAGE inverse variance ``(photons/bin)^-2``
 HDU2_  MASK       IMAGE sky mask (0 = good)
 HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
 HDU4_  STATIVAR   IMAGE statistical-only inverse variance of sky model
+HDU5_  THRPUTCORR IMAGE achromatic throughput correction per fiber
 ====== ========== ===== ===================
 
+The SKY HDU is the sky model per-fiber accounting for different fiber
+resolutions, but it does *not* include the empirical per-fiber throughput
+correction in the THRPUTCORR HDU.  The final sky model per fiber is
+``SKY * THRPUTCORR``.
 
 FITS Header Units
 =================
@@ -161,6 +166,26 @@ DATASUM  507269785        str  data unit checksum updated 2018-03-01T15:04:16
 ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2999x500]
+
+HDU5
+----
+
+EXTNAME = THRPUTCORR
+
+Multiplicative achromatic throughput correction per fiber.
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   500              int  number of spectra
+CHECKSUM cT3FeR2DcR2DcR2D str  HDU checksum updated 2020-04-29T23:21:31
+DATASUM  32452157         str  data unit checksum updated 2020-04-29T23:21:31
+======== ================ ==== ==============================================
+
+Data: FITS image [float32, 500]
 
 
 Notes and Examples
