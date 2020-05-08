@@ -78,90 +78,146 @@ DATASUM  0                str  data unit checksum updated 2018-03-29T22:45:34
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================= ======= ===== ============================================
-Name              Type    Units Description
-================= ======= ===== ============================================
-TARGETID          int64         Unique target ID
-DESI_TARGET       int64         DESI dark+calib targeting bit mask
-BGS_TARGET        int64         DESI Bright Galaxy Survey targeting bit mask
-MWS_TARGET        int64         DESI Milky Way Survey targeting bit mask
-SECONDARY_TARGET  int64
-TARGET_RA         float64       Target right ascension [degrees]
-TARGET_DEC        float64       Target declination [degrees]
-TARGET_RA_IVAR    float64
-TARGET_DEC_IVAR   float64
-BRICKID           int64
-BRICK_OBJID       int64
-MORPHTYPE         char[4]
-PRIORITY          int32
-SUBPRIORITY       float64
-REF_ID            int64
-PMRA              float32
-PMDEC             float32
-REF_EPOCH         float32
-PMRA_IVAR         float32
-PMDEC_IVAR        float32
-RELEASE           int16
-FLUX_G            float32
-FLUX_R            float32
-FLUX_Z            float32
-FLUX_W1           float32
-FLUX_W2           float32
-FLUX_IVAR_G       float32
-FLUX_IVAR_R       float32
-FLUX_IVAR_Z       float32
-FLUX_IVAR_W1      float32
-FLUX_IVAR_W2      float32
-FIBERFLUX_G       float32
-FIBERFLUX_R       float32
-FIBERFLUX_Z       float32
-FIBERFLUX_W1      float32
-FIBERFLUX_W2      float32
-FIBERTOTFLUX_G    float32
-FIBERTOTFLUX_R    float32
-FIBERTOTFLUX_Z    float32
-FIBERTOTFLUX_W1   float32
-FIBERTOTFLUX_W2   float32
-MW_TRANSMISSION_G float32
-MW_TRANSMISSION_R float32
-MW_TRANSMISSION_Z float32
-EBV               float32
-PHOTSYS           char[1]
-OBSCONDITIONS     int32
-NUMOBS_INIT       int64
-PRIORITY_INIT     int64
-NUMOBS_MORE       int32
-HPXPIXEL          int64
-FIBER             int32         Fiber ID [0-4999]
-PETAL_LOC         int32
-DEVICE_LOC        int32
-LOCATION          int32
-FIBERSTATUS       int32
-OBJTYPE           char[3]
-LAMBDA_REF        float32
-FIBERASSIGN_X     float32
-FIBERASSIGN_Y     float32
-FA_TARGET         int64
-FA_TYPE           byte
-NUMTARGET         int16
-FIBER_RA          float64
-FIBER_DEC         float64
-FIBER_RA_IVAR     float32
-FIBER_DEC_IVAR    float32
-PLATEMAKER_X      float32
-PLATEMAKER_Y      float32
-PLATEMAKER_RA     float32
-PLATEMAKER_DEC    float32
-NUM_ITER          int32
-SPECTROID         int32
-BRICKNAME         char[8]       Brickname from target imaging
-LAMBDAREF         float64       Reference wavelength at which to align fiber
-DELTA_X           float64
-DELTA_Y           float64
-NIGHT             int32
-EXPID             int32
-TILEID            int32
-================= ======= ===== ============================================
+================================= ======= ===== ===========
+Name                              Type    Units Description
+================================= ======= ===== ===========
+TARGETID                          int64         Unique target ID
+PETAL_LOC                         int16         Focal plane petal location 0-9
+DEVICE_LOC                        int32         Device location 0-5xx
+LOCATION                          int64         1000*PETAL_LOC + DEVICE_LOC
+FIBER                             int32         Fiber number 0-4999
+FIBERSTATUS                       int32         Fiber status mask; 0=good
+TARGET_RA                         float64
+TARGET_DEC                        float64
+PMRA                              float32
+PMDEC                             float32
+PMRA_IVAR                         float32
+PMDEC_IVAR                        float32
+REF_EPOCH                         float32
+LAMBDA_REF                        float32
+FA_TARGET                         int64
+FA_TYPE                           binary
+OBJTYPE                           char[3]
+FIBERASSIGN_X                     float32
+FIBERASSIGN_Y                     float32
+NUMTARGET                         int16
+PRIORITY                          int32
+SUBPRIORITY                       float64
+OBSCONDITIONS                     int32
+NUMOBS_MORE                       int32
+RELEASE                           int16
+BRICKID                           int32
+BRICKNAME                         char[8]
+BRICK_OBJID                       int32
+MORPHTYPE                         char[4]
+TARGET_RA_IVAR                    float32
+TARGET_DEC_IVAR                   float32
+EBV                               float32
+FLUX_G                            float32
+FLUX_R                            float32
+FLUX_Z                            float32
+FLUX_IVAR_G                       float32
+FLUX_IVAR_R                       float32
+FLUX_IVAR_Z                       float32
+MW_TRANSMISSION_G                 float32
+MW_TRANSMISSION_R                 float32
+MW_TRANSMISSION_Z                 float32
+FRACFLUX_G                        float32
+FRACFLUX_R                        float32
+FRACFLUX_Z                        float32
+FRACMASKED_G                      float32
+FRACMASKED_R                      float32
+FRACMASKED_Z                      float32
+FRACIN_G                          float32
+FRACIN_R                          float32
+FRACIN_Z                          float32
+NOBS_G                            int16
+NOBS_R                            int16
+NOBS_Z                            int16
+PSFDEPTH_G                        float32
+PSFDEPTH_R                        float32
+PSFDEPTH_Z                        float32
+GALDEPTH_G                        float32
+GALDEPTH_R                        float32
+GALDEPTH_Z                        float32
+FLUX_W1                           float32
+FLUX_W2                           float32
+FLUX_W3                           float32
+FLUX_W4                           float32
+FLUX_IVAR_W1                      float32
+FLUX_IVAR_W2                      float32
+FLUX_IVAR_W3                      float32
+FLUX_IVAR_W4                      float32
+MW_TRANSMISSION_W1                float32
+MW_TRANSMISSION_W2                float32
+MW_TRANSMISSION_W3                float32
+MW_TRANSMISSION_W4                float32
+ALLMASK_G                         int16
+ALLMASK_R                         int16
+ALLMASK_Z                         int16
+FIBERFLUX_G                       float32
+FIBERFLUX_R                       float32
+FIBERFLUX_Z                       float32
+FIBERTOTFLUX_G                    float32
+FIBERTOTFLUX_R                    float32
+FIBERTOTFLUX_Z                    float32
+WISEMASK_W1                       binary
+WISEMASK_W2                       binary
+MASKBITS                          int16
+FRACDEV                           float32
+FRACDEV_IVAR                      float32
+SHAPEDEV_R                        float32
+SHAPEDEV_E1                       float32
+SHAPEDEV_E2                       float32
+SHAPEDEV_R_IVAR                   float32
+SHAPEDEV_E1_IVAR                  float32
+SHAPEDEV_E2_IVAR                  float32
+SHAPEEXP_R                        float32
+SHAPEEXP_E1                       float32
+SHAPEEXP_E2                       float32
+SHAPEEXP_R_IVAR                   float32
+SHAPEEXP_E1_IVAR                  float32
+SHAPEEXP_E2_IVAR                  float32
+REF_ID                            int64
+REF_CAT                           char[2]
+GAIA_PHOT_G_MEAN_MAG              float32
+GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32
+GAIA_PHOT_BP_MEAN_MAG             float32
+GAIA_PHOT_BP_MEAN_FLUX_OVER_ERROR float32
+GAIA_PHOT_RP_MEAN_MAG             float32
+GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32
+GAIA_PHOT_BP_RP_EXCESS_FACTOR     float32
+GAIA_ASTROMETRIC_EXCESS_NOISE     float32
+GAIA_DUPLICATED_SOURCE            logical
+GAIA_ASTROMETRIC_SIGMA5D_MAX      float32
+GAIA_ASTROMETRIC_PARAMS_SOLVED    logical
+PARALLAX                          float32
+PARALLAX_IVAR                     float32
+PHOTSYS                           char[1]
+CMX_TARGET                        int64
+PRIORITY_INIT                     int64
+NUMOBS_INIT                       int64
+HPXPIXEL                          int64
+BLOBDIST                          float32
+FIBERFLUX_IVAR_G                  float32
+FIBERFLUX_IVAR_R                  float32
+FIBERFLUX_IVAR_Z                  float32
+DESI_TARGET                       int64
+BGS_TARGET                        int64
+MWS_TARGET                        int64
+NUM_ITER                          int64
+FIBER_X                           float64
+FIBER_Y                           float64
+DELTA_X                           float64
+DELTA_Y                           float64
+FIBER_RA                          float64
+FIBER_DEC                         float64
+NIGHT                             int32         YEARMMDD of sunset
+EXPID                             int32         exposure ID
+MJD                               float64
+TILEID                            int32         tile ID
+================================= ======= ===== ===========
+
 
 HDU02
 -----
