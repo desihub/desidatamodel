@@ -122,6 +122,9 @@ CHI2DOF   float64
 REDSHIFT  float64
 DATA_G-R  float64
 MODEL_G-R float64
+BLUE_SNR  float64
+RED_SNR   float64
+NIR_SNR   float64
 ========= ======= ===== ===========
 
 HDU4
