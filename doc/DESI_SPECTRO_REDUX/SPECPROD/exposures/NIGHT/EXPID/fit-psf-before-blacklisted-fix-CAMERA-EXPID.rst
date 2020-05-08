@@ -4,7 +4,7 @@ fit-psf-before-blacklisted-fix-CAMERA-EXPID.fits
 
 PSF (point spread function) files model the mapping of fibers and wavelengths
 to pixels on spectrograph CCDs.  They all use the format as the
-:doc:`psfnight files<../../../calibnight/NIGHT/psfnight>`.
+:doc:`psfnight files<../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>`.
 
 Arc exposures have 4 different PSF files per camera:
 

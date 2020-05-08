@@ -340,7 +340,7 @@ chi2 of PSF fit to CCD data per flux bin.  Large values indicate poor fits,
 e.g. due to unmasked cosmics or other CCD defects.
 
 Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
