@@ -68,12 +68,26 @@ class DataModelTestCase(unittest.TestCase):
         self.cache_handler = None
 
     def assertLog(self, logger, order=-1, message=''):
-        """Examine the log messages.
+        """Asserts that the `message` is at line `order` in the log buffer.
         """
         root_logger = logging.getLogger(logger.name.rsplit('.', 1)[0])
         handler = root_logger.handlers[0]
         record = handler.buffer[order]
         self.assertEqual(record.getMessage(), message)
+
+    def assertInLog(self, logger, message=''):
+        """Asserts that the `message` is one of the lines in the log buffer.
+        """
+        root_logger = logging.getLogger(logger.name.rsplit('.', 1)[0])
+        handler = root_logger.handlers[0]
+        ok = False
+        for record in handler.buffer:
+            if record.getMessage() == message:
+                ok = True
+                break
+
+        if not ok:
+            self.assertTrue(ok, f'Not found in log messages: {message}')
 
     def badUnitMessage(self, unit):
         """Returns a string that can be used to match errors related to bad units.
