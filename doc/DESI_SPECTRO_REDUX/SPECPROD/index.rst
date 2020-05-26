@@ -44,5 +44,7 @@ Output files::
    calib1d/index
    calibnight/index
    exposures/index
+   preproc/index
    spectra-NSIDE/index
+   tiles/index
    zcatalog-SPECPROD

@@ -62,10 +62,11 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
         files_to_regexp(self.data_dir, files)
-        self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
+
+        self.assertInLog(log, ("{0}/doc/examples/badModel.rst has no file " +
                                 "regexp!").format(os.environ[DM]))
         collect_files(self.data_dir, files)
-        self.assertLog(log, 1, 'Extraneous file detected: {0}'.format(test_files[3]))
+        self.assertInLog(log, 'Extraneous file detected: {0}'.format(test_files[3]))
         for f in files:
             if os.path.basename(f.filename) == 'badModel.rst':
                 self.assertIsNone(f.regexp)
@@ -86,10 +87,11 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'examples')
         files = scan_model(root)
         files_to_regexp(self.data_dir, files)
-        self.assertLog(log, 0, ("{0}/doc/examples/badModel.rst has no file " +
+
+        self.assertInLog(log, ("{0}/doc/examples/badModel.rst has no file " +
                                 "regexp!").format(os.environ[DM]))
         collect_files(self.data_dir, files)
-        self.assertLog(log, 1, ('No files found matching {0}/doc/examples/' +
+        self.assertInLog(log, ('No files found matching {0}/doc/examples/' +
                                 'spPlate.rst!').format(os.environ[DM]))
         for f in test_files:
             os.remove(f)
@@ -253,7 +255,7 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[0]['keywords'].append(('BUNIT', 'erg', 'str', 'This is a test.'))
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has the wrong number of HDU0 keywords according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "File {0} HDU0 extra keywords according to {1}: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
 
     def test_validate_prototype_hdu_wrong_keyword(self):
         """Test the data model validation method with wrong HDU keyword names.
@@ -265,7 +267,8 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[0]['keywords'][-1] = ('BUNIT', 'erg', 'str', 'This is a test.')
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has a keyword mismatch (BUNIT != BZERO) in HDU0 according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -2, "File {0} HDU0 missing keywords according to {1}: {{'BZERO'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "File {0} HDU0 extra keywords according to {1}: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
 
     def test_validate_prototype_hdu_extension_type(self):
         """Test the data model validation method with wrong HDU extension type.

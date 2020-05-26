@@ -3,9 +3,11 @@ zbest-NSIDE-PIXNUM.fits
 =======================
 
 :Summary: Best fit redshifts for each targets in a spectra file.
-:Naming Convention: ``zbest-NSIDE-PIXNUM.fits``, where NSIDE is the healpix
-    Nside (typically 64) and PIXNUM is the nested scheme healpix number.
-:Regex: ``zbest-[0-9]+-[0-9]+\.fits``
+:Naming Convention: ``zbest-{spectro}-{tileid}-{night}.fits``, where
+    ``{spectro}`` is the spectrograph number 0-9,
+    ``{tileid}`` is the tile ID,
+    and ``{night}`` is the YEARMMDD date of sunset for that night.
+:Regex: ``zbest-[0-9]-[0-9]+-[0-9]+\.fits``
 :File Type: FITS, 1 MB
 
 Note: the corresponding spectra file in this directory has one entry per

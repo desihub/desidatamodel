@@ -2,12 +2,12 @@
 frame-CAMERA-EXPID.fits
 =======================
 
-:Summary: Frame files contain the raw extracted electrons from DESI data, without
-    any further calibration.
-:Naming Convention: ``frame-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+:Summary: fiber-flatfielded and sky-subtracted but not flux calibrated
+          per-camera spectra.
+:Naming Convention: ``sframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
     one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
     is the 8-digit exposure ID.
-:Regex: ``frame-[brz][0-9]-[0-9]{8}\.fits``
+:Regex: ``sframe-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 70 MB
 
 Contents
@@ -16,8 +16,8 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FLUX       IMAGE    Extracted electrons (photons)
-HDU1_  IVAR       IMAGE    Inverse variance of extracted electrons
+HDU0_  FLUX       IMAGE    flatfielded sky subtracted photons
+HDU1_  IVAR       IMAGE    Inverse variance of FLUX
 HDU2_  MASK       IMAGE    Bad value mask; 0=good
 HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction
 HDU3_  RESOLUTION IMAGE    Resolution matrix

@@ -1,6 +1,6 @@
-=====================
-psf-CAMERA-EXPID.fits
-=====================
+=========================
+fit-psf-CAMERA-EXPID.fits
+=========================
 
 PSF (point spread function) files model the mapping of fibers and wavelengths
 to pixels on spectrograph CCDs.  They all use the format as the
@@ -32,6 +32,6 @@ Flat and science exposures have a single PSF file per camera:
     are adjusted only in x (cross dispersion = fiber direction),
     while science exposures are adjusted in both x and y (wavelength direction).
 
-:Regex: ``psf-[brz][0-9]-[0-9]{8}\.fits``
+:Regex: ``fit-psf-[brz][0-9]-[0-9]{8}\.fits``
 
 

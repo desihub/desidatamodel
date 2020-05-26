@@ -31,6 +31,7 @@ class DataModel(DataModelUnit):
     # A mapping of human-readable metavariables to regular expressions.
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
+            'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
@@ -53,6 +54,8 @@ class DataModel(DataModelUnit):
     _tableboundary = re.compile(r'[= ]+$')
 
     def __init__(self, filename, section):
+        shortname = filename.replace(f'{section}/', '')
+        log.debug(f'Creating DataModel for {shortname}')
         self.filename = filename
         self.section = section
         self.ref = None
@@ -344,7 +347,7 @@ class DataModel(DataModelUnit):
             self.hdumeta.append(meta)
         return self.hdumeta
 
-    def validate_prototype(self, error=False):
+    def validate_prototype(self, error=False, skip_keywords=False):
         """Compares a model's prototype data file to the data models.
 
         Parameters
@@ -352,6 +355,8 @@ class DataModel(DataModelUnit):
         error : :class:`bool`, optional
             If ``True``, failure to extract certain required metadata raises an
             exception.
+        skip_keywords : :class:`bool`, optional
+            If ``True``, don't check FITS header keywords
 
         Notes
         -----
@@ -377,25 +382,24 @@ class DataModel(DataModelUnit):
                         self.prototype, self.filename)
             return
         for i in range(self._stub.nhdr):
-            dkw = stub_meta[i]['keywords']
-            mkw = modelmeta[i]['keywords']
             #
-            # Check number of keywords.
+            # Compare keywords
             #
-            if len(dkw) != len(mkw):
-                log.warning("Prototype file %s has the wrong number of " +
-                            "HDU%d keywords according to %s.",
-                            self.prototype, i, self.filename)
-                continue
-            #
-            # If number of keywords is correct, check them individually.
-            #
-            for j in range(len(dkw)):
-                if dkw[j][0] != mkw[j][0]:
-                    log.warning("Prototype file %s has a keyword " +
-                                "mismatch (%s != %s) in HDU%d according to " +
-                                "%s.", self.prototype, dkw[j][0], mkw[j][0], i,
-                                self.filename)
+            if not skip_keywords:
+                dkw = stub_meta[i]['keywords']
+                mkw = modelmeta[i]['keywords']
+                mkw_set = set([tmp[0] for tmp in mkw])
+                dkw_set = set([tmp[0] for tmp in dkw])
+                missing_keywords = mkw_set - dkw_set
+                extra_keywords = dkw_set - mkw_set
+                if len(missing_keywords) > 0:
+                    log.warning("File %s HDU%d missing keywords according to %s: %s",
+                        self.prototype, i, self.filename, str(missing_keywords))
+
+                if len(extra_keywords) > 0:
+                    log.warning("File %s HDU%d extra keywords according to %s: %s",
+                        self.prototype, i, self.filename, str(extra_keywords))
+
             #
             # Check the extension type.
             #
@@ -448,6 +452,14 @@ class DataModel(DataModelUnit):
                     log.warning("Prototype file %s has the wrong " +
                                 "number of HDU%d columns according to %s.",
                                 self.prototype, i, self.filename)
+                    datacolumns = set([tmp[0] for tmp in dexf])
+                    modelcolumns = set([tmp[0] for tmp in mexf])
+                    if len(datacolumns - modelcolumns) > 0:
+                        log.warning('data columns missing from model: %s',
+                                    str(datacolumns - modelcolumns))
+                    if len(modelcolumns - datacolumns) > 0:
+                        log.warning('model columns missing from data: %s',
+                                    str(modelcolumns - datacolumns))
                 else:
                     for j in range(len(dexf)):
                         if dexf[j][0] != mexf[j][0]:
@@ -547,6 +559,7 @@ def collect_files(root, files):
                         extraneous_file = False
                         if r.prototype is None:
                             r.prototype = fullname
+
             if extraneous_file:
                 log.warning("Extraneous file detected: %s", fullname)
     #
@@ -560,7 +573,7 @@ def collect_files(root, files):
     return
 
 
-def validate_prototypes(files, error=False):
+def validate_prototypes(files, error=False, skip_keywords=False):
     """Compares a set of prototype data files to their data models.
 
     Parameters
@@ -570,6 +583,8 @@ def validate_prototypes(files, error=False):
     error : :class:`bool`, optional
         If ``True``, failure to extract certain required metadata raises an
         exception.
+    skip_keywords : :class:`bool`, optional
+        If ``True``, don't check FITS header keywords
 
     Notes
     -----
@@ -577,7 +592,7 @@ def validate_prototypes(files, error=False):
       automatically find missing headers, extraneous headers, etc.
     """
     for f in files:
-        f.validate_prototype(error=error)
+        f.validate_prototype(error=error, skip_keywords=skip_keywords)
     return
 
 
@@ -605,9 +620,11 @@ def main():
                         help='Data model warnings raise exceptions.')
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
                         help='Set log level to DEBUG.')
-    parser.add_argument('section', metavar='DIR or FILE',
+    parser.add_argument('--skip-keywords', dest='skip_keywords', action='store_true',
+                        help="Don't check FITS header keywords")
+    parser.add_argument('section', metavar='MODEL_DIR_or_FILE',
                         help='Section of the data model or individual model file.')
-    parser.add_argument('directory', metavar='DIR or FILE',
+    parser.add_argument('directory', metavar='DATA_DIR_or_FILE',
                         help='Check files in this top-level directory, or one individual file.')
     options = parser.parse_args()
     if options.verbose:
@@ -639,5 +656,5 @@ def main():
         files_to_regexp(options.directory, files, error=options.error)
         log.info("Identifying prototype files in %s.", options.directory)
         collect_files(options.directory, files)
-    validate_prototypes(files, error=options.error)
+    validate_prototypes(files, error=options.error, skip_keywords=options.skip_keywords)
     return 0

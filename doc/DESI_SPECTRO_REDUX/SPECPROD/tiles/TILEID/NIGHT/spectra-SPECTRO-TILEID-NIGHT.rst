@@ -3,10 +3,11 @@ spectra-NSIDE-PIXNUM.fits
 =========================
 
 :Summary: DESI spectra grouped by nested healpix number
-:Naming Convention: ``spectra-{nside}-{pixnum}.fits``, where
-    ``{nside}`` is the healpix nside and ``{pixnum}`` is the nested scheme
-    healpix number.
-:Regex: ``spectra-[0-9]+-[0-9]+\.fits``
+:Naming Convention: ``spectra-{spectro}-{tileid}-{night}.fits``, where
+    ``{spectro}`` is the spectrograph number 0-9,
+    ``{tileid}`` is the tile ID,
+    and ``{night}`` is the YEARMMDD date of sunset for that night.
+:Regex: ``spectra-[0-9]-[0-9]+-[0-9]+\.fits``
 :File Type: FITS, 1 GB
 
 Contents

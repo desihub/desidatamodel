@@ -6,7 +6,7 @@ calib-CAMERA-EXPID.fits
 :Naming Convention: ``calib-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
     one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
     is the 8-digit exposure ID.
-:Regex: ``calib-[brz][0-9]-[0-9]{8}\.fits``
+:Regex: ``fluxcalib-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 10 MB
 
 Contents
