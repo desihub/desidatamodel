@@ -182,9 +182,9 @@ GAIA_ASTROMETRIC_PARAMS_SOLVED    int64                            which astrome
 PARALLAX                          float32    mas                   Reference catalog parallax
 PARALLAX_IVAR                     float32    mas**-2               Inverse variance of parallax
 PMRA                              float32    mas/yr                Reference catalog proper motion in the RA direction
-PMRA_IVAR                         float32    (mas/yr)**-2          Inverse variance of PMRA
+PMRA_IVAR                         float32    mas/yr**-2            Inverse variance of PMRA
 PMDEC                             float32    mas/yr                Reference catalog proper motion in the Dec direction
-PMDEC_IVAR                        float32    (mas/yr)**-2          Inverse variance of PMDEC
+PMDEC_IVAR                        float32    mas/yr**-2            Inverse variance of PMDEC
 PHOTSYS                           char[1]                          'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 TARGETID                          int64                            ID (unique to file and the whole survey)
 DESI_TARGET                       int64                            DESI (dark time program) target selection bitmask
