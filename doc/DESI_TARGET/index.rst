@@ -18,3 +18,4 @@ with the canonical location of ``$DESI_ROOT/target``
    fiberassign/index
    deprecated: DR3 target catalog format <targets-dr3>
    deprecated: DR6 target catalog format <targets-dr6>
+   deprecated: DR7 target catalog format <targets-dr7>
