@@ -393,12 +393,16 @@ class DataModel(DataModelUnit):
                 missing_keywords = mkw_set - dkw_set
                 extra_keywords = dkw_set - mkw_set
                 if len(missing_keywords) > 0:
-                    log.warning("File %s HDU%d missing keywords according to %s: %s",
-                        self.prototype, i, self.filename, str(missing_keywords))
+                    log.warning(
+                        "File %s HDU%d missing keywords according to %s: %s",
+                        self.prototype, i, self.filename, str(missing_keywords)
+                    )
 
                 if len(extra_keywords) > 0:
-                    log.warning("File %s HDU%d extra keywords according to %s: %s",
-                        self.prototype, i, self.filename, str(extra_keywords))
+                    log.warning(
+                        "File %s HDU%d extra keywords according to %s: %s",
+                        self.prototype, i, self.filename, str(extra_keywords)
+                    )
 
             #
             # Check the extension type.
