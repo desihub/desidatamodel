@@ -157,13 +157,13 @@ FRACDEV_IVAR                      float32                          Inverse varia
 SHAPEDEV_R                        float32    arcsec                Half-light radius of deVaucouleurs model
 SHAPEDEV_E1                       float32                          `Ellipticity component`_ 1 of deVaucouleurs model
 SHAPEDEV_E2                       float32                          `Ellipticity component`_ 2 of deVaucouleurs model
-SHAPEDEV_R_IVAR                   float32    1/arcsec2             Inverse variance of SHAPEDEV_R
+SHAPEDEV_R_IVAR                   float32    arcsec**-2            Inverse variance of SHAPEDEV_R
 SHAPEDEV_E1_IVAR                  float32                          Inverse variance of SHAPEDEV_E1
 SHAPEDEV_E2_IVAR                  float32                          Inverse variance of SHAPEDEV_E2
 SHAPEEXP_R                        float32    arcsec                Half-light radius of exponential model
 SHAPEEXP_E1                       float32                          `Ellipticity component`_ 1 of exponential model
 SHAPEEXP_E2                       float32                          `Ellipticity component`_ 2 of exponential model
-SHAPEEXP_R_IVAR                   float32    1/arcsec2             Inverse variance of SHAPEEXP_R
+SHAPEEXP_R_IVAR                   float32    arcsec**-2            Inverse variance of SHAPEEXP_R
 SHAPEEXP_E1_IVAR                  float32                          Inverse variance of SHAPEEXP_E1
 SHAPEEXP_E2_IVAR                  float32                          Inverse variance of SHAPEEXP_E2
 REF_ID                            int64                            Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
