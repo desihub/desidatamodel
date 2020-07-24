@@ -6,14 +6,10 @@ targets
     the targets in a (nested) HEALPixel. They contain the variables used by
     target selection (*e.g.* fluxes), variables needed by fiber assignment (*e.g.*
     RA, DEC), and variables needed for traceability (*e.g.* DESITARGET, TARGETID).
-:Naming Convention: ``IMAGING_VERSION/DESITARGET_VERSION/targets/SURVEY/RESOLVE/LAYER/targets-IMAGING_VERSION-hp-PIXNUM.fits``,
-    where ``IMAGING_VERSION`` is the imaging surveys data release name (*e.g.* dr8),
-    ``DESITARGET_VERSION`` is the desitarget code version defining the cuts (*e.g.*
-    0.41.0), ``SURVEY`` is the particular sub-type of DESI survey (*e.g.* sv1 for
-    Survey Validation, main for the Main Survey), ``RESOLVE`` refers to whether the
-    targets are unique across the northern/southern Legacy Surveys (`LS`_) imaging
-    (resolve) or can have duplicates where the imaging surveys overlap (noresolve)
-    and ``LAYER`` refers to the observing conditions (*e.g.* bright, dark).
+:Naming Convention: ``targets-IMAGING_VERSION-hp-PIXNUM.fits``,
+    where ``IMAGING_VERSION`` is the imaging surveys data release name (*e.g.* dr8)
+    and ``PIXNUM`` is the HEALPixel(s) covered by file at the (nested) HEALPix
+    nside included in the file header as ``FILENSID`` (*e.g.* 11).
 :Regex: ``targets-dr[0-9]-hp-?[0-9]+\.fits``
 :File Type: FITS, 2 GB
 
@@ -79,7 +75,7 @@ MASKBITS T             bool ``True`` if masking cuts applied
 SUPP     F             bool ``True`` for supplemental targets
 TCNAMES  "QSO,LRG"     str  run for this target-class subset
 FILENSID 2             int  HEALPix nside covered by file
-FILENEST T             bool HEALPix neted (not ring) ordering
+FILENEST T             bool HEALPix nested (not ring) ordering
 FILEHPX  11            int  HEALPix pixel(s) covered by file
 ======== ============= ==== ==================================
 
