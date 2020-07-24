@@ -64,7 +64,7 @@ class TestCheck(DataModelTestCase):
         files_to_regexp(self.data_dir, files)
 
         self.assertInLog(log, ("{0}/doc/examples/badModel.rst has no file " +
-                                "regexp!").format(os.environ[DM]))
+                               "regexp!").format(os.environ[DM]))
         collect_files(self.data_dir, files)
         self.assertInLog(log, 'Extraneous file detected: {0}'.format(test_files[3]))
         for f in files:
@@ -89,10 +89,10 @@ class TestCheck(DataModelTestCase):
         files_to_regexp(self.data_dir, files)
 
         self.assertInLog(log, ("{0}/doc/examples/badModel.rst has no file " +
-                                "regexp!").format(os.environ[DM]))
+                               "regexp!").format(os.environ[DM]))
         collect_files(self.data_dir, files)
         self.assertInLog(log, ('No files found matching {0}/doc/examples/' +
-                                'spPlate.rst!').format(os.environ[DM]))
+                               'spPlate.rst!').format(os.environ[DM]))
         for f in test_files:
             os.remove(f)
 

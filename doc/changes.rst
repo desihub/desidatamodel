@@ -5,11 +5,19 @@ desidatamodel Change Log
 20.4 (unreleased)
 -----------------
 
+* Use the DR8 data model for targets and deprecate DR7 (PR `#84`_):
+    * Updates columns to match the DR8 target files.
+    * Adds a targets-dr8.rst file to deprecate once DR9 is released.
+    * Updates the header information to match the DR8 target files.
+    * Adds units for some columns.
+    * Directory structure now reflects the (HEALPix-split) target files.
+    * Adds urls for the DR8 target files for upcoming research notes.
 * Update Travis test configuration (PR `#81`_).
 * Update data model to reflect 19.9 software release (PR `#78`_).
 
 .. _`#78`: https://github.com/desihub/desidatamodel/pull/78
 .. _`#81`: https://github.com/desihub/desidatamodel/pull/81
+.. _`#84`: https://github.com/desihub/desidatamodel/pull/84
 
 19.2 (2019-10-01)
 ------------------
