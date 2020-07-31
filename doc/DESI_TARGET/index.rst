@@ -3,12 +3,13 @@ DESI_TARGET
 ===========
 
 :envvar:`DESI_TARGET` contains target selection and fiber assignment data,
-with the canonical location of ``$DESI_ROOT/target``
+with the canonical location of ``$DESI_ROOT/TS/target``. Where ``TS`` is one of
+`ets` for DESI early target selection, `svts` for DESI Survey Validation or
+`ts` for the DESI Main Science Survey.
 
 .. toctree::
    :maxdepth: 1
 
-   targets-{source}-{version}.fits : target selection catalog <targets>
    randoms-{source}-{version}.fits : random catalog <randoms>
    pixweight-{source}-{version}.fits : HEALPixel map of target densities and quantities derived from randoms <pixweight>
    skies-{source}-{version}.fits : catalog of blank sky locations <skies>
@@ -16,7 +17,3 @@ with the canonical location of ``$DESI_ROOT/target``
    mtl-{version}.fits : merged target list catalog <mtl>
    truth-{version}.fits : truth mock catalog <truth>
    fiberassign/index
-   deprecated: DR3 target catalog format <targets-dr3>
-   deprecated: DR6 target catalog format <targets-dr6>
-   deprecated: DR7 target catalog format <targets-dr7>
-   current: DR8 target catalog format <targets-dr8>
