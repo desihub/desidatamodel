@@ -3,7 +3,7 @@ DESI_TARGET
 ===========
 
 :envvar:`DESI_TARGET` contains target selection and fiber assignment data,
-with the canonical location of ``$DESI_ROOT/TS/target``. Where ``TS`` is one of
+with the canonical location of ``$DESI_ROOT/TS/target``. Here, ``TS`` is one of
 `ets` for DESI early target selection, `svts` for DESI Survey Validation or
 `ts` for the DESI Main Science Survey.
 

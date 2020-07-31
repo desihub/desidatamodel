@@ -7,7 +7,8 @@ TYPE
 random catalogs averaged across HEALPixels). Under each target type
 data are grouped according to the specific DESI observational campaign.
 Campaigns can include "mainX" for iterations of the DESI Main Science Survey,
-"svX" for iterations of Survey Validation and "cmx" for commissioning.
+"svX" for iterations of Survey Validation and "cmx" for commissioning, where
+"X" is an integer.
 
 Subdirectories:
 
