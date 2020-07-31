@@ -17,3 +17,4 @@ with the canonical location of ``$DESI_ROOT/TS/target``. Where ``TS`` is one of
    mtl-{version}.fits : merged target list catalog <mtl>
    truth-{version}.fits : truth mock catalog <truth>
    fiberassign/index
+   TARG_DIR/index
