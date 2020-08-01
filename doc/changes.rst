@@ -5,6 +5,9 @@ desidatamodel Change Log
 20.4 (unreleased)
 -----------------
 
+* Update desitarget data model to reflect the ets release (PR `#85`_):
+    * Alter filenames to add ``PHASE/OBSCON/RESOLVE`` and remove ``DR``.
+    * Add full directory structure for ``DESI_TARGET/TARG_DIR``.
 * Use the DR8 data model for targets and deprecate DR7 (PR `#84`_):
     * Updates columns to match the DR8 target files.
     * Adds a targets-dr8.rst file to deprecate once DR9 is released.
@@ -18,6 +21,7 @@ desidatamodel Change Log
 .. _`#78`: https://github.com/desihub/desidatamodel/pull/78
 .. _`#81`: https://github.com/desihub/desidatamodel/pull/81
 .. _`#84`: https://github.com/desihub/desidatamodel/pull/84
+.. _`#85`: https://github.com/desihub/desidatamodel/pull/85
 
 19.2 (2019-10-01)
 ------------------
