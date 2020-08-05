@@ -2,15 +2,20 @@
 targets
 =======
 
-:Summary: DESI target selection files contain a single binary table containing
+:Summary: DESI target selection files include a single binary table containing
     the targets in a (nested) HEALPixel. They contain the variables used by
     target selection (*e.g.* fluxes), variables needed by fiber assignment (*e.g.*
     RA, DEC), and variables needed for traceability (*e.g.* DESITARGET, TARGETID).
-:Naming Convention: ``targets-IMAGING_VERSION-hp-PIXNUM.fits``,
-    where ``IMAGING_VERSION`` is the imaging surveys data release name (*e.g.* dr8)
-    and ``PIXNUM`` is the HEALPixel(s) covered by file at the (nested) HEALPix
-    nside included in the file header as ``FILENSID`` (*e.g.* 11).
-:Regex: ``targets-dr[0-9]-hp-?[0-9]+\.fits``
+:Naming Convention: ``PHASEtargets-OBSCON-RESOLVE-hp-HP.fits``,
+    where ``PHASE`` is a specific DESI observational phase (*e.g.* svX with X=1,2
+    for iterations of Survey Validation), ``OBSCON`` is the observing condition
+    (or "layer") for the targets (*e.g.* dark), ``RESOLVE`` is "noresolve" for
+    targets that are not resolved, and ``HP`` is the HEALPixel covered by the file
+    at the (nested) HEALPixel nside included in the file header as ``FILENSID``
+    (*e.g.* 11). For targets that are *not* resolved ``RESOLVE`` is omitted from
+    the filename. For targets that are part of the DESI Main Science Survey
+    ``PHASE`` is omitted from the filename.
+:Regex: ``.*?targets-.*?-hp-?[0-9]+\.fits``
 :File Type: FITS, 2 GB
 
 **Note**: this documents the target catalog format starting with DR8 /
@@ -19,14 +24,10 @@ desitarget 0.31.0 .  The previous format is documented in :doc:`targets-dr7`.
 Examples
 ========
 
-For research notes detailing Early Target Selections for DESI, target files
-are available at (for ELGs, LRGs, QSOs):
+For research notes detailing early target selections for DESI, target files
+are available at:
 
-https://data.desi.lbl.gov/release/ETS/target/catalogs/dr8/0.41.0/targets/main/resolve/dark
-
-and (for BGS, MWS):
-
-https://data.desi.lbl.gov/release/ETS/target/catalogs/dr8/0.41.0/targets/main/resolve/bright .
+https://data.desi.lbl.gov/public/ets/target/catalogs/dr8 .
 
 
 Contents
