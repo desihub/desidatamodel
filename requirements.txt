@@ -1,2 +1,2 @@
-astropy==2.0.16
-git+https://github.com/desihub/desiutil.git@2.0.3#egg=desiutil
+astropy
+git+https://github.com/desihub/desiutil.git@3.0.3#egg=desiutil

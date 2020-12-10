@@ -2,9 +2,10 @@
 desidatamodel Change Log
 ========================
 
-20.4 (unreleased)
------------------
+20.12 (unreleased)
+------------------
 
+* Migrated to GitHub Actions for testing.
 * Update desitarget data model to reflect the ets release (PR `#85`_):
     * Alter filenames to add ``PHASE/OBSCON/RESOLVE`` and remove ``DR``.
     * Add full directory structure for ``DESI_TARGET/TARG_DIR``.
