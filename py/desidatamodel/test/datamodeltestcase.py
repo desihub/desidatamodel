@@ -94,5 +94,5 @@ class DataModelTestCase(unittest.TestCase):
         """
         m = "'{0}' did not parse as fits unit: At col {1:d}, Unit 'ergs' not supported by the FITS standard. Did you mean erg?".format(unit, unit.index('ergs'))
         if self.astropyVersion >= 4:
-            m += " If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see http://docs.astropy.org/en/latest/units/combining_and_defining.html"
+            m += " If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see https://docs.astropy.org/en/latest/units/combining_and_defining.html"
         return m
