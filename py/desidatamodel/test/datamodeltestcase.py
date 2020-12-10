@@ -11,7 +11,7 @@ import shutil
 from astropy import __version__ as astropyVersion
 
 from desiutil.log import log
-from desiutil.test.test_log import TestHandler
+from desiutil.test.test_log import NullMemoryHandler
 
 DM = 'DESIDATAMODEL'
 
@@ -51,7 +51,7 @@ class DataModelTestCase(unittest.TestCase):
             self.cache_handler = h
             fmt = h.formatter
             root_logger.removeHandler(h)
-        mh = TestHandler()
+        mh = NullMemoryHandler()
         mh.setFormatter(fmt)
         root_logger.addHandler(mh)
         log.setLevel(logging.DEBUG)
