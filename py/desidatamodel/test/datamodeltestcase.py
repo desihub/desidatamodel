@@ -7,6 +7,7 @@ import tempfile
 import unittest
 import logging
 import shutil
+from packaging import version
 
 from astropy import __version__ as astropyVersion
 
@@ -20,7 +21,7 @@ class DataModelTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.astropyVersion = float('.'.join(astropyVersion.split('.')[0:2]))
+        cls.astropyVersion = version.parse(astropyVersion)
         cls.maxDiff = None
         cls.data_dir = tempfile.mkdtemp()
         if DM in os.environ:
@@ -93,8 +94,8 @@ class DataModelTestCase(unittest.TestCase):
         """Returns a string that can be used to match errors related to bad units.
         """
         m = "'{0}' did not parse as fits unit: At col {1:d}, Unit 'ergs' not supported by the FITS standard. Did you mean erg?".format(unit, unit.index('ergs'))
-        if self.astropyVersion >= 4:
+        if self.astropyVersion >= version.parse('4.0'):
             m += " If this is meant to be a custom unit, define it with 'u.def_unit'. To have it recognized inside a file reader or other code, enable it with 'u.add_enabled_units'. For details, see http://docs.astropy.org/en/latest/units/combining_and_defining.html"
-        if self.astropyVersion >= 4.1:
+        if self.astropyVersion >= version.parse('4.1'):
             m = m.replace('http', 'https')
         return m
