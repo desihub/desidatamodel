@@ -338,7 +338,7 @@ class DataModel(DataModelUnit):
                 if k == 0:
                     if meta['format'] == 'Empty HDU.':
                         if len(meta['keywords']) > 0 and meta['extname'] != 'PRIMARY':
-                            m = "HDU %d in %s has acceptable alternative EXTNAME = '%d'."
+                            m = "HDU %d in %s has acceptable alternative EXTNAME = '%s'."
                             log.debug(m, k, metafile, meta['extname'])
                     else:
                         if meta['extname'] == 'PRIMARY':
