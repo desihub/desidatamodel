@@ -1,6 +1,6 @@
-=======================
-frame-CAMERA-EXPID.fits
-=======================
+========================
+sframe-CAMERA-EXPID.fits
+========================
 
 :Summary: fiber-flatfielded and sky-subtracted but not flux calibrated
           per-camera spectra.
