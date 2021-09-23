@@ -391,17 +391,27 @@ class DataModel(DataModelUnit):
                         self.prototype, self.filename)
             return
         for i in range(self._stub.nhdr):
-            for key in modelmeta:
-                if modelmeta[key]['number'] == i:
-                    modelhdumeta = modelmeta[key]
-            #
-            # Check for EXTNAME
-            #
             dexex = stub_meta[i]['extname']
-            mexex = modelhdumeta['extname']
             if dexex == '' and i > 0:
                 log.warning("Prototype file %s has no EXTNAME in HDU%d.",
                             self.prototype, i)
+            try:
+                modelhdumeta = modelmeta[dexex]
+            except KeyError:
+                try:
+                    modelhdumeta = modelmeta['HDU{0:02d}'.format(i)]
+                except KeyError:
+                    #
+                    # Fall back on trying to find HDU by number.
+                    #
+                    log.warning("Could not find EXTNAME = '%s' in %s; trying by HDU number.", dexex, self.filename)
+                    for key in modelmeta:
+                        if modelmeta[key]['number'] == i:
+                            modelhdumeta = modelmeta[key]
+            #
+            # Check for EXTNAME
+            #
+            mexex = modelhdumeta['extname']
             if (dexex != '' and mexex != '' and dexex != mexex):
                 log.warning("Prototype file %s has an EXTNAME mismatch " +
                             "in HDU%d (%s != %s) " +
@@ -422,13 +432,21 @@ class DataModel(DataModelUnit):
                         "File %s HDU%d missing keywords according to %s: %s",
                         self.prototype, i, self.filename, str(missing_keywords)
                     )
-
                 if len(extra_keywords) > 0:
                     log.warning(
                         "File %s HDU%d extra keywords according to %s: %s",
                         self.prototype, i, self.filename, str(extra_keywords)
                     )
-
+                #
+                # Compare the keywords that are in both sets.
+                #
+                common_keywords = mkw_set & dkw_set
+                for kw in common_keywords:
+                    mkw_type = [tmp[2] for tmp in mkw if tmp[0] == kw][0]
+                    dkw_type = [tmp[2] for tmp in dkw if tmp[0] == kw][0]
+                    if mkw_type != dkw_type:
+                        log.warning("File %s HDU%d keyword %s has different keyword type according to %s (%s != %s).",
+                                    self.prototype, i, kw, self.filename, dkw_type, mkw_type)
             #
             # Check the extension type.
             #
@@ -468,22 +486,32 @@ class DataModel(DataModelUnit):
                     log.warning("Prototype file %s has the wrong " +
                                 "number of HDU%d columns according to %s.",
                                 self.prototype, i, self.filename)
-                    datacolumns = set([tmp[0] for tmp in dexf])
-                    modelcolumns = set([tmp[0] for tmp in mexf])
-                    if len(datacolumns - modelcolumns) > 0:
-                        log.warning('data columns missing from model: %s',
-                                    str(datacolumns - modelcolumns))
-                    if len(modelcolumns - datacolumns) > 0:
-                        log.warning('model columns missing from data: %s',
-                                    str(modelcolumns - datacolumns))
-                else:
-                    for j in range(len(dexf)):
-                        if dexf[j][0] != mexf[j][0]:
-                            log.warning("Prototype file %s has a " +
-                                        "column name mismatch (%s != %s) " +
-                                        "in HDU%d according to %s.",
-                                        self.prototype, dexf[j][0], mexf[j][0],
-                                        i, self.filename)
+                datacolumns = set([tmp[0] for tmp in dexf])
+                modelcolumns = set([tmp[0] for tmp in mexf])
+                if len(datacolumns - modelcolumns) > 0:
+                    log.warning('data columns missing from model: %s',
+                                str(datacolumns - modelcolumns))
+                if len(modelcolumns - datacolumns) > 0:
+                    log.warning('model columns missing from data: %s',
+                                str(modelcolumns - datacolumns))
+                common_columns = datacolumns & modelcolumns
+                for column in common_columns:
+                    #
+                    # Compare type
+                    #
+                    mcol_type = [tmp[1] for tmp in mexf if tmp[0] == column][0]
+                    dcol_type = [tmp[1] for tmp in dexf if tmp[0] == column][0]
+                    if mcol_type != dcol_type:
+                        log.warning("File %s HDU%d column %s has different type according to %s (%s != %s).",
+                                    self.prototype, i, column, self.filename, dcol_type, mcol_type)
+                    #
+                    # Compare unit
+                    #
+                    mcol_unit = [tmp[2] for tmp in mexf if tmp[0] == column][0]
+                    dcol_unit = [tmp[2] for tmp in dexf if tmp[0] == column][0]
+                    if mcol_unit != '' and dcol_unit != '' and mcol_unit != dcol_unit:
+                        log.warning("File %s HDU%d column %s has different units according to %s (%s != %s).",
+                                    self.prototype, i, column, self.filename, dcol_unit, mcol_unit)
         return
 
 

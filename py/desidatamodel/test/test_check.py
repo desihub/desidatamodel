@@ -305,7 +305,8 @@ class TestCheck(DataModelTestCase):
         self.assertLog(log, -1, "Prototype file {0} has an EXTNAME mismatch in HDU1 (GALAXY != Galaxies) according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
         f._stub_meta[1]['extname'] = ''
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has no EXTNAME in HDU1.".format(modelfile.replace('.rst', '.fits')))
+        self.assertLog(log, -2, "Prototype file {0} has no EXTNAME in HDU1.".format(modelfile.replace('.rst', '.fits')))
+        self.assertLog(log, -1, "Could not find EXTNAME = '' in {0}; trying by HDU number.".format(modelfile))
 
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.
