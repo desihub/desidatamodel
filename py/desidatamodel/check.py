@@ -9,6 +9,8 @@ Check actual files against the data model for validity.
 """
 import os
 import re
+from sys import argv
+from argparse import ArgumentParser
 
 from desiutil.log import log, DEBUG
 
@@ -55,7 +57,7 @@ class DataModel(DataModelUnit):
 
     def __init__(self, filename, section):
         shortname = filename.replace(f'{section}/', '')
-        log.debug(f'Creating DataModel for {shortname}')
+        log.debug('Creating DataModel for %s.', shortname)
         self.filename = filename
         self.section = section
         self.ref = None
@@ -188,14 +190,14 @@ class DataModel(DataModelUnit):
 
         Returns
         -------
-        :class:`list`
+        :class:`dict`
             Metadata in a form similar to :class:`~desidatamodel.stub.Stub`
-            metadata.
+            metadata. The keys are the ``EXTNAME`` header values.
 
         Raises
         ------
         :exc:`~desidatamodel.DataModelError`
-            If `error` is set and the HDU has no `EXTNAME` keyword.
+            If `error` is set and the HDU has no ``EXTNAME`` keyword.
         """
         metafile = self.filename
         if self.ref is not None:
@@ -207,7 +209,7 @@ class DataModel(DataModelUnit):
         hdu_sections = [i for i, l in enumerate(lines)
                         if (self._hduline.match(l) is not None or
                             self._hduspan.match(l) is not None)]
-        self.hdumeta = list()
+        self.hdumeta = dict()
         for k in range(len(hdu_sections)):
             try:
                 section = lines[hdu_sections[k]:hdu_sections[k+1]]
@@ -225,25 +227,32 @@ class DataModel(DataModelUnit):
                           spanstart, spanend)
                 spanref = [l for l in section if l.startswith('Data:')][0]
                 spanext = spanref[spanref.lower().index('see') + 4:].replace('.', '')
-                spanmeta = [m for m in self.hdumeta if m['extname'] == spanext][0]
+                try:
+                    spanmeta = self.hdumeta[spanext]
+                except KeyError:
+                    m = "Cannot find EXTNAME = '%s' which is supposed to define HDU %d to HDU %d!"
+                    log.critical(m, spanext, spanstart, spanend)
+                    raise DataModelError(m % (spanext, spanstart, spanend))
                 spanname = [l.split('=')[1].strip() for l in section
                             if l.startswith('EXTNAME = ')][0]
                 extnames = [p.strip() for p in spanname.split(',')]
                 if len(range(spanstart, spanend+1)) == len(extnames):
                     for i, l in enumerate(range(spanstart, spanend+1)):
                         meta = dict()
+                        meta['number'] = l
                         meta['title'] = 'HDU{0:d}'.format(l)
                         meta['extname'] = extnames[i]
                         meta['extension'] = spanmeta['extension']
                         meta['format'] = spanmeta['format']
                         meta['keywords'] = spanmeta['keywords']
-                        self.hdumeta.append(meta)
+                        self.hdumeta[extnames[i]] = meta
                 else:
                     log.warning(('Range specification from HDU %d to HDU %d ' +
                                  'does not have a matching EXTNAME specification'),
                                 spanstart, spanend)
                 continue
             meta = dict()
+            meta['number'] = k
             meta['title'] = section[0]
             if 'Empty HDU.' in section:
                 meta['extension'] = 'IMAGE'
@@ -318,7 +327,7 @@ class DataModel(DataModelUnit):
                 meta['extname'] = [l.split()[2] for l in section
                                    if l.startswith('EXTNAME = ')][0]
             except IndexError:
-                meta['extname'] = ''
+                meta['extname'] = 'HDU{0:02d}'.format(k)
                 if (k > 0 or (k == 0 and meta['format'] != 'Empty HDU.')):
                     m = "HDU %d in %s has no EXTNAME!"
                     if error:
@@ -344,7 +353,7 @@ class DataModel(DataModelUnit):
                         if meta['extname'] == 'PRIMARY':
                             m = "HDU %d in %s should have a more meaningful EXTNAME than 'PRIMARY'."
                             log.warning(m, k, metafile)
-            self.hdumeta.append(meta)
+            self.hdumeta[meta['extname']] = meta
         return self.hdumeta
 
     def validate_prototype(self, error=False, skip_keywords=False):
@@ -376,18 +385,34 @@ class DataModel(DataModelUnit):
         #
         # Check number of headers.
         #
-        if self._stub.nhdr != len(modelmeta):
+        if self._stub.nhdr != len(modelmeta.keys()):
             log.warning("Prototype file %s has the wrong number of " +
                         "sections (HDUs) according to %s.",
                         self.prototype, self.filename)
             return
         for i in range(self._stub.nhdr):
+            for key in modelmeta:
+                if modelmeta[key]['number'] == i:
+                    modelhdumeta = modelmeta[key]
+            #
+            # Check for EXTNAME
+            #
+            dexex = stub_meta[i]['extname']
+            mexex = modelhdumeta['extname']
+            if dexex == '' and i > 0:
+                log.warning("Prototype file %s has no EXTNAME in HDU%d.",
+                            self.prototype, i)
+            if (dexex != '' and mexex != '' and dexex != mexex):
+                log.warning("Prototype file %s has an EXTNAME mismatch " +
+                            "in HDU%d (%s != %s) " +
+                            "according to %s.",
+                            self.prototype, i, dexex, mexex, self.filename)
             #
             # Compare keywords
             #
             if not skip_keywords:
                 dkw = stub_meta[i]['keywords']
-                mkw = modelmeta[i]['keywords']
+                mkw = modelhdumeta['keywords']
                 mkw_set = set([tmp[0] for tmp in mkw])
                 dkw_set = set([tmp[0] for tmp in dkw])
                 missing_keywords = mkw_set - dkw_set
@@ -409,7 +434,7 @@ class DataModel(DataModelUnit):
             #
             dex = stub_meta[i]['extension']
             try:
-                mex = modelmeta[i]['extension']
+                mex = modelhdumeta['extension']
             except KeyError:
                 mex = "Extension type not found"
             if dex != mex:
@@ -419,25 +444,12 @@ class DataModel(DataModelUnit):
                             self.prototype, i, dex, mex, self.filename)
                 continue
             #
-            # Check for EXTNAME
-            #
-            dexex = stub_meta[i]['extname']
-            mexex = modelmeta[i]['extname']
-            if dexex == '' and i > 0:
-                log.warning("Prototype file %s has no EXTNAME in HDU%d.",
-                            self.prototype, i)
-            if (dexex != '' and mexex != '' and dexex != mexex):
-                log.warning("Prototype file %s has an EXTNAME mismatch " +
-                            "in HDU%d (%s != %s) " +
-                            "according to %s.",
-                            self.prototype, i, dexex, mexex, self.filename)
-            #
             # If the extension type is correct, check the contents of the
             # extension.
             #
             dexf = stub_meta[i]['format']
             try:
-                mexf = modelmeta[i]['format']
+                mexf = modelhdumeta['format']
             except KeyError:
                 mexf = "Extension format not found"
             if dex == 'IMAGE':
@@ -600,16 +612,14 @@ def validate_prototypes(files, error=False, skip_keywords=False):
     return
 
 
-def main():
-    """Entry point for the check_model script.
+def _options():
+    """Parse command-line options.
 
     Returns
     -------
-    :class:`int`
-        An integer suitable for passing to :func:`sys.exit`.
+    :class:`~argparse.Namespace`
+        The parsed options.
     """
-    from sys import argv
-    from argparse import ArgumentParser
     desc = """Check actual files against the data model for validity.
 """
     parser = ArgumentParser(description=desc, prog=os.path.basename(argv[0]))
@@ -631,6 +641,18 @@ def main():
     parser.add_argument('directory', metavar='DATA_DIR_or_FILE',
                         help='Check files in this top-level directory, or one individual file.')
     options = parser.parse_args()
+    return options
+
+
+def main():
+    """Entry point for the check_model script.
+
+    Returns
+    -------
+    :class:`int`
+        An integer suitable for passing to :func:`sys.exit`.
+    """
+    options = _options()
     if options.verbose:
         log.setLevel(DEBUG)
     if 'DESIDATAMODEL' in os.environ:

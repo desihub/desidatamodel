@@ -3,14 +3,16 @@
 """Test desidatamodel.check functions
 """
 import os
+import sys
 import unittest
+from unittest.mock import patch
 from pkg_resources import resource_filename
 
 from .datamodeltestcase import DataModelTestCase, DM
 
 from .. import DataModelError
 from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
-                     validate_prototypes, log)
+                     validate_prototypes, log, _options)
 
 
 class TestCheck(DataModelTestCase):
@@ -99,7 +101,9 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata(self):
         """Test reading metadata from data model files.
         """
-        ex_meta = [{'title': 'HDU0',
+        ex_meta = {'PRIMARY':
+                   {'title': 'HDU0',
+                    'number': 0,
                     'extension': 'IMAGE',
                     'extname': 'PRIMARY',
                     'format': 'Data: FITS image [int16, 100x100]',
@@ -109,7 +113,9 @@ class TestCheck(DataModelTestCase):
                                  ('BZERO', '32768', 'int',
                                   'Data are really unsigned 16-bit int.'),
                                  ('EXTNAME', 'PRIMARY', 'str', '')]},
+                   'Galaxies':
                    {'title': 'HDU1',
+                    'number': 1,
                     'extension': 'BINTABLE',
                     'extname': 'Galaxies',
                     'format': [('target', 'char[20]', '', ''),
@@ -118,22 +124,23 @@ class TestCheck(DataModelTestCase):
                     'keywords': [('NAXIS1', '32', 'int',
                                   'length of dimension 1'),
                                  ('NAXIS2', '3', 'int',
-                                  'length of dimension 2')]}]
+                                  'length of dimension 2')]}}
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
-        self.assertEqual(len(meta), len(ex_meta))
-        for i, m in enumerate(meta):
-            self.assertEqual(m['title'], ex_meta[i]['title'])
-            self.assertEqual(m['extension'], ex_meta[i]['extension'])
-            self.assertEqual(m['extname'], ex_meta[i]['extname'])
+        self.assertEqual(len(meta.keys()), len(ex_meta.keys()))
+        for key, m in meta.items():
+            self.assertEqual(m['title'], ex_meta[key]['title'])
+            self.assertEqual(m['number'], ex_meta[key]['number'])
+            self.assertEqual(m['extension'], ex_meta[key]['extension'])
+            self.assertEqual(m['extname'], ex_meta[key]['extname'])
             for k in range(len(m['keywords'])):
-                self.assertEqual(m['keywords'][k], ex_meta[i]['keywords'][k])
+                self.assertEqual(m['keywords'][k], ex_meta[key]['keywords'][k])
             if m['extension'] == "IMAGE":
-                self.assertEqual(m['format'], ex_meta[i]['format'])
+                self.assertEqual(m['format'], ex_meta[key]['format'])
             else:
                 for k in range(len(m['format'])):
-                    self.assertEqual(m['format'][k], ex_meta[i]['format'][k])
+                    self.assertEqual(m['format'][k], ex_meta[key]['format'][k])
 
     def test_extract_metadata_missing_extname(self):
         """Test reading metadata with missing EXTNAME.
@@ -313,12 +320,24 @@ class TestCheck(DataModelTestCase):
         self.assertEqual(c, exc)
 
     def test_cross_reference(self):
+        """Test parsing of cross-references.
+        """
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         f = DataModel(modelfile, os.path.dirname(modelfile))
         line = "See :doc:`Other file <fits_file>`"
         ref = f._cross_reference(line)
         self.assertEqual(ref, resource_filename('desidatamodel.test',
                                                 't/fits_file.rst'))
+
+    @patch('sys.argv', ['check_model', '--verbose', '--compare-files', 'DESI_SPECTRO_DATA', '/desi/spectro/data/desi-00000000.fits.fz'])
+    def test_options(self):
+        """Test parse of command-line options.
+        """
+        options = _options()
+        self.assertTrue(options.verbose)
+        self.assertTrue(options.files)
+        self.assertEqual(options.section, 'DESI_SPECTRO_DATA')
+        self.assertEqual(options.directory, '/desi/spectro/data/desi-00000000.fits.fz')
 
 
 def test_suite():
