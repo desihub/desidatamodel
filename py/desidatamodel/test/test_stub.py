@@ -160,13 +160,13 @@ class TestStub(DataModelTestCase):
         """Test with a compressed image HDU.
         """
         hdulist = list()
-        hdr = sim_header()
-        hdr['SIMPLE'] = True
-        hdr['BITPIX'] = 8
-        hdr['NAXIS'] = 0
-        hdr['EXTEND'] = True
-        hdr['EXTNAME'] = 'PRIMARY'
-        hdulist.append(sim_hdu(hdr))
+        hdr0 = sim_header()
+        hdr0['SIMPLE'] = True
+        hdr0['BITPIX'] = 8
+        hdr0['NAXIS'] = 0
+        hdr0['EXTEND'] = True
+        hdr0['EXTNAME'] = 'PRIMARY'
+        hdulist.append(sim_hdu(hdr0))
         hdr = sim_header()
         hdr['XTENSION'] = 'BINTABLE'
         hdr['BITPIX'] = 8
@@ -192,6 +192,17 @@ class TestStub(DataModelTestCase):
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
         self.assertEqual(stub.hdumeta[1]['format'], 'Data: FITS image [int16 (compressed), 10x10]')
+        del hdr['ZTENSION']
+        stub = Stub(hdulist)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        self.assertEqual(stub.hdumeta[1]['format'], 'Data: FITS image [int16 (compressed), 10x10]')
+        del hdr['ZIMAGE']
+        stub = Stub(hdulist)
+        stub.filename = 'fits_file.fits'
+        stub._filesize = '10 MB'
+        self.assertEqual(stub.hdumeta[1]['extension'], 'BINTABLE')
+        self.assertLog(log, -1, "Possible malformed compressed data in HDU 1 of fits_file.fits.")
 
     def test_Stub_BINTABLE_with_units(self):
         """Test BINTABLE HDU with units.
@@ -212,7 +223,7 @@ class TestStub(DataModelTestCase):
         hdr['NAXIS2'] = 3
         hdr['PCOUNT'] = 0
         hdr['GCOUNT'] = 1
-        hdr['TFIELDS'] = 3
+        hdr['TFIELDS'] = 4
         hdr['TTYPE1'] = 'target'
         hdr['TFORM1'] = '20A'
         hdr['TTYPE2'] = 'V_mag'
@@ -222,12 +233,16 @@ class TestStub(DataModelTestCase):
         hdr['TTYPE3'] = 'vdisp'
         hdr['TFORM3'] = 'D'
         hdr['TUNIT3'] = 'km/s'
+        hdr['TTYPE4'] = 'vdisp'
+        hdr['TFORM4'] = 'D'
+        hdr['TUNIT4'] = 'mgy'
         hdr['EXTNAME'] = 'Galaxies'
         hdulist.append(sim_hdu(hdr))
         stub = Stub(hdulist)
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
         self.assertEqual(stub.hdumeta[1]['format'][2], ('V_mag', 'float32', 'mag', 'This is a TCOMM comment on V_mag.'))
+        self.assertLog(log, 0, "Non-standard (but acceptable) unit 'mgy' detected for column 3 in HDU 1 of fits_file.fits.")
 
     def test_Stub_BINTABLE_with_bad_units(self):
         """Test BINTABLE HDU with bad units.
@@ -365,6 +380,92 @@ class TestStub(DataModelTestCase):
         stub = Stub([sim_hdu(hdr)], error=False)
         i = stub.image_format(hdr)
         self.assertEqual(i, 'Data: FITS image [BITPIX=128 (compressed), 1000x1000x1000]')
+        #
+        # Check compressed HDU in non-PRIMARY HDU
+        #
+        hdr0 = sim_header()
+        hdr0['SIMPLE'] = True
+        hdr0['BITPIX'] = 8
+        hdr0['NAXIS'] = 0
+        hdr0['EXTEND'] = True
+        hdr1 = sim_header()
+        hdr1['XTENSION'] = 'BINTABLE'
+        hdr1['BITPIX'] = 8
+        hdr1['NAXIS'] = 2
+        hdr1['NAXIS1'] = 8
+        hdr1['NAXIS2'] = 4194
+        hdr1['PCOUNT'] = 22019244
+        hdr1['GCOUNT'] = 1
+        hdr1['TFIELDS'] = 1
+        hdr1['TTYPE1'] = 'COMPRESSED_DATA'
+        hdr1['TFORM1'] = '1PB(5975)'
+        hdr1['ZIMAGE'] = True
+        hdr1['ZSIMPLE'] = True
+        hdr1['ZBITPIX'] = 16
+        hdr1['ZNAXIS'] = 2
+        hdr1['ZNAXIS1'] = 4256
+        hdr1['ZNAXIS2'] = 4194
+        hdr1['ZTILE1'] = 4256
+        hdr1['ZTILE2'] = 1
+        hdr1['ZCMPTYPE'] = 'RICE_1  '
+        hdr1['ZNAME1'] = 'BLOCKSIZE'
+        hdr1['ZVAL1'] =  32
+        hdr1['ZNAME2'] = 'BYTEPIX '
+        hdr1['ZVAL2'] =  2
+        hdr1['BZERO'] = 32768
+        hdr1['BSCALE'] = 1
+        hdr1['EXTNAME'] = 'Z7      '
+        hdr1['BUNIT'] = 'maggie'
+        stub = Stub([sim_hdu(hdr0), sim_hdu(hdr1)], error=False)
+        stub.filename = 'fits_file.fits.fz'
+        i = stub.image_format(hdr1)
+        self.assertEqual(i, 'Data: FITS image [int16 (compressed), 4256x4194]')
+        self.assertLog(log, -1, "Non-standard (but acceptable) unit 'maggie' detected in fits_file.fits.fz.")
+
+    def test_Stub_contents(self):
+        """Test the table-of-contents functionality.
+        """
+        hdr0 = sim_header()
+        hdr0['SIMPLE'] = True
+        hdr0['BITPIX'] = 8
+        hdr0['NAXIS'] = 0
+        hdr0['EXTEND'] = True
+        hdr1 = sim_header()
+        hdr1['XTENSION'] = 'BINTABLE'
+        hdr1['BITPIX'] = 8
+        hdr1['NAXIS'] = 2
+        hdr1['NAXIS1'] = 8
+        hdr1['NAXIS2'] = 4194
+        hdr1['PCOUNT'] = 22019244
+        hdr1['GCOUNT'] = 1
+        hdr1['TFIELDS'] = 1
+        hdr1['TTYPE1'] = 'COMPRESSED_DATA'
+        hdr1['TFORM1'] = '1PB(5975)'
+        hdr1['ZIMAGE'] = True
+        hdr1['ZSIMPLE'] = True
+        hdr1['ZBITPIX'] = 16
+        hdr1['ZNAXIS'] = 2
+        hdr1['ZNAXIS1'] = 4256
+        hdr1['ZNAXIS2'] = 4194
+        hdr1['ZTILE1'] = 4256
+        hdr1['ZTILE2'] = 1
+        hdr1['ZCMPTYPE'] = 'RICE_1  '
+        hdr1['ZNAME1'] = 'BLOCKSIZE'
+        hdr1['ZVAL1'] =  32
+        hdr1['ZNAME2'] = 'BYTEPIX '
+        hdr1['ZVAL2'] =  2
+        hdr1['BZERO'] = 32768
+        hdr1['BSCALE'] = 1
+        hdr1['EXTNAME'] = 'Z7      '
+        hdr1['BUNIT'] = 'maggie'
+        stub = Stub([sim_hdu(hdr0), sim_hdu(hdr1)], error=False)
+        stub.filename = 'fits_file.fits.fz'
+        self.assertEqual(stub.contents[2], ('HDU1_', 'Z7', 'BINTABLE', '*Brief Description*'))
+        del hdr1['EXTNAME']
+        stub = Stub([sim_hdu(hdr0), sim_hdu(hdr1)], error=False)
+        stub.filename = 'fits_file.fits.fz'
+        self.assertEqual(stub.contents[2], ('HDU1_', '', 'BINTABLE', '*Brief Description*'))
+        self.assertLog(log, -1, 'HDU1 has no EXTNAME set!')
 
     def test_extrakey(self):
         """Test the identification of non-boring keys.
