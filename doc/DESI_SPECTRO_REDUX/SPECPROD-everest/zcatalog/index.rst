@@ -8,4 +8,4 @@ zcatalog
    :maxdepth: 1
 
    zpix-SURVEY-PROGRAM
-   ztile-SURVEY-PROGRAM
+   ztile-SURVEY-PROGRAM-TILETYPE

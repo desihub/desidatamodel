@@ -8,8 +8,8 @@ htmlcov
 py/desidatamodel/.cache
 
 # Sphinx
-docs/api
-docs/_build
+doc/api
+doc/_build
 
 # iPython
 doc/nb/.ipynb_checkpoints
