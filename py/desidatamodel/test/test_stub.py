@@ -562,6 +562,19 @@ class TestStub(DataModelTestCase):
         self.assertLog(log, 0, "Raised AttributeError on FOOBAR = (3.14159, 2.71828).")
         for k in range(len(lines)):
             self.assertEqual(lines[k], expected_lines[k])
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        # Artificial example, but needed to trigger an error message.
+        hdr['FOOBAR'] = None
+        lines = extract_keywords(hdr)
+        expected_lines = [('FOOBAR', 'None',
+                           'Unknown', 'This is the comment on FOOBAR.')]
+        self.assertLog(log, -1, "Empty header keyword FOOBAR detected! This violates the FITS standard!")
+        for k in range(len(lines)):
+            self.assertEqual(lines[k], expected_lines[k])
 
     def test_process_file(self):
         """Full test of parsing a FITS file.

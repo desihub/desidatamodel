@@ -613,6 +613,10 @@ def extract_keywords(hdr):
             if isinstance(value, float):
                 value = str(value)
                 ktype = 'float'
+            if value is None:
+                log.error("Empty header keyword %s detected! This violates the FITS standard!", key)
+                value = 'None'
+                ktype = 'Unknown'
             if key.endswith('_'):
                 key = key[0:len(key)-1] + '\\_'
             try:
