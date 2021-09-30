@@ -14,3 +14,4 @@ test directories.
    :maxdepth: 1
 
    $DESI_SPECTRO_REDUX/$SPECPROD <SPECPROD/index>
+   $DESI_SPECTRO_REDUX/$SPECPROD (everest) <SPECPROD-everest/index>
