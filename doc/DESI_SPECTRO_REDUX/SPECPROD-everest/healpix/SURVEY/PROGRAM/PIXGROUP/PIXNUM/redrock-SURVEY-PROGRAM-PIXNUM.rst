@@ -1,17 +1,15 @@
-=======
-redrock
-=======
+==================================
+redrock-SURVEY-PROGRAM-PIXNUM.fits
+==================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``redrock-main-bright-26006.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``redrock-main-bright-26006.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 354 KB  *This section gives the type of the file
-    and its approximate size.*
+:Naming Convention: ``redrock-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
+    *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
+    and ``PIXNUM`` is the HEALPixel number.
+:Regex: ``redrock-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
+:File Type: FITS, 354 KB
 
 Contents
 ========
@@ -19,9 +17,9 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    *Brief Description*
-HDU1_  REDSHIFTS    BINTABLE *Brief Description*
-HDU2_  FIBERMAP     BINTABLE *Brief Description*
+HDU0_               IMAGE    Empty
+HDU1_  REDSHIFTS    BINTABLE Table with best fit redshifts
+HDU2_  FIBERMAP     BINTABLE Propagated fibermap file data
 HDU3_  EXP_FIBERMAP BINTABLE *Brief Description*
 HDU4_  TSNR2        BINTABLE *Brief Description*
 ====== ============ ======== ===================
@@ -32,8 +30,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,17 +85,17 @@ Required Data Table Columns
 ========= =========== ===== ===========
 Name      Type        Units Description
 ========= =========== ===== ===========
-TARGETID  int64
-CHI2      float64
-COEFF     float64[10]
-Z         float64
-ZERR      float64
-ZWARN     int64
+TARGETID  int64             Target ID for this row
+CHI2      float64           Best fit :math:`\chi^2`
+COEFF     float64[10]       Redrock template coefficients
+Z         float64           Best fit redshift
+ZERR      float64           Uncertainty on best fit redshift
+ZWARN     int64             Warning flags; 0 is good
 NPIXELS   int64
-SPECTYPE  char[6]
-SUBTYPE   char[20]
+SPECTYPE  char[6]           Spectral type
+SUBTYPE   char[20]          Spectral subtype (maybe blank)
 NCOEFF    int64
-DELTACHI2 float64
+DELTACHI2 float64           :math:`\Delta \chi^2` to next best fit
 ========= =========== ===== ===========
 
 HDU2

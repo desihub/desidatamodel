@@ -1,17 +1,23 @@
-=====
-coadd
-=====
+================================
+coadd-SURVEY-PROGRAM-PIXNUM.fits
+================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``coadd-sv1-dark-38863.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``coadd-sv1-dark-38863.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 219 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the calibrated coadded spectra organized by healpix location
+    on the sky.
+:Naming Convention: ``coadd-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
+    *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
+    and ``PIXNUM`` is the HEALPixel number.
+:Regex: ``coadd-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
+:File Type: FITS, 219 MB
+
+This file follows nearly the same format as the
+:doc:`spectra files <spectra-SURVEY-PROGRAM-PIXNUM>`, except there is
+one entry per target instead of one entry per exposure per target, and
+the FIBERMAP replaces some exposure-specific columns with summary columns,
+e.g. ``NIGHT`` becomes ``FIRST_NIGHT``, ``LAST_NIGHT``, and ``NUM_NIGHT``.
+
+As-of software release 20.4 (desispec 0.34.4), the SCORES HDU is the last
+HDU instead of HDU2.
 
 Contents
 ========
@@ -19,25 +25,25 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    *Brief Description*
-HDU01_ FIBERMAP     BINTABLE *Brief Description*
+HDU00_              IMAGE    Empty
+HDU01_ FIBERMAP     BINTABLE fibermap table
 HDU02_ EXP_FIBERMAP BINTABLE *Brief Description*
-HDU03_ B_WAVELENGTH IMAGE    *Brief Description*
-HDU04_ B_FLUX       IMAGE    *Brief Description*
-HDU05_ B_IVAR       IMAGE    *Brief Description*
-HDU06_ B_MASK       IMAGE    *Brief Description*
-HDU07_ B_RESOLUTION IMAGE    *Brief Description*
-HDU08_ R_WAVELENGTH IMAGE    *Brief Description*
-HDU09_ R_FLUX       IMAGE    *Brief Description*
-HDU10_ R_IVAR       IMAGE    *Brief Description*
-HDU11_ R_MASK       IMAGE    *Brief Description*
-HDU12_ R_RESOLUTION IMAGE    *Brief Description*
-HDU13_ Z_WAVELENGTH IMAGE    *Brief Description*
-HDU14_ Z_FLUX       IMAGE    *Brief Description*
-HDU15_ Z_IVAR       IMAGE    *Brief Description*
-HDU16_ Z_MASK       IMAGE    *Brief Description*
-HDU17_ Z_RESOLUTION IMAGE    *Brief Description*
-HDU18_ SCORES       BINTABLE *Brief Description*
+HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
+HDU04_ B_FLUX       IMAGE    Flux of b-channel spectra
+HDU05_ B_IVAR       IMAGE    Inverse variance of b-channel spectra
+HDU06_ B_MASK       BINTABLE Mask of b-channel spectra
+HDU07_ B_RESOLUTION IMAGE    Resolution matrices of b-channel spectra
+HDU08_ R_WAVELENGTH IMAGE    Wavelength array of r-channel spectra
+HDU09_ R_FLUX       IMAGE    Flux of r-channel spectra
+HDU10_ R_IVAR       IMAGE    Inverse variance of r-channel spectra
+HDU11_ R_MASK       BINTABLE Mask of r-channel spectra
+HDU12_ R_RESOLUTION IMAGE    Resolution matrices of r-channel spectra
+HDU13_ Z_WAVELENGTH IMAGE    Wavelength array of z-channel spectra
+HDU14_ Z_FLUX       IMAGE    Flux of z-channel spectra
+HDU15_ Z_IVAR       IMAGE    Inverse variance of z-channel spectra
+HDU16_ Z_MASK       BINTABLE Mask of z-channel spectra
+HDU17_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
+HDU18_ SCORES       BINTABLE scores table
 ====== ============ ======== ===================
 
 
@@ -47,7 +53,7 @@ FITS Header Units
 HDU00
 -----
 
-*Summarize the contents of this HDU.*
+HEALPixel keywords.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,7 +77,7 @@ HDU01
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+fibermap table with two additional columns NIGHT and EXPID.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,7 +229,7 @@ HDU03
 
 EXTNAME = B_WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength[nwave] array in Angstroms of b-channel spectra
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -244,7 +250,7 @@ HDU04
 
 EXTNAME = B_FLUX
 
-*Summarize the contents of this HDU.*
+Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of b-channel spectra
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -266,7 +272,7 @@ HDU05
 
 EXTNAME = B_IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of b-channel flux array
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -288,7 +294,7 @@ HDU06
 
 EXTNAME = B_MASK
 
-*Summarize the contents of this HDU.*
+Mask[nspec,nwave] of b-channel flux array.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -311,7 +317,7 @@ HDU07
 
 EXTNAME = B_RESOLUTION
 
-*Summarize the contents of this HDU.*
+Diagonals of b-channel resolution matrix
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -328,12 +334,25 @@ DATASUM  1510900028       str  data unit checksum updated 2021-07-20T01:03:03
 
 Data: FITS image [float32, 2751x11x514]
 
+A sparse resolution matrix may be created for spectrum ``i`` with::
+
+    from desispec.resolution import Resolution
+    R = Resolution(data[i])
+
+Or using lower-level scipy.sparse matrices::
+
+    import scipy.sparse
+    import numpy as np
+    nspec, ndiag, nwave = data.shape
+    offsets = ndiag//2 - np.arange(ndiag, dtype=int)
+    R = scipy.sparse.dia_matrix((data[i], offsets), shape=(nwave, nwave))
+
 HDU08
 -----
 
 EXTNAME = R_WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength[nwave] array in Angstroms of r-channel spectra
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -354,7 +373,7 @@ HDU09
 
 EXTNAME = R_FLUX
 
-*Summarize the contents of this HDU.*
+Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of r-channel spectra
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -376,7 +395,7 @@ HDU10
 
 EXTNAME = R_IVAR
 
-*Summarize the contents of this HDU.*
+Mask[nspec,nwave] of r-channel flux array.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -398,7 +417,7 @@ HDU11
 
 EXTNAME = R_MASK
 
-*Summarize the contents of this HDU.*
+Mask[nspec,nwave] of r-channel flux array.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -421,7 +440,9 @@ HDU12
 
 EXTNAME = R_RESOLUTION
 
-*Summarize the contents of this HDU.*
+Diagonals of r-channel resolution matrix.
+
+See B_RESOLUTION HDU for description of the format.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -443,7 +464,7 @@ HDU13
 
 EXTNAME = Z_WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength[nwave] array in Angstroms of z-channel spectra
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -464,7 +485,7 @@ HDU14
 
 EXTNAME = Z_FLUX
 
-*Summarize the contents of this HDU.*
+Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of z-channel spectra
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -486,7 +507,7 @@ HDU15
 
 EXTNAME = Z_IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of z-channel flux array
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -508,7 +529,7 @@ HDU16
 
 EXTNAME = Z_MASK
 
-*Summarize the contents of this HDU.*
+Mask[nspec,nwave] of z-channel flux array.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -531,7 +552,9 @@ HDU17
 
 EXTNAME = Z_RESOLUTION
 
-*Summarize the contents of this HDU.*
+Diagonals of z-channel resolution matrix.
+
+See B_RESOLUTION HDU for description of the format.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

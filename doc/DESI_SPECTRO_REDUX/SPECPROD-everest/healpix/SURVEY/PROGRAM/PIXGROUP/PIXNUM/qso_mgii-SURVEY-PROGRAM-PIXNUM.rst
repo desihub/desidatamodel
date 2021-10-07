@@ -1,15 +1,14 @@
-========
-qso_mgii
-========
+===================================
+qso_mgii-SURVEY-PROGRAM-PIXNUM.fits
+===================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``qso_mgii-sv1-dark-6860.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``qso_mgii-sv1-dark-6860.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
+:Naming Convention: ``qso_mgii-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
+    *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
+    and ``PIXNUM`` is the HEALPixel number.
+:Regex: ``qso_mgii-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
 :File Type: FITS, 22 KB  *This section gives the type of the file
     and its approximate size.*
 
