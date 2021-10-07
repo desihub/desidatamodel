@@ -11,7 +11,7 @@ fibermap-EXPID.fits
 This table is also propagated forward to the
 :doc:`frame <../../../DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`,
 :doc:`cframe <../../../DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`, and
-:doc:`spectra <../../../DESI_SPECTRO_REDUX/SPECPROD/spectra-NSIDE/PIXGROUP/PIXNUM/spectra-NSIDE-PIXNUM>`
+:doc:`spectra <../../../DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/spectra-SURVEY-PROGRAM-PIXNUM>`
 files.
 
 Contents
