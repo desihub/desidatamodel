@@ -8,10 +8,8 @@ qso_qn-SPECTROGRAPH-TILEID-SOMETHING.fits
 :Naming Convention: ``qso_qn-0-80669-20210107.fits``, where ... *Give a human readable
     description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
     is the 8-digit exposure ID.*
-:Regex: ``qso_qn-0-80669-20210107.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 33 KB  *This section gives the type of the file
-    and its approximate size.*
+:Regex: ``qso_qn-[0-9]-[0-9]+-thru20210510\.fits``
+:File Type: FITS, 33 KB
 
 Contents
 ========

@@ -8,10 +8,8 @@ qso_mgii-SPECTROGRAPH-TILEID-SOMETHING.fits
 :Naming Convention: ``qso_mgii-6-1816-thru20210614.fits``, where ... *Give a human readable
     description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
     is the 8-digit exposure ID.*
-:Regex: ``qso_mgii-6-1816-thru20210614.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 19 KB  *This section gives the type of the file
-    and its approximate size.*
+:Regex: ``qso_mgii-[0-9]-[0-9]+-thru20210510\.fits``
+:File Type: FITS, 19 KB
 
 Contents
 ========

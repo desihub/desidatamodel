@@ -2,16 +2,21 @@
 coadd-SPECTROGRAPH-TILEID-SOMETHING.fits
 ========================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``coadd-2-545-thru20210510.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``coadd-2-545-thru20210510.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 213 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: Coadded spectra.
+:Naming Convention: ``coadd-SPECTROGRAPH-TILEID-thru20210510.fits``, where
+    ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
+    ``SOMETHING`` depends on the type of tile.
+:Regex: ``coadd-[0-9]-[0-9]+-thru20210510\.fits``
+:File Type: FITS, 213 MB
+
+
+This file follows nearly the same format as the spectra files, except there is
+one entry per target instead of one entry per exposure per target, and
+the FIBERMAP replaces some exposure-specific columns with summary columns,
+*e.g.* ``NIGHT`` becomes ``FIRST_NIGHT``, ``LAST_NIGHT``, and ``NUM_NIGHT``.
+
+As-of software release 20.4 (desispec 0.34.4), the SCORES HDU is the last
+HDU instead of HDU2.
 
 Contents
 ========
@@ -19,25 +24,25 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    *Brief Description*
-HDU01_ FIBERMAP     BINTABLE *Brief Description*
+HDU00_              IMAGE    Empty
+HDU01_ FIBERMAP     BINTABLE fibermap table
 HDU02_ EXP_FIBERMAP BINTABLE *Brief Description*
-HDU03_ B_WAVELENGTH IMAGE    *Brief Description*
-HDU04_ B_FLUX       IMAGE    *Brief Description*
-HDU05_ B_IVAR       IMAGE    *Brief Description*
-HDU06_ B_MASK       IMAGE    *Brief Description*
-HDU07_ B_RESOLUTION IMAGE    *Brief Description*
-HDU08_ R_WAVELENGTH IMAGE    *Brief Description*
-HDU09_ R_FLUX       IMAGE    *Brief Description*
-HDU10_ R_IVAR       IMAGE    *Brief Description*
-HDU11_ R_MASK       IMAGE    *Brief Description*
-HDU12_ R_RESOLUTION IMAGE    *Brief Description*
-HDU13_ Z_WAVELENGTH IMAGE    *Brief Description*
-HDU14_ Z_FLUX       IMAGE    *Brief Description*
-HDU15_ Z_IVAR       IMAGE    *Brief Description*
-HDU16_ Z_MASK       IMAGE    *Brief Description*
-HDU17_ Z_RESOLUTION IMAGE    *Brief Description*
-HDU18_ SCORES       BINTABLE *Brief Description*
+HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
+HDU04_ B_FLUX       IMAGE    Flux of b-channel spectra
+HDU05_ B_IVAR       IMAGE    Inverse variance of b-channel spectra
+HDU06_ B_MASK       IMAGE    Mask of b-channel spectra
+HDU07_ B_RESOLUTION IMAGE    Resolution matrices of b-channel spectra
+HDU08_ R_WAVELENGTH IMAGE    Wavelength array of r-channel spectra
+HDU09_ R_FLUX       IMAGE    Flux of r-channel spectra
+HDU10_ R_IVAR       IMAGE    Inverse variance of r-channel spectra
+HDU11_ R_MASK       IMAGE    Mask of r-channel spectra
+HDU12_ R_RESOLUTION IMAGE    Resolution matrices of r-channel spectra
+HDU13_ Z_WAVELENGTH IMAGE    Wavelength array of z-channel spectra
+HDU14_ Z_FLUX       IMAGE    Flux of z-channel spectra
+HDU15_ Z_IVAR       IMAGE    Inverse variance of z-channel spectra
+HDU16_ Z_MASK       IMAGE    Mask of z-channel spectra
+HDU17_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
+HDU18_ SCORES       BINTABLE QA scores table
 ====== ============ ======== ===================
 
 
@@ -630,4 +635,14 @@ TSNR2_LRG           float32       LRG template (S/N)^2 summed over B,R,Z
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+The format supports arbitrary channel names as long as for each channel {X}
+there is a set of HDUs named {X}_WAVELENGTH, {X}_FLUX, {X}_IVAR, {X}_MASK,
+{X}_RESOLUTION.
+
+Upcoming changes
+================
+
+The following changes are not yet in the spectra files, but will be added in
+the future:
+
+* signal-to-noise per band

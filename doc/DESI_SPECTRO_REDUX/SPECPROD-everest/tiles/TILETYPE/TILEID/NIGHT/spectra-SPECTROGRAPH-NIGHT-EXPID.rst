@@ -10,8 +10,7 @@ spectra-SPECTROGRAPH-TILEID-SOMETHING.fits
     is the 8-digit exposure ID.*
 :Regex: ``spectra-4-104-exp00084352.fits`` *Give a regular expression for this filename.
     For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 198 MB  *This section gives the type of the file
-    and its approximate size.*
+:File Type: FITS, 198 MB
 
 Contents
 ========
