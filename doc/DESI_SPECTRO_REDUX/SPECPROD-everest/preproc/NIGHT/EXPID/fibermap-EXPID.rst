@@ -1,12 +1,12 @@
-==============
-fibermap-EXPID
-==============
+===================
+fibermap-EXPID.fits
+===================
 
 :Summary: fibermap augmenting the input fiber assignment file with information
           about where the fibers actually ended up from the coordinates file.
 :Naming Convention: ``fibermap-{expid}.fits``, where
     ``{expid}`` is the zero-padded 8-digit exposure ID.
-:Regex: ``fibermap-[0-9]{8}.fits``
+:Regex: ``fibermap-[0-9]{8}\.fits``
 :File Type: FITS, 1.8 MB
 
 Contents

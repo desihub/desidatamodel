@@ -1,17 +1,13 @@
-===
-sky
-===
+=====================
+sky-CAMERA-EXPID.fits
+=====================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``sky-r3-00089018.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``sky-r3-00089018.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 17 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the sky model for a given camera and exposure.
+:Naming Convention: ``sky-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``sky-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 17 MB
 
 Contents
 ========
@@ -19,13 +15,18 @@ Contents
 ====== ========== ===== ===================
 Number EXTNAME    Type  Contents
 ====== ========== ===== ===================
-HDU0_  SKY        IMAGE *Brief Description*
-HDU1_  IVAR       IMAGE *Brief Description*
-HDU2_  MASK       IMAGE *Brief Description*
-HDU3_  WAVELENGTH IMAGE *Brief Description*
-HDU4_  STATIVAR   IMAGE *Brief Description*
-HDU5_  THRPUTCORR IMAGE *Brief Description*
+HDU0_  SKY        IMAGE sky model in photons/bin
+HDU1_  IVAR       IMAGE inverse variance ``(photons/bin)^-2``
+HDU2_  MASK       IMAGE sky mask (0 = good)
+HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
+HDU4_  STATIVAR   IMAGE statistical-only inverse variance of sky model
+HDU5_  THRPUTCORR IMAGE achromatic throughput correction per fiber
 ====== ========== ===== ===================
+
+The SKY HDU is the sky model per-fiber accounting for different fiber
+resolutions, but it does *not* include the empirical per-fiber throughput
+correction in the THRPUTCORR HDU.  The final sky model per fiber is
+``SKY * THRPUTCORR``.
 
 
 FITS Header Units
@@ -36,7 +37,7 @@ HDU0
 
 EXTNAME = SKY
 
-*Summarize the contents of this HDU.*
+Sky model in photons/bin.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -557,7 +558,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of sky model ``(photons/bin)^-2``.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -578,7 +579,9 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Sky mask (0 = good).
+
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -601,7 +604,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength in Angstrom.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -621,7 +624,7 @@ HDU4
 
 EXTNAME = STATIVAR
 
-*Summarize the contents of this HDU.*
+Statistical-only inverse variance of sky model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -642,7 +645,7 @@ HDU5
 
 EXTNAME = THRPUTCORR
 
-*Summarize the contents of this HDU.*
+Multiplicative achromatic throughput correction per fiber.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

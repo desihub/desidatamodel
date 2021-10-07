@@ -1,17 +1,13 @@
-=========
-fluxcalib
-=========
+===========================
+fluxcalib-CAMERA-EXPID.fits
+===========================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``fluxcalib-r2-00071111.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``fluxcalib-r2-00071111.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 13 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the flux calibration model for a given camera and exposure.
+:Naming Convention: ``fluxcalib-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``fluxcalib-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 13 MB
 
 Contents
 ========
@@ -19,10 +15,10 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FLUXCALIB  IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       IMAGE    *Brief Description*
-HDU3_  WAVELENGTH IMAGE    *Brief Description*
+HDU0_  FLUXCALIB  IMAGE    Flux calibration model
+HDU1_  IVAR       IMAGE    Inverse variance of flux
+HDU2_  MASK       IMAGE    Mask (0 = good)
+HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
 HDU4_  FIBERCORR  BINTABLE *Brief Description*
 ====== ========== ======== ===================
 
@@ -35,7 +31,7 @@ HDU0
 
 EXTNAME = FLUXCALIB
 
-*Summarize the contents of this HDU.*
+Flux calibration model such that calibrated flux = uncalibrated photons / model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -478,7 +474,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux calibration model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -499,7 +495,9 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of flux calibration model; 0=good.
+
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -522,7 +520,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelengths at which the flux calibration model is evaluated.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -572,4 +570,7 @@ PSF_TO_FIBER_FLUX float64
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+We may add an additional HDU with ``EXTNAME=METADATA`` containing a
+binary table with one row per standard star giving
+the details of which model was used, etc.
+This is not yet implemented and details TBD.

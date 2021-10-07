@@ -1,9 +1,9 @@
-===================
-cframe-CAMERA-EXPID
-===================
+========================
+cframe-CAMERA-EXPID.fits
+========================
 
 :Summary: This holds the calibrated spectra for a given camera and exposure.
-    See the datamodel for :doc:`frame-CAMERA-EXPID <frame-CAMERA-EXPID>`
+    See the datamodel for :doc:`frame-CAMERA-EXPID.fits <frame-CAMERA-EXPID>`
     files for details of the format.
 :Naming Convention: ``cframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
     one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``

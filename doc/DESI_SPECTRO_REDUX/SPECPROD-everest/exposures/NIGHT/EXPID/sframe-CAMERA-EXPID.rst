@@ -1,17 +1,14 @@
-======
-sframe
-======
+========================
+sframe-CAMERA-EXPID.fits
+========================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``sframe-r9-00082471.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``sframe-r9-00082471.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 66 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: fiber-flatfielded and sky-subtracted but not flux calibrated
+          per-camera spectra.
+:Naming Convention: ``sframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``sframe-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 70 MB
 
 Contents
 ========
@@ -19,15 +16,14 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FLUX       IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       IMAGE    *Brief Description*
-HDU3_  WAVELENGTH IMAGE    *Brief Description*
-HDU4_  RESOLUTION IMAGE    *Brief Description*
-HDU5_  FIBERMAP   BINTABLE *Brief Description*
-HDU6_  CHI2PIX    IMAGE    *Brief Description*
+HDU0_  FLUX       IMAGE    flatfielded sky subtracted photons
+HDU1_  IVAR       IMAGE    Inverse variance of FLUX
+HDU2_  MASK       IMAGE    Bad value mask; 0=good
+HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction
+HDU3_  RESOLUTION IMAGE    Resolution matrix
+HDU5_  FIBERMAP   BINTABLE Fibermap
+HDU6_  CHI2PIX    IMAGE    chi2 of PSF fit to CCD pixels
 ====== ========== ======== ===================
-
 
 FITS Header Units
 =================
@@ -37,7 +33,7 @@ HDU0
 
 EXTNAME = FLUX
 
-*Summarize the contents of this HDU.*
+Extracted electrons[nspec, nwave]
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,8 +41,8 @@ Required Header Keywords
 ======== ============================================================== ======= ===============================================
 KEY      Example Value                                                  Type    Comment
 ======== ============================================================== ======= ===============================================
-NAXIS1   2326                                                           int
-NAXIS2   500                                                            int
+NAXIS1   2326                                                           int     Number of wavelength samples
+NAXIS2   500                                                            int     Number of extracted spectra
 EXPID    82471                                                          int     Exposure number
 EXPFRAME 0                                                              int     Frame number
 FRAMES   None                                                           Unknown Number of Frames in Archive
@@ -556,7 +552,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of the electrons in HDU0.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -564,8 +560,8 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   500              int
+NAXIS1   2326             int  Number of wavelengths
+NAXIS2   500              int  Number of spectra
 CHECKSUM 9UJ3CTG29TG2ATG2 str  HDU checksum updated 2021-07-08T15:52:36
 DATASUM  3074959512       str  data unit checksum updated 2021-07-08T15:52:36
 ======== ================ ==== ==============================================
@@ -577,7 +573,11 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectral data; 0=good.
+
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
+
+TODO: Add link to definition of which bits mean what.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -585,8 +585,8 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   500              int
+NAXIS1   2326             int  Number of wavelengths
+NAXIS2   500              int  Number of spectra
 BSCALE   1                int
 BZERO    2147483648       int
 CHECKSUM ZGp6dDn5ZDn5bDn5 str  HDU checksum updated 2021-07-08T15:52:36
@@ -600,7 +600,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+1D array of wavelengths.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -608,7 +608,7 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2326             int
+NAXIS1   2326             int  Number of wavelengths
 BUNIT    Angstrom         str
 CHECKSUM 9MZDCMZA9MZAAMZA str  HDU checksum updated 2021-07-08T15:52:37
 DATASUM  456732359        str  data unit checksum updated 2021-07-08T15:52:37
@@ -621,7 +621,33 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-*Summarize the contents of this HDU.*
+Resolution matrix stored as a 3D sparse matrix:
+
+Rdata[nspec, ndiag, nwave]
+
+To convert this into sparse matrices for convolving a model that is sampled
+at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
+
+.. code::
+
+    from scipy.sparse import spdiags
+    from astropy.io import fits
+    import numpy as np
+
+    #- read a model and its wavelength vector from somewhere
+    #- IMPORTANT: cast them to .astype(np.float64) to get native endian
+
+    #- read the resolution data
+    resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
+
+    nspec, nwave = model.shape
+    convolvedmodel = np.zeros((nspec, nwave))
+    diags = np.arange(10, -11, -1)
+
+    for i in range(nspec):
+        R = spdiags(resdata[i], diags, nwave, nwave)
+        convolvedmodel[i] = R.dot(model)
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -643,7 +669,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap information combining fiberassign request with actual fiber locations.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1182,12 +1208,12 @@ Required Data Table Columns
 ===================== ======= ===== ===========
 Name                  Type    Units Description
 ===================== ======= ===== ===========
-TARGETID              int64
-PETAL_LOC             int16
-DEVICE_LOC            int32
-LOCATION              int64
-FIBER                 int32
-FIBERSTATUS           int32
+TARGETID              int64         Unique target ID
+PETAL_LOC             int16         Focal plane petal location 0-9
+DEVICE_LOC            int32         Device location 0-5xx
+LOCATION              int64         1000*PETAL_LOC + DEVICE_LOC
+FIBER                 int32         Fiber number 0-4999
+FIBERSTATUS           int32         Fiber status mask; 0=good
 TARGET_RA             float64
 TARGET_DEC            float64
 PMRA                  float32
@@ -1259,7 +1285,7 @@ HDU6
 
 EXTNAME = CHI2PIX
 
-*Summarize the contents of this HDU.*
+:math:`\chi^2` of PSF fit to CCD pixels per spectrum wavelength bin.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1267,8 +1293,8 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   500              int
+NAXIS1   2326             int  Number of wavelengths
+NAXIS2   500              int  Number of spectra
 CHECKSUM WY6VaW3VZW3VaW3V str  HDU checksum updated 2021-07-08T15:52:40
 DATASUM  2321269489       str  data unit checksum updated 2021-07-08T15:52:40
 ======== ================ ==== ==============================================

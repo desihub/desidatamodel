@@ -1,13 +1,13 @@
-==================
-exposures-SPECPROD
-==================
+=======================
+exposures-SPECPROD.fits
+=======================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
 :Naming Convention: ``exposures-{specprod}.fits``, where ``{specprod}`` is the
     official name of the full reduction, *e.g.* ``everest``.
-:Regex: ``exposures-[a-z]+.fits``
+:Regex: ``exposures-[a-z]+\.fits``
 :File Type: FITS, 19 MB
 
 Contents

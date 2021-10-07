@@ -1,12 +1,12 @@
-====================
-preproc-CAMERA-EXPID
-====================
+=========================
+preproc-CAMERA-EXPID.fits
+=========================
 
 :Summary: Pre-processed spectrograph CCD raw data.
 :Naming Convention: ``preproc-{camera}-{expid}.fits``, where
     ``{camera}`` is the spectrograph camera (e.g. "b0", "r1", "z9"),
     and ``{expid}`` is the zero-padded 8-digit exposure ID.
-:Regex: ``preproc-[brz][0-9]-[0-9]{8}.fits``
+:Regex: ``preproc-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 194 MB
 
 Contents

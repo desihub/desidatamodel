@@ -1,17 +1,14 @@
-========
-stdstars
-========
+================================
+stdstars-SPECTROGRAPH-EXPID.fits
+================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``stdstars-0-00097549.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``stdstars-0-00097549.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 3 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This file contains the normalized standard star models fitted to the
+    frame data.
+:Naming Convention: ``stdstars-{SPECTROGRAPH}-{EXPID}.fits`` where
+    ``{SPECTROGRAPH}`` is the single-digit spectrograph number 0-9, and
+    ``{EXPID}`` is the zero-padded 8-digit exposure number.
+:Regex: ``stdstars-[0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 5 MB
 
 Contents
 ========
@@ -19,11 +16,11 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_  FLUX         IMAGE    *Brief Description*
-HDU1_  WAVELENGTH   IMAGE    *Brief Description*
-HDU2_  FIBERS       IMAGE    *Brief Description*
-HDU3_  METADATA     BINTABLE *Brief Description*
-HDU4_  COEFF        IMAGE    *Brief Description*
+HDU0_  FLUX         IMAGE    stdstar flux[nstd, nwave] in erg/s/cm^2/Angstrom
+HDU1_  WAVELENGTH   IMAGE    wavelength grid used, Angstroms
+HDU2_  FIBERS       IMAGE    1D array of which fibers these models correspond to
+HDU3_  METADATA     BINTABLE metadata from input standard star templates
+HDU4_  COEFF        IMAGE    Linear coefficients of stdstar model fit
 HDU5_  FIBERMAP     BINTABLE *Brief Description*
 HDU6_  INPUT_FRAMES BINTABLE *Brief Description*
 ====== ============ ======== ===================
@@ -37,7 +34,7 @@ HDU0
 
 EXTNAME = FLUX
 
-*Summarize the contents of this HDU.*
+Best fit standard star model flux.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +56,7 @@ HDU1
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength grid used in Angstroms.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,7 +77,7 @@ HDU2
 
 EXTNAME = FIBERS
 
-*Summarize the contents of this HDU.*
+Fibers used for fit.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,7 +97,7 @@ HDU3
 
 EXTNAME = METADATA
 
-*Summarize the contents of this HDU.*
+Metadata about best fit standard star models.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,7 +134,9 @@ HDU4
 
 EXTNAME = COEFF
 
-*Summarize the contents of this HDU.*
+Linear coefficients of stdstar model fit.
+
+TODO: add example of what that means.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

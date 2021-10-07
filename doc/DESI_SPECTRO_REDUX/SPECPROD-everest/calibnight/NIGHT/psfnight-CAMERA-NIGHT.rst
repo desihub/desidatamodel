@@ -1,13 +1,13 @@
-=====================
-psfnight-CAMERA-NIGHT
-=====================
+==========================
+psfnight-CAMERA-NIGHT.fits
+==========================
 
 :Summary: PSF model for the night derived from combining multiple
           arc lamp calibration exposures.
 :Naming Convention: ``psfnight-CAMERA-NIGHT.fits``, where ``CAMERA`` is
     *e.g.*, "b0", "r5", etc. and ``NIGHT`` is the observation night in
     YYYYMMDD format.
-:Regex: ``psfnight-[brz][0-9]-[0-9]{8}.fits``
+:Regex: ``psfnight-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 1 MB
 
 Contents

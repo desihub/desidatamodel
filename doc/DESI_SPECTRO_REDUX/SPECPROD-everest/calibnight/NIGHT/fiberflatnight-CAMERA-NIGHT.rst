@@ -1,6 +1,6 @@
-===========================
-fiberflatnight-CAMERA-NIGHT
-===========================
+================================
+fiberflatnight-CAMERA-NIGHT.fits
+================================
 
 :Summary: Relative fiber-to-fiber variations ("fiberflat") as measured by
     continuum lamp calibration spectra, combined across multiple exposures.
