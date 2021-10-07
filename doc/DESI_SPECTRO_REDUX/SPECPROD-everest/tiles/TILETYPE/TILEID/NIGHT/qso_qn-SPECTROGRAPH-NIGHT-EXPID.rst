@@ -1,6 +1,6 @@
-======
-qso_qn
-======
+=========================================
+qso_qn-SPECTROGRAPH-TILEID-SOMETHING.fits
+=========================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
