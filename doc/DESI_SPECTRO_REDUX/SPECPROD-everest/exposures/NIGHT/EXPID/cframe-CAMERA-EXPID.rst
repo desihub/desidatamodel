@@ -1,33 +1,31 @@
-======
-cframe
-======
+===================
+cframe-CAMERA-EXPID
+===================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``cframe-z9-00077777.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``cframe-z9-00077777.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 82 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This holds the calibrated spectra for a given camera and exposure.
+    See the datamodel for :doc:`frame-CAMERA-EXPID <frame-CAMERA-EXPID>`
+    files for details of the format.
+:Naming Convention: ``cframe-{CAMERA}-{EXPID}.fits``, where ``{CAMERA}`` is
+    one of the spectrograph cameras (*e.g.* ``z1``) and ``{EXPID}``
+    is the 8-digit exposure ID.
+:Regex: ``cframe-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 82 MB
 
 Contents
 ========
 
-====== ========== ======== ===================
+====== ========== ======== ======================================
 Number EXTNAME    Type     Contents
-====== ========== ======== ===================
-HDU0_  FLUX       IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       IMAGE    *Brief Description*
-HDU3_  WAVELENGTH IMAGE    *Brief Description*
-HDU4_  RESOLUTION IMAGE    *Brief Description*
-HDU5_  FIBERMAP   BINTABLE *Brief Description*
-HDU6_  CHI2PIX    IMAGE    *Brief Description*
-HDU7_  SCORES     BINTABLE *Brief Description*
-====== ========== ======== ===================
+====== ========== ======== ======================================
+HDU0_  FLUX       IMAGE    Flux, erg/s/cm2/A
+HDU1_  IVAR       IMAGE    Inverse variance, ``(erg/s/cm2/A)^-2``
+HDU2_  MASK       IMAGE    Mask (0 = good)
+HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
+HDU4_  RESOLUTION IMAGE    Resolution Matrix
+HDU5_  FIBERMAP   BINTABLE Fibermap
+HDU6_  CHI2PIX    IMAGE    chi2 fit of PSF model to CCD image
+HDU7_  SCORES     BINTABLE Quality Assurance scores
+====== ========== ======== ======================================
 
 
 FITS Header Units
@@ -38,7 +36,7 @@ HDU0
 
 EXTNAME = FLUX
 
-*Summarize the contents of this HDU.*
+Calibrated spectral flux in 1e-17 erg / (s cm2 Angstrom).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -554,7 +552,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux (*i.e.* ``error**-2``).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -575,7 +573,11 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectra; 0=good.
+
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
+
+TODO: add documentation link to what bits mean what.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -598,7 +600,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelengths at which flux is measured.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -619,7 +621,9 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-*Summarize the contents of this HDU.*
+Diagonal elements of convolution matrix describing spectral resolution.
+
+TODO: add code example for using this.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -641,7 +645,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap of what targets were assigned to what fibers.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1181,12 +1185,12 @@ Required Data Table Columns
 ===================== ======= ===== ===========
 Name                  Type    Units Description
 ===================== ======= ===== ===========
-TARGETID              int64
-PETAL_LOC             int16
-DEVICE_LOC            int32
-LOCATION              int64
-FIBER                 int32
-FIBERSTATUS           int32
+TARGETID              int64         Unique target ID
+PETAL_LOC             int16         Focal plane petal location 0-9
+DEVICE_LOC            int32         Device location 0-5xx
+LOCATION              int64         1000*PETAL_LOC + DEVICE_LOC
+FIBER                 int32         Fiber number 0-4999
+FIBERSTATUS           int32         Fiber status mask; 0=good
 TARGET_RA             float64
 TARGET_DEC            float64
 PMRA                  float32
@@ -1262,7 +1266,8 @@ HDU6
 
 EXTNAME = CHI2PIX
 
-*Summarize the contents of this HDU.*
+:math:`chi^2` of PSF fit to CCD data per flux bin.  Large values indicate poor fits,
+*e.g.* due to unmasked cosmics or other CCD defects.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1270,8 +1275,8 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2881             int
-NAXIS2   500              int
+NAXIS1   2881             int  Number of wavelengths
+NAXIS2   500              int  Number of spectra
 CHECKSUM cBAJe94GcAAGc93G str  HDU checksum updated 2021-07-16T15:54:42
 DATASUM  3947425746       str  data unit checksum updated 2021-07-16T15:54:42
 ======== ================ ==== ==============================================
@@ -1283,7 +1288,8 @@ HDU7
 
 EXTNAME = SCORES
 
-*Summarize the contents of this HDU.*
+Scores / metrics measured from the spectra for use in QA and systematics
+studies.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1300,6 +1306,13 @@ DATASUM  3675881366       str  data unit checksum updated 2021-07-16T15:54:42
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Note: the ``_C`` in the column names refers to the camera for this particular
+frame, *e.g.* ``_B``, ``_R``, or ``_Z``.  These are designed such that the
+SCORES tables from individual frames can be later combined into a summary
+table for the exposure.
+
+TODO: document wavelength ranges covered per camera.
 
 ===================== ======= ===== ============================================
 Name                  Type    Units Description

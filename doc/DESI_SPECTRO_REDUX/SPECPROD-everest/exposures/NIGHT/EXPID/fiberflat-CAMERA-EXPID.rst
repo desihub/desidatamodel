@@ -1,31 +1,28 @@
-=========
-fiberflat
-=========
+======================
+fiberflat-CAMERA-EXPID
+======================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``fiberflat-z9-00070882.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``fiberflat-z9-00070882.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 16 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This file contains the fiberflat such that newflux = rawflux/fiberflat.
+:Naming Convention: ``fiberflat-{CAMERA}-{EXPID}.fits``, where ``{camera}`` is the camera
+    name (*e.g.* b0, r1, z9) and ``{EXPID}`` is the zero padded 8-digit exposure ID.
+:Regex: ``fiberflat-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 16 MB
 
 Contents
 ========
 
-====== ========== ======== ===================
+====== ========== ======== ===================================
 Number EXTNAME    Type     Contents
-====== ========== ======== ===================
-HDU0_  FIBERFLAT  IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       IMAGE    *Brief Description*
-HDU3_  MEANSPEC   IMAGE    *Brief Description*
-HDU4_  WAVELENGTH IMAGE    *Brief Description*
-HDU5_  FIBERMAP   BINTABLE *Brief Description*
-====== ========== ======== ===================
+====== ========== ======== ===================================
+HDU0_  FIBERFLAT  IMAGE    fiberflat[nspec, nwave]
+HDU1_  IVAR       IMAGE    inverse variance of fiberflat
+HDU2_  MASK       IMAGE    bitmask of fiberflat (0=good)
+HDU3_  MEANSPEC   IMAGE    average spectrum[nwave]
+HDU4_  WAVELENGTH IMAGE    wavelength grid[nwave] in Angstroms
+HDU5_  FIBERMAP   BINTABLE fibermap
+====== ========== ======== ===================================
+
+Note: the FIBERMAP HDU may be dropped from future versions
 
 
 FITS Header Units
@@ -36,10 +33,12 @@ HDU0
 
 EXTNAME = FIBERFLAT
 
-*Summarize the contents of this HDU.*
+Mean fiberflat.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+Header keywords are inherited from the input Frame file.
 
 ======== =========================================================== ======= ====================================================
 KEY      Example Value                                               Type    Comment
@@ -418,7 +417,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of the fiberflat.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -440,7 +439,9 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of the fiberflat; 0=good.
+
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -448,8 +449,8 @@ Required Header Keywords
 ======== ================ ==== ==============================================
 KEY      Example Value    Type Comment
 ======== ================ ==== ==============================================
-NAXIS1   2881             int
-NAXIS2   500              int
+NAXIS1   2881             int  Number of wavelengths
+NAXIS2   500              int  Number of spectra
 BSCALE   1                int
 BZERO    2147483648       int
 CHECKSUM EGfjGGdhEGdhEGdh str  HDU checksum updated 2021-07-07T18:12:11
@@ -463,7 +464,8 @@ HDU3
 
 EXTNAME = MEANSPEC
 
-*Summarize the contents of this HDU.*
+Average flat lamp spectrum of fibers in this frame.  Fiberflat is relative
+to this mean spectrum.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -471,7 +473,7 @@ Required Header Keywords
 ======== ================= ==== ==============================================
 KEY      Example Value     Type Comment
 ======== ================= ==== ==============================================
-NAXIS1   2881              int
+NAXIS1   2881              int  Number of wavelengths
 BUNIT    electron/Angstrom str
 CHECKSUM CcfOCceNCceNCceN  str  HDU checksum updated 2021-07-07T18:12:12
 DATASUM  1452506388        str  data unit checksum updated 2021-07-07T18:12:12
@@ -484,7 +486,7 @@ HDU4
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength grid in Angstroms used by this fiberflat.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -505,7 +507,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap of what targets were assigned to what fibers.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,17 +1,14 @@
-========
-psfnight
-========
+=====================
+psfnight-CAMERA-NIGHT
+=====================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``psfnight-z8-20210613.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``psfnight-z8-20210613.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 998 KB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: PSF model for the night derived from combining multiple
+          arc lamp calibration exposures.
+:Naming Convention: ``psfnight-CAMERA-NIGHT.fits``, where ``CAMERA`` is
+    *e.g.*, "b0", "r5", etc. and ``NIGHT`` is the observation night in
+    YYYYMMDD format.
+:Regex: ``psfnight-[brz][0-9]-[0-9]{8}.fits``
+:File Type: FITS, 1 MB
 
 Contents
 ========
