@@ -1,8 +1,0 @@
-===
-psf
-===
-
-.. toctree::
-   :maxdepth: 1
-
-   NIGHT/index

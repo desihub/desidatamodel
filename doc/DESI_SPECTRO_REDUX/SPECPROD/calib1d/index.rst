@@ -1,5 +1,0 @@
-=======
-calib1d
-=======
-
-Placeholder.
