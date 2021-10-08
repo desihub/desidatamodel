@@ -6,4 +6,3 @@ calibnight
    :maxdepth: 1
 
    NIGHT/index
-   psf/index

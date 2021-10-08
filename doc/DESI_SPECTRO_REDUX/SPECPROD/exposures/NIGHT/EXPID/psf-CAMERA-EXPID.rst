@@ -2,36 +2,37 @@
 psf-CAMERA-EXPID.fits
 =====================
 
-PSF (point spread function) files model the mapping of fibers and wavelengths
-to pixels on spectrograph CCDs.  They all use the format as the
-:doc:`psfnight files<../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>`.
+:Summary: PSF (point spread function) files model the mapping of fibers and wavelengths
+    to pixels on spectrograph CCDs.
+:Naming Convention: ``psf-CAMERA-EXPID.fits``, where ``CAMERA`` is
+    *e.g.*, "b0", "r5", etc. and ``EXPID`` is 8-digit exposure number.
+:Regex: ``psf-[brz][0-9]-[0-9]{8}\.fits``
+:File Type: FITS, 998 KB
+
+See :doc:`psfnight <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>`.
 
 Arc exposures have 4 different PSF files per camera:
 
-  * ``shifted-input-psf-CAMERA-EXPID.fits```: Input PSF with spectral 
-    trace coordinates
-    and wavelength calibration adjusted to the current CCD image, used
-    as a starting guess for the PSF shape fit.
-  * ``fit-psf-before-blacklisted-fix-CAMERA-EXPID.fits``: Result
-    of the specex PSF fit before
-    ajusting the PSF model of problematic fibers not included in the fit.
-  * ``fit-psf-fixed-blacklisted-CAMERA-EXPID.fits``: Result of
-    the specex PSF fit with the PSF
-    model of problematic fibers interpolated from neighboring fibers.
-  * ``fit-psf-CAMERA-EXPID.fits``: Final PSF fit (which is the same as
-    ``fit-psf-fixed-blacklisted-CAMERA-EXPID.fits``
-    if there are problematic fibers)
+1. :doc:`shifted-input-psf-CAMERA-EXPID.fits <shifted-input-psf-CAMERA-EXPID>`:
+   Input PSF with spectral trace coordinates and wavelength calibration
+   adjusted to the current CCD image, used as a starting guess for the PSF shape fit.
+2. :doc:`fit-psf-before-blacklisted-fix-CAMERA-EXPID.fits <fit-psf-before-blacklisted-fix-CAMERA-EXPID>`: Result
+   of the specex PSF fit before adjusting the PSF model of
+   problematic fibers not included in the fit.
+3. :doc:`fit-psf-fixed-blacklisted-CAMERA-EXPID.fits <fit-psf-fixed-blacklisted-CAMERA-EXPID>`:
+   Result of the specex PSF fit with the PSF model of problematic fibers
+   interpolated from neighboring fibers.
+4. :doc:`fit-psf-CAMERA-EXPID.fits <fit-psf-CAMERA-EXPID>`: Final PSF fit
+   (which is the same as
+   :doc:`fit-psf-fixed-blacklisted-CAMERA-EXPID.fits <fit-psf-fixed-blacklisted-CAMERA-EXPID>`
+   if there are problematic fibers)
 
-The ``fit-psf`` files from individual exposures are combined into the
-``calibnight/NIGHT/psfnight-CAMERA-NIGHT.fits`` files for each night.
+The ``fit-psf-*.fits`` files from individual exposures are combined into the
+:doc:`psfnight <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>` files for each night.
 
 Flat and science exposures have a single PSF file per camera:
 
-  * ``psf-CAMERA-EXPID.fits``: psfnight file with spectral trace coordinates
-    and wavelength solution adjusted to match this exposure.  Flat exposures
-    are adjusted only in x (cross dispersion = fiber direction),
-    while science exposures are adjusted in both x and y (wavelength direction).
-
-:Regex: ``psf-[brz][0-9]-[0-9]{8}\.fits``
-
-
+``psf-CAMERA-EXPID.fits``: psfnight file with spectral trace coordinates
+and wavelength solution adjusted to match this exposure.  Flat exposures
+are adjusted only in x (cross dispersion = fiber direction),
+while science exposures are adjusted in both x and y (wavelength direction).

@@ -18,33 +18,46 @@ Input files for spectroscopic reduction::
 Output files::
 
     $DESI_SPECTRO_REDUX/$SPECPROD/
-        pix-{camera}-{expid}.fits               -- optional
         calibnight/{night}/
             fiberflatnight-{camera}-{night}.fits
-        calibnight/psf/{night}/
-            psf-{camera}.fits
+            psfnight-{camera}-{night}.fits
         exposures/{night}/{expid}/
-            calib-{camera}-{expid}.fits
             cframe-{camera}-{expid}.fits
+            exposure-qa-{expid}.fits
+            fiberflat-{camera}-{expid}.fits
+            fit-psf-*-{camera}-{expid}.fits
+            fluxcalib-{camera}-{expid}.fits
             frame-{camera}-{expid}.fits
             psf-{camera}-{expid}.fits
-            psfboot-{camera}-{expid}.fits
+            sframe-{camera}-{expid}.fits
+            shifted-input-psf-{camera}-{expid}.fits
             sky-{camera}-{expid}.fits
             stdstars-{spectrograph}-{expid}.fits
-        spectra-{nside}/{group}/{pixnum}/
-            coadd-{nside}-{pixnum}.fits     -- does not yet exist
-            spectra-{nside}-{pixnum}.fits
-            zbest-{nside}-{pixnum}.fits
-        zcatalog-{specprod}.fits
+        healpix/
+            tilepix.fits
+        healpix/{survey}/{program}/{group}/{pixnum}/
+            coadd-{survey}-{program}-{pixnum}.fits
+            qso_mgii-{survey}-{program}-{pixnum}.fits
+            qso_qn-{survey}-{program}-{pixnum}.fits
+            redrock-{survey}-{program}-{pixnum}.fits
+            spectra-{survey}-{program}-{pixnum}.fits
+        preproc/{night}/{expid}/
+            fibermap-{expid}.fits
+            preproc-{camera}-{expid}.fits
+        tiles/
+            TBD
+        zcatalog/
+            zpix-{survey}-{program}.fits
+            ztile-{survey}-{program}-{tiletype}.fits
 
 
 .. toctree::
    :maxdepth: 1
 
-   calib1d/index
    calibnight/index
    exposures/index
+   healpix/index
    preproc/index
-   spectra-NSIDE/index
    tiles/index
-   zcatalog-SPECPROD
+   zcatalog/index
+   exposures-SPECPROD

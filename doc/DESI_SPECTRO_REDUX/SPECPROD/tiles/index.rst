@@ -8,4 +8,5 @@ are grouped in tiles/TILEID/NIGHT/
 .. toctree::
    :maxdepth: 1
 
-   TILEID/index
+   DEPTH/index
+   TILETYPE/index
