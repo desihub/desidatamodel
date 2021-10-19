@@ -1,14 +1,14 @@
-==========================================
-redrock-SPECTROGRAPH-TILEID-SOMETHING.fits
-==========================================
+========================================
+redrock-SPECTROGRAPH-TILEID-GROUPID.fits
+========================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``redrock-0-80617-exp00069403.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``redrock-[0-9]-[0-9]+-thru20210510\.fits``
+:Naming Convention: ``redrock-SPECTROGRAPH-TILEID-GROUPID.fits``, where
+    ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
+    ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
+:Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 450 KB
 
 Contents
