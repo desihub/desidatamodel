@@ -1,17 +1,12 @@
-=============================
-tile-qa-TILEID-SOMETHING.fits
-=============================
+===========================
+tile-qa-TILEID-GROUPID.fits
+===========================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``tile-qa-20096-thru20210608.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``tile-qa-20096-thru20210608.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 627 KB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: These files are only associated with ``cumulative`` tile coadds.
+:Naming Convention: ``tile-qa-{TILEID}-thru{NIGHT}.fits``, where ``{TILEID}``
+    is the tile ID, and ``{NIGHT}`` is the last night of observation.
+:Regex: ``tile-qa-[0-9]+-thru[0-9]{8}.fits``
+:File Type: FITS, 627 KB
 
 Contents
 ========
