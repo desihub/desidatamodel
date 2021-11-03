@@ -2,8 +2,7 @@
 healpix
 =======
 
-Pixels are grouped by subdirectories of ``PIXGROUP = PIXNUM//100`` to avoid having
-tens of thousands of directories at the same level.
+Spectra are grouped by ``healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM``.
 
 .. toctree::
    :maxdepth: 1

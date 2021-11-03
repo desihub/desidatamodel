@@ -1,12 +1,12 @@
-========================================
-coadd-SPECTROGRAPH-TILEID-SOMETHING.fits
-========================================
+======================================
+coadd-SPECTROGRAPH-TILEID-GROUPID.fits
+======================================
 
 :Summary: Coadded spectra.
-:Naming Convention: ``coadd-SPECTROGRAPH-TILEID-thru20210510.fits``, where
+:Naming Convention: ``coadd-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
-    ``SOMETHING`` depends on the type of tile.
-:Regex: ``coadd-[0-9]-[0-9]+-thru20210510\.fits``
+    ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
+:Regex: ``coadd-[0-9]-[0-9]+-([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 213 MB
 
 

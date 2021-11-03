@@ -1,11 +1,11 @@
-==================================
-ztile-SURVEY-PROGRAM-TILETYPE.fits
-==================================
+===================================
+ztile-SURVEY-PROGRAM-GROUPTYPE.fits
+===================================
 
 :Summary: This file summarizes some set of files TBD.
-:Naming Convention: ``ztile-SURVEY-PROGRAM-TILETYPE.fits``, where ``SURVEY`` is
+:Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``,
-    and ``TILETYPE`` is ``cumulative`` or ``pernight``.
+    and ``GROUPTYPE`` is ``cumulative`` or ``pernight``.
 :Regex: ``ztile-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-(cumulative|pernight)\.fits``
 :File Type: FITS, 4 MB
 

@@ -1,17 +1,15 @@
-=======
-redrock
-=======
+========================================
+redrock-SPECTROGRAPH-TILEID-GROUPID.fits
+========================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``redrock-7-80610-1xsubset1.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``redrock-7-80610-1xsubset1.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 542 KB  *This section gives the type of the file
-    and its approximate size.*
+:Naming Convention: ``redrock-SPECTROGRAPH-TILEID-GROUPID.fits``, where
+    ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
+    ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
+:Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
+:File Type: FITS, 450 KB
 
 Contents
 ========
@@ -115,7 +113,7 @@ Required Header Keywords
 ====== ============= ==== =====================
 KEY    Example Value Type Comment
 ====== ============= ==== =====================
-NAXIS1 399           int  length of dimension 1
+NAXIS1 371           int  length of dimension 1
 NAXIS2 500           int  length of dimension 2
 ====== ============= ==== =====================
 
@@ -142,10 +140,12 @@ FA_TYPE                    binary
 OBJTYPE                    char[3]
 FIBERASSIGN_X              float32
 FIBERASSIGN_Y              float32
-NUMTARGET                  int16
 PRIORITY                   int32
 SUBPRIORITY                float64
 OBSCONDITIONS              int32
+RELEASE                    int16
+BRICKID                    int32
+BRICK_OBJID                int32
 MORPHTYPE                  char[4]
 FLUX_G                     float32
 FLUX_R                     float32
@@ -159,6 +159,7 @@ GAIA_PHOT_G_MEAN_MAG       float32
 GAIA_PHOT_BP_MEAN_MAG      float32
 GAIA_PHOT_RP_MEAN_MAG      float32
 PARALLAX                   float32
+BRICKNAME                  char[8]
 EBV                        float32
 FLUX_W1                    float32
 FLUX_W2                    float32
@@ -174,23 +175,14 @@ SHAPE_R                    float32
 SHAPE_E1                   float32
 SHAPE_E2                   float32
 PHOTSYS                    char[1]
+PRIORITY_INIT              int64
+NUMOBS_INIT                int64
 SV1_DESI_TARGET            int64
 SV1_BGS_TARGET             int64
 SV1_MWS_TARGET             int64
-PRIORITY_INIT              int64
-NUMOBS_INIT                int64
-RELEASE                    int32
-BRICKID                    int32
-BRICKNAME                  char[8]
-BRICK_OBJID                int32
-BLOBDIST                   float32
-FIBERFLUX_IVAR_G           float32
-FIBERFLUX_IVAR_R           float32
-FIBERFLUX_IVAR_Z           float32
 DESI_TARGET                int64
 BGS_TARGET                 int64
 MWS_TARGET                 int64
-HPXPIXEL                   int64
 PLATE_RA                   float64
 PLATE_DEC                  float64
 TILEID                     int32
@@ -225,7 +217,7 @@ Required Header Keywords
 KEY    Example Value Type Comment
 ====== ============= ==== =====================
 NAXIS1 162           int  length of dimension 1
-NAXIS2 1000          int  length of dimension 2
+NAXIS2 500           int  length of dimension 2
 ====== ============= ==== =====================
 
 Required Data Table Columns

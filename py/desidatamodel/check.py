@@ -32,17 +32,21 @@ class DataModel(DataModelUnit):
 
     # A mapping of human-readable metavariables to regular expressions.
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
-            'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
-            'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
-            'NIGHT': '[0-9]{8}',  # YYYYMMDD
-            'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
-            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
-            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
-            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
+            'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
+            'GROUPID': '([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
+            'GROUPTYPE': '(1x_depth|4x_depth|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
+            'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
             'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
+            'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
             'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
+            'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
+            'PROGRAM': '(backup|bright|dark|other)',  # observation program
+            'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
+            'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
+            'SURVEY': '(sv1|sv2|sv3|main)',  # Survey name
+            'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
             }
     # Matches HDU section headers.
     _hduline = re.compile(r'HDU(\d+)$')
