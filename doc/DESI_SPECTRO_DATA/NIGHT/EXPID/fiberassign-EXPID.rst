@@ -1,17 +1,13 @@
-===========
-fiberassign
-===========
+=================
+fiberassign-EXPID
+=================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``fiberassign-004403.fits.gz``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``fiberassign-004403.fits.gz`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 5 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: The fiberassign file contains the fiber positioner configuration information for
+    each exposure: what fiber is placed where, what target that is, etc.
+:Naming Convention: ``fiberassign-EXPID.fits.gz``, where EXPID is the zero-padded
+    8-digit exposure ID.
+:Regex: ``fiberassign-[0-9]{8}\.fits\.gz``
+:File Type: FITS, 5 MB
 
 Contents
 ========

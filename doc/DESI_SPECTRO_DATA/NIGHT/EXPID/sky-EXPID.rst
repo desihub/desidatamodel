@@ -5,7 +5,7 @@ sky-EXPID
 :Summary: Placeholder datamodel for the sky monitor raw data
 :Naming Convention: ``sky-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
-:Regex: ``sky-[0-9]{8}\.fits.fz``
+:Regex: ``sky-[0-9]{8}\.fits\.fz``
 :File Type: FITS, 350 MB
 
 Contents

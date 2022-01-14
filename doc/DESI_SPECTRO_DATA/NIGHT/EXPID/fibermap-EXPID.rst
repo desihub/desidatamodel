@@ -1,9 +1,10 @@
-===================
-fibermap-EXPID.fits
-===================
+==============
+fibermap-EXPID
+==============
 
 :Summary: The fibermap contains the fiber positioner configuration information for
-    each exposure: what fiber is placed where, what target that is, etc.
+    each exposure: what fiber is placed where, what target that is, etc. This file
+    type only appears in raw data from 2018 and should be considered obsolete.
 :Naming Convention: ``fibermap-{EXPID}.fits``, where {EXPID} is the 8-digit exposure ID.
 :Regex: ``fibermap-[0-9]{8}\.fits``
 :File Type: FITS, 2 MB

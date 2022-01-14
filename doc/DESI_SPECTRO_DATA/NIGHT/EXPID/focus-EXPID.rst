@@ -5,7 +5,7 @@ focus-EXPID
 :Summary: Placeholder datamodel for the focus GFA raw data
 :Naming Convention: ``focus-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
-:Regex: ``focus-[0-9]{8}\.fits.fz``
+:Regex: ``focus-[0-9]{8}\.fits\.fz``
 :File Type: FITS, 600 MB
 
 Contents
