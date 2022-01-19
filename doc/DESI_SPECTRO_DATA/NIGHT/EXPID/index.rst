@@ -21,4 +21,3 @@ Each exposure id (expid) generates multiple files:
    sky-{expid}.fits.fz : Placeholder for guide GFA raw data <sky-EXPID>
    temporary focus file <focus>
    temporary guide file <guide>
-   temporary sky file <sky>
