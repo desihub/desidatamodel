@@ -33,8 +33,6 @@ class TestCheck(DataModelTestCase):
         """
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
-        # Temporary hack
-        files = [f for f in files if os.path.basename(f.filename) not in ('desi.rst', 'focus.rst', 'guide.rst', 'sky.rst')]
         files_to_regexp('/desi/spectro/data', files)
         regexps = ['/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
                    '/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
