@@ -15,14 +15,14 @@ Contents
 Number EXTNAME Type             Contents
 ====== ======= ================ ===================
 HDU0_  FOCUS   Empty HDU        Header keywords only
-HDU1_  FOCUS4  Compressed IMAGE *Brief Description*
-HDU2_  FOCUS4T BINTABLE         *Brief Description*
-HDU3_  FOCUS1  Compressed IMAGE *Brief Description*
-HDU4_  FOCUS1T BINTABLE         *Brief Description*
-HDU5_  FOCUS9  Compressed IMAGE *Brief Description*
-HDU6_  FOCUS9T BINTABLE         *Brief Description*
-HDU7_  FOCUS6  Compressed IMAGE *Brief Description*
-HDU8_  FOCUS6T BINTABLE         *Brief Description*
+HDU1_  FOCUS4  Compressed IMAGE Focus image 4
+HDU2_  FOCUS4T BINTABLE         Focus image 4 metadata
+HDU3_  FOCUS1  Compressed IMAGE Focus image 1
+HDU4_  FOCUS1T BINTABLE         Focus image 1 metadata
+HDU5_  FOCUS9  Compressed IMAGE Focus image 9
+HDU6_  FOCUS9T BINTABLE         Focus image 9 metadata
+HDU7_  FOCUS6  Compressed IMAGE Focus image 6
+HDU8_  FOCUS6T BINTABLE         Focus image 6 metadata
 ====== ======= ================ ===================
 
 The FOCUSn data will be 3D[nframes, ny, nx] such that
