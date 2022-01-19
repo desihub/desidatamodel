@@ -19,4 +19,3 @@ Each exposure id (expid) generates multiple files:
    guide-rois-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-rois-EXPID>
    pm-{expid}.fits : Platemaker data <pm-EXPID>
    sky-{expid}.fits.fz : Placeholder for guide GFA raw data <sky-EXPID>
-   temporary guide file <guide>
