@@ -69,6 +69,8 @@ EXTNAME = WAVEDISP
 
 Data: FITS image [float64]
 
+.. _spplate-hdu5-plugmap:
+
 HDU5
 ----
 

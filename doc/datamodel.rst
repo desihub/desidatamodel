@@ -38,10 +38,10 @@ data model.
 Tips and Tests
 ~~~~~~~~~~~~~~
 
+You can browse some :doc:`examples <examples/index>`.
+
 Cross-referencing files
 +++++++++++++++++++++++
-
-You can browse some :doc:`examples <examples/index>`.
 
 Here is how you make a :doc:`direct link to a file <examples/spPlate>`::
 
@@ -61,15 +61,35 @@ or::
 That is, you can use a relative or absolute path.
 
 You can also cross-reference sections within files, however the notation is
-somewhat different. Here's a link to a `section of the spPlate file`_ we
-already linked to above::
+somewhat different. There are two methods.  The first involves creating
+an explicit reference point in the target document.  For example, in the
+spPlate file we referenced above, we can label HDU5::
 
-    link to a `section of the spPlate file`_ we
+    .. _spplate-hdu5-plugmap:
+
+    HDU5
+    ----
+
+    EXTNAME = PLUGMAP
+
+Then we use ``:ref:`` to cross-reference that label. Here's a link to that
+:ref:`section of the spPlate file <spplate-hdu5-plugmap>`::
+
+    :ref:`section of the spPlate file <spplate-hdu5-plugmap>`
+
+Note however, that this label must be globally unique!
+
+Alternatively, one can use "raw" ReStructuredText constructions. Here's a link
+to another `section of the spPlate file`_ we already linked to above::
+
+    link to another `section of the spPlate file`_
 
     .. _`section of the spPlate file`: examples/spPlate.html#hdu6
 
 .. _`section of the spPlate file`: examples/spPlate.html#hdu6
 
+Note this time that the section name may be upper case (``HDU6``), but the
+HTML anchor is lower case ``#hdu6``.
 
 Environment variables
 +++++++++++++++++++++
