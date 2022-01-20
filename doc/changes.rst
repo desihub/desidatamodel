@@ -2,10 +2,14 @@
 desidatamodel Change Log
 ========================
 
-20.12 (unreleased)
-------------------
+22.1 (unreleased)
+-----------------
 
 * Migrated to GitHub Actions for testing.
+* Update :doc:`DESI_SPECTRO_DATA <DESI_SPECTRO_DATA/index>` model based on
+  Main Survey data (PR `#94`_).
+* Update :doc:`DESI_SPECTRO_REDUX <DESI_SPECTRO_REDUX/index>` model based on
+  ``everest`` production (PRs `#93`_, `#90`_).
 * Update desitarget data model to reflect the ets release (PR `#85`_):
     * Alter filenames to add ``PHASE/OBSCON/RESOLVE`` and remove ``DR``.
     * Add full directory structure for ``DESI_TARGET/TARG_DIR``.
@@ -23,6 +27,9 @@ desidatamodel Change Log
 .. _`#81`: https://github.com/desihub/desidatamodel/pull/81
 .. _`#84`: https://github.com/desihub/desidatamodel/pull/84
 .. _`#85`: https://github.com/desihub/desidatamodel/pull/85
+.. _`#90`: https://github.com/desihub/desidatamodel/pull/90
+.. _`#93`: https://github.com/desihub/desidatamodel/pull/93
+.. _`#94`: https://github.com/desihub/desidatamodel/pull/94
 
 19.2 (2019-10-01)
 ------------------

@@ -34,17 +34,27 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         files_to_regexp('/desi/spectro/data', files)
-        regexps = ['/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
+        regexps = ['/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
+                   '/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
+                   '/desi/spectro/data/20160703/12345678/fiberassign-12345678.fits.gz',
+                   '/desi/spectro/data/20160703/12345678/fibermap-12345678.fits',
                    '/desi/spectro/data/20160703/00000123/focus-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/fvc-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-00000123.fits.fz',
-                   '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz',
-                   '/desi/spectro/data/20160703/12345678/fibermap-12345678.fits']
+                   '/desi/spectro/data/20160703/00000123/guide-rois-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/pm-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz',]
         expected = [os.path.join(root, 'NIGHT', 'EXPID', f) for f in (
+            'coordinates-EXPID.rst',
             'desi-EXPID.rst',
+            'fiberassign-EXPID.rst',
+            'fibermap-EXPID.rst',
             'focus-EXPID.rst',
+            'fvc-EXPID.rst',
             'guide-EXPID.rst',
-            'sky-EXPID.rst',
-            'fibermap-EXPID.rst')]
+            'guide-rois-EXPID.rst',
+            'pm-EXPID.rst',
+            'sky-EXPID.rst',)]
         expected_f2r = dict(zip(expected, regexps))
         for f in files:
             self.assertRegex(expected_f2r[f.filename], f.regexp,

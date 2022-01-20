@@ -38,6 +38,9 @@ data model.
 Tips and Tests
 ~~~~~~~~~~~~~~
 
+Cross-referencing files
++++++++++++++++++++++++
+
 You can browse some :doc:`examples <examples/index>`.
 
 Here is how you make a :doc:`direct link to a file <examples/spPlate>`::
@@ -57,22 +60,41 @@ or::
 
 That is, you can use a relative or absolute path.
 
+You can also cross-reference sections within files, however the notation is
+somewhat different. Here's a link to a `section of the spPlate file`_ we
+already linked to above::
+
+    link to a `section of the spPlate file`_ we
+
+    .. _`section of the spPlate file`: examples/spPlate.html#hdu6
+
+.. _`section of the spPlate file`: examples/spPlate.html#hdu6
+
+
+Environment variables
++++++++++++++++++++++
+
 Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`::
 
     Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`
 
+Building the Documents
+~~~~~~~~~~~~~~~~~~~~~~
+
 To build the docs::
 
-    python setup.py build_sphinx
+    sphinx-build -W --keep-going -b html doc doc/_build/html
 
-Then view ``build/sphinx/html/index.html`` in a web browser.  If you have
-installed the sphinx_rtd_theme Python package, the docs will be formatted
+Then view ``doc/_build/html/index.html`` in a web browser.  If you have
+installed the `sphinx_rtd_theme Python package`_, the docs will be formatted
 using the ReadTheDocs theme as they will appear at
 https://desidatamodel.readthedocs.io
 
 Sphinx will often print warnings and claim that the "build succeeded" when
 in fact there were syntax errors that break the output. You must pay attention
 to the warnings and fix them!
+
+.. _`sphinx_rtd_theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
 
 desidatamodel Python Package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
