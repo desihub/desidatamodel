@@ -34,7 +34,7 @@ HDU13_ GUIDE0T  BINTABLE         GUIDE0 image cube metadata
 The GUIDEn data will be 3D[nframes, ny, nx] such that
 ``data[i]`` is the 2D GFA frame number ``i``.  Row ``i`` of the
 GUIDEnT table will contain the metadata about that frame, for example the
-DATE-OBS and EXPTIME. The image cubes include the overscan and prescan;
+``DATE-OBS`` and ``EXPTIME``. The image cubes include the overscan and prescan;
 ``nx`` is 2248 and `ny` is 1032. The active image area is 2048 by 1032
 pixels once overscan and prescan have been removed.
 
@@ -356,6 +356,8 @@ ARCHIVE  /exposures/desi/20220113/00118526/guide-00118526.fits.fz              s
 CHECKSUM lFAHlC7GlCAGlC5G                                                      str     HDU checksum updated 2022-01-14T11:13:59
 DATASUM           0                                                            str     data unit checksum updated 2022-01-14T11:13:59
 ======== ===================================================================== ======= ===============================================
+
+Empty HDU.
 
 HDU01
 -----
