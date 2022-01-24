@@ -2,7 +2,7 @@
 guide-EXPID
 ===========
 
-:Summary: Placeholder datamodel for the guider GFA raw data
+:Summary: Datamodel for the guider GFA raw data
 :Naming Convention: ``guide-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``guide-[0-9]{8}\.fits\.fz``
@@ -16,36 +16,38 @@ Contents
 Number EXTNAME  Type             Contents
 ====== ======== ================ ===================
 HDU00_ GUIDER   Empty HDU        Header keywords only
-HDU01_ PMGSTARS BINTABLE         *Brief Description*
-HDU02_ GUIDE5   Compressed IMAGE Guide image 5
-HDU03_ GUIDE5T  BINTABLE         Guide image 5 metadata
-HDU04_ GUIDE3   Compressed IMAGE Guide image 3
-HDU05_ GUIDE3T  BINTABLE         Guide image 3 metadata
-HDU06_ GUIDE2   Compressed IMAGE Guide image 2
-HDU07_ GUIDE2T  BINTABLE         Guide image 2 metadata
-HDU08_ GUIDE7   Compressed IMAGE Guide image 7
-HDU09_ GUIDE7T  BINTABLE         Guide image 7 metadata
-HDU10_ GUIDE8   Compressed IMAGE Guide image 8
-HDU11_ GUIDE8T  BINTABLE         Guide image 8 metadata
-HDU12_ GUIDE0   Compressed IMAGE Guide image 0
-HDU13_ GUIDE0T  BINTABLE         Guide image 0 metadata
+HDU01_ PMGSTARS BINTABLE         PlateMaker star table
+HDU02_ GUIDE5   Compressed IMAGE GUIDE5 image cube
+HDU03_ GUIDE5T  BINTABLE         GUIDE5 image cube metadata
+HDU04_ GUIDE3   Compressed IMAGE GUIDE3 image cube
+HDU05_ GUIDE3T  BINTABLE         GUIDE3 image cube metadata
+HDU06_ GUIDE2   Compressed IMAGE GUIDE2 image cube
+HDU07_ GUIDE2T  BINTABLE         GUIDE2 image cube metadata
+HDU08_ GUIDE7   Compressed IMAGE GUIDE7 image cube
+HDU09_ GUIDE7T  BINTABLE         GUIDE7 image cube metadata
+HDU10_ GUIDE8   Compressed IMAGE GUIDE8 image cube
+HDU11_ GUIDE8T  BINTABLE         GUIDE8 image cube metadata
+HDU12_ GUIDE0   Compressed IMAGE GUIDE0 image cube
+HDU13_ GUIDE0T  BINTABLE         GUIDE0 image cube metadata
 ====== ======== ================ ===================
 
 The GUIDEn data will be 3D[nframes, ny, nx] such that
 ``data[i]`` is the 2D GFA frame number ``i``.  Row ``i`` of the
-GUIDEnT table will contain the metadata about that frame, *e.g.* the
-DATE-OBS and EXPTIME.
+GUIDEnT table will contain the metadata about that frame, for example the
+``DATE-OBS`` and ``EXPTIME``. The image cubes include the overscan and prescan;
+``nx`` is 2248 and `ny` is 1032. The active image area is 2048 by 1032
+pixels once overscan and prescan have been removed.
 
 Note that other than the blank data primary HDU, the order of the other
 HDUs is arbitrary and some GUIDEn(T) HDUs may even be missing.  The
-nominal set (0,2,4,5,7,9) is the plan for full DESI, but particularly during
-commissioning other combinations will appear in the data.
+nominal set (0,2,3,5,7,8) is the plan for full DESI, but particularly during
+commissioning other subsets will appear in the data. Also note
+that the acquisition image is frame ``i = 0`` when there is an acquisition
+image (a ``sequence=DESI`` exposure has an acquisition image but a
+``sequence=_Split`` exposure does not, for example).
 
 Other than the name and number of the HDUs, the structure of this format
 is identical to the focus GFA raw data.
-
-*Needs help*: are the camera numbers, *e.g.* ``GUIDE5``, always the same?  Does
-the order of camera numbers vary from file to file?
 
 FITS Header Units
 =================
@@ -55,7 +57,7 @@ HDU00
 
 EXTNAME = GUIDER
 
-*Summarize the contents of this HDU.*
+Blank data HDU with a header that contains a lot of exposure-level metadata.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -362,7 +364,7 @@ HDU01
 
 EXTNAME = PMGSTARS
 
-*Summarize the contents of this HDU.*
+Binary table of candidate guide/ETC stars detected by PlateMaker.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -382,25 +384,54 @@ Required Data Table Columns
 ========== ======= ===== ===================
 Name       Type    Units Description
 ========== ======= ===== ===================
-GFA_LOC    char[6]       label for field   1
-RA         float64       label for field   2
-DEC        float64       label for field   3
-ROW        float64       label for field   4
-COL        float64       label for field   5
-RA_IVAR    float64       label for field   6
-DEC_IVAR   float64       label for field   7
-MAG        float64       label for field   8
-MORPHTYPE  int64         label for field   9
-GUIDE_FLAG int64         label for field  10
-ETC_FLAG   int64         label for field  11
+GFA_LOC    char[6]       PETAL_LOC number
+RA         float64       Star RA in degrees
+DEC        float64       Star Dec in degrees
+ROW        float64       Star y pixel coord
+COL        float64       Star x pixel coord
+RA_IVAR    float64       RA inverse variance
+DEC_IVAR   float64       Dec inverse variance
+MAG        float64       Star magnitude
+MORPHTYPE  int64         Morphological type
+GUIDE_FLAG int64         Guiding bitmask
+ETC_FLAG   int64         ETC bitmask
 ========== ======= ===== ===================
+
+``COL`` is the x pixel coordinate of each star in a convention
+where the left edge of the image has x = 0.
+
+``ROW`` is the y pixel coordinate of each star in a convention
+where the bottom edge of the image has y = 0.
+
+So in this convention the center of the lower left pixel is
+(x, y) = (0.5, 0.5) rather than (0, 0).
+
+The star MAG is a synthetic version of DECam r created from
+Gaia photometry, inherited from the fiberassign GFA_TARGETS
+extension.
+
+MORPHTYPE is the GFA_TARGETS morphological type; this
+may, by definition, always be equal to 0, since the
+GFA_TARGETS target list should not include resolved galaxies.
+
+GUIDE_FLAG is a flag indicating whether each star is suitable
+for use as a guide star. This may always be equal to 1 by
+definition, as the PMGSTARS table would simply discard any
+star not suitable for use as a guide star.
+
+ETC_FLAG is a bitmask indicating whether each PlateMaker-selected
+guide star is suitable for use by the ETC. The main problem
+case that ETC_FLAG is supposed to address is variable stars,
+which can be fine for guiding but would mess up ETC transparency estimates.
+ETC_FLAG = 0 means that a star is usable for the ETC, whereas
+nonzero ETC_FLAG means that a star should not be used by the ETC.
 
 HDU02
 -----
 
 EXTNAME = GUIDE5
 
-*Summarize the contents of this HDU.*
+GUIDE5 image cube
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -505,7 +536,7 @@ HDU03
 
 EXTNAME = GUIDE5T
 
-*Summarize the contents of this HDU.*
+GUIDE5 image cube metadata
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -525,35 +556,39 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        Exposure time (sec)
+NIGHT    int64          Observing night
+DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
+MJD-OBS  float64        MJD (start of frame)
+OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+HEXPOS   char[34]       Hexapod position
+GAMBNTT  float64        GFA ambient temp (C)
+GFPGAT   float64        GFA FPGA temp (C)
+GFILTERT float64        GFA filter temp (C)
+GCOLDTEC float64        GFA cold peltier temp (C)
+GHOTTEC  float64        GFA hot peltier temp (C)
+GCCDTEMP float64        GFA CCD temp (C)
+GCAMTEMP float64        GFA camera temp (C)
+GHUMID2  float64        GFA humidity 2
+GHUMID3  float64        GFA humidity 3
+CRPIX1   float64        Reference pixel in axis1
+CRPIX2   float64        Reference pixel in axis2
+CRVAL1   float64        Physical value of the reference pixel
+CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
+
+``HEXPOS`` is a string containing the six hexapod parameters
+separated by commas, ordered as X, Y, Z, tip, tilt, rotation
+(positions in microns, angles in arcseconds).
 
 HDU04
 -----
 
 EXTNAME = GUIDE3
 
-*Summarize the contents of this HDU.*
+GUIDE3 image cube
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -658,7 +693,7 @@ HDU05
 
 EXTNAME = GUIDE3T
 
-*Summarize the contents of this HDU.*
+GUIDE3 image cube metadata
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -678,27 +713,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        Exposure time (sec)
+NIGHT    int64          Observing night
+DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
+MJD-OBS  float64        MJD (start of frame)
+OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+HEXPOS   char[34]       Hexapod position
+GAMBNTT  float64        GFA ambient temp (C)
+GFPGAT   float64        GFA FPGA temp (C)
+GFILTERT float64        GFA filter temp (C)
+GCOLDTEC float64        GFA cold peltier temp (C)
+GHOTTEC  float64        GFA hot peltier temp (C)
+GCCDTEMP float64        GFA CCD temp (C)
+GCAMTEMP float64        GFA camera temp (C)
+GHUMID2  float64        GFA humidity 2
+GHUMID3  float64        GFA humidity 3
+CRPIX1   float64        Reference pixel in axis1
+CRPIX2   float64        Reference pixel in axis2
+CRVAL1   float64        Physical value of the reference pixel
+CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
 
 HDU06
@@ -706,7 +741,7 @@ HDU06
 
 EXTNAME = GUIDE2
 
-*Summarize the contents of this HDU.*
+GUIDE2 image cube
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -811,7 +846,7 @@ HDU07
 
 EXTNAME = GUIDE2T
 
-*Summarize the contents of this HDU.*
+GUIDE2 image cube metadata
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -831,27 +866,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        Exposure time (sec)
+NIGHT    int64          Observing night
+DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
+MJD-OBS  float64        MJD (start of frame)
+OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+HEXPOS   char[34]       Hexapod position
+GAMBNTT  float64        GFA ambient temp (C)
+GFPGAT   float64        GFA FPGA temp (C)
+GFILTERT float64        GFA filter temp (C)
+GCOLDTEC float64        GFA cold peltier temp (C)
+GHOTTEC  float64        GFA hot peltier temp (C)
+GCCDTEMP float64        GFA CCD temp (C)
+GCAMTEMP float64        GFA camera temp (C)
+GHUMID2  float64        GFA humidity 2
+GHUMID3  float64        GFA humidity 3
+CRPIX1   float64        Reference pixel in axis1
+CRPIX2   float64        Reference pixel in axis2
+CRVAL1   float64        Physical value of the reference pixel
+CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
 
 HDU08
@@ -859,7 +894,7 @@ HDU08
 
 EXTNAME = GUIDE7
 
-*Summarize the contents of this HDU.*
+GUIDE7 image cube
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -964,7 +999,7 @@ HDU09
 
 EXTNAME = GUIDE7T
 
-*Summarize the contents of this HDU.*
+GUIDE7 image cube metadata
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -984,27 +1019,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        Exposure time (sec)
+NIGHT    int64          Observing night
+DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
+MJD-OBS  float64        MJD (start of frame)
+OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+HEXPOS   char[34]       Hexapod position
+GAMBNTT  float64        GFA ambient temp (C)
+GFPGAT   float64        GFA FPGA temp (C)
+GFILTERT float64        GFA filter temp (C)
+GCOLDTEC float64        GFA cold peltier temp (C)
+GHOTTEC  float64        GFA hot peltier temp (C)
+GCCDTEMP float64        GFA CCD temp (C)
+GCAMTEMP float64        GFA camera temp (C)
+GHUMID2  float64        GFA humidity 2
+GHUMID3  float64        GFA humidity 3
+CRPIX1   float64        Reference pixel in axis1
+CRPIX2   float64        Reference pixel in axis2
+CRVAL1   float64        Physical value of the reference pixel
+CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
 
 HDU10
@@ -1012,7 +1047,7 @@ HDU10
 
 EXTNAME = GUIDE8
 
-*Summarize the contents of this HDU.*
+GUIDE8 image cube
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1117,7 +1152,7 @@ HDU11
 
 EXTNAME = GUIDE8T
 
-*Summarize the contents of this HDU.*
+GUIDE8 image cube metadata
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1137,27 +1172,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[12]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        Exposure time (sec)
+NIGHT    int64          Observing night
+DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
+MJD-OBS  float64        MJD (start of frame)
+OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+HEXPOS   char[34]       Hexapod position
+GAMBNTT  float64        GFA ambient temp (C)
+GFPGAT   float64        GFA FPGA temp (C)
+GFILTERT float64        GFA filter temp (C)
+GCOLDTEC float64        GFA cold peltier temp (C)
+GHOTTEC  float64        GFA hot peltier temp (C)
+GCCDTEMP float64        GFA CCD temp (C)
+GCAMTEMP float64        GFA camera temp (C)
+GHUMID2  float64        GFA humidity 2
+GHUMID3  float64        GFA humidity 3
+CRPIX1   float64        Reference pixel in axis1
+CRPIX2   float64        Reference pixel in axis2
+CRVAL1   float64        Physical value of the reference pixel
+CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
 
 HDU12
@@ -1165,7 +1200,7 @@ HDU12
 
 EXTNAME = GUIDE0
 
-*Summarize the contents of this HDU.*
+GUIDE0 image cube
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1270,7 +1305,7 @@ HDU13
 
 EXTNAME = GUIDE0T
 
-*Summarize the contents of this HDU.*
+GUIDE0 image cube metadata
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1290,27 +1325,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        Exposure time (sec)
+NIGHT    int64          Observing night
+DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
+MJD-OBS  float64        MJD (start of frame)
+OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+HEXPOS   char[34]       Hexapod position
+GAMBNTT  float64        GFA ambient temp (C)
+GFPGAT   float64        GFA FPGA temp (C)
+GFILTERT float64        GFA filter temp (C)
+GCOLDTEC float64        GFA cold peltier temp (C)
+GHOTTEC  float64        GFA hot peltier temp (C)
+GCCDTEMP float64        GFA CCD temp (C)
+GCAMTEMP float64        GFA camera temp (C)
+GHUMID2  float64        GFA humidity 2
+GHUMID3  float64        GFA humidity 3
+CRPIX1   float64        Reference pixel in axis1
+CRPIX2   float64        Reference pixel in axis2
+CRVAL1   float64        Physical value of the reference pixel
+CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
 
 
