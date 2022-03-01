@@ -1,11 +1,11 @@
-===============
-mtl-dark-hp-HPX
-===============
+=================
+mtl-bright-hp-HPX
+=================
 
-:Summary: MTL ledgers for the DESI dark-time program.
-:Naming Convention: ``mtl-dark-hp-HPX.ecsv``, where
+:Summary: MTL ledgers for the DESI bright-time program.
+:Naming Convention: ``mtl-bright-hp-HPX.ecsv``, where
     HPX is the nside=32 (NESTED) HEALPixel integer.
-:Regex: ``mtl-dark-hp-[0-12287]\.ecsv``
+:Regex: ``mtl-bright-hp-[0-12287]\.ecsv``
 :File Type: FITS, 0-10 MB
 
 Contents
@@ -21,19 +21,19 @@ MTL        TABLE    Tile information
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =================================== ==== ============================================================================
-KEY      Example Value                       Type Comment
-======== =================================== ==== ============================================================================
-DR       9                                   int  Legacy Surveys Data Release used to produce the targets (should always be 9)
-FILEHPX  4447                                int  HEALPixel integer for the file
-FILENEST True                                bool If the HEALPixel NESTED scheme was used for the file (should always be True)
-FILENSID 32                                  int  HEALPixel nside used for the file (should always be 32)
-INDIR    dr9/1.1.1/targets/main/resolve/dark str  Location of the directory of targets used to produce the file
-OBSCON   DARK                                str  DESI program (DARK, BRIGHT or BACKUP)
-SCND     False                               bool Whether the file is a ledger of primary or secondary targets
-SURVEY   main                                str  DESI survey phase (main, sv2 or sv3)
-TSFORCED 2021-05-13T08:15:37+00:00           str  UTC/ISO TIMESTAMP that was specified to produce initial ledgers
-======== =================================== ==== ============================================================================
+======== ===================================== ==== ============================================================================
+KEY      Example Value                         Type Comment
+======== ===================================== ==== ============================================================================
+DR       9                                     int  Legacy Surveys Data Release used to produce the targets (should always be 9)
+FILEHPX  4447                                  int  HEALPixel integer for the file
+FILENEST True                                  bool If the HEALPixel NESTED scheme was used for the file (should always be True)
+FILENSID 32                                    int  HEALPixel nside used for the file (should always be 32)
+INDIR    dr9/1.1.1/targets/main/resolve/bright str  Location of the directory of targets used to produce the file
+OBSCON   BRIGHT                                str  DESI program (DARK, BRIGHT or BACKUP)
+SCND     False                                 bool Whether the file is a ledger of primary or secondary targets
+SURVEY   main                                  str  DESI survey phase (main, sv2 or sv3)
+TSFORCED 2021-05-13T08:15:37+00:00             str  UTC/ISO TIMESTAMP that was specified to produce initial ledgers
+======== ===================================== ==== ============================================================================
 
 
 Required Data Table Columns
