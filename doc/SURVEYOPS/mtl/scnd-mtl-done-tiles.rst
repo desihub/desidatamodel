@@ -4,8 +4,8 @@ scnd-mtl-done-tiles
 
 :Summary: Record of tiles with MTL updates for secondary targets.
 :Naming Convention: ``scnd-mtl-done-tiles.ecsv``
-:Regex: ``scnd-mtl-done-tiles\.fits``
-:File Type: FITS, 200 KB
+:Regex: ``scnd-mtl-done-tiles\.ecsv``
+:File Type: ecsv, 200 KB
 
 Contents
 ========
