@@ -5,7 +5,7 @@ ToO
 :Summary: Targets of Opportunity ledger
 :Naming Convention: ``ToO.ecsv``
 :Regex: ``ToO\.ecsv``
-:File Type: ecsv, about 100 MB
+:File Type: ecsv, 112 KB
 
 Contents
 ========
@@ -47,19 +47,18 @@ GAIA_PHOT_BP_MEAN_MAG         float32  mag         Magnitude in	the Gaia BP-band
 GAIA_PHOT_RP_MEAN_MAG         float32  mag         Magnitude in	the Gaia RP-band (placeholder; needed by fiberassign)
 GAIA_ASTROMETRIC_EXCESS_NOISE float32              Gaia astrometric excess noise (placeholder; needed by fiberassign)
 TARGETID                      int64                Unique DESI targeting ID
-DESI_TARGET                   int64                DESI (dark time program) target selection bitmask
-SCND_TARGET                   int64                Target selection bitmask for DESI secondary programs
+SV3_DESI_TARGET               int64                DESI (dark time program) target selection bitmask
+SV3_SCND_TARGET               int64                Target selection bitmask for DESI secondary programs
 SCND_ORDER                    int32                Number of row for target entry in secondary file (placeholder; needed by fiberassign)
 PRIORITY_INIT                 int64                Target's initial priority from target selection bitmasks and OBSCONDITIONS
 SUBPRIORITY                   float64              Random subpriority [0-1] to break assignment ties
 NUMOBS_INIT                   int64                Target's initial desired number of observations
 OBSCONDITIONS                 int64                Observing conditions/program bitmask (bright/dark/backup/etc.)
-CHECKER                       char[2]              Initials of researcher who vetted the target
-TOO_TYPE                      char[4]              Either "TILE" for a special tile or "FIBER" for a fiber-override ToO
+CHECKER                       char[5]              Initials of researcher who vetted the target
+TOO_TYPE                      char[5]              Either "TILE" for a special tile or "FIBER" for a fiber-override ToO
 TOO_PRIO                      char[2]              Either "HI" for a very-high-priority target or "LO" for a very-low-priority target
 OCLAYER                       char[6]              Either "DARK" for dark-time or "BRIGHT" to observe in either bright- or dark-time
 MJD_BEGIN                     float64  d           Start of the allowed observing window for this target (Modified Julian Date)
 MJD_END                       float64  d           End of the allowed observing window for this target (Modified Julian Date)
 TOOID                         int64                ID for this target assigned by the CHECKER
-TIMESTAMP                     char[25] s           UTC/ISO time at which the target was added to the ToO ledger
 ============================= ======== =========== =================================================
