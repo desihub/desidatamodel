@@ -9,7 +9,7 @@ scheme) at a resolution of nside=32.
 The filename for each ledger resembles mtl-dark-hp-HPX.ecsv, where HPX
 is the healpixel number.
 
-Subdirectories and files:
+Files and subdirectories:
 
 .. toctree::
    :maxdepth: 1

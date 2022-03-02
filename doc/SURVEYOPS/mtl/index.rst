@@ -12,7 +12,7 @@ had target states updated over the course of all of the DESI survey phases
 (i.e. all of ``sv2``, ``sv3`` and ``main``).
 
 
-Subdirectories:
+Files and subdirectories:
 
 .. toctree::
    :maxdepth: 1
