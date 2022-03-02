@@ -6,16 +6,16 @@ mtl-dark-hp-HPX
 :Naming Convention: ``mtl-override-dark-hp-HPX.ecsv``, where
     HPX is the nside=32 (NESTED) HEALPixel integer.
 :Regex: ``mtl-override-dark-hp-[0-12287]\.ecsv``
-:File Type: FITS, 0-10 KB
+:File Type: ecsv, 0-10 KB
 
 Contents
 ========
 
-========== ======== ===================
+========== ======== ==========
 EXTNAME    Type     Contents
-========== ======== ===================
-MTL        TABLE    Tile information
-========== ======== ===================
+========== ======== ==========
+MTL        TABLE    MTL Ledger
+========== ======== ==========
 
 
 Required Header Keywords

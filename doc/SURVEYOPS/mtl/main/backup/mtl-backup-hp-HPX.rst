@@ -6,16 +6,16 @@ mtl-backup-hp-HPX
 :Naming Convention: ``mtl-backup-hp-HPX.ecsv``, where
     HPX is the nside=32 (NESTED) HEALPixel integer.
 :Regex: ``mtl-backup-hp-[0-12287]\.ecsv``
-:File Type: FITS, 0-20 MB
+:File Type: ecsv, 0-20 MB
 
 Contents
 ========
 
-========== ======== ===================
+========== ======== ==========
 EXTNAME    Type     Contents
-========== ======== ===================
-MTL        TABLE    Tile information
-========== ======== ===================
+========== ======== ==========
+MTL        TABLE    MTL Ledger
+========== ======== ==========
 
 
 Required Header Keywords
