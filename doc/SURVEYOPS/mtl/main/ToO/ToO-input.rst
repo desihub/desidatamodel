@@ -18,7 +18,7 @@ TOO        TABLE    ToO Ledger
 
 
 Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======= ============= ==== ===========================================================================
 KEY     Example Value Type Comment
@@ -28,7 +28,7 @@ RELEASE 9999           int Ersatz Legacy Surveys RELEASE used for Targets of Opp
 
 
 Required Data Table Columns
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ============================= ======== =========== =================================================
 Name                          Type     Units       Description

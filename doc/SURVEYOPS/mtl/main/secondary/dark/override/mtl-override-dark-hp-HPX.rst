@@ -19,7 +19,7 @@ MTL        TABLE    MTL Ledger
 
 
 Required Header Keywords
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======== ===================================== ==== ============================================================================
 KEY      Example Value                         Type Comment
@@ -37,7 +37,7 @@ SURVEY   main                                  str  DESI survey phase (main, sv2
 
 
 Required Data Table Columns
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ============= ======== ====== =================================================
 Name          Type     Units  Description

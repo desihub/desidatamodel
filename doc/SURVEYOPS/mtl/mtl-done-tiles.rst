@@ -18,7 +18,7 @@ MTLTILE    TABLE    Tile information
 
 
 Required Data Table Columns
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ============ ======= ===== =================================================
 Name         Type    Units Description
