@@ -15,4 +15,4 @@ HPX is the healpixel number.
 .. toctree::
    :maxdepth: 1
 
-   mtl-override-dark-hp-HPX.rst : MTL ledgers used to override DESI dark-time program secondary targets.
+   mtl-override-dark-hp-HPX.ecsv : MTL ledgers used to override DESI dark-time program secondary targets <mtl-override-dark-hp-HPX>

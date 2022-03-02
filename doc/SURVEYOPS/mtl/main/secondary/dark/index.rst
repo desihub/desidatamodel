@@ -14,5 +14,5 @@ Subdirectories and files:
 .. toctree::
    :maxdepth: 1
 
-   mtl-dark-hp-HPX.rst : MTL ledgers for the DESI dark-time program (secondary targets).
+   mtl-dark-hp-HPX.ecsv : MTL ledgers for the DESI dark-time program (secondary targets) <mtl-dark-hp-HPX>
    override/index

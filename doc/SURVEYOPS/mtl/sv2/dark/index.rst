@@ -12,4 +12,4 @@ is the healpixel number.
 .. toctree::
    :maxdepth: 1
 
-   sv2mtl-dark-hp-HPX.rst : MTL ledgers for the DESI dark-time program.
+   sv2mtl-dark-hp-HPX.ecsv : MTL ledgers for the DESI dark-time program <sv2mtl-dark-hp-HPX>

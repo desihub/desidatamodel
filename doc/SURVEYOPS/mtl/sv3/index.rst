@@ -1,9 +1,9 @@
-====
-main
-====
+===
+sv3
+===
 
-``main`` is the root directory for the Merged Target List ledgers for the
-DESI Main Survey. The MTL ledgers record the state of each DESI target as
+``sv3`` is the root directory for the Merged Target List ledgers for the
+DESI One-Percent Survey. The MTL ledgers record the state of each DESI target as
 redshift information is acquired. There is a set of ledgers for each of the
 DESI Main Survey primary programs (``dark``, ``bright`` and ``backup``) as
 well as for the DESI secondary programs (``secondary``) and for Targets

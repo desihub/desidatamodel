@@ -12,4 +12,4 @@ is the healpixel number.
 .. toctree::
    :maxdepth: 1
 
-   sv3mtl-bright-hp-HPX.rst : MTL ledgers for the DESI bright-time program.
+   sv3mtl-bright-hp-HPX.ecsv : MTL ledgers for the DESI bright-time program <sv3mtl-bright-hp-HPX>

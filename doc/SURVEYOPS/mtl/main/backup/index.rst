@@ -12,4 +12,4 @@ is the healpixel number.
 .. toctree::
    :maxdepth: 1
 
-   mtl-backup-hp-HPX.ecsv : MTL ledgers for the DESI backup program.
+   mtl-backup-hp-HPX.ecsv : MTL ledgers for the DESI backup program <mtl-backup-hp-HPX>

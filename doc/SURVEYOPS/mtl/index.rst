@@ -17,8 +17,8 @@ Subdirectories:
 .. toctree::
    :maxdepth: 1
 
-   mtl-done-tiles.ecsv : Record of updated tiles for primary targets.
-   scnd-mtl-done-tiles.ecsv : Record of updated tiles for secondary targets.
+   mtl-done-tiles.ecsv : Record of updated tiles for primary targets <mtl-done-tiles>
+   scnd-mtl-done-tiles.ecsv : Record of updated tiles for secondary targets <scnd-mtl-done-tiles>
    main/index
    sv2/index
    sv3/index

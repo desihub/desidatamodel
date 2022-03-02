@@ -22,7 +22,7 @@ for testing.
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
-   $SURVEYOPS: : data files used for day-to-day survey operations <SURVEYOPS/index>
+   $SURVEYOPS : data files used for day-to-day survey operations <SURVEYOPS/index>
    datamodel
    changes
 
