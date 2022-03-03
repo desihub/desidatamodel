@@ -5,6 +5,7 @@ desidatamodel Change Log
 22.1 (unreleased)
 -----------------
 
+* Add data model for MTL ledgers (PR `#101`_).
 * Migrated to GitHub Actions for testing.
 * Update :doc:`DESI_SPECTRO_DATA <DESI_SPECTRO_DATA/index>` model based on
   Main Survey data (PR `#94`_).
@@ -30,6 +31,7 @@ desidatamodel Change Log
 .. _`#90`: https://github.com/desihub/desidatamodel/pull/90
 .. _`#93`: https://github.com/desihub/desidatamodel/pull/93
 .. _`#94`: https://github.com/desihub/desidatamodel/pull/94
+.. _`#101`: https://github.com/desihub/desidatamodel/pull/101
 
 19.2 (2019-10-01)
 ------------------
