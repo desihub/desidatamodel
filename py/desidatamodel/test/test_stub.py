@@ -449,9 +449,9 @@ class TestStub(DataModelTestCase):
         hdr1['ZTILE2'] = 1
         hdr1['ZCMPTYPE'] = 'RICE_1  '
         hdr1['ZNAME1'] = 'BLOCKSIZE'
-        hdr1['ZVAL1'] =  32
+        hdr1['ZVAL1'] = 32
         hdr1['ZNAME2'] = 'BYTEPIX '
-        hdr1['ZVAL2'] =  2
+        hdr1['ZVAL2'] = 2
         hdr1['BZERO'] = 32768
         hdr1['BSCALE'] = 1
         hdr1['EXTNAME'] = 'Z7      '
@@ -491,9 +491,9 @@ class TestStub(DataModelTestCase):
         hdr1['ZTILE2'] = 1
         hdr1['ZCMPTYPE'] = 'RICE_1  '
         hdr1['ZNAME1'] = 'BLOCKSIZE'
-        hdr1['ZVAL1'] =  32
+        hdr1['ZVAL1'] = 32
         hdr1['ZNAME2'] = 'BYTEPIX '
-        hdr1['ZVAL2'] =  2
+        hdr1['ZVAL2'] = 2
         hdr1['BZERO'] = 32768
         hdr1['BSCALE'] = 1
         hdr1['EXTNAME'] = 'Z7      '
