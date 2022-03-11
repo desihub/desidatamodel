@@ -8,7 +8,7 @@ fiberflatnight-CAMERA-NIGHT.fits
 :Naming Convention: ``fiberflatnight-CAMERA-NIGHT.fits``, where ``CAMERA`` is
     *e.g.*, "b0", "r5", etc. and ``NIGHT`` is the observation night in
     YYYYMMDD format.
-:Regex: ``fiberflatnight-[brz][0-9]-[0-9]{8}.fits``
+:Regex: ``fiberflatnight-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 10 MB
 
 Contents
