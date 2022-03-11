@@ -11,6 +11,7 @@ import os
 import re
 from html import escape
 from astropy.io import fits
+from astropy.io.fits.card import Undefined
 
 from desiutil.log import log, DEBUG
 
@@ -613,7 +614,7 @@ def extract_keywords(hdr):
             if isinstance(value, float):
                 value = str(value)
                 ktype = 'float'
-            if value is None:
+            if isinstance(value, (Undefined, type(None))):
                 log.error("Empty header keyword %s detected! This violates the FITS standard!", key)
                 value = 'None'
                 ktype = 'Unknown'

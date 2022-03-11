@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 from pkg_resources import resource_filename
 from astropy.io import fits
+from astropy.io.fits.card import Undefined
 from collections import OrderedDict
 
 from .datamodeltestcase import DataModelTestCase
@@ -155,6 +156,45 @@ class TestStub(DataModelTestCase):
         self.assertEqual(len(sec), len(expected_sec))
         for k in range(len(sec)):
             self.assertEqual(sec[k], expected_sec[k])
+
+    def test_Stub_null_header_keyword(self):
+        """Test with some header keywords missing values.
+        """
+        hdulist = list()
+        hdr = sim_header()
+        hdr['SIMPLE'] = True
+        hdr['BITPIX'] = 8
+        hdr['NAXIS'] = 0
+        hdr['EXTEND'] = True
+        hdr['EXTNAME'] = 'PRIMARY'
+        hdr['GOODVAL'] = 3.14
+        hdr['NULLVAL'] = None
+        hdr['OKVAL'] = 'Test'
+        hdulist.append(sim_hdu(hdr))
+        stub = Stub(hdulist)
+        sec = stub.section(0)
+        expected_sec = ['HDU0',
+                        '----',
+                        '',
+                        'EXTNAME = PRIMARY',
+                        '',
+                        '*Summarize the contents of this HDU.*',
+                        '',
+                        'Required Header Keywords',
+                        '~~~~~~~~~~~~~~~~~~~~~~~~',
+                        '',
+                        '======= ============= ======= ===============================',
+                        'KEY     Example Value Type    Comment',
+                        '======= ============= ======= ===============================',
+                        'GOODVAL 3.14          float   This is the comment on GOODVAL.',
+                        'NULLVAL None          Unknown This is the comment on NULLVAL.',
+                        'OKVAL   Test          str     This is the comment on OKVAL.',
+                        '======= ============= ======= ===============================',
+                        '',
+                        'Empty HDU.',
+                        '']
+
+        self.assertListEqual(sec, expected_sec)
 
     def test_Stub_compressed_image(self):
         """Test with a compressed image HDU.
@@ -559,9 +599,8 @@ class TestStub(DataModelTestCase):
         lines = extract_keywords(hdr)
         expected_lines = [('FOOBAR', (3.14159, 2.71828),
                            'Unknown', 'This is the comment on FOOBAR.')]
-        self.assertLog(log, 0, "Raised AttributeError on FOOBAR = (3.14159, 2.71828).")
-        for k in range(len(lines)):
-            self.assertEqual(lines[k], expected_lines[k])
+        self.assertListEqual(lines, expected_lines)
+        self.assertLog(log, -1, "Raised AttributeError on FOOBAR = (3.14159, 2.71828).")
         hdr = sim_header()
         hdr['SIMPLE'] = True
         hdr['BITPIX'] = 8
@@ -569,12 +608,15 @@ class TestStub(DataModelTestCase):
         hdr['EXTEND'] = True
         # Artificial example, but needed to trigger an error message.
         hdr['FOOBAR'] = None
+        hdr['BARBAZ'] = Undefined()
         lines = extract_keywords(hdr)
-        expected_lines = [('FOOBAR', 'None',
-                           'Unknown', 'This is the comment on FOOBAR.')]
-        self.assertLog(log, -1, "Empty header keyword FOOBAR detected! This violates the FITS standard!")
-        for k in range(len(lines)):
-            self.assertEqual(lines[k], expected_lines[k])
+        expected_lines = [('FOOBAR', 'None', 'Unknown',
+                           'This is the comment on FOOBAR.'),
+                          ('BARBAZ', 'None', 'Unknown',
+                           'This is the comment on BARBAZ.')]
+        self.assertListEqual(lines, expected_lines)
+        self.assertLog(log, -2, "Empty header keyword FOOBAR detected! This violates the FITS standard!")
+        self.assertLog(log, -1, "Empty header keyword BARBAZ detected! This violates the FITS standard!")
 
     def test_process_file(self):
         """Full test of parsing a FITS file.
