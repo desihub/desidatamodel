@@ -19,6 +19,7 @@ jobs:
                 os: [ubuntu-latest]
                 python-version: ['3.8', '3.9', '3.10']
                 astropy-version: ['<4.1', '<5.0', '<5.1']
+                desiutil-version: ['3.2.5']
 
         steps:
             - name: Checkout code
@@ -33,8 +34,8 @@ jobs:
               run: |
                 python -m pip install --upgrade pip wheel
                 python -m pip install pytest
-                if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-                pip install -U "astropy${{ matrix.astropy-version }}"
+                python -m pip install "git+https://github.com/desihub/desiutil.git@${{ matrix.desiutil-version }}#egg=desiutil"
+                python -m pip install "astropy${{ matrix.astropy-version }}"
             - name: Run the test
               run: |
                 pytest
@@ -61,7 +62,7 @@ jobs:
               run: |
                 python -m pip install --upgrade pip wheel
                 python -m pip install pytest pytest-cov coveralls
-                if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+                python -m pip install -r requirements.txt
             - name: Run the test with coverage
               run: |
                 pytest --cov
