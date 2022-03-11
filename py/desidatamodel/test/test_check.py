@@ -43,7 +43,7 @@ class TestCheck(DataModelTestCase):
                    '/desi/spectro/data/20160703/00000123/guide-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-rois-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/pm-00000123.fits',
-                   '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz',]
+                   '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz']
         expected = [os.path.join(root, 'NIGHT', 'EXPID', f) for f in (
             'coordinates-EXPID.rst',
             'desi-EXPID.rst',
