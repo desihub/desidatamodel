@@ -8,7 +8,7 @@ redrock-SPECTROGRAPH-TILEID-GROUPID.fits
 :Naming Convention: ``redrock-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
-:Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
+:Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 450 KB
 
 Contents

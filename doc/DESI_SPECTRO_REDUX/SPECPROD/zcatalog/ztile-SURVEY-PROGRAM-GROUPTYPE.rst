@@ -6,7 +6,7 @@ ztile-SURVEY-PROGRAM-GROUPTYPE.fits
 :Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``,
     and ``GROUPTYPE`` is ``cumulative`` or ``pernight``.
-:Regex: ``ztile-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-(cumulative|pernight)\.fits``
+:Regex: ``ztile-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-(cumulative|perexp|pernight|1x_depth|4x_depth|lowspeed)\.fits``
 :File Type: FITS, 4 MB
 
 Contents

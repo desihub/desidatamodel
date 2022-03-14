@@ -1,17 +1,15 @@
-====
-zmtl
-====
+=====================================
+zmtl-SPECTROGRAPH-TILEID-GROUPID.fits
+=====================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``zmtl-3-388-thru20210417.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``zmtl-3-388-thru20210417.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 67 KB  *This section gives the type of the file
-    and its approximate size.*
+:Naming Convention: ``zmtl-SPECTROGRAPH-TILEID-GROUPID.fits``, where
+    ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
+    ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
+:Regex: ``zmtl-[0-9]-[0-9]+-(thru|)[0-9]{8}\.fits``
+:File Type: FITS, 67 KB
 
 Contents
 ========

@@ -5,7 +5,7 @@ tile-qa-TILEID-GROUPID.fits
 :Summary: These files are only associated with ``cumulative`` tile coadds.
 :Naming Convention: ``tile-qa-{TILEID}-thru{NIGHT}.fits``, where ``{TILEID}``
     is the tile ID, and ``{NIGHT}`` is the last night of observation.
-:Regex: ``tile-qa-[0-9]+-thru[0-9]{8}\.fits``
+:Regex: ``tile-qa-[0-9]+-(thru|)[0-9]{8}\.fits``
 :File Type: FITS, 627 KB
 
 Contents

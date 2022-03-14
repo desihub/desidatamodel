@@ -5,7 +5,7 @@ zpix-SURVEY-PROGRAM.fits
 :Summary: This file summarizes some set of files TBD.
 :Naming Convention: ``ztile-SURVEY-PROGRAM.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright or ``dark``.
-:Regex: ``zpix-(main|sv1|sv2|sv3)-(backup|bright|dark|other)\.fits``
+:Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)\.fits``
 :File Type: FITS, 296 MB
 
 Contents
