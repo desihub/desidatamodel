@@ -8,7 +8,7 @@ qso_qn-SURVEY-PROGRAM-PIXNUM.fits
 :Naming Convention: ``qso_qn-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
     and ``PIXNUM`` is the HEALPixel number.
-:Regex: ``qso_qn-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
+:Regex: ``qso_qn-(cmx|main|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
 :File Type: FITS, 19 KB  *This section gives the type of the file
     and its approximate size.*
 
