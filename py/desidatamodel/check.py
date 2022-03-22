@@ -35,7 +35,7 @@ class DataModel(DataModelUnit):
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
             'GROUPID': '([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
-            'GROUPTYPE': '(1x_depth|4x_depth|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
+            'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
             'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
@@ -54,6 +54,8 @@ class DataModel(DataModelUnit):
     _hduspan = re.compile(r'HDU(\d+)[-: ]+HDU(\d+)$')
     # Matches lines that contain regular expressions.
     _regexpline = re.compile(r':?regexp?:', re.I)
+    # Matches the file-type line.
+    _filetypeline = re.compile(r':?file type?:', re.I)
     # Matches lines that contain cross-references.
     _refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
     # Matches table borders.
@@ -587,7 +589,7 @@ def collect_files(root, files):
       it is 'ignored'.
     """
     ignore_directories = ('logs', 'scripts')
-    include_extensions = ('.fits', '.fits.fz')
+    include_extensions = ('.fits', '.fits.fz', '.fits.gz')
     for dirpath, dirnames, filenames in os.walk(root):
         for d in ignore_directories:
             try:
