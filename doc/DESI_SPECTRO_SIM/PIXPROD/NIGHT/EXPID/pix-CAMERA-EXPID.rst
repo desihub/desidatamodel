@@ -1,27 +1,12 @@
-==============
-pix
-==============
+=====================
+pix-CAMERA-EXPID.fits
+=====================
 
-General Description
-===================
-
-Summary
--------
-
-Pre-processed CCD pixel data.
-
-Naming Convention
------------------
-
-``pix-{CAMERA}-{EXPID}.fits``, where {CAMERA} is the camera name
-(e.g. b0, r1, or z9), and {EXPID} is the 8-digit exposure ID.
-
-regex: ``pix-[brz]{1}[0-9]{1}-[0-9]{8}.fits``
-
-File Type
----------
-
-FITS, 320 MB
+:Summary: Pre-processed CCD pixel data.
+:Naming Convention: ``pix-{CAMERA}-{EXPID}.fits``, where {CAMERA} is the camera name
+(*e.g.* ``b0``, ``r1``, or ``z9``), and ``{EXPID}`` is the 8-digit exposure ID.
+:Regex: ``pix-[brz]{1}[0-9]{1}-[0-9]{8}\.fits``
+:File Type: FITS, 320 MB
 
 Contents
 ========

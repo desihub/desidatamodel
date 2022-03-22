@@ -60,6 +60,8 @@ class DataModel(DataModelUnit):
     _refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
     # Matches table borders.
     _tableboundary = re.compile(r'[= ]+$')
+    # The list of file types allowed by the data model.
+    _expectedtypes = ('ascii', 'csv', 'ecsv', 'fits', 'yaml')
 
     def __init__(self, filename, section):
         shortname = filename.replace(f'{section}/', '')
@@ -68,6 +70,7 @@ class DataModel(DataModelUnit):
         self.section = section
         self.ref = None
         self.regexp = None
+        self.filetype = None
         self.hdumeta = None
         self.prototype = None
         self._metafile_data = None
@@ -77,6 +80,8 @@ class DataModel(DataModelUnit):
 
     def get_regexp(self, root, error=False):
         """Obtain the regular expression used to match files on disk.
+
+        Also internally updates the file type, if detected.
 
         Parameters
         ----------
@@ -112,7 +117,8 @@ class DataModel(DataModelUnit):
                         d = d.replace(k, self._d2r[k])
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
-                    break
+                if self._filetypeline.match(line) is not None:
+                    self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
         if self.regexp is None and self.ref is not None:
             with open(self.ref) as dm:
                 for line in dm.readlines():
@@ -129,7 +135,8 @@ class DataModel(DataModelUnit):
                             d = d.replace(k, self._d2r[k])
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
-                        break
+                    if self._filetypeline.match(line) is not None:
+                        self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
         if self.regexp is None:
             m = "%s has no file regexp!"
             if error:
@@ -137,6 +144,16 @@ class DataModel(DataModelUnit):
                 raise DataModelError(m % self.filename)
             else:
                 log.warning(m, self.filename)
+        if self.filetype is None:
+            m = "%s has missing or invalid file type!"
+            if error:
+                log.critical(m, self.filename)
+                raise DataModelError(m % self.filename)
+            else:
+                log.warning(m, self.filename)
+        else:
+            if self.filetype not in ('fits', 'ecsv'):
+                log.warning("Unusual file type detected for %s!", self.filename)
         return self.regexp
 
     def _cross_reference(self, line):
