@@ -152,8 +152,8 @@ class DataModel(DataModelUnit):
             else:
                 log.warning(m, self.filename)
         else:
-            if self.filetype not in ('fits', 'ecsv'):
-                log.warning("Unusual file type detected for %s!", self.filename)
+            if self.filetype not in self._expectedtypes:
+                log.warning("Unusual file type, %s, detected for %s!", self.filename, self.filename)
         return self.regexp
 
     def _cross_reference(self, line):
