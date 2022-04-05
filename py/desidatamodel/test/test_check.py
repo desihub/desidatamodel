@@ -181,9 +181,11 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines[53] = ''
         model._metafile_data = '\n'.join(lines) + '\n'
+        model.hdumeta = None
         with self.assertRaises(DataModelError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "HDU 1 in {0} has no EXTNAME!".format(modelfile))
+        model.hdumeta = None
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, "HDU 1 in {0} has no EXTNAME!".format(modelfile))
 
@@ -197,9 +199,11 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines.insert(46, "BUNIT  ergs          str  This is a bad unit.")
         model._metafile_data = '\n'.join(lines) + '\n'
+        model.hdumeta = None
         with self.assertRaises(ValueError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), erg_msg)
+        model.hdumeta = None
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, "HDU 0 in {0} should have a more meaningful EXTNAME than 'PRIMARY'.".format(modelfile))
         self.assertLog(log, -2, erg_msg)
@@ -213,9 +217,11 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines.insert(46, "BUNIT  erg                This is a bad unit.")
         model._metafile_data = '\n'.join(lines) + '\n'
+        model.hdumeta = None
         with self.assertRaises(DataModelError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "Missing type for keyword BUNIT in HDU 0 of {0}!".format(modelfile))
+        model.hdumeta = None
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, "HDU 0 in {0} should have a more meaningful EXTNAME than 'PRIMARY'.".format(modelfile))
         self.assertLog(log, -2, "Missing type for keyword BUNIT in HDU 0 of {0}!".format(modelfile))
@@ -230,9 +236,11 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines[75] = 'vdisp  float64  ergs'
         model._metafile_data = '\n'.join(lines) + '\n'
+        model.hdumeta = None
         with self.assertRaises(ValueError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), erg_msg)
+        model.hdumeta = None
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, erg_msg)
 
@@ -245,9 +253,11 @@ class TestCheck(DataModelTestCase):
         lines = model._metafile_data.split('\n')
         lines[75] = 'vdisp'
         model._metafile_data = '\n'.join(lines) + '\n'
+        model.hdumeta = None
         with self.assertRaises(DataModelError) as e:
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), "Missing type for column vdisp in HDU 1 of {0}!".format(modelfile))
+        model.hdumeta = None
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, "Missing type for column vdisp in HDU 1 of {0}!".format(modelfile))
 
@@ -330,6 +340,18 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype(error=True)
         self.assertLog(log, -1, "File {0} HDU0 extra keywords according to {1}: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
 
+    def test_validate_prototype_hdu_keyword_type_mismatch(self):
+        """Test the data model validation method with a keyword type mismatch.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        f.hdumeta['PRIMARY']['keywords'][2] = ('BSCALE', '1.2', 'float', '')
+        f.validate_prototype()
+        self.assertLog(log, -1, "File %s HDU%d keyword %s has different keyword type according to %s (%s != %s)." % (f.prototype, 0, 'BSCALE', modelfile, 'int', 'float'))
+
     def test_validate_prototype_hdu_wrong_keyword(self):
         """Test the data model validation method with wrong HDU keyword names.
         """
@@ -373,6 +395,96 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype(error=True)
         self.assertLog(log, -2, "Prototype file {0} has no EXTNAME in HDU1.".format(modelfile.replace('.rst', '.fits')))
         self.assertLog(log, -1, "Could not find EXTNAME = '' in {0}; trying by HDU number.".format(modelfile))
+
+    def test_validate_prototype_hdu_bad_format(self):
+        """Test the data model validation method with a bad HDU format in the model.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        del f.hdumeta['PRIMARY']['format']
+        with self.assertRaises(KeyError):
+            foo = f.hdumeta['PRIMARY']['format']
+        f.validate_prototype()
+        self.assertLog(log, -1, "Prototype file {0} has an extension format mismatch in HDU0 according to {1}.".format(f.prototype, modelfile))
+
+    def test_validate_prototype_hdu_alternate_format(self):
+        """Test the data model validation method with an alternate HDU format in the model.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        f.hdumeta['PRIMARY']['format'] = 'Data: FITS image [int16'
+        f.validate_prototype()
+        f._stub.hdumeta[0]['format'] = 'Data: FITS image [int16'
+        f.validate_prototype()
+        self.assertLog(log, -1, "Comparing {0} to {1}.".format(f.prototype, modelfile))
+
+    def test_validate_prototype_hdu_bad_extension(self):
+        """Test the data model validation method with a bad HDU extension in the model.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        del f.hdumeta['PRIMARY']['extension']
+        with self.assertRaises(KeyError):
+            foo = f.hdumeta['PRIMARY']['extension']
+        f.validate_prototype()
+        self.assertLog(log, -1, "Prototype file {0} has an extension type mismatch in HDU0 (IMAGE != Extension type not found) according to {1}.".format(f.prototype, modelfile))
+
+    def test_validate_prototype_hdu_missing_column(self):
+        """Test the data model validation method with missing column in the model.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        del f.hdumeta['Galaxies']['format'][2]
+        f.validate_prototype()
+        self.assertLog(log, -1, "data columns missing from model: %s" % str(set(['vdisp'])))
+
+    def test_validate_prototype_hdu_missing_data_column(self):
+        """Test the data model validation method with missing column in the data.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        f.hdumeta['Galaxies']['format'].append(('extra', 'int16', '', ''))
+        f.validate_prototype()
+        self.assertLog(log, -1, "model columns missing from data: %s" % str(set(['extra'])))
+
+    def test_validate_prototype_hdu_bad_column_type(self):
+        """Test the data model validation method with a bad column type.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        f.hdumeta['Galaxies']['format'][1] = ('V_mag', 'float64', 'mag', '')
+        f.validate_prototype()
+        self.assertLog(log, -1, "File %s HDU%d column %s has different type according to %s (%s != %s)." % (f.prototype, 1, 'V_mag', modelfile, 'float32', 'float64'))
+
+    def test_validate_prototype_hdu_bad_column_unit(self):
+        """Test the data model validation method with a bad column unit.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        f.hdumeta['Galaxies']['format'][1] = ('V_mag', 'float32', 'counts', '')
+        f.validate_prototype()
+        self.assertLog(log, -1, "File %s HDU%d column %s has different units according to %s (%s != %s)." % (f.prototype, 1, 'V_mag', modelfile, 'mag', 'counts'))
 
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.

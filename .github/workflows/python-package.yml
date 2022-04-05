@@ -100,7 +100,8 @@ jobs:
                 sphinx-build -W --keep-going -b html doc doc/_build/html
 
     style:
-        name: Check code style; allow failures.
+        # name: Check code style; allow failures.
+        name: Check code style.
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false

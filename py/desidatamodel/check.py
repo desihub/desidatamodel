@@ -222,6 +222,8 @@ class DataModel(DataModelUnit):
         :exc:`~desidatamodel.DataModelError`
             If `error` is set and the HDU has no ``EXTNAME`` keyword.
         """
+        if self.hdumeta is not None:
+            return self.hdumeta
         metafile = self.filename
         if self.ref is not None:
             metafile = self.ref
