@@ -62,6 +62,26 @@ class TestCheck(DataModelTestCase):
                               "match {1}").format(f.regexp.pattern,
                                                   expected_f2r[f.filename]))
 
+    @patch('desidatamodel.check.re')
+    def test_files_to_regexp_with_error(self, mock_re):
+        """Test compilation of regular expressions; raise exception.
+        """
+        mock_re.compile.return_value = None
+        root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
+        files = scan_model(root)
+        with self.assertRaises(DataModelError) as e:
+            files_to_regexp('/desi/spectro/data', files, error=True)
+        self.assertEqual(str(e.exception), "%s has no file regexp!" % files[0].filename)
+
+    @patch.object(DataModel, '_expectedtypes', ('foo', 'bar'))
+    def test_files_to_regexp_with_bad_filetype(self):
+        """Test compilation of regular expressions; raise exception.
+        """
+        root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
+        files = scan_model(root)
+        foo = files[0].get_regexp(root)
+        self.assertLog(log, -1, "Unusual file type, fits, detected for {0}!".format(files[0].filename))
+
     def test_collect_files(self):
         """Test finding files that correspond to data model files.
         """
@@ -230,6 +250,32 @@ class TestCheck(DataModelTestCase):
         self.assertEqual(str(e.exception), "Missing type for column vdisp in HDU 1 of {0}!".format(modelfile))
         meta = model.extract_metadata(error=False)
         self.assertLog(log, -1, "Missing type for column vdisp in HDU 1 of {0}!".format(modelfile))
+
+    def test_extract_metadata_with_hdu_span(self):
+        """Test reading metadata with a HDU span.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_hduspan.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        meta = model.extract_metadata()
+        self.assertEqual(meta['TWO']['number'], 2)
+
+    def test_extract_metadata_with_hdu_span_no_spanext(self):
+        """Test reading metadata with a HDU span, but with no reference HDU.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_hduspan_no_spanext.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        with self.assertRaises(DataModelError) as e:
+            meta = model.extract_metadata()
+        self.assertEqual(str(e.exception),
+                         "Cannot find EXTNAME = 'MISSING' which is supposed to define HDU 2 to HDU 5!")
+
+    def test_extract_metadata_with_hdu_span_bad_extname(self):
+        """Test reading metadata with a HDU span, but with bad EXTNAME specification.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_hduspan_bad_extname.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        meta = model.extract_metadata()
+        self.assertLog(log, -1, "Range specification from HDU 2 to HDU 5 does not have a matching EXTNAME specification!")
 
     def test_validate_prototypes(self):
         """Test the data model validation function.

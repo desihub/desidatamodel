@@ -153,7 +153,7 @@ class DataModel(DataModelUnit):
                 log.warning(m, self.filename)
         else:
             if self.filetype not in self._expectedtypes:
-                log.warning("Unusual file type, %s, detected for %s!", self.filename, self.filename)
+                log.warning("Unusual file type, %s, detected for %s!", self.filetype, self.filename)
         return self.regexp
 
     def _cross_reference(self, line):
@@ -271,7 +271,7 @@ class DataModel(DataModelUnit):
                         self.hdumeta[extnames[i]] = meta
                 else:
                     log.warning(('Range specification from HDU %d to HDU %d ' +
-                                 'does not have a matching EXTNAME specification'),
+                                 'does not have a matching EXTNAME specification!'),
                                 spanstart, spanend)
                 continue
             meta = dict()
