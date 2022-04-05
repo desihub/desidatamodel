@@ -277,6 +277,16 @@ class TestCheck(DataModelTestCase):
         meta = model.extract_metadata()
         self.assertLog(log, -1, "Range specification from HDU 2 to HDU 5 does not have a matching EXTNAME specification!")
 
+    def test_extract_metadata_bad_format(self):
+        """Test reading metadata with a bad HDU format specification.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_bad_format.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        with self.assertRaises(DataModelError) as e:
+            meta = model.extract_metadata()
+        self.assertEqual(str(e.exception),
+                         "Unable to determine format for HDU 1 in %s!" % modelfile)
+
     def test_validate_prototypes(self):
         """Test the data model validation function.
         """
