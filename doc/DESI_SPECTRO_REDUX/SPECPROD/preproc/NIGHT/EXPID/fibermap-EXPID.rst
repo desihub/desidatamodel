@@ -44,6 +44,7 @@ Required Header Keywords
 
 .. collapse:: Required Header Keywords Table
 
+    .. rst-class:: keywords
 
     ======== ============================================================================= ======= =====================
     KEY      Example Value                                                                 Type    Comment
@@ -440,6 +441,8 @@ Required Header Keywords
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===========
 Name                  Type    Units Description

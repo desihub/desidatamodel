@@ -1,0 +1,7 @@
+/*
+ * Highlight color for different types of tables.
+ */
+table.keywords tbody tr.row-even { background-color: yellow; }
+table.keywords tbody tr.row-odd { background-color: blue; }
+table.columns tbody tr.row-even { background-color: red; }
+table.columns tbody tr.row-odd { background-color: green; }
