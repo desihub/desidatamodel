@@ -294,9 +294,9 @@ class DataModel(DataModelUnit):
                 meta['extension'] = 'BINTABLE'
                 table = [i for i, l in enumerate(section[rdtc:])
                          if self._tableboundary.match(l) is not None][1:3]
-                columns = list(map(len, section[rdtc:][table[0]].split()))
+                columns = list(map(len, section[rdtc:][table[0]].lstrip().split()))
                 table_lines = section[rdtc:][table[0]+1:table[1]]
-                meta['format'] = [self._extract_columns(t, columns)
+                meta['format'] = [self._extract_columns(t.lstrip(), columns)
                                   for t in table_lines]
                 for mk in meta['format']:
                     if not mk[1]:
@@ -318,9 +318,9 @@ class DataModel(DataModelUnit):
             else:
                 table = [i for i, l in enumerate(section[rhk:])
                          if self._tableboundary.match(l) is not None][1:3]
-                columns = list(map(len, section[rhk:][table[0]].split()))
+                columns = list(map(len, section[rhk:][table[0]].lstrip().split()))
                 table_lines = section[rhk:][table[0]+1:table[1]]
-                meta['keywords'] = [self._extract_columns(t, columns)
+                meta['keywords'] = [self._extract_columns(t.lstrip(), columns)
                                     for t in table_lines]
                 for mk in meta['keywords']:
                     if not mk[2]:

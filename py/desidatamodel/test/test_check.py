@@ -172,6 +172,50 @@ class TestCheck(DataModelTestCase):
                 for k in range(len(m['format'])):
                     self.assertEqual(m['format'][k], ex_meta[key]['format'][k])
 
+    def test_extract_metadata(self):
+        """Test reading metadata from data model files, including a collapsed table.
+        """
+        ex_meta = {'PRIMARY':
+                   {'title': 'HDU0',
+                    'number': 0,
+                    'extension': 'IMAGE',
+                    'extname': 'PRIMARY',
+                    'format': 'Data: FITS image [int16, 100x100]',
+                    'keywords': [('NAXIS1', '100', 'int', ''),
+                                 ('NAXIS2', '100', 'int', ''),
+                                 ('BSCALE', '1', 'int', ''),
+                                 ('BZERO', '32768', 'int',
+                                  'Data are really unsigned 16-bit int.'),
+                                 ('EXTNAME', 'PRIMARY', 'str', '')]},
+                   'Galaxies':
+                   {'title': 'HDU1',
+                    'number': 1,
+                    'extension': 'BINTABLE',
+                    'extname': 'Galaxies',
+                    'format': [('target', 'char[20]', '', ''),
+                               ('V_mag', 'float32', 'mag', ''),
+                               ('vdisp',  'float64',  'km/s', '')],
+                    'keywords': [('NAXIS1', '32', 'int',
+                                  'length of dimension 1'),
+                                 ('NAXIS2', '3', 'int',
+                                  'length of dimension 2')]}}
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_collapse.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        meta = model.extract_metadata()
+        self.assertEqual(len(meta.keys()), len(ex_meta.keys()))
+        for key, m in meta.items():
+            self.assertEqual(m['title'], ex_meta[key]['title'])
+            self.assertEqual(m['number'], ex_meta[key]['number'])
+            self.assertEqual(m['extension'], ex_meta[key]['extension'])
+            self.assertEqual(m['extname'], ex_meta[key]['extname'])
+            for k in range(len(m['keywords'])):
+                self.assertEqual(m['keywords'][k], ex_meta[key]['keywords'][k])
+            if m['extension'] == "IMAGE":
+                self.assertEqual(m['format'], ex_meta[key]['format'])
+            else:
+                for k in range(len(m['format'])):
+                    self.assertEqual(m['format'][k], ex_meta[key]['format'][k])
+
     def test_extract_metadata_missing_extname(self):
         """Test reading metadata with missing EXTNAME.
         """
