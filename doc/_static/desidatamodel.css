@@ -1,8 +1,10 @@
 /*
  * Highlight color for different types of tables.
- * In the standard theme, row-even has background-color: #f3f6f6 (243, 246, 246)
- * row-odd has background-color: transparent.
- * The background color of the content div is #fcfcfc (252, 252, 252)
+ * In the standard theme (abbreviating):
+ * .row-even td { background-color: #f3f6f6; (243, 246, 246) }
+ * .row-odd td { background-color: transparent; }
+ * The background color of the content div is #fcfcfc (252, 252, 252).
+ * The highly specific selectors below are needed to override the default settings.
  */
 .section .wy-table-responsive table.keywords tbody tr.row-even td { background-color: rgb(223, 226, 246); }
 .section .wy-table-responsive table.keywords tbody tr.row-odd td { background-color: rgb(232, 232, 252); }
