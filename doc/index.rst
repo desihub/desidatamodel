@@ -22,6 +22,7 @@ for testing.
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
+   $DESI_LSS : LSS products, including the clustering catalogs <DESI_LSS/index>
    datamodel
    changes
 
