@@ -45,7 +45,7 @@ class DataModel(DataModelUnit):
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
-            'SURVEY': '(sv1|sv2|sv3|main)',  # Survey name
+            'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
             'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
             }
     # Matches HDU section headers.
