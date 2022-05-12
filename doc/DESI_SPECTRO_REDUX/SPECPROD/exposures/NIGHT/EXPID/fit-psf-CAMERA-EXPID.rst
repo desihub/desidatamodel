@@ -6,7 +6,7 @@ fit-psf-CAMERA-EXPID.fits
     to pixels on spectrograph CCDs.
 :Naming Convention: ``fit-psf-CAMERA-EXPID.fits``, where ``CAMERA`` is
     *e.g.*, "b0", "r5", etc. and ``EXPID`` is 8-digit exposure number.
-:Regex: ``fit-psf-[brz][0-9]-[0-9]{8}\.fits``
+:Regex: ``fit-psf-[brz][0-9]-[0-9]{8}(_[0-9][0-9]|)\.fits``
 :File Type: FITS, 998 KB
 
 See :doc:`psfnight <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>`.
