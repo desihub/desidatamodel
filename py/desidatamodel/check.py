@@ -34,7 +34,7 @@ class DataModel(DataModelUnit):
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
-            'GROUPID': '[0-9]+', # Group id *directory* depending on type of GROUPTYPE
+            'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
             # 'GROUPID': '([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
             'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
