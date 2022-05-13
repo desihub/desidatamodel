@@ -1,17 +1,14 @@
-=====
-tiles
-=====
+===================
+tiles-SPECPROD.fits
+===================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``tiles-fuji.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``tiles-fuji.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 165 KB  *This section gives the type of the file
-    and its approximate size.*
+:Naming Convention: ``tiles-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
+    official name of the full reduction, *e.g.* ``everest``.
+:Regex: ``tiles-[a-z0-9_-]+.fits``
+:File Type: FITS, 165 KB
 
 Contents
 ========
