@@ -8,4 +8,4 @@ zall-tilecumulative-SPECPROD.fits
 :Regex: ``zall-pix-[a-z0-9_-]+\.fits``
 :File Type: FITS, 2 GB
 
-See :doc:`ztile-SURVEY-PROGRAM-GROUP <ztile-SURVEY-PROGRAM-GROUP>`.
+See :doc:`ztile-SURVEY-PROGRAM-GROUPTYPE <ztile-SURVEY-PROGRAM-GROUPTYPE>`.
