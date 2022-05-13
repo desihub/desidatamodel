@@ -683,13 +683,13 @@ def _options():
     parser.add_argument('-F', '--compare-files', dest='files',
                         action='store_true',
                         help='Compare an individual data model to an individual file.')
+    parser.add_argument('-K', '--skip-keywords', dest='skip_keywords', action='store_true',
+                        help="Don't check FITS header keywords")
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Set log level to DEBUG.')
     parser.add_argument('-W', '--warning-is-error', dest='error',
                         action='store_true',
                         help='Data model warnings raise exceptions.')
-    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
-                        help='Set log level to DEBUG.')
-    parser.add_argument('--skip-keywords', dest='skip_keywords', action='store_true',
-                        help="Don't check FITS header keywords")
     parser.add_argument('section', metavar='MODEL_DIR_or_FILE',
                         help='Section of the data model or individual model file.')
     parser.add_argument('directory', metavar='DATA_DIR_or_FILE',
