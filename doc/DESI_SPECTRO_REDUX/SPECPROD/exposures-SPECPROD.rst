@@ -72,16 +72,16 @@ MJD                    float64
 SURVEY                 char[7]
 PROGRAM                char[6]
 FAPRGRM                char[6]
-FAFLAVOR               char[13]
+FAFLAVOR               char[19]
 EXPTIME                float64
-EFFTIME_SPEC           float32
+EFFTIME_SPEC           float64
 GOALTIME               float64
 GOALTYPE               char[6]
 MINTFRAC               float64
 AIRMASS                float32
-EBV                    float64
+EBV                    float32
 SEEING_ETC             float64
-EFFTIME_ETC            float32
+EFFTIME_ETC            float64
 TSNR2_ELG              float32
 TSNR2_QSO              float32
 TSNR2_LRG              float32
@@ -147,8 +147,8 @@ TILEDEC         float64
 MJD             float64
 EXPTIME         float32
 AIRMASS         float32
-EBV             float64
-SEEING_ETC      float64
+EBV             float32
+SEEING_ETC      float32
 EFFTIME_ETC     float32
 CAMERA          char[2]
 TSNR2_GPBDARK   float32
@@ -160,9 +160,9 @@ TSNR2_GPBBACKUP float32
 TSNR2_QSO       float32
 TSNR2_LRG       float32
 SURVEY          char[7]
-GOALTYPE        char[7]
-FAPRGRM         char[16]
-FAFLAVOR        char[19]
+GOALTYPE        char[6]
+FAPRGRM         char[6]
+FAFLAVOR        char[13]
 MINTFRAC        float64
 GOALTIME        float64
 =============== ======== ===== ===========
