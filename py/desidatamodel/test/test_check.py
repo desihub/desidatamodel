@@ -223,7 +223,7 @@ class TestCheck(DataModelTestCase):
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
-        lines[53] = ''
+        lines[57] = ''
         model._metafile_data = '\n'.join(lines) + '\n'
         model.hdumeta = None
         with self.assertRaises(DataModelError) as e:
@@ -278,7 +278,7 @@ class TestCheck(DataModelTestCase):
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
-        lines[75] = 'vdisp  float64  ergs'
+        lines[85] = 'vdisp  float64  ergs'
         model._metafile_data = '\n'.join(lines) + '\n'
         model.hdumeta = None
         with self.assertRaises(ValueError) as e:
@@ -295,7 +295,7 @@ class TestCheck(DataModelTestCase):
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
-        lines[75] = 'vdisp'
+        lines[85] = 'vdisp'
         model._metafile_data = '\n'.join(lines) + '\n'
         model.hdumeta = None
         with self.assertRaises(DataModelError) as e:
