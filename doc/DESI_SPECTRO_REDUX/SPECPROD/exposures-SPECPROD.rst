@@ -72,7 +72,7 @@ MJD                    float64
 SURVEY                 char[7]
 PROGRAM                char[6]
 FAPRGRM                char[6]
-FAFLAVOR               char[19]
+FAFLAVOR               char[13]
 EXPTIME                float64
 EFFTIME_SPEC           float64
 GOALTIME               float64
@@ -148,8 +148,8 @@ MJD             float64
 EXPTIME         float32
 AIRMASS         float32
 EBV             float32
-SEEING_ETC      float32
-EFFTIME_ETC     float32
+SEEING_ETC      float64
+EFFTIME_ETC     float64
 CAMERA          char[2]
 TSNR2_GPBDARK   float32
 TSNR2_ELG       float32
