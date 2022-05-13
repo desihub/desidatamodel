@@ -8,4 +8,28 @@ zall-pix-SPECPROD.fits
 :Regex: ``zall-pix-[a-z0-9_-]+\.fits``
 :File Type: FITS, 2 GB
 
-See :doc:`zpix-SURVEY-PROGRAM <zpix-SURVEY-PROGRAM>`.
+Contents
+========
+
+====== ============ ======== ===================
+Number EXTNAME      Type     Contents
+====== ============ ======== ===================
+HDU0_               IMAGE    Empty
+HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
+====== ============ ======== ===================
+
+
+FITS Header Units
+=================
+
+HDU0
+----
+
+This HDU has no non-standard required keywords.
+
+Empty HDU.
+
+HDU1
+----
+
+See `HDU1 of zpix-SURVEY-PROGRAM.fits <zpix-SURVEY-PROGRAM.html#hdu1>`_.

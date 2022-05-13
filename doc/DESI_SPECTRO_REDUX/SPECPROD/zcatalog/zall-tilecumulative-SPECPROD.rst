@@ -8,4 +8,28 @@ zall-tilecumulative-SPECPROD.fits
 :Regex: ``zall-tilecumulative-[a-z0-9_-]+\.fits``
 :File Type: FITS, 2 GB
 
-See :doc:`ztile-SURVEY-PROGRAM-GROUPTYPE <ztile-SURVEY-PROGRAM-GROUPTYPE>`.
+Contents
+========
+
+====== ============ ======== ===================
+Number EXTNAME      Type     Contents
+====== ============ ======== ===================
+HDU0_               IMAGE    Empty
+HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
+====== ============ ======== ===================
+
+
+FITS Header Units
+=================
+
+HDU0
+----
+
+This HDU has no non-standard required keywords.
+
+Empty HDU.
+
+HDU1
+----
+
+See `HDU1 of ztile-SURVEY-PROGRAM-GROUPTYPE.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE.html#hdu1>`_.

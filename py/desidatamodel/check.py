@@ -58,7 +58,7 @@ class DataModel(DataModelUnit):
     # Matches the file-type line.
     _filetypeline = re.compile(r':?file type?:', re.I)
     # Matches lines that contain cross-references.
-    _refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
+    _refline = re.compile(r'See (:doc:|)`([^<]+)<([^>]+)>`_?')
     # Matches table borders.
     _tableboundary = re.compile(r'[= ]+$')
     # The list of file types allowed by the data model.
@@ -173,12 +173,20 @@ class DataModel(DataModelUnit):
         ref = None
         m = self._refline.match(line)
         if m is not None:
-            r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
-                                             m.groups()[0]))
-            if not r.endswith('.rst'):
-                r += '.rst'
-            if os.path.exists(r):
-                ref = r
+            reftype, refstring, reflink = m.groups()
+            if reftype == ':doc:':
+                r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
+                                                 reflink))
+                if not r.endswith('.rst'):
+                    r += '.rst'
+                if os.path.exists(r):
+                    ref = r
+            else:
+                rr = reflink.replace('.html', '.rst').split('#')
+                r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
+                                    rr[0]))
+                if os.path.exists(r):
+                    ref = r + '#' + rr[1]
         return ref
 
     def _extract_columns(self, row, columns):
@@ -280,6 +288,20 @@ class DataModel(DataModelUnit):
             meta = dict()
             meta['number'] = k
             meta['title'] = section[0]
+            hdu_cross_ref = [l for l in section if l.startswith('See `')]
+            if hdu_cross_ref:
+                log.debug("Found HDU cross-reference: %s", hdu_cross_ref[0])
+                hcr = self._cross_reference(hdu_cross_ref[0]).split('#')
+                log.debug("['%s', '%s']", hcr[0], hcr[1])
+                hcr_meta = DataModel(hcr[0], self.section).extract_metadata()
+                print(hcr_meta)
+                for key in hcr_meta:
+                    if hcr_meta[key]['title'] == hcr[1].upper():
+                        print(hcr_meta[key])
+                        for subkey in ('extension', 'format', 'keywords', 'extname'):
+                            meta[subkey] = hcr_meta[key][subkey]
+                        self.hdumeta[key] = meta
+                continue
             if 'Empty HDU.' in section:
                 meta['extension'] = 'IMAGE'
                 meta['format'] = 'Empty HDU.'

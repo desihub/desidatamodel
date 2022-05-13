@@ -30,6 +30,8 @@ This HDU has no non-standard required keywords.
 
 Empty HDU.
 
+.. _zcatalog-zpix-hdu1:
+
 HDU1
 ----
 

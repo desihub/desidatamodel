@@ -40,8 +40,11 @@ Tips and Tests
 
 You can browse some :doc:`examples <examples/index>`.
 
-Cross-referencing files
-+++++++++++++++++++++++
+Cross-Referencing
++++++++++++++++++
+
+To a file
+---------
 
 Here is how you make a :doc:`direct link to a file <examples/spPlate>`::
 
@@ -59,6 +62,9 @@ or::
     :doc:`link to real data </DESI_SPECTRO_DATA/NIGHT/real_data_file>`
 
 That is, you can use a relative or absolute path.
+
+Within a file
+-------------
 
 You can also cross-reference sections within files, however the notation is
 somewhat different. There are two methods.  The first involves creating
@@ -90,6 +96,20 @@ to another `section of the spPlate file`_ we already linked to above::
 
 Note this time that the section name may be upper case (``HDU6``), but the
 HTML anchor is lower case ``#hdu6``.
+
+To a HDU
+--------
+
+The latter form can be used to create cross references to individual HDUs in
+other files.  This would have the (strict!) form::
+
+    HDU5
+    ----
+
+    See `HDU1 in some-other-file <../../some-other-file.html#hdu2`_.
+
+In other words, with this notation, the data model for HDU2 in ``some-other-file``
+will be used as the data model for HDU5 in the file with the cross-reference.
 
 Environment variables
 +++++++++++++++++++++
