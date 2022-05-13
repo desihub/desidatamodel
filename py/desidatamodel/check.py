@@ -294,10 +294,8 @@ class DataModel(DataModelUnit):
                 hcr = self._cross_reference(hdu_cross_ref[0]).split('#')
                 log.debug("['%s', '%s']", hcr[0], hcr[1])
                 hcr_meta = DataModel(hcr[0], self.section).extract_metadata()
-                print(hcr_meta)
                 for key in hcr_meta:
                     if hcr_meta[key]['title'] == hcr[1].upper():
-                        print(hcr_meta[key])
                         for subkey in ('extension', 'format', 'keywords', 'extname'):
                             meta[subkey] = hcr_meta[key][subkey]
                         self.hdumeta[key] = meta
