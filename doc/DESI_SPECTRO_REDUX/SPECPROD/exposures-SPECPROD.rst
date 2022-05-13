@@ -44,15 +44,21 @@ EXTNAME = EXPOSURES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 337           int  length of dimension 1
-NAXIS2 3912          int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 337           int  length of dimension 1
+    NAXIS2 3912          int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ====================== ======== ===== ===========
 Name                   Type     Units Description
@@ -64,12 +70,13 @@ TILERA                 float64
 TILEDEC                float64
 MJD                    float64
 SURVEY                 char[7]
-FAPRGRM                char[16]
-FAFLAVOR               char[19]
+PROGRAM                char[6]
+FAPRGRM                char[6]
+FAFLAVOR               char[13]
 EXPTIME                float64
 EFFTIME_SPEC           float32
 GOALTIME               float64
-GOALTYPE               char[7]
+GOALTYPE               char[6]
 MINTFRAC               float64
 AIRMASS                float32
 EBV                    float64
@@ -83,6 +90,7 @@ TSNR2_BGS              float32
 TSNR2_GPBDARK          float32
 TSNR2_GPBBRIGHT        float32
 TSNR2_GPBBACKUP        float32
+LRG_EFFTIME_DARK       float32
 ELG_EFFTIME_DARK       float32
 BGS_EFFTIME_BRIGHT     float32
 LYA_EFFTIME_DARK       float64
