@@ -52,10 +52,16 @@ FITS Header Units
 HDU00
 -----
 
+EXTNAME = PRIMARY
+
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
 
 ======== =============================== ==== ==============================================
 KEY      Example Value                   Type Comment
@@ -78,18 +84,24 @@ EXTNAME = FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   387              int  length of dimension 1
-NAXIS2   500              int  length of dimension 2
-ENCODING ascii            str
-CHECKSUM H5Z5H5Z3H5Z3H5Z3 str  HDU checksum updated 2021-07-16T14:01:46
-DATASUM  4214162542       str  data unit checksum updated 2021-07-16T14:01:46
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   387              int  length of dimension 1
+    NAXIS2   500              int  length of dimension 2
+    ENCODING ascii            str
+    CHECKSUM H5Z5H5Z3H5Z3H5Z3 str  HDU checksum updated 2021-07-16T14:01:46
+    DATASUM  4214162542       str  data unit checksum updated 2021-07-16T14:01:46
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========================== ======= ===== =====================================================
 Name                       Type    Units Description
@@ -187,18 +199,24 @@ EXTNAME = EXP_FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   162              int  length of dimension 1
-NAXIS2   1000             int  length of dimension 2
-ENCODING ascii            str
-CHECKSUM 3f5X4e3U3e3U3e3U str  HDU checksum updated 2021-07-16T14:01:46
-DATASUM  360255485        str  data unit checksum updated 2021-07-16T14:01:46
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   162              int  length of dimension 1
+    NAXIS2   1000             int  length of dimension 2
+    ENCODING ascii            str
+    CHECKSUM 3f5X4e3U3e3U3e3U str  HDU checksum updated 2021-07-16T14:01:46
+    DATASUM  360255485        str  data unit checksum updated 2021-07-16T14:01:46
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===============================================
 Name                  Type    Units Description
@@ -241,14 +259,18 @@ EXTNAME = B_WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-BUNIT    Angstrom         str
-CHECKSUM 7CGAA9F99AFAA9F9 str  HDU checksum updated 2021-07-16T14:01:46
-DATASUM  979185614        str  data unit checksum updated 2021-07-16T14:01:46
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    BUNIT    Angstrom         str
+    CHECKSUM 7CGAA9F99AFAA9F9 str  HDU checksum updated 2021-07-16T14:01:46
+    DATASUM  979185614        str  data unit checksum updated 2021-07-16T14:01:46
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2751]
 
@@ -262,15 +284,19 @@ EXTNAME = B_FLUX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================ ==== ==============================================
-KEY      Example Value                Type Comment
-======== ============================ ==== ==============================================
-NAXIS1   2751                         int
-NAXIS2   500                          int
-BUNIT    10**-17 erg/(s cm2 Angstrom) str
-CHECKSUM lgKZngKZlgKZlgKZ             str  HDU checksum updated 2021-07-16T14:01:46
-DATASUM  1157856797                   str  data unit checksum updated 2021-07-16T14:01:46
-======== ============================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================ ==== ==============================================
+    KEY      Example Value                Type Comment
+    ======== ============================ ==== ==============================================
+    NAXIS1   2751                         int
+    NAXIS2   500                          int
+    BUNIT    10**-17 erg/(s cm2 Angstrom) str
+    CHECKSUM lgKZngKZlgKZlgKZ             str  HDU checksum updated 2021-07-16T14:01:46
+    DATASUM  1157856797                   str  data unit checksum updated 2021-07-16T14:01:46
+    ======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 2751x500]
 
@@ -284,15 +310,19 @@ EXTNAME = B_IVAR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================================= ==== ==============================================
-KEY      Example Value                     Type Comment
-======== ================================= ==== ==============================================
-NAXIS1   2751                              int
-NAXIS2   500                               int
-BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
-CHECKSUM JATXJASUJASUJASU                  str  HDU checksum updated 2021-07-16T14:01:47
-DATASUM  2428790047                        str  data unit checksum updated 2021-07-16T14:01:47
-======== ================================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================================= ==== ==============================================
+    KEY      Example Value                     Type Comment
+    ======== ================================= ==== ==============================================
+    NAXIS1   2751                              int
+    NAXIS2   500                               int
+    BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+    CHECKSUM JATXJASUJASUJASU                  str  HDU checksum updated 2021-07-16T14:01:47
+    DATASUM  2428790047                        str  data unit checksum updated 2021-07-16T14:01:47
+    ======== ================================= ==== ==============================================
 
 Data: FITS image [float32, 2751x500]
 
@@ -306,16 +336,20 @@ EXTNAME = B_MASK
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-NAXIS2   500              int
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM W4fLW4dLW4dLW4dL str  HDU checksum updated 2021-07-16T14:01:47
-DATASUM  688030           str  data unit checksum updated 2021-07-16T14:01:47
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    NAXIS2   500              int
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM W4fLW4dLW4dLW4dL str  HDU checksum updated 2021-07-16T14:01:47
+    DATASUM  688030           str  data unit checksum updated 2021-07-16T14:01:47
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2751x500]
 
@@ -329,15 +363,19 @@ EXTNAME = B_RESOLUTION
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-NAXIS2   11               int
-NAXIS3   500              int
-CHECKSUM 1l9M1i6K1i6K1i6K str  HDU checksum updated 2021-07-16T14:01:50
-DATASUM  1827421509       str  data unit checksum updated 2021-07-16T14:01:50
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    NAXIS2   11               int
+    NAXIS3   500              int
+    CHECKSUM 1l9M1i6K1i6K1i6K str  HDU checksum updated 2021-07-16T14:01:50
+    DATASUM  1827421509       str  data unit checksum updated 2021-07-16T14:01:50
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2751x11x500]
 
@@ -351,14 +389,18 @@ EXTNAME = R_WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2326             int
-BUNIT    Angstrom         str
-CHECKSUM 7JPAAHO78HOAAHO7 str  HDU checksum updated 2021-07-16T14:01:51
-DATASUM  456732359        str  data unit checksum updated 2021-07-16T14:01:51
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2326             int
+    BUNIT    Angstrom         str
+    CHECKSUM 7JPAAHO78HOAAHO7 str  HDU checksum updated 2021-07-16T14:01:51
+    DATASUM  456732359        str  data unit checksum updated 2021-07-16T14:01:51
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2326]
 
@@ -372,15 +414,19 @@ EXTNAME = R_FLUX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================ ==== ==============================================
-KEY      Example Value                Type Comment
-======== ============================ ==== ==============================================
-NAXIS1   2326                         int
-NAXIS2   500                          int
-BUNIT    10**-17 erg/(s cm2 Angstrom) str
-CHECKSUM M3ENO3BMM3BMM3BM             str  HDU checksum updated 2021-07-16T14:01:51
-DATASUM  640139918                    str  data unit checksum updated 2021-07-16T14:01:51
-======== ============================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================ ==== ==============================================
+    KEY      Example Value                Type Comment
+    ======== ============================ ==== ==============================================
+    NAXIS1   2326                         int
+    NAXIS2   500                          int
+    BUNIT    10**-17 erg/(s cm2 Angstrom) str
+    CHECKSUM M3ENO3BMM3BMM3BM             str  HDU checksum updated 2021-07-16T14:01:51
+    DATASUM  640139918                    str  data unit checksum updated 2021-07-16T14:01:51
+    ======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 2326x500]
 
@@ -394,15 +440,19 @@ EXTNAME = R_IVAR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================================= ==== ==============================================
-KEY      Example Value                     Type Comment
-======== ================================= ==== ==============================================
-NAXIS1   2326                              int
-NAXIS2   500                               int
-BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
-CHECKSUM VDCjYABhVABhVABh                  str  HDU checksum updated 2021-07-16T14:01:51
-DATASUM  2650218726                        str  data unit checksum updated 2021-07-16T14:01:51
-======== ================================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================================= ==== ==============================================
+    KEY      Example Value                     Type Comment
+    ======== ================================= ==== ==============================================
+    NAXIS1   2326                              int
+    NAXIS2   500                               int
+    BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+    CHECKSUM VDCjYABhVABhVABh                  str  HDU checksum updated 2021-07-16T14:01:51
+    DATASUM  2650218726                        str  data unit checksum updated 2021-07-16T14:01:51
+    ======== ================================= ==== ==============================================
 
 Data: FITS image [float32, 2326x500]
 
@@ -416,16 +466,20 @@ EXTNAME = R_MASK
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   500              int
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM m7e4n4e1m4e1m4e1 str  HDU checksum updated 2021-07-16T14:01:51
-DATASUM  582966           str  data unit checksum updated 2021-07-16T14:01:51
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2326             int
+    NAXIS2   500              int
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM m7e4n4e1m4e1m4e1 str  HDU checksum updated 2021-07-16T14:01:51
+    DATASUM  582966           str  data unit checksum updated 2021-07-16T14:01:51
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2326x500]
 
@@ -439,15 +493,19 @@ EXTNAME = R_RESOLUTION
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   11               int
-NAXIS3   500              int
-CHECKSUM e3FYh09Xe0CXe09X str  HDU checksum updated 2021-07-16T14:01:54
-DATASUM  1488519775       str  data unit checksum updated 2021-07-16T14:01:54
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2326             int
+    NAXIS2   11               int
+    NAXIS3   500              int
+    CHECKSUM e3FYh09Xe0CXe09X str  HDU checksum updated 2021-07-16T14:01:54
+    DATASUM  1488519775       str  data unit checksum updated 2021-07-16T14:01:54
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2326x11x500]
 
@@ -461,14 +519,18 @@ EXTNAME = Z_WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2881             int
-BUNIT    Angstrom         str
-CHECKSUM gaVNgYSLgaSLgWSL str  HDU checksum updated 2021-07-16T14:01:54
-DATASUM  3106662670       str  data unit checksum updated 2021-07-16T14:01:54
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2881             int
+    BUNIT    Angstrom         str
+    CHECKSUM gaVNgYSLgaSLgWSL str  HDU checksum updated 2021-07-16T14:01:54
+    DATASUM  3106662670       str  data unit checksum updated 2021-07-16T14:01:54
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2881]
 
@@ -482,15 +544,19 @@ EXTNAME = Z_FLUX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================ ==== ==============================================
-KEY      Example Value                Type Comment
-======== ============================ ==== ==============================================
-NAXIS1   2881                         int
-NAXIS2   500                          int
-BUNIT    10**-17 erg/(s cm2 Angstrom) str
-CHECKSUM 9GPWGFMU9FMUGFMU             str  HDU checksum updated 2021-07-16T14:01:55
-DATASUM  3338246075                   str  data unit checksum updated 2021-07-16T14:01:55
-======== ============================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================ ==== ==============================================
+    KEY      Example Value                Type Comment
+    ======== ============================ ==== ==============================================
+    NAXIS1   2881                         int
+    NAXIS2   500                          int
+    BUNIT    10**-17 erg/(s cm2 Angstrom) str
+    CHECKSUM 9GPWGFMU9FMUGFMU             str  HDU checksum updated 2021-07-16T14:01:55
+    DATASUM  3338246075                   str  data unit checksum updated 2021-07-16T14:01:55
+    ======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 2881x500]
 
@@ -504,15 +570,19 @@ EXTNAME = Z_IVAR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================================= ==== ==============================================
-KEY      Example Value                     Type Comment
-======== ================================= ==== ==============================================
-NAXIS1   2881                              int
-NAXIS2   500                               int
-BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
-CHECKSUM 4Ala47iR4AiX47iX                  str  HDU checksum updated 2021-07-16T14:01:55
-DATASUM  2758170465                        str  data unit checksum updated 2021-07-16T14:01:55
-======== ================================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================================= ==== ==============================================
+    KEY      Example Value                     Type Comment
+    ======== ================================= ==== ==============================================
+    NAXIS1   2881                              int
+    NAXIS2   500                               int
+    BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+    CHECKSUM 4Ala47iR4AiX47iX                  str  HDU checksum updated 2021-07-16T14:01:55
+    DATASUM  2758170465                        str  data unit checksum updated 2021-07-16T14:01:55
+    ======== ================================= ==== ==============================================
 
 Data: FITS image [float32, 2881x500]
 
@@ -526,16 +596,20 @@ EXTNAME = Z_MASK
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2881             int
-NAXIS2   500              int
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM 95fkD3fk93fkC3fk str  HDU checksum updated 2021-07-16T14:01:56
-DATASUM  720616           str  data unit checksum updated 2021-07-16T14:01:56
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2881             int
+    NAXIS2   500              int
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM 95fkD3fk93fkC3fk str  HDU checksum updated 2021-07-16T14:01:56
+    DATASUM  720616           str  data unit checksum updated 2021-07-16T14:01:56
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2881x500]
 
@@ -549,15 +623,19 @@ EXTNAME = Z_RESOLUTION
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2881             int
-NAXIS2   11               int
-NAXIS3   500              int
-CHECKSUM DFFSG99QDECQD99Q str  HDU checksum updated 2021-07-16T14:01:59
-DATASUM  500309470        str  data unit checksum updated 2021-07-16T14:01:59
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2881             int
+    NAXIS2   11               int
+    NAXIS3   500              int
+    CHECKSUM DFFSG99QDECQD99Q str  HDU checksum updated 2021-07-16T14:01:59
+    DATASUM  500309470        str  data unit checksum updated 2021-07-16T14:01:59
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2881x11x500]
 
@@ -571,18 +649,24 @@ EXTNAME = SCORES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   172              int  length of dimension 1
-NAXIS2   500              int  length of dimension 2
-ENCODING ascii            str
-CHECKSUM EpXcGmWcEmWcEmWc str  HDU checksum updated 2021-07-16T14:01:59
-DATASUM  1286335698       str  data unit checksum updated 2021-07-16T14:01:59
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   172              int  length of dimension 1
+    NAXIS2   500              int  length of dimension 2
+    ENCODING ascii            str
+    CHECKSUM EpXcGmWcEmWcEmWc str  HDU checksum updated 2021-07-16T14:01:59
+    DATASUM  1286335698       str  data unit checksum updated 2021-07-16T14:01:59
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 =================== ======= ===== ============================================
 Name                Type    Units Description

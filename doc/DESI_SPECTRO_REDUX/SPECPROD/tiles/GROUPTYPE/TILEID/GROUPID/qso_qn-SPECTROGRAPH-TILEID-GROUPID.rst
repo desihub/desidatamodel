@@ -18,7 +18,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    *Brief Description*
-HDU1_  QN+RR   BINTABLE *Brief Description*
+HDU1_  QN_RR   BINTABLE *Brief Description*
 ====== ======= ======== ===================
 
 
@@ -44,15 +44,21 @@ EXTNAME = QN+RR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 151           int  width of table in bytes
-NAXIS2 155           int  number of rows in table
-====== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =======================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =======================
+    NAXIS1 151           int  width of table in bytes
+    NAXIS2 155           int  number of rows in table
+    ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================ =========== ===== ===================
 Name             Type        Units Description

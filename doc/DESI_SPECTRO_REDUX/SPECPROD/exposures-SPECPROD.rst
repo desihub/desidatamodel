@@ -126,15 +126,21 @@ EXTNAME = FRAMES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 167           int  length of dimension 1
-NAXIS2 111720        int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 167           int  length of dimension 1
+    NAXIS2 111720        int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: keywords
 
 =============== ======== ===== ===========
 Name            Type     Units Description

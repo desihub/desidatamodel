@@ -26,17 +26,23 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-CHECKSUM D5aEE4a9D4aED4a9 str  HDU checksum updated 2021-07-16T19:03:01
-DATASUM  0                str  data unit checksum updated 2021-07-16T19:03:01
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    CHECKSUM D5aEE4a9D4aED4a9 str  HDU checksum updated 2021-07-16T19:03:01
+    DATASUM  0                str  data unit checksum updated 2021-07-16T19:03:01
+    ======== ================ ==== ==============================================
 
 Empty HDU.
 
@@ -50,32 +56,38 @@ EXTNAME = FIBERQA
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =================== ===== ==============================================
-KEY      Example Value       Type  Comment
-======== =================== ===== ==============================================
-NAXIS1   124                 int   length of dimension 1
-NAXIS2   5000                int   length of dimension 2
-TILEID   20096               int
-LASTNITE 20210608            int
-NGOODFIB 3992                int
-NGOODPET 9                   int
-EFFTIME  214.8598327636719   float
-VALID    T                   bool
-RMSDIST  0.01416921149939299 float
-TILERA   229.546             float
-TILEDEC  -0.056              float
-GOALTIME 180.0               float
-GOALTYPE BRIGHT              str
-FAPRGRM  bright              str
-SURVEY   main                str
-EBVFAC   1.12631027332157    float
-MINTFRAC 0.85                float
-CHECKSUM 73CQ71BN71BN71BN    str   HDU checksum updated 2021-07-16T19:03:01
-DATASUM  105714500           str   data unit checksum updated 2021-07-16T19:03:01
-======== =================== ===== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== =================== ===== ==============================================
+    KEY      Example Value       Type  Comment
+    ======== =================== ===== ==============================================
+    NAXIS1   124                 int   length of dimension 1
+    NAXIS2   5000                int   length of dimension 2
+    TILEID   20096               int
+    LASTNITE 20210608            int
+    NGOODFIB 3992                int
+    NGOODPET 9                   int
+    EFFTIME  214.8598327636719   float
+    VALID    T                   bool
+    RMSDIST  0.01416921149939299 float
+    TILERA   229.546             float
+    TILEDEC  -0.056              float
+    GOALTIME 180.0               float
+    GOALTYPE BRIGHT              str
+    FAPRGRM  bright              str
+    SURVEY   main                str
+    EBVFAC   1.12631027332157    float
+    MINTFRAC 0.85                float
+    CHECKSUM 73CQ71BN71BN71BN    str   HDU checksum updated 2021-07-16T19:03:01
+    DATASUM  105714500           str   data unit checksum updated 2021-07-16T19:03:01
+    ======== =================== ===== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ============= ======= ===== ===========
 Name          Type    Units Description
@@ -114,17 +126,23 @@ EXTNAME = PETALQA
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   66               int  length of dimension 1
-NAXIS2   10               int  length of dimension 2
-CHECKSUM 5m3P8l1M5l1M5l1M str  HDU checksum updated 2021-07-16T19:03:01
-DATASUM  807618843        str  data unit checksum updated 2021-07-16T19:03:01
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   66               int  length of dimension 1
+    NAXIS2   10               int  length of dimension 2
+    CHECKSUM 5m3P8l1M5l1M5l1M str  HDU checksum updated 2021-07-16T19:03:01
+    DATASUM  807618843        str  data unit checksum updated 2021-07-16T19:03:01
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ============== ======= ===== ===========
 Name           Type    Units Description

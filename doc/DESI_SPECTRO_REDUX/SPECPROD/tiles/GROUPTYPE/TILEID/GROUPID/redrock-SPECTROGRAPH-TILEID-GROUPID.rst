@@ -31,36 +31,42 @@ FITS Header Units
 HDU0
 ----
 
+EXTNAME = PRIMARY
+
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ===============
-KEY      Example Value Type Comment
-======== ============= ==== ===============
-RRVER    0.15.0        str  Redrock version
-TEMNAM00 GALAXY        str
-TEMVER00 2.6           str
-TEMNAM01 QSO           str
-TEMVER01 0.1           str
-TEMNAM02 STAR:::A      str
-TEMVER02 0.1           str
-TEMNAM03 STAR:::B      str
-TEMVER03 0.1           str
-TEMNAM04 STAR:::CV     str
-TEMVER04 0.1           str
-TEMNAM05 STAR:::F      str
-TEMVER05 0.1           str
-TEMNAM06 STAR:::G      str
-TEMVER06 0.1           str
-TEMNAM07 STAR:::K      str
-TEMVER07 0.1           str
-TEMNAM08 STAR:::M      str
-TEMVER08 0.1           str
-TEMNAM09 STAR:::WD     str
-TEMVER09 0.1           str
-======== ============= ==== ===============
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== ===============
+    KEY      Example Value Type Comment
+    ======== ============= ==== ===============
+    RRVER    0.15.0        str  Redrock version
+    TEMNAM00 GALAXY        str
+    TEMVER00 2.6           str
+    TEMNAM01 QSO           str
+    TEMVER01 0.1           str
+    TEMNAM02 STAR:::A      str
+    TEMVER02 0.1           str
+    TEMNAM03 STAR:::B      str
+    TEMVER03 0.1           str
+    TEMNAM04 STAR:::CV     str
+    TEMVER04 0.1           str
+    TEMNAM05 STAR:::F      str
+    TEMVER05 0.1           str
+    TEMNAM06 STAR:::G      str
+    TEMVER06 0.1           str
+    TEMNAM07 STAR:::K      str
+    TEMVER07 0.1           str
+    TEMNAM08 STAR:::M      str
+    TEMVER08 0.1           str
+    TEMNAM09 STAR:::WD     str
+    TEMVER09 0.1           str
+    ======== ============= ==== ===============
 
 Empty HDU.
 
@@ -74,15 +80,21 @@ EXTNAME = REDSHIFTS
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 170           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 170           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========= =========== ===== ===========
 Name      Type        Units Description
@@ -110,15 +122,21 @@ EXTNAME = FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 371           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 371           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========================== ======= ===== ===========
 Name                       Type    Units Description
@@ -213,15 +231,21 @@ EXTNAME = EXP_FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 162           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 162           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===========
 Name                  Type    Units Description
@@ -264,15 +288,21 @@ EXTNAME = TSNR2
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 136           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 136           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================= ======= ===== ===========
 Name              Type    Units Description

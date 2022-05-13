@@ -41,36 +41,42 @@ EXTNAME = ZCATALOG
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== =======================
-KEY      Example Value Type Comment
-======== ============= ==== =======================
-NAXIS1   677           int  width of table in bytes
-NAXIS2   5000          int  number of rows in table
-RRVER    0.15.0        str  Redrock version
-TEMNAM00 GALAXY        str
-TEMVER00 2.6           str
-TEMNAM01 QSO           str
-TEMVER01 0.1           str
-TEMNAM02 STAR:::A      str
-TEMVER02 0.1           str
-TEMNAM03 STAR:::B      str
-TEMVER03 0.1           str
-TEMNAM04 STAR:::CV     str
-TEMVER04 0.1           str
-TEMNAM05 STAR:::F      str
-TEMVER05 0.1           str
-TEMNAM06 STAR:::G      str
-TEMVER06 0.1           str
-TEMNAM07 STAR:::K      str
-TEMVER07 0.1           str
-TEMNAM08 STAR:::M      str
-TEMVER08 0.1           str
-TEMNAM09 STAR:::WD     str
-TEMVER09 0.1           str
-======== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== =======================
+    KEY      Example Value Type Comment
+    ======== ============= ==== =======================
+    NAXIS1   677           int  width of table in bytes
+    NAXIS2   5000          int  number of rows in table
+    RRVER    0.15.0        str  Redrock version
+    TEMNAM00 GALAXY        str
+    TEMVER00 2.6           str
+    TEMNAM01 QSO           str
+    TEMVER01 0.1           str
+    TEMNAM02 STAR:::A      str
+    TEMVER02 0.1           str
+    TEMNAM03 STAR:::B      str
+    TEMVER03 0.1           str
+    TEMNAM04 STAR:::CV     str
+    TEMVER04 0.1           str
+    TEMNAM05 STAR:::F      str
+    TEMVER05 0.1           str
+    TEMNAM06 STAR:::G      str
+    TEMVER06 0.1           str
+    TEMNAM07 STAR:::K      str
+    TEMVER07 0.1           str
+    TEMNAM08 STAR:::M      str
+    TEMVER08 0.1           str
+    TEMNAM09 STAR:::WD     str
+    TEMVER09 0.1           str
+    ======== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========================== =========== ===== ===================
 Name                       Type        Units Description
@@ -220,15 +226,21 @@ EXTNAME = EXP_FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 162           int  width of table in bytes
-NAXIS2 5000          int  number of rows in table
-====== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =======================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =======================
+    NAXIS1 162           int  width of table in bytes
+    NAXIS2 5000          int  number of rows in table
+    ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===================
 Name                  Type    Units Description

@@ -42,20 +42,26 @@ FITS Header Units
 HDU00
 -----
 
+EXTNAME = PRIMARY
+
 HEALPixel keywords.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-HPXNSIDE 64               int
-HPXPIXEL 12081            int
-HPXNEST  T                bool
-CHECKSUM 8DPU9BMR8BMR8BMR str  HDU checksum updated 2021-07-19T17:59:29
-DATASUM  0                str  data unit checksum updated 2021-07-19T17:59:29
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    HPXNSIDE 64               int
+    HPXPIXEL 12081            int
+    HPXNEST  T                bool
+    CHECKSUM 8DPU9BMR8BMR8BMR str  HDU checksum updated 2021-07-19T17:59:29
+    DATASUM  0                str  data unit checksum updated 2021-07-19T17:59:29
+    ======== ================ ==== ==============================================
 
 Empty HDU.
 
@@ -69,17 +75,23 @@ fibermap table with two additional columns NIGHT and EXPID.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   413              int  length of dimension 1
-NAXIS2   1031             int  length of dimension 2
-CHECKSUM U9Fia89iV8Cia89i str  HDU checksum updated 2021-07-19T17:59:29
-DATASUM  3589169610       str  data unit checksum updated 2021-07-19T17:59:29
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   413              int  length of dimension 1
+    NAXIS2   1031             int  length of dimension 2
+    CHECKSUM U9Fia89iV8Cia89i str  HDU checksum updated 2021-07-19T17:59:29
+    DATASUM  3589169610       str  data unit checksum updated 2021-07-19T17:59:29
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===========
 Name                  Type    Units Description
@@ -174,15 +186,21 @@ EXTNAME = SCORES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 488           int  width of table in bytes
-NAXIS2 1031          int  number of rows in table
-====== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =======================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =======================
+    NAXIS1 488           int  width of table in bytes
+    NAXIS2 1031          int  number of rows in table
+    ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===================
 Name                  Type    Units Description
@@ -260,12 +278,16 @@ Wavelength[nwave] array in Angstroms of b-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2751          int  length of data axis 1
-BUNIT  Angstrom      str
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2751          int  length of data axis 1
+    BUNIT  Angstrom      str
+    ====== ============= ==== =====================
 
 Data: FITS image [float64, 2751]
 
@@ -279,13 +301,17 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of b-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============================ ==== =====================
-KEY    Example Value                Type Comment
-====== ============================ ==== =====================
-NAXIS1 2751                         int  length of data axis 1
-NAXIS2 1031                         int  length of data axis 2
-BUNIT  10**-17 erg/(s cm2 Angstrom) str
-====== ============================ ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============================ ==== =====================
+    KEY    Example Value                Type Comment
+    ====== ============================ ==== =====================
+    NAXIS1 2751                         int  length of data axis 1
+    NAXIS2 1031                         int  length of data axis 2
+    BUNIT  10**-17 erg/(s cm2 Angstrom) str
+    ====== ============================ ==== =====================
 
 Data: FITS image [float32, 2751x1031]
 
@@ -299,13 +325,17 @@ Inverse variance of b-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ================================= ==== =====================
-KEY    Example Value                     Type Comment
-====== ================================= ==== =====================
-NAXIS1 2751                              int  length of data axis 1
-NAXIS2 1031                              int  length of data axis 2
-BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
-====== ================================= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ================================= ==== =====================
+    KEY    Example Value                     Type Comment
+    ====== ================================= ==== =====================
+    NAXIS1 2751                              int  length of data axis 1
+    NAXIS2 1031                              int  length of data axis 2
+    BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
+    ====== ================================= ==== =====================
 
 Data: FITS image [float32, 2751x1031]
 
@@ -319,14 +349,18 @@ Mask[nspec,nwave] of b-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== ==========================================
-KEY    Example Value Type Comment
-====== ============= ==== ==========================================
-NAXIS1 8             int  width of table in bytes
-NAXIS2 1031          int  number of rows in table
-BZERO  2147483648    int  offset data range to that of unsigned long
-BSCALE 1             int  default scaling factor
-====== ============= ==== ==========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== ==========================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ==========================================
+    NAXIS1 8             int  width of table in bytes
+    NAXIS2 1031          int  number of rows in table
+    BZERO  2147483648    int  offset data range to that of unsigned long
+    BSCALE 1             int  default scaling factor
+    ====== ============= ==== ==========================================
 
 Data: FITS image [int32 (compressed), 2751x1031]
 
@@ -340,13 +374,17 @@ Diagonals of b-channel resolution matrix
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2751          int  length of data axis 1
-NAXIS2 11            int  length of data axis 2
-NAXIS3 1031          int  length of data axis 3
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2751          int  length of data axis 1
+    NAXIS2 11            int  length of data axis 2
+    NAXIS3 1031          int  length of data axis 3
+    ====== ============= ==== =====================
 
 Data: FITS image [float32, 2751x11x1031]
 
@@ -373,12 +411,16 @@ Wavelength[nwave] array in Angstroms of r-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2326          int  length of data axis 1
-BUNIT  Angstrom      str
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2326          int  length of data axis 1
+    BUNIT  Angstrom      str
+    ====== ============= ==== =====================
 
 Data: FITS image [float64, 2326]
 
@@ -392,13 +434,17 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of r-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============================ ==== =====================
-KEY    Example Value                Type Comment
-====== ============================ ==== =====================
-NAXIS1 2326                         int  length of data axis 1
-NAXIS2 1031                         int  length of data axis 2
-BUNIT  10**-17 erg/(s cm2 Angstrom) str
-====== ============================ ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============================ ==== =====================
+    KEY    Example Value                Type Comment
+    ====== ============================ ==== =====================
+    NAXIS1 2326                         int  length of data axis 1
+    NAXIS2 1031                         int  length of data axis 2
+    BUNIT  10**-17 erg/(s cm2 Angstrom) str
+    ====== ============================ ==== =====================
 
 Data: FITS image [float32, 2326x1031]
 
@@ -412,13 +458,17 @@ Inverse variance of r-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ================================= ==== =====================
-KEY    Example Value                     Type Comment
-====== ================================= ==== =====================
-NAXIS1 2326                              int  length of data axis 1
-NAXIS2 1031                              int  length of data axis 2
-BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
-====== ================================= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ================================= ==== =====================
+    KEY    Example Value                     Type Comment
+    ====== ================================= ==== =====================
+    NAXIS1 2326                              int  length of data axis 1
+    NAXIS2 1031                              int  length of data axis 2
+    BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
+    ====== ================================= ==== =====================
 
 Data: FITS image [float32, 2326x1031]
 
@@ -432,14 +482,18 @@ Mask[nspec,nwave] of r-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== ==========================================
-KEY    Example Value Type Comment
-====== ============= ==== ==========================================
-NAXIS1 8             int  width of table in bytes
-NAXIS2 1031          int  number of rows in table
-BZERO  2147483648    int  offset data range to that of unsigned long
-BSCALE 1             int  default scaling factor
-====== ============= ==== ==========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== ==========================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ==========================================
+    NAXIS1 8             int  width of table in bytes
+    NAXIS2 1031          int  number of rows in table
+    BZERO  2147483648    int  offset data range to that of unsigned long
+    BSCALE 1             int  default scaling factor
+    ====== ============= ==== ==========================================
 
 Data: FITS image [int32 (compressed), 2326x1031]
 
@@ -455,13 +509,17 @@ See B_RESOLUTION HDU for description of the format.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2326          int  length of data axis 1
-NAXIS2 11            int  length of data axis 2
-NAXIS3 1031          int  length of data axis 3
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2326          int  length of data axis 1
+    NAXIS2 11            int  length of data axis 2
+    NAXIS3 1031          int  length of data axis 3
+    ====== ============= ==== =====================
 
 Data: FITS image [float32, 2326x11x1031]
 
@@ -475,12 +533,16 @@ Wavelength[nwave] array in Angstroms of z-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2881          int  length of data axis 1
-BUNIT  Angstrom      str
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2881          int  length of data axis 1
+    BUNIT  Angstrom      str
+    ====== ============= ==== =====================
 
 Data: FITS image [float64, 2881]
 
@@ -494,13 +556,17 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of z-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============================ ==== =====================
-KEY    Example Value                Type Comment
-====== ============================ ==== =====================
-NAXIS1 2881                         int  length of data axis 1
-NAXIS2 1031                         int  length of data axis 2
-BUNIT  10**-17 erg/(s cm2 Angstrom) str
-====== ============================ ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============================ ==== =====================
+    KEY    Example Value                Type Comment
+    ====== ============================ ==== =====================
+    NAXIS1 2881                         int  length of data axis 1
+    NAXIS2 1031                         int  length of data axis 2
+    BUNIT  10**-17 erg/(s cm2 Angstrom) str
+    ====== ============================ ==== =====================
 
 Data: FITS image [float32, 2881x1031]
 
@@ -514,13 +580,17 @@ Inverse variance of z-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ================================= ==== =====================
-KEY    Example Value                     Type Comment
-====== ================================= ==== =====================
-NAXIS1 2881                              int  length of data axis 1
-NAXIS2 1031                              int  length of data axis 2
-BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
-====== ================================= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ================================= ==== =====================
+    KEY    Example Value                     Type Comment
+    ====== ================================= ==== =====================
+    NAXIS1 2881                              int  length of data axis 1
+    NAXIS2 1031                              int  length of data axis 2
+    BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
+    ====== ================================= ==== =====================
 
 Data: FITS image [float32, 2881x1031]
 
@@ -534,14 +604,18 @@ Mask[nspec,nwave] of z-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== ==========================================
-KEY    Example Value Type Comment
-====== ============= ==== ==========================================
-NAXIS1 8             int  width of table in bytes
-NAXIS2 1031          int  number of rows in table
-BZERO  2147483648    int  offset data range to that of unsigned long
-BSCALE 1             int  default scaling factor
-====== ============= ==== ==========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== ==========================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ==========================================
+    NAXIS1 8             int  width of table in bytes
+    NAXIS2 1031          int  number of rows in table
+    BZERO  2147483648    int  offset data range to that of unsigned long
+    BSCALE 1             int  default scaling factor
+    ====== ============= ==== ==========================================
 
 Data: FITS image [int32 (compressed), 2881x1031]
 
@@ -557,13 +631,17 @@ See B_RESOLUTION HDU for description of the format.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2881          int  length of data axis 1
-NAXIS2 11            int  length of data axis 2
-NAXIS3 1031          int  length of data axis 3
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2881          int  length of data axis 1
+    NAXIS2 11            int  length of data axis 2
+    NAXIS3 1031          int  length of data axis 3
+    ====== ============= ==== =====================
 
 Data: FITS image [float32, 2881x11x1031]
 

@@ -492,7 +492,7 @@ class TestCheck(DataModelTestCase):
         f.extract_metadata()
         del f.hdumeta['Galaxies']['format'][2]
         f.validate_prototype()
-        self.assertLog(log, -1, "data columns missing from model: %s" % str(set(['vdisp'])))
+        self.assertLog(log, -1, "Prototype file %s has these columns in HDU1 missing from model: %s" % (f.prototype, str(set(['vdisp']))))
 
     def test_validate_prototype_hdu_missing_data_column(self):
         """Test the data model validation method with missing column in the data.
@@ -504,7 +504,7 @@ class TestCheck(DataModelTestCase):
         f.extract_metadata()
         f.hdumeta['Galaxies']['format'].append(('extra', 'int16', '', ''))
         f.validate_prototype()
-        self.assertLog(log, -1, "model columns missing from data: %s" % str(set(['extra'])))
+        self.assertLog(log, -1, "Model file %s has these columns in HDU1 missing from data: %s" % (modelfile, str(set(['extra']))))
 
     def test_validate_prototype_hdu_bad_column_type(self):
         """Test the data model validation method with a bad column type.

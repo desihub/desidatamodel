@@ -42,24 +42,32 @@ EXTNAME = TILEPIX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== =====================
-KEY      Example Value Type Comment
-======== ============= ==== =====================
-NAXIS1   9             int  length of dimension 1
-NAXIS2   70894         int  length of dimension 2
-HPXNSIDE 64            int
-HPXNEST  T             bool
-======== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== =====================
+    KEY      Example Value Type Comment
+    ======== ============= ==== =====================
+    NAXIS1   9             int  length of dimension 1
+    NAXIS2   70894         int  length of dimension 2
+    HPXNSIDE 64            int
+    HPXNEST  T             bool
+    ======== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. rst-class:: columns
+
 ========= ======= ===== ===========
 Name      Type    Units Description
 ========= ======= ===== ===========
-TILEID    int32
-PETAL_LOC logical
-HEALPIX   int32
+TILEID    int32         *Description needed*
+SURVEY    char[7]       *Description needed*
+PROGRAM   char[6]       *Description needed*
+PETAL_LOC int16         *Description needed*
+HEALPIX   int32         *Description needed*
 ========= ======= ===== ===========
 
 

@@ -44,28 +44,34 @@ EXTNAME = EMLINEFIT
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =============================================================================================== ===== =======================
-KEY      Example Value                                                                                   Type  Comment
-======== =============================================================================================== ===== =======================
-NAXIS1   345                                                                                             int   width of table in bytes
-NAXIS2   500                                                                                             int   number of rows in table
-RRFN     /global/cfs/cdirs/desi/spectro/redux/fuji/tiles/1x_depth/80608/5/redrock-1-80608-1xsubset5.fits str
-COADDFN  /global/cfs/cdirs/desi/spectro/redux/fuji/tiles/1x_depth/80608/5/coadd-1-80608-1xsubset5.fits   str
-RFHW     40                                                                                              int
-MINRFHW  20                                                                                              int
-RFCONTW  200                                                                                             int
-RV       3.1                                                                                             float
-EMNAMES  OII,HDELTA,HGAMMA,HBETA,OIII,HALPHA                                                             str
-RFWAVE00 3727.092,3729.874                                                                               str
-RFWAVE01 4102.892                                                                                        str
-RFWAVE02 4341.684                                                                                        str
-RFWAVE03 4862.683                                                                                        str
-RFWAVE04 4960.295,5008.239                                                                               str
-RFWAVE05 6564.613                                                                                        str
-======== =============================================================================================== ===== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== =============================================================================================== ===== =======================
+    KEY      Example Value                                                                                   Type  Comment
+    ======== =============================================================================================== ===== =======================
+    NAXIS1   345                                                                                             int   width of table in bytes
+    NAXIS2   500                                                                                             int   number of rows in table
+    RRFN     /global/cfs/cdirs/desi/spectro/redux/fuji/tiles/1x_depth/80608/5/redrock-1-80608-1xsubset5.fits str
+    COADDFN  /global/cfs/cdirs/desi/spectro/redux/fuji/tiles/1x_depth/80608/5/coadd-1-80608-1xsubset5.fits   str
+    RFHW     40                                                                                              int
+    MINRFHW  20                                                                                              int
+    RFCONTW  200                                                                                             int
+    RV       3.1                                                                                             float
+    EMNAMES  OII,HDELTA,HGAMMA,HBETA,OIII,HALPHA                                                             str
+    RFWAVE00 3727.092,3729.874                                                                               str
+    RFWAVE01 4102.892                                                                                        str
+    RFWAVE02 4341.684                                                                                        str
+    RFWAVE03 4862.683                                                                                        str
+    RFWAVE04 4960.295,5008.239                                                                               str
+    RFWAVE05 6564.613                                                                                        str
+    ======== =============================================================================================== ===== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================= ======= ===== ===================
 Name              Type    Units Description

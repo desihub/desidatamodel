@@ -44,21 +44,27 @@ EXTNAME = ZMTL
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ========================================================================================== ==== =======================
-KEY      Example Value                                                                              Type Comment
-======== ========================================================================================== ==== =======================
-NAXIS1   112                                                                                        int  width of table in bytes
-NAXIS2   500                                                                                        int  number of rows in table
-QN_ADDED T                                                                                          bool
-SQ_ADDED F                                                                                          bool
-AB_ADDED F                                                                                          bool
-ZC_ADDED F                                                                                          bool
-QNMODFIL /global/cfs/cdirs/desi/target/catalogs/lya/qn_models/qn_train_coadd_indtrain_0_0_boss10.h5 str
-BADPTLQA F                                                                                          bool
-======== ========================================================================================== ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ========================================================================================== ==== =======================
+    KEY      Example Value                                                                              Type Comment
+    ======== ========================================================================================== ==== =======================
+    NAXIS1   112                                                                                        int  width of table in bytes
+    NAXIS2   500                                                                                        int  number of rows in table
+    QN_ADDED T                                                                                          bool
+    SQ_ADDED F                                                                                          bool
+    AB_ADDED F                                                                                          bool
+    ZC_ADDED F                                                                                          bool
+    QNMODFIL /global/cfs/cdirs/desi/target/catalogs/lya/qn_models/qn_train_coadd_indtrain_0_0_boss10.h5 str
+    BADPTLQA F                                                                                          bool
+    ======== ========================================================================================== ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 =============== ======= ===== ===================
 Name            Type    Units Description

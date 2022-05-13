@@ -515,11 +515,11 @@ class DataModel(DataModelUnit):
                 datacolumns = set([tmp[0] for tmp in dexf])
                 modelcolumns = set([tmp[0] for tmp in mexf])
                 if len(datacolumns - modelcolumns) > 0:
-                    log.warning('data columns missing from model: %s',
-                                str(datacolumns - modelcolumns))
+                    log.warning('Prototype file %s has these columns in HDU%d missing from model: %s',
+                                self.prototype, i, str(datacolumns - modelcolumns))
                 if len(modelcolumns - datacolumns) > 0:
-                    log.warning('model columns missing from data: %s',
-                                str(modelcolumns - datacolumns))
+                    log.warning('Model file %s has these columns in HDU%d missing from data: %s',
+                                self.filename, i, str(modelcolumns - datacolumns))
                 common_columns = datacolumns & modelcolumns
                 for column in common_columns:
                     #
