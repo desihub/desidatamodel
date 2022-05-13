@@ -31,8 +31,6 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = PRIMARY
-
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 

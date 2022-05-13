@@ -53,8 +53,6 @@ FITS Header Units
 HDU00
 -----
 
-EXTNAME = PRIMARY
-
 HEALPixel keywords.
 
 Required Header Keywords

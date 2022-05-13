@@ -384,7 +384,7 @@ class DataModel(DataModelUnit):
                 else:
                     if k == 0 and meta['format'] == 'Empty HDU.':
                         if len(meta['keywords']) > 0:
-                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY'."
+                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY', since it has non-trivial keywords."
                             log.warning(m, k, metafile)
             else:
                 #

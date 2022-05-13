@@ -44,8 +44,6 @@ FITS Header Units
 HDU00
 -----
 
-EXTNAME = PRIMARY
-
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
