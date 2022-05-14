@@ -160,13 +160,14 @@ SHAPE_E2                   float32       Ellipticity component 2 for galaxy mode
 PHOTSYS                    char[1]       N for BASS/MzLS, S for DECam
 PRIORITY_INIT              int64         initial priority
 NUMOBS_INIT                int64         initial number of requested observations
-SV3_DESI_TARGET            int64
-SV3_BGS_TARGET             int64
-SV3_MWS_TARGET             int64
-SV3_SCND_TARGET            int64
+SV3_DESI_TARGET [1]_       int64
+SV3_BGS_TARGET [1]_        int64
+SV3_MWS_TARGET [1]_        int64
+SV3_SCND_TARGET [1]_       int64
 DESI_TARGET                int64         Dark survey + calibration targeting bits
 BGS_TARGET                 int64         Bright Galaxy Survey targeting bits
 MWS_TARGET                 int64         Milky Way Survey targeting bits
+SCND_TARGET                int64         Secondary targeting bits
 PLATE_RA                   float64       Right Ascension for Platemaker to use [degrees]
 PLATE_DEC                  float64       declination for Platemaker to use [degrees]
 TILEID                     int32
@@ -186,6 +187,8 @@ MEAN_PSF_TO_FIBER_SPECFLUX float32
 MEAN_FIBER_X               float32
 MEAN_FIBER_Y               float32
 ========================== ======= ===== =====================================================
+
+.. [1] Optional
 
 HDU02
 -----

@@ -66,27 +66,32 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-=============== ======= ===== ===================
-Name            Type    Units Description
-=============== ======= ===== ===================
-RA              float64 deg   label for field   1
-DEC             float64 deg   label for field   2
-TARGETID        int64         label for field   3
-SV3_DESI_TARGET int64         label for field   4
-SV3_BGS_TARGET  int64         label for field   5
-SV3_MWS_TARGET  int64         label for field   6
-SV3_SCND_TARGET int64         label for field   7
-Z               float64       label for field   8
-ZWARN           int64         label for field   9
-SPECTYPE        char[6]       label for field  10
-DELTACHI2       float64       label for field  11
-NUMOBS          int32         label for field  12
-ZTILEID         int32         label for field  13
-Z_QN            float64       label for field  14
-Z_QN_CONF       float64       label for field  15
-IS_QSO_QN       int16         label for field  16
-=============== ======= ===== ===================
+==================== ======= ===== ===================
+Name                 Type    Units Description
+==================== ======= ===== ===================
+RA                   float64 deg   label for field   1
+DEC                  float64 deg   label for field   2
+TARGETID             int64         label for field   3
+SV3_DESI_TARGET [1]_ int64         label for field   4
+SV3_BGS_TARGET [1]_  int64         label for field   5
+SV3_MWS_TARGET [1]_  int64         label for field   6
+SV3_SCND_TARGET [1]_ int64         label for field   7
+DESI_TARGET          int64         label for field   4
+BGS_TARGET           int64         label for field   5
+MWS_TARGET           int64         label for field   6
+SCND_TARGET          int64         label for field   7
+Z                    float64       label for field   8
+ZWARN                int64         label for field   9
+SPECTYPE             char[6]       label for field  10
+DELTACHI2            float64       label for field  11
+NUMOBS               int32         label for field  12
+ZTILEID              int32         label for field  13
+Z_QN                 float64       label for field  14
+Z_QN_CONF            float64       label for field  15
+IS_QSO_QN            int16         label for field  16
+==================== ======= ===== ===================
 
+.. [1] Optional
 
 Notes and Examples
 ==================

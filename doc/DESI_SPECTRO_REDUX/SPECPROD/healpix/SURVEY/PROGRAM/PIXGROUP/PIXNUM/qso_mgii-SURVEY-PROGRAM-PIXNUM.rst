@@ -61,26 +61,28 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-=============== ======== ===== ===================
-Name            Type     Units Description
-=============== ======== ===== ===================
-TARGETID        int64          label for field   1
-RA              float64        label for field   2
-DEC             float64        label for field   3
-Z_RR            float64        label for field   4
-ZERR            float32        label for field   5
-IS_QSO_MGII     logical        label for field   6
-SV1_DESI_TARGET int64          label for field   7
-SPECTYPE        char[10]       label for field   8
-DELTA_CHI2      float32        label for field   9
-A               float32        label for field  10
-SIGMA           float32        label for field  11
-B               float32        label for field  12
-VAR_A           float32        label for field  13
-VAR_SIGMA       float32        label for field  14
-VAR_B           float32        label for field  15
-=============== ======== ===== ===================
+==================== ======== ===== ===================
+Name                 Type     Units Description
+==================== ======== ===== ===================
+TARGETID             int64          label for field   1
+RA                   float64        label for field   2
+DEC                  float64        label for field   3
+Z_RR                 float64        label for field   4
+ZERR                 float32        label for field   5
+IS_QSO_MGII          logical        label for field   6
+SV1_DESI_TARGET [1]_ int64          label for field   7
+DESI_TARGET          int64
+SPECTYPE             char[10]       label for field   8
+DELTA_CHI2           float32        label for field   9
+A                    float32        label for field  10
+SIGMA                float32        label for field  11
+B                    float32        label for field  12
+VAR_A                float32        label for field  13
+VAR_SIGMA            float32        label for field  14
+VAR_B                float32        label for field  15
+==================== ======== ===== ===================
 
+.. [1] Optional
 
 Notes and Examples
 ==================

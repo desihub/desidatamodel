@@ -31,8 +31,6 @@ FITS Header Units
 HDU0
 ----
 
-EXTNAME = PRIMARY
-
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
@@ -162,25 +160,21 @@ PRIORITY                   int32
 SUBPRIORITY                float64
 OBSCONDITIONS              int32
 RELEASE                    int16
+BRICKNAME                  char[8]
 BRICKID                    int32
 BRICK_OBJID                int32
 MORPHTYPE                  char[4]
+EBV                        float32
 FLUX_G                     float32
 FLUX_R                     float32
 FLUX_Z                     float32
+FLUX_W1                    float32
+FLUX_W2                    float32
 FLUX_IVAR_G                float32
 FLUX_IVAR_R                float32
 FLUX_IVAR_Z                float32
-REF_ID                     int64
-REF_CAT                    char[2]
-GAIA_PHOT_G_MEAN_MAG       float32
-GAIA_PHOT_BP_MEAN_MAG      float32
-GAIA_PHOT_RP_MEAN_MAG      float32
-PARALLAX                   float32
-BRICKNAME                  char[8]
-EBV                        float32
-FLUX_W1                    float32
-FLUX_W2                    float32
+FLUX_IVAR_W1               float32
+FLUX_IVAR_W2               float32
 FIBERFLUX_G                float32
 FIBERFLUX_R                float32
 FIBERFLUX_Z                float32
@@ -192,15 +186,23 @@ SERSIC                     float32
 SHAPE_R                    float32
 SHAPE_E1                   float32
 SHAPE_E2                   float32
+REF_ID                     int64
+REF_CAT                    char[2]
+GAIA_PHOT_G_MEAN_MAG       float32
+GAIA_PHOT_BP_MEAN_MAG      float32
+GAIA_PHOT_RP_MEAN_MAG      float32
+PARALLAX                   float32
 PHOTSYS                    char[1]
 PRIORITY_INIT              int64
 NUMOBS_INIT                int64
-SV1_DESI_TARGET            int64
-SV1_BGS_TARGET             int64
-SV1_MWS_TARGET             int64
+SV1_DESI_TARGET [1]_       int64
+SV1_BGS_TARGET [1]_        int64
+SV1_MWS_TARGET [1]_        int64
+SV1_SCND_TARGET [1]_       int64
 DESI_TARGET                int64
 BGS_TARGET                 int64
 MWS_TARGET                 int64
+SCND_TARGET                int64
 PLATE_RA                   float64
 PLATE_DEC                  float64
 TILEID                     int32
@@ -220,6 +222,8 @@ MEAN_PSF_TO_FIBER_SPECFLUX float32
 MEAN_FIBER_X               float32
 MEAN_FIBER_Y               float32
 ========================== ======= ===== ===========
+
+.. [1] Optional
 
 HDU3
 ----

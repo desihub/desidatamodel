@@ -149,13 +149,14 @@ SHAPE_E2              float32
 PHOTSYS               char[1]
 PRIORITY_INIT         int64
 NUMOBS_INIT           int64
-SV3_DESI_TARGET       int64
-SV3_BGS_TARGET        int64
-SV3_MWS_TARGET        int64
-SV3_SCND_TARGET       int64
+SV3_DESI_TARGET [1]_  int64
+SV3_BGS_TARGET [1]_   int64
+SV3_MWS_TARGET [1]_   int64
+SV3_SCND_TARGET [1]_  int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64
+SCND_TARGET           int64
 PLATE_RA              float64
 PLATE_DEC             float64
 NUM_ITER              int64
@@ -172,6 +173,8 @@ EXPID                 int32
 MJD                   float64
 TILEID                int32
 ===================== ======= ===== ===========
+
+.. [1] Optional
 
 HDU02
 -----
