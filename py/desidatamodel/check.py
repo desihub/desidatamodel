@@ -208,6 +208,7 @@ class DataModel(DataModelUnit):
         """
         lbound = [0] + [sum(columns[:i])+i for i in range(1, len(columns))]
         ubound = [lbound[i] + c for i, c in enumerate(columns)]
+        ubound[-1] = None
         data = [row[lbound[i]:ubound[i]].strip() for i in range(len(columns))]
         return tuple(data)
 
@@ -528,24 +529,30 @@ class DataModel(DataModelUnit):
                                 self.prototype, i, self.filename)
             else:
                 dexf = dexf[1:]  # Get rid of header line.
-                if len(dexf) != len(mexf):
-                    log.warning("Prototype file %s has the wrong " +
-                                "number of HDU%d columns according to %s.",
-                                self.prototype, i, self.filename)
                 datacolumns = set([tmp[0] for tmp in dexf])
-                modelcolumns = set([tmp[0] for tmp in mexf])
-                if len(datacolumns - modelcolumns) > 0:
+                modelcolumns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' not in tmp[0]])
+                optionalcolumns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' in tmp[0]])
+                #
+                # Do we really care if the number of columns is off?
+                # We want all of the required columns to be there, but some or all
+                # of the optional columns may be there as well.
+                #
+                # if len(datacolumns) != len(modelcolumns):
+                #     log.warning("Prototype file %s has the wrong " +
+                #                 "number of HDU%d columns according to %s.",
+                #                 self.prototype, i, self.filename)
+                if len(datacolumns - (modelcolumns | optionalcolumns)) > 0:
                     log.warning('Prototype file %s has these columns in HDU%d missing from model: %s',
                                 self.prototype, i, str(datacolumns - modelcolumns))
                 if len(modelcolumns - datacolumns) > 0:
                     log.warning('Model file %s has these columns in HDU%d missing from data: %s',
                                 self.filename, i, str(modelcolumns - datacolumns))
-                common_columns = datacolumns & modelcolumns
+                common_columns = datacolumns & (modelcolumns | optionalcolumns)
                 for column in common_columns:
                     #
                     # Compare type
                     #
-                    mcol_type = [tmp[1] for tmp in mexf if tmp[0] == column][0]
+                    mcol_type = [tmp[1] for tmp in mexf if tmp[0].split()[0] == column][0]
                     dcol_type = [tmp[1] for tmp in dexf if tmp[0] == column][0]
                     if mcol_type != dcol_type:
                         log.warning("File %s HDU%d column %s has different type according to %s (%s != %s).",
@@ -553,7 +560,7 @@ class DataModel(DataModelUnit):
                     #
                     # Compare unit
                     #
-                    mcol_unit = [tmp[2] for tmp in mexf if tmp[0] == column][0]
+                    mcol_unit = [tmp[2] for tmp in mexf if tmp[0].split()[0] == column][0]
                     dcol_unit = [tmp[2] for tmp in dexf if tmp[0] == column][0]
                     if mcol_unit != '' and dcol_unit != '' and mcol_unit != dcol_unit:
                         log.warning("File %s HDU%d column %s has different units according to %s (%s != %s).",

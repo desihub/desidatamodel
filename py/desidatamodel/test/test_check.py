@@ -530,12 +530,24 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         self.assertLog(log, -1, "File %s HDU%d column %s has different units according to %s (%s != %s)." % (f.prototype, 1, 'V_mag', modelfile, 'mag', 'counts'))
 
+    def test_validate_prototype_optional_columns(self):
+        """Test the data model validation method with optional columns.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        self.assertEqual(f.hdumeta['Galaxies']['format'][1][0], 'OPT1 [1]_')
+        f.validate_prototype()
+        self.assertLog(log, -1, "Comparing %s to %s." % (f.prototype, modelfile))
+
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.
         """
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         f = DataModel(modelfile, os.path.dirname(modelfile))
-        foo = '======= ============= ==== ====================='
+        foo = '======= ============= ==== ============'
         columns = list(map(len, foo.split()))
         row = 'NAXIS1  32            int  length of dimension 1'
         exc = ('NAXIS1', '32', 'int', 'length of dimension 1')
