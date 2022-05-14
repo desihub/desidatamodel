@@ -658,26 +658,31 @@ Required Data Table Columns
 Name                  Type    Units              Description
 ===================== ======= ================== ===========
 TARGETID              int64
-DESI_TARGET           int64
-BGS_TARGET            int64
-MWS_TARGET            int64
-SECONDARY_TARGET      int64
+PETAL_LOC             int16
+DEVICE_LOC            int32
+LOCATION              int64
+FIBER                 int32
+FIBERSTATUS           int32
 TARGET_RA             float64 deg
 TARGET_DEC            float64 deg
-TARGET_RA_IVAR        float64 deg-2
-TARGET_DEC_IVAR       float64 deg-2
-BRICKID               int64
-BRICK_OBJID           int64
-MORPHTYPE             char[4]
-PRIORITY              int32
-SUBPRIORITY           float64
-REF_ID                int64
 PMRA                  float32 10**-3 arcsec yr-1
 PMDEC                 float32 10**-3 arcsec yr-1
 REF_EPOCH             float32
-PMRA_IVAR             float32 10**6 arcsec-2 yr2
-PMDEC_IVAR            float32 10**6 arcsec-2 yr2
+LAMBDA_REF            float32 Angstrom
+FA_TARGET             int64
+FA_TYPE               binary
+OBJTYPE               char[3]
+FIBERASSIGN_X         float32 mm
+FIBERASSIGN_Y         float32 mm
+PRIORITY              int32
+SUBPRIORITY           float64
+OBSCONDITIONS         int32
 RELEASE               int16
+BRICKNAME             char[8]
+BRICKID               int32
+BRICK_OBJID           int32
+MORPHTYPE             char[4]
+EBV                   float32
 FLUX_G                float32 nanomaggies
 FLUX_R                float32 nanomaggies
 FLUX_Z                float32 nanomaggies
@@ -691,49 +696,37 @@ FLUX_IVAR_W2          float32 1/nanomaggies**2
 FIBERFLUX_G           float32 nanomaggies
 FIBERFLUX_R           float32 nanomaggies
 FIBERFLUX_Z           float32 nanomaggies
-FIBERFLUX_W1          float32 nanomaggies
-FIBERFLUX_W2          float32 nanomaggies
 FIBERTOTFLUX_G        float32 nanomaggies
 FIBERTOTFLUX_R        float32 nanomaggies
 FIBERTOTFLUX_Z        float32 nanomaggies
-FIBERTOTFLUX_W1       float32 nanomaggies
-FIBERTOTFLUX_W2       float32 nanomaggies
+MASKBITS              int32
+SERSIC                float32
+SHAPE_R               float32
+SHAPE_E1              float32
+SHAPE_E2              float32
+REF_ID                int64
+REF_CAT               char[2]
 GAIA_PHOT_G_MEAN_MAG  float32 mag
 GAIA_PHOT_BP_MEAN_MAG float32 mag
 GAIA_PHOT_RP_MEAN_MAG float32 mag
-MW_TRANSMISSION_G     float32
-MW_TRANSMISSION_R     float32
-MW_TRANSMISSION_Z     float32
-EBV                   float32
+PARALLAX              float32
 PHOTSYS               char[1]
-OBSCONDITIONS         int32
-NUMOBS_INIT           int64
 PRIORITY_INIT         int64
-NUMOBS_MORE           int32
-HPXPIXEL              int64
-FIBER                 int32
-PETAL_LOC             int32
-DEVICE_LOC            int32
-LOCATION              int32
-FIBERSTATUS           int32
-OBJTYPE               char[3]
-LAMBDA_REF            float32 Angstrom
-FIBERASSIGN_X         float32 mm
-FIBERASSIGN_Y         float32 mm
-FA_TARGET             int64
-FA_TYPE               binary
-NUMTARGET             int16
+NUMOBS_INIT           int64
+DESI_TARGET           int64
+BGS_TARGET            int64
+MWS_TARGET            int64
+SCND_TARGET           int64
+PLATE_RA              float64 deg
+PLATE_DEC             float64 deg
+NUM_ITER              int64
+FIBER_X               float64
+FIBER_Y               float64
+DELTA_X               float64
+DELTA_Y               float64
 FIBER_RA              float64 deg
 FIBER_DEC             float64 deg
-FIBER_RA_IVAR         float32 deg-2
-FIBER_DEC_IVAR        float32 deg-2
-PLATEMAKER_X          float32 mm
-PLATEMAKER_Y          float32 mm
-PLATEMAKER_RA         float32 deg
-PLATEMAKER_DEC        float32 deg
-NUM_ITER              int32
-SPECTROID             int32
-EXPTIME               float32 s
+EXPTIME               float64 s
 ===================== ======= ================== ===========
 
 

@@ -37,7 +37,7 @@ Empty HDU.
 HDU1
 ----
 
-EXTNAME = QN+RR
+EXTNAME = QN_RR
 
 *Summarize the contents of this HDU.*
 

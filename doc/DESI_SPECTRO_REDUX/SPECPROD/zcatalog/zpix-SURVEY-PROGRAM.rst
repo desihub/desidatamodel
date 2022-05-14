@@ -83,11 +83,13 @@ Required Data Table Columns
 Name                       Type        Units Description
 ========================== =========== ===== ===================
 TARGETID                   int64             ID (unique to file? and the whole survey?)
-CHI2                       float64           label for field   2
-COEFF                      float64[10]       label for field   3
+HEALPIX                    int32
+SPGRPVAL                   int32
 Z                          float64           label for field   4
 ZERR                       float64           label for field   5
 ZWARN                      int64             label for field   6
+CHI2                       float64           label for field   2
+COEFF                      float64[10]       label for field   3
 NPIXELS                    int64             label for field   7
 SPECTYPE                   char[6]           label for field   8
 SUBTYPE                    char[20]          label for field   9
@@ -105,26 +107,19 @@ OBJTYPE                    char[3]           label for field  20
 SUBPRIORITY                float64           Random subpriority [0-1] to break assignment ties
 OBSCONDITIONS              int32             Flag the target to be observed in graytime.
 RELEASE                    int16             Legacy Surveys (`LS`_) `Release`_
+BRICKNAME                  char[8]           Brick name from tractor input
 BRICKID                    int32             Brick ID from tractor input
 BRICK_OBJID                int32             OBJID (unique to brick, but not to file)
 MORPHTYPE                  char[4]           `Morphological Model`_ type
+EBV                        float32           Galactic extinction E(B-V) reddening from SFD98_
 FLUX_G                     float32           `LS`_ flux from tractor input (g)
 FLUX_R                     float32           `LS`_ flux from tractor input (r)
 FLUX_Z                     float32           `LS`_ flux from tractor input (z)
+FLUX_W1                    float32           WISE flux in W1
+FLUX_W2                    float32           WISE flux in W2
 FLUX_IVAR_G                float32           Inverse Variance of FLUX_G
 FLUX_IVAR_R                float32           Inverse Variance of FLUX_R
 FLUX_IVAR_Z                float32           Inverse Variance of FLUX_Z
-MASKBITS                   int16             Bitwise mask indicating that an object touches a pixel in the ``coadd/*/*/*maskbits*`` maps, as cataloged on the `DR9 bitmasks page`_
-REF_ID                     int64             Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
-REF_CAT                    char[2]           Reference catalog source for this star: "T2" for `Tycho-2`_, "G2" for `Gaia`_ DR2, "L3" for the SGA_, empty otherwise
-GAIA_PHOT_G_MEAN_MAG       float32           `Gaia`_ G band magnitude
-GAIA_PHOT_BP_MEAN_MAG      float32           `Gaia`_ BP band magnitude
-GAIA_PHOT_RP_MEAN_MAG      float32           `Gaia`_ RP band magnitude
-PARALLAX                   float32           Reference catalog parallax
-BRICKNAME                  char[8]           Brick name from tractor input
-EBV                        float32           Galactic extinction E(B-V) reddening from SFD98_
-FLUX_W1                    float32           WISE flux in W1
-FLUX_W2                    float32           WISE flux in W2
 FLUX_IVAR_W1               float32           Inverse Variance of FLUX_W1
 FLUX_IVAR_W2               float32           Inverse Variance of FLUX_W2
 FIBERFLUX_G                float32           Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
@@ -133,20 +128,32 @@ FIBERFLUX_Z                float32           Predicted z-band flux within a fibe
 FIBERTOTFLUX_G             float32           Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_R             float32           Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_Z             float32           Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+MASKBITS                   int16             Bitwise mask indicating that an object touches a pixel in the ``coadd/*/*/*maskbits*`` maps, as cataloged on the `DR9 bitmasks page`_
 SERSIC                     float32           Power-law index for the Sersic profile model (``type="SER"``)
 SHAPE_R                    float32           Half-light radius of galaxy model for galaxy type ``type`` (>0)
 SHAPE_E1                   float32           `Ellipticity component`_ 1 of galaxy model for galaxy type ``type``
 SHAPE_E2                   float32           `Ellipticity component`_ 2 of galaxy model for galaxy type ``type``
+REF_ID                     int64             Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
+REF_CAT                    char[2]           Reference catalog source for this star: "T2" for `Tycho-2`_, "G2" for `Gaia`_ DR2, "L3" for the SGA_, empty otherwise
+GAIA_PHOT_G_MEAN_MAG       float32           `Gaia`_ G band magnitude
+GAIA_PHOT_BP_MEAN_MAG      float32           `Gaia`_ BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG      float32           `Gaia`_ RP band magnitude
+PARALLAX                   float32           Reference catalog parallax
 PHOTSYS                    char[1]           'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT              int64             label for field  57
 NUMOBS_INIT                int64             label for field  58
-SV1_DESI_TARGET            int64             label for field  59
-SV1_BGS_TARGET             int64             label for field  60
-SV1_MWS_TARGET             int64             label for field  61
-SV1_SCND_TARGET            int64             label for field  62
+SV1_DESI_TARGET            int64             DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET             int64             BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET             int64             MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET            int64             Secondary target selection bitmask for SV1
+SV2_DESI_TARGET            int64             DESI (dark time program) target selection bitmask for SV2
+SV2_BGS_TARGET             int64             BGS (bright time program) target selection bitmask for SV2
+SV2_MWS_TARGET             int64             MWS (bright time program) target selection bitmask for SV2
+SV2_SCND_TARGET            int64             Secondary target selection bitmask for SV2
 DESI_TARGET                int64             DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64             BGS (bright time program) target selection bitmask
 MWS_TARGET                 int64             MWS (bright time program) target selection bitmask
+SCND_TARGET                int64             Secondary target selection bitmask
 PLATE_RA                   float64           label for field  66
 PLATE_DEC                  float64           label for field  67
 COADD_NUMEXP               int16             label for field  68
@@ -194,6 +201,8 @@ TSNR2_BGS                  float32           label for field 109
 TSNR2_GPBBACKUP            float32           label for field 110
 TSNR2_QSO                  float32           label for field 111
 TSNR2_LRG                  float32           label for field 112
+ZCAT_NSPEC                 int32
+ZCAT_PRIMARY               logical
 ========================== =========== ===== ===================
 
 .. _`LS`: https://www.legacysurvey.org/
