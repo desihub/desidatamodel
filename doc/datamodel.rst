@@ -35,6 +35,25 @@ data model.
     fibermap-EXPID.fits
     ===================
 
+
+Building the Documents
+~~~~~~~~~~~~~~~~~~~~~~
+
+To build the docs::
+
+    sphinx-build -W --keep-going -b html doc doc/_build/html
+
+Then view ``doc/_build/html/index.html`` in a web browser.  If you have
+installed the `sphinx_rtd_theme Python package`_, the docs will be formatted
+using the ReadTheDocs theme as they will appear at
+https://desidatamodel.readthedocs.io
+
+Sphinx will often print warnings and claim that the "build succeeded" when
+in fact there were syntax errors that break the output. You must pay attention
+to the warnings and fix them!
+
+.. _`sphinx_rtd_theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
+
 Tips and Tests
 ~~~~~~~~~~~~~~
 
@@ -118,41 +137,36 @@ Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`::
 
     Here is how to highlight an :envvar:`ENVIRONMENT_VARIABLE`
 
-Building the Documents
-~~~~~~~~~~~~~~~~~~~~~~
+Optional Keywords and Columns
++++++++++++++++++++++++++++++
 
-To build the docs::
+Sometimes HDU in a file might not have all of the header keywords or a table
+might not have all the columns described in the data model.
+Sometimes this is expected, and these items should be
+marked as optional, so we can focus on *required* items that might be
+missing. The optional notation leverages reStructuredText's footnote notation.
+Here is an example using table columns::
 
-    sphinx-build -W --keep-going -b html doc doc/_build/html
+    Required Data Table Columns
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then view ``doc/_build/html/index.html`` in a web browser.  If you have
-installed the `sphinx_rtd_theme Python package`_, the docs will be formatted
-using the ReadTheDocs theme as they will appear at
-https://desidatamodel.readthedocs.io
+    ========= ======== ===== ===========
+    Name      Type     Units Description
+    ========= ======== ===== ===========
+    target    char[20]
+    OPT1 [1]_ int16
+    V_mag     float32  mag
+    vdisp     float64  km/s
+    OPT2 [1]_ float32
+    ========= ======== ===== ===========
 
-Sphinx will often print warnings and claim that the "build succeeded" when
-in fact there were syntax errors that break the output. You must pay attention
-to the warnings and fix them!
+    .. [1] Optional
 
-.. _`sphinx_rtd_theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
+Note how ``.. [1] Optional`` is added to the bottom.  This keeps Sphinx from
+complaining about undefined footnotes, but also makes it easy for humans to
+see what this notation means.
 
-desidatamodel Python Package
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Optional HDUs
++++++++++++++
 
-The desidatamodel_ package on GitHub includes the datamodel input files
-and some Python utility code for generating
-and checking datamodel files.
-
-.. _desidatamodel: https://github.com/desihub/desidatamodel
-
-.. automodule:: desidatamodel
-    :members:
-
-.. automodule:: desidatamodel.check
-    :members:
-
-.. automodule:: desidatamodel.stub
-    :members:
-
-.. automodule:: desidatamodel.unit
-    :members:
+This is a work in progress.
