@@ -24,7 +24,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    Empty
+HDU00_              IMAGE    Keywords only
 HDU01_ FIBERMAP     BINTABLE fibermap table
 HDU02_ EXP_FIBERMAP BINTABLE *Brief Description*
 HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
@@ -64,10 +64,16 @@ Required Header Keywords
 ======== =============================== ==== ==============================================
 KEY      Example Value                   Type Comment
 ======== =============================== ==== ==============================================
+SPGRP    1x_depth                        str
+SPGRPVAL 3                               int
+TILEID   80605                           int
+SPECTRO  6                               int
+PETAL    6                               int
 CHECKSUM AfAMBZ1KAf8KAZ8K                str  HDU checksum updated 2021-07-16T14:01:46
 DATASUM  0                               str  data unit checksum updated 2021-07-16T14:01:46
 FIBERMIN 1000                            int
 INFIL000 spectra-2-545-thru20210510.fits str
+LONGSTRN OGIP 1.0                        str
 ======== =============================== ==== ==============================================
 
 Empty HDU.
@@ -92,6 +98,7 @@ Required Header Keywords
     NAXIS1   387              int  length of dimension 1
     NAXIS2   500              int  length of dimension 2
     ENCODING ascii            str
+    LONGSTRN OGIP 1.0         str
     CHECKSUM H5Z5H5Z3H5Z3H5Z3 str  HDU checksum updated 2021-07-16T14:01:46
     DATASUM  4214162542       str  data unit checksum updated 2021-07-16T14:01:46
     ======== ================ ==== ==============================================
@@ -160,6 +167,10 @@ SHAPE_E2                   float32       Ellipticity component 2 for galaxy mode
 PHOTSYS                    char[1]       N for BASS/MzLS, S for DECam
 PRIORITY_INIT              int64         initial priority
 NUMOBS_INIT                int64         initial number of requested observations
+SV1_DESI_TARGET [1]_       int64
+SV1_BGS_TARGET [1]_        int64
+SV1_MWS_TARGET [1]_        int64
+SV1_SCND_TARGET [1]_       int64
 SV3_DESI_TARGET [1]_       int64
 SV3_BGS_TARGET [1]_        int64
 SV3_MWS_TARGET [1]_        int64
@@ -167,7 +178,7 @@ SV3_SCND_TARGET [1]_       int64
 DESI_TARGET                int64         Dark survey + calibration targeting bits
 BGS_TARGET                 int64         Bright Galaxy Survey targeting bits
 MWS_TARGET                 int64         Milky Way Survey targeting bits
-SCND_TARGET                int64         Secondary targeting bits
+SCND_TARGET [1]_           int64         Secondary targeting bits
 PLATE_RA                   float64       Right Ascension for Platemaker to use [degrees]
 PLATE_DEC                  float64       declination for Platemaker to use [degrees]
 TILEID                     int32

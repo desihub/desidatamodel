@@ -824,13 +824,19 @@ SHAPE_E2              float32
 PHOTSYS               char[1]
 PRIORITY_INIT         int64
 NUMOBS_INIT           int64
+SV1_DESI_TARGET [1]_  int64
+SV1_BGS_TARGET [1]_   int64
+SV1_MWS_TARGET [1]_   int64
+SV1_SCND_TARGET [1]_  int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64
-SCND_TARGET           int64
+SCND_TARGET [1]_      int64
 PLATE_RA              float64
 PLATE_DEC             float64
 ===================== ======= ===== ===========
+
+.. [1] Optional
 
 HDU6
 ----

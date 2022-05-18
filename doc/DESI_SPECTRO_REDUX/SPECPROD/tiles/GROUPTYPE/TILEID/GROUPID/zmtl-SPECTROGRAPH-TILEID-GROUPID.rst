@@ -72,14 +72,18 @@ Name                 Type    Units Description
 RA                   float64 deg   label for field   1
 DEC                  float64 deg   label for field   2
 TARGETID             int64         label for field   3
+SV1_DESI_TARGET [1]_ int64         label for field   4
+SV1_BGS_TARGET [1]_  int64         label for field   5
+SV1_MWS_TARGET [1]_  int64         label for field   6
+SV1_SCND_TARGET [1]_ int64         label for field   7
 SV3_DESI_TARGET [1]_ int64         label for field   4
 SV3_BGS_TARGET [1]_  int64         label for field   5
 SV3_MWS_TARGET [1]_  int64         label for field   6
 SV3_SCND_TARGET [1]_ int64         label for field   7
-DESI_TARGET          int64         label for field   4
-BGS_TARGET           int64         label for field   5
-MWS_TARGET           int64         label for field   6
-SCND_TARGET          int64         label for field   7
+DESI_TARGET [1]_     int64         label for field   4
+BGS_TARGET [1]_      int64         label for field   5
+MWS_TARGET [1]_      int64         label for field   6
+SCND_TARGET  [1]_    int64         label for field   7
 Z                    float64       label for field   8
 ZWARN                int64         label for field   9
 SPECTYPE             char[6]       label for field  10

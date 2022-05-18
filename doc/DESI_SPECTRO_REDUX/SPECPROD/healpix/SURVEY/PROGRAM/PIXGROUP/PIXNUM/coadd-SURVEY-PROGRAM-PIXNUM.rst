@@ -25,7 +25,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    Empty
+HDU00_              IMAGE    Keywords only
 HDU01_ FIBERMAP     BINTABLE fibermap table
 HDU02_ EXP_FIBERMAP BINTABLE *Brief Description*
 HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
@@ -65,13 +65,18 @@ Required Header Keywords
     ======== =========================== ==== ==============================================
     KEY      Example Value               Type Comment
     ======== =========================== ==== ==============================================
-    HPXNSIDE 64                          int
+    SPGRP    healpix                     str
+    SPGRPVAL 32637                       int
     HPXPIXEL 38863                       int
-    HPXNEST  T                           bool
+    HPXNSIDE 64                          int
+    HPXNEST  True                        str
+    SURVEY   special                     str
+    PROGRAM  dark                        str
     CHECKSUM 96ZDB6YB96YBA6YB            str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  0                           str  data unit checksum updated 2021-07-20T01:03:03
     FIBERMIN -513                        int
     INFIL000 spectra-sv1-dark-38863.fits str
+    LONGSTRN OGIP 1.0                    str
     ======== =========================== ==== ==============================================
 
 Empty HDU.

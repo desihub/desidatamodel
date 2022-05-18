@@ -177,4 +177,7 @@ GOALTIME        float64
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+This file is based on the ``guadalupe`` production.  There are minor
+type differences for these columns in both HDU1 and HDU2: ``FAPRGRM``,
+``FAFLAVOR``, ``EBV``, ``EFFTIME_ETC``.  Type warnings about these
+columns should be ignored.

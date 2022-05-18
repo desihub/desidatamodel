@@ -76,7 +76,7 @@ Required Header Keywords
     VCCD     ON                                                           str     True (ON) if CCD voltage is on
     VCCDON   2020-12-15T23:53:35.750066                                   str     Time when CCD voltage was turned on
     VCCDSEC  176016.5                                                     float   [s] CCD on time in seconds
-    EPOCH    2000.0                                                       float   Epoch of observation
+    EQUINOX  2000.0                                                       float   Epoch of observation
     SPECGRPH 7                                                            int     Spectrograph logical name (SP)
     SPECID   8                                                            int     Spectrograph serial number (SM)
     FEEBOX   lbnl067                                                      str     CCD Controller serial number
@@ -198,25 +198,34 @@ Required Header Keywords
     DATASUM  2160869451                                                   str     data unit checksum updated 2021-07-07T19:21:57
     GAINA    1.117                                                        float   e/ADU (gain applied to image)
     SATULEVA 63500.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPA   1.509459292283282                                            float   ADUs (max-min of median overscan per row)
+    OMETHA   AVERAGE                                                      str     use average overscan
     OVERSCNA 1206.913359078118                                            float   ADUs (gain not applied)
     OBSRDNA  3.558675535780629                                            float   electrons (gain is applied)
     SATUELEA 69581.37777790974                                            float   saturation or non lin. level, in electrons
     GAINB    1.117                                                        float   e/ADU (gain applied to image)
     SATULEVB 63700.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPB   1.509459292283282                                            float   ADUs (max-min of median overscan per row)
+    OMETHB   AVERAGE                                                      str     use average overscan
     OVERSCNB 1189.350157243735                                            float   ADUs (gain not applied)
     OBSRDNB  3.332108295076806                                            float   electrons (gain is applied)
     SATUELEB 69824.39587435874                                            float   saturation or non lin. level, in electrons
     GAINC    1.127                                                        float   e/ADU (gain applied to image)
     SATULEVC 59000.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPC   1.509459292283282                                            float   ADUs (max-min of median overscan per row)
+    OMETHC   AVERAGE                                                      str     use average overscan
     OVERSCNC 1194.034420281418                                            float   ADUs (gain not applied)
     OBSRDNC  3.456268545961142                                            float   electrons (gain is applied)
     SATUELEC 65147.32320834284                                            float   saturation or non lin. level, in electrons
     GAIND    1.128                                                        float   e/ADU (gain applied to image)
     SATULEVD 63600.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPD   1.509459292283282                                            float   ADUs (max-min of median overscan per row)
+    OMETHD   AVERAGE                                                      str     use average overscan
     OVERSCND 1177.285142184498                                            float   ADUs (gain not applied)
     OBSRDND  3.211424022833966                                            float   electrons (gain is applied)
     SATUELED 70412.82235961588                                            float   saturation or non lin. level, in electrons
     FIBERMIN 3500                                                         int
+    LONGSTRN OGIP 1.0                                                     str     The OGIP Long String Convention may be used.
     MODULE   CI                                                           str
     FRAMES   None                                                         Unknown
     COSMSPLT F                                                            bool

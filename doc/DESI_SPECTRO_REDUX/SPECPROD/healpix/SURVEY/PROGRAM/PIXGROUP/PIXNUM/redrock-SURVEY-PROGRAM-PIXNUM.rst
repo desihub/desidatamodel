@@ -17,7 +17,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    Empty
+HDU0_               IMAGE    Keywords only
 HDU1_  REDSHIFTS    BINTABLE Table with best fit redshifts
 HDU2_  FIBERMAP     BINTABLE Propagated fibermap file data
 HDU3_  EXP_FIBERMAP BINTABLE *Brief Description*
@@ -41,6 +41,7 @@ Required Header Keywords
     ======== ============= ==== ===============
     KEY      Example Value Type Comment
     ======== ============= ==== ===============
+    LONGSTRN OGIP 1.0      str
     RRVER    0.15.0        str  Redrock version
     TEMNAM00 GALAXY        str
     TEMVER00 2.6           str
@@ -62,6 +63,13 @@ Required Header Keywords
     TEMVER08 0.1           str
     TEMNAM09 STAR:::WD     str
     TEMVER09 0.1           str
+    SPGRP    healpix       str
+    SPGRPVAL 32637         int
+    HPXPIXEL 36637         int
+    HPXNSIDE 64            int
+    HPXNEST  True          str
+    SURVEY   special       str
+    PROGRAM  dark          str
     ======== ============= ==== ===============
 
 Empty HDU.

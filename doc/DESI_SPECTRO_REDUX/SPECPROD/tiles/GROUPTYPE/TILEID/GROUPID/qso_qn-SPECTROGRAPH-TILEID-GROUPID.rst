@@ -69,7 +69,7 @@ DEC                  float64           label for field   3
 Z_NEW                float64           label for field   4
 ZERR_NEW             float32           label for field   5
 SV1_DESI_TARGET [1]_ int64             label for field   6
-DESI_TARGET          int64
+DESI_TARGET [1]_     int64
 COEFFS               float32[10]       label for field   7
 SPECTYPE             char[10]          label for field   8
 Z_RR                 float32           label for field   9

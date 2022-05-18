@@ -17,7 +17,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    *Brief Description*
+HDU0_               IMAGE    Keywords only
 HDU1_  REDSHIFTS    BINTABLE *Brief Description*
 HDU2_  FIBERMAP     BINTABLE *Brief Description*
 HDU3_  EXP_FIBERMAP BINTABLE *Brief Description*
@@ -43,6 +43,7 @@ Required Header Keywords
     ======== ============= ==== ===============
     KEY      Example Value Type Comment
     ======== ============= ==== ===============
+    LONGSTRN OGIP 1.0      str
     RRVER    0.15.0        str  Redrock version
     TEMNAM00 GALAXY        str
     TEMVER00 2.6           str
@@ -64,6 +65,11 @@ Required Header Keywords
     TEMVER08 0.1           str
     TEMNAM09 STAR:::WD     str
     TEMVER09 0.1           str
+    SPGRP    1x_depth      str
+    SPGRPVAL 3             int
+    TILEID   80605         int
+    SPECTRO  6             int
+    PETAL    6             int
     ======== ============= ==== ===============
 
 Empty HDU.
@@ -202,7 +208,7 @@ SV1_SCND_TARGET [1]_       int64
 DESI_TARGET                int64
 BGS_TARGET                 int64
 MWS_TARGET                 int64
-SCND_TARGET                int64
+SCND_TARGET [1]_           int64
 PLATE_RA                   float64
 PLATE_DEC                  float64
 TILEID                     int32

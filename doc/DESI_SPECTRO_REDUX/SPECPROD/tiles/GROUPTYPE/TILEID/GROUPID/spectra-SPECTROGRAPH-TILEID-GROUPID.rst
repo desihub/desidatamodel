@@ -17,7 +17,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    *Brief Description*
+HDU00_              IMAGE    Keywords only
 HDU01_ FIBERMAP     BINTABLE *Brief Description*
 HDU02_ SCORES       BINTABLE *Brief Description*
 HDU03_ B_WAVELENGTH IMAGE    *Brief Description*
@@ -56,6 +56,11 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
+    SPGRP    1x_depth         str
+    SPGRPVAL 3                int
+    TILEID   80605            int
+    SPECTRO  6                int
+    PETAL    6                int
     CHECKSUM cXXRdWUQcWUQcWUQ str  HDU checksum updated 2021-07-15T00:33:13
     DATASUM  0                str  data unit checksum updated 2021-07-15T00:33:13
     ======== ================ ==== ==============================================
@@ -149,6 +154,10 @@ SHAPE_E2              float32
 PHOTSYS               char[1]
 PRIORITY_INIT         int64
 NUMOBS_INIT           int64
+SV1_DESI_TARGET [1]_  int64
+SV1_BGS_TARGET [1]_   int64
+SV1_MWS_TARGET [1]_   int64
+SV1_SCND_TARGET [1]_  int64
 SV3_DESI_TARGET [1]_  int64
 SV3_BGS_TARGET [1]_   int64
 SV3_MWS_TARGET [1]_   int64
@@ -156,7 +165,7 @@ SV3_SCND_TARGET [1]_  int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64
-SCND_TARGET           int64
+SCND_TARGET [1]_      int64
 PLATE_RA              float64
 PLATE_DEC             float64
 NUM_ITER              int64
