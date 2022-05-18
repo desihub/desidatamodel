@@ -158,11 +158,11 @@ FLUX_R                float32 nanomaggies      Flux in r-band
 FLUX_Z                float32 nanomaggies      Flux in z-band
 FLUX_W1               float32 nanomaggies      Flux in WISE W1-band
 FLUX_W2               float32 nanomaggies      Flux in WISE W2-band
-FLUX_IVAR_G           float32 1/nanomaggies**2 Inverse variance of FLUX_G
-FLUX_IVAR_R           float32 1/nanomaggies**2 Inverse variance of FLUX_R
-FLUX_IVAR_Z           float32 1/nanomaggies**2 Inverse variance of FLUX_Z
-FLUX_IVAR_W1          float32 1/nanomaggies**2 Inverse variance of FLUX_W1
-FLUX_IVAR_W2          float32 1/nanomaggies**2 Inverse variance of FLUX_W2
+FLUX_IVAR_G           float32 nanomaggies**-2  Inverse variance of FLUX_G
+FLUX_IVAR_R           float32 nanomaggies**-2  Inverse variance of FLUX_R
+FLUX_IVAR_Z           float32 nanomaggies**-2  Inverse variance of FLUX_Z
+FLUX_IVAR_W1          float32 nanomaggies**-2  Inverse variance of FLUX_W1
+FLUX_IVAR_W2          float32 nanomaggies**-2  Inverse variance of FLUX_W2
 FIBERFLUX_G           float32 nanomaggies      g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
 FIBERFLUX_R           float32 nanomaggies      r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
 FIBERFLUX_Z           float32 nanomaggies      z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
@@ -295,25 +295,25 @@ BRICKID                           int32                    Imaging Surveys brick
 BRICK_OBJID                       int32                    Imaging surveys OBJID on that brick
 TARGET_RA                         float64 deg              Target Right Ascension
 TARGET_DEC                        float64 deg              Target Declination
-TARGET_RA_IVAR                    float32 1/deg**2         Inverse variance of TARGET_RA
-TARGET_DEC_IVAR                   float32 1/deg**2         Inverse variance of TARGET_DEC
+TARGET_RA_IVAR                    float32 deg**-2          Inverse variance of TARGET_RA
+TARGET_DEC_IVAR                   float32 deg**-2          Inverse variance of TARGET_DEC
 MORPHTYPE                         char[4]                  Imaging surveys morphological type
 MASKBITS                          int16                    Bitwise mask from the imaging indicating potential issue or blending
 FLUX_G                            float32 nanomaggies      Flux in g-band
 FLUX_R                            float32 nanomaggies      Flux in r-band
 FLUX_Z                            float32 nanomaggies      Flux in z-band
-FLUX_IVAR_G                       float32 1/nanomaggies**2 Inverse variance of FLUX_G
-FLUX_IVAR_R                       float32 1/nanomaggies**2 Inverse variance of FLUX_R
-FLUX_IVAR_Z                       float32 1/nanomaggies**2 Inverse variance of FLUX_Z
+FLUX_IVAR_G                       float32 nanomaggies**-2  Inverse variance of FLUX_G
+FLUX_IVAR_R                       float32 nanomaggies**-2  Inverse variance of FLUX_R
+FLUX_IVAR_Z                       float32 nanomaggies**-2  Inverse variance of FLUX_Z
 REF_ID                            int64                    Astrometric catalog reference ID (SOURCE_ID from Gaia and SGA; built from TYC1, TYC2, TYC3 for Tycho2)
 REF_CAT                           char[2]                  Reference catalog source for this star
 REF_EPOCH                         float32 yr               Reference catalog reference epoch
 PARALLAX                          float32 mas              Reference catalog parallax
-PARALLAX_IVAR                     float32 1/mas**2         Inverse variance of PARALLAX
+PARALLAX_IVAR                     float32 mas**-2          Inverse variance of PARALLAX
 PMRA                              float32 mas/yr           Proper motion in the RA direction (already including cosDEC term)
 PMDEC                             float32 mas/yr           Proper motion in the DEC direction
-PMRA_IVAR                         float32 1/(mas/yr)**2    Inverse variance of PMRA
-PMDEC_IVAR                        float32 1/(mas/yr)**2    Inverse variance of PMDEC
+PMRA_IVAR                         float32 (mas/yr)**-2     Inverse variance of PMRA
+PMDEC_IVAR                        float32 (mas/yr)**-2     Inverse variance of PMDEC
 GAIA_PHOT_G_MEAN_MAG              float32 mag              Gaia G band mag
 GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32                  Gaia G band signal-to-noise
 GAIA_PHOT_BP_MEAN_MAG             float32 mag              Gaia BP band mag
