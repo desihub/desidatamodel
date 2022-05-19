@@ -555,6 +555,18 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         self.assertLog(log, -1, "Comparing %s to %s." % (f.prototype, modelfile))
 
+    def test_validate_prototype_variable_columns(self):
+        """Test the data model validation method with variable-size columns.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_variable_columns.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        self.assertEqual(f.hdumeta['Galaxies']['format'][0][1], 'char[*]')
+        f.validate_prototype()
+        self.assertLog(log, -1, "File %s HDU1 column target has an acceptable variable-length string according to %s." % (f.prototype, modelfile))
+
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.
         """

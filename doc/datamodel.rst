@@ -171,3 +171,31 @@ Optional HDUs
 +++++++++++++
 
 This is a work in progress.
+
+Strings
++++++++
+
+Depending on how data sets are collated, it sometimes happens that sets of
+strings may be written out to FITS files with different lengths.
+
+For example, data sets A and B are supposedly identical (same columns,
+same types, etc.).  However set A has a string-valued column ``NAME`` that has values
+from the set ``{'one', 'two', 'three'}``, while in set B the same column has
+values from the set ``{'one', 'two', 'six'}``.  When written out, file A
+has the ``NAME`` column represented as ``char[5]`` (``5A`` in FITS notation), while file B
+has the same column represented as ``char[3]`` (``3A``).
+
+To account for differences like this, one can use::
+
+    Required Data Table Columns
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    ========= ======== ===== ===========
+    Name      Type     Units Description
+    ========= ======== ===== ===========
+    ...
+    NAME      char[*]
+    ...
+    ========= ======== ===== ===========
+
+to represent the fact that the actual length of the string doesn't matter.

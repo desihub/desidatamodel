@@ -548,8 +548,12 @@ class DataModel(DataModelUnit):
                     mcol_type = [tmp[1] for tmp in mexf if tmp[0].split()[0] == column][0]
                     dcol_type = [tmp[1] for tmp in dexf if tmp[0] == column][0]
                     if mcol_type != dcol_type:
-                        log.warning("File %s HDU%d column %s has different type according to %s (%s != %s).",
-                                    self.prototype, i, column, self.filename, dcol_type, mcol_type)
+                        if mcol_type == 'char[*]' and dcol_type[:4] == 'char':
+                            log.debug("File %s HDU%d column %s has an acceptable variable-length string according to %s.",
+                                      self.prototype, i, column, self.filename)
+                        else:
+                            log.warning("File %s HDU%d column %s has different type according to %s (%s != %s).",
+                                        self.prototype, i, column, self.filename, dcol_type, mcol_type)
                     #
                     # Compare unit
                     #

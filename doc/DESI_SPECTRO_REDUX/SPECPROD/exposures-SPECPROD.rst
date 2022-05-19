@@ -71,8 +71,8 @@ TILEDEC                float64
 MJD                    float64
 SURVEY                 char[7]
 PROGRAM                char[6]
-FAPRGRM                char[6]
-FAFLAVOR               char[13]
+FAPRGRM                char[*]
+FAFLAVOR               char[*]
 EXPTIME                float64
 EFFTIME_SPEC           float64
 GOALTIME               float64
