@@ -382,7 +382,7 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[0]['keywords'].append(('BUNIT', 'erg', 'str', 'This is a test.'))
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "File {0} HDU0 extra keywords according to {1}: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits')))
 
     def test_validate_prototype_hdu_keyword_type_mismatch(self):
         """Test the data model validation method with a keyword type mismatch.
@@ -406,8 +406,8 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[0]['keywords'][-1] = ('BUNIT', 'erg', 'str', 'This is a test.')
         f.validate_prototype(error=True)
-        self.assertLog(log, -2, "File {0} HDU0 missing keywords according to {1}: {{'BZERO'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
-        self.assertLog(log, -1, "File {0} HDU0 extra keywords according to {1}: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -2, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits')))
+        self.assertLog(log, -1, "Model file {0} has these keywords in HDU0 missing from data: {{'BZERO'}}".format(modelfile))
 
     def test_validate_prototype_hdu_extension_type(self):
         """Test the data model validation method with wrong HDU extension type.
@@ -529,6 +529,19 @@ class TestCheck(DataModelTestCase):
         f.hdumeta['Galaxies']['format'][1] = ('V_mag', 'float32', 'counts', '')
         f.validate_prototype()
         self.assertLog(log, -1, "File %s HDU%d column %s has different units according to %s (%s != %s)." % (f.prototype, 1, 'V_mag', modelfile, 'mag', 'counts'))
+
+    def test_validate_prototype_optional_keywords(self):
+        """Test the data model validation method with optional keywords.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f.extract_metadata()
+        self.assertEqual(f.hdumeta['PRIMARY']['keywords'][4][0], 'OPTKEY1 [1]_')
+        self.assertEqual(f.hdumeta['PRIMARY']['keywords'][5][0], 'OPTKEY2 [1]_')
+        f.validate_prototype()
+        self.assertLog(log, -1, "Comparing %s to %s." % (f.prototype, modelfile))
 
     def test_validate_prototype_optional_columns(self):
         """Test the data model validation method with optional columns.

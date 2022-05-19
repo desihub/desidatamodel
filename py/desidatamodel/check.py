@@ -468,29 +468,22 @@ class DataModel(DataModelUnit):
             # Compare keywords
             #
             if not skip_keywords:
-                dkw = stub_meta[i]['keywords']
-                mkw = modelhdumeta['keywords']
-                mkw_set = set([tmp[0] for tmp in mkw])
-                dkw_set = set([tmp[0] for tmp in dkw])
-                missing_keywords = mkw_set - dkw_set
-                extra_keywords = dkw_set - mkw_set
-                if len(missing_keywords) > 0:
-                    log.warning(
-                        "File %s HDU%d missing keywords according to %s: %s",
-                        self.prototype, i, self.filename, str(missing_keywords)
-                    )
-                if len(extra_keywords) > 0:
-                    log.warning(
-                        "File %s HDU%d extra keywords according to %s: %s",
-                        self.prototype, i, self.filename, str(extra_keywords)
-                    )
+                data_keywords = set([tmp[0] for tmp in stub_meta[i]['keywords']])
+                model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' not in tmp[0]])
+                optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' in tmp[0]])
+                if len(data_keywords - (model_keywords | optional_keywords)) > 0:
+                    log.warning('Prototype file %s has these keywords in HDU%d missing from model: %s',
+                                self.prototype, i, str(data_keywords - model_keywords))
+                if len(model_keywords - data_keywords) > 0:
+                    log.warning('Model file %s has these keywords in HDU%d missing from data: %s',
+                                self.filename, i, str(model_keywords - data_keywords))
                 #
                 # Compare the keywords that are in both sets.
                 #
-                common_keywords = mkw_set & dkw_set
+                common_keywords = data_keywords & (model_keywords | optional_keywords)
                 for kw in common_keywords:
-                    mkw_type = [tmp[2] for tmp in mkw if tmp[0] == kw][0]
-                    dkw_type = [tmp[2] for tmp in dkw if tmp[0] == kw][0]
+                    mkw_type = [tmp[2] for tmp in modelhdumeta['keywords'] if tmp[0].split()[0] == kw][0]
+                    dkw_type = [tmp[2] for tmp in stub_meta[i]['keywords'] if tmp[0] == kw][0]
                     if mkw_type != dkw_type:
                         log.warning("File %s HDU%d keyword %s has different keyword type according to %s (%s != %s).",
                                     self.prototype, i, kw, self.filename, dkw_type, mkw_type)
@@ -529,9 +522,9 @@ class DataModel(DataModelUnit):
                                 self.prototype, i, self.filename)
             else:
                 dexf = dexf[1:]  # Get rid of header line.
-                datacolumns = set([tmp[0] for tmp in dexf])
-                modelcolumns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' not in tmp[0]])
-                optionalcolumns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' in tmp[0]])
+                data_columns = set([tmp[0] for tmp in dexf])
+                model_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' not in tmp[0]])
+                optional_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' in tmp[0]])
                 #
                 # Do we really care if the number of columns is off?
                 # We want all of the required columns to be there, but some or all
@@ -541,13 +534,13 @@ class DataModel(DataModelUnit):
                 #     log.warning("Prototype file %s has the wrong " +
                 #                 "number of HDU%d columns according to %s.",
                 #                 self.prototype, i, self.filename)
-                if len(datacolumns - (modelcolumns | optionalcolumns)) > 0:
+                if len(data_columns - (model_columns | optional_columns)) > 0:
                     log.warning('Prototype file %s has these columns in HDU%d missing from model: %s',
-                                self.prototype, i, str(datacolumns - modelcolumns))
-                if len(modelcolumns - datacolumns) > 0:
+                                self.prototype, i, str(data_columns - model_columns))
+                if len(model_columns - data_columns) > 0:
                     log.warning('Model file %s has these columns in HDU%d missing from data: %s',
-                                self.filename, i, str(modelcolumns - datacolumns))
-                common_columns = datacolumns & (modelcolumns | optionalcolumns)
+                                self.filename, i, str(model_columns - data_columns))
+                common_columns = data_columns & (model_columns | optional_columns)
                 for column in common_columns:
                     #
                     # Compare type

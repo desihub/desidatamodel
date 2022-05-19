@@ -226,6 +226,8 @@ TSNR2_QSO                  float32           label for field 122
 TSNR2_LRG                  float32           label for field 123
 SV_NSPEC [1]_              int32
 SV_PRIMARY [1]_            logical
+MAIN_SPEC [1]_             int32
+MAIN_PRIMARY [1]_          logical
 ZCAT_NSPEC                 int16
 ZCAT_PRIMARY               logical
 ========================== =========== ===== ===================

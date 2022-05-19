@@ -101,6 +101,7 @@ Required Header Keywords
     NAXIS1   341              int  length of dimension 1
     NAXIS2   514              int  length of dimension 2
     ENCODING ascii            str
+    LONGSTRN OGIP 1.0         str
     CHECKSUM 4aNU7WKR4aKR4UKR str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  4121667036       str  data unit checksum updated 2021-07-20T01:03:03
     ======== ================ ==== ==============================================

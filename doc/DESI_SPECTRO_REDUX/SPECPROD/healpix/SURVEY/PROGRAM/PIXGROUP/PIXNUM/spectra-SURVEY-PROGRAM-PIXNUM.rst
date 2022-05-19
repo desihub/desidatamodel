@@ -54,9 +54,13 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
+    SPGRP    healpixel        str
+    SPGRPVAL 26371            int
+    HPXPIXEL 26371            int
     HPXNSIDE 64               int
-    HPXPIXEL 12081            int
-    HPXNEST  T                bool
+    HPXNEST  True             str
+    SURVEY   main             str
+    PROGRAM  bright           str
     CHECKSUM 8DPU9BMR8BMR8BMR str  HDU checksum updated 2021-07-19T17:59:29
     DATASUM  0                str  data unit checksum updated 2021-07-19T17:59:29
     ======== ================ ==== ==============================================
