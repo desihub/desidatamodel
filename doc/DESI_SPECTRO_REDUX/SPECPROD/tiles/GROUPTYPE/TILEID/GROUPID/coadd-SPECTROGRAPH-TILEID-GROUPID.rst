@@ -61,20 +61,21 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-======== =============================== ==== ==============================================
-KEY      Example Value                   Type Comment
-======== =============================== ==== ==============================================
-SPGRP    1x_depth                        str
-SPGRPVAL 3                               int
-TILEID   80605                           int
-SPECTRO  6                               int
-PETAL    6                               int
-CHECKSUM AfAMBZ1KAf8KAZ8K                str  HDU checksum updated 2021-07-16T14:01:46
-DATASUM  0                               str  data unit checksum updated 2021-07-16T14:01:46
-FIBERMIN 1000                            int
-INFIL000 spectra-2-545-thru20210510.fits str
-LONGSTRN OGIP 1.0                        str
-======== =============================== ==== ==============================================
+    ========== =============================== ==== ==============================================
+    KEY        Example Value                   Type Comment
+    ========== =============================== ==== ==============================================
+    SPGRP      1x_depth                        str
+    SPGRPVAL   3                               int
+    NIGHT [1]_ 20210708                        int
+    TILEID     80605                           int
+    SPECTRO    6                               int
+    PETAL      6                               int
+    CHECKSUM   AfAMBZ1KAf8KAZ8K                str  HDU checksum updated 2021-07-16T14:01:46
+    DATASUM    0                               str  data unit checksum updated 2021-07-16T14:01:46
+    FIBERMIN   1000                            int
+    INFIL000   spectra-2-545-thru20210510.fits str
+    LONGSTRN   OGIP 1.0                        str
+    ========== =============================== ==== ==============================================
 
 Empty HDU.
 

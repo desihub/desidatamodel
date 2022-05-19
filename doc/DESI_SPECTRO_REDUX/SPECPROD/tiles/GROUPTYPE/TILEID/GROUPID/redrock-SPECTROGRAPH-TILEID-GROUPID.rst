@@ -40,37 +40,38 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ==== ===============
-    KEY      Example Value Type Comment
-    ======== ============= ==== ===============
-    LONGSTRN OGIP 1.0      str
-    RRVER    0.15.0        str  Redrock version
-    TEMNAM00 GALAXY        str
-    TEMVER00 2.6           str
-    TEMNAM01 QSO           str
-    TEMVER01 0.1           str
-    TEMNAM02 STAR:::A      str
-    TEMVER02 0.1           str
-    TEMNAM03 STAR:::B      str
-    TEMVER03 0.1           str
-    TEMNAM04 STAR:::CV     str
-    TEMVER04 0.1           str
-    TEMNAM05 STAR:::F      str
-    TEMVER05 0.1           str
-    TEMNAM06 STAR:::G      str
-    TEMVER06 0.1           str
-    TEMNAM07 STAR:::K      str
-    TEMVER07 0.1           str
-    TEMNAM08 STAR:::M      str
-    TEMVER08 0.1           str
-    TEMNAM09 STAR:::WD     str
-    TEMVER09 0.1           str
-    SPGRP    1x_depth      str
-    SPGRPVAL 3             int
-    TILEID   80605         int
-    SPECTRO  6             int
-    PETAL    6             int
-    ======== ============= ==== ===============
+    ========== ============= ==== ===============
+    KEY        Example Value Type Comment
+    ========== ============= ==== ===============
+    LONGSTRN   OGIP 1.0      str
+    RRVER      0.15.0        str  Redrock version
+    TEMNAM00   GALAXY        str
+    TEMVER00   2.6           str
+    TEMNAM01   QSO           str
+    TEMVER01   0.1           str
+    TEMNAM02   STAR:::A      str
+    TEMVER02   0.1           str
+    TEMNAM03   STAR:::B      str
+    TEMVER03   0.1           str
+    TEMNAM04   STAR:::CV     str
+    TEMVER04   0.1           str
+    TEMNAM05   STAR:::F      str
+    TEMVER05   0.1           str
+    TEMNAM06   STAR:::G      str
+    TEMVER06   0.1           str
+    TEMNAM07   STAR:::K      str
+    TEMVER07   0.1           str
+    TEMNAM08   STAR:::M      str
+    TEMVER08   0.1           str
+    TEMNAM09   STAR:::WD     str
+    TEMVER09   0.1           str
+    SPGRP      1x_depth      str
+    SPGRPVAL   3             int
+    TILEID     80605         int
+    SPECTRO    6             int
+    PETAL      6             int
+    NIGHT [1]_ 20210708      int
+    ========== ============= ==== ===============
 
 Empty HDU.
 

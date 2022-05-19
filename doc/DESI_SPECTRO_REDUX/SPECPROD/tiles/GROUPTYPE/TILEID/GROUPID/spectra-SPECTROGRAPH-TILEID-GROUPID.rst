@@ -53,17 +53,18 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ================ ==== ==============================================
-    KEY      Example Value    Type Comment
-    ======== ================ ==== ==============================================
-    SPGRP    1x_depth         str
-    SPGRPVAL 3                int
-    TILEID   80605            int
-    SPECTRO  6                int
-    PETAL    6                int
-    CHECKSUM cXXRdWUQcWUQcWUQ str  HDU checksum updated 2021-07-15T00:33:13
-    DATASUM  0                str  data unit checksum updated 2021-07-15T00:33:13
-    ======== ================ ==== ==============================================
+    ========== ================ ==== ==============================================
+    KEY        Example Value    Type Comment
+    ========== ================ ==== ==============================================
+    SPGRP      1x_depth         str
+    SPGRPVAL   3                int
+    NIGHT [1]_ 20210708         int
+    TILEID     80605            int
+    SPECTRO    6                int
+    PETAL      6                int
+    CHECKSUM   cXXRdWUQcWUQcWUQ str  HDU checksum updated 2021-07-15T00:33:13
+    DATASUM    0                str  data unit checksum updated 2021-07-15T00:33:13
+    ========== ================ ==== ==============================================
 
 Empty HDU.
 
