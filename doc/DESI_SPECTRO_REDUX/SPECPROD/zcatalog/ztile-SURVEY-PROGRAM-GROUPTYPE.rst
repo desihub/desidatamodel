@@ -52,6 +52,7 @@ Required Header Keywords
     ======== ============= ==== =======================
     NAXIS1   677           int  width of table in bytes
     NAXIS2   5000          int  number of rows in table
+    LONGSTRN OGIP 1.0      str
     RRVER    0.15.0        str  Redrock version
     TEMNAM00 GALAXY        str
     TEMVER00 2.6           str
@@ -73,6 +74,9 @@ Required Header Keywords
     TEMVER08 0.1           str
     TEMNAM09 STAR:::WD     str
     TEMVER09 0.1           str
+    SPGRP    cumulative    str
+    SURVEY   special       str
+    PROGRAM  dark          str
     ======== ============= ==== =======================
 
 Required Data Table Columns
@@ -84,6 +88,8 @@ Required Data Table Columns
 Name                       Type        Units Description
 ========================== =========== ===== ===================
 TARGETID                   int64             ID (unique to file? and the whole survey?)
+SURVEY [1]_                char[7]
+PROGRAM [1]_               char[6]
 LASTNIGHT                  int32
 SPGRPVAL                   int32
 Z                          float64           label for field   4
@@ -151,6 +157,7 @@ PARALLAX                   float32           Reference catalog parallax
 PHOTSYS                    char[1]           'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT              int64             label for field  65
 NUMOBS_INIT                int64             label for field  66
+CMX_TARGET [1]_            int64             Target selection bitmask for commissioning
 SV1_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV1
 SV1_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV1
 SV1_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV1
@@ -159,6 +166,10 @@ SV2_DESI_TARGET [1]_       int64             DESI (dark time program) target sel
 SV2_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV2
 SV2_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV2
 SV2_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV2
+SV3_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV3
 DESI_TARGET                int64             DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64             BGS (bright time program) target selection bitmask
 MWS_TARGET                 int64             MWS (bright time program) target selection bitmask
@@ -213,6 +224,8 @@ TSNR2_BGS                  float32           label for field 120
 TSNR2_GPBBACKUP            float32           label for field 121
 TSNR2_QSO                  float32           label for field 122
 TSNR2_LRG                  float32           label for field 123
+SV_NSPEC [1]_              int32
+SV_PRIMARY [1]_            logical
 ZCAT_NSPEC                 int16
 ZCAT_PRIMARY               logical
 ========================== =========== ===== ===================

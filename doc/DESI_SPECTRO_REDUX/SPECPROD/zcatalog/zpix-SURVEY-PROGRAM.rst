@@ -51,6 +51,7 @@ Required Header Keywords
     ======== ============= ==== =======================
     NAXIS1   631           int  width of table in bytes
     NAXIS2   139728        int  number of rows in table
+    LONGSTRN OGIP 1.0      str
     RRVER    0.15.0        str  Redrock version
     TEMNAM00 GALAXY        str
     TEMVER00 2.6           str
@@ -72,6 +73,11 @@ Required Header Keywords
     TEMVER08 0.1           str
     TEMNAM09 STAR:::WD     str
     TEMVER09 0.1           str
+    SPGRP    healpix       str
+    HPXNSIDE 64            int
+    HPXNEST  True          str
+    SURVEY   sv2           str
+    PROGRAM  dark          str
     ======== ============= ==== =======================
 
 Required Data Table Columns
@@ -83,6 +89,8 @@ Required Data Table Columns
 Name                       Type        Units Description
 ========================== =========== ===== ===================
 TARGETID                   int64             ID (unique to file? and the whole survey?)
+SURVEY [1]_                char[7]
+PROGRAM [1]_               char[6]
 HEALPIX                    int32
 SPGRPVAL                   int32
 Z                          float64           label for field   4
@@ -142,14 +150,19 @@ PARALLAX                   float32           Reference catalog parallax
 PHOTSYS                    char[1]           'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT              int64             label for field  57
 NUMOBS_INIT                int64             label for field  58
-SV1_DESI_TARGET            int64             DESI (dark time program) target selection bitmask for SV1
-SV1_BGS_TARGET             int64             BGS (bright time program) target selection bitmask for SV1
-SV1_MWS_TARGET             int64             MWS (bright time program) target selection bitmask for SV1
-SV1_SCND_TARGET            int64             Secondary target selection bitmask for SV1
-SV2_DESI_TARGET            int64             DESI (dark time program) target selection bitmask for SV2
-SV2_BGS_TARGET             int64             BGS (bright time program) target selection bitmask for SV2
-SV2_MWS_TARGET             int64             MWS (bright time program) target selection bitmask for SV2
-SV2_SCND_TARGET            int64             Secondary target selection bitmask for SV2
+CMX_TARGET [1]_            int64             Target selection bitmask for commissioning
+SV1_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV1
+SV2_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV2
+SV2_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV2
+SV2_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV2
+SV2_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV2
+SV3_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV3
 DESI_TARGET                int64             DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64             BGS (bright time program) target selection bitmask
 MWS_TARGET                 int64             MWS (bright time program) target selection bitmask
@@ -201,10 +214,13 @@ TSNR2_BGS                  float32           label for field 109
 TSNR2_GPBBACKUP            float32           label for field 110
 TSNR2_QSO                  float32           label for field 111
 TSNR2_LRG                  float32           label for field 112
+SV_NSPEC [1]_              int32
+SV_PRIMARY [1]_            logical
 ZCAT_NSPEC                 int32
 ZCAT_PRIMARY               logical
 ========================== =========== ===== ===================
 
+.. [1] Optional
 .. _`LS`: https://www.legacysurvey.org/
 .. _`DR9 bitmasks page`: https://www.legacysurvey.org/dr9/bitmasks
 .. _`ellipticity component`: https://www.legacysurvey.org/dr9/catalogs/#ellipticities
