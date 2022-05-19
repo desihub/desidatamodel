@@ -164,7 +164,8 @@ Here is an example using table columns::
 
 Note how ``.. [1] Optional`` is added to the bottom.  This keeps Sphinx from
 complaining about undefined footnotes, but also makes it easy for humans to
-see what this notation means.
+see what this notation means.  ``.. [1] Optional`` only needs to be added
+once per file, not once per table.
 
 Optional HDUs
 +++++++++++++

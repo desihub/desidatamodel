@@ -47,37 +47,37 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ==== =======================
-    KEY      Example Value Type Comment
-    ======== ============= ==== =======================
-    NAXIS1   677           int  width of table in bytes
-    NAXIS2   5000          int  number of rows in table
-    LONGSTRN OGIP 1.0      str
-    RRVER    0.15.0        str  Redrock version
-    TEMNAM00 GALAXY        str
-    TEMVER00 2.6           str
-    TEMNAM01 QSO           str
-    TEMVER01 0.1           str
-    TEMNAM02 STAR:::A      str
-    TEMVER02 0.1           str
-    TEMNAM03 STAR:::B      str
-    TEMVER03 0.1           str
-    TEMNAM04 STAR:::CV     str
-    TEMVER04 0.1           str
-    TEMNAM05 STAR:::F      str
-    TEMVER05 0.1           str
-    TEMNAM06 STAR:::G      str
-    TEMVER06 0.1           str
-    TEMNAM07 STAR:::K      str
-    TEMVER07 0.1           str
-    TEMNAM08 STAR:::M      str
-    TEMVER08 0.1           str
-    TEMNAM09 STAR:::WD     str
-    TEMVER09 0.1           str
-    SPGRP    cumulative    str
-    SURVEY   special       str
-    PROGRAM  dark          str
-    ======== ============= ==== =======================
+    ============ ============= ==== =======================
+    KEY          Example Value Type Comment
+    ============ ============= ==== =======================
+    NAXIS1       677           int  width of table in bytes
+    NAXIS2       5000          int  number of rows in table
+    LONGSTRN     OGIP 1.0      str
+    RRVER        0.15.0        str  Redrock version
+    TEMNAM00     GALAXY        str
+    TEMVER00     2.6           str
+    TEMNAM01     QSO           str
+    TEMVER01     0.1           str
+    TEMNAM02     STAR:::A      str
+    TEMVER02     0.1           str
+    TEMNAM03     STAR:::B      str
+    TEMVER03     0.1           str
+    TEMNAM04     STAR:::CV     str
+    TEMVER04     0.1           str
+    TEMNAM05     STAR:::F      str
+    TEMVER05     0.1           str
+    TEMNAM06     STAR:::G      str
+    TEMVER06     0.1           str
+    TEMNAM07     STAR:::K      str
+    TEMVER07     0.1           str
+    TEMNAM08     STAR:::M      str
+    TEMVER08     0.1           str
+    TEMNAM09     STAR:::WD     str
+    TEMVER09     0.1           str
+    SPGRP        cumulative    str
+    SURVEY [1]_  special       str
+    PROGRAM [1]_ dark          str
+    ============ ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,7 +226,7 @@ TSNR2_QSO                  float32           label for field 122
 TSNR2_LRG                  float32           label for field 123
 SV_NSPEC [1]_              int32
 SV_PRIMARY [1]_            logical
-MAIN_SPEC [1]_             int32
+MAIN_NSPEC [1]_            int32
 MAIN_PRIMARY [1]_          logical
 ZCAT_NSPEC                 int16
 ZCAT_PRIMARY               logical
