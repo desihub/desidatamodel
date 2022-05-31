@@ -5,7 +5,7 @@ PROTODESI_GFA
 :Summary: GFA images for ProtoDESI, including guider "postage stamps". Should we also save full frame images?
 :Naming Convention: ``PROTODESI_GFA[01]G_roi_[0-9]{8}_[0-9]{4}\.fits``.
 :Regex: ``PROTODESI_GFA[01]G_roi_[0-9]{8}_[0-9]{4}\.fits``
-
+:File Type: FITS
 
 Contents
 ========

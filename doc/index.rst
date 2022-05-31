@@ -24,6 +24,7 @@ for testing.
    $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
    $SURVEYOPS : data files used for day-to-day survey operations <SURVEYOPS/index>
    datamodel
+   api
    changes
 
 Imaging data and their catalogs are documented separately by the

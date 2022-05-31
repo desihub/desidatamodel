@@ -37,18 +37,14 @@ EXTNAME = PRIMARY
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. collapse:: Required Header Keywords Table
-
-    .. rst-class:: keywords
-
-    ====== ============= ==== ====================================
-    KEY    Example Value Type Comment
-    ====== ============= ==== ====================================
-    NAXIS1 100           int
-    NAXIS2 100           int
-    BSCALE 1             int
-    BZERO  32768         int  Data are really unsigned 16-bit int.
-    ====== ============= ==== ====================================
+====== ============= ==== ====================================
+KEY    Example Value Type Comment
+====== ============= ==== ====================================
+NAXIS1 100           int
+NAXIS2 100           int
+BSCALE 1             int
+BZERO  32768         int  Data are really unsigned 16-bit int.
+====== ============= ==== ====================================
 
 Data: FITS image [int16, 100x100]
 
@@ -64,8 +60,6 @@ Required Header Keywords
 
 .. collapse:: Required Header Keywords Table
 
-    .. rst-class:: keywords
-
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
@@ -75,8 +69,6 @@ Required Header Keywords
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. rst-class:: columns
 
 ====== ======== ===== ===========
 Name   Type     Units Description

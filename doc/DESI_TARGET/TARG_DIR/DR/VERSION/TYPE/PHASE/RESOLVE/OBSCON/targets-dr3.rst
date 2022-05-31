@@ -10,6 +10,7 @@ targets-\*.fits
     input data came from (*e.g.* 'dr1', 'dr2') and ``version`` is the code version
     that wrote this, preferably a git tag of desitargets.
 :Regex: ``targets-dr[0-9]+-v?[0-9]+\.[0-9]+(\.[0-9]+|)\.fits``
+:File Type: FITS
 
 Contents
 ========
