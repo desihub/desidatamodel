@@ -2,9 +2,14 @@
 desidatamodel Change Log
 ========================
 
-22.1 (unreleased)
+22.2 (2022-05-31)
 -----------------
 
+* Updates for ``fuji`` and ``guadalupe`` reductions (PR `#102`_). Includes support for:
+    * Variable-length string-valued columns.
+    * Cross references to HDUs in other data models.
+    * Notation for optional header keywords and columns.
+    * Improved visual styling for header keyword and column description tables.
 * Add data model for MTL ledgers (PR `#101`_).
 * Migrated to GitHub Actions for testing.
 * Update :doc:`DESI_SPECTRO_DATA <DESI_SPECTRO_DATA/index>` model based on
@@ -32,6 +37,7 @@ desidatamodel Change Log
 .. _`#93`: https://github.com/desihub/desidatamodel/pull/93
 .. _`#94`: https://github.com/desihub/desidatamodel/pull/94
 .. _`#101`: https://github.com/desihub/desidatamodel/pull/101
+.. _`#102`: https://github.com/desihub/desidatamodel/pull/102
 
 19.2 (2019-10-01)
 ------------------
