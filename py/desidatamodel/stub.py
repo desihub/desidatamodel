@@ -11,6 +11,7 @@ import os
 import re
 from html import escape
 from astropy.io import fits
+from astropy.io.fits.card import Undefined
 
 from desiutil.log import log, DEBUG
 
@@ -330,25 +331,31 @@ class Stub(DataModelUnit):
         return ' '.join(['{{{0:d}:{1:d}}}'.format(i, s)
                          for i, s in enumerate(sizes)])
 
-    def format_table(self, table):
+    def format_table(self, table, indent=False):
         """Convert tabular data into reStructuredText-compatible string.
 
         Parameters
         ----------
         table : :class:`list`
             A data table.
+        indent : :class:`bool`
+            If ``True``, indent the table for compatibility with
+            collapsible tables.
 
         Returns
         -------
         :class:`list`
             A list of strings that can be joined.
         """
+        spaces = ''
+        if indent:
+            spaces = '    '
         sizes = self.colsizes(table)
-        highlight = self.highlight(sizes)
-        colformat = self.colformat(sizes)
+        highlight = spaces + self.highlight(sizes)
+        colformat = spaces + self.colformat(sizes)
         t = [highlight]
         for k in range(len(table)):
-            t.append(colformat.format(*table[k]).strip())
+            t.append(colformat.format(*table[k]).rstrip())
             if k == 0:
                 t.append(highlight)
         t.append(highlight)
@@ -386,7 +393,11 @@ class Stub(DataModelUnit):
             s.append('Required Header Keywords')
             s.append('~~~~~~~~~~~~~~~~~~~~~~~~')
             s.append('')
-            s += self.format_table(self.keywords(hdu))
+            s.append('.. collapse:: Required Header Keywords Table')
+            s.append('')
+            s.append('    .. rst-class:: keywords')
+            s.append('')
+            s += self.format_table(self.keywords(hdu), indent=True)
         else:
             s.append('This HDU has no non-standard required keywords.')
         s.append('')
@@ -396,6 +407,8 @@ class Stub(DataModelUnit):
         if self.hdumeta[hdu]['extension'] == 'BINTABLE':
             s.append('Required Data Table Columns')
             s.append('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            s.append('')
+            s.append('.. rst-class:: columns')
             s.append('')
             s += self.format_table(self.hdumeta[hdu]['format'])
         else:
@@ -613,7 +626,7 @@ def extract_keywords(hdr):
             if isinstance(value, float):
                 value = str(value)
                 ktype = 'float'
-            if value is None:
+            if isinstance(value, (Undefined, type(None))):
                 log.error("Empty header keyword %s detected! This violates the FITS standard!", key)
                 value = 'None'
                 ktype = 'Unknown'

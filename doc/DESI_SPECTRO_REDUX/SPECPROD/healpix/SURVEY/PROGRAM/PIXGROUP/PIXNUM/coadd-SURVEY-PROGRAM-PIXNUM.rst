@@ -7,7 +7,7 @@ coadd-SURVEY-PROGRAM-PIXNUM.fits
 :Naming Convention: ``coadd-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
     and ``PIXNUM`` is the HEALPixel number.
-:Regex: ``coadd-(main|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
+:Regex: ``coadd-(cmx|main|special|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
 :File Type: FITS, 219 MB
 
 This file follows nearly the same format as the
@@ -25,7 +25,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    Empty
+HDU00_              IMAGE    Keywords only
 HDU01_ FIBERMAP     BINTABLE fibermap table
 HDU02_ EXP_FIBERMAP BINTABLE *Brief Description*
 HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
@@ -58,17 +58,26 @@ HEALPixel keywords.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== =========================== ==== ==============================================
-KEY      Example Value               Type Comment
-======== =========================== ==== ==============================================
-HPXNSIDE 64                          int
-HPXPIXEL 38863                       int
-HPXNEST  T                           bool
-CHECKSUM 96ZDB6YB96YBA6YB            str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  0                           str  data unit checksum updated 2021-07-20T01:03:03
-FIBERMIN -513                        int
-INFIL000 spectra-sv1-dark-38863.fits str
-======== =========================== ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== =========================== ==== ==============================================
+    KEY      Example Value               Type Comment
+    ======== =========================== ==== ==============================================
+    SPGRP    healpix                     str
+    SPGRPVAL 32637                       int
+    HPXPIXEL 38863                       int
+    HPXNSIDE 64                          int
+    HPXNEST  True                        str
+    SURVEY   special                     str
+    PROGRAM  dark                        str
+    CHECKSUM 96ZDB6YB96YBA6YB            str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  0                           str  data unit checksum updated 2021-07-20T01:03:03
+    FIBERMIN -513                        int
+    INFIL000 spectra-sv1-dark-38863.fits str
+    LONGSTRN OGIP 1.0                    str
+    ======== =========================== ==== ==============================================
 
 Empty HDU.
 
@@ -82,18 +91,25 @@ fibermap table with two additional columns NIGHT and EXPID.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   341              int  length of dimension 1
-NAXIS2   514              int  length of dimension 2
-ENCODING ascii            str
-CHECKSUM 4aNU7WKR4aKR4UKR str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  4121667036       str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   341              int  length of dimension 1
+    NAXIS2   514              int  length of dimension 2
+    ENCODING ascii            str
+    LONGSTRN OGIP 1.0         str
+    CHECKSUM 4aNU7WKR4aKR4UKR str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  4121667036       str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========================== ======= ===== =====================================================
 Name                       Type    Units Description
@@ -146,13 +162,14 @@ SHAPE_E2                   float32       Ellipticity component 2 for galaxy mode
 PHOTSYS                    char[1]       N for BASS/MzLS, S for DECam
 PRIORITY_INIT              int64         initial priority
 NUMOBS_INIT                int64         initial number of requested observations
-SV1_DESI_TARGET            int64
-SV1_BGS_TARGET             int64
-SV1_MWS_TARGET             int64
-SV1_SCND_TARGET            int64
+SV1_DESI_TARGET [1]_       int64
+SV1_BGS_TARGET [1]_        int64
+SV1_MWS_TARGET [1]_        int64
+SV1_SCND_TARGET [1]_       int64
 DESI_TARGET                int64         Dark survey + calibration targeting bits
 BGS_TARGET                 int64         Bright Galaxy Survey targeting bits
 MWS_TARGET                 int64         Milky Way Survey targeting bits
+SCND_TARGET                int64         Secondary targeting bits
 PLATE_RA                   float64       Right Ascension for Platemaker to use [degrees]
 PLATE_DEC                  float64       declination for Platemaker to use [degrees]
 COADD_NUMEXP               int16
@@ -170,6 +187,8 @@ STD_FIBER_DEC              float32
 MEAN_PSF_TO_FIBER_SPECFLUX float32
 ========================== ======= ===== =====================================================
 
+.. [1] Optional
+
 HDU02
 -----
 
@@ -180,18 +199,24 @@ EXTNAME = EXP_FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   162              int  length of dimension 1
-NAXIS2   7112             int  length of dimension 2
-ENCODING ascii            str
-CHECKSUM g3Nmh2Nlg2Nlg2Nl str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  3607867694       str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   162              int  length of dimension 1
+    NAXIS2   7112             int  length of dimension 2
+    ENCODING ascii            str
+    CHECKSUM g3Nmh2Nlg2Nlg2Nl str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  3607867694       str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===============================================
 Name                  Type    Units Description
@@ -234,14 +259,18 @@ Wavelength[nwave] array in Angstroms of b-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-BUNIT    Angstrom         str
-CHECKSUM 9FJDF9H99CHCC9H9 str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  979185614        str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    BUNIT    Angstrom         str
+    CHECKSUM 9FJDF9H99CHCC9H9 str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  979185614        str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2751]
 
@@ -255,15 +284,19 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of b-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================ ==== ==============================================
-KEY      Example Value                Type Comment
-======== ============================ ==== ==============================================
-NAXIS1   2751                         int
-NAXIS2   514                          int
-BUNIT    10**-17 erg/(s cm2 Angstrom) str
-CHECKSUM KdcnKccnKccnKccn             str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  1454063034                   str  data unit checksum updated 2021-07-20T01:03:03
-======== ============================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================ ==== ==============================================
+    KEY      Example Value                Type Comment
+    ======== ============================ ==== ==============================================
+    NAXIS1   2751                         int
+    NAXIS2   514                          int
+    BUNIT    10**-17 erg/(s cm2 Angstrom) str
+    CHECKSUM KdcnKccnKccnKccn             str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  1454063034                   str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 2751x514]
 
@@ -277,15 +310,19 @@ Inverse variance of b-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================================= ==== ==============================================
-KEY      Example Value                     Type Comment
-======== ================================= ==== ==============================================
-NAXIS1   2751                              int
-NAXIS2   514                               int
-BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
-CHECKSUM 1AE635E61AE613E6                  str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  2902189966                        str  data unit checksum updated 2021-07-20T01:03:03
-======== ================================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================================= ==== ==============================================
+    KEY      Example Value                     Type Comment
+    ======== ================================= ==== ==============================================
+    NAXIS1   2751                              int
+    NAXIS2   514                               int
+    BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+    CHECKSUM 1AE635E61AE613E6                  str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  2902189966                        str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================================= ==== ==============================================
 
 Data: FITS image [float32, 2751x514]
 
@@ -299,16 +336,20 @@ Mask[nspec,nwave] of b-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-NAXIS2   514              int
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM 78fA97f677fA77f3 str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  707110           str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    NAXIS2   514              int
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM 78fA97f677fA77f3 str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  707110           str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2751x514]
 
@@ -322,15 +363,19 @@ Diagonals of b-channel resolution matrix
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-NAXIS2   11               int
-NAXIS3   514              int
-CHECKSUM 4q1B4o094o0A4o09 str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  1510900028       str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    NAXIS2   11               int
+    NAXIS3   514              int
+    CHECKSUM 4q1B4o094o0A4o09 str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  1510900028       str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2751x11x514]
 
@@ -357,14 +402,18 @@ Wavelength[nwave] array in Angstroms of r-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2326             int
-BUNIT    Angstrom         str
-CHECKSUM 9JTAFHQ79HQACHQ7 str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  456732359        str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2326             int
+    BUNIT    Angstrom         str
+    CHECKSUM 9JTAFHQ79HQACHQ7 str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  456732359        str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2326]
 
@@ -378,15 +427,19 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of r-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================ ==== ==============================================
-KEY      Example Value                Type Comment
-======== ============================ ==== ==============================================
-NAXIS1   2326                         int
-NAXIS2   514                          int
-BUNIT    10**-17 erg/(s cm2 Angstrom) str
-CHECKSUM PCCbR99bPACbP99b             str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  54356891                     str  data unit checksum updated 2021-07-20T01:03:03
-======== ============================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================ ==== ==============================================
+    KEY      Example Value                Type Comment
+    ======== ============================ ==== ==============================================
+    NAXIS1   2326                         int
+    NAXIS2   514                          int
+    BUNIT    10**-17 erg/(s cm2 Angstrom) str
+    CHECKSUM PCCbR99bPACbP99b             str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  54356891                     str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 2326x514]
 
@@ -400,15 +453,19 @@ Mask[nspec,nwave] of r-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================================= ==== ==============================================
-KEY      Example Value                     Type Comment
-======== ================================= ==== ==============================================
-NAXIS1   2326                              int
-NAXIS2   514                               int
-BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
-CHECKSUM GeBDGZ9DGbADGZ7D                  str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  789948970                         str  data unit checksum updated 2021-07-20T01:03:03
-======== ================================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================================= ==== ==============================================
+    KEY      Example Value                     Type Comment
+    ======== ================================= ==== ==============================================
+    NAXIS1   2326                              int
+    NAXIS2   514                               int
+    BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+    CHECKSUM GeBDGZ9DGbADGZ7D                  str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  789948970                         str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================================= ==== ==============================================
 
 Data: FITS image [float32, 2326x514]
 
@@ -422,16 +479,20 @@ Mask[nspec,nwave] of r-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   514              int
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM T5gdV3dcT3dcT3dc str  HDU checksum updated 2021-07-20T01:03:03
-DATASUM  598689           str  data unit checksum updated 2021-07-20T01:03:03
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2326             int
+    NAXIS2   514              int
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM T5gdV3dcT3dcT3dc str  HDU checksum updated 2021-07-20T01:03:03
+    DATASUM  598689           str  data unit checksum updated 2021-07-20T01:03:03
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2326x514]
 
@@ -447,15 +508,19 @@ See B_RESOLUTION HDU for description of the format.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2326             int
-NAXIS2   11               int
-NAXIS3   514              int
-CHECKSUM DkAIDj3GDjAGDj3G str  HDU checksum updated 2021-07-20T01:03:04
-DATASUM  1927301622       str  data unit checksum updated 2021-07-20T01:03:04
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2326             int
+    NAXIS2   11               int
+    NAXIS3   514              int
+    CHECKSUM DkAIDj3GDjAGDj3G str  HDU checksum updated 2021-07-20T01:03:04
+    DATASUM  1927301622       str  data unit checksum updated 2021-07-20T01:03:04
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2326x11x514]
 
@@ -469,14 +534,18 @@ Wavelength[nwave] array in Angstroms of z-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2881             int
-BUNIT    Angstrom         str
-CHECKSUM iaWMkYVMiaVMiYVM str  HDU checksum updated 2021-07-20T01:03:04
-DATASUM  3106662670       str  data unit checksum updated 2021-07-20T01:03:04
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2881             int
+    BUNIT    Angstrom         str
+    CHECKSUM iaWMkYVMiaVMiYVM str  HDU checksum updated 2021-07-20T01:03:04
+    DATASUM  3106662670       str  data unit checksum updated 2021-07-20T01:03:04
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2881]
 
@@ -490,15 +559,19 @@ Flux[nspec,nwave] array in 1e-17 erg/(s cm2 Angstrom) of z-channel spectra
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================ ==== ==============================================
-KEY      Example Value                Type Comment
-======== ============================ ==== ==============================================
-NAXIS1   2881                         int
-NAXIS2   514                          int
-BUNIT    10**-17 erg/(s cm2 Angstrom) str
-CHECKSUM 0aea1VdZ0Zda0ZdY             str  HDU checksum updated 2021-07-20T01:03:04
-DATASUM  1889497861                   str  data unit checksum updated 2021-07-20T01:03:04
-======== ============================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================ ==== ==============================================
+    KEY      Example Value                Type Comment
+    ======== ============================ ==== ==============================================
+    NAXIS1   2881                         int
+    NAXIS2   514                          int
+    BUNIT    10**-17 erg/(s cm2 Angstrom) str
+    CHECKSUM 0aea1VdZ0Zda0ZdY             str  HDU checksum updated 2021-07-20T01:03:04
+    DATASUM  1889497861                   str  data unit checksum updated 2021-07-20T01:03:04
+    ======== ============================ ==== ==============================================
 
 Data: FITS image [float32, 2881x514]
 
@@ -512,15 +585,19 @@ Inverse variance of z-channel flux array
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================================= ==== ==============================================
-KEY      Example Value                     Type Comment
-======== ================================= ==== ==============================================
-NAXIS1   2881                              int
-NAXIS2   514                               int
-BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
-CHECKSUM ni6Dpi3Cni3Cni3C                  str  HDU checksum updated 2021-07-20T01:03:04
-DATASUM  105099897                         str  data unit checksum updated 2021-07-20T01:03:04
-======== ================================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================================= ==== ==============================================
+    KEY      Example Value                     Type Comment
+    ======== ================================= ==== ==============================================
+    NAXIS1   2881                              int
+    NAXIS2   514                               int
+    BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
+    CHECKSUM ni6Dpi3Cni3Cni3C                  str  HDU checksum updated 2021-07-20T01:03:04
+    DATASUM  105099897                         str  data unit checksum updated 2021-07-20T01:03:04
+    ======== ================================= ==== ==============================================
 
 Data: FITS image [float32, 2881x514]
 
@@ -534,16 +611,20 @@ Mask[nspec,nwave] of z-channel flux array.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2881             int
-NAXIS2   514              int
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM X6iYY4gYX4gYX4gY str  HDU checksum updated 2021-07-20T01:03:04
-DATASUM  740483           str  data unit checksum updated 2021-07-20T01:03:04
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2881             int
+    NAXIS2   514              int
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM X6iYY4gYX4gYX4gY str  HDU checksum updated 2021-07-20T01:03:04
+    DATASUM  740483           str  data unit checksum updated 2021-07-20T01:03:04
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2881x514]
 
@@ -559,15 +640,19 @@ See B_RESOLUTION HDU for description of the format.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2881             int
-NAXIS2   11               int
-NAXIS3   514              int
-CHECKSUM oocZpnbYonbYonbY str  HDU checksum updated 2021-07-20T01:03:04
-DATASUM  1564215354       str  data unit checksum updated 2021-07-20T01:03:04
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2881             int
+    NAXIS2   11               int
+    NAXIS3   514              int
+    CHECKSUM oocZpnbYonbYonbY str  HDU checksum updated 2021-07-20T01:03:04
+    DATASUM  1564215354       str  data unit checksum updated 2021-07-20T01:03:04
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2881x11x514]
 
@@ -581,18 +666,24 @@ EXTNAME = SCORES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   172              int  length of dimension 1
-NAXIS2   514              int  length of dimension 2
-ENCODING ascii            str
-CHECKSUM XQAAZP89XPAAXP79 str  HDU checksum updated 2021-07-20T01:03:05
-DATASUM  3357773203       str  data unit checksum updated 2021-07-20T01:03:05
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   172              int  length of dimension 1
+    NAXIS2   514              int  length of dimension 2
+    ENCODING ascii            str
+    CHECKSUM XQAAZP89XPAAXP79 str  HDU checksum updated 2021-07-20T01:03:05
+    DATASUM  3357773203       str  data unit checksum updated 2021-07-20T01:03:05
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 =================== ======= ===== ============================================
 Name                Type    Units Description

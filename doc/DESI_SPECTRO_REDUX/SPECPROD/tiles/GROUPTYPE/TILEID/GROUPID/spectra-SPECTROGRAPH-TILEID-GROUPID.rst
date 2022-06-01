@@ -8,7 +8,7 @@ spectra-SPECTROGRAPH-TILEID-GROUPID.fits
 :Naming Convention: ``spectra-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
-:Regex: ``spectra-[0-9]-[0-9]+-([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
+:Regex: ``spectra-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 198 MB
 
 Contents
@@ -17,7 +17,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU00_              IMAGE    *Brief Description*
+HDU00_              IMAGE    Keywords only
 HDU01_ FIBERMAP     BINTABLE *Brief Description*
 HDU02_ SCORES       BINTABLE *Brief Description*
 HDU03_ B_WAVELENGTH IMAGE    *Brief Description*
@@ -49,12 +49,22 @@ HDU00
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-CHECKSUM cXXRdWUQcWUQcWUQ str  HDU checksum updated 2021-07-15T00:33:13
-DATASUM  0                str  data unit checksum updated 2021-07-15T00:33:13
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ========== ================ ==== ==============================================
+    KEY        Example Value    Type Comment
+    ========== ================ ==== ==============================================
+    SPGRP      1x_depth         str
+    SPGRPVAL   3                int
+    NIGHT [1]_ 20210708         int
+    TILEID     80605            int
+    SPECTRO    6                int
+    PETAL      6                int
+    CHECKSUM   cXXRdWUQcWUQcWUQ str  HDU checksum updated 2021-07-15T00:33:13
+    DATASUM    0                str  data unit checksum updated 2021-07-15T00:33:13
+    ========== ================ ==== ==============================================
 
 Empty HDU.
 
@@ -68,17 +78,23 @@ EXTNAME = FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   413              int  length of dimension 1
-NAXIS2   500              int  length of dimension 2
-CHECKSUM TcPqUbPoTbPoTbPo str  HDU checksum updated 2021-07-15T00:33:13
-DATASUM  1051947488       str  data unit checksum updated 2021-07-15T00:33:13
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   413              int  length of dimension 1
+    NAXIS2   500              int  length of dimension 2
+    CHECKSUM TcPqUbPoTbPoTbPo str  HDU checksum updated 2021-07-15T00:33:13
+    DATASUM  1051947488       str  data unit checksum updated 2021-07-15T00:33:13
+    ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===========
 Name                  Type    Units Description
@@ -139,13 +155,18 @@ SHAPE_E2              float32
 PHOTSYS               char[1]
 PRIORITY_INIT         int64
 NUMOBS_INIT           int64
-SV3_DESI_TARGET       int64
-SV3_BGS_TARGET        int64
-SV3_MWS_TARGET        int64
-SV3_SCND_TARGET       int64
+SV1_DESI_TARGET [1]_  int64
+SV1_BGS_TARGET [1]_   int64
+SV1_MWS_TARGET [1]_   int64
+SV1_SCND_TARGET [1]_  int64
+SV3_DESI_TARGET [1]_  int64
+SV3_BGS_TARGET [1]_   int64
+SV3_MWS_TARGET [1]_   int64
+SV3_SCND_TARGET [1]_  int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64
+SCND_TARGET [1]_      int64
 PLATE_RA              float64
 PLATE_DEC             float64
 NUM_ITER              int64
@@ -163,6 +184,8 @@ MJD                   float64
 TILEID                int32
 ===================== ======= ===== ===========
 
+.. [1] Optional
+
 HDU02
 -----
 
@@ -173,15 +196,21 @@ EXTNAME = SCORES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 488           int  width of table in bytes
-NAXIS2 500           int  number of rows in table
-====== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =======================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =======================
+    NAXIS1 488           int  width of table in bytes
+    NAXIS2 500           int  number of rows in table
+    ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===================
 Name                  Type    Units Description
@@ -259,12 +288,16 @@ EXTNAME = B_WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2751          int  length of data axis 1
-BUNIT  Angstrom      str
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2751          int  length of data axis 1
+    BUNIT  Angstrom      str
+    ====== ============= ==== =====================
 
 Data: FITS image [float64, 2751]
 
@@ -278,13 +311,17 @@ EXTNAME = B_FLUX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============================ ==== =====================
-KEY    Example Value                Type Comment
-====== ============================ ==== =====================
-NAXIS1 2751                         int  length of data axis 1
-NAXIS2 500                          int  length of data axis 2
-BUNIT  10**-17 erg/(s cm2 Angstrom) str
-====== ============================ ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============================ ==== =====================
+    KEY    Example Value                Type Comment
+    ====== ============================ ==== =====================
+    NAXIS1 2751                         int  length of data axis 1
+    NAXIS2 500                          int  length of data axis 2
+    BUNIT  10**-17 erg/(s cm2 Angstrom) str
+    ====== ============================ ==== =====================
 
 Data: FITS image [float32, 2751x500]
 
@@ -298,13 +335,17 @@ EXTNAME = B_IVAR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ================================= ==== =====================
-KEY    Example Value                     Type Comment
-====== ================================= ==== =====================
-NAXIS1 2751                              int  length of data axis 1
-NAXIS2 500                               int  length of data axis 2
-BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
-====== ================================= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ================================= ==== =====================
+    KEY    Example Value                     Type Comment
+    ====== ================================= ==== =====================
+    NAXIS1 2751                              int  length of data axis 1
+    NAXIS2 500                               int  length of data axis 2
+    BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
+    ====== ================================= ==== =====================
 
 Data: FITS image [float32, 2751x500]
 
@@ -318,14 +359,18 @@ EXTNAME = B_MASK
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== ==========================================
-KEY    Example Value Type Comment
-====== ============= ==== ==========================================
-NAXIS1 8             int  width of table in bytes
-NAXIS2 500           int  number of rows in table
-BZERO  2147483648    int  offset data range to that of unsigned long
-BSCALE 1             int  default scaling factor
-====== ============= ==== ==========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== ==========================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ==========================================
+    NAXIS1 8             int  width of table in bytes
+    NAXIS2 500           int  number of rows in table
+    BZERO  2147483648    int  offset data range to that of unsigned long
+    BSCALE 1             int  default scaling factor
+    ====== ============= ==== ==========================================
 
 Data: FITS image [int32 (compressed), 2751x500]
 
@@ -339,13 +384,17 @@ EXTNAME = B_RESOLUTION
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2751          int  length of data axis 1
-NAXIS2 11            int  length of data axis 2
-NAXIS3 500           int  length of data axis 3
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2751          int  length of data axis 1
+    NAXIS2 11            int  length of data axis 2
+    NAXIS3 500           int  length of data axis 3
+    ====== ============= ==== =====================
 
 Data: FITS image [float32, 2751x11x500]
 
@@ -359,12 +408,16 @@ EXTNAME = R_WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2326          int  length of data axis 1
-BUNIT  Angstrom      str
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2326          int  length of data axis 1
+    BUNIT  Angstrom      str
+    ====== ============= ==== =====================
 
 Data: FITS image [float64, 2326]
 
@@ -378,13 +431,17 @@ EXTNAME = R_FLUX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============================ ==== =====================
-KEY    Example Value                Type Comment
-====== ============================ ==== =====================
-NAXIS1 2326                         int  length of data axis 1
-NAXIS2 500                          int  length of data axis 2
-BUNIT  10**-17 erg/(s cm2 Angstrom) str
-====== ============================ ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============================ ==== =====================
+    KEY    Example Value                Type Comment
+    ====== ============================ ==== =====================
+    NAXIS1 2326                         int  length of data axis 1
+    NAXIS2 500                          int  length of data axis 2
+    BUNIT  10**-17 erg/(s cm2 Angstrom) str
+    ====== ============================ ==== =====================
 
 Data: FITS image [float32, 2326x500]
 
@@ -398,13 +455,17 @@ EXTNAME = R_IVAR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ================================= ==== =====================
-KEY    Example Value                     Type Comment
-====== ================================= ==== =====================
-NAXIS1 2326                              int  length of data axis 1
-NAXIS2 500                               int  length of data axis 2
-BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
-====== ================================= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ================================= ==== =====================
+    KEY    Example Value                     Type Comment
+    ====== ================================= ==== =====================
+    NAXIS1 2326                              int  length of data axis 1
+    NAXIS2 500                               int  length of data axis 2
+    BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
+    ====== ================================= ==== =====================
 
 Data: FITS image [float32, 2326x500]
 
@@ -418,14 +479,18 @@ EXTNAME = R_MASK
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== ==========================================
-KEY    Example Value Type Comment
-====== ============= ==== ==========================================
-NAXIS1 8             int  width of table in bytes
-NAXIS2 500           int  number of rows in table
-BZERO  2147483648    int  offset data range to that of unsigned long
-BSCALE 1             int  default scaling factor
-====== ============= ==== ==========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== ==========================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ==========================================
+    NAXIS1 8             int  width of table in bytes
+    NAXIS2 500           int  number of rows in table
+    BZERO  2147483648    int  offset data range to that of unsigned long
+    BSCALE 1             int  default scaling factor
+    ====== ============= ==== ==========================================
 
 Data: FITS image [int32 (compressed), 2326x500]
 
@@ -439,13 +504,17 @@ EXTNAME = R_RESOLUTION
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2326          int  length of data axis 1
-NAXIS2 11            int  length of data axis 2
-NAXIS3 500           int  length of data axis 3
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2326          int  length of data axis 1
+    NAXIS2 11            int  length of data axis 2
+    NAXIS3 500           int  length of data axis 3
+    ====== ============= ==== =====================
 
 Data: FITS image [float32, 2326x11x500]
 
@@ -459,12 +528,16 @@ EXTNAME = Z_WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2881          int  length of data axis 1
-BUNIT  Angstrom      str
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2881          int  length of data axis 1
+    BUNIT  Angstrom      str
+    ====== ============= ==== =====================
 
 Data: FITS image [float64, 2881]
 
@@ -478,13 +551,17 @@ EXTNAME = Z_FLUX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============================ ==== =====================
-KEY    Example Value                Type Comment
-====== ============================ ==== =====================
-NAXIS1 2881                         int  length of data axis 1
-NAXIS2 500                          int  length of data axis 2
-BUNIT  10**-17 erg/(s cm2 Angstrom) str
-====== ============================ ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============================ ==== =====================
+    KEY    Example Value                Type Comment
+    ====== ============================ ==== =====================
+    NAXIS1 2881                         int  length of data axis 1
+    NAXIS2 500                          int  length of data axis 2
+    BUNIT  10**-17 erg/(s cm2 Angstrom) str
+    ====== ============================ ==== =====================
 
 Data: FITS image [float32, 2881x500]
 
@@ -498,13 +575,17 @@ EXTNAME = Z_IVAR
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ================================= ==== =====================
-KEY    Example Value                     Type Comment
-====== ================================= ==== =====================
-NAXIS1 2881                              int  length of data axis 1
-NAXIS2 500                               int  length of data axis 2
-BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
-====== ================================= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ================================= ==== =====================
+    KEY    Example Value                     Type Comment
+    ====== ================================= ==== =====================
+    NAXIS1 2881                              int  length of data axis 1
+    NAXIS2 500                               int  length of data axis 2
+    BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
+    ====== ================================= ==== =====================
 
 Data: FITS image [float32, 2881x500]
 
@@ -518,14 +599,18 @@ EXTNAME = Z_MASK
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== ==========================================
-KEY    Example Value Type Comment
-====== ============= ==== ==========================================
-NAXIS1 8             int  width of table in bytes
-NAXIS2 500           int  number of rows in table
-BZERO  2147483648    int  offset data range to that of unsigned long
-BSCALE 1             int  default scaling factor
-====== ============= ==== ==========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== ==========================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ==========================================
+    NAXIS1 8             int  width of table in bytes
+    NAXIS2 500           int  number of rows in table
+    BZERO  2147483648    int  offset data range to that of unsigned long
+    BSCALE 1             int  default scaling factor
+    ====== ============= ==== ==========================================
 
 Data: FITS image [int32 (compressed), 2881x500]
 
@@ -539,13 +624,17 @@ EXTNAME = Z_RESOLUTION
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 2881          int  length of data axis 1
-NAXIS2 11            int  length of data axis 2
-NAXIS3 500           int  length of data axis 3
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 2881          int  length of data axis 1
+    NAXIS2 11            int  length of data axis 2
+    NAXIS3 500           int  length of data axis 3
+    ====== ============= ==== =====================
 
 Data: FITS image [float32, 2881x11x500]
 

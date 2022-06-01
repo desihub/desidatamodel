@@ -8,9 +8,10 @@ EXPID
     cframe-CAMERA-EXPID
     exposure-qa-EXPID
     fiberflat-CAMERA-EXPID
-    fit-psf-before-blacklisted-fix-CAMERA-EXPID
+    fiberflatexp-CAMERA-EXPID
     fit-psf-CAMERA-EXPID
-    fit-psf-fixed-blacklisted-CAMERA-EXPID
+    fit-psf-before-listed-fix-CAMERA-EXPID
+    fit-psf-fixed-listed-CAMERA-EXPID
     fluxcalib-CAMERA-EXPID
     frame-CAMERA-EXPID
     psf-CAMERA-EXPID
