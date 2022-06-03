@@ -53,21 +53,21 @@ Required Data Table Columns
 ============= ======== ===== ============================
 Name          Type     Units Description
 ============= ======== ===== ============================
-RA            float64  deg   Right Ascension
-DEC           float64  deg   Declination
-TARGETID      int64          Unique ID
-DESI_TARGET   int64          Mask bit if in DESI survey
-BGS_TARGET    int64          Mask bit if BGS survey
-MWS_TARGET    int64          Mask bin if MW Survey
-SUBPRIORITY   float64        Subpriority
-PRIORITY_INIT int64          Initial priority
-TARGET_STATE  char[30]
-TIMESTAMP     char[25]
-ZWARN_MTL     int64
-PRIORITY      int64
-FIBER         int32          Fiber ID
-LOCATION      int32          Location
-TILEID        int64          Tile ID
+RA            float64  deg   Taken from target ledger at TIMESTAMP (link)
+DEC           float64  deg   ""
+TARGETID      int64          ""
+DESI_TARGET   int64          ""
+BGS_TARGET    int64          ""
+MWS_TARGET    int64          ""
+SUBPRIORITY   float64        ""
+PRIORITY_INIT int64          ""
+TARGET_STATE  char[30]       "" 
+TIMESTAMP     char[25]       ""
+ZWARN_MTL     int64          ""
+PRIORITY      int64          ""
+FIBER         int32          Taken from POTENTIAL_ASSIGNMENTS HDU of fiberassign (link)
+LOCATION      int32          ""
+TILEID        int64          Tile ID in the file name of the fiberassign file
 ============= ======== ===== ============================
 
 
