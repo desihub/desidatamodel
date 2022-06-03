@@ -54,7 +54,7 @@ Required Data Table Columns
 ========================== =========== ===== ==================
 Name                       Type        Units Description
 ========================== =========== ===== ==================
-RA                         float64     deg   Taken from ledger of targets at timestamp of fiberassign file; see ledger description (link)
+RA                         float64     deg   Taken from target ledger at TIMESTAMP (link)
 DEC                        float64     deg   ""
 TARGETID                   int64             ""
 DESI_TARGET                int64             ""
@@ -110,7 +110,7 @@ TSNR2_LYA                  float32           ""
 TSNR2_BGS                  float32           ""
 TSNR2_QSO                  float32           ""
 TSNR2_LRG                  float32           ""
-ZWARN_MTL                  int64             ZWARN flag from ledger of targets at timestamp of fiberassign file; see ledger description (link)
+ZWARN_MTL                  int64             ZWARN flag taken from target ledger at TIMESTAMP (link)
 Z_QN                       float64           column shouldn't be in this file Z if QUASAR
 Z_QN_CONF                  float64           column shouldn't be in this file Confidence of QSO
 IS_QSO_QN                  int16             column shouldn't be in this file If it is QSO
