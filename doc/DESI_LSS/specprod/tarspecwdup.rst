@@ -3,7 +3,7 @@ tarspecwdup
 ==============================
 
 :Summary: Match of targets (with duplicates after FA) with spectroscopic data from the
-         specprod (either daily or everest...)
+         specprod (fuji/guadalupe for SV3/DA02)
 :Naming Convention: ``datcomb_{program}_tarspecwdup_{tag}.fits``, where ``{program}``
                     is dark or bright, ``{tag}`` is a string identifier
 :Regex: ``datcomb_[a-z]_tarspecwdup_[a-z]\.fits``
