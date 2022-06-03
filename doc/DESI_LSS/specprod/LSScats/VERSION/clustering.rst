@@ -5,7 +5,7 @@ clustering
 :Summary: Final clustering catalog that should be used for xi statistics, including
           completeness weights and vetomasks
 :Naming Convention: ``{target}_{reg}_clustering.dat.fits``, where ``{target}``
-                    is the target type (LRG, ELG...), and ``{reg}`` can be S,N or non-exist
+                    is the target type (LRG, ELG...), and ``{reg}`` can be S, or N 
 :Regex: ``[a-zA-Z]_[A-Z]_clustering\.dat\.fits``
 :File Type: FITS, 20 MB  
 
@@ -57,21 +57,23 @@ Required Data Table Columns
 =============== ======== ===== ======================================
 Name            Type     Units Description
 =============== ======== ===== ======================================
-RA              float64  deg   Right Ascension
-DEC             float64  deg   Declination
-TARGETID        int64          Unique Target ID
-Z               float64        Redshift
-NTILE           int64          Number of tiles
-TILES           char[]         List of tiles observed, separated by -
-COMP_TILE       float64        Tile completeness
+RA              float64  deg   From target files (link)
+DEC             float64  deg   ""
+TARGETID        int64          ""
+Z               float64        Redshift redrock or quasar catalog
+NTILE           int64          Number of tiles target was reachable on
+TILES           char[]         List of tiles target was reachable on, separated by -
+COMP_TILE       float64        Completeness within the tile group given in TILES
 rosette_number  float64        Rosette number
 rosette_r       float64        Distance to center of rosette
-FRACZ_TILELOCID float64        Fraction of good locations
-BITWEIGHTS      int64[2]       PIP bitwise weight
-PROB_OBS        float64        Probability of being observed AltMTL
-WEIGHT_ZFAIL    float32        Redshift failure weight
-WEIGHT          float32        Total weight
-NZ              float64        N(z) contribution of source
+FRACZ_TILELOCID float64        Of observed targets at the given TILELOCID
+BITWEIGHTS      int64[2]       PIP bitwise weight from AltMTL run
+PROB_OBS        float64        Probability of being observed in AltMTL runs
+WEIGHT_ZFAIL    float32        Weight to correct for variations in redshift success
+WEIGHT_COMP     float32        Weight to correct for assignment incompleteness
+WEIGHT_SYS      float32        Weight to correct for variations in projected density due to photometry
+WEIGHT          float32        Total weight for selection function variations
+NZ              float64        comoving n(z) estimate assuming complete sample
 WEIGHT_FKP      float64        FKP weight
 =============== ======== ===== ======================================
 
