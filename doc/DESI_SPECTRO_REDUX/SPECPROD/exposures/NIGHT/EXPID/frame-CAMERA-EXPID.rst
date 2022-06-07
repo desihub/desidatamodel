@@ -39,505 +39,386 @@ Extracted electrons[nspec, nwave]
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ===================================================================== ======= ===============================================
-KEY      Example Value                                                         Type    Comment
-======== ===================================================================== ======= ===============================================
-NAXIS1   2751                                                                  int     Number of wavelengths
-NAXIS2   500                                                                   int     Number of spectra
-EXPID    77755                                                                 int     Exposure number
-EXPFRAME 0                                                                     int     Frame number
-FRAMES   None                                                                  Unknown Number of Frames in Archive
-TILEID   80818                                                                 int     DESI Tile ID
-FIBASSGN /data/tiles/SVN_tiles/080/fiberassign-080818.fits.gz                  str     Fiber assign
-FLAVOR   science                                                               str     Observation type
-SEQUENCE DESI                                                                  str     OCS Sequence name
-PURPOSE  SV                                                                    str     Purpose of observing night
-PROGRAM  Dither fibermode tile 80818 (110.36, 78.76)                           str     Program name
-PROPID   2019B-5000                                                            str     Proposal ID
-OBSERVER Antonella Palmese                                                     str     Names of observers
-LEAD     Ann Elliott                                                           str     Lead observer
-INSTRUME DESI                                                                  str     Instrument name
-OBSERVAT KPNO                                                                  str     Observatory name
-OBS-LAT  31.96403                                                              str     [deg] Observatory latitude
-OBS-LONG -111.59989                                                            str     [deg] Observatory east longitude
-OBS-ELEV 2097.0                                                                float   [m] Observatory elevation
-TELESCOP KPNO 4.0-m telescope                                                  str     Telescope name
-CORRCTOR DESI Corrector                                                        str     Corrector Identification
-NIGHT    20210223                                                              int     Observing night
-TIMESYS  UTC                                                                   str     Time system used for date-obs
-DATE-OBS 2021-02-24T06:21:55.373451008                                         str     [UTC] Observation data and start tim
-TIME-OBS 2021-02-23T06:21:55.373451008                                         str     [UTC] Observation start time
-MJD-OBS  59269.26522423                                                        float   Modified Julian Date of observation
-OPENSHUT None                                                                  Unknown Time shutter opened
-ST       09:12:55.689999                                                       str     Local Sidereal time at observation start (HH:MM
-EXPTIME  180.034                                                               float   [s] Actual exposure time
-REQRA    110.36                                                                float   [deg] Requested right ascension (observer input
-REQDEC   78.76                                                                 float   [deg] Requested declination (observer input)
-FOCUS    1117.7,-820.8,-60.5,15.2,30.4,201.4                                   str     Telescope focus settings
-VCCD     ON                                                                    str     True (ON) if CCD voltage is on
-VCCDON   2021-02-12T20:17:35.596905                                            str     Time when CCD voltage was turned on
-VCCDSEC  986896.6                                                              float   [s] CCD on time in seconds
-TRUSTEMP 11.7                                                                  float   [deg] Average Telescope truss temperature (only
-PMIRTEMP 10.225                                                                float   [deg] Average primary mirror temperature (nit,e
-EPOCH    2000.0                                                                float   Epoch of observation
-MOUNTAZ  353.114997                                                            float   [deg] Mount azimuth angle
-MOUNTDEC 78.77085                                                              float   [deg] Mount declination
-MOUNTEL  41.759267                                                             float   [deg] Mount elevation angle
-MOUNTHA  27.3357                                                               float   [deg] Mount hour angle
-SKYDEC   78.77085                                                              float   [deg] Telescope declination (pointing on sky)
-SKYRA    110.326029                                                            float   [deg] Telescope right ascension (pointing on sk
-TARGTDEC 78.77085                                                              float   [deg] Target declination (to TCS)
-TARGTRA  110.326029                                                            float   [deg] Target right ascension (to TCS)
-USEETC   F                                                                     bool    ETC data available if true
-USESKY   T                                                                     bool    DOS Control: use Sky Monitor
-USEFOCUS T                                                                     bool    DOS Control: use focus
-HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                                               str     Hexapod trim values
-USEROTAT T                                                                     bool    DOS Control: use rotator
-ROTOFFST 198.4                                                                 float   [arcsec] Rotator offset
-ROTENBLD T                                                                     bool    Rotator enabled
-ROTRATE  0.0                                                                   float   [arcsec/min] Rotator rate
-USEGUIDR T                                                                     bool    DOS Control: use guider
-USEDONUT T                                                                     bool    DOS Control: use donuts
-SPECGRPH 7                                                                     int     Spectrograph logical name (SP)
-SPECID   8                                                                     int     Spectrograph serial number (SM)
-FEEBOX   lbnl067                                                               str     CCD Controller serial number
-VESSEL   25                                                                    int     Cryostat serial number
-FEEVER   v20160312                                                             str     CCD Controller version
-FEEPOWER ON                                                                    str     FEE power status
-FEEDMASK 2134851391                                                            int     FEE dac mask
-FEECMASK 1048575                                                               int     FEE clk mask
-CCDTEMP  850.0                                                                 float   [deg C] CCD controller CCD temperature
-RADESYS  FK5                                                                   str     Coordinate reference frame of major/minor axes
-DOSVER   trunk                                                                 str     DOS software version
-OCSVER   1.2                                                                   float   OCS software version
-CONSTVER DESI:CURRENT                                                          str     Constants version
-INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini                      str     DOS Configuration
-DAC14    0.0,0.7072                                                            str     [V] set value, measured value
-DAC6     0.0,-0.0368                                                           str     [V] set value, measured value
-DAC11    26.9998,26.7268                                                       str     [V] set value, measured value
-BIASSECC [2053:2116, 2114:4161]                                                str     Bias section for quadrant C
-DAC15    19.9997,19.8848                                                       str     [V] set value, measured value
-DAC5     0.0,-0.0368                                                           str     [V] set value, measured value
-CASETEMP 58.3376                                                               float   [deg C] CCD controller case temperature
-AMPSECB  [2049:4096, 2048:1]                                                   str     AMP section for quadrant B
-DAC8     26.9998,26.5784                                                       str     [V] set value, measured value
-OFFSET3  -1.5,15.8723                                                          str     [V] set value, measured value
-DAC9     26.9998,26.3707                                                       str     [V] set value, measured value
-OFFSET0  -1.5,15.8002                                                          str     [V] set value, measured value
-SETTINGS detectors_sm_20210128.json                                            str     Name of DESI CCD settings file
-DAC13    -5.0006,-5.0544                                                       str     [V] set value, measured value
-CLOCK13  3.0,-7.0002                                                           str     [V] high rail, low rail
-PRESECA  [1:4, 2:2049]                                                         str     Prescan section for quadrant A
-BLDTIME  0.3548                                                                float   [s] Time to build image
-CLOCK8   3.0,-7.0002                                                           str     [V] high rail, low rail
-ORSECD   [2181:4228, 2082:2113]                                                str     Row bias section for quadrant D
-DAC1     15.9998,15.7899                                                       str     [V] set value, measured value
-PRRSECA  [5:2052, 1:1]                                                         str     Row prescan section for quadrant A
-ORSECB   [2181:4228, 2050:2081]                                                str     Row overscan section for quadrant B
-DATASECA [5:2052, 2:2049]                                                      str     Data section for quadrant A
-DAC3     15.9998,15.862                                                        str     [V] set value, measured value
-OFFSET7  -1.100000023841858,-0.0368                                            str     [V] set value, measured value
-CRYOTEMP 162.97                                                                float   [deg K] Cryostat CCD temperature
-TRIMSECC [5:2052, 2114:4161]                                                   str     Trim section for quadrant C
-CPUTEMP  58.1015                                                               float   [deg C] CCD controller CPU temperature
-TRIMSECB [2181:4228, 2:2049]                                                   str     Trim section for quadrant B
-DETSECD  [2049:4096, 2049:4096]                                                str     Detector section for quadrant D
-CLOCK1   3.9999,-4.0002                                                        str     [V] high rail, low rail
-CLOCK5   3.9999,-4.0002                                                        str     [V] high rail, low rail
-OFFSET2  -1.5,15.8414                                                          str     [V] set value, measured value
-CLOCK2   3.9999,-4.0002                                                        str     [V] high rail, low rail
-DAC16    0.0,63.525                                                            str     [V] set value, measured value
-CCDSECD  [2049:4096, 2049:4096]                                                str     CCD section for quadrant D
-PRESECC  [1:4, 2114:4161]                                                      str     Prescan section for quadrant C
-PRRSECC  [5:2052, 4162:4162]                                                   str     Row prescan section for quadrant C
-DETSECA  [1:2048, 1:2048]                                                      str     Detector section for quadrant A
-DATASECC [5:2052, 2114:4161]                                                   str     Data section for quadrant C
-DAC17    -0.0,0.0854                                                           str     [V] set value, measured value
-OFFSET1  -1.5,15.7899                                                          str     [V] set value, measured value
-CLOCK18  3.9999,-4.0002                                                        str     [V] high rail, low rail
-DAC7     0.0,-0.0316                                                           str     [V] set value, measured value
-CLOCK12  3.0,-7.0002                                                           str     [V] high rail, low rail
-CCDTMING flatdark_sta_timing.txt                                               str     CCD timing file
-TRIMSECA [5:2052, 2:2049]                                                      str     Trim section for quadrant A
-PGAGAIN  5                                                                     int     Controller gain
-PRESECB  [4229:4232, 2:2049]                                                   str     Prescan section for quadrant B
-AMPSECC  [2048:1, 2049:4096]                                                   str     AMP section for quadrant C
-DAC12    4.9997,5.0544                                                         str     [V] set value, measured value
-DATASECD [2181:4228, 2114:4161]                                                str     Data section for quadrant D
-DATASECB [2181:4228, 2:2049]                                                   str     Data section for quadrant B
-CCDSECC  [1:2048, 2049:4096]                                                   str     CCD section for quadrant C
-CLOCK4   3.9999,-4.0002                                                        str     [V] high rail, low rail
-OFFSET4  -1.100000023841858,-0.0263                                            str     [V] set value, measured value
-CLOCK11  0.0,0.0                                                               str     [V] high rail, low rail
-CRYOPRES 1.017e-07                                                             str     [mb] Cryostat pressure (IP)
-DETSECB  [2049:4096, 1:2048]                                                   str     Detector section for quadrant B
-OFFSET6  -1.100000023841858,-0.0368                                            str     [V] set value, measured value
-CCDPREP  purge,clear                                                           str     CCD prep actions
-ORSECA   [5:2052, 2050:2081]                                                   str     Row overscan section for quadrant A
-DETECTOR sn22829                                                               str     Detector (ccd) identification
-BIASSECD [2117:2180, 2114:4161]                                                str     Bias section for quadrant D
-CLOCK16  0.0,0.0                                                               str     [V] high rail, low rail
-CLOCK15  0.0,0.0                                                               str     [V] high rail, low rail
-DIGITIME 54.7765                                                               float   [s] Time to digitize image
-CCDNAME  CCDSM8B                                                               str     CCD name
-CDSPARMS 400, 400, 8, 1000                                                     str     CDS parameters
-DETSECC  [1:2048, 2049:4096]                                                   str     Detector section for quadrant C
-PRRSECD  [2181:4228, 4162:4162]                                                str     Row prescan section for quadrant D
-CLOCK17  3.9999,-4.0002                                                        str     [V] high rail, low rail
-BIASSECB [2117:2180, 2:2049]                                                   str     Bias section for quadrant B
-AMPSECA  [1:2048, 1:2048]                                                      str     AMP section for quadrant A
-DAC4     0.0,-0.021                                                            str     [V] set value, measured value
-CCDSECA  [1:2048, 1:2048]                                                      str     CCD section for quadrant A
-CLOCK14  3.0,-7.0002                                                           str     [V] high rail, low rail
-CAMERA   b7                                                                    str     Camera name
-CLOCK3   6.9999,-2.0001                                                        str     [V] high rail, low rail
-PRESECD  [4229:4232, 2114:4161]                                                str     Prescan section for quadrant D
-PRRSECB  [2181:4228, 1:1]                                                      str     Row prescan section for quadrant B
-CCDSIZE  4162,4232                                                             str     CCD size in pixels (rows, columns)
-CLOCK6   3.9999,-4.0002                                                        str     [V] high rail, low rail
-BIASSECA [2053:2116, 2:2049]                                                   str     Bias section for quadrant A
-ORSECC   [5:2052, 2082:2113]                                                   str     Row overscan section for quadrant C
-DAC2     15.9998,15.8311                                                       str     [V] set value, measured value
-AMPSECD  [4096:2049, 4096:2049]                                                str     AMP section for quadrant D
-OFFSET5  -1.100000023841858,-0.0316                                            str     [V] set value, measured value
-DAC0     15.9998,15.8002                                                       str     [V] set value, measured value
-DAC10    26.9998,26.1332                                                       str     [V] set value, measured value
-TRIMSECD [2181:4228, 2114:4161]                                                str     Trim section for quadrant D
-CLOCK0   3.9999,-4.0002                                                        str     [V] high rail, low rail
-CLOCK9   3.0,-7.0002                                                           str     [V] high rail, low rail
-CCDSECB  [2049:4096, 1:2048]                                                   str     CCD section for quadrant B
-DELAYS   13, 13, 25, 25, 8, 3000, 7, 7, 400, 7                                 str     [10] Delay settings
-CLOCK7   6.9999,-2.0001                                                        str     [V] high rail, low rail
-CCDCFG   default_sta_20210128.cfg                                              str     CCD configuration file
-CLOCK10  3.0,-7.0002                                                           str     [V] high rail, low rail
-REQTIME  180.0                                                                 float   [s] Requested exposure time
-OBSID    kp4m20210224t062155                                                   str     Unique observation identifier
-PROCTYPE RAW                                                                   str     Data processing level
-PRODTYPE image                                                                 str     Data product type
-CHECKSUM 1Zdj4Ych1Ych1Ych                                                      str     HDU checksum updated 2021-07-08T12:56:13
-DATASUM  2770592137                                                            str     data unit checksum updated 2021-07-08T12:56:13
-GAINA    1.117                                                                 float   e/ADU (gain applied to image)
-SATULEVA 63500.0                                                               float   saturation or non lin. level, in ADU, inc. bias
-OVERSCNA 1195.794247115305                                                     float   ADUs (gain not applied)
-OBSRDNA  3.032856327436087                                                     float   electrons (gain is applied)
-SATUELEA 69593.7978259722                                                      float   saturation or non lin. level, in electrons
-GAINB    1.117                                                                 float   e/ADU (gain applied to image)
-SATULEVB 63700.0                                                               float   saturation or non lin. level, in ADU, inc. bias
-OVERSCNB 1188.874709766999                                                     float   ADUs (gain not applied)
-OBSRDNB  2.834090558391209                                                     float   electrons (gain is applied)
-SATUELEB 69824.92694919027                                                     float   saturation or non lin. level, in electrons
-GAINC    1.127                                                                 float   e/ADU (gain applied to image)
-SATULEVC 59000.0                                                               float   saturation or non lin. level, in ADU, inc. bias
-OVERSCNC 1193.463564006085                                                     float   ADUs (gain not applied)
-OBSRDNC  2.929996330132565                                                     float   electrons (gain is applied)
-SATUELEC 65147.96656336514                                                     float   saturation or non lin. level, in electrons
-GAIND    1.128                                                                 float   e/ADU (gain applied to image)
-SATULEVD 63600.0                                                               float   saturation or non lin. level, in ADU, inc. bias
-OVERSCND 1176.893356381423                                                     float   ADUs (gain not applied)
-OBSRDND  2.792311084921087                                                     float   electrons (gain is applied)
-SATUELED 70413.26429400175                                                     float   saturation or non lin. level, in electrons
-FIBERMIN 3500                                                                  int
-MODULE   CI                                                                    str
-COSMSPLT F                                                                     bool
-MAXSPLIT 0                                                                     int
-SPLITIDS 77755                                                                 str
-OBSTYPE  SCIENCE                                                               str
-MANIFEST F                                                                     bool
-OBJECT                                                                         str
-SEQNUM   1                                                                     int
-SEQSTART 2021-02-24T06:19:10.430069                                            str
-CAMSHUT  open                                                                  str
-ACQTIME  15.0                                                                  float
-GUIDTIME 5.0                                                                   float
-FOCSTIME 60.0                                                                  float
-SKYTIME  60.0                                                                  float
-WHITESPT F                                                                     bool
-ZENITH   F                                                                     bool
-SEANNEX  F                                                                     bool
-BEYONDP  F                                                                     bool
-FIDUCIAL off                                                                   str
-BACKLIT  off                                                                   str
-AIRMASS  1.501465                                                              float
-PMREADY  T                                                                     bool
-PMCOVER  open                                                                  str
-PMCOOL   off                                                                   str
-DOMSHUTU open                                                                  str
-DOMSHUTL open                                                                  str
-DOMLIGHH off                                                                   str
-DOMLIGHL off                                                                   str
-DOMEAZ   347.3                                                                 float
-DOMINPOS T                                                                     bool
-GUIDOFFR -0.300306                                                             float
-GUIDOFFD -0.206036                                                             float
-MOONDEC  24.054124                                                             float
-MOONRA   119.092751                                                            float
-MOONSEP  55.0686276414593                                                      float
-INCTRL   T                                                                     bool
-INPOS    T                                                                     bool
-MNTOFFD  -58.99                                                                float
-MNTOFFR  12.19                                                                 float
-PARALLAC 147.87483                                                             float
-TARGTAZ  352.989038                                                            float
-TARGTEL  41.700973                                                             float
-TRGTOFFD 0.0                                                                   float
-TRGTOFFR 0.0                                                                   float
-ZD       48.299027                                                             float
-TILERA   110.36                                                                float
-TILEDEC  78.76                                                                 float
-TCSST    09:12:55.137                                                          str
-TCSMJD   59269.265649                                                          float
-SKYLEVEL 7.943                                                                 float
-PMSEEING 0.94                                                                  float
-PMTRANS  100.93                                                                float
-ACQCAM   GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8                             str
-GUIDECAM GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8                             str
-FOCUSCAM FOCUS1,FOCUS4,FOCUS6,FOCUS9                                           str
-SKYCAM   SKYCAM0,SKYCAM1                                                       str
-REQADC   109.36,187.96                                                         str
-ADCCORR  T                                                                     bool
-ADC1PHI  109.360004                                                            float
-ADC2PHI  187.960003                                                            float
-ADC1HOME F                                                                     bool
-ADC2HOME F                                                                     bool
-ADC1NREV -1.0                                                                  float
-ADC2NREV -1.0                                                                  float
-ADC1STAT STOPPED                                                               str
-ADC2STAT STOPPED                                                               str
-HEXPOS   1117.8,-820.8,-61.4,15.2,30.5,219.3                                   str
-RESETROT F                                                                     bool
-USEPOS   T                                                                     bool
-PETALS   PETAL0,PETAL1,PETAL2,PETAL3,PETAL4,PETAL5,PETAL6,PETAL7,PETAL8,PETAL9 str
-POSCYCLE 1                                                                     int
-POSONTGT 1540                                                                  int
-POSONFRC 0.3704                                                                float
-POSDISAB 823                                                                   int
-POSENABL 4158                                                                  int
-POSRMS   0.0122                                                                float
-POSITER  1                                                                     int
-POSFRACT 0.95                                                                  float
-POSTOLER 0.005                                                                 float
-POSMVALL T                                                                     bool
-GUIDMODE catalog                                                               str
-USEAOS   F                                                                     bool
-USESPCTR T                                                                     bool
-SPCGRPHS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                               str
-ILLSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                               str
-CCDSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                               str
-TDEWPNT  -19.54                                                                float
-TAIRFLOW 0.0                                                                   float
-TAIRITMP 12.2                                                                  float
-TAIROTMP 13.2                                                                  float
-TAIRTEMP 10.655                                                                float
-TCASITMP 6.6                                                                   float
-TCASOTMP 11.5                                                                  float
-TCSITEMP 10.8                                                                  float
-TCSOTEMP 11.4                                                                  float
-TCIBTEMP 0.0                                                                   float
-TCIMTEMP 0.0                                                                   float
-TCITTEMP 0.0                                                                   float
-TCOSTEMP 0.0                                                                   float
-TCOWTEMP 0.0                                                                   float
-TDBTEMP  10.5                                                                  float
-TFLOWIN  0.0                                                                   float
-TFLOWOUT 0.0                                                                   float
-TGLYCOLI 12.1                                                                  float
-TGLYCOLO 12.0                                                                  float
-THINGES  11.6                                                                  float
-THINGEW  11.7                                                                  float
-TPMAVERT 10.242                                                                float
-TPMDESIT 7.0                                                                   float
-TPMEIBT  10.1                                                                  float
-TPMEITT  10.0                                                                  float
-TPMEOBT  10.3                                                                  float
-TPMEOTT  10.3                                                                  float
-TPMNIBT  9.7                                                                   float
-TPMNITT  10.4                                                                  float
-TPMNOBT  10.5                                                                  float
-TPMNOTT  10.3                                                                  float
-TPMRTDT  10.31                                                                 float
-TPMSIBT  10.3                                                                  float
-TPMSITT  10.0                                                                  float
-TPMSOBT  10.0                                                                  float
-TPMSOTT  10.4                                                                  float
-TPMSTAT  ready                                                                 str
-TPMWIBT  9.9                                                                   float
-TPMWITT  10.0                                                                  float
-TPMWOBT  10.2                                                                  float
-TPMWOTT  10.5                                                                  float
-TPCITEMP 10.2                                                                  float
-TPCOTEMP 10.2                                                                  float
-TPR1HUM  0.0                                                                   float
-TPR1TEMP 0.0                                                                   float
-TPR2HUM  0.0                                                                   float
-TPR2TEMP 0.0                                                                   float
-TSERVO   40.0                                                                  float
-TTRSTEMP 10.7                                                                  float
-TTRWTEMP 11.3                                                                  float
-TTRUETBT -4.0                                                                  float
-TTRUETTT 10.8                                                                  float
-TTRUNTBT 11.1                                                                  float
-TTRUNTTT 11.0                                                                  float
-TTRUSTBT 11.1                                                                  float
-TTRUSTST 10.8                                                                  float
-TTRUSTTT 11.1                                                                  float
-TTRUTSBT 12.0                                                                  float
-TTRUTSMT 12.0                                                                  float
-TTRUTSTT 11.0                                                                  float
-TTRUWTBT 10.9                                                                  float
-TTRUWTTT 11.0                                                                  float
-ALARM    F                                                                     bool
-ALARM-ON F                                                                     bool
-BATTERY  100.0                                                                 float
-SECLEFT  6444.0                                                                float
-UPSSTAT  System Normal - On Line(7)                                            str
-INAMPS   71.9                                                                  float
-OUTWATTS 5100.0,7300.0,4800.0                                                  str
-COMPDEW  -15.0                                                                 float
-COMPHUM  5.0                                                                   float
-COMPAMB  22.0                                                                  float
-COMPTEMP 28.4                                                                  float
-DEWPOINT 19.3                                                                  float
-HUMIDITY 89.0                                                                  float
-PRESSURE 795.0                                                                 float
-OUTTEMP  21.2                                                                  float
-WINDDIR  323.0                                                                 float
-WINDSPD  14.7                                                                  float
-GUST     14.7                                                                  float
-AMNIENTN 15.9                                                                  float
-CFLOOR   10.5                                                                  float
-NWALLIN  16.3                                                                  float
-NWALLOUT 9.9                                                                   float
-WWALLIN  16.4                                                                  float
-WWALLOUT 11.3                                                                  float
-AMBIENTS 17.2                                                                  float
-FLOOR    14.6                                                                  float
-EWALLCMP 11.6                                                                  float
-EWALLCOU 11.3                                                                  float
-ROOF     10.6                                                                  float
-ROOFAMB  11.1                                                                  float
-DOMEBLOW -99.9                                                                 float
-DOMEBUP  -99.9                                                                 float
-DOMELLOW -99.9                                                                 float
-DOMELUP  -99.9                                                                 float
-DOMERLOW -99.9                                                                 float
-DOMERUP  -99.9                                                                 float
-PLATFORM -99.9                                                                 float
-SHACKC   17.3                                                                  float
-SHACKW   16.9                                                                  float
-STAIRSL  -99.9                                                                 float
-STAIRSM  -99.9                                                                 float
-STAIRSU  -99.9                                                                 float
-TELBASE  10.8                                                                  float
-UTILWALL 11.0                                                                  float
-UTILROOM 11.1                                                                  float
-SP0NIRT  139.99                                                                float
-SP0REDT  139.99                                                                float
-SP0BLUT  162.97                                                                float
-SP0NIRP  8.249e-08                                                             float
-SP0REDP  6.155e-08                                                             float
-SP0BLUP  8.905e-08                                                             float
-SP1NIRT  139.99                                                                float
-SP1REDT  139.99                                                                float
-SP1BLUT  162.97                                                                float
-SP1NIRP  4.38e-08                                                              float
-SP1REDP  5.379e-08                                                             float
-SP1BLUP  8.005e-08                                                             float
-SP2NIRT  139.99                                                                float
-SP2REDT  139.99                                                                float
-SP2BLUT  163.02                                                                float
-SP2NIRP  8.556e-08                                                             float
-SP2REDP  8.642e-08                                                             float
-SP2BLUP  7.737e-08                                                             float
-SP3NIRT  139.99                                                                float
-SP3REDT  139.96                                                                float
-SP3BLUT  162.99                                                                float
-SP3NIRP  3.824e-08                                                             float
-SP3REDP  6.739e-08                                                             float
-SP3BLUP  9.329e-08                                                             float
-SP4NIRT  139.99                                                                float
-SP4REDT  140.06                                                                float
-SP4BLUT  163.04                                                                float
-SP4NIRP  6.3e-08                                                               float
-SP4REDP  4.941e-08                                                             float
-SP4BLUP  5.325e-08                                                             float
-SP5NIRT  139.99                                                                float
-SP5REDT  139.99                                                                float
-SP5BLUT  163.02                                                                float
-SP5NIRP  6.881e-08                                                             float
-SP5REDP  6.584e-08                                                             float
-SP5BLUP  1.101e-07                                                             float
-SP6NIRT  139.99                                                                float
-SP6REDT  139.99                                                                float
-SP6BLUT  162.97                                                                float
-SP6NIRP  2.809e-07                                                             float
-SP6REDP  6.053e-08                                                             float
-SP6BLUP  7.54e-08                                                              float
-SP7NIRT  139.99                                                                float
-SP7REDT  139.99                                                                float
-SP7BLUT  162.97                                                                float
-SP7NIRP  7.49e-08                                                              float
-SP7REDP  4.383e-08                                                             float
-SP7BLUP  1.018e-07                                                             float
-SP8NIRT  139.99                                                                float
-SP8REDT  139.99                                                                float
-SP8BLUT  162.97                                                                float
-SP8NIRP  3.843e-08                                                             float
-SP8REDP  5.37e-08                                                              float
-SP8BLUP  8.29699999999999e-08                                                  float
-SP9NIRT  140.03                                                                float
-SP9REDT  140.01                                                                float
-SP9BLUT  163.02                                                                float
-SP9NIRP  5.706e-08                                                             float
-SP9REDP  6.875e-08                                                             float
-SP9BLUP  1.206e-07                                                             float
-TNFSPROC 8.6995                                                                float
-TGFAPROC 9.835                                                                 float
-SIMGFAP  F                                                                     bool
-USEFVC   T                                                                     bool
-USEFID   T                                                                     bool
-USEILLUM T                                                                     bool
-USEXSRVR T                                                                     bool
-USEOPENL T                                                                     bool
-STOPGUDR T                                                                     bool
-STOPFOCS T                                                                     bool
-STOPSKY  T                                                                     bool
-KEEPGUDR F                                                                     bool
-KEEPFOCS F                                                                     bool
-KEEPSKY  F                                                                     bool
-REACQUIR F                                                                     bool
-FILENAME /exposures/desi/20210223/00077755/desi-00077755.fits.fz               str
-EXCLUDED                                                                       str
-FVCTIME  2.0                                                                   float
-SIMGFACQ F                                                                     bool
-TCSKRA   0.3 0.003 0.00003                                                     str
-TCSKDEC  0.3 0.003 0.00003                                                     str
-TCSGRA   0.3                                                                   float
-TCSGDEC  0.3                                                                   float
-TCSMFRA  1                                                                     int
-TCSMFDEC 1                                                                     int
-TCSPIRA  1.0,0.0,0.0,0.0                                                       str
-TCSPIDEC 1.0,0.0,0.0,0.0                                                       str
-POSCNVGD F                                                                     bool
-GUIEXPID 77755                                                                 int
-IGFRMNUM 10                                                                    int
-FOCEXPID 77755                                                                 int
-IFFRMNUM 1                                                                     int
-SKYEXPID 77755                                                                 int
-ISFRMNUM 1                                                                     int
-FGFRMNUM 30                                                                    int
-FFFRMNUM 4                                                                     int
-FSFRMNUM 3                                                                     int
-HELIOCOR 0.9999521148013759                                                    float
-NSPEC    500                                                                   int     Number of spectra
-WAVEMIN  3600.0                                                                float   First wavelength [Angstroms]
-WAVEMAX  5800.0                                                                float   Last wavelength [Angstroms]
-WAVESTEP 0.8                                                                   float   Wavelength step size [Angstroms]
-SPECTER  0.10.0                                                                str     https://github.com/desihub/specter
-IN_PSF   SPECPROD/exposures/20210223/00077755/psf-b7-00077755.fits             str     Input sp
-IN_IMG   SPECPROD/preproc/20210223/00077755/preproc-b7-00077755.fits           str
-ORIG_PSF SPECPROD/calibnight/20210223/psfnight-b7-20210223.fits                str
-BUNIT    electron/Angstrom                                                     str
-======== ===================================================================== ======= ===============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================================================ ======= ===============================================
+    KEY      Example Value                                                Type    Comment
+    ======== ============================================================ ======= ===============================================
+    NAXIS1   2326                                                         int
+    NAXIS2   500                                                          int
+    EXPID    68979                                                        int     Exposure number
+    EXPFRAME 0                                                            int     Frame number
+    FLAVOR   science                                                      str     Observation type
+    SEQUENCE Spectrographs                                                str     OCS Sequence name
+    PURPOSE  Commissioning                                                str     Purpose of observing night
+    PROGRAM  CALIB DESI-CALIB-00 LEDs only                                str     Program name
+    PROPID   2019B-5000                                                   str     Proposal ID
+    OBSERVER DESIObserver                                                 str     Names of observers
+    LEAD     RunManager                                                   str     Lead observer
+    INSTRUME DESI                                                         str     Instrument name
+    OBSERVAT KPNO                                                         str     Observatory name
+    OBS-LAT  31.96403                                                     str     [deg] Observatory latitude
+    OBS-LONG -111.59989                                                   str     [deg] Observatory east longitude
+    OBS-ELEV 2097.0                                                       float   [m] Observatory elevation
+    TELESCOP KPNO 4.0-m telescope                                         str     Telescope name
+    CORRCTOR DESI Corrector                                               str     Corrector Identification
+    NIGHT    20201220                                                     int     Observing night
+    TIMESYS  UTC                                                          str     Time system used for date-obs
+    DATE-OBS 2020-12-20T22:24:15.672815                                   str     [UTC] Observation data and start time
+    TIME-OBS 22:24:15.672815                                              str     [UTC] Observation start time
+    MJD-OBS  59203.93351473                                               float   Modified Julian Date of observation
+    ST       20:57:41.340                                                 str     Local Sidereal time at observation start (HH:MM
+    EXPTIME  120.037                                                      float   [s] Actual exposure time
+    DELTARA  0.0                                                          float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC 0.0                                                          float   [arcsec] Offset], declination, observer input
+    VCCD     ON                                                           str     True (ON) if CCD voltage is on
+    VCCDON   2020-12-14T04:22:19.522101                                   str     Time when CCD voltage was turned on
+    VCCDSEC  583485.8                                                     float   [s] CCD on time in seconds
+    EQUINOX  2000.0                                                       float   Epoch of observation
+    SPECGRPH 5                                                            int     Spectrograph logical name (SP)
+    SPECID   9                                                            int     Spectrograph serial number (SM)
+    FEEBOX   lbnl057                                                      str     CCD Controller serial number
+    VESSEL   26                                                           int     Cryostat serial number
+    FEEVER   v20160312                                                    str     CCD Controller version
+    FEEPOWER ON                                                           str     FEE power status
+    FEEDMASK 2134851391                                                   int     FEE dac mask
+    FEECMASK 1048575                                                      int     FEE clk mask
+    CCDTEMP  -135.8073                                                    float   [deg C] CCD controller CCD temperature
+    RADESYS  FK5                                                          str     Coordinate reference frame of major/minor axes
+    FILENAME /exposures/desi/specs/20201220/00068979/sp9-00068979.fits.fz str     Name
+    DOSVER   trunk                                                        str     DOS software version
+    OCSVER   1.2                                                          float   OCS software version
+    CONSTVER DESI:CURRENT                                                 str     Constants version
+    INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini             str     DOS Configuration
+    DAC3     -9.0002,-8.9919                                              str     [V] set value, measured value
+    CLOCK5   9.9999,0.0                                                   str     [V] high rail, low rail
+    BLDTIME  0.3522                                                       float   [s] Time to build image
+    CLOCK2   9.9999,0.0                                                   str     [V] high rail, low rail
+    BIASSECD [2129:2192, 2130:4193]                                       str     Bias section for quadrant D
+    PGAGAIN  3                                                            int     Controller gain
+    OFFSET5  2.0,5.9964                                                   str     [V] set value, measured value
+    BIASSECB [2129:2192, 2:2065]                                          str     Bias section for quadrant B
+    CLOCK4   9.9999,0.0                                                   str     [V] high rail, low rail
+    ORSECD   [2193:4249, 2098:2129]                                       str     Row bias section for quadrant D
+    DAC2     -9.0002,-8.9404                                              str     [V] set value, measured value
+    DAC6     5.9998,6.0437                                                str     [V] set value, measured value
+    CCDPREP  purge,clear                                                  str     CCD prep actions
+    CASETEMP 59.322                                                       float   [deg C] CCD controller case temperature
+    DAC15    0.0,-0.0148                                                  str     [V] set value, measured value
+    DAC16    39.9961,39.8706                                              str     [V] set value, measured value
+    DAC9     -25.0003,-24.6344                                            str     [V] set value, measured value
+    AMPSECB  [4114:2058, 1:2064]                                          str     AMP section for quadrant B
+    DAC11    -25.0003,-24.5157                                            str     [V] set value, measured value
+    DELAYS   20, 20, 25, 40, 7, 3000, 7, 7, 7, 7                          str     [10] Delay settings
+    CLOCK13  9.9992,2.9993                                                str     [V] high rail, low rail
+    PRESECD  [4250:4256, 2130:4193]                                       str     Prescan section for quadrant D
+    CDSPARMS 400, 400, 8, 2000                                            str     CDS parameters
+    DATASECD [2193:4249, 2130:4193]                                       str     Data section for quadrant D
+    CLOCK15  9.9992,2.9993                                                str     [V] high rail, low rail
+    CLOCK18  9.0,0.9999                                                   str     [V] high rail, low rail
+    CLOCK8   9.9992,2.9993                                                str     [V] high rail, low rail
+    OFFSET7  2.0,6.0122                                                   str     [V] set value, measured value
+    DAC8     -25.0003,-24.946                                             str     [V] set value, measured value
+    CCDSECC  [1:2057, 2065:4128]                                          str     CCD section for quadrant C
+    CLOCK14  9.9992,2.9993                                                str     [V] high rail, low rail
+    CLOCK3   -2.0001,3.9999                                               str     [V] high rail, low rail
+    DIGITIME 47.5948                                                      float   [s] Time to digitize image
+    CLOCK1   9.9999,0.0                                                   str     [V] high rail, low rail
+    PRRSECD  [2193:4249, 4194:4194]                                       str     Row prescan section for quadrant D
+    CLOCK9   9.9992,2.9993                                                str     [V] high rail, low rail
+    CCDNAME  CCDSM9R                                                      str     CCD name
+    DETSECB  [2058:4114, 1:2064]                                          str     Detector section for quadrant B
+    CCDSECA  [1:2057, 1:2064]                                             str     CCD section for quadrant A
+    DETSECD  [2058:4114, 2065:4128]                                       str     Detector section for quadrant D
+    DATASECB [2193:4249, 2:2065]                                          str     Data section for quadrant B
+    CRYOPRES 1.166e-07                                                    str     [mb] Cryostat pressure (IP)
+    CAMERA   r5                                                           str     Camera name
+    PRRSECA  [8:2064, 1:1]                                                str     Row prescan section for quadrant A
+    DAC1     -9.0002,-8.9507                                              str     [V] set value, measured value
+    PRESECC  [1:7, 2130:4193]                                             str     Prescan section for quadrant C
+    TRIMSECA [8:2064, 2:2065]                                             str     Trim section for quadrant A
+    TRIMSECD [2193:4249, 2130:4193]                                       str     Trim section for quadrant D
+    CCDCFG   default_lbnl_20190717.cfg                                    str     CCD configuration file
+    PRRSECB  [2193:4249, 1:1]                                             str     Row prescan section for quadrant B
+    CLOCK12  9.9992,2.9993                                                str     [V] high rail, low rail
+    CCDSECB  [2058:4114, 1:2064]                                          str     CCD section for quadrant B
+    TRIMSECB [2193:4249, 2:2065]                                          str     Trim section for quadrant B
+    DATASECA [8:2064, 2:2065]                                             str     Data section for quadrant A
+    DAC17    20.0008,12.3342                                              str     [V] set value, measured value
+    CLOCK17  9.0,0.9999                                                   str     [V] high rail, low rail
+    PRESECB  [4250:4256, 2:2065]                                          str     Prescan section for quadrant B
+    CLOCK0   9.9999,0.0                                                   str     [V] high rail, low rail
+    PRESECA  [1:7, 2:2065]                                                str     Prescan section for quadrant A
+    ORSECA   [8:2064, 2066:2097]                                          str     Row overscan section for quadrant A
+    BIASSECC [2065:2128, 2130:4193]                                       str     Bias section for quadrant C
+    DETSECC  [1:2057, 2065:4128]                                          str     Detector section for quadrant C
+    DAC14    0.0,-0.0148                                                  str     [V] set value, measured value
+    DAC4     5.9998,6.0595                                                str     [V] set value, measured value
+    CLOCK16  9.9999,3.0                                                   str     [V] high rail, low rail
+    AMPSECA  [1:2057, 1:2064]                                             str     AMP section for quadrant A
+    OFFSET4  2.0,6.0595                                                   str     [V] set value, measured value
+    CCDSIZE  4194,4256                                                    str     CCD size in pixels (rows, columns)
+    OFFSET2  0.4000000059604645,-8.9301                                   str     [V] set value, measured value
+    DAC13    0.0,-0.0148                                                  str     [V] set value, measured value
+    CRYOTEMP 163.02                                                       float   [deg K] Cryostat CCD temperature
+    OFFSET6  2.0,6.0437                                                   str     [V] set value, measured value
+    CLOCK6   9.9999,0.0                                                   str     [V] high rail, low rail
+    DETSECA  [1:2057, 1:2064]                                             str     Detector section for quadrant A
+    CCDTMING default_lbnl_timing_20180905.txt                             str     CCD timing file
+    DETECTOR M1-52                                                        str     Detector (ccd) identification
+    OFFSET3  0.4000000059604645,-8.9816                                   str     [V] set value, measured value
+    AMPSECC  [1:2057, 4128:2065]                                          str     AMP section for quadrant C
+    CLOCK10  9.9992,2.9993                                                str     [V] high rail, low rail
+    ORSECC   [8:2064, 2098:2129]                                          str     Row overscan section for quadrant C
+    SETTINGS detectors_sm_20191211.json                                   str     Name of DESI CCD settings file
+    CPUTEMP  58.9629                                                      float   [deg C] CCD controller CPU temperature
+    OFFSET0  0.4000000059604645,-8.755                                    str     [V] set value, measured value
+    DAC12    0.0,0.0                                                      str     [V] set value, measured value
+    DATASECC [8:2064, 2130:4193]                                          str     Data section for quadrant C
+    AMPSECD  [4114:2058, 4128:2065]                                       str     AMP section for quadrant D
+    DAC10    -25.0003,-25.0054                                            str     [V] set value, measured value
+    CLOCK7   -2.0001,3.9999                                               str     [V] high rail, low rail
+    DAC0     -9.0002,-8.7653                                              str     [V] set value, measured value
+    CLOCK11  9.9992,2.9993                                                str     [V] high rail, low rail
+    DAC7     5.9998,6.0122                                                str     [V] set value, measured value
+    OFFSET1  0.4000000059604645,-8.9507                                   str     [V] set value, measured value
+    DAC5     5.9998,5.9964                                                str     [V] set value, measured value
+    ORSECB   [2193:4249, 2066:2097]                                       str     Row overscan section for quadrant B
+    CCDSECD  [2058:4114, 2065:4128]                                       str     CCD section for quadrant D
+    PRRSECC  [8:2064, 4194:4194]                                          str     Row prescan section for quadrant C
+    TRIMSECC [8:2064, 2130:4193]                                          str     Trim section for quadrant C
+    BIASSECA [2065:2128, 2:2065]                                          str     Bias section for quadrant A
+    REQTIME  120.0                                                        float   [s] Requested exposure time
+    OBSID    kp4m20201220t222415                                          str     Unique observation identifier
+    PROCTYPE RAW                                                          str     Data processing level
+    PRODTYPE image                                                        str     Data product type
+    CHECKSUM WdnaWcnXWcnaWcnU                                             str     HDU checksum updated 2022-01-29T01:11:31
+    DATASUM  3935488568                                                   str     data unit checksum updated 2022-01-29T01:11:31
+    GAINA    1.684                                                        float   e/ADU (gain applied to image)
+    SATULEVA 33000.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPA   0.6500495005602716                                           float   ADUs (max-min of median overscan per row)
+    OMETHA   AVERAGE                                                      str     use average overscan
+    OVERSCNA 1972.92976646288                                             float   ADUs (gain not applied)
+    OBSRDNA  3.218229918807175                                            float   electrons (gain is applied)
+    SATUELEA 52249.58627327651                                            float   saturation or non lin. level, in electrons
+    GAINB    1.655                                                        float   e/ADU (gain applied to image)
+    SATULEVB 47000.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPB   0.6179795354764792                                           float   ADUs (max-min of median overscan per row)
+    OMETHB   AVERAGE                                                      str     use average overscan
+    OVERSCNB 1975.23548556518                                             float   ADUs (gain not applied)
+    OBSRDNB  3.153470147761547                                            float   electrons (gain is applied)
+    SATUELEB 74515.98527138963                                            float   saturation or non lin. level, in electrons
+    GAINC    1.467                                                        float   e/ADU (gain applied to image)
+    SATULEVC 65535.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPC   0.5848174212296726                                           float   ADUs (max-min of median overscan per row)
+    OMETHC   AVERAGE                                                      str     use average overscan
+    OVERSCNC 1959.467167892971                                            float   ADUs (gain not applied)
+    OBSRDNC  2.894849081776217                                            float   electrons (gain is applied)
+    SATUELEC 93265.30666470101                                            float   saturation or non lin. level, in electrons
+    GAIND    1.509                                                        float   e/ADU (gain applied to image)
+    SATULEVD 65535.0                                                      float   saturation or non lin. level, in ADU, inc. bias
+    OSTEPD   0.4709297982626595                                           float   ADUs (max-min of median overscan per row)
+    OMETHD   AVERAGE                                                      str     use average overscan
+    OVERSCND 1992.393350767962                                            float   ADUs (gain not applied)
+    OBSRDND  2.694583892275785                                            float   electrons (gain is applied)
+    SATUELED 95885.79343369114                                            float   saturation or non lin. level, in electrons
+    FIBERMIN 2500                                                         int
+    LONGSTRN OGIP 1.0                                                     str     The OGIP Long String Convention may be used.
+    MODULE   CI                                                           str     Image Sources/Component
+    FRAMES   None                                                         Unknown Number of Frames in Archive
+    COSMSPLT F                                                            bool    Cosmics split exposure if true
+    MAXSPLIT 0                                                            int     Number of allowed exposure splits
+    SPLITIDS 68979                                                        str     List of expids for split exposures
+    OBSTYPE  FLAT                                                         str     Spectrograph observation type
+    MANIFEST F                                                            bool    DOS exposure manifest
+    OBJECT                                                                str     Object name
+    SEQID    3 requests                                                   str     Exposure sequence identifier
+    SEQNUM   2                                                            int     Number of exposure in sequence
+    SEQTOT   3                                                            int     Total number of exposures in sequence
+    OPENSHUT None                                                         Unknown Time shutter opened
+    CAMSHUT  open                                                         str     Shutter status during observation
+    WHITESPT T                                                            bool    Telescope is at whitespot
+    ZENITH   F                                                            bool    Telescope is at zenith
+    SEANNEX  F                                                            bool    Telescope is at SE annex
+    BEYONDP  F                                                            bool    Telescope is beyond pole
+    FIDUCIAL off                                                          str     Fiducials status during observation
+    AIRMASS  1.521306                                                     float   Airmass
+    FOCUS    1163.9,-689.8,370.4,13.8,24.2,-0.0                           str     Telescope focus settings
+    TRUSTEMP 13.267                                                       float   [deg] Average Telescope truss temperature (only
+    PMIRTEMP 7.35                                                         float   [deg] Average primary mirror temperature (nit,e
+    PMREADY  F                                                            bool    Primary mirror ready
+    PMCOVER  open                                                         str     Primary mirror cover
+    PMCOOL   on                                                           str     Primary mirror cooling
+    DOMSHUTU not open                                                     str     Upper dome shutter
+    DOMSHUTL not open                                                     str     Lower dome shutter
+    DOMLIGHH off                                                          str     High dome lights
+    DOMLIGHL off                                                          str     Low dome lights
+    DOMEAZ   253.289                                                      float   [deg] Dome azimuth angle
+    DOMINPOS F                                                            bool    Dome is in position
+    GUIDOFFR 0.0                                                          float   [arcsec] Cummulative guider offset (RA)
+    GUIDOFFD -0.0                                                         float   [arcsec] Cummulative guider offset (dec)
+    MOONDEC  -9.830944                                                    float   [deg] Moon declination at start of exposure
+    MOONRA   350.511461                                                   float   [deg] Moon RA at start of exposure
+    MOUNTAZ  73.49407                                                     float   [deg] Mount azimuth angle
+    MOUNTDEC 31.962703                                                    float   [deg] Mount declination
+    MOUNTEL  41.035778                                                    float   [deg] Mount elevation angle
+    MOUNTHA  -58.479517                                                   float   [deg] Mount hour angle
+    INCTRL   F                                                            bool    DESI in control
+    INPOS    T                                                            bool    Mount in position
+    MNTOFFD  -0.0                                                         float   [arcsec] Mount offset (dec)
+    MNTOFFR  -0.0                                                         float   [arcsec] Mount offset (RA)
+    PARALLAC -73.492813                                                   float   [deg] Parallactic angle
+    SKYDEC   31.962703                                                    float   [deg] Telescope declination (pointing on sky)
+    SKYRA    12.901561                                                    float   [deg] Telescope right ascension (pointing on sk
+    TARGTDEC 31.963299                                                    float   [deg] Target declination (to TCS)
+    TARGTRA  6.305086                                                     float   [deg] Target right ascension (to TCS)
+    TARGTAZ  75.558672                                                    float   [deg] Target azimuth
+    TARGTEL  46.429343                                                    float   [deg] Target elevation
+    TRGTOFFD 0.0                                                          float   [arcsec] Telescope target offset (dec)
+    TRGTOFFR 0.0                                                          float   [arcsec] Telescope target offset (RA)
+    ZD       48.964222                                                    float   [deg] Telescope zenith distance
+    TCSST    20:57:41.291                                                 str     Local Sidereal time reported by TCS (HH:MM:SS)
+    TCSMJD   59203.933945                                                 float   MJD reported by TCS
+    ADCCORR  F                                                            bool    Correct pointing for ADC setting if True
+    ADC1PHI  114.980003                                                   float   [deg] ADC 1 angle
+    ADC2PHI  162.869907                                                   float   [deg] ADC 2 angle
+    ADC1HOME F                                                            bool    ADC 1 at home position if True
+    ADC2HOME F                                                            bool    ADC 2 at home position if True
+    ADC1NREV 0.0                                                          float   ADC 1 number of revs
+    ADC2NREV -1.0                                                         float   ADC 2 number of revs
+    ADC1STAT STOPPED                                                      str     ADC 1 status
+    ADC2STAT STOPPED                                                      str     ADC 2 status
+    HEXPOS   1163.9,-689.8,370.4,13.8,24.2,-0.0                           str     Hexapod position
+    HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                                      str     Hexapod trim values
+    ROTOFFST 0.0                                                          float   [arcsec] Rotator offset
+    ROTENBLD T                                                            bool    Rotator enabled
+    ROTRATE  0.0                                                          float   [arcsec/min] Rotator rate
+    RESETROT F                                                            bool    DOS Control: reset hex rotator
+    GUIDMODE catalog                                                      str     Guider mode
+    USEAOS   F                                                            bool    DOS Control: AOS data available if true
+    SPCGRPHS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                      str     Participating spectrograph
+    ILLSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                      str     Participating illuminate s
+    CCDSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                      str     Participating ccd spectrog
+    TDEWPNT  -18.2                                                        float   Telescope air dew point
+    TAIRFLOW 1.121                                                        float   Telescope air flow
+    TAIRITMP 10.5                                                         float   [deg] Telescope air in temperature
+    TAIROTMP 5.5                                                          float   [deg] Telescope air out temperature
+    TAIRTEMP 11.86                                                        float   [deg] Telescope air temperature
+    TCASITMP 0.0                                                          float   [deg] Telescope Cass Cage in temperature
+    TCASOTMP 9.6                                                          float   [deg] Telescope Cass Cage out temperature
+    TCSITEMP 7.4                                                          float   [deg] Telescope center section in temperature
+    TCSOTEMP 10.2                                                         float   [deg] Telescope center section out temperature
+    TCIBTEMP 0.0                                                          float   [deg] Telescope chimney IB temperature
+    TCIMTEMP 0.0                                                          float   [deg] Telescope chimney IM temperature
+    TCITTEMP 0.0                                                          float   [deg] Telescope chimney IT temperature
+    TCOSTEMP 0.0                                                          float   [deg] Telescope chimney OS temperature
+    TCOWTEMP 0.0                                                          float   [deg] Telescope chimney OW temperature
+    TDBTEMP  7.4                                                          float   [deg] Telescope dec bore temperature
+    TFLOWIN  7.7                                                          float   Telescope flow rate in
+    TFLOWOUT 8.3                                                          float   Telescope flow rate out
+    TGLYCOLI -1.8                                                         float   [deg] Telescope glycol in temperature
+    TGLYCOLO 0.0                                                          float   [deg] Telescope glycol out temperature
+    THINGES  12.9                                                         float   [deg] Telescope hinge S temperature
+    THINGEW  11.7                                                         float   [deg] Telescope hinge W temperature
+    TPMAVERT 7.304                                                        float   [deg] Telescope mirror averagetemperature
+    TPMDESIT 7.0                                                          float   [deg] Telescope mirror desired temperature
+    TPMEIBT  7.3                                                          float   [deg] Telescope mirror EIB temperature
+    TPMEITT  7.3                                                          float   [deg] Telescope mirror EIT temperature
+    TPMEOBT  7.4                                                          float   [deg] Telescope mirror EOB temperature
+    TPMEOTT  7.2                                                          float   [deg] Telescope mirror EOT temperature
+    TPMNIBT  7.4                                                          float   [deg] Telescope mirror NIB temperature
+    TPMNITT  7.3                                                          float   [deg] Telescope mirror NIT temperature
+    TPMNOBT  7.7                                                          float   [deg] Telescope mirror NOB temperature
+    TPMNOTT  7.6                                                          float   [deg] Telescope mirror NOT temperature
+    TPMRTDT  6.96                                                         float   [deg] Telescope mirror RTD temperature
+    TPMSIBT  7.4                                                          float   [deg] Telescope mirror SIB temperature
+    TPMSITT  7.0                                                          float   [deg] Telescope mirror SIT temperature
+    TPMSOBT  7.4                                                          float   [deg] Telescope mirror SOB temperature
+    TPMSOTT  7.2                                                          float   [deg] Telescope mirror SOT temperature
+    TPMSTAT  soft air                                                     str     Telescope mirror status
+    TPMWIBT  7.2                                                          float   [deg] Telescope mirror WIB temperature
+    TPMWITT  7.1                                                          float   [deg] Telescope mirror WIT temperature
+    TPMWOBT  7.6                                                          float   [deg] Telescope mirror WOB temperature
+    TPMWOTT  8.1                                                          float   [deg] Telescope mirror WOT temperature
+    TPCITEMP 7.7                                                          float   [deg] Telescope primary cell in temperature
+    TPCOTEMP 7.7                                                          float   [deg] Telescope primary cell out temperature
+    TPR1HUM  0.0                                                          float   Telescope probe 1 humidity
+    TPR1TEMP 0.0                                                          float   [deg] Telescope probe1 temperature
+    TPR2HUM  0.0                                                          float   Telescope probe 2 humidity
+    TPR2TEMP 0.0                                                          float   [deg] Telescope probe2 temperature
+    TSERVO   7.0                                                          float   Telescope servo setpoint
+    TTRSTEMP 13.2                                                         float   [deg] Telescope top ring S temperature
+    TTRWTEMP 13.4                                                         float   [deg] Telescope top ring W temperature
+    TTRUETBT -4.8                                                         float   [deg] Telescope truss ETB temperature
+    TTRUETTT 11.5                                                         float   [deg] Telescope truss ETT temperature
+    TTRUNTBT 10.9                                                         float   [deg] Telescope truss NTB temperature
+    TTRUNTTT 11.8                                                         float   [deg] Telescope truss NTT temperature
+    TTRUSTBT 11.1                                                         float   [deg] Telescope truss STB temperature
+    TTRUSTST 10.8                                                         float   [deg] Telescope truss STS temperature
+    TTRUSTTT 12.4                                                         float   [deg] Telescope truss STT temperature
+    TTRUTSBT 13.6                                                         float   [deg] Telescope truss TSB temperature
+    TTRUTSMT 13.7                                                         float   [deg] Telescope truss TSM temperature
+    TTRUTSTT 12.5                                                         float   [deg] Telescope truss TST temperature
+    TTRUWTBT 10.9                                                         float   [deg] Telescope truss WTB temperature
+    TTRUWTTT 11.6                                                         float   [deg] Telescope truss WTT temperature
+    ALARM    F                                                            bool    UPS major alarm or check battery
+    ALARM-ON F                                                            bool    UPS active alarm condition
+    BATTERY  100.0                                                        float   [%] UPS Battery left
+    SECLEFT  5772.0                                                       float   [s] UPS Seconds left
+    UPSSTAT  System Normal - On Line(7)                                   str     UPS Status
+    INAMPS   64.3                                                         float   [A] UPS total input current
+    OUTWATTS 4500.0,6800.0,4100.0                                         str     [W] UPS Phase A, B, C output watts
+    COMPDEW  -12.0                                                        float   [deg C] Computer room dewpoint
+    COMPHUM  7.8                                                          float   [%] Computer room humidity
+    COMPAMB  19.4                                                         float   [deg C] Computer room ambient temperature
+    COMPTEMP 24.9                                                         float   [deg C] Computer room hygrometer temperature
+    DEWPOINT 5.7                                                          float   [deg C] (outside) dewpoint
+    HUMIDITY 7.0                                                          float   [%] (outside) humidity
+    PRESSURE 794.7                                                        float   [torr] (outside) air pressure
+    OUTTEMP  0.0                                                          float   [deg C] outside temperature
+    WINDDIR  82.0                                                         float   [deg] wind direction
+    WINDSPD  23.3                                                         float   [m/s] wind speed
+    GUST     18.1                                                         float   [m/s] Wind gusts speed
+    AMNIENTN 13.3                                                         float   [deg C] ambient temperature north
+    CFLOOR   8.1                                                          float   [deg C] temperature on C floor
+    NWALLIN  13.6                                                         float   [deg C] temperature at north wall inside
+    NWALLOUT 8.8                                                          float   [deg C] temperature at north wall outside
+    WWALLIN  12.8                                                         float   [deg C] temperature at west wall inside
+    WWALLOUT 9.4                                                          float   [deg C] temperature at west wall outside
+    AMBIENTS 14.6                                                         float   [deg C] ambient temperature south
+    FLOOR    12.3                                                         float   [deg C] temperature at floor (LCR)
+    EWALLCMP 10.2                                                         float   [deg C] temperature at east wall, computer room
+    EWALLCOU 9.5                                                          float   [deg C] temperature at east wall, Coude room
+    ROOF     10.0                                                         float   [deg C] temperature on roof
+    ROOFAMB  9.9                                                          float   [deg C] ambient temperature on roof
+    DOMEBLOW 12.1                                                         float   [deg C] temperature at dome back, lower
+    DOMEBUP  12.5                                                         float   [deg C] temperature at dome back, upper
+    DOMELLOW 14.4                                                         float   [deg C] temperature at dome left, lower
+    DOMELUP  19.3                                                         float   [deg C] temperature at dome left, upper
+    DOMERLOW 12.3                                                         float   [deg C] temperature at dome right, lower
+    DOMERUP  12.8                                                         float   [deg C] temperature at dome right, upper
+    PLATFORM 15.3                                                         float   [deg C] temperature at platform
+    SHACKC   15.2                                                         float   [deg C] temperature at shack ceiling
+    SHACKW   13.2                                                         float   [deg C] temperature at shack wall
+    STAIRSL  12.6                                                         float   [deg C] temperature at stairs, lower
+    STAIRSM  13.3                                                         float   [deg C] temperature at stairs, mid
+    STAIRSU  13.6                                                         float   [deg C] temperature at stairs, upper
+    TELBASE  8.5                                                          float   [deg C] temperature at telescope base
+    UTILWALL 11.6                                                         float   [deg C] temperature at utility room wall
+    UTILROOM 12.4                                                         float   [deg C] temperature in utilitiy room
+    EXCLUDED                                                              str     Components excluded from this exposure
+    NSPEC    500                                                          int     Number of spectra
+    WAVEMIN  5760.0                                                       float   First wavelength [Angstroms]
+    WAVEMAX  7620.0                                                       float   Last wavelength [Angstroms]
+    WAVESTEP 0.8                                                          float   Wavelength step size [Angstroms]
+    SPECTER  0.10.0                                                       str     https://github.com/desihub/specter
+    IN_PSF   SPECPROD/exposures/20201220/00068979/psf-r5-00068979.fits    str     Input sp
+    IN_IMG   SPECPROD/preproc/20201220/00068979/preproc-r5-00068979.fits  str
+    ORIG_PSF SPECPROD/calibnight/20201220/psfnight-r5-20201220.fits       str
+    BUNIT    electron/Angstrom                                            str
+    ======== ============================================================ ======= ===============================================
 
 Data: FITS image [float32, 2751x500]
 
@@ -551,14 +432,18 @@ Inverse variance of the electrons in HDU0.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int  Number of wavelengths
-NAXIS2   500              int  Number of spectra
-CHECKSUM YgRiaZOfTdOfYZOf str  HDU checksum updated 2021-07-08T12:56:13
-DATASUM  2402704670       str  data unit checksum updated 2021-07-08T12:56:13
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int  Number of wavelengths
+    NAXIS2   500              int  Number of spectra
+    CHECKSUM YgRiaZOfTdOfYZOf str  HDU checksum updated 2021-07-08T12:56:13
+    DATASUM  2402704670       str  data unit checksum updated 2021-07-08T12:56:13
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2751x500]
 
@@ -576,16 +461,20 @@ TODO: Add link to definition of which bits mean what.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int  Number of wavelengths
-NAXIS2   500              int  Number of spectra
-BSCALE   1                int
-BZERO    2147483648       int
-CHECKSUM 9GbI9FbG9FbG9FbG str  HDU checksum updated 2021-07-08T12:56:14
-DATASUM  688701           str  data unit checksum updated 2021-07-08T12:56:14
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int  Number of wavelengths
+    NAXIS2   500              int  Number of spectra
+    BSCALE   1                int
+    BZERO    2147483648       int
+    CHECKSUM 9GbI9FbG9FbG9FbG str  HDU checksum updated 2021-07-08T12:56:14
+    DATASUM  688701           str  data unit checksum updated 2021-07-08T12:56:14
+    ======== ================ ==== ==============================================
 
 Data: FITS image [int32, 2751x500]
 
@@ -599,14 +488,18 @@ EXTNAME = WAVELENGTH
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int  Number of wavelengths
-BUNIT    Angstrom         str
-CHECKSUM 9GQG9DPE9DPE9DPE str  HDU checksum updated 2021-07-08T12:56:14
-DATASUM  979185614        str  data unit checksum updated 2021-07-08T12:56:14
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int  Number of wavelengths
+    BUNIT    Angstrom         str
+    CHECKSUM 9GQG9DPE9DPE9DPE str  HDU checksum updated 2021-07-08T12:56:14
+    DATASUM  979185614        str  data unit checksum updated 2021-07-08T12:56:14
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float64, 2751]
 
@@ -646,15 +539,19 @@ at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int
-NAXIS2   11               int
-NAXIS3   500              int
-CHECKSUM YGfeaGcdSGcdYGcd str  HDU checksum updated 2021-07-08T12:56:17
-DATASUM  307167897        str  data unit checksum updated 2021-07-08T12:56:17
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int
+    NAXIS2   11               int
+    NAXIS3   500              int
+    CHECKSUM YGfeaGcdSGcdYGcd str  HDU checksum updated 2021-07-08T12:56:17
+    DATASUM  307167897        str  data unit checksum updated 2021-07-08T12:56:17
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2751x11x500]
 
@@ -668,530 +565,382 @@ Fibermap information combining fiberassign request with actual fiber locations.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============================================================================== ======= ==============================================
-KEY      Example Value                                                                  Type    Comment
-======== ============================================================================== ======= ==============================================
-NAXIS1   361                                                                            int     length of dimension 1
-NAXIS2   500                                                                            int     length of dimension 2
-TILEID   80818                                                                          int
-TILERA   110.36                                                                         float
-TILEDEC  78.76                                                                          float
-FIELDROT 0.59831423612066                                                               float
-FA_PLAN  2022-07-01T00:00:00.000                                                        str
-FA_HA    0.0                                                                            float
-FA_RUN   2021-02-22T00:00:00                                                            str
-REQRA    110.36                                                                         float
-REQDEC   78.76                                                                          float
-FIELDNUM 0                                                                              int
-FA_VER   2.1.1.dev2706                                                                  str
-FA_SURV  cmx                                                                            str
-GFA      /global/cfs/cdirs/desi/target/catalogs/dr9/0.49.0/gfas                         str
-SKY      /global/cfs/cdirs/desi/target/catalogs/dr9/0.49.0/skies                        str
-SKYSUPP  /global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.49.0/skies-supp               str
-TARG     /global/cfs/cdirs/desi/target/catalogs/gaiadr2/0.49.0/targets/cmx/resolve/supp str
-FAFLAVOR dithprec                                                                       str
-FAOUTDIR ./20210223/                                                                    str
-PMTIME   2021-02-23T00:00:00.000                                                        str
-RUNDATE  2021-02-22T00:00:00                                                            str
-SEED     77                                                                             int
-ISDITH   1                                                                              int
-OBSCON   DARK|GRAY|BRIGHT                                                               str
-BZERO    32768                                                                          int
-BSCALE   1                                                                              int
-MODULE   CI                                                                             str
-EXPID    77755                                                                          int
-EXPFRAME 0                                                                              int
-FRAMES   None                                                                           Unknown
-COSMSPLT F                                                                              bool
-MAXSPLIT 0                                                                              int
-SPLITIDS 77755                                                                          str
-FIBASSGN /data/tiles/SVN_tiles/080/fiberassign-080818.fits.gz                           str
-FLAVOR   science                                                                        str
-OBSTYPE  SCIENCE                                                                        str
-SEQUENCE DESI                                                                           str
-MANIFEST F                                                                              bool
-OBJECT                                                                                  str
-PURPOSE  SV                                                                             str
-PROGRAM  Dither fibermode tile 80818 (110.36, 78.76)                                    str
-PROPID   2019B-5000                                                                     str
-OBSERVER Antonella Palmese                                                              str
-LEAD     Ann Elliott                                                                    str
-INSTRUME DESI                                                                           str
-OBSERVAT KPNO                                                                           str
-OBS-LAT  31.96403                                                                       str
-OBS-LONG -111.59989                                                                     str
-OBS-ELEV 2097.0                                                                         float
-TELESCOP KPNO 4.0-m telescope                                                           str
-CORRCTOR DESI Corrector                                                                 str
-SEQNUM   1                                                                              int
-NIGHT    20210223                                                                       int
-SEQSTART 2021-02-24T06:19:10.430069                                                     str
-TIMESYS  UTC                                                                            str
-DATE-OBS 2021-02-24T06:21:55.370842112                                                  str
-TIME-OBS 2021-02-23T06:21:55.370842112                                                  str
-MJD-OBS  59269.2652242                                                                  float
-OPENSHUT None                                                                           Unknown
-CAMSHUT  open                                                                           str
-ST       09:12:55.688000                                                                str
-ACQTIME  15.0                                                                           float
-GUIDTIME 5.0                                                                            float
-FOCSTIME 60.0                                                                           float
-SKYTIME  60.0                                                                           float
-WHITESPT F                                                                              bool
-ZENITH   F                                                                              bool
-SEANNEX  F                                                                              bool
-BEYONDP  F                                                                              bool
-FIDUCIAL off                                                                            str
-BACKLIT  off                                                                            str
-AIRMASS  1.501465                                                                       float
-FOCUS    1117.7,-820.8,-60.5,15.2,30.4,201.4                                            str
-VCCD     ON                                                                             str
-TRUSTEMP 11.7                                                                           float
-PMIRTEMP 10.225                                                                         float
-PMREADY  T                                                                              bool
-PMCOVER  open                                                                           str
-PMCOOL   off                                                                            str
-DOMSHUTU open                                                                           str
-DOMSHUTL open                                                                           str
-DOMLIGHH off                                                                            str
-DOMLIGHL off                                                                            str
-DOMEAZ   347.3                                                                          float
-DOMINPOS T                                                                              bool
-EPOCH    2000.0                                                                         float
-GUIDOFFR -0.300306                                                                      float
-GUIDOFFD -0.206036                                                                      float
-MOONDEC  24.054124                                                                      float
-MOONRA   119.092751                                                                     float
-MOONSEP  55.0686276414593                                                               float
-MOUNTAZ  353.114997                                                                     float
-MOUNTDEC 78.77085                                                                       float
-MOUNTEL  41.759267                                                                      float
-MOUNTHA  27.3357                                                                        float
-INCTRL   T                                                                              bool
-INPOS    T                                                                              bool
-MNTOFFD  -58.99                                                                         float
-MNTOFFR  12.19                                                                          float
-PARALLAC 147.87483                                                                      float
-SKYDEC   78.77085                                                                       float
-SKYRA    110.326029                                                                     float
-TARGTDEC 78.77085                                                                       float
-TARGTRA  110.326029                                                                     float
-TARGTAZ  352.989038                                                                     float
-TARGTEL  41.700973                                                                      float
-TRGTOFFD 0.0                                                                            float
-TRGTOFFR 0.0                                                                            float
-ZD       48.299027                                                                      float
-TCSST    09:12:55.137                                                                   str
-TCSMJD   59269.265649                                                                   float
-USEETC   F                                                                              bool
-SKYLEVEL 7.943                                                                          float
-PMSEEING 0.94                                                                           float
-PMTRANS  100.93                                                                         float
-ACQCAM   GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8                                      str
-GUIDECAM GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8                                      str
-FOCUSCAM FOCUS1,FOCUS4,FOCUS6,FOCUS9                                                    str
-SKYCAM   SKYCAM0,SKYCAM1                                                                str
-REQADC   109.36,187.96                                                                  str
-ADCCORR  T                                                                              bool
-ADC1PHI  109.360004                                                                     float
-ADC2PHI  187.960003                                                                     float
-ADC1HOME F                                                                              bool
-ADC2HOME F                                                                              bool
-ADC1NREV -1.0                                                                           float
-ADC2NREV -1.0                                                                           float
-ADC1STAT STOPPED                                                                        str
-ADC2STAT STOPPED                                                                        str
-USESKY   T                                                                              bool
-USEFOCUS T                                                                              bool
-HEXPOS   1117.8,-820.8,-61.4,15.2,30.5,219.3                                            str
-HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                                                        str
-USEROTAT T                                                                              bool
-ROTOFFST 198.4                                                                          float
-ROTENBLD T                                                                              bool
-ROTRATE  0.0                                                                            float
-RESETROT F                                                                              bool
-USEPOS   T                                                                              bool
-PETALS   PETAL0,PETAL1,PETAL2,PETAL3,PETAL4,PETAL5,PETAL6,PETAL7,PETAL8,PETAL9          str
-POSCYCLE 1                                                                              int
-POSONTGT 1540                                                                           int
-POSONFRC 0.3704                                                                         float
-POSDISAB 823                                                                            int
-POSENABL 4158                                                                           int
-POSRMS   0.0122                                                                         float
-POSITER  1                                                                              int
-POSFRACT 0.95                                                                           float
-POSTOLER 0.005                                                                          float
-POSMVALL T                                                                              bool
-USEGUIDR T                                                                              bool
-GUIDMODE catalog                                                                        str
-USEAOS   F                                                                              bool
-USEDONUT T                                                                              bool
-USESPCTR T                                                                              bool
-SPCGRPHS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                                        str
-ILLSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                                        str
-CCDSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                                        str
-TDEWPNT  -19.54                                                                         float
-TAIRFLOW 0.0                                                                            float
-TAIRITMP 12.2                                                                           float
-TAIROTMP 13.2                                                                           float
-TAIRTEMP 10.655                                                                         float
-TCASITMP 6.6                                                                            float
-TCASOTMP 11.5                                                                           float
-TCSITEMP 10.8                                                                           float
-TCSOTEMP 11.4                                                                           float
-TCIBTEMP 0.0                                                                            float
-TCIMTEMP 0.0                                                                            float
-TCITTEMP 0.0                                                                            float
-TCOSTEMP 0.0                                                                            float
-TCOWTEMP 0.0                                                                            float
-TDBTEMP  10.5                                                                           float
-TFLOWIN  0.0                                                                            float
-TFLOWOUT 0.0                                                                            float
-TGLYCOLI 12.1                                                                           float
-TGLYCOLO 12.0                                                                           float
-THINGES  11.6                                                                           float
-THINGEW  11.7                                                                           float
-TPMAVERT 10.242                                                                         float
-TPMDESIT 7.0                                                                            float
-TPMEIBT  10.1                                                                           float
-TPMEITT  10.0                                                                           float
-TPMEOBT  10.3                                                                           float
-TPMEOTT  10.3                                                                           float
-TPMNIBT  9.7                                                                            float
-TPMNITT  10.4                                                                           float
-TPMNOBT  10.5                                                                           float
-TPMNOTT  10.3                                                                           float
-TPMRTDT  10.31                                                                          float
-TPMSIBT  10.3                                                                           float
-TPMSITT  10.0                                                                           float
-TPMSOBT  10.0                                                                           float
-TPMSOTT  10.4                                                                           float
-TPMSTAT  ready                                                                          str
-TPMWIBT  9.9                                                                            float
-TPMWITT  10.0                                                                           float
-TPMWOBT  10.2                                                                           float
-TPMWOTT  10.5                                                                           float
-TPCITEMP 10.2                                                                           float
-TPCOTEMP 10.2                                                                           float
-TPR1HUM  0.0                                                                            float
-TPR1TEMP 0.0                                                                            float
-TPR2HUM  0.0                                                                            float
-TPR2TEMP 0.0                                                                            float
-TSERVO   40.0                                                                           float
-TTRSTEMP 10.7                                                                           float
-TTRWTEMP 11.3                                                                           float
-TTRUETBT -4.0                                                                           float
-TTRUETTT 10.8                                                                           float
-TTRUNTBT 11.1                                                                           float
-TTRUNTTT 11.0                                                                           float
-TTRUSTBT 11.1                                                                           float
-TTRUSTST 10.8                                                                           float
-TTRUSTTT 11.1                                                                           float
-TTRUTSBT 12.0                                                                           float
-TTRUTSMT 12.0                                                                           float
-TTRUTSTT 11.0                                                                           float
-TTRUWTBT 10.9                                                                           float
-TTRUWTTT 11.0                                                                           float
-ALARM    F                                                                              bool
-ALARM-ON F                                                                              bool
-BATTERY  100.0                                                                          float
-SECLEFT  6444.0                                                                         float
-UPSSTAT  System Normal - On Line(7)                                                     str
-INAMPS   71.9                                                                           float
-OUTWATTS 5100.0,7300.0,4800.0                                                           str
-COMPDEW  -15.0                                                                          float
-COMPHUM  5.0                                                                            float
-COMPAMB  22.0                                                                           float
-COMPTEMP 28.4                                                                           float
-DEWPOINT 19.3                                                                           float
-HUMIDITY 89.0                                                                           float
-PRESSURE 795.0                                                                          float
-OUTTEMP  21.2                                                                           float
-WINDDIR  323.0                                                                          float
-WINDSPD  14.7                                                                           float
-GUST     14.7                                                                           float
-AMNIENTN 15.9                                                                           float
-CFLOOR   10.5                                                                           float
-NWALLIN  16.3                                                                           float
-NWALLOUT 9.9                                                                            float
-WWALLIN  16.4                                                                           float
-WWALLOUT 11.3                                                                           float
-AMBIENTS 17.2                                                                           float
-FLOOR    14.6                                                                           float
-EWALLCMP 11.6                                                                           float
-EWALLCOU 11.3                                                                           float
-ROOF     10.6                                                                           float
-ROOFAMB  11.1                                                                           float
-DOMEBLOW -99.9                                                                          float
-DOMEBUP  -99.9                                                                          float
-DOMELLOW -99.9                                                                          float
-DOMELUP  -99.9                                                                          float
-DOMERLOW -99.9                                                                          float
-DOMERUP  -99.9                                                                          float
-PLATFORM -99.9                                                                          float
-SHACKC   17.3                                                                           float
-SHACKW   16.9                                                                           float
-STAIRSL  -99.9                                                                          float
-STAIRSM  -99.9                                                                          float
-STAIRSU  -99.9                                                                          float
-TELBASE  10.8                                                                           float
-UTILWALL 11.0                                                                           float
-UTILROOM 11.1                                                                           float
-SP0NIRT  139.99                                                                         float
-SP0REDT  139.99                                                                         float
-SP0BLUT  162.97                                                                         float
-SP0NIRP  8.249e-08                                                                      float
-SP0REDP  6.155e-08                                                                      float
-SP0BLUP  8.905e-08                                                                      float
-SP1NIRT  139.99                                                                         float
-SP1REDT  139.99                                                                         float
-SP1BLUT  162.97                                                                         float
-SP1NIRP  4.38e-08                                                                       float
-SP1REDP  5.379e-08                                                                      float
-SP1BLUP  8.005e-08                                                                      float
-SP2NIRT  139.99                                                                         float
-SP2REDT  139.99                                                                         float
-SP2BLUT  163.02                                                                         float
-SP2NIRP  8.556e-08                                                                      float
-SP2REDP  8.642e-08                                                                      float
-SP2BLUP  7.737e-08                                                                      float
-SP3NIRT  139.99                                                                         float
-SP3REDT  139.96                                                                         float
-SP3BLUT  162.99                                                                         float
-SP3NIRP  3.824e-08                                                                      float
-SP3REDP  6.739e-08                                                                      float
-SP3BLUP  9.329e-08                                                                      float
-SP4NIRT  139.99                                                                         float
-SP4REDT  140.06                                                                         float
-SP4BLUT  163.04                                                                         float
-SP4NIRP  6.3e-08                                                                        float
-SP4REDP  4.941e-08                                                                      float
-SP4BLUP  5.325e-08                                                                      float
-SP5NIRT  139.99                                                                         float
-SP5REDT  139.99                                                                         float
-SP5BLUT  163.02                                                                         float
-SP5NIRP  6.881e-08                                                                      float
-SP5REDP  6.584e-08                                                                      float
-SP5BLUP  1.101e-07                                                                      float
-SP6NIRT  139.99                                                                         float
-SP6REDT  139.99                                                                         float
-SP6BLUT  162.97                                                                         float
-SP6NIRP  2.809e-07                                                                      float
-SP6REDP  6.053e-08                                                                      float
-SP6BLUP  7.54e-08                                                                       float
-SP7NIRT  139.99                                                                         float
-SP7REDT  139.99                                                                         float
-SP7BLUT  162.97                                                                         float
-SP7NIRP  7.49e-08                                                                       float
-SP7REDP  4.383e-08                                                                      float
-SP7BLUP  1.018e-07                                                                      float
-SP8NIRT  139.99                                                                         float
-SP8REDT  139.99                                                                         float
-SP8BLUT  162.97                                                                         float
-SP8NIRP  3.843e-08                                                                      float
-SP8REDP  5.37e-08                                                                       float
-SP8BLUP  8.29699999999999e-08                                                           float
-SP9NIRT  140.03                                                                         float
-SP9REDT  140.01                                                                         float
-SP9BLUT  163.02                                                                         float
-SP9NIRP  5.706e-08                                                                      float
-SP9REDP  6.875e-08                                                                      float
-SP9BLUP  1.206e-07                                                                      float
-RADESYS  FK5                                                                            str
-TNFSPROC 8.6995                                                                         float
-TGFAPROC 9.835                                                                          float
-SIMGFAP  F                                                                              bool
-USEFVC   T                                                                              bool
-USEFID   T                                                                              bool
-USEILLUM T                                                                              bool
-USEXSRVR T                                                                              bool
-USEOPENL T                                                                              bool
-STOPGUDR T                                                                              bool
-STOPFOCS T                                                                              bool
-STOPSKY  T                                                                              bool
-KEEPGUDR F                                                                              bool
-KEEPFOCS F                                                                              bool
-KEEPSKY  F                                                                              bool
-REACQUIR F                                                                              bool
-FILENAME /exposures/desi/20210223/00077755/desi-00077755.fits.fz                        str
-EXCLUDED                                                                                str
-DOSVER   trunk                                                                          str
-OCSVER   1.2                                                                            float
-CONSTVER DESI:CURRENT                                                                   str
-INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini                               str
-REQTIME  180.0                                                                          float
-FVCTIME  2.0                                                                            float
-SIMGFACQ F                                                                              bool
-TCSKRA   0.3 0.003 0.00003                                                              str
-TCSKDEC  0.3 0.003 0.00003                                                              str
-TCSGRA   0.3                                                                            float
-TCSGDEC  0.3                                                                            float
-TCSMFRA  1                                                                              int
-TCSMFDEC 1                                                                              int
-TCSPIRA  1.0,0.0,0.0,0.0                                                                str
-TCSPIDEC 1.0,0.0,0.0,0.0                                                                str
-POSCNVGD F                                                                              bool
-GUIEXPID 77755                                                                          int
-IGFRMNUM 10                                                                             int
-FOCEXPID 77755                                                                          int
-IFFRMNUM 1                                                                              int
-SKYEXPID 77755                                                                          int
-ISFRMNUM 1                                                                              int
-FGFRMNUM 30                                                                             int
-FFFRMNUM 4                                                                              int
-FSFRMNUM 3                                                                              int
-DELTARA  None                                                                           Unknown
-DELTADEC None                                                                           Unknown
-GSGUIDE0 (518.32,619.56),(973.72,1900.42)                                               str
-GSGUIDE2 (891.16,1654.11),(46.08,618.78)                                                str
-GSGUIDE3 (714.10,1774.21),(47.68,502.24)                                                str
-GSGUIDE5 (287.66,1594.95),(93.01,1750.07)                                               str
-GSGUIDE7 (485.09,511.45),(653.67,1607.58)                                               str
-GSGUIDE8 (896.83,1786.83),(281.85,267.54)                                               str
-ARCHIVE  /exposures/desi/20210223/00077755/guide-00077755.fits.fz                       str
-GUIDEFIL guide-00077755.fits.fz                                                         str
-COORDFIL coordinates-00077755.fits                                                      str
-EXPTIME  180.034                                                                        float
-VCCDON   2021-02-12T20:17:35.596905                                                     str
-VCCDSEC  986896.6                                                                       float
-SPECGRPH 7                                                                              int
-SPECID   8                                                                              int
-FEEBOX   lbnl067                                                                        str
-VESSEL   25                                                                             int
-FEEVER   v20160312                                                                      str
-FEEPOWER ON                                                                             str
-FEEDMASK 2134851391                                                                     int
-FEECMASK 1048575                                                                        int
-CCDTEMP  850.0                                                                          float
-DAC14    0.0,0.7072                                                                     str
-DAC6     0.0,-0.0368                                                                    str
-DAC11    26.9998,26.7268                                                                str
-BIASSECC [2053:2116, 2114:4161]                                                         str
-DAC15    19.9997,19.8848                                                                str
-DAC5     0.0,-0.0368                                                                    str
-CASETEMP 58.3376                                                                        float
-AMPSECB  [2049:4096, 2048:1]                                                            str
-DAC8     26.9998,26.5784                                                                str
-OFFSET3  -1.5,15.8723                                                                   str
-DAC9     26.9998,26.3707                                                                str
-OFFSET0  -1.5,15.8002                                                                   str
-SETTINGS detectors_sm_20210128.json                                                     str
-DAC13    -5.0006,-5.0544                                                                str
-CLOCK13  3.0,-7.0002                                                                    str
-PRESECA  [1:4, 2:2049]                                                                  str
-BLDTIME  0.3548                                                                         float
-CLOCK8   3.0,-7.0002                                                                    str
-ORSECD   [2181:4228, 2082:2113]                                                         str
-DAC1     15.9998,15.7899                                                                str
-PRRSECA  [5:2052, 1:1]                                                                  str
-ORSECB   [2181:4228, 2050:2081]                                                         str
-DATASECA [5:2052, 2:2049]                                                               str
-DAC3     15.9998,15.862                                                                 str
-OFFSET7  -1.100000023841858,-0.0368                                                     str
-CRYOTEMP 162.97                                                                         float
-TRIMSECC [5:2052, 2114:4161]                                                            str
-CPUTEMP  58.1015                                                                        float
-TRIMSECB [2181:4228, 2:2049]                                                            str
-DETSECD  [2049:4096, 2049:4096]                                                         str
-CLOCK1   3.9999,-4.0002                                                                 str
-CLOCK5   3.9999,-4.0002                                                                 str
-OFFSET2  -1.5,15.8414                                                                   str
-CLOCK2   3.9999,-4.0002                                                                 str
-DAC16    0.0,63.525                                                                     str
-CCDSECD  [2049:4096, 2049:4096]                                                         str
-PRESECC  [1:4, 2114:4161]                                                               str
-PRRSECC  [5:2052, 4162:4162]                                                            str
-DETSECA  [1:2048, 1:2048]                                                               str
-DATASECC [5:2052, 2114:4161]                                                            str
-DAC17    -0.0,0.0854                                                                    str
-OFFSET1  -1.5,15.7899                                                                   str
-CLOCK18  3.9999,-4.0002                                                                 str
-DAC7     0.0,-0.0316                                                                    str
-CLOCK12  3.0,-7.0002                                                                    str
-CCDTMING flatdark_sta_timing.txt                                                        str
-TRIMSECA [5:2052, 2:2049]                                                               str
-PGAGAIN  5                                                                              int
-PRESECB  [4229:4232, 2:2049]                                                            str
-AMPSECC  [2048:1, 2049:4096]                                                            str
-DAC12    4.9997,5.0544                                                                  str
-DATASECD [2181:4228, 2114:4161]                                                         str
-DATASECB [2181:4228, 2:2049]                                                            str
-CCDSECC  [1:2048, 2049:4096]                                                            str
-CLOCK4   3.9999,-4.0002                                                                 str
-OFFSET4  -1.100000023841858,-0.0263                                                     str
-CLOCK11  0.0,0.0                                                                        str
-CRYOPRES 1.017e-07                                                                      str
-DETSECB  [2049:4096, 1:2048]                                                            str
-OFFSET6  -1.100000023841858,-0.0368                                                     str
-CCDPREP  purge,clear                                                                    str
-ORSECA   [5:2052, 2050:2081]                                                            str
-DETECTOR sn22829                                                                        str
-BIASSECD [2117:2180, 2114:4161]                                                         str
-CLOCK16  0.0,0.0                                                                        str
-CLOCK15  0.0,0.0                                                                        str
-DIGITIME 54.7765                                                                        float
-CCDNAME  CCDSM8B                                                                        str
-CDSPARMS 400, 400, 8, 1000                                                              str
-DETSECC  [1:2048, 2049:4096]                                                            str
-PRRSECD  [2181:4228, 4162:4162]                                                         str
-CLOCK17  3.9999,-4.0002                                                                 str
-BIASSECB [2117:2180, 2:2049]                                                            str
-AMPSECA  [1:2048, 1:2048]                                                               str
-DAC4     0.0,-0.021                                                                     str
-CCDSECA  [1:2048, 1:2048]                                                               str
-CLOCK14  3.0,-7.0002                                                                    str
-CAMERA   b7                                                                             str
-CLOCK3   6.9999,-2.0001                                                                 str
-PRESECD  [4229:4232, 2114:4161]                                                         str
-PRRSECB  [2181:4228, 1:1]                                                               str
-CCDSIZE  4162,4232                                                                      str
-CLOCK6   3.9999,-4.0002                                                                 str
-BIASSECA [2053:2116, 2:2049]                                                            str
-ORSECC   [5:2052, 2082:2113]                                                            str
-DAC2     15.9998,15.8311                                                                str
-AMPSECD  [4096:2049, 4096:2049]                                                         str
-OFFSET5  -1.100000023841858,-0.0316                                                     str
-DAC0     15.9998,15.8002                                                                str
-DAC10    26.9998,26.1332                                                                str
-TRIMSECD [2181:4228, 2114:4161]                                                         str
-CLOCK0   3.9999,-4.0002                                                                 str
-CLOCK9   3.0,-7.0002                                                                    str
-CCDSECB  [2049:4096, 1:2048]                                                            str
-DELAYS   13, 13, 25, 25, 8, 3000, 7, 7, 400, 7                                          str
-CLOCK7   6.9999,-2.0001                                                                 str
-CCDCFG   default_sta_20210128.cfg                                                       str
-CLOCK10  3.0,-7.0002                                                                    str
-OBSID    kp4m20210224t062155                                                            str
-PROCTYPE RAW                                                                            str
-PRODTYPE image                                                                          str
-GAINA    1.117                                                                          float
-SATULEVA 63500.0                                                                        float
-OVERSCNA 1195.794247115305                                                              float
-OBSRDNA  3.032856327436087                                                              float
-SATUELEA 69593.7978259722                                                               float
-GAINB    1.117                                                                          float
-SATULEVB 63700.0                                                                        float
-OVERSCNB 1188.874709766999                                                              float
-OBSRDNB  2.834090558391209                                                              float
-SATUELEB 69824.92694919027                                                              float
-GAINC    1.127                                                                          float
-SATULEVC 59000.0                                                                        float
-OVERSCNC 1193.463564006085                                                              float
-OBSRDNC  2.929996330132565                                                              float
-SATUELEC 65147.96656336514                                                              float
-GAIND    1.128                                                                          float
-SATULEVD 63600.0                                                                        float
-OVERSCND 1176.893356381423                                                              float
-OBSRDND  2.792311084921087                                                              float
-SATUELED 70413.26429400175                                                              float
-FIBERMIN 3500                                                                           int
-CHECKSUM a3R3c2O2a2O2a2O2                                                               str     HDU checksum updated 2021-07-08T12:56:17
-DATASUM  605678013                                                                      str     data unit checksum updated 2021-07-08T12:56:17
-ENCODING ascii                                                                          str
-======== ============================================================================== ======= ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============================================================ ======= ==============================================
+    KEY      Example Value                                                Type    Comment
+    ======== ============================================================ ======= ==============================================
+    NAXIS1   369                                                          int     length of dimension 1
+    NAXIS2   500                                                          int     length of dimension 2
+    EXPID    68979                                                        int
+    EXPFRAME 0                                                            int
+    FLAVOR   science                                                      str
+    SEQUENCE Spectrographs                                                str
+    PURPOSE  Commissioning                                                str
+    PROGRAM  CALIB DESI-CALIB-00 LEDs only                                str
+    PROPID   2019B-5000                                                   str
+    OBSERVER DESIObserver                                                 str
+    LEAD     RunManager                                                   str
+    INSTRUME DESI                                                         str
+    OBSERVAT KPNO                                                         str
+    OBS-LAT  31.96403                                                     str
+    OBS-LONG -111.59989                                                   str
+    OBS-ELEV 2097.0                                                       float
+    TELESCOP KPNO 4.0-m telescope                                         str
+    CORRCTOR DESI Corrector                                               str
+    NIGHT    20201220                                                     int
+    TIMESYS  UTC                                                          str
+    DATE-OBS 2020-12-20T22:24:15.672815                                   str
+    TIME-OBS 22:24:15.672815                                              str
+    MJD-OBS  59203.93351473                                               float
+    ST       20:57:41.340                                                 str
+    EXPTIME  120.037                                                      float
+    DELTARA  0.0                                                          float
+    DELTADEC 0.0                                                          float
+    VCCD     ON                                                           str
+    VCCDON   2020-12-14T04:22:19.522101                                   str
+    VCCDSEC  583485.8                                                     float
+    EQUINOX  2000.0                                                       float
+    SPECGRPH 5                                                            int
+    SPECID   9                                                            int
+    FEEBOX   lbnl057                                                      str
+    VESSEL   26                                                           int
+    FEEVER   v20160312                                                    str
+    FEEPOWER ON                                                           str
+    FEEDMASK 2134851391                                                   int
+    FEECMASK 1048575                                                      int
+    CCDTEMP  -135.8073                                                    float
+    RADESYS  FK5                                                          str
+    FILENAME /exposures/desi/specs/20201220/00068979/sp9-00068979.fits.fz str
+    DOSVER   trunk                                                        str
+    OCSVER   1.2                                                          float
+    CONSTVER DESI:CURRENT                                                 str
+    INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini             str
+    DAC3     -9.0002,-8.9919                                              str
+    CLOCK5   9.9999,0.0                                                   str
+    BLDTIME  0.3522                                                       float
+    CLOCK2   9.9999,0.0                                                   str
+    BIASSECD [2129:2192, 2130:4193]                                       str
+    PGAGAIN  3                                                            int
+    OFFSET5  2.0,5.9964                                                   str
+    BIASSECB [2129:2192, 2:2065]                                          str
+    CLOCK4   9.9999,0.0                                                   str
+    ORSECD   [2193:4249, 2098:2129]                                       str
+    DAC2     -9.0002,-8.9404                                              str
+    DAC6     5.9998,6.0437                                                str
+    CCDPREP  purge,clear                                                  str
+    CASETEMP 59.322                                                       float
+    DAC15    0.0,-0.0148                                                  str
+    DAC16    39.9961,39.8706                                              str
+    DAC9     -25.0003,-24.6344                                            str
+    AMPSECB  [4114:2058, 1:2064]                                          str
+    DAC11    -25.0003,-24.5157                                            str
+    DELAYS   20, 20, 25, 40, 7, 3000, 7, 7, 7, 7                          str
+    CLOCK13  9.9992,2.9993                                                str
+    PRESECD  [4250:4256, 2130:4193]                                       str
+    CDSPARMS 400, 400, 8, 2000                                            str
+    DATASECD [2193:4249, 2130:4193]                                       str
+    CLOCK15  9.9992,2.9993                                                str
+    CLOCK18  9.0,0.9999                                                   str
+    CLOCK8   9.9992,2.9993                                                str
+    OFFSET7  2.0,6.0122                                                   str
+    DAC8     -25.0003,-24.946                                             str
+    CCDSECC  [1:2057, 2065:4128]                                          str
+    CLOCK14  9.9992,2.9993                                                str
+    CLOCK3   -2.0001,3.9999                                               str
+    DIGITIME 47.5948                                                      float
+    CLOCK1   9.9999,0.0                                                   str
+    PRRSECD  [2193:4249, 4194:4194]                                       str
+    CLOCK9   9.9992,2.9993                                                str
+    CCDNAME  CCDSM9R                                                      str
+    DETSECB  [2058:4114, 1:2064]                                          str
+    CCDSECA  [1:2057, 1:2064]                                             str
+    DETSECD  [2058:4114, 2065:4128]                                       str
+    DATASECB [2193:4249, 2:2065]                                          str
+    CRYOPRES 1.166e-07                                                    str
+    CAMERA   r5                                                           str
+    PRRSECA  [8:2064, 1:1]                                                str
+    DAC1     -9.0002,-8.9507                                              str
+    PRESECC  [1:7, 2130:4193]                                             str
+    TRIMSECA [8:2064, 2:2065]                                             str
+    TRIMSECD [2193:4249, 2130:4193]                                       str
+    CCDCFG   default_lbnl_20190717.cfg                                    str
+    PRRSECB  [2193:4249, 1:1]                                             str
+    CLOCK12  9.9992,2.9993                                                str
+    CCDSECB  [2058:4114, 1:2064]                                          str
+    TRIMSECB [2193:4249, 2:2065]                                          str
+    DATASECA [8:2064, 2:2065]                                             str
+    DAC17    20.0008,12.3342                                              str
+    CLOCK17  9.0,0.9999                                                   str
+    PRESECB  [4250:4256, 2:2065]                                          str
+    CLOCK0   9.9999,0.0                                                   str
+    PRESECA  [1:7, 2:2065]                                                str
+    ORSECA   [8:2064, 2066:2097]                                          str
+    BIASSECC [2065:2128, 2130:4193]                                       str
+    DETSECC  [1:2057, 2065:4128]                                          str
+    DAC14    0.0,-0.0148                                                  str
+    DAC4     5.9998,6.0595                                                str
+    CLOCK16  9.9999,3.0                                                   str
+    AMPSECA  [1:2057, 1:2064]                                             str
+    OFFSET4  2.0,6.0595                                                   str
+    CCDSIZE  4194,4256                                                    str
+    OFFSET2  0.4000000059604645,-8.9301                                   str
+    DAC13    0.0,-0.0148                                                  str
+    CRYOTEMP 163.02                                                       float
+    OFFSET6  2.0,6.0437                                                   str
+    CLOCK6   9.9999,0.0                                                   str
+    DETSECA  [1:2057, 1:2064]                                             str
+    CCDTMING default_lbnl_timing_20180905.txt                             str
+    DETECTOR M1-52                                                        str
+    OFFSET3  0.4000000059604645,-8.9816                                   str
+    AMPSECC  [1:2057, 4128:2065]                                          str
+    CLOCK10  9.9992,2.9993                                                str
+    ORSECC   [8:2064, 2098:2129]                                          str
+    SETTINGS detectors_sm_20191211.json                                   str
+    CPUTEMP  58.9629                                                      float
+    OFFSET0  0.4000000059604645,-8.755                                    str
+    DAC12    0.0,0.0                                                      str
+    DATASECC [8:2064, 2130:4193]                                          str
+    AMPSECD  [4114:2058, 4128:2065]                                       str
+    DAC10    -25.0003,-25.0054                                            str
+    CLOCK7   -2.0001,3.9999                                               str
+    DAC0     -9.0002,-8.7653                                              str
+    CLOCK11  9.9992,2.9993                                                str
+    DAC7     5.9998,6.0122                                                str
+    OFFSET1  0.4000000059604645,-8.9507                                   str
+    DAC5     5.9998,5.9964                                                str
+    ORSECB   [2193:4249, 2066:2097]                                       str
+    CCDSECD  [2058:4114, 2065:4128]                                       str
+    PRRSECC  [8:2064, 4194:4194]                                          str
+    TRIMSECC [8:2064, 2130:4193]                                          str
+    BIASSECA [2065:2128, 2:2065]                                          str
+    REQTIME  120.0                                                        float
+    OBSID    kp4m20201220t222415                                          str
+    PROCTYPE RAW                                                          str
+    PRODTYPE image                                                        str
+    GAINA    1.684                                                        float
+    SATULEVA 33000.0                                                      float
+    OSTEPA   0.6500495005602716                                           float
+    OMETHA   AVERAGE                                                      str
+    OVERSCNA 1972.92976646288                                             float
+    OBSRDNA  3.218229918807175                                            float
+    SATUELEA 52249.58627327651                                            float
+    GAINB    1.655                                                        float
+    SATULEVB 47000.0                                                      float
+    OSTEPB   0.6179795354764792                                           float
+    OMETHB   AVERAGE                                                      str
+    OVERSCNB 1975.23548556518                                             float
+    OBSRDNB  3.153470147761547                                            float
+    SATUELEB 74515.98527138963                                            float
+    GAINC    1.467                                                        float
+    SATULEVC 65535.0                                                      float
+    OSTEPC   0.5848174212296726                                           float
+    OMETHC   AVERAGE                                                      str
+    OVERSCNC 1959.467167892971                                            float
+    OBSRDNC  2.894849081776217                                            float
+    SATUELEC 93265.30666470101                                            float
+    GAIND    1.509                                                        float
+    SATULEVD 65535.0                                                      float
+    OSTEPD   0.4709297982626595                                           float
+    OMETHD   AVERAGE                                                      str
+    OVERSCND 1992.393350767962                                            float
+    OBSRDND  2.694583892275785                                            float
+    SATUELED 95885.79343369114                                            float
+    FIBERMIN 2500                                                         int
+    LONGSTRN OGIP 1.0                                                     str
+    MODULE   CI                                                           str
+    FRAMES   None                                                         Unknown
+    COSMSPLT F                                                            bool
+    MAXSPLIT 0                                                            int
+    SPLITIDS 68979                                                        str
+    OBSTYPE  FLAT                                                         str
+    MANIFEST F                                                            bool
+    OBJECT                                                                str
+    SEQID    3 requests                                                   str
+    SEQNUM   2                                                            int
+    SEQTOT   3                                                            int
+    OPENSHUT None                                                         Unknown
+    CAMSHUT  open                                                         str
+    WHITESPT T                                                            bool
+    ZENITH   F                                                            bool
+    SEANNEX  F                                                            bool
+    BEYONDP  F                                                            bool
+    FIDUCIAL off                                                          str
+    AIRMASS  1.521306                                                     float
+    FOCUS    1163.9,-689.8,370.4,13.8,24.2,-0.0                           str
+    TRUSTEMP 13.267                                                       float
+    PMIRTEMP 7.35                                                         float
+    PMREADY  F                                                            bool
+    PMCOVER  open                                                         str
+    PMCOOL   on                                                           str
+    DOMSHUTU not open                                                     str
+    DOMSHUTL not open                                                     str
+    DOMLIGHH off                                                          str
+    DOMLIGHL off                                                          str
+    DOMEAZ   253.289                                                      float
+    DOMINPOS F                                                            bool
+    GUIDOFFR 0.0                                                          float
+    GUIDOFFD -0.0                                                         float
+    MOONDEC  -9.830944                                                    float
+    MOONRA   350.511461                                                   float
+    MOUNTAZ  73.49407                                                     float
+    MOUNTDEC 31.962703                                                    float
+    MOUNTEL  41.035778                                                    float
+    MOUNTHA  -58.479517                                                   float
+    INCTRL   F                                                            bool
+    INPOS    T                                                            bool
+    MNTOFFD  -0.0                                                         float
+    MNTOFFR  -0.0                                                         float
+    PARALLAC -73.492813                                                   float
+    SKYDEC   31.962703                                                    float
+    SKYRA    12.901561                                                    float
+    TARGTDEC 31.963299                                                    float
+    TARGTRA  6.305086                                                     float
+    TARGTAZ  75.558672                                                    float
+    TARGTEL  46.429343                                                    float
+    TRGTOFFD 0.0                                                          float
+    TRGTOFFR 0.0                                                          float
+    ZD       48.964222                                                    float
+    TCSST    20:57:41.291                                                 str
+    TCSMJD   59203.933945                                                 float
+    ADCCORR  F                                                            bool
+    ADC1PHI  114.980003                                                   float
+    ADC2PHI  162.869907                                                   float
+    ADC1HOME F                                                            bool
+    ADC2HOME F                                                            bool
+    ADC1NREV 0.0                                                          float
+    ADC2NREV -1.0                                                         float
+    ADC1STAT STOPPED                                                      str
+    ADC2STAT STOPPED                                                      str
+    HEXPOS   1163.9,-689.8,370.4,13.8,24.2,-0.0                           str
+    HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                                      str
+    ROTOFFST 0.0                                                          float
+    ROTENBLD T                                                            bool
+    ROTRATE  0.0                                                          float
+    RESETROT F                                                            bool
+    GUIDMODE catalog                                                      str
+    USEAOS   F                                                            bool
+    SPCGRPHS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                      str
+    ILLSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                      str
+    CCDSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                      str
+    TDEWPNT  -18.2                                                        float
+    TAIRFLOW 1.121                                                        float
+    TAIRITMP 10.5                                                         float
+    TAIROTMP 5.5                                                          float
+    TAIRTEMP 11.86                                                        float
+    TCASITMP 0.0                                                          float
+    TCASOTMP 9.6                                                          float
+    TCSITEMP 7.4                                                          float
+    TCSOTEMP 10.2                                                         float
+    TCIBTEMP 0.0                                                          float
+    TCIMTEMP 0.0                                                          float
+    TCITTEMP 0.0                                                          float
+    TCOSTEMP 0.0                                                          float
+    TCOWTEMP 0.0                                                          float
+    TDBTEMP  7.4                                                          float
+    TFLOWIN  7.7                                                          float
+    TFLOWOUT 8.3                                                          float
+    TGLYCOLI -1.8                                                         float
+    TGLYCOLO 0.0                                                          float
+    THINGES  12.9                                                         float
+    THINGEW  11.7                                                         float
+    TPMAVERT 7.304                                                        float
+    TPMDESIT 7.0                                                          float
+    TPMEIBT  7.3                                                          float
+    TPMEITT  7.3                                                          float
+    TPMEOBT  7.4                                                          float
+    TPMEOTT  7.2                                                          float
+    TPMNIBT  7.4                                                          float
+    TPMNITT  7.3                                                          float
+    TPMNOBT  7.7                                                          float
+    TPMNOTT  7.6                                                          float
+    TPMRTDT  6.96                                                         float
+    TPMSIBT  7.4                                                          float
+    TPMSITT  7.0                                                          float
+    TPMSOBT  7.4                                                          float
+    TPMSOTT  7.2                                                          float
+    TPMSTAT  soft air                                                     str
+    TPMWIBT  7.2                                                          float
+    TPMWITT  7.1                                                          float
+    TPMWOBT  7.6                                                          float
+    TPMWOTT  8.1                                                          float
+    TPCITEMP 7.7                                                          float
+    TPCOTEMP 7.7                                                          float
+    TPR1HUM  0.0                                                          float
+    TPR1TEMP 0.0                                                          float
+    TPR2HUM  0.0                                                          float
+    TPR2TEMP 0.0                                                          float
+    TSERVO   7.0                                                          float
+    TTRSTEMP 13.2                                                         float
+    TTRWTEMP 13.4                                                         float
+    TTRUETBT -4.8                                                         float
+    TTRUETTT 11.5                                                         float
+    TTRUNTBT 10.9                                                         float
+    TTRUNTTT 11.8                                                         float
+    TTRUSTBT 11.1                                                         float
+    TTRUSTST 10.8                                                         float
+    TTRUSTTT 12.4                                                         float
+    TTRUTSBT 13.6                                                         float
+    TTRUTSMT 13.7                                                         float
+    TTRUTSTT 12.5                                                         float
+    TTRUWTBT 10.9                                                         float
+    TTRUWTTT 11.6                                                         float
+    ALARM    F                                                            bool
+    ALARM-ON F                                                            bool
+    BATTERY  100.0                                                        float
+    SECLEFT  5772.0                                                       float
+    UPSSTAT  System Normal - On Line(7)                                   str
+    INAMPS   64.3                                                         float
+    OUTWATTS 4500.0,6800.0,4100.0                                         str
+    COMPDEW  -12.0                                                        float
+    COMPHUM  7.8                                                          float
+    COMPAMB  19.4                                                         float
+    COMPTEMP 24.9                                                         float
+    DEWPOINT 5.7                                                          float
+    HUMIDITY 7.0                                                          float
+    PRESSURE 794.7                                                        float
+    OUTTEMP  0.0                                                          float
+    WINDDIR  82.0                                                         float
+    WINDSPD  23.3                                                         float
+    GUST     18.1                                                         float
+    AMNIENTN 13.3                                                         float
+    CFLOOR   8.1                                                          float
+    NWALLIN  13.6                                                         float
+    NWALLOUT 8.8                                                          float
+    WWALLIN  12.8                                                         float
+    WWALLOUT 9.4                                                          float
+    AMBIENTS 14.6                                                         float
+    FLOOR    12.3                                                         float
+    EWALLCMP 10.2                                                         float
+    EWALLCOU 9.5                                                          float
+    ROOF     10.0                                                         float
+    ROOFAMB  9.9                                                          float
+    DOMEBLOW 12.1                                                         float
+    DOMEBUP  12.5                                                         float
+    DOMELLOW 14.4                                                         float
+    DOMELUP  19.3                                                         float
+    DOMERLOW 12.3                                                         float
+    DOMERUP  12.8                                                         float
+    PLATFORM 15.3                                                         float
+    SHACKC   15.2                                                         float
+    SHACKW   13.2                                                         float
+    STAIRSL  12.6                                                         float
+    STAIRSM  13.3                                                         float
+    STAIRSU  13.6                                                         float
+    TELBASE  8.5                                                          float
+    UTILWALL 11.6                                                         float
+    UTILROOM 12.4                                                         float
+    EXCLUDED                                                              str
+    CHECKSUM 9IArAH5o2HAo9H5o                                             str     HDU checksum updated 2022-01-29T01:11:34
+    DATASUM  1239529649                                                   str     data unit checksum updated 2022-01-29T01:11:34
+    ======== ============================================================ ======= ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===========
 Name                  Type    Units Description
@@ -1252,10 +1001,11 @@ SHAPE_E2              float32
 PHOTSYS               char[1]
 PRIORITY_INIT         int64
 NUMOBS_INIT           int64
-CMX_TARGET            int64
+CMX_TARGET [1]_       int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64
+SCND_TARGET           int64
 PLATE_RA              float64
 PLATE_DEC             float64
 NUM_ITER              int64
@@ -1268,6 +1018,8 @@ FIBER_DEC             float64
 EXPTIME               float64
 ===================== ======= ===== ===========
 
+.. [1] Optional
+
 HDU6
 ----
 
@@ -1278,14 +1030,18 @@ EXTNAME = CHI2PIX
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2751             int  Number of wavelengths
-NAXIS2   500              int  Number of spectra
-CHECKSUM SCE8VAB5SAB5SAB5 str  HDU checksum updated 2021-07-08T12:56:18
-DATASUM  3693165584       str  data unit checksum updated 2021-07-08T12:56:18
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2751             int  Number of wavelengths
+    NAXIS2   500              int  Number of spectra
+    CHECKSUM SCE8VAB5SAB5SAB5 str  HDU checksum updated 2021-07-08T12:56:18
+    DATASUM  3693165584       str  data unit checksum updated 2021-07-08T12:56:18
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2751x500]
 

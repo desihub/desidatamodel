@@ -166,7 +166,7 @@ SV3_SCND_TARGET [1]_       int64             Secondary target selection bitmask 
 DESI_TARGET                int64             DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64             BGS (bright time program) target selection bitmask
 MWS_TARGET                 int64             MWS (bright time program) target selection bitmask
-SCND_TARGET                int64             Secondary target selection bitmask
+SCND_TARGET [1]_           int64             Secondary target selection bitmask
 PLATE_RA                   float64           label for field  66
 PLATE_DEC                  float64           label for field  67
 COADD_NUMEXP               int16             label for field  68

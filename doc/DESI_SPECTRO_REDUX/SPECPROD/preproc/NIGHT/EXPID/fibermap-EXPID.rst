@@ -440,7 +440,7 @@ SV1_SCND_TARGET [1]_  int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64
-SCND_TARGET           int64
+SCND_TARGET [1]_      int64
 PLATE_RA              float64
 PLATE_DEC             float64
 NUM_ITER              int64
