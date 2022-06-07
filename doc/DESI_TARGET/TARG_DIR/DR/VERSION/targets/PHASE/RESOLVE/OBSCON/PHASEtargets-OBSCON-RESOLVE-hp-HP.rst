@@ -24,11 +24,10 @@ desitarget 0.31.0 .  The previous format is documented in :doc:`targets-dr7`.
 Examples
 ========
 
-For research notes detailing early target selections for DESI, target files
-are available at:
+For research notes detailing early target selections for DESI based on DR8 of
+the Legacy Surveys, target files are available at:
 
 https://data.desi.lbl.gov/public/ets/target/catalogs/dr8 .
-
 
 Contents
 ========

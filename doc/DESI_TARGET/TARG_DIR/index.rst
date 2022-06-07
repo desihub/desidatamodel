@@ -3,11 +3,11 @@ TARG_DIR
 ========
 
 :envvar:`TARG_DIR` is the root directory for catalogs of targets, gfas,
-skies, randoms and pixweight files (files of quantities from the random
-catalogs averaged across HEALPixels). The canonical location is
-``$DESI_ROOT/TS/target/catalogs`` but the environment variable
-:envvar:`TARG_DIR` can be set to point anywhere. Here, ``TS`` is, e.g.,
-`da/ets` for DESI early target selection.
+skies, randoms, pixweight files (files of quantities from the random
+catalogs averaged across HEALPixels) and QA (quality assurance) files.
+The canonical location is ``$DESI_ROOT/TS/target/catalogs`` but the
+environment variable :envvar:`TARG_DIR` can be set to point anywhere.
+Here, ``TS`` is, e.g., `da/ets` for DESI early target selection.
 
 Under :envvar:`TARG_DIR`:
 

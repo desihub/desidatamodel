@@ -14,8 +14,8 @@ the filename.
 .. toctree::
    :maxdepth: 1
 
-   {phase}targets-{obscon}-{resolve}-hp-{hp}.fits : target selection catalog <PHASEtargets-OBSCON-RESOLVE-hp-HP>
+   {phase}targets-{obscon}-{resolve}-hp-{hp}.fits: target selection catalog <PHASEtargets-OBSCON-RESOLVE-hp-HP>
    deprecated: DR3 target catalog format <targets-dr3>
    deprecated: DR6 target catalog format <targets-dr6>
    deprecated: DR7 target catalog format <targets-dr7>
-   current: DR8 target catalog format <targets-dr8>
+   deprecated: DR8 target catalog format <targets-dr8>
