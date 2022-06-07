@@ -1,6 +1,6 @@
-=======
-targets
-=======
+===========
+targets-dr8
+===========
 
 :Summary: DESI target selection files include a single binary table containing
     the targets in a (nested) HEALPixel. They contain the variables used by

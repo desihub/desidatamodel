@@ -1,6 +1,6 @@
-=======
-targets
-=======
+===========
+targets-dr7
+===========
 
 :Summary: DESI target selection files contain a single binary table covering the
     entire footprint.  They contain the variables used by target selection
