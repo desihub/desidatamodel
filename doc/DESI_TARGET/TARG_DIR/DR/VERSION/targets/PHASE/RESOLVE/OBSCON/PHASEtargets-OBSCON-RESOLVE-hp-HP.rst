@@ -63,11 +63,11 @@ KEY      Example Value Type Comment
 ======== ============= ==== ==================================
 NAXIS1   374           int  width of table in bytes
 NAXIS2   72660205      int  number of rows in table
-OBSCON   DARK|GRAY     str  observing layer for file
+OBSCON   "DARK"        str  observing layer for file
 HPXNSIDE 64            int  HEALPix nside for column `HPXPIXEL`
 HPXNEST  T             bool HEALPix nested (not ring) ordering
 SUBPSEED 1154          int  random seed used to generate `SUBPRIORITY` values
-SURVEY   main          str  sv1 for SV, main for Main Survey
+SURVEY   "main"        str  svX for SV, main for Main Survey
 RESOLVE  T             bool ``True`` if from unique imaging
 MASKBITS T             bool ``True`` if masking cuts applied
 BACKUP   F             bool ``True`` for backup/supplemental targets
