@@ -83,7 +83,7 @@ DESI_TARGET                     int64                        DESI (dark time pro
 SCND_TARGET                     int64                        SCND (secondary program) target selection bitmask
 SCND_ORDER                      int32                        Row in which this target appeared in the input secondary target file
 SUBPRIORITY                     float64                      Random subpriority [0-1] to break assignment ties
-OBSCONDITIONS                   int64                        Flag target to be observed in combinations of dark/gray/bright observing layer
+OBSCONDITIONS                   int64                        Flag target to be observed in combinations of dark/bright observing layer
 PRIORITY_INIT                   int64                        Initial priority for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT                     int64                        Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 =============================== =========== ================ ===================
