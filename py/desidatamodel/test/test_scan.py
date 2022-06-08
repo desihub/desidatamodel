@@ -41,8 +41,8 @@ class TestScan(DataModelTestCase):
                           os.path.join(os.environ[DM], 'doc', 'examples'))
         model.get_regexp(self.data_dir)
         all_files = collect_files(self.data_dir, model)
-        self.assertListEqual(all_files, [os.path.join(self.data_dir, 'sdR-12345678.fits'),
-                                         os.path.join(self.data_dir, 'sdR-01234567.fits')])
+        self.assertIn(os.path.join(self.data_dir, 'sdR-12345678.fits'), all_files)
+        self.assertIn(os.path.join(self.data_dir, 'sdR-01234567.fits'), all_files)
 
     @patch('sys.argv', ['deep_scan_metadata', '--verbose', '--number', '1000', 'DESI_SPECTRO_DATA/NIGHT/EXPID/desi-EXPID.rst', '/desi/spectro/data'])
     def test_options(self):

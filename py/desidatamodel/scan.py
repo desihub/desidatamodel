@@ -192,6 +192,8 @@ def _options():
     parser.add_argument('-d', '--datamodel-dir', dest='desidatamodel',
                         metavar='DIR',
                         help='Override the value of DESIDATAMODEL.')
+    parser.add_argument('-l', '--path-level', dest='level', metavar='N', type=int, default=0,
+                        help='Map data directory to data model at N levels down (default %(default)s).')
     parser.add_argument('-n', '--number', dest='number', metavar='N', type=int, default=100,
                         help='Scan at most N files (default %(default)s).')
     # parser.add_argument('-F', '--compare-files', dest='files',
@@ -234,7 +236,7 @@ def main():
             return 1
     log.debug("DESIDATAMODEL=%s", data_model_root)
     filename = os.path.join(data_model_root, 'doc', options.section)
-    section = os.path.join(data_model_root, 'doc', options.section.split('/')[0])
+    section = os.path.join(data_model_root, 'doc', options.section.split('/')[:options.level+1])
     log.info("Loading individual data model: %s.", filename)
     log.debug("model = DataModel('%s', '%s')", filename, section)
     model = DataModel(filename, section)
