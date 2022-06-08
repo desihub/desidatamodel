@@ -11,6 +11,6 @@ similarly constructed.
 .. toctree::
    :maxdepth: 1
 
-   {phase}targets-{backup}-hp-{hp}.fits: catalog of targets selected in Gaia <PHASEtargets-BACKUP-hp-HP>
+   {phase}targets-{backup}-hp-{hp}.fits: catalog of targets selected using Gaia <PHASEtargets-BACKUP-hp-HP>
 
 

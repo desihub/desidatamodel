@@ -252,4 +252,4 @@ DESI_TARGET, BGS_TARGET, MWS_TARGET, SCND_TARGET and HPXPIXEL are created by tar
 the rest are passed through from the original Gaia files.
 
 As the BACKUP files are derived solely using Gaia, quantities from the `Legacy Surveys`_ that aren't also
-in Gaia will be populated with meaningless values.
+in Gaia are populated with meaningless values.

@@ -2,7 +2,7 @@
 targets
 =======
 
-:Summary: DESI target selection files include a single binary table containing
+:Summary: DESI target selection files include a binary table containing
     the targets in a (nested) HEALPixel. They store the variables used by
     target selection (*e.g.* fluxes), variables needed by fiber assignment (*e.g.*
     RA, DEC), and variables needed for traceability (*e.g.* DESITARGET, TARGETID).
