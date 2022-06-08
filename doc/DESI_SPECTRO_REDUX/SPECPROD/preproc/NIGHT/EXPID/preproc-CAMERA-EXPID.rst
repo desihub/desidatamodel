@@ -447,8 +447,8 @@ HDU2
 
 EXTNAME = MASK
 
-2D image with bitmask values for the pixels. Good pixels have a mask=0. See
-the TBD webpage for the definition of the bits.
+2D image with CCD pixels bitmask values. Good pixels have a mask=0. See
+the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
