@@ -473,7 +473,7 @@ class DataModel(DataModelUnit):
                 optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' in tmp[0]])
                 if len(data_keywords - (model_keywords | optional_keywords)) > 0:
                     log.warning('Prototype file %s has these keywords in HDU%d missing from model: %s',
-                                self.prototype, i, str(data_keywords - model_keywords))
+                                self.prototype, i, str(data_keywords - (model_keywords | optional_keywords)))
                 if len(model_keywords - data_keywords) > 0:
                     log.warning('Model file %s has these keywords in HDU%d missing from data: %s',
                                 self.filename, i, str(model_keywords - data_keywords))
