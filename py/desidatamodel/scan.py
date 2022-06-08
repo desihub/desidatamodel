@@ -236,7 +236,7 @@ def main():
             return 1
     log.debug("DESIDATAMODEL=%s", data_model_root)
     filename = os.path.join(data_model_root, 'doc', options.section)
-    section = os.path.join(data_model_root, 'doc', options.section.split('/')[:options.level+1])
+    section = os.path.join(data_model_root, 'doc', '/'.join(options.section.split('/')[:(options.level+1)]))
     log.info("Loading individual data model: %s.", filename)
     log.debug("model = DataModel('%s', '%s')", filename, section)
     model = DataModel(filename, section)
