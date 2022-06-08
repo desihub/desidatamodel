@@ -13,10 +13,20 @@ from collections import OrderedDict
 from .datamodeltestcase import DataModelTestCase, DM
 from .. import DataModelError
 from ..check import DataModel
-from ..scan import _options, collect_files, union_metadata
+from ..scan import _options, collect_files, union_metadata, UnionStub
 
 
 class TestScan(DataModelTestCase):
+
+    def test_UnionStub(self):
+        """Test initialization of UnionStub.
+        """
+        model = DataModel(os.path.join(os.environ[DM], 'doc', 'examples', 'sdR.rst'),
+                          os.path.join(os.environ[DM], 'doc', 'examples'))
+        union = UnionStub(model, error=False)
+        self.assertEqual(union.nhdr, 1)
+        self.assertListEqual(union.contents, [union.contents_header,
+                                              ('HDU0_', 'FLUX', 'IMAGE', '*Brief Description*')])
 
     def test_collect_files(self):
         """Test finding files that correspond to data model files.

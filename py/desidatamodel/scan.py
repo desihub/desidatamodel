@@ -20,6 +20,44 @@ from .stub import Stub
 from .check import DataModel
 
 
+class UnionStub(Stub):
+    """Container for unified metadata for both existing models and data files.
+
+    Initialize the metadata with a :class:`~desidatamodel.check.DataModel`
+    object, then add additional :class:`~desidatamodel.stub.Stub` metadata.
+
+    Parameters
+    ----------
+    model : :class:`~desidatamodel.check.DataModel`
+        A data model file object.
+    error : :class:`bool`, optional
+        If ``True``, failure to extract certain required metadata raises an
+        exception.
+    """
+
+    def __init__(self, model, error=False):
+        self.model = model
+        self.error = error
+        if model.hdumeta is None:
+            modelmeta = model.extract_metadata(error=error)
+        self.headers = list()
+        self.nhdr = len(list(model.hdumeta.keys()))
+        self._hdumeta = sorted([model.hdumeta[k] for k in model.hdumeta],
+                               key=lambda x: x['number'])
+        for m in self._hdumeta:
+            self.headers.append({'EXTNAME': m['extname']})
+        #
+        # Placeholders
+        #
+        self.filename = None
+        self._basef = None
+        self._modelname = None
+        self._filesize = None
+        self._hduname = None
+        self._contents = None
+        return
+
+
 def collect_files(root, model):
     """Scan a directory tree for all files that correspond to a data model files.
 
@@ -74,8 +112,9 @@ def union_metadata(model, stubs, error=False):
         A new :class:`~desidatamodel.stub.Stub` object containing the
         unified metadata of all the inputs.
     """
-    log.debug("model_metadata = model.extract_metadata(error=%s)", error)
-    modelmeta = model.extract_metadata(error=options.error)
+    log.debug("union = model.extract_metadata(error=%s)", error)
+    modelmeta = model.extract_metadata(error=error)
+    union = UnionStub(model, error=error)
     for s in stubs:
         if s.nhdr != len(modelmeta.keys()):
             log.warning("Data file %s has the wrong number of " +
@@ -139,7 +178,6 @@ def union_metadata(model, stubs, error=False):
                                 s.filename, i, kw, model.filename, dkw_comment, mkw_comment)
 
 
-
 def _options():
     """Parse command-line options.
 
@@ -198,11 +236,12 @@ def main():
     filename = os.path.join(data_model_root, 'doc', options.section)
     section = os.path.join(data_model_root, 'doc', options.section.split('/')[0])
     log.info("Loading individual data model: %s.", filename)
-    log.debug("files = [DataModel('%s', '%s')]", filename, section)
+    log.debug("model = DataModel('%s', '%s')", filename, section)
     model = DataModel(filename, section)
     log.info("Processing regular expression.")
     log.debug("model.get_regexp('%s', error=%s)", options.directory, options.error)
     model.get_regexp(options.directory, error=options.error)
+    log.debug("model.regexp = %s", model.regexp)
     log.info("Finding scannable files for %s in %s.", filename, options.directory)
     all_files = collect_files(options.directory, model)
     n_files = len(all_files)
