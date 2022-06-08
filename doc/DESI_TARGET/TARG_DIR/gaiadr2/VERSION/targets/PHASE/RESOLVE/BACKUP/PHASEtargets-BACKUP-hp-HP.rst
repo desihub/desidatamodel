@@ -1,30 +1,29 @@
-=======
-targets
-=======
+==============
+backup targets
+==============
 
-:Summary: DESI target selection files include a single binary table containing
-    the targets in a (nested) HEALPixel. They store the variables used by
+:Summary: DESI backup target selection files include a binary table containing
+    the backup targets in a (nested) HEALPixel. They store the variables used by
     target selection (*e.g.* fluxes), variables needed by fiber assignment (*e.g.*
     RA, DEC), and variables needed for traceability (*e.g.* DESITARGET, TARGETID).
-:Naming Convention: ``PHASEtargets-OBSCON-hp-HP.fits``,
+    They are compiled from Gaia to provide a source of targets that does not rely on
+    `Legacy Surveys`_ imaging.
+:Naming Convention: ``PHASEtargets-BACKUP-hp-HP.fits``,
     where ``PHASE`` is a specific DESI observational phase (*e.g.* svX with X=1,2,3
-    for iterations of Survey Validation) ``OBSCON`` is the observing condition
-    (or "layer") for the targets (*e.g.* dark), and ``HP`` is the HEALPixel covered
-    at the (nested) HEALPixel nside included in the file header as ``FILENSID``
-    (*e.g.* 11). For targets that are part of the DESI Main Science Survey
-    ``PHASE`` is omitted from the filename.
+    for iterations of Survey Validation) ``BACKUP`` is ``supp`` prior to version
+    ``0.50.0`` of the ``desitarget`` code or ``backup`` for later versions, and ``HP``
+    is the HEALPixel covered by the targets at the (nested) HEALPixel nside included
+    in the file header as ``FILENSID`` (*e.g.* 11). For targets that are part of the
+    DESI Main Science Survey ``PHASE`` is omitted from the filename.
 :Regex: ``.*?targets-.*?-hp-?[0-9]+\.fits``
-:File Type: FITS, 2 GB
-
-**Note**: this documents the target catalog format starting with DR9 /
-desitarget 0.47.0 .  The previous format is documented in :doc:`targets-dr8`.
+:File Type: FITS, 26 MB - 1.2 GB
 
 Examples
 ========
 
-DESI target selection files, based on DR9 of the Legacy Surveys, are available at:
+DESI target selection files based on Gaia are available at:
 
-https://data.desi.lbl.gov/public/ets/target/catalogs/dr9 .
+https://data.desi.lbl.gov/public/ets/target/catalogs/gaiadr2 .
 
 Contents
 ========
@@ -62,17 +61,17 @@ Required Header Keywords
 ======== ============= ==== ==================================
 KEY      Example Value Type Comment
 ======== ============= ==== ==================================
-NAXIS1   374           int  width of table in bytes
-NAXIS2   72660205      int  number of rows in table
-OBSCON   "DARK"        str  observing layer for file
+NAXIS1   983           int  width of table in bytes
+NAXIS2   205901        int  number of rows in table
+OBSCON   "BACKUP"      str  observing layer for file
 HPXNSIDE 64            int  HEALPix nside for column `HPXPIXEL`
 HPXNEST  T             bool HEALPix nested (not ring) ordering
-SUBPSEED 1154          int  random seed used to generate `SUBPRIORITY` values
+SUBPSEED 1015          int  random seed used to generate `SUBPRIORITY` values
 SURVEY   "main"        str  svX for SV, main for Main Survey
 RESOLVE  T             bool ``True`` if from unique imaging
 MASKBITS T             bool ``True`` if masking cuts applied
-BACKUP   F             bool ``True`` for backup/supplemental targets
-DR       9             int  Legacy Surveys Data Release used to find targets
+BACKUP   F             bool ``True`` for backup/supplemental targets from Gaia
+GAIADR   2             int  Gaia Data Release used to produce targets
 TCNAMES  "QSO,LRG"     str  run for this target-class subset
 GAIASUB  T             bool ``True`` if Gaia EDR3 astrometric values were substituted for Gaia DR2 quantities.
 CMDLINE  "/global/"    str  command-line call used to generate target file
@@ -179,7 +178,7 @@ GAIA_PHOT_BP_RP_EXCESS_FACTOR     float32                           `Gaia`_ BP/R
 GAIA_ASTROMETRIC_EXCESS_NOISE     float32                           `Gaia`_ astrometric excess noise
 GAIA_DUPLICATED_SOURCE            bool                              `Gaia`_ duplicated source flag
 GAIA_ASTROMETRIC_SIGMA5D_MAX      float32     mas                   `Gaia`_ longest semi-major axis of the 5-d error ellipsoid
-GAIA_ASTROMETRIC_PARAMS_SOLVED    int64                             which astrometric parameters were estimated for a `Gaia`_ source
+GAIA_ASTROMETRIC_PARAMS_SOLVED    int8                              which astrometric parameters were estimated for a `Gaia`_ source
 PARALLAX                          float32     mas                   Reference catalog parallax
 PARALLAX_IVAR                     float32     1/mas^2               Inverse variance of parallax
 PMRA                              float32     mas / yr              Reference catalog proper motion in the RA direction
@@ -222,10 +221,11 @@ Required Data Table Columns
 ============= =========== ============ ===================
 Name          Type        Units        Description
 ============= =========== ============ ===================
-FILENAME      char[88]		       `LS`_ sweep files associated with this HEALPixel
-SHASUM        char[64]		       Checksum	for each `LS`_ sweep file
+FILENAME      char[88]                 `LS`_ sweep files associated with this HEALPixel         
+SHASUM        char[64]                 Checksum for each `LS`_ sweep file
 ============= =========== ============ ===================
 
+.. _`Legacy Surveys`: https://www.legacysurvey.org/
 .. _`LS`: https://www.legacysurvey.org/dr9/catalogs/
 .. _`ellipticity component`: https://www.legacysurvey.org/dr9/catalogs/
 .. _`Release`: https://www.legacysurvey.org/release/
@@ -249,6 +249,7 @@ FRACFLUX and FRACMASKED are profile-weighted quantities.
 
 SUBPRIORITY, OBSCONDITIONS, PRIORITY_INIT, NUMOBS_INIT, PHOTSYS, TARGETID,
 DESI_TARGET, BGS_TARGET, MWS_TARGET, SCND_TARGET and HPXPIXEL are created by target selection;
-the rest are passed through from the original `LS`_ tractor or sweep files.
+the rest are passed through from the original Gaia files.
 
-See https://www.legacysurvey.org for more details about columns in the data model.
+As the BACKUP files are derived solely using Gaia, quantities from the `Legacy Surveys`_ that aren't also
+in Gaia will be populated with meaningless values.

@@ -8,8 +8,6 @@ prior to version ``0.50.0`` of the ``desitarget`` code or ``backup`` for
 versus ``supp`` is semantic, and files in the ``BACKUP`` directory are
 similarly constructed.
 
-Describe filename.
-
 .. toctree::
    :maxdepth: 1
 
