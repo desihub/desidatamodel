@@ -431,7 +431,7 @@ Notes and Examples
 ==================
 
 * HDU0: early tiles may have some missing keywords from the listed ones.
-* HDU1: this table defines the *requested* fiber assignments; see :doc:`fiberassign <../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>` for the actual observed assignments.
+* HDU1: this table defines the *requested* fiber assignments; see :doc:`fibermap-EXPID <../../../../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>` for the actual observed assignments.
 * HDU1: ``LAMBDA_REF`` : 5400 so far, not used for fiber positioning.
 * HDU1, HDU4, HDU5: files built from CMX, SV1, SV2, or SV3 targets will have a slightly different column content for the targetings bit columns (e.g., ``CMX_TARGET``, ``SV1_DESI_TARGET``).
 * HDU2: ``BRICKID``, ``BRICK_OBJID``, ``FA_TARGET``, ``BRICKNAME``, ``PRIORITY``, ``SUBPRIORITY``, ``FIBERFLUX_G``, ``FIBERFLUX_R``, ``FIBERFLUX_Z`` mostly are a zero value (and an empty string for ``BRICKNAME``).
