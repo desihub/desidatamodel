@@ -4,9 +4,9 @@ fiberassign-EXPID
 
 :Summary: The fiberassign file contains the fiber positioner configuration information for
     each exposure: what fiber is placed where, what target that is, etc.
-:Naming Convention: ``fiberassign-EXPID.fits.gz``, where EXPID is the zero-padded
-    8-digit exposure ID.
-:Regex: ``fiberassign-[0-9]{8}\.fits\.gz``
+:Naming Convention: ``fiberassign-TILEID.fits.gz``, where TILEID is the zero-padded
+    6-digit tile ID.
+:Regex: ``fiberassign-[0-9]{6}\.fits\.gz``
 :File Type: FITS, 5 MB
 
 Contents
