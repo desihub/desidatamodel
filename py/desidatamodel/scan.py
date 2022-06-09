@@ -332,5 +332,11 @@ def main():
         log.critical("Error detected while loading files!")
         return 1
     u = union_metadata(model, stubs, error=options.error)
+    for i, s in enumerate(u.in_all):
+        if s:
+            log.info("HDU%d always has these keywords: %s", i, s)
+    for i, s in enumerate(u.in_none):
+        if s:
+            log.info("HDU%d never has these keywords: %s", i, s)
     print(str(u))
     return 0
