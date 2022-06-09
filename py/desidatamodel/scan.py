@@ -53,6 +53,8 @@ class UnionStub(Stub):
         self.required = [set([k[0].split()[0] for k in h['keywords'] if '[1]_' not in k[0]]) for h in self._hdumeta]
         self.in_all = [set() for h in self._hdumeta]
         self.in_none = [set() for h in self._hdumeta]
+        self.col_in_all = [set() for h in self._hdumeta]
+        self.col_in_none = [set() for h in self._hdumeta]
         #
         # Remove all optional markers from union set.
         #
@@ -148,6 +150,83 @@ class UnionStub(Stub):
                 if kw not in self.in_none[hdu]:
                     log.debug("self.in_none[%d].add('%s')", hdu, kw)
                     self.in_none[hdu].add(kw)
+        return
+
+    def add_columns(self, hdu, columns):
+        """Search for missing columns in `hdu` and add them if necessary.
+
+        Parameters
+        ----------
+        hdu : :class:`int`
+            The HDU number.
+        columns : :class:`list`
+            List of columns to compare to the internal set.
+        """
+        metadata = self.hdumeta[hdu]
+        data_columns = set([k[0] for k in columns])
+        model_columns = set([k[0].split()[0] for k in metadata['format']])
+        #
+        # Compare the keywords that are in both sets.
+        #
+        common_columns = data_columns & model_columns
+        for col in common_columns:
+            if col not in self.col_in_all[hdu]:
+                log.debug("self.col_in_all[%d].add('%s')", hdu, col)
+                self.col_in_all[hdu].add(col)
+            if col in self.col_in_none[hdu]:
+                log.debug("self.col_in_none[%d].remove('%s')", hdu, col)
+                self.col_in_none[hdu].remove(col)
+            meta_index = [i for i, k in enumerate(metadata['format']) if k[0] == col][0]
+            data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
+            original_column = metadata['format'][meta_index]
+            foo, meta_type, meta_units, meta_comment = original_column
+            foo, data_type, data_units, data_comment = columns[data_index]
+            new_column = original_column
+            if meta_type != data_type:
+                log.warning("HDU%d column %s has different column type (%s != %s).",
+                            hdu, col, data_type, meta_type)
+                new_column = (col, data_type, new_column[2], new_column[3])
+            if data_units and not meta_units:
+                log.info("Adding unit '%s' to HDU%d column %s.", data_units, hdu, col)
+                new_column = (col, new_column[1], data_units, new_column[3])
+            # if data_comment and not meta_comment:
+            #     log.info("Adding comment '%s' to HDU%d column %s", data_comment, hdu, col)
+            #     new_column = (col, new_column[0], new_column[1], data_comment)
+            if new_column != original_column:
+                log.debug("metadata['format'][%d] = ('%s', '%s', '%s', '%s')",
+                          meta_index, new_column[0], new_column[1], new_column[2], new_column[3])
+                metadata['keywords'][meta_index] = new_keyword
+        #
+        # Add missing columns to the union model.
+        #
+        if len(data_columns - model_columns) > 0:
+            log.info('Adding columns to HDU%d missing from model: %s', hdu,
+                     str(data_columns - model_columns))
+            for col in (data_columns - model_columns):
+                if col not in self.col_in_all[hdu]:
+                    log.debug("self.col_in_all[%d].add('%s')", hdu, col)
+                    self.col_in_all[hdu].add(col)
+                if col in self.col_in_none[hdu]:
+                    log.debug("self.col_in_none[%d].remove('%s')", hdu, col)
+                    self.col_in_none[hdu].remove(col)
+                data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
+                foo, data_type, data_units, data_comment = keywords[data_index]
+                log.debug("metadata['format'].append(('%s', '%s', '%s', '%s'))",
+                          col, data_type, data_units, data_comment)
+                metadata['format'].append((col, data_type, data_units, data_comment))
+        #
+        # Subtract keywords not in the data for marking as optional.
+        #
+        if len(model_columns - data_columns) > 0:
+            log.info('These columns in HDU%d missing from data: %s', hdu,
+                     str(model_columns - data_columns))
+            for col in (model_columns - data_columns):
+                if col in self.col_in_all[hdu]:
+                    log.debug("self.col_in_all[%d].remove('%s')", hdu, col)
+                    self.col_in_all[hdu].remove(col)
+                if col not in self.col_in_none[hdu]:
+                    log.debug("self.col_in_none[%d].add('%s')", hdu, col)
+                    self.col_in_none[hdu].add(col)
         return
 
 
@@ -246,6 +325,11 @@ def union_metadata(model, stubs, error=False):
             # Collect keywords
             #
             union.add_keywords(i, stub_meta[i]['keywords'])
+            #
+            # Collect columns
+            #
+            if modelhdumeta['extension'] == 'BINTABLE':
+                union.add_columns(i, stub_meta[i]['format'])
     return union
 
 
@@ -338,5 +422,11 @@ def main():
     for i, s in enumerate(u.in_none):
         if s:
             log.info("HDU%d never has these keywords: %s", i, s)
+    for i, s in enumerate(u.col_in_all):
+        if s:
+            log.info("HDU%d always has these columns: %s", i, s)
+    for i, s in enumerate(u.col_in_none):
+        if s:
+            log.info("HDU%d never has these columns: %s", i, s)
     print(str(u))
     return 0
