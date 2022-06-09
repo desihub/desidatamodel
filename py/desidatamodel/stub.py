@@ -363,6 +363,7 @@ class Stub(DataModelUnit):
         highlight = spaces + self.highlight(sizes)
         colformat = spaces + self.colformat(sizes)
         t = [highlight]
+        log.debug("colformat = '%s'", colformat)
         for k in range(len(table)):
             t.append(colformat.format(*table[k]).rstrip())
             if k == 0:
