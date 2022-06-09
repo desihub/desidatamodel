@@ -286,9 +286,9 @@ FA_SURV  main                      str   Survey of origin of the targets
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================================= ======= ===== ===================
-Name                              Type    Units Description
-================================= ======= ===== ===================
+================================= ======= ================ ===================
+Name                              Type    Units            Description
+================================= ======= ================ ===================
 RELEASE                           int32                    Imaging release number
 TARGETID                          int64                    Unique target ID
 BRICKID                           int32                    Imaging Surveys brick ID
@@ -329,7 +329,7 @@ GFA_LOC                           int16                    Covered GFA identifie
 GUIDE_FLAG                        int16                    GUIDING bitmask
 FOCUS_FLAG                        int16                    FOCUS bitmask
 ETC_FLAG                          int16                    ETC bitmask
-================================= ======= ===== ===================
+================================= ======= ================ ===================
 
 HDU4
 ----
