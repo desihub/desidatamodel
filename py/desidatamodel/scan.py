@@ -47,6 +47,21 @@ class UnionStub(Stub):
         for m in self._hdumeta:
             self.headers.append({'EXTNAME': m['extname']})
         #
+        # Initial optional and required keywords.
+        #
+        self.optional = [set([k[0].split()[0] for k in h['keywords'] if '[1]_' in k[0]]) for h in self._hdumeta]
+        self.required = [set([k[0].split()[0] for k in h['keywords'] if '[1]_' not in k[0]]) for h in self._hdumeta]
+        self.in_all = [set() for h in self._hdumeta]
+        self.in_none = [set() for h in self._hdumeta]
+        #
+        # Remove all optional markers from union set.
+        #
+        for h in self._hdumeta:
+            for k in range(len(h['keywords'])):
+                key = h['keywords'][k]
+                if '[1]_' in key[0]:
+                    h['keywords'][k] = (key[0].split()[0], key[1], key[2], key[3])
+        #
         # Placeholders
         #
         self.filename = None
@@ -55,6 +70,83 @@ class UnionStub(Stub):
         self._filesize = None
         self._hduname = None
         self._contents = None
+        return
+
+    def add_keywords(self, hdu, keywords):
+        """Search for missing keywords in `hdu` and add them if necessary.
+
+        Parameters
+        ----------
+        hdu : :class:`int`
+            The HDU number.
+        keywords : :class:`list`
+            List of keywords to compare to the internal set.
+        """
+        metadata = self.hdumeta[hdu]
+        data_keywords = set([k[0] for k in keywords])
+        model_keywords = set([k[0].split()[0] for k in metadata['keywords']])
+        #
+        # Compare the keywords that are in both sets.
+        #
+        common_keywords = data_keywords & model_keywords
+        for kw in common_keywords:
+            if kw not in self.in_all[hdu]:
+                log.debug("self.in_all[%d].add('%s')", hdu, kw)
+                self.in_all[hdu].add(kw)
+            if kw in self.in_none[hdu]:
+                log.debug("self.in_none[%d].remove('%s')", hdu, kw)
+                self.in_none[hdu].remove(kw)
+            meta_index = [i for k, i in enumerate(metadata['keywords']) if k[0] == kw][0]
+            data_index = [i for k, i in enumerate(keywords) if k[0] == kw][0]
+            original_keyword = metadata['keywords'][meta_index]
+            foo, meta_example, meta_type, meta_comment = original_keyword
+            foo, data_example, data_type, data_comment = keywords[data_index]
+            new_keyword = original_keyword
+            if data_example and not meta_example:
+                log.info("Adding example '%s' to HDU%d keyword %s", data_example, hdu, kw)
+                new_keyword = (kw, data_example, meta_type, meta_comment)
+            if meta_type != data_type:
+                log.warning("HDU%d keyword %s has different keyword type (%s != %s).",
+                            hdu, kw, data_type, meta_type)
+                new_keyword = (kw, new_keyword[1], data_type, new_keyword[3])
+            if data_comment and not meta_comment:
+                log.info("Adding comment '%s' to HDU%d keyword %s.", data_comment, hdu, kw)
+                new_keyword = (kw, new_keyword[1], new_keyword[2], data_comment)
+            if new_keyword != original_keyword:
+                log.debug("metadata['keywords'][%d] = ('%s', '%s', '%s', '%s')",
+                          mkw_index, new_keyword[0], new_keyword[1], new_keyword[2], new_keyword[3])
+                metadata['keywords'][mkw_index] = new_keyword
+        #
+        # Add missing keywords to the union model.
+        #
+        if len(data_keywords - model_keywords) > 0:
+            log.info('Adding keywords to HDU%d missing from model: %s', hdu,
+                     str(data_keywords - model_keywords))
+            for kw in (data_keywords - model_keywords):
+                if kw not in self.in_all[hdu]:
+                    log.debug("self.in_all[%d].add('%s')", hdu, kw)
+                    self.in_all[hdu].add(kw)
+                if kw in self.in_none[hdu]:
+                    log.debug("self.in_none[%d].remove('%s')", hdu, kw)
+                    self.in_none[hdu].remove(kw)
+                data_index = [i for k, i in enumerate(keywords) if k[0] == kw][0]
+                foo, data_example, data_type, data_comment = keywords[data_index]
+                log.debug("metadata['keywords'].append(('%s', '%s', '%s', '%s'))",
+                          kw, data_example, data_type, data_comment)
+                metadata['keywords'].append((kw, data_example, data_type, data_comment))
+        #
+        # Subtract keywords not in the data for marking as optional.
+        #
+        if len(model_keywords - data_keywords) > 0:
+            log.info('These keywords in HDU%d missing from data: %s', hdu,
+                     str(model_keywords - data_keywords))
+            for kw in (model_keywords - data_keywords):
+                if kw in self.in_all[hdu]:
+                    log.debug("self.in_all[%d].remove('%s')", hdu, kw)
+                    self.in_all[hdu].remove(kw)
+                if kw not in self.in_none[hdu]:
+                    log.debug("self.in_none[%d].add('%s')", hdu, kw)
+                    self.in_none[hdu].add(kw)
         return
 
 
@@ -152,30 +244,8 @@ def union_metadata(model, stubs, error=False):
             #
             # Collect keywords
             #
-            data_keywords = set([tmp[0] for tmp in stub_meta[i]['keywords']])
-            model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' not in tmp[0]])
-            optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' in tmp[0]])
-            if len(data_keywords - (model_keywords | optional_keywords)) > 0:
-                log.warning('Data file %s has these keywords in HDU%d missing from model: %s',
-                            s.filename, i, str(data_keywords - (model_keywords | optional_keywords)))
-            if len(model_keywords - data_keywords) > 0:
-                log.warning('Model file %s has these keywords in HDU%d missing from data: %s',
-                            model.filename, i, str(model_keywords - data_keywords))
-            #
-            # Compare the keywords that are in both sets.
-            #
-            common_keywords = data_keywords & (model_keywords | optional_keywords)
-            for kw in common_keywords:
-                mkw_type = [tmp[2] for tmp in modelhdumeta['keywords'] if tmp[0].split()[0] == kw][0]
-                dkw_type = [tmp[2] for tmp in stub_meta[i]['keywords'] if tmp[0] == kw][0]
-                mkw_comment = [tmp[3] for tmp in modelhdumeta['keywords'] if tmp[0].split()[0] == kw][0]
-                dkw_comment = [tmp[3] for tmp in stub_meta[i]['keywords'] if tmp[0] == kw][0]
-                if mkw_type != dkw_type:
-                    log.warning("File %s HDU%d keyword %s has different keyword type according to %s (%s != %s).",
-                                s.filename, i, kw, model.filename, dkw_type, mkw_type)
-                if mkw_comment != dkw_comment:
-                    log.warning("File %s HDU%d keyword %s has different comment according to %s ('%s' != '%s').",
-                                s.filename, i, kw, model.filename, dkw_comment, mkw_comment)
+            union.add_keywords(i, stub_meta[i]['keywords'])
+    return union
 
 
 def _options():
@@ -261,4 +331,5 @@ def main():
         log.critical("Error detected while loading files!")
         return 1
     u = union_metadata(model, stubs, error=options.error)
+    print(str(u))
     return 0
