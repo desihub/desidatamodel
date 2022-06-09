@@ -15,7 +15,7 @@ Contents
 ====== ===================== ======== ===================
 Number EXTNAME               Type     Contents
 ====== ===================== ======== ===================
-HDU0_  PRIMARY               IMAGE    Blank
+HDU0_  PRIMARY               IMAGE    Keywords only
 HDU1_  FIBERASSIGN           BINTABLE Target assignments for each fiber
 HDU2_  SKY_MONITOR           BINTABLE Sky location for the 20 sky monitor fibers used by the ETC
 HDU3_  GFA_TARGETS           BINTABLE Selected star for the ETC / GUIDE / FOCUS
