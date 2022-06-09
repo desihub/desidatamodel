@@ -16,12 +16,13 @@ fits_file
 Contents
 ========
 
-====== ======== ======== ===================
-Number EXTNAME  Type     Contents
-====== ======== ======== ===================
-HDU0_  PRIMARY  IMAGE    *Brief Description*
-HDU1_  Galaxies BINTABLE *Brief Description*
-====== ======== ======== ===================
+============== ======== ======== ===================
+Number         EXTNAME  Type     Contents
+============== ======== ======== ===================
+HDU0_          PRIMARY  IMAGE    *Brief Description*
+HDU1_          Galaxies BINTABLE *Brief Description*
+HDU2_ -- HDU5_ various  IMAGE    *Brief Description*
+============== ======== ======== ===================
 
 
 FITS Header Units
@@ -37,18 +38,14 @@ EXTNAME = PRIMARY
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. collapse:: Required Header Keywords Table
-
-    .. rst-class:: keywords
-
-    ====== ============= ==== ====================================
-    KEY    Example Value Type Comment
-    ====== ============= ==== ====================================
-    NAXIS1 100           int
-    NAXIS2 100           int
-    BSCALE 1             int
-    BZERO  32768         int  Data are really unsigned 16-bit int.
-    ====== ============= ==== ====================================
+====== ============= ==== ====================================
+KEY    Example Value Type Comment
+====== ============= ==== ====================================
+NAXIS1 100           int
+NAXIS2 100           int
+BSCALE 1             int
+BZERO  32768         int  Data are really unsigned 16-bit int.
+====== ============= ==== ====================================
 
 Data: FITS image [int16, 100x100]
 
@@ -62,21 +59,15 @@ EXTNAME = Galaxies
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. collapse:: Required Header Keywords Table
-
-    .. rst-class:: keywords
-
-    ====== ============= ==== =====================
-    KEY    Example Value Type Comment
-    ====== ============= ==== =====================
-    NAXIS1 32            int  length of dimension 1
-    NAXIS2 3             int  length of dimension 2
-    ====== ============= ==== =====================
+====== ============= ==== =====================
+KEY    Example Value Type Comment
+====== ============= ==== =====================
+NAXIS1 32            int  length of dimension 1
+NAXIS2 3             int  length of dimension 2
+====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. rst-class:: columns
 
 ====== ======== ===== ===========
 Name   Type     Units Description
@@ -86,6 +77,12 @@ V_mag  float32  mag
 vdisp  float64  km/s
 ====== ======== ===== ===========
 
+HDU2 -- HDU5
+------------
+
+EXTNAME = TWO, THREE, FOUR
+
+Data: See PRIMARY.
 
 Notes and Examples
 ==================

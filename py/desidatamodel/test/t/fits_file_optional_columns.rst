@@ -41,14 +41,16 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ====== ============= ==== ====================================
-    KEY    Example Value Type Comment
-    ====== ============= ==== ====================================
-    NAXIS1 100           int
-    NAXIS2 100           int
-    BSCALE 1             int
-    BZERO  32768         int  Data are really unsigned 16-bit int.
-    ====== ============= ==== ====================================
+    ============ ============= ==== ====================================
+    KEY          Example Value Type Comment
+    ============ ============= ==== ====================================
+    NAXIS1 100                 int
+    NAXIS2 100                 int
+    BSCALE 1                   int
+    BZERO        32768         int  Data are really unsigned 16-bit int.
+    OPTKEY1 [1]_ Optional      str
+    OPTKEY2 [1]_ 123456        str
+    ============ ============= ==== ====================================
 
 Data: FITS image [int16, 100x100]
 
@@ -78,14 +80,17 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-====== ======== ===== ===========
-Name   Type     Units Description
-====== ======== ===== ===========
-target char[20]
-V_mag  float32  mag
-vdisp  float64  km/s
-====== ======== ===== ===========
+========= ======== ===== ===========
+Name      Type     Units Description
+========= ======== ===== ===========
+target    char[20]
+OPT1 [1]_ int16
+V_mag     float32  mag
+vdisp     float64  km/s
+OPT2 [1]_ float32
+========= ======== ===== ===========
 
+.. [1] Optional
 
 Notes and Examples
 ==================

@@ -61,3 +61,4 @@ Output files::
    tiles/index
    zcatalog/index
    exposures-SPECPROD
+   tiles-SPECPROD

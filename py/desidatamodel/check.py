@@ -34,8 +34,9 @@ class DataModel(DataModelUnit):
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
-            'GROUPID': '([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
-            'GROUPTYPE': '(1x_depth|4x_depth|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
+            'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
+            # 'GROUPID': '([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
+            'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
             'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
@@ -45,7 +46,7 @@ class DataModel(DataModelUnit):
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
-            'SURVEY': '(sv1|sv2|sv3|main)',  # Survey name
+            'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
             'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
             }
     # Matches HDU section headers.
@@ -54,10 +55,14 @@ class DataModel(DataModelUnit):
     _hduspan = re.compile(r'HDU(\d+)[-: ]+HDU(\d+)$')
     # Matches lines that contain regular expressions.
     _regexpline = re.compile(r':?regexp?:', re.I)
+    # Matches the file-type line.
+    _filetypeline = re.compile(r':?file type?:', re.I)
     # Matches lines that contain cross-references.
-    _refline = re.compile(r'See :doc:`[^<]+<([^>]+)>`')
+    _refline = re.compile(r'See (:doc:|)`([^<]+)<([^>]+)>`_?')
     # Matches table borders.
     _tableboundary = re.compile(r'[= ]+$')
+    # The list of file types allowed by the data model.
+    _expectedtypes = ('ascii', 'csv', 'ecsv', 'fits', 'yaml')
 
     def __init__(self, filename, section):
         shortname = filename.replace(f'{section}/', '')
@@ -66,6 +71,7 @@ class DataModel(DataModelUnit):
         self.section = section
         self.ref = None
         self.regexp = None
+        self.filetype = None
         self.hdumeta = None
         self.prototype = None
         self._metafile_data = None
@@ -75,6 +81,8 @@ class DataModel(DataModelUnit):
 
     def get_regexp(self, root, error=False):
         """Obtain the regular expression used to match files on disk.
+
+        Also internally updates the file type, if detected.
 
         Parameters
         ----------
@@ -110,7 +118,8 @@ class DataModel(DataModelUnit):
                         d = d.replace(k, self._d2r[k])
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
-                    break
+                if self._filetypeline.match(line) is not None:
+                    self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
         if self.regexp is None and self.ref is not None:
             with open(self.ref) as dm:
                 for line in dm.readlines():
@@ -127,7 +136,8 @@ class DataModel(DataModelUnit):
                             d = d.replace(k, self._d2r[k])
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
-                        break
+                    if self._filetypeline.match(line) is not None:
+                        self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
         if self.regexp is None:
             m = "%s has no file regexp!"
             if error:
@@ -135,6 +145,16 @@ class DataModel(DataModelUnit):
                 raise DataModelError(m % self.filename)
             else:
                 log.warning(m, self.filename)
+        if self.filetype is None:
+            m = "%s has missing or invalid file type!"
+            if error:
+                log.critical(m, self.filename)
+                raise DataModelError(m % self.filename)
+            else:
+                log.warning(m, self.filename)
+        else:
+            if self.filetype not in self._expectedtypes:
+                log.warning("Unusual file type, %s, detected for %s!", self.filetype, self.filename)
         return self.regexp
 
     def _cross_reference(self, line):
@@ -153,12 +173,20 @@ class DataModel(DataModelUnit):
         ref = None
         m = self._refline.match(line)
         if m is not None:
-            r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
-                                             m.groups()[0]))
-            if not r.endswith('.rst'):
-                r += '.rst'
-            if os.path.exists(r):
-                ref = r
+            reftype, refstring, reflink = m.groups()
+            if reftype == ':doc:':
+                r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
+                                                 reflink))
+                if not r.endswith('.rst'):
+                    r += '.rst'
+                if os.path.exists(r):
+                    ref = r
+            else:
+                rr = reflink.replace('.html', '.rst').split('#')
+                r = os.path.abspath(os.path.join(os.path.dirname(self.filename),
+                                    rr[0]))
+                if os.path.exists(r):
+                    ref = r + '#' + rr[1]
         return ref
 
     def _extract_columns(self, row, columns):
@@ -180,6 +208,7 @@ class DataModel(DataModelUnit):
         """
         lbound = [0] + [sum(columns[:i])+i for i in range(1, len(columns))]
         ubound = [lbound[i] + c for i, c in enumerate(columns)]
+        ubound[-1] = None
         data = [row[lbound[i]:ubound[i]].strip() for i in range(len(columns))]
         return tuple(data)
 
@@ -203,6 +232,8 @@ class DataModel(DataModelUnit):
         :exc:`~desidatamodel.DataModelError`
             If `error` is set and the HDU has no ``EXTNAME`` keyword.
         """
+        if self.hdumeta is not None:
+            return self.hdumeta
         metafile = self.filename
         if self.ref is not None:
             metafile = self.ref
@@ -252,12 +283,24 @@ class DataModel(DataModelUnit):
                         self.hdumeta[extnames[i]] = meta
                 else:
                     log.warning(('Range specification from HDU %d to HDU %d ' +
-                                 'does not have a matching EXTNAME specification'),
+                                 'does not have a matching EXTNAME specification!'),
                                 spanstart, spanend)
                 continue
             meta = dict()
             meta['number'] = k
             meta['title'] = section[0]
+            hdu_cross_ref = [l for l in section if l.startswith('See `')]
+            if hdu_cross_ref:
+                log.debug("Found HDU cross-reference: %s", hdu_cross_ref[0])
+                hcr = self._cross_reference(hdu_cross_ref[0]).split('#')
+                log.debug("['%s', '%s']", hcr[0], hcr[1])
+                hcr_meta = DataModel(hcr[0], self.section).extract_metadata()
+                for key in hcr_meta:
+                    if hcr_meta[key]['title'] == hcr[1].upper():
+                        for subkey in ('extension', 'format', 'keywords', 'extname'):
+                            meta[subkey] = hcr_meta[key][subkey]
+                        self.hdumeta[key] = meta
+                continue
             if 'Empty HDU.' in section:
                 meta['extension'] = 'IMAGE'
                 meta['format'] = 'Empty HDU.'
@@ -273,9 +316,9 @@ class DataModel(DataModelUnit):
                 meta['extension'] = 'BINTABLE'
                 table = [i for i, l in enumerate(section[rdtc:])
                          if self._tableboundary.match(l) is not None][1:3]
-                columns = list(map(len, section[rdtc:][table[0]].split()))
+                columns = list(map(len, section[rdtc:][table[0]].lstrip().split()))
                 table_lines = section[rdtc:][table[0]+1:table[1]]
-                meta['format'] = [self._extract_columns(t, columns)
+                meta['format'] = [self._extract_columns(t.lstrip(), columns)
                                   for t in table_lines]
                 for mk in meta['format']:
                     if not mk[1]:
@@ -297,9 +340,9 @@ class DataModel(DataModelUnit):
             else:
                 table = [i for i, l in enumerate(section[rhk:])
                          if self._tableboundary.match(l) is not None][1:3]
-                columns = list(map(len, section[rhk:][table[0]].split()))
+                columns = list(map(len, section[rhk:][table[0]].lstrip().split()))
                 table_lines = section[rhk:][table[0]+1:table[1]]
-                meta['keywords'] = [self._extract_columns(t, columns)
+                meta['keywords'] = [self._extract_columns(t.lstrip(), columns)
                                     for t in table_lines]
                 for mk in meta['keywords']:
                     if not mk[2]:
@@ -342,7 +385,7 @@ class DataModel(DataModelUnit):
                 else:
                     if k == 0 and meta['format'] == 'Empty HDU.':
                         if len(meta['keywords']) > 0:
-                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY'."
+                            m = "HDU %d in %s should have EXTNAME = 'PRIMARY', since it has non-trivial keywords."
                             log.warning(m, k, metafile)
             else:
                 #
@@ -425,29 +468,22 @@ class DataModel(DataModelUnit):
             # Compare keywords
             #
             if not skip_keywords:
-                dkw = stub_meta[i]['keywords']
-                mkw = modelhdumeta['keywords']
-                mkw_set = set([tmp[0] for tmp in mkw])
-                dkw_set = set([tmp[0] for tmp in dkw])
-                missing_keywords = mkw_set - dkw_set
-                extra_keywords = dkw_set - mkw_set
-                if len(missing_keywords) > 0:
-                    log.warning(
-                        "File %s HDU%d missing keywords according to %s: %s",
-                        self.prototype, i, self.filename, str(missing_keywords)
-                    )
-                if len(extra_keywords) > 0:
-                    log.warning(
-                        "File %s HDU%d extra keywords according to %s: %s",
-                        self.prototype, i, self.filename, str(extra_keywords)
-                    )
+                data_keywords = set([tmp[0] for tmp in stub_meta[i]['keywords']])
+                model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' not in tmp[0]])
+                optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' in tmp[0]])
+                if len(data_keywords - (model_keywords | optional_keywords)) > 0:
+                    log.warning('Prototype file %s has these keywords in HDU%d missing from model: %s',
+                                self.prototype, i, str(data_keywords - model_keywords))
+                if len(model_keywords - data_keywords) > 0:
+                    log.warning('Model file %s has these keywords in HDU%d missing from data: %s',
+                                self.filename, i, str(model_keywords - data_keywords))
                 #
                 # Compare the keywords that are in both sets.
                 #
-                common_keywords = mkw_set & dkw_set
+                common_keywords = data_keywords & (model_keywords | optional_keywords)
                 for kw in common_keywords:
-                    mkw_type = [tmp[2] for tmp in mkw if tmp[0] == kw][0]
-                    dkw_type = [tmp[2] for tmp in dkw if tmp[0] == kw][0]
+                    mkw_type = [tmp[2] for tmp in modelhdumeta['keywords'] if tmp[0].split()[0] == kw][0]
+                    dkw_type = [tmp[2] for tmp in stub_meta[i]['keywords'] if tmp[0] == kw][0]
                     if mkw_type != dkw_type:
                         log.warning("File %s HDU%d keyword %s has different keyword type according to %s (%s != %s).",
                                     self.prototype, i, kw, self.filename, dkw_type, mkw_type)
@@ -486,32 +522,42 @@ class DataModel(DataModelUnit):
                                 self.prototype, i, self.filename)
             else:
                 dexf = dexf[1:]  # Get rid of header line.
-                if len(dexf) != len(mexf):
-                    log.warning("Prototype file %s has the wrong " +
-                                "number of HDU%d columns according to %s.",
-                                self.prototype, i, self.filename)
-                datacolumns = set([tmp[0] for tmp in dexf])
-                modelcolumns = set([tmp[0] for tmp in mexf])
-                if len(datacolumns - modelcolumns) > 0:
-                    log.warning('data columns missing from model: %s',
-                                str(datacolumns - modelcolumns))
-                if len(modelcolumns - datacolumns) > 0:
-                    log.warning('model columns missing from data: %s',
-                                str(modelcolumns - datacolumns))
-                common_columns = datacolumns & modelcolumns
+                data_columns = set([tmp[0] for tmp in dexf])
+                model_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' not in tmp[0]])
+                optional_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' in tmp[0]])
+                #
+                # Do we really care if the number of columns is off?
+                # We want all of the required columns to be there, but some or all
+                # of the optional columns may be there as well.
+                #
+                # if len(datacolumns) != len(modelcolumns):
+                #     log.warning("Prototype file %s has the wrong " +
+                #                 "number of HDU%d columns according to %s.",
+                #                 self.prototype, i, self.filename)
+                if len(data_columns - (model_columns | optional_columns)) > 0:
+                    log.warning('Prototype file %s has these columns in HDU%d missing from model: %s',
+                                self.prototype, i, str(data_columns - model_columns))
+                if len(model_columns - data_columns) > 0:
+                    log.warning('Model file %s has these columns in HDU%d missing from data: %s',
+                                self.filename, i, str(model_columns - data_columns))
+                common_columns = data_columns & (model_columns | optional_columns)
                 for column in common_columns:
                     #
                     # Compare type
                     #
-                    mcol_type = [tmp[1] for tmp in mexf if tmp[0] == column][0]
+                    mcol_type = [tmp[1] for tmp in mexf if tmp[0].split()[0] == column][0]
                     dcol_type = [tmp[1] for tmp in dexf if tmp[0] == column][0]
                     if mcol_type != dcol_type:
-                        log.warning("File %s HDU%d column %s has different type according to %s (%s != %s).",
-                                    self.prototype, i, column, self.filename, dcol_type, mcol_type)
+                        if mcol_type == 'char[*]' and dcol_type[:4] == 'char':
+                            log.debug("File %s HDU%d column %s has an acceptable variable-length string according to %s.",
+                                      self.prototype, i, column, self.filename)
+                        else:
+                            log.warning("File %s HDU%d column %s has different type according to %s (%s != %s).",
+                                        self.prototype, i, column, self.filename, dcol_type, mcol_type)
                     #
                     # Compare unit
                     #
-                    mcol_unit = [tmp[2] for tmp in mexf if tmp[0] == column][0]
+                    mcol_unit = [tmp[2] for tmp in mexf if tmp[0].split()[0] == column][0]
                     dcol_unit = [tmp[2] for tmp in dexf if tmp[0] == column][0]
                     if mcol_unit != '' and dcol_unit != '' and mcol_unit != dcol_unit:
                         log.warning("File %s HDU%d column %s has different units according to %s (%s != %s).",
@@ -587,7 +633,7 @@ def collect_files(root, files):
       it is 'ignored'.
     """
     ignore_directories = ('logs', 'scripts')
-    include_extensions = ('.fits', '.fits.fz')
+    include_extensions = ('.fits', '.fits.fz', '.fits.gz')
     for dirpath, dirnames, filenames in os.walk(root):
         for d in ignore_directories:
             try:
@@ -661,13 +707,13 @@ def _options():
     parser.add_argument('-F', '--compare-files', dest='files',
                         action='store_true',
                         help='Compare an individual data model to an individual file.')
+    parser.add_argument('-K', '--skip-keywords', dest='skip_keywords', action='store_true',
+                        help="Don't check FITS header keywords")
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='Set log level to DEBUG.')
     parser.add_argument('-W', '--warning-is-error', dest='error',
                         action='store_true',
                         help='Data model warnings raise exceptions.')
-    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
-                        help='Set log level to DEBUG.')
-    parser.add_argument('--skip-keywords', dest='skip_keywords', action='store_true',
-                        help="Don't check FITS header keywords")
     parser.add_argument('section', metavar='MODEL_DIR_or_FILE',
                         help='Section of the data model or individual model file.')
     parser.add_argument('directory', metavar='DATA_DIR_or_FILE',

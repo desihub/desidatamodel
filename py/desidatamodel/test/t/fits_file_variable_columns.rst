@@ -81,7 +81,7 @@ Required Data Table Columns
 ====== ======== ===== ===========
 Name   Type     Units Description
 ====== ======== ===== ===========
-target char[20]
+target char[*]
 V_mag  float32  mag
 vdisp  float64  km/s
 ====== ======== ===== ===========

@@ -8,7 +8,7 @@ redrock-SPECTROGRAPH-TILEID-GROUPID.fits
 :Naming Convention: ``redrock-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
-:Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
+:Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 450 KB
 
 Contents
@@ -17,7 +17,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    *Brief Description*
+HDU0_               IMAGE    Keywords only
 HDU1_  REDSHIFTS    BINTABLE *Brief Description*
 HDU2_  FIBERMAP     BINTABLE *Brief Description*
 HDU3_  EXP_FIBERMAP BINTABLE *Brief Description*
@@ -36,31 +36,42 @@ HDU0
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ===============
-KEY      Example Value Type Comment
-======== ============= ==== ===============
-RRVER    0.15.0        str  Redrock version
-TEMNAM00 GALAXY        str
-TEMVER00 2.6           str
-TEMNAM01 QSO           str
-TEMVER01 0.1           str
-TEMNAM02 STAR:::A      str
-TEMVER02 0.1           str
-TEMNAM03 STAR:::B      str
-TEMVER03 0.1           str
-TEMNAM04 STAR:::CV     str
-TEMVER04 0.1           str
-TEMNAM05 STAR:::F      str
-TEMVER05 0.1           str
-TEMNAM06 STAR:::G      str
-TEMVER06 0.1           str
-TEMNAM07 STAR:::K      str
-TEMVER07 0.1           str
-TEMNAM08 STAR:::M      str
-TEMVER08 0.1           str
-TEMNAM09 STAR:::WD     str
-TEMVER09 0.1           str
-======== ============= ==== ===============
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ========== ============= ==== ===============
+    KEY        Example Value Type Comment
+    ========== ============= ==== ===============
+    LONGSTRN   OGIP 1.0      str
+    RRVER      0.15.0        str  Redrock version
+    TEMNAM00   GALAXY        str
+    TEMVER00   2.6           str
+    TEMNAM01   QSO           str
+    TEMVER01   0.1           str
+    TEMNAM02   STAR:::A      str
+    TEMVER02   0.1           str
+    TEMNAM03   STAR:::B      str
+    TEMVER03   0.1           str
+    TEMNAM04   STAR:::CV     str
+    TEMVER04   0.1           str
+    TEMNAM05   STAR:::F      str
+    TEMVER05   0.1           str
+    TEMNAM06   STAR:::G      str
+    TEMVER06   0.1           str
+    TEMNAM07   STAR:::K      str
+    TEMVER07   0.1           str
+    TEMNAM08   STAR:::M      str
+    TEMVER08   0.1           str
+    TEMNAM09   STAR:::WD     str
+    TEMVER09   0.1           str
+    SPGRP      1x_depth      str
+    SPGRPVAL   3             int
+    TILEID     80605         int
+    SPECTRO    6             int
+    PETAL      6             int
+    NIGHT [1]_ 20210708      int
+    ========== ============= ==== ===============
 
 Empty HDU.
 
@@ -74,15 +85,21 @@ EXTNAME = REDSHIFTS
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 170           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 170           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========= =========== ===== ===========
 Name      Type        Units Description
@@ -110,15 +127,21 @@ EXTNAME = FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 371           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 371           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========================== ======= ===== ===========
 Name                       Type    Units Description
@@ -144,25 +167,21 @@ PRIORITY                   int32
 SUBPRIORITY                float64
 OBSCONDITIONS              int32
 RELEASE                    int16
+BRICKNAME                  char[8]
 BRICKID                    int32
 BRICK_OBJID                int32
 MORPHTYPE                  char[4]
+EBV                        float32
 FLUX_G                     float32
 FLUX_R                     float32
 FLUX_Z                     float32
+FLUX_W1                    float32
+FLUX_W2                    float32
 FLUX_IVAR_G                float32
 FLUX_IVAR_R                float32
 FLUX_IVAR_Z                float32
-REF_ID                     int64
-REF_CAT                    char[2]
-GAIA_PHOT_G_MEAN_MAG       float32
-GAIA_PHOT_BP_MEAN_MAG      float32
-GAIA_PHOT_RP_MEAN_MAG      float32
-PARALLAX                   float32
-BRICKNAME                  char[8]
-EBV                        float32
-FLUX_W1                    float32
-FLUX_W2                    float32
+FLUX_IVAR_W1               float32
+FLUX_IVAR_W2               float32
 FIBERFLUX_G                float32
 FIBERFLUX_R                float32
 FIBERFLUX_Z                float32
@@ -174,15 +193,23 @@ SERSIC                     float32
 SHAPE_R                    float32
 SHAPE_E1                   float32
 SHAPE_E2                   float32
+REF_ID                     int64
+REF_CAT                    char[2]
+GAIA_PHOT_G_MEAN_MAG       float32
+GAIA_PHOT_BP_MEAN_MAG      float32
+GAIA_PHOT_RP_MEAN_MAG      float32
+PARALLAX                   float32
 PHOTSYS                    char[1]
 PRIORITY_INIT              int64
 NUMOBS_INIT                int64
-SV1_DESI_TARGET            int64
-SV1_BGS_TARGET             int64
-SV1_MWS_TARGET             int64
+SV1_DESI_TARGET [1]_       int64
+SV1_BGS_TARGET [1]_        int64
+SV1_MWS_TARGET [1]_        int64
+SV1_SCND_TARGET [1]_       int64
 DESI_TARGET                int64
 BGS_TARGET                 int64
 MWS_TARGET                 int64
+SCND_TARGET [1]_           int64
 PLATE_RA                   float64
 PLATE_DEC                  float64
 TILEID                     int32
@@ -203,6 +230,8 @@ MEAN_FIBER_X               float32
 MEAN_FIBER_Y               float32
 ========================== ======= ===== ===========
 
+.. [1] Optional
+
 HDU3
 ----
 
@@ -213,15 +242,21 @@ EXTNAME = EXP_FIBERMAP
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 162           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 162           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ======= ===== ===========
 Name                  Type    Units Description
@@ -264,15 +299,21 @@ EXTNAME = TSNR2
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 136           int  length of dimension 1
-NAXIS2 500           int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 136           int  length of dimension 1
+    NAXIS2 500           int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================= ======= ===== ===========
 Name              Type    Units Description

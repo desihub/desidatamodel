@@ -5,9 +5,9 @@ exposures-SPECPROD.fits
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``exposures-{specprod}.fits``, where ``{specprod}`` is the
+:Naming Convention: ``exposures-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
     official name of the full reduction, *e.g.* ``everest``.
-:Regex: ``exposures-[a-z]+\.fits``
+:Regex: ``exposures-[a-z0-9_-]+\.fits``
 :File Type: FITS, 19 MB
 
 Contents
@@ -44,15 +44,21 @@ EXTNAME = EXPOSURES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 337           int  length of dimension 1
-NAXIS2 3912          int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 337           int  length of dimension 1
+    NAXIS2 3912          int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ====================== ======== ===== ===========
 Name                   Type     Units Description
@@ -64,17 +70,18 @@ TILERA                 float64
 TILEDEC                float64
 MJD                    float64
 SURVEY                 char[7]
-FAPRGRM                char[16]
-FAFLAVOR               char[19]
+PROGRAM                char[6]
+FAPRGRM                char[*]
+FAFLAVOR               char[*]
 EXPTIME                float64
-EFFTIME_SPEC           float32
+EFFTIME_SPEC           float64
 GOALTIME               float64
-GOALTYPE               char[7]
+GOALTYPE               char[6]
 MINTFRAC               float64
 AIRMASS                float32
-EBV                    float64
+EBV                    float32
 SEEING_ETC             float64
-EFFTIME_ETC            float32
+EFFTIME_ETC            float64
 TSNR2_ELG              float32
 TSNR2_QSO              float32
 TSNR2_LRG              float32
@@ -83,6 +90,7 @@ TSNR2_BGS              float32
 TSNR2_GPBDARK          float32
 TSNR2_GPBBRIGHT        float32
 TSNR2_GPBBACKUP        float32
+LRG_EFFTIME_DARK       float32
 ELG_EFFTIME_DARK       float32
 BGS_EFFTIME_BRIGHT     float32
 LYA_EFFTIME_DARK       float64
@@ -118,15 +126,21 @@ EXTNAME = FRAMES
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =====================
-KEY    Example Value Type Comment
-====== ============= ==== =====================
-NAXIS1 167           int  length of dimension 1
-NAXIS2 111720        int  length of dimension 2
-====== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =====================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =====================
+    NAXIS1 167           int  length of dimension 1
+    NAXIS2 111720        int  length of dimension 2
+    ====== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: keywords
 
 =============== ======== ===== ===========
 Name            Type     Units Description
@@ -139,9 +153,9 @@ TILEDEC         float64
 MJD             float64
 EXPTIME         float32
 AIRMASS         float32
-EBV             float64
+EBV             float32
 SEEING_ETC      float64
-EFFTIME_ETC     float32
+EFFTIME_ETC     float64
 CAMERA          char[2]
 TSNR2_GPBDARK   float32
 TSNR2_ELG       float32
@@ -152,9 +166,9 @@ TSNR2_GPBBACKUP float32
 TSNR2_QSO       float32
 TSNR2_LRG       float32
 SURVEY          char[7]
-GOALTYPE        char[7]
-FAPRGRM         char[16]
-FAFLAVOR        char[19]
+GOALTYPE        char[6]
+FAPRGRM         char[6]
+FAFLAVOR        char[13]
 MINTFRAC        float64
 GOALTIME        float64
 =============== ======== ===== ===========
@@ -163,4 +177,7 @@ GOALTIME        float64
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+This file is based on the ``guadalupe`` production.  There are minor
+type differences for these columns in both HDU1 and HDU2: ``FAPRGRM``,
+``FAFLAVOR``, ``EBV``, ``EFFTIME_ETC``.  Type warnings about these
+columns should be ignored.

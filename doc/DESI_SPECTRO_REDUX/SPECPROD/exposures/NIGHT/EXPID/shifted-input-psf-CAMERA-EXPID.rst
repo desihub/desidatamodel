@@ -16,15 +16,15 @@ Arc exposures have 4 different PSF files per camera:
 1. ``shifted-input-psf-CAMERA-EXPID.fits``:
    Input PSF with spectral trace coordinates and wavelength calibration
    adjusted to the current CCD image, used as a starting guess for the PSF shape fit.
-2. :doc:`fit-psf-before-blacklisted-fix-CAMERA-EXPID.fits <fit-psf-before-blacklisted-fix-CAMERA-EXPID>`: Result
+2. :doc:`fit-psf-before-listed-fix-CAMERA-EXPID.fits <fit-psf-before-listed-fix-CAMERA-EXPID>`: Result
    of the specex PSF fit before adjusting the PSF model of
    problematic fibers not included in the fit.
-3. :doc:`fit-psf-fixed-blacklisted-CAMERA-EXPID.fits <fit-psf-fixed-blacklisted-CAMERA-EXPID>`:
+3. :doc:`fit-psf-fixed-listed-CAMERA-EXPID.fits <fit-psf-fixed-listed-CAMERA-EXPID>`:
    Result of the specex PSF fit with the PSF model of problematic fibers
    interpolated from neighboring fibers.
 4. :doc:`fit-psf-CAMERA-EXPID.fits <fit-psf-CAMERA-EXPID>`: Final PSF fit
    (which is the same as
-   :doc:`fit-psf-fixed-blacklisted-CAMERA-EXPID.fits <fit-psf-fixed-blacklisted-CAMERA-EXPID>`
+   :doc:`fit-psf-fixed-listed-CAMERA-EXPID.fits <fit-psf-fixed-listed-CAMERA-EXPID>`
    if there are problematic fibers)
 
 The ``fit-psf-*.fits`` files from individual exposures are combined into the
