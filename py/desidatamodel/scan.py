@@ -215,7 +215,7 @@ class UnionStub(Stub):
                     log.debug("self.col_in_none[%d].remove('%s')", hdu, col)
                     self.col_in_none[hdu].remove(col)
                 data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
-                foo, data_type, data_units, data_comment = keywords[data_index]
+                foo, data_type, data_units, data_comment = columns[data_index]
                 log.debug("metadata['format'].append(('%s', '%s', '%s', '%s'))",
                           col, data_type, data_units, data_comment)
                 metadata['format'].append((col, data_type, data_units, data_comment))
