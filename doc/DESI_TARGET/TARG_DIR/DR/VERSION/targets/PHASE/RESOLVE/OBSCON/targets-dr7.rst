@@ -166,7 +166,7 @@ PMDEC_IVAR                        float32            Inverse variance of PMDEC
 MASKBITS                          int16              *Description needed*
 EBV                               float32            Median (average?) Milky Way dust E(B-V) extinction
 PHOTSYS                           char[1]            'N' for the MzLS/BASS photometric system, 'S' for DECaLS
-TARGETID                          int64              ID (unique to file and the whole survey)
+TARGETID                          int64              Unique targeting ID
 DESI_TARGET                       int64              DESI (dark time program) target selection bitmask
 BGS_TARGET                        int64              BGS (bright time program) target selection bitmask
 MWS_TARGET                        int64              MWS (bright time program) target selection bitmask

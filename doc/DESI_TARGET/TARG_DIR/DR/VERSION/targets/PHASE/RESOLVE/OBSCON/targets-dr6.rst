@@ -95,8 +95,8 @@ SHAPEDEV_E2        float32       Ellipticity parameter e2 of deVaucouleurs model
 SHAPEEXP_R         float32       Half-light radius of exponential model (>0)
 SHAPEEXP_E1        float32       Ellipticity parameter e1 of exponential model
 SHAPEEXP_E2        float32       Ellipticity parameter e1 of exponential model
-SUBPRIORITY        float64
-TARGETID           int64         ID (unique to file and the whole survey)
+SUBPRIORITY        float64       Random subpriority [0-1] to break assignment ties
+TARGETID           int64         Unique targeting ID
 DESI_TARGET        int64         DESI (dark time program) target selection bitmask
 BGS_TARGET         int64         BGS (bright time program) target selection bitmask
 MWS_TARGET         int64         MWS (bright time program) target selection bitmask

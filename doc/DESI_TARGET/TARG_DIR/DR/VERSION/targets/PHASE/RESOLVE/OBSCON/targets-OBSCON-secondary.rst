@@ -78,7 +78,7 @@ GAIA_PHOT_G_MEAN_MAG            float32     mag              `Gaia`_ G band magn
 GAIA_PHOT_BP_MEAN_MAG           float32     mag              `Gaia`_ BP band magnitude
 GAIA_PHOT_RP_MEAN_MAG           float32     mag              `Gaia`_ RP band magnitude
 GAIA_ASTROMETRIC_EXCESS_NOISE   float32                      `Gaia`_ astrometric excess noise
-TARGETID                        int64                        ID (unique to file and the whole survey)
+TARGETID                        int64                        Unique targeting ID
 DESI_TARGET                     int64                        DESI (dark time program) target selection bitmask
 SCND_TARGET                     int64                        SCND (secondary program) target selection bitmask
 SCND_ORDER                      int32                        Row in which this target appeared in the input secondary target file

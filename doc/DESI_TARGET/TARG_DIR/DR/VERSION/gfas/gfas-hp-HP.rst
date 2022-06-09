@@ -70,7 +70,7 @@ Required Data Table Columns
 Name                              Type        Units              Description
 ================================= =========== ================== ===================
 RELEASE                           int16                          Legacy Surveys (`LS`_) `Release`_
-TARGETID                          int64                          ID (unique to file and the whole survey)
+TARGETID                          int64                          Unique targeting ID
 BRICKID                           int32                          Brick ID from tractor input
 BRICK_OBJID                       int32                          OBJID (unique to brick, but not to file)
 RA                                float64     deg                Right ascension

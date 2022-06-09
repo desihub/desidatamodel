@@ -186,7 +186,7 @@ PMRA_IVAR                         float32     yr^2 / mas^2          Inverse vari
 PMDEC                             float32     mas / yr              Reference catalog proper motion in the Dec direction
 PMDEC_IVAR                        float32     yr^2 / mas^2          Inverse variance of PMDEC
 PHOTSYS                           char[1]                           'N' for the MzLS/BASS photometric system, 'S' for DECaLS
-TARGETID                          int64                             ID (unique to file and the whole survey)
+TARGETID                          int64                             Unique targeting ID
 DESI_TARGET                       int64                             DESI (dark time program) target selection bitmask
 BGS_TARGET                        int64                             BGS (bright time program) target selection bitmask
 MWS_TARGET                        int64                             MWS (bright time program) target selection bitmask

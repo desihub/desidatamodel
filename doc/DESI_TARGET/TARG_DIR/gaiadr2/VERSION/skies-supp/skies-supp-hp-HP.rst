@@ -89,7 +89,7 @@ FIBERFLUX_Z                       float32            z-band object model flux
 FIBERFLUX_IVAR_G                  float32            Inverse Variance of ``FIBERFLUX_G``
 FIBERFLUX_IVAR_R                  float32            Inverse Variance of ``FIBERFLUX_R``
 FIBERFLUX_IVAR_Z                  float32            Inverse Variance of ``FIBERFLUX_Z``
-TARGETID                          int64              ID (unique to file and the whole survey)
+TARGETID                          int64              Unique targeting ID
 DESI_TARGET                       int64              DESI (dark time program) target selection bitmask
 BGS_TARGET                        int64              BGS (bright time program) target selection bitmask
 MWS_TARGET                        int64              MWS (bright time program) target selection bitmask
