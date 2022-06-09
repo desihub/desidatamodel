@@ -16,10 +16,10 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FLUX       IMAGE    Extracted electrons (photons)
-HDU1_  IVAR       IMAGE    Inverse variance of extracted electrons
+HDU0_  FLUX       IMAGE    Extracted flux in electrons per Angstroem
+HDU1_  IVAR       IMAGE    Inverse variance of the extracted flux
 HDU2_  MASK       IMAGE    Bad value mask; 0=good
-HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction
+HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction (Angstroem)
 HDU3_  RESOLUTION IMAGE    Resolution matrix
 HDU5_  FIBERMAP   BINTABLE Fibermap
 HDU6_  CHI2PIX    IMAGE    chi2 of PSF fit to CCD pixels
@@ -34,7 +34,9 @@ HDU0
 
 EXTNAME = FLUX
 
-Extracted electrons[nspec, nwave]
+2D array of extracted flux[nspec, nwave] in units of electrons per Angstroem. nspec is the number of fibers per camera.
+nwave in the length of the wavelength array. The spectra of all fibers share the same
+wavelength grid (given in HDU WAVELENGTH).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -546,7 +548,7 @@ HDU1
 
 EXTNAME = IVAR
 
-Inverse variance of the electrons in HDU0.
+Inverse variance of the flux values in HDU0. The unit is 1/(electrons/Angstroem)^2. The noise from neighboring spectral pixels is uncorrelated. It results from the direct error propagation of the noise in the preprocessed image.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -567,11 +569,9 @@ HDU2
 
 EXTNAME = MASK
 
-Mask of spectral data; 0=good.
-
+Mask of spectral data; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
-TODO: Add link to definition of which bits mean what.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -594,7 +594,8 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-1D array of wavelengths.
+1D array of wavelengths in Angstroem, in vacuum (not in air). For science exposures (in opposition to calibration exposures), the wavelength in is the rest frame of the solar system barycenter. The Doppler factor applied to the observed wavelength at the telescope to convert them to the barycentric frame is saved in header keyword HELIOCOR in HDU0. In other words, WAVELENGTH = BARYCENTRIC_FRAME_WAVELENGTH = HELICOR * OBSERVER_FRAME_WAVELENGTH. Note a single factor has been applied to all fibers despite a small difference in pointing.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -663,7 +664,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-Fibermap information combining fiberassign request with actual fiber locations.
+Fibermap information combining fiberassign request with actual fiber locations. See also the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>`
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
