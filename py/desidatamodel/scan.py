@@ -96,8 +96,8 @@ class UnionStub(Stub):
             if kw in self.in_none[hdu]:
                 log.debug("self.in_none[%d].remove('%s')", hdu, kw)
                 self.in_none[hdu].remove(kw)
-            meta_index = [i for k, i in enumerate(metadata['keywords']) if k[0] == kw][0]
-            data_index = [i for k, i in enumerate(keywords) if k[0] == kw][0]
+            meta_index = [i for i, k in enumerate(metadata['keywords']) if k[0] == kw][0]
+            data_index = [i for i, k in enumerate(keywords) if k[0] == kw][0]
             original_keyword = metadata['keywords'][meta_index]
             foo, meta_example, meta_type, meta_comment = original_keyword
             foo, data_example, data_type, data_comment = keywords[data_index]
@@ -129,7 +129,7 @@ class UnionStub(Stub):
                 if kw in self.in_none[hdu]:
                     log.debug("self.in_none[%d].remove('%s')", hdu, kw)
                     self.in_none[hdu].remove(kw)
-                data_index = [i for k, i in enumerate(keywords) if k[0] == kw][0]
+                data_index = [i for i, k in enumerate(keywords) if k[0] == kw][0]
                 foo, data_example, data_type, data_comment = keywords[data_index]
                 log.debug("metadata['keywords'].append(('%s', '%s', '%s', '%s'))",
                           kw, data_example, data_type, data_comment)
