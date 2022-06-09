@@ -23,8 +23,9 @@ class TestScan(DataModelTestCase):
         """
         model = DataModel(os.path.join(os.environ[DM], 'doc', 'examples', 'sdR.rst'),
                           os.path.join(os.environ[DM], 'doc', 'examples'))
-        union = UnionStub(model, error=False)
+        union = UnionStub(model, 10, error=False)
         self.assertEqual(union.nhdr, 1)
+        self.assertEqual(union.count, 10)
         self.assertListEqual(union.contents, [union.contents_header,
                                               ('HDU0_', 'FLUX', 'IMAGE', '*Brief Description*')])
 

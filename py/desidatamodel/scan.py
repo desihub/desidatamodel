@@ -12,6 +12,7 @@ import re
 from sys import argv
 from argparse import ArgumentParser
 from random import choices
+from collections import Counter
 
 from desiutil.log import log, DEBUG
 
@@ -30,14 +31,18 @@ class UnionStub(Stub):
     ----------
     model : :class:`~desidatamodel.check.DataModel`
         A data model file object.
+    count : :class:`int`
+        Number of files that will be examined. This is used to determine
+        whether a keyword or column is mandatory, optional or unused.
     error : :class:`bool`, optional
         If ``True``, failure to extract certain required metadata raises an
         exception.
     """
     _o = '[1]_'  # Marker for optional keywords and columns.
 
-    def __init__(self, model, error=False):
+    def __init__(self, model, count, error=False):
         self.model = model
+        self.count = count
         self.error = error
         if model.hdumeta is None:
             modelmeta = model.extract_metadata(error=error)
@@ -50,12 +55,10 @@ class UnionStub(Stub):
         #
         # Initial optional and required keywords.
         #
-        self.optional = [set([k[0].split()[0] for k in h['keywords'] if self._o in k[0]]) for h in self._hdumeta]
-        self.required = [set([k[0].split()[0] for k in h['keywords'] if self._o not in k[0]]) for h in self._hdumeta]
-        self.in_all = [set() for h in self._hdumeta]
-        self.in_none = [set() for h in self._hdumeta]
-        self.col_in_all = [set() for h in self._hdumeta]
-        self.col_in_none = [set() for h in self._hdumeta]
+        # self.optional = [set([k[0].split()[0] for k in h['keywords'] if self._o in k[0]]) for h in self._hdumeta]
+        # self.required = [set([k[0].split()[0] for k in h['keywords'] if self._o not in k[0]]) for h in self._hdumeta]
+        self.count_keywords = [Counter() for h in self._hdumeta]
+        self.count_columns = [Counter() for h in self._hdumeta]
         #
         # Remove all optional markers from union set.
         #
@@ -99,12 +102,10 @@ class UnionStub(Stub):
         #
         common_keywords = data_keywords & model_keywords
         for kw in common_keywords:
-            if kw not in self.in_all[hdu]:
-                log.debug("self.in_all[%d].add('%s')", hdu, kw)
-                self.in_all[hdu].add(kw)
-            if kw in self.in_none[hdu]:
-                log.debug("self.in_none[%d].remove('%s')", hdu, kw)
-                self.in_none[hdu].remove(kw)
+            if kw in self.count_keywords[hdu]:
+                self.count_keywords[hdu][kw] += 1
+            else:
+                self.count_keywords[hdu][kw] = 1
             meta_index = [i for i, k in enumerate(metadata['keywords']) if k[0] == kw][0]
             data_index = [i for i, k in enumerate(keywords) if k[0] == kw][0]
             original_keyword = metadata['keywords'][meta_index]
@@ -132,12 +133,10 @@ class UnionStub(Stub):
             log.info('Adding keywords to HDU%d missing from model: %s', hdu,
                      str(data_keywords - model_keywords))
             for kw in (data_keywords - model_keywords):
-                if kw not in self.in_all[hdu]:
-                    log.debug("self.in_all[%d].add('%s')", hdu, kw)
-                    self.in_all[hdu].add(kw)
-                if kw in self.in_none[hdu]:
-                    log.debug("self.in_none[%d].remove('%s')", hdu, kw)
-                    self.in_none[hdu].remove(kw)
+                if kw in self.count_keywords[hdu]:
+                    self.count_keywords[hdu][kw] += 1
+                else:
+                    self.count_keywords[hdu][kw] = 1
                 data_index = [i for i, k in enumerate(keywords) if k[0] == kw][0]
                 foo, data_example, data_type, data_comment = keywords[data_index]
                 log.debug("metadata['keywords'].append(('%s', '%s', '%s', '%s'))",
@@ -150,12 +149,8 @@ class UnionStub(Stub):
             log.info('These keywords in HDU%d missing from data: %s', hdu,
                      str(model_keywords - data_keywords))
             for kw in (model_keywords - data_keywords):
-                if kw in self.in_all[hdu]:
-                    log.debug("self.in_all[%d].remove('%s')", hdu, kw)
-                    self.in_all[hdu].remove(kw)
-                if kw not in self.in_none[hdu]:
-                    log.debug("self.in_none[%d].add('%s')", hdu, kw)
-                    self.in_none[hdu].add(kw)
+                if kw not in self.count_keywords[hdu]:
+                    self.count_keywords[hdu][kw] = 0
         return
 
     def add_columns(self, hdu, columns):
@@ -174,19 +169,17 @@ class UnionStub(Stub):
         #
         data_columns = set([k[0] for k in columns[1:]])
         model_columns = set([k[0].split()[0] for k in metadata['format']])
-        log.debug("data_columns = %s", data_columns)
-        log.debug("model_columns = %s", model_columns)
+        # log.debug("data_columns = %s", data_columns)
+        # log.debug("model_columns = %s", model_columns)
         #
         # Compare the keywords that are in both sets.
         #
         common_columns = data_columns & model_columns
         for col in common_columns:
-            if col not in self.col_in_all[hdu]:
-                log.debug("self.col_in_all[%d].add('%s')", hdu, col)
-                self.col_in_all[hdu].add(col)
-            if col in self.col_in_none[hdu]:
-                log.debug("self.col_in_none[%d].remove('%s')", hdu, col)
-                self.col_in_none[hdu].remove(col)
+            if col in self.count_columns[hdu]:
+                self.count_columns[hdu][col] += 1
+            else:
+                self.count_columns[hdu][col] = 1
             meta_index = [i for i, k in enumerate(metadata['format']) if k[0] == col][0]
             data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
             original_column = metadata['format'][meta_index]
@@ -214,12 +207,10 @@ class UnionStub(Stub):
             log.info('Adding columns to HDU%d missing from model: %s', hdu,
                      str(data_columns - model_columns))
             for col in (data_columns - model_columns):
-                if col not in self.col_in_all[hdu]:
-                    log.debug("self.col_in_all[%d].add('%s')", hdu, col)
-                    self.col_in_all[hdu].add(col)
-                if col in self.col_in_none[hdu]:
-                    log.debug("self.col_in_none[%d].remove('%s')", hdu, col)
-                    self.col_in_none[hdu].remove(col)
+                if col in self.count_columns[hdu]:
+                    self.count_columns[hdu][col] += 1
+                else:
+                    self.count_columns[hdu][col] = 1
                 data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
                 foo, data_type, data_units, data_comment = columns[data_index]
                 log.debug("metadata['format'].append(('%s', '%s', '%s', '%s'))",
@@ -232,12 +223,8 @@ class UnionStub(Stub):
             log.info('These columns in HDU%d missing from data: %s', hdu,
                      str(model_columns - data_columns))
             for col in (model_columns - data_columns):
-                if col in self.col_in_all[hdu]:
-                    log.debug("self.col_in_all[%d].remove('%s')", hdu, col)
-                    self.col_in_all[hdu].remove(col)
-                if col not in self.col_in_none[hdu]:
-                    log.debug("self.col_in_none[%d].add('%s')", hdu, col)
-                    self.col_in_none[hdu].add(col)
+                if col not in self.count_columns[hdu]:
+                    self.count_columns[hdu][col] = 0
         return
 
     def mark_optional(self):
@@ -246,27 +233,25 @@ class UnionStub(Stub):
         for i, hdu in enumerate(self.hdumeta):
             for j, keyword in enumerate(hdu['keywords']):
                 k = keyword[0]
-                if k in self.in_all[i]:
+                if self.count_keywords[i][k] == self.count:
                     log.debug("%s is a required keyword in HDU%d.", k, i)
+                elif self.count_keywords[i][k] > 0:
+                    log.debug("%s is an optional keyword in HDU%d (%d).", k, i, self.count_keywords[i][k])
+                    ko = k + ' ' + self._o
+                    hdu['keywords'][j] = (ko, keyword[1], keyword[2], keyword[3])
                 else:
-                    if k in self.in_none[i]:
-                        log.debug("%s is an unused keyword in HDU%d.", k, i)
-                    else:
-                        log.debug("%s is an optional keyword in HDU%d", k, i)
-                        ko = k + ' ' + self._o
-                        hdu['keywords'][j] = (ko, keyword[1], keyword[2], keyword[3])
+                    log.debug("%s is an unused keyword in HDU%d.", k, i)
             if hdu['extension'] == 'BINTABLE':
                 for j, column in enumerate(hdu['format'][1:]):
-                    k = column[0]
-                    if k in self.col_in_all[i]:
-                        log.debug("%s is a required column in HDU%d.", k, i)
+                    c = column[0]
+                    if self.count_columns[i][c]:
+                        log.debug("%s is a required column in HDU%d.", c, i)
+                    elif self.count_columns[i][c] > 0:
+                        log.debug("%s is an optional column in HDU%d (%d).", c, i, self.count_columns[i][c])
+                        co = c + ' ' + self._o
+                        hdu['format'][j] = (co, column[1], column[2], column[3])
                     else:
-                        if k in self.col_in_none[i]:
-                            log.debug("%s is an unused column in HDU%d.", k, i)
-                        else:
-                            log.debug("%s is an optional column in HDU%d", k, i)
-                            ko = k + ' ' + self._o
-                            hdu['format'][j] = (ko, column[1], column[2], column[3])
+                        log.debug("%s is an unused column in HDU%d.", c, i)
         return
 
 
@@ -326,7 +311,7 @@ def union_metadata(model, stubs, error=False):
     """
     log.debug("union = model.extract_metadata(error=%s)", error)
     modelmeta = model.extract_metadata(error=error)
-    union = UnionStub(model, error=error)
+    union = UnionStub(model, len(stubs), error=error)
     for s in stubs:
         if s.nhdr != len(modelmeta.keys()):
             log.warning("Data file %s has the wrong number of " +
