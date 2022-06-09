@@ -64,10 +64,11 @@ class UnionStub(Stub):
         #
         # Placeholders
         #
-        self.filename = None
-        self._basef = None
-        self._modelname = None
-        self._filesize = None
+        self.filename = self.model.filename
+        self._basef = str(self.model.regexp).split('/')[-1].strip("')")
+        self._modelname = self.model.title
+        self._filetype = self.model.filetype
+        self._filesize = self.model.filesize
         self._hduname = None
         self._contents = None
         return

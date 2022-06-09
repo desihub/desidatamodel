@@ -49,6 +49,8 @@ class DataModel(DataModelUnit):
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
             'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
             }
+    # Matches titles.
+    _titleline = re.compile(r'=+\n([^=]+)\n=+\n', re.M)
     # Matches HDU section headers.
     _hduline = re.compile(r'HDU(\d+)$')
     # Match HDU range specifications.
@@ -69,9 +71,11 @@ class DataModel(DataModelUnit):
         log.debug('Creating DataModel for %s.', shortname)
         self.filename = filename
         self.section = section
+        self.title = None
         self.ref = None
         self.regexp = None
         self.filetype = None
+        self.filesize = None
         self.hdumeta = None
         self.prototype = None
         self._metafile_data = None
@@ -119,7 +123,14 @@ class DataModel(DataModelUnit):
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
                 if self._filetypeline.match(line) is not None:
-                    self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
+                    ts = line.lower().replace(':', '').replace('file type', '').strip().split(',')
+                    self.filetype = ts[0]
+                    try:
+                        i = ts[1].index('B')
+                    except (ValueError, IndexError):
+                        self.filesize = 'Unknown'
+                    else:
+                        self.filesize = ts[1][:(i+1)].strip()
         if self.regexp is None and self.ref is not None:
             with open(self.ref) as dm:
                 for line in dm.readlines():
@@ -137,7 +148,14 @@ class DataModel(DataModelUnit):
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
                     if self._filetypeline.match(line) is not None:
-                        self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
+                        ts = line.lower().replace(':', '').replace('file type', '').strip().split(',')
+                        self.filetype = ts[0]
+                        try:
+                            i = ts[1].index('B')
+                        except (ValueError, IndexError):
+                            self.filesize = 'Unknown'
+                        else:
+                            self.filesize = ts[1][:(i+1)].strip()
         if self.regexp is None:
             m = "%s has no file regexp!"
             if error:
@@ -240,6 +258,10 @@ class DataModel(DataModelUnit):
         if self._metafile_data is None:
             with open(metafile) as f:
                 self._metafile_data = f.read()
+        if self.title is None:
+            m = self._titleline.match(self._metafile_data)
+            if m is not None:
+                self.title = m.groups()[0]
         lines = self._metafile_data.split('\n')
         hdu_sections = [i for i, l in enumerate(lines)
                         if (self._hduline.match(l) is not None or

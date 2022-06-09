@@ -158,6 +158,7 @@ class TestCheck(DataModelTestCase):
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
+        self.assertEqual(self.title, 'fits_file')
         self.assertEqual(len(meta.keys()), len(ex_meta.keys()))
         for key, m in meta.items():
             self.assertEqual(m['title'], ex_meta[key]['title'])
