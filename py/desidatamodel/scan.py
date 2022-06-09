@@ -45,7 +45,7 @@ class UnionStub(Stub):
         self._hdumeta = sorted([model.hdumeta[k] for k in model.hdumeta],
                                key=lambda x: x['number'])
         for m in self._hdumeta:
-            self.headers.append({'EXTNAME': m['extname']})
+            self.headers.append({'EXTNAME': m['extname'], 'XTENSION': m['extension']})
         #
         # Initial optional and required keywords.
         #
