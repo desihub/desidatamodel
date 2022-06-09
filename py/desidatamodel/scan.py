@@ -114,8 +114,8 @@ class UnionStub(Stub):
                 new_keyword = (kw, new_keyword[1], new_keyword[2], data_comment)
             if new_keyword != original_keyword:
                 log.debug("metadata['keywords'][%d] = ('%s', '%s', '%s', '%s')",
-                          mkw_index, new_keyword[0], new_keyword[1], new_keyword[2], new_keyword[3])
-                metadata['keywords'][mkw_index] = new_keyword
+                          meta_index, new_keyword[0], new_keyword[1], new_keyword[2], new_keyword[3])
+                metadata['keywords'][meta_index] = new_keyword
         #
         # Add missing keywords to the union model.
         #
