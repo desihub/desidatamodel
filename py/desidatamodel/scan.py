@@ -34,6 +34,7 @@ class UnionStub(Stub):
         If ``True``, failure to extract certain required metadata raises an
         exception.
     """
+    _o = '[1]_'  # Marker for optional keywords and columns.
 
     def __init__(self, model, error=False):
         self.model = model
@@ -49,8 +50,8 @@ class UnionStub(Stub):
         #
         # Initial optional and required keywords.
         #
-        self.optional = [set([k[0].split()[0] for k in h['keywords'] if '[1]_' in k[0]]) for h in self._hdumeta]
-        self.required = [set([k[0].split()[0] for k in h['keywords'] if '[1]_' not in k[0]]) for h in self._hdumeta]
+        self.optional = [set([k[0].split()[0] for k in h['keywords'] if self._o in k[0]]) for h in self._hdumeta]
+        self.required = [set([k[0].split()[0] for k in h['keywords'] if self._o not in k[0]]) for h in self._hdumeta]
         self.in_all = [set() for h in self._hdumeta]
         self.in_none = [set() for h in self._hdumeta]
         self.col_in_all = [set() for h in self._hdumeta]
@@ -61,12 +62,12 @@ class UnionStub(Stub):
         for h in self._hdumeta:
             for k in range(len(h['keywords'])):
                 key = h['keywords'][k]
-                if '[1]_' in key[0]:
+                if self._o in key[0]:
                     h['keywords'][k] = (key[0].split()[0], key[1], key[2], key[3])
             if h['extension'] == 'BINTABLE':
                 for k in range(len(h['format'])):
                     col = h['format'][k]
-                    if '[1]_' in col[0]:
+                    if self._o in col[0]:
                         h['format'][k] = (col[0].split()[0], col[1], col[2], col[3])
         #
         # Placeholders
@@ -168,8 +169,13 @@ class UnionStub(Stub):
             List of columns to compare to the internal set.
         """
         metadata = self.hdumeta[hdu]
-        data_columns = set([k[0] for k in columns])
+        #
+        # The columns coming into here have the header row in them already.
+        #
+        data_columns = set([k[0] for k in columns[1:]])
         model_columns = set([k[0].split()[0] for k in metadata['format']])
+        log.debug("data_columns = %s", data_columns)
+        log.debug("model_columns = %s", model_columns)
         #
         # Compare the keywords that are in both sets.
         #
@@ -232,6 +238,35 @@ class UnionStub(Stub):
                 if col not in self.col_in_none[hdu]:
                     log.debug("self.col_in_none[%d].add('%s')", hdu, col)
                     self.col_in_none[hdu].add(col)
+        return
+
+    def mark_optional(self):
+        """Mark the keywords and columns that do not appear in every file as optional.
+        """
+        for i, hdu in enumerate(self.hdumeta):
+            for j, keyword in enumerate(hdu['keywords']):
+                k = keyword[0]
+                if k in self.in_all[i]:
+                    log.debug("%s is a required keyword in HDU%d.", k, i)
+                else:
+                    if k in self.in_none[i]:
+                        log.debug("%s is an unused keyword in HDU%d.", k, i)
+                    else:
+                        log.debug("%s is an optional keyword in HDU%d", k, i)
+                        ko = k + ' ' + self._o
+                        hdu['keywords'][j] = (ko, keyword[1], keyword[2], keyword[3])
+            if hdu['extension'] == 'BINTABLE':
+                for j, column in enumerate(hdu['format'][1:]):
+                    k = column[0]
+                    if k in self.col_in_all[i]:
+                        log.debug("%s is a required column in HDU%d.", k, i)
+                    else:
+                        if k in self.col_in_none[i]:
+                            log.debug("%s is an unused column in HDU%d.", k, i)
+                        else:
+                            log.debug("%s is an optional column in HDU%d", k, i)
+                            ko = k + ' ' + self._o
+                            hdu['format'][j] = (ko, column[1], column[2], column[3])
         return
 
 
@@ -335,6 +370,10 @@ def union_metadata(model, stubs, error=False):
             #
             if modelhdumeta['extension'] == 'BINTABLE':
                 union.add_columns(i, stub_meta[i]['format'])
+    #
+    # Mark keywords and columns that don't appear in every file as optional.
+    #
+    union.mark_optional()
     return union
 
 
@@ -421,17 +460,5 @@ def main():
         log.critical("Error detected while loading files!")
         return 1
     u = union_metadata(model, stubs, error=options.error)
-    for i, s in enumerate(u.in_all):
-        if s:
-            log.info("HDU%d always has these keywords: %s", i, s)
-    for i, s in enumerate(u.in_none):
-        if s:
-            log.info("HDU%d never has these keywords: %s", i, s)
-    for i, s in enumerate(u.col_in_all):
-        if s:
-            log.info("HDU%d always has these columns: %s", i, s)
-    for i, s in enumerate(u.col_in_none):
-        if s:
-            log.info("HDU%d never has these columns: %s", i, s)
     print(str(u))
     return 0

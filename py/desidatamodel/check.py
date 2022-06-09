@@ -29,7 +29,8 @@ class DataModel(DataModelUnit):
     section : :class:`str`
         The full path to the section of the data model containing the file.
     """
-
+    # Marker for optional keywords and columns.
+    _o = '[1]_'
     # A mapping of human-readable metavariables to regular expressions.
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
@@ -491,8 +492,8 @@ class DataModel(DataModelUnit):
             #
             if not skip_keywords:
                 data_keywords = set([tmp[0] for tmp in stub_meta[i]['keywords']])
-                model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' not in tmp[0]])
-                optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' in tmp[0]])
+                model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if self._o not in tmp[0]])
+                optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if self._o in tmp[0]])
                 if len(data_keywords - (model_keywords | optional_keywords)) > 0:
                     log.warning('Prototype file %s has these keywords in HDU%d missing from model: %s',
                                 self.prototype, i, str(data_keywords - (model_keywords | optional_keywords)))
@@ -545,8 +546,8 @@ class DataModel(DataModelUnit):
             else:
                 dexf = dexf[1:]  # Get rid of header line.
                 data_columns = set([tmp[0] for tmp in dexf])
-                model_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' not in tmp[0]])
-                optional_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' in tmp[0]])
+                model_columns = set([tmp[0].split()[0] for tmp in mexf if self._o not in tmp[0]])
+                optional_columns = set([tmp[0].split()[0] for tmp in mexf if self._o in tmp[0]])
                 #
                 # Do we really care if the number of columns is off?
                 # We want all of the required columns to be there, but some or all
