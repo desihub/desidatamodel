@@ -129,10 +129,10 @@ Name                  Type    Units            Description
 ===================== ======= ================ ===================
 TARGETID              int64                    Unique target ID
 PETAL_LOC             int16                    Petal location [0-9]
-DEVICE_LOC            int3                     Device location on focal plane [0-523]
-LOCATION              int3                     Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-FIBER                 int3                     Fiber ID on the CCDs [0-4999]
-FIBERSTATUS           int3                     Fiber status mask; 0=good
+DEVICE_LOC            int32                    Device location on focal plane [0-523]
+LOCATION              int32                    Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                 int32                    Fiber ID on the CCDs [0-4999]
+FIBERSTATUS           int32                    Fiber status mask; 0=good
 TARGET_RA             float64 deg              Target Right Ascension
 TARGET_DEC            float64 deg              Target Declination
 PMRA                  float32 mas/yr           Proper motion in the RA direction (already including cosDEC term)
