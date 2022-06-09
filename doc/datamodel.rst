@@ -35,6 +35,12 @@ data model.
     fibermap-EXPID.fits
     ===================
 
+Code setup
+~~~~~~~~~~
+
+To build the datamodel locally, you first need to install the following::
+
+    pip install sphinx-toolbox sphinx-rtd-theme
 
 Building the Documents
 ~~~~~~~~~~~~~~~~~~~~~~
