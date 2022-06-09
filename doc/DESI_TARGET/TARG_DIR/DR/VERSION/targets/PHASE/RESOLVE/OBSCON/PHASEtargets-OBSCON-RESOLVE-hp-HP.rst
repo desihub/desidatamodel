@@ -93,9 +93,9 @@ BRICKID                           int32                             Brick ID fro
 BRICKNAME                         char[8]                           Brick name from tractor input
 BRICK_OBJID                       int32                             OBJID (unique to brick, but not to file)
 MORPHTYPE                         char[4]                           `Morphological Model`_ type
-RA                                float64     deg                   Right ascension [degrees]
+RA                                float64     deg                   Right ascension
 RA_IVAR                           float32     1/deg^2               Right ascension inverse variance
-DEC                               float64     deg                   Declination [degrees]
+DEC                               float64     deg                   Declination
 DEC_IVAR                          float32     1/deg^2               Declination inverse variance
 DCHISQ                            float32[5]                        Difference in chi-squared between model fits
 EBV                               float32     mag                   Galactic extinction E(B-V) reddening from `SFD98`_
