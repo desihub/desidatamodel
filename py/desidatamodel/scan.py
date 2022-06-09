@@ -63,6 +63,11 @@ class UnionStub(Stub):
                 key = h['keywords'][k]
                 if '[1]_' in key[0]:
                     h['keywords'][k] = (key[0].split()[0], key[1], key[2], key[3])
+            if h['extension'] == 'BINTABLE':
+                for k in range(len(h['format'])):
+                    col = h['format'][k]
+                    if '[1]_' in col[0]:
+                        h['format'][k] = (col[0].split()[0], col[1], col[2], col[3])
         #
         # Placeholders
         #
