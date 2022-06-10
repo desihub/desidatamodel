@@ -2,10 +2,10 @@
 randoms
 =======
 
-:Summary: DESI inside-the-footprint random catalogs contain a single binary
-    table covering the entire Legacy Surveys footprint. They contain meta
-    information (the number of observations, the depth, etc.) derived from
-    pixels in Legacy Surveys CCDs at random RA/Dec coordinates.
+:Summary: DESI inside-the-footprint random catalogs contain a single binary table
+    covering the entire Legacy Surveys footprint. They contain meta information
+    (the number of observations, the depth, etc.) derived from pixels in Legacy
+    Surveys CCDs at random RA/Dec coordinates.
 :Naming Convention: ``randoms-seed-iteration.fits``, where ``seed`` represents
     the random seed used to generate the catalog and ``iteration`` lists the iteration
     number of the catalog (several iterations are typically conducted
