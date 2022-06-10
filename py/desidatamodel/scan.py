@@ -121,8 +121,6 @@ class UnionStub(Stub):
             meta_index = [i for i, k in enumerate(metadata[m]) if k[0] == item][0]
             data_index = [i for i, k in enumerate(data) if k[0] == item][0]
             original_item = metadata[m][meta_index]
-            foo, meta_type, meta_units, meta_comment = original_column
-            foo, data_type, data_units, data_comment = columns[data_index]
             new_item = original_item
             if columns:
                 foo, meta_type, meta_units, meta_comment = original_item
