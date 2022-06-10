@@ -339,6 +339,8 @@ def _options():
                         help='Map data directory to data model at N levels down (default %(default)s).')
     parser.add_argument('-n', '--number', dest='number', metavar='N', type=int, default=100,
                         help='Scan at most N files (default %(default)s).')
+    parser.add_argument('-o', '--output', dest='output', metavar='FILE',
+                        help='Specify output file or directory. Defaults to the name of the input file in the current directory.')
     # parser.add_argument('-F', '--compare-files', dest='files',
     #                     action='store_true',
     #                     help='Compare an individual data model to an individual file.')
@@ -404,5 +406,12 @@ def main():
         log.critical("Error detected while loading files!")
         return 1
     u = union_metadata(model, stubs, error=options.error)
-    print(str(u))
+    if options.output is None:
+        outfile = os.path.join('.', os.path.basename(options.section))
+    elif os.path.isdir(options.output):
+        outfile = os.path.join(os.path.realpath(options.output), os.path.basename(options.section))
+    else:
+        outfile = options.output
+    with open(outfile, 'w') as f:
+        f.write(str(u))
     return 0
