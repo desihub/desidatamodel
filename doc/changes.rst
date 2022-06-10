@@ -5,7 +5,9 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
-* No changes yet.
+* Update data model for target files to reflect ets/dr9 release (PR `#105`_).
+
+.. _`#105`: https://github.com/desihub/desidatamodel/pull/105
 
 22.2 (2022-05-31)
 -----------------
