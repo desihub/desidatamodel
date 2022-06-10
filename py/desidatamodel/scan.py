@@ -134,7 +134,7 @@ class UnionStub(Stub):
                                 hdu, item, data_type, meta_type)
                     new_item = (item, data_type, new_item[2], new_item[3])
                 if data_units and not meta_units:
-                    log.info("Adding unit '%s' to HDU%d column %s.", data_units, hdu, item)
+                    log.debug("Adding unit '%s' to HDU%d column %s.", data_units, hdu, item)
                     new_item = (item, new_item[1], data_units, new_item[3])
                 # if data_comment and not meta_comment:
                 #     log.info("Adding comment '%s' to HDU%d column %s", data_comment, hdu, item)
@@ -143,14 +143,14 @@ class UnionStub(Stub):
                 foo, meta_example, meta_type, meta_comment = original_item
                 foo, data_example, data_type, data_comment = data[data_index]
                 if data_example and not meta_example:
-                    log.info("Adding example '%s' to HDU%d keyword %s.", data_example, hdu, item)
+                    log.debug("Adding example '%s' to HDU%d keyword %s.", data_example, hdu, item)
                     new_item = (item, data_example, new_item[2], new_item[3])
                 if meta_type != data_type:
                     log.warning("HDU%d keyword %s has different type (%s != %s).",
                                 hdu, item, data_type, meta_type)
                     new_item = (item, new_item[1], data_type, new_item[3])
                 if data_comment and not meta_comment:
-                    log.info("Adding comment '%s' to HDU%d keyword %s.", data_comment, hdu, item)
+                    log.debug("Adding comment '%s' to HDU%d keyword %s.", data_comment, hdu, item)
                     new_item = (item, new_item[1], new_item[2], data_comment)
             if new_item != original_item:
                 log.debug("metadata['%s'][%d] = ('%s', '%s', '%s', '%s')",
@@ -160,8 +160,8 @@ class UnionStub(Stub):
         # Add missing items to the union model.
         #
         if len(data_set - model_set) > 0:
-            log.info('Adding %s to HDU%d missing from model: %s', it, hdu,
-                     str(data_set - model_set))
+            log.debug('Adding %s to HDU%d missing from model: %s', it, hdu,
+                      str(data_set - model_set))
             for item in (data_set - model_set):
                 if item not in self.counter[hdu][m]:
                     self.counter[hdu][m][item] = 1
@@ -175,8 +175,8 @@ class UnionStub(Stub):
         # Subtract keywords not in the data for marking as optional.
         #
         if len(model_set - data_set) > 0:
-            log.info('These %s in HDU%d missing from data: %s', it, hdu,
-                     str(model_set - data_set))
+            log.debug('These %s in HDU%d missing from data: %s', it, hdu,
+                      str(model_set - data_set))
             for item in (model_set - data_set):
                 if item not in self.counter[hdu][m]:
                     self.counter[hdu][m][item] = 0
@@ -412,6 +412,7 @@ def main():
         outfile = os.path.join(os.path.realpath(options.output), os.path.basename(options.section))
     else:
         outfile = options.output
+    log.info("Writing output to %s.", outfile)
     with open(outfile, 'w') as f:
         f.write(str(u))
     return 0
