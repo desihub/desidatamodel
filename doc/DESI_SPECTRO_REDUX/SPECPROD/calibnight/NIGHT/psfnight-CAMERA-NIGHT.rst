@@ -198,7 +198,6 @@ LEGDEGX int32               label for field   3
 LEGDEGW int32               label for field   4
 ======= ============= ===== ===================
 
-
 Notes and Examples
 ==================
 
