@@ -248,10 +248,12 @@ Some units in this file do not conform to the FITS standard:
 
 Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:
 
-import astropy.units as u
-from astropy.table import Table
-objs = Table.read(filename, 1)
-u.Unit(str(objs["RA_IVAR"].unit))
+.. code-block:: python
+
+    import astropy.units as u
+    from astropy.table import Table
+    objs = Table.read(filename, 1)
+    u.Unit(str(objs["RA_IVAR"].unit))
 
 
 In general, the above format contains:

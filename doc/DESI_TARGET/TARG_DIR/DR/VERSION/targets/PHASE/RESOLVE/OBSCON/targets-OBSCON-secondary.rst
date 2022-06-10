@@ -88,12 +88,12 @@ PRIORITY_INIT                   int64                        Initial priority fo
 NUMOBS_INIT                     int64                        Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 =============================== =========== ================ ===================
 
-.. _`LS`: https://www.legacysurvey.org/dr8/catalogs/
-.. _`ellipticity component`: https://www.legacysurvey.org/dr8/catalogs/
+.. _`LS`: https://www.legacysurvey.org/dr9/catalogs/
+.. _`ellipticity component`: https://www.legacysurvey.org/dr9/catalogs/
 .. _`Release`: https://www.legacysurvey.org/release/
-.. _`Morphological Model`: https://www.legacysurvey.org/dr8/catalogs/
+.. _`Morphological Model`: https://www.legacysurvey.org/dr9/catalogs/
 .. _`Tycho-2`: https://heasarc.nasa.gov/W3Browse/all/tycho2.html
 .. _`Gaia`: https://gea.esac.esa.int/archive/documentation//GDR2/Gaia_archive/chap_datamodel/sec_dm_main_tables/ssec_dm_gaia_source.html
 .. _`SFD98`: http://ui.adsabs.harvard.edu/abs/1998ApJ...500..525S
-.. _`LS DR8 bitmasks page`: https://www.legacysurvey.org/dr8/bitmasks/
+.. _`LS DR9 bitmasks page`: https://www.legacysurvey.org/dr9/bitmasks/
 .. _`SGA`: https://github.com/moustakas/SGA

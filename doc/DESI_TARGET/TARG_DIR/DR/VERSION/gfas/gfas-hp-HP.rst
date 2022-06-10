@@ -4,7 +4,7 @@ gfas
 
 :Summary: DESI guide/focus/alignment (GFA) files contain a single binary table covering the
     entire footprint.  They contain objects derived from matches between
-    Gaia and the Legacy Surveys and the associated variables used by fiber
+    Gaia and the Legacy Surveys and the associated quantities used by fiber
     assignment to select sources for guiding and focus.
 :Naming Convention: ``gfas-hp-HP.fits``,
     where ``HP`` is the HEALPixel covered
@@ -107,10 +107,10 @@ GAIA_PHOT_G_N_OBS                 int32                          Number of obser
 HPXPIXEL                          int64                          HEALPixel containing target at HPXNSIDE
 ================================= =========== ================== ===================
 
-.. _`LS`: https://www.legacysurvey.org/dr8/catalogs/
-.. _`ellipticity component`: https://www.legacysurvey.org/dr8/catalogs/
+.. _`LS`: https://www.legacysurvey.org/dr9/catalogs/
+.. _`ellipticity component`: https://www.legacysurvey.org/dr9/catalogs/
 .. _`Release`: https://www.legacysurvey.org/release/
-.. _`Morphological Model`: https://www.legacysurvey.org/dr8/catalogs/
+.. _`Morphological Model`: https://www.legacysurvey.org/dr9/catalogs/
 .. _`Tycho-2`: https://heasarc.nasa.gov/W3Browse/all/tycho2.html
 .. _`Gaia`: https://gea.esac.esa.int/archive/documentation//GDR2/Gaia_archive/chap_datamodel/sec_dm_main_tables/ssec_dm_gaia_source.html
 .. _`SFD98`: http://ui.adsabs.harvard.edu/abs/1998ApJ...500..525S
@@ -119,5 +119,20 @@ HPXPIXEL                          int64                          HEALPixel conta
 
 Notes
 =====
+
+Some units in this file do not conform to the FITS standard:
+
+* deg^-2 is incorrectly recorded as 1/deg^2
+* nanomaggies^-2 is incorrectly recorded as 1/nanomaggy^2
+* mas^-2 is incorrectly recorded as 1/mas^2
+
+Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:
+
+.. code-block:: python
+
+    import astropy.units as u
+    from astropy.table import Table
+    objs = Table.read(filename, 1)
+    u.Unit(str(objs["RA_IVAR"].unit))
 
 See https://www.legacysurvey.org for more details about columns in the data model.

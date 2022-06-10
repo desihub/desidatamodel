@@ -5,7 +5,7 @@ SCND_DIR
 :envvar:`SCND_DIR` is the root directory for secondary targets.
 The canonical location is ``$DESI_ROOT/TS/target/secondary`` but the
 environment variable :envvar:`SCND_DIR` can be set to point anywhere.
-Here, ``TS`` is, e.g., `da/ets` for DESI early target selection.
+Here, ``TS`` is, e.g., ``public/ets`` for DESI early target selection.
 
 Under :envvar:`SCND_DIR`, secondary targets are grouped according to
 DESI observational phase. Observational phases include "mainX" for

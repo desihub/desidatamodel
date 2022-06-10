@@ -98,5 +98,5 @@ Notes
 
 The general user will likely not find the ``priminfo`` files useful. They
 are generated for internal bookkeeping to track whether a secondary target
-is a "standalone" secondary target, or is instead allowed to be merged with
+is a "standalone" secondary target or is instead allowed to be merged with
 a DESI primary target.
