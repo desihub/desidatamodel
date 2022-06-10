@@ -7,4 +7,9 @@ TILEXX
 .. toctree::
    :maxdepth: 1
 
-   fiberassign-{tileid}.fits.gz : Table of which fibers were assigned to which targets <fiberassign-TILEID>
+   TILEID-gfa
+   TILEID-scnd
+   TILEID-sky
+   TILEID-targ
+   TILEID-tiles
+   TILEID-too
