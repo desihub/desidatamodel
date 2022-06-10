@@ -13,7 +13,7 @@ from collections import OrderedDict
 from .datamodeltestcase import DataModelTestCase, DM
 from .. import DataModelError
 from ..check import DataModel
-from ..scan import _options, collect_files, union_metadata, UnionStub
+from ..scan import _options, collect_files, union_metadata, UnionStub, log
 
 
 class TestScan(DataModelTestCase):
@@ -21,13 +21,40 @@ class TestScan(DataModelTestCase):
     def test_UnionStub(self):
         """Test initialization of UnionStub.
         """
-        model = DataModel(os.path.join(os.environ[DM], 'doc', 'examples', 'sdR.rst'),
+
+        model = DataModel(resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst'),
                           os.path.join(os.environ[DM], 'doc', 'examples'))
+        foo = model.get_regexp('/desi/spectro/data')
         union = UnionStub(model, 10, error=False)
-        self.assertEqual(union.nhdr, 1)
+        self.assertEqual(union.nhdr, 2)
         self.assertEqual(union.count, 10)
         self.assertListEqual(union.contents, [union.contents_header,
-                                              ('HDU0_', 'FLUX', 'IMAGE', '*Brief Description*')])
+                                              ('HDU0_', 'PRIMARY', 'IMAGE', '*Brief Description*'),
+                                              ('HDU1_', 'Galaxies', 'BINTABLE', '*Brief Description*')])
+
+    def test_UnionStub_mark_optional(self):
+        """Test final output of UnionStub.
+        """
+        model = DataModel(resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst'),
+                          os.path.join(os.environ[DM], 'doc', 'examples'))
+        foo = model.get_regexp('/desi/spectro/data')
+        union = UnionStub(model, 10, error=False)
+        union.counter[0]['keywords']['NAXIS1'] = 10
+        union.counter[0]['keywords']['NAXIS2'] = 10
+        union.counter[0]['keywords']['BSCALE'] = 10
+        union.counter[0]['keywords']['BZERO'] = 10
+        union.counter[0]['keywords']['OPTKEY1'] = 5
+        union.counter[0]['keywords']['OPTKEY2'] = 0
+        union.counter[1]['keywords']['NAXIS1'] = 10
+        union.counter[1]['keywords']['NAXIS2'] = 10
+        union.counter[1]['format']['target'] = 10
+        union.counter[1]['format']['OPT1'] = 5
+        union.counter[1]['format']['V_mag'] = 10
+        union.counter[1]['format']['vdisp'] = 10
+        union.counter[1]['format']['OPT2'] = 0
+        union.mark_optional()
+        self.assertLog(log, -2, "vdisp is a required column in HDU1.")
+        self.assertLog(log, -1, "OPT2 is an unused column in HDU1.")
 
     def test_collect_files(self):
         """Test finding files that correspond to data model files.

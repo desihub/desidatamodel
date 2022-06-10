@@ -57,8 +57,7 @@ class UnionStub(Stub):
         #
         # self.optional = [set([k[0].split()[0] for k in h['keywords'] if self._o in k[0]]) for h in self._hdumeta]
         # self.required = [set([k[0].split()[0] for k in h['keywords'] if self._o not in k[0]]) for h in self._hdumeta]
-        self.count_keywords = [Counter() for h in self._hdumeta]
-        self.count_columns = [Counter() for h in self._hdumeta]
+        self.counter = [{'keywords': Counter(), 'format': Counter()} for h in self._hdumeta]
         #
         # Remove all optional markers from union set.
         #
@@ -80,153 +79,107 @@ class UnionStub(Stub):
         self.filename = self.model.filename
         self._basef = str(self.model.regexp).split('/')[-1].strip("')")
         self._modelname = self.model.title
-        self._filetype = self.model.filetype
+        self._filetype = self.model.filetype.upper()
         self._filesize = self.model.filesize
         self._hduname = None
         self._contents = None
         return
 
-    def add_keywords(self, hdu, keywords):
-        """Search for missing keywords in `hdu` and add them if necessary.
+    def update(self, hdu, data, columns=False):
+        """Search for missing keywords or columns in `hdu` and add them if necessary.
 
         Parameters
         ----------
         hdu : :class:`int`
             The HDU number.
-        keywords : :class:`list`
-            List of keywords to compare to the internal set.
+        data : :class:`list`
+            List of keywords or columns to compare to the internal set.
+        columns : :class:`bool`, optional
+            If ``True``, `data` represents BINTABLE columns, rather than keywords.
         """
         metadata = self.hdumeta[hdu]
-        data_keywords = set([k[0] for k in keywords])
-        model_keywords = set([k[0] for k in metadata['keywords']])
+        m = 'keywords'
+        it = 'keywords'
+        data_set = set([k[0] for k in data])
+        if columns:
+            m = 'format'
+            it = 'columns'
+            try:
+                data_set.remove('Name')
+            except KeyError:
+                pass
+        model_set = set([k[0] for k in metadata[m]])
         #
-        # Compare the keywords that are in both sets.
+        # Compare the items that are in both sets.
         #
-        common_keywords = data_keywords & model_keywords
-        for kw in common_keywords:
-            if kw in self.count_keywords[hdu]:
-                self.count_keywords[hdu][kw] += 1
+        common_set = data_set & model_set
+        for item in common_set:
+            if item in self.counter[hdu][m]:
+                self.counter[hdu][m][item] += 1
             else:
-                self.count_keywords[hdu][kw] = 1
-            meta_index = [i for i, k in enumerate(metadata['keywords']) if k[0] == kw][0]
-            data_index = [i for i, k in enumerate(keywords) if k[0] == kw][0]
-            original_keyword = metadata['keywords'][meta_index]
-            foo, meta_example, meta_type, meta_comment = original_keyword
-            foo, data_example, data_type, data_comment = keywords[data_index]
-            new_keyword = original_keyword
-            if data_example and not meta_example:
-                log.info("Adding example '%s' to HDU%d keyword %s", data_example, hdu, kw)
-                new_keyword = (kw, data_example, meta_type, meta_comment)
-            if meta_type != data_type:
-                log.warning("HDU%d keyword %s has different keyword type (%s != %s).",
-                            hdu, kw, data_type, meta_type)
-                new_keyword = (kw, new_keyword[1], data_type, new_keyword[3])
-            if data_comment and not meta_comment:
-                log.info("Adding comment '%s' to HDU%d keyword %s.", data_comment, hdu, kw)
-                new_keyword = (kw, new_keyword[1], new_keyword[2], data_comment)
-            if new_keyword != original_keyword:
-                log.debug("metadata['keywords'][%d] = ('%s', '%s', '%s', '%s')",
-                          meta_index, new_keyword[0], new_keyword[1], new_keyword[2], new_keyword[3])
-                metadata['keywords'][meta_index] = new_keyword
-        #
-        # Add missing keywords to the union model.
-        #
-        if len(data_keywords - model_keywords) > 0:
-            log.info('Adding keywords to HDU%d missing from model: %s', hdu,
-                     str(data_keywords - model_keywords))
-            for kw in (data_keywords - model_keywords):
-                if kw in self.count_keywords[hdu]:
-                    self.count_keywords[hdu][kw] += 1
-                else:
-                    self.count_keywords[hdu][kw] = 1
-                data_index = [i for i, k in enumerate(keywords) if k[0] == kw][0]
-                foo, data_example, data_type, data_comment = keywords[data_index]
-                log.debug("metadata['keywords'].append(('%s', '%s', '%s', '%s'))",
-                          kw, data_example, data_type, data_comment)
-                metadata['keywords'].append((kw, data_example, data_type, data_comment))
-        #
-        # Subtract keywords not in the data for marking as optional.
-        #
-        if len(model_keywords - data_keywords) > 0:
-            log.info('These keywords in HDU%d missing from data: %s', hdu,
-                     str(model_keywords - data_keywords))
-            for kw in (model_keywords - data_keywords):
-                if kw not in self.count_keywords[hdu]:
-                    self.count_keywords[hdu][kw] = 0
-        return
-
-    def add_columns(self, hdu, columns):
-        """Search for missing columns in `hdu` and add them if necessary.
-
-        Parameters
-        ----------
-        hdu : :class:`int`
-            The HDU number.
-        columns : :class:`list`
-            List of columns to compare to the internal set.
-        """
-        metadata = self.hdumeta[hdu]
-        #
-        # The columns coming into here have the header row in them already.
-        #
-        data_columns = set([k[0] for k in columns[1:]])
-        model_columns = set([k[0] for k in metadata['format']])
-        # log.debug("data_columns = %s", data_columns)
-        # log.debug("model_columns = %s", model_columns)
-        #
-        # Compare the keywords that are in both sets.
-        #
-        common_columns = data_columns & model_columns
-        for col in common_columns:
-            if col in self.count_columns[hdu]:
-                self.count_columns[hdu][col] += 1
-            else:
-                self.count_columns[hdu][col] = 1
-            meta_index = [i for i, k in enumerate(metadata['format']) if k[0] == col][0]
-            data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
-            original_column = metadata['format'][meta_index]
+                self.counter[hdu][m][item] = 1
+            meta_index = [i for i, k in enumerate(metadata[m]) if k[0] == item][0]
+            data_index = [i for i, k in enumerate(data) if k[0] == item][0]
+            original_item = metadata[m][meta_index]
             foo, meta_type, meta_units, meta_comment = original_column
             foo, data_type, data_units, data_comment = columns[data_index]
-            new_column = original_column
-            if meta_type != data_type:
-                log.warning("HDU%d column %s has different column type (%s != %s).",
-                            hdu, col, data_type, meta_type)
-                new_column = (col, data_type, new_column[2], new_column[3])
-            if data_units and not meta_units:
-                log.info("Adding unit '%s' to HDU%d column %s.", data_units, hdu, col)
-                new_column = (col, new_column[1], data_units, new_column[3])
-            # if data_comment and not meta_comment:
-            #     log.info("Adding comment '%s' to HDU%d column %s", data_comment, hdu, col)
-            #     new_column = (col, new_column[0], new_column[1], data_comment)
-            if new_column != original_column:
-                log.debug("metadata['format'][%d] = ('%s', '%s', '%s', '%s')",
-                          meta_index, new_column[0], new_column[1], new_column[2], new_column[3])
-                metadata['keywords'][meta_index] = new_keyword
+            new_item = original_item
+            if columns:
+                foo, meta_type, meta_units, meta_comment = original_item
+                foo, data_type, data_units, data_comment = data[data_index]
+                if meta_type != data_type:
+                    log.warning("HDU%d column %s has different type (%s != %s).",
+                                hdu, item, data_type, meta_type)
+                    new_item = (item, data_type, new_item[2], new_item[3])
+                if data_units and not meta_units:
+                    log.info("Adding unit '%s' to HDU%d column %s.", data_units, hdu, item)
+                    new_item = (item, new_item[1], data_units, new_item[3])
+                # if data_comment and not meta_comment:
+                #     log.info("Adding comment '%s' to HDU%d column %s", data_comment, hdu, item)
+                #     new_item = (item, new_item[1], new_item[2], data_comment)
+            else:
+                foo, meta_example, meta_type, meta_comment = original_item
+                foo, data_example, data_type, data_comment = data[data_index]
+                if data_example and not meta_example:
+                    log.info("Adding example '%s' to HDU%d keyword %s.", data_example, hdu, item)
+                    new_item = (item, data_example, new_item[2], new_item[3])
+                if meta_type != data_type:
+                    log.warning("HDU%d keyword %s has different type (%s != %s).",
+                                hdu, item, data_type, meta_type)
+                    new_item = (item, new_item_[1], data_type, new_item[3])
+                if data_comment and not meta_comment:
+                    log.info("Adding comment '%s' to HDU%d keyword %s.", data_comment, hdu, item)
+                    new_item = (item, new_item[1], new_item[2], data_comment)
+            if new_item != original_item:
+                log.debug("metadata['%s'][%d] = ('%s', '%s', '%s', '%s')",
+                          m, meta_index, new_item[0], new_item[1], new_item[2], new_item[3])
+                metadata[m][meta_index] = new_index
         #
-        # Add missing columns to the union model.
+        # Add missing items to the union model.
         #
-        if len(data_columns - model_columns) > 0:
-            log.info('Adding columns to HDU%d missing from model: %s', hdu,
-                     str(data_columns - model_columns))
-            for col in (data_columns - model_columns):
-                if col in self.count_columns[hdu]:
-                    self.count_columns[hdu][col] += 1
+        if len(data_set - model_set) > 0:
+            log.info('Adding %s to HDU%d missing from model: %s', it, hdu,
+                     str(data_set - model_set))
+            for item in (data_set - model_set):
+                if item in self.counter[hdu][m]:
+                    self.counter[hdu][m][item] += 1
                 else:
-                    self.count_columns[hdu][col] = 1
-                data_index = [i for i, k in enumerate(columns) if k[0] == col][0]
+                    self.counter[hdu][m][item] = 1
+                data_index = [i for i, k in enumerate(data) if k[0] == item][0]
+                data[data_index]
                 foo, data_type, data_units, data_comment = columns[data_index]
-                log.debug("metadata['format'].append(('%s', '%s', '%s', '%s'))",
-                          col, data_type, data_units, data_comment)
-                metadata['format'].append((col, data_type, data_units, data_comment))
+                log.debug("metadata['%s'].append(('%s', '%s', '%s', '%s'))",
+                          it, item, data[data_index][1], data[data_index][2], data[data_index][3])
+                metadata[m].append((item, data[data_index][1], data[data_index][2], data[data_index][3]))
         #
         # Subtract keywords not in the data for marking as optional.
         #
-        if len(model_columns - data_columns) > 0:
-            log.info('These columns in HDU%d missing from data: %s', hdu,
-                     str(model_columns - data_columns))
-            for col in (model_columns - data_columns):
-                if col not in self.count_columns[hdu]:
-                    self.count_columns[hdu][col] = 0
+        if len(model_set - data_set) > 0:
+            log.info('These %s in HDU%d missing from data: %s', it, hdu,
+                     str(model_set - data_set))
+            for item in (model_set - data_set):
+                if item not in self.counter[hdu][m]:
+                    self.counter[hdu][m][item] = 0
         return
 
     def mark_optional(self):
@@ -235,27 +188,29 @@ class UnionStub(Stub):
         for i, hdu in enumerate(self.hdumeta):
             for j, keyword in enumerate(hdu['keywords']):
                 k = keyword[0]
-                if self.count_keywords[i][k] == self.count:
+                if self.counter[i]['keywords'][k] == self.count:
                     log.debug("%s is a required keyword in HDU%d.", k, i)
-                elif self.count_keywords[i][k] > 0:
-                    log.debug("%s is an optional keyword in HDU%d (%d).", k, i, self.count_keywords[i][k])
+                elif self.counter[i]['keywords'][k] > 0:
+                    log.debug("%s is an optional keyword in HDU%d (%d).", k, i, self.counter[i]['keywords'][k])
                     ko = k + ' ' + self._o
                     hdu['keywords'][j] = (ko, keyword[1], keyword[2], keyword[3])
                 else:
                     log.debug("%s is an unused keyword in HDU%d.", k, i)
+                    hdu['keywords'][j] = (k, '**UNUSED**', keyword[2], keyword[3])
             if hdu['extension'] == 'BINTABLE':
                 for j, column in enumerate(hdu['format']):
                     if j == 0:
                         continue
                     c = column[0]
-                    if self.count_columns[i][c] == self.count:
+                    if self.counter[i]['format'][c] == self.count:
                         log.debug("%s is a required column in HDU%d.", c, i)
-                    elif self.count_columns[i][c] > 0:
-                        log.debug("%s is an optional column in HDU%d (%d).", c, i, self.count_columns[i][c])
+                    elif self.counter[i]['format'][c] > 0:
+                        log.debug("%s is an optional column in HDU%d (%d).", c, i, self.counter[i]['format'][c])
                         co = c + ' ' + self._o
                         hdu['format'][j] = (co, column[1], column[2], column[3])
                     else:
                         log.debug("%s is an unused column in HDU%d.", c, i)
+                        hdu['format'][j] = (c, column[1], column[2], '**UNUSED**')
         return
 
 
@@ -353,12 +308,12 @@ def union_metadata(model, stubs, error=False):
             #
             # Collect keywords
             #
-            union.add_keywords(i, stub_meta[i]['keywords'])
+            union.update(i, stub_meta[i]['keywords'])
             #
             # Collect columns
             #
             if modelhdumeta['extension'] == 'BINTABLE':
-                union.add_columns(i, stub_meta[i]['format'])
+                union.update(i, stub_meta[i]['format'], columns=True)
     #
     # Mark keywords and columns that don't appear in every file as optional.
     #

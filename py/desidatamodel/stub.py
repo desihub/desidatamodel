@@ -131,7 +131,7 @@ class Stub(DataModelUnit):
         """Type of file. Assumes FITS (for now) unless overridden in a subclass.
         """
         if self._filetype is None:
-            return 'FITS'
+            self._filetype = 'FITS'
         return self._filetype
 
     @property
@@ -343,6 +343,9 @@ class Stub(DataModelUnit):
     def format_table(self, table, indent=False):
         """Convert tabular data into reStructuredText-compatible string.
 
+        This function assumes that `table` already has a header as the
+        first row.
+
         Parameters
         ----------
         table : :class:`list`
@@ -364,10 +367,7 @@ class Stub(DataModelUnit):
         colformat = spaces + self.colformat(sizes)
         t = [highlight]
         for k in range(len(table)):
-            try:
-                t.append(colformat.format(*table[k]).rstrip())
-            except ValueError:
-                log.error("colformat = '%s'; table[%d] = %s", colformat, k, table[k])
+            t.append(colformat.format(*table[k]).rstrip())
             if k == 0:
                 t.append(highlight)
         t.append(highlight)

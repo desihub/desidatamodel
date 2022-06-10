@@ -82,6 +82,24 @@ class TestCheck(DataModelTestCase):
         foo = files[0].get_regexp(root)
         self.assertLog(log, -1, "Unusual file type, fits, detected for {0}!".format(files[0].filename))
 
+    def test_get_regexp_filesize(self):
+        """Test extraction of file size from data model documents.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        foo = model.get_regexp('/desi/spectro/data')
+        self.assertEqual(model.filetype, 'fits')
+        self.assertEqual(model.filesize, '28 KB')
+
+    def test_get_regexp_missing_filesize(self):
+        """Test extraction of file size from data model documents, missing size.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_no_size.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        foo = model.get_regexp('/desi/spectro/data')
+        self.assertEqual(model.filetype, 'fits')
+        self.assertEqual(model.filesize, 'Unknown')
+
     def test_collect_files(self):
         """Test finding files that correspond to data model files.
         """

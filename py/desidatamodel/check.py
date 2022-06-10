@@ -124,14 +124,7 @@ class DataModel(DataModelUnit):
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
                 if self._filetypeline.match(line) is not None:
-                    ts = line.lower().replace(':', '').replace('file type', '').strip().split(',')
-                    self.filetype = ts[0]
-                    try:
-                        i = ts[1].index('B')
-                    except (ValueError, IndexError):
-                        self.filesize = 'Unknown'
-                    else:
-                        self.filesize = ts[1][:(i+1)].strip()
+                    self.filetype, self.filesize = self._type_size(line)
         if self.regexp is None and self.ref is not None:
             with open(self.ref) as dm:
                 for line in dm.readlines():
@@ -149,14 +142,7 @@ class DataModel(DataModelUnit):
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
                     if self._filetypeline.match(line) is not None:
-                        ts = line.lower().replace(':', '').replace('file type', '').strip().split(',')
-                        self.filetype = ts[0]
-                        try:
-                            i = ts[1].index('B')
-                        except (ValueError, IndexError):
-                            self.filesize = 'Unknown'
-                        else:
-                            self.filesize = ts[1][:(i+1)].strip()
+                        self.filetype, self.filesize = self._type_size(line)
         if self.regexp is None:
             m = "%s has no file regexp!"
             if error:
@@ -176,13 +162,36 @@ class DataModel(DataModelUnit):
                 log.warning("Unusual file type, %s, detected for %s!", self.filetype, self.filename)
         return self.regexp
 
+    def _type_size(self, line):
+        """Obtain file type and size from a matching `line`.
+
+        Parameters
+        ----------
+        line : :class:`str`
+            Line from file that contains the type and size.
+
+        Returns
+        -------
+        :class:`tuple`
+            A tuple containing the type and size.
+        """
+        ts = line.lower().replace(':', '').replace('file type', '').strip().split(',')
+        t = ts[0]
+        try:
+            i = ts[1].upper().index('B')
+        except (ValueError, IndexError):
+            s = 'Unknown'
+        else:
+            s = ts[1].upper()[:(i+1)].strip()
+        return (t, s)
+
     def _cross_reference(self, line):
         """Obtain the path to a file referred to in another file.
 
         Parameters
         ----------
         line : :class:`str`
-            Line from `filename` that *is* the cross-reference.
+            Line from original file that *is* the cross-reference.
 
         Returns
         -------
