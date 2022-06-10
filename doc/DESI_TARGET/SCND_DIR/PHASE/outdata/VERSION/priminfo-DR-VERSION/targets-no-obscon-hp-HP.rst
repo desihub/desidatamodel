@@ -43,16 +43,22 @@ Matches between primary and secondary targets
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ==================================
-KEY      Example Value Type Comment
-======== ============= ==== ==================================
-NAXIS1   130           int  width of table in bytes
-NAXIS2   30444         int  number of rows in table
-SURVEY   "main"        str  svX for SV, main for Main Survey
-======== ============= ==== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== ==================================
+    KEY      Example Value Type Comment
+    ======== ============= ==== ==================================
+    NAXIS1   130           int  width of table in bytes
+    NAXIS2   30444         int  number of rows in table
+    SURVEY   "main"        str  svX for SV, main for Main Survey
+    ======== ============= ==== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= =========== ===================== ===================
 Name                              Type        Units                 Description

@@ -3,12 +3,12 @@ output secondary targets
 ========================
 
 :Summary: DESI secondary target output files include a binary fits table. This table
-	  contains the targets provided with a given secondary proposal, with the
-	  added targeting information (`i.e.` IDs and bits) needed by the DESI pipeline.
+    contains the targets provided with a given secondary proposal, with the
+    added targeting information (`i.e.` IDs and bits) needed by the DESI pipeline.
 :Naming Convention: ``BITNAME.fits``,
-   where ``BITNAME`` matches the name of the secondary targeting bit used by the desitarget
-   pipeline for a given survey phase (see the desitarget GitHub repository for, `e.g.`
-   the `sv1`_ or `main`_ secondary target bitmasks).
+    where ``BITNAME`` matches the name of the secondary targeting bit used by the desitarget
+    pipeline for a given survey phase (see the desitarget GitHub repository for, `e.g.`
+    the `sv1`_ or `main`_ secondary target bitmasks).
 :Regex: ``[a-zA-Z]+\.fits``
 :File Type: FITS, 20 KB - 284 MB
 
@@ -44,23 +44,29 @@ Output secondary targets
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ==================================
-KEY      Example Value Type  Comment
-======== ============= ===== ==================================
-NAXIS1   89            int   width of table in bytes
-NAXIS2   4838          int   number of rows in table
-SURVEY   "main"        str   svX for SV, main for Main Survey
-PRIMDIR  "/global/"    str   location of directory of information about corresponding primary targets
-SEP      1.0           float matching radius that was used to find primary targets (arcsec)
-MASKED   T             bool  ``True`` if targets were masked to avoid bright sources
-MASKDIR  "masks/"      str   location of directory of masks used to avoid bright sources
-SCNDDIR  "/global/"    str   directory from which secondary targets were read
-OBSCON   "DARK"        str   observing layer for file
-SUBPSEED 717           int   random seed used to generate `SUBPRIORITY` values
-======== ============= ===== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ==================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ==================================
+    NAXIS1   89            int   width of table in bytes
+    NAXIS2   4838          int   number of rows in table
+    SURVEY   "main"        str   svX for SV, main for Main Survey
+    PRIMDIR  "/global/"    str   location of directory of information about corresponding primary targets
+    SEP      1.0           float matching radius that was used to find primary targets (arcsec)
+    MASKED   T             bool  ``True`` if targets were masked to avoid bright sources
+    MASKDIR  "masks/"      str   location of directory of masks used to avoid bright sources
+    SCNDDIR  "/global/"    str   directory from which secondary targets were read
+    OBSCON   "DARK"        str   observing layer for file
+    SUBPSEED 717           int   random seed used to generate `SUBPRIORITY` values
+    ======== ============= ===== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= =========== ================ ===================
 Name                              Type        Units            Description
@@ -96,4 +102,3 @@ SCND_ORDER                        int32                        Row in which this
 .. _`SGA`: https://github.com/moustakas/SGA
 .. _`sv1`: https://github.com/desihub/desitarget/blob/2.5.0/py/desitarget/sv1/data/sv1_targetmask.yaml#L155-L226
 .. _`main`: https://github.com/desihub/desitarget/blob/2.5.0/py/desitarget/data/targetmask.yaml#L131-L182
-
