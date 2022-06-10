@@ -68,6 +68,8 @@ class UnionStub(Stub):
                 if self._o in key[0]:
                     h['keywords'][k] = (key[0].split()[0], key[1], key[2], key[3])
             if h['extension'] == 'BINTABLE':
+                if h['format'][0] != Stub.columns_header:
+                    h['format'] = [Stub.columns_header] + h['format']
                 for k in range(len(h['format'])):
                     col = h['format'][k]
                     if self._o in col[0]:
@@ -96,7 +98,7 @@ class UnionStub(Stub):
         """
         metadata = self.hdumeta[hdu]
         data_keywords = set([k[0] for k in keywords])
-        model_keywords = set([k[0].split()[0] for k in metadata['keywords']])
+        model_keywords = set([k[0] for k in metadata['keywords']])
         #
         # Compare the keywords that are in both sets.
         #
@@ -167,8 +169,8 @@ class UnionStub(Stub):
         #
         # The columns coming into here have the header row in them already.
         #
-        data_columns = set([k[0] for k in columns[1:])
-        model_columns = set([k[0].split()[0] for k in metadata['format']])
+        data_columns = set([k[0] for k in columns[1:]])
+        model_columns = set([k[0] for k in metadata['format']])
         # log.debug("data_columns = %s", data_columns)
         # log.debug("model_columns = %s", model_columns)
         #
