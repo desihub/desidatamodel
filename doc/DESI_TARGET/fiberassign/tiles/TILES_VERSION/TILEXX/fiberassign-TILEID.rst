@@ -124,72 +124,72 @@ FA_SURV  main                      str   Survey of origin of the targets
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-===================== ======= ================ ===================
-Name                  Type    Units            Description
-===================== ======= ================ ===================
-TARGETID              int64                    Unique target ID
-PETAL_LOC             int16                    Petal location [0-9]
-DEVICE_LOC            int32                    Device location on focal plane [0-523]
-LOCATION              int32                    Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-FIBER                 int32                    Fiber ID on the CCDs [0-4999]
-FIBERSTATUS           int32                    Fiber status mask; 0=good
-TARGET_RA             float64 deg              Target Right Ascension
-TARGET_DEC            float64 deg              Target Declination
-PMRA                  float32 mas/yr           Proper motion in the RA direction (already including cosDEC term)
-PMDEC                 float32 mas/yr           Proper motion in the DEC direction
-REF_EPOCH             float32 yr               Reference catalog reference epoch (eg, 2015.5 for Gaia DR2)
-LAMBDA_REF            float32 Angstrom         Wavelength at which targets should be centered on fibers
-FA_TARGET             int64                    Targeting bit internally used by fiberassign (linked with FA_TYPE)
-FA_TYPE               binary                   Target type (science, standard, sky, safe, suppsky)
-OBJTYPE               char[3]                  TGT, SKY, BAD, empty
-FIBERASSIGN_X         float32 mm               Expected CS5 X location on focal plane
-FIBERASSIGN_Y         float32 mm               Expected CS5 Y location on focal plane
-PRIORITY              int32                    Assignment priority; larger = higher priority
-SUBPRIORITY           float64                  Assignment subpriority [0-1]
-OBSCONDITIONS         int32                    Bit-coded of allowed observing conditions
-RELEASE               int16                    Imaging release number
-BRICKNAME             char[8]                  Imaging Surveys brick name
-BRICKID               int32                    Imaging Surveys brick ID
-BRICK_OBJID           int32                    Imaging surveys OBJID on that brick
-MORPHTYPE             char[4]                  Imaging surveys morphological type
-EBV                   float32 mag              Galactic extinction E(B-V) reddening
-FLUX_G                float32 nanomaggies      Flux in g-band
-FLUX_R                float32 nanomaggies      Flux in r-band
-FLUX_Z                float32 nanomaggies      Flux in z-band
-FLUX_W1               float32 nanomaggies      Flux in WISE W1-band
-FLUX_W2               float32 nanomaggies      Flux in WISE W2-band
-FLUX_IVAR_G           float32 nanomaggies**-2  Inverse variance of FLUX_G
-FLUX_IVAR_R           float32 nanomaggies**-2  Inverse variance of FLUX_R
-FLUX_IVAR_Z           float32 nanomaggies**-2  Inverse variance of FLUX_Z
-FLUX_IVAR_W1          float32 nanomaggies**-2  Inverse variance of FLUX_W1
-FLUX_IVAR_W2          float32 nanomaggies**-2  Inverse variance of FLUX_W2
-FIBERFLUX_G           float32 nanomaggies      g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_R           float32 nanomaggies      r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_Z           float32 nanomaggies      z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERTOTFLUX_G        float32 nanomaggies      like FIBERFLUX_G but including all objects overlapping this location
-FIBERTOTFLUX_R        float32 nanomaggies      like FIBERFLUX_R but including all objects overlapping this location
-FIBERTOTFLUX_Z        float32 nanomaggies      like FIBERFLUX_Z but including all objects overlapping this location
-MASKBITS              int16                    Bitwise mask from the imaging indicating potential issue or blending
-SERSIC                float32                  Power-law index for the Sersic profile model
-SHAPE_R               float32 arcsec           Half-light radius of galaxy model for galaxy type
-SHAPE_E1              float32                  Ellipticity component 1 of galaxy model for galaxy type
-SHAPE_E2              float32                  Ellipticity component 2 of galaxy model for galaxy type
-REF_ID                int64                    Astrometric catalog reference ID (SOURCE_ID from Gaia and SGA; built from TYC1, TYC2, TYC3 for Tycho2)
-REF_CAT               char[2]                  Reference catalog source for this star
-GAIA_PHOT_G_MEAN_MAG  float32 mag              Gaia G band mag
-GAIA_PHOT_BP_MEAN_MAG float32 mag              Gaia BP mag
-GAIA_PHOT_RP_MEAN_MAG float32 mag              Gaia RP mag
-PARALLAX              float32 mas              Reference catalog parallax
-PHOTSYS               char[1]                  'N' for the MzLS/BASS photometric system, 'S' for DECaLS, 'G' for Gaia, '' for stuck/broken fibers
-PRIORITY_INIT         int64                    Initial priority for target calculated across target selection bitmasks and OBSCONDITIONS
-NUMOBS_INIT           int64                    Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
-DESI_TARGET           int64                    Dark survey + calibration bitmask
-BGS_TARGET            int64                    Bright Galaxy Survey bitmask
-MWS_TARGET            int64                    Milky Way Survey bitmask
-SCND_TARGET           int64                    Secondary programs bitmask
-PLATE_RA              float64 deg              Right Ascension to be used by PlateMaker
-PLATE_DEC             float64 deg              Declination to be used by PlateMaker
-===================== ======= ================ ===================
+===================== ======= ============== ===================
+Name                  Type    Units          Description
+===================== ======= ============== ===================
+TARGETID              int64                  Unique target ID
+PETAL_LOC             int16                  Petal location [0-9]
+DEVICE_LOC            int32                  Device location on focal plane [0-523]
+LOCATION              int32                  Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                 int32                  Fiber ID on the CCDs [0-4999]
+FIBERSTATUS           int32                  Fiber status mask; 0=good
+TARGET_RA             float64 deg            Target Right Ascension
+TARGET_DEC            float64 deg            Target Declination
+PMRA                  float32 mas/yr         Proper motion in the RA direction (already including cosDEC term)
+PMDEC                 float32 mas/yr         Proper motion in the DEC direction
+REF_EPOCH             float32 yr             Reference catalog reference epoch (eg, 2015.5 for Gaia DR2)
+LAMBDA_REF            float32 Angstrom       Wavelength at which targets should be centered on fibers
+FA_TARGET             int64                  Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE               binary                 Target type (science, standard, sky, safe, suppsky)
+OBJTYPE               char[3]                TGT, SKY, BAD, empty
+FIBERASSIGN_X         float32 mm             Expected CS5 X location on focal plane
+FIBERASSIGN_Y         float32 mm             Expected CS5 Y location on focal plane
+PRIORITY              int32                  Assignment priority; larger = higher priority
+SUBPRIORITY           float64                Assignment subpriority [0-1]
+OBSCONDITIONS         int32                  Bit-coded of allowed observing conditions
+RELEASE               int16                  Imaging release number
+BRICKNAME             char[8]                Imaging Surveys brick name
+BRICKID               int32                  Imaging Surveys brick ID
+BRICK_OBJID           int32                  Imaging surveys OBJID on that brick
+MORPHTYPE             char[4]                Imaging surveys morphological type
+EBV                   float32 mag            Galactic extinction E(B-V) reddening
+FLUX_G                float32 nanomaggies    Flux in g-band
+FLUX_R                float32 nanomaggies    Flux in r-band
+FLUX_Z                float32 nanomaggies    Flux in z-band
+FLUX_W1               float32 nanomaggies    Flux in WISE W1-band
+FLUX_W2               float32 nanomaggies    Flux in WISE W2-band
+FLUX_IVAR_G           float32 nanomaggies^-2 Inverse variance of FLUX_G
+FLUX_IVAR_R           float32 nanomaggies^-2 Inverse variance of FLUX_R
+FLUX_IVAR_Z           float32 nanomaggies^-2 Inverse variance of FLUX_Z
+FLUX_IVAR_W1          float32 nanomaggies^-2 Inverse variance of FLUX_W1
+FLUX_IVAR_W2          float32 nanomaggies^-2 Inverse variance of FLUX_W2
+FIBERFLUX_G           float32 nanomaggies    g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_R           float32 nanomaggies    r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_Z           float32 nanomaggies    z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERTOTFLUX_G        float32 nanomaggies    like FIBERFLUX_G but including all objects overlapping this location
+FIBERTOTFLUX_R        float32 nanomaggies    like FIBERFLUX_R but including all objects overlapping this location
+FIBERTOTFLUX_Z        float32 nanomaggies    like FIBERFLUX_Z but including all objects overlapping this location
+MASKBITS              int16                  Bitwise mask from the imaging indicating potential issue or blending
+SERSIC                float32                Power-law index for the Sersic profile model
+SHAPE_R               float32 arcsec         Half-light radius of galaxy model for galaxy type
+SHAPE_E1              float32                Ellipticity component 1 of galaxy model for galaxy type
+SHAPE_E2              float32                Ellipticity component 2 of galaxy model for galaxy type
+REF_ID                int64                  Astrometric catalog reference ID (SOURCE_ID from Gaia and SGA; built from TYC1, TYC2, TYC3 for Tycho2)
+REF_CAT               char[2]                Reference catalog source for this star
+GAIA_PHOT_G_MEAN_MAG  float32 mag            Gaia G band mag
+GAIA_PHOT_BP_MEAN_MAG float32 mag            Gaia BP mag
+GAIA_PHOT_RP_MEAN_MAG float32 mag            Gaia RP mag
+PARALLAX              float32 mas            Reference catalog parallax
+PHOTSYS               char[1]                'N' for the MzLS/BASS photometric system, 'S' for DECaLS, 'G' for Gaia, '' for stuck/broken fibers
+PRIORITY_INIT         int64                  Initial priority for target calculated across target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT           int64                  Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+DESI_TARGET           int64                  Dark survey + calibration bitmask
+BGS_TARGET            int64                  Bright Galaxy Survey bitmask
+MWS_TARGET            int64                  Milky Way Survey bitmask
+SCND_TARGET           int64                  Secondary programs bitmask
+PLATE_RA              float64 deg            Right Ascension to be used by PlateMaker
+PLATE_DEC             float64 deg            Declination to be used by PlateMaker
+===================== ======= ============== ===================
 
 HDU2
 ----
@@ -286,50 +286,50 @@ FA_SURV  main                      str   Survey of origin of the targets
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-================================= ======= ================ ===================
-Name                              Type    Units            Description
-================================= ======= ================ ===================
-RELEASE                           int32                    Imaging release number
-TARGETID                          int64                    Unique target ID
-BRICKID                           int32                    Imaging Surveys brick ID
-BRICK_OBJID                       int32                    Imaging surveys OBJID on that brick
-TARGET_RA                         float64 deg              Target Right Ascension
-TARGET_DEC                        float64 deg              Target Declination
-TARGET_RA_IVAR                    float32 deg**-2          Inverse variance of TARGET_RA
-TARGET_DEC_IVAR                   float32 deg**-2          Inverse variance of TARGET_DEC
-MORPHTYPE                         char[4]                  Imaging surveys morphological type
-MASKBITS                          int16                    Bitwise mask from the imaging indicating potential issue or blending
-FLUX_G                            float32 nanomaggies      Flux in g-band
-FLUX_R                            float32 nanomaggies      Flux in r-band
-FLUX_Z                            float32 nanomaggies      Flux in z-band
-FLUX_IVAR_G                       float32 nanomaggies**-2  Inverse variance of FLUX_G
-FLUX_IVAR_R                       float32 nanomaggies**-2  Inverse variance of FLUX_R
-FLUX_IVAR_Z                       float32 nanomaggies**-2  Inverse variance of FLUX_Z
-REF_ID                            int64                    Astrometric catalog reference ID (SOURCE_ID from Gaia and SGA; built from TYC1, TYC2, TYC3 for Tycho2)
-REF_CAT                           char[2]                  Reference catalog source for this star
-REF_EPOCH                         float32 yr               Reference catalog reference epoch
-PARALLAX                          float32 mas              Reference catalog parallax
-PARALLAX_IVAR                     float32 mas**-2          Inverse variance of PARALLAX
-PMRA                              float32 mas/yr           Proper motion in the RA direction (already including cosDEC term)
-PMDEC                             float32 mas/yr           Proper motion in the DEC direction
-PMRA_IVAR                         float32 (mas/yr)**-2     Inverse variance of PMRA
-PMDEC_IVAR                        float32 (mas/yr)**-2     Inverse variance of PMDEC
-GAIA_PHOT_G_MEAN_MAG              float32 mag              Gaia G band mag
-GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32                  Gaia G band signal-to-noise
-GAIA_PHOT_BP_MEAN_MAG             float32 mag              Gaia BP band mag
-GAIA_PHOT_BP_MEAN_FLUX_OVER_ERROR float32                  Gaia BP signal-to-noise
-GAIA_PHOT_RP_MEAN_MAG             float32 mag              Gaia RP band mag
-GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32                  Gaia RP signal-to-noise
-GAIA_ASTROMETRIC_EXCESS_NOISE     float32                  Gaia astrometric excess noise
-URAT_ID                           int64                    URAT ID
-URAT_SEP                          float32 arcsec           Distance separation to the URAT coordinates
-GAIA_PHOT_G_N_OBS                 int32                    Gaia G band number of observations
-HPXPIXEL                          int64                    HEALPixel containing GFA target
-GFA_LOC                           int16                    Covered GFA identifier
-GUIDE_FLAG                        int16                    GUIDING bitmask
-FOCUS_FLAG                        int16                    FOCUS bitmask
-ETC_FLAG                          int16                    ETC bitmask
-================================= ======= ================ ===================
+================================= ======= ============== ===================
+Name                              Type    Units          Description
+================================= ======= ============== ===================
+RELEASE                           int32                  Imaging release number
+TARGETID                          int64                  Unique target ID
+BRICKID                           int32                  Imaging Surveys brick ID
+BRICK_OBJID                       int32                  Imaging surveys OBJID on that brick
+TARGET_RA                         float64 deg            Target Right Ascension
+TARGET_DEC                        float64 deg            Target Declination
+TARGET_RA_IVAR                    float32 deg^-2         Inverse variance of TARGET_RA
+TARGET_DEC_IVAR                   float32 deg^-2         Inverse variance of TARGET_DEC
+MORPHTYPE                         char[4]                Imaging surveys morphological type
+MASKBITS                          int16                  Bitwise mask from the imaging indicating potential issue or blending
+FLUX_G                            float32 nanomaggies    Flux in g-band
+FLUX_R                            float32 nanomaggies    Flux in r-band
+FLUX_Z                            float32 nanomaggies    Flux in z-band
+FLUX_IVAR_G                       float32 nanomaggies^-2 Inverse variance of FLUX_G
+FLUX_IVAR_R                       float32 nanomaggies^-2 Inverse variance of FLUX_R
+FLUX_IVAR_Z                       float32 nanomaggies^-2 Inverse variance of FLUX_Z
+REF_ID                            int64                  Astrometric catalog reference ID (SOURCE_ID from Gaia and SGA; built from TYC1, TYC2, TYC3 for Tycho2)
+REF_CAT                           char[2]                Reference catalog source for this star
+REF_EPOCH                         float32 yr             Reference catalog reference epoch
+PARALLAX                          float32 mas            Reference catalog parallax
+PARALLAX_IVAR                     float32 mas^-2         Inverse variance of PARALLAX
+PMRA                              float32 mas/yr         Proper motion in the RA direction (already including cosDEC term)
+PMDEC                             float32 mas/yr         Proper motion in the DEC direction
+PMRA_IVAR                         float32 yr^2/mas^2     Inverse variance of PMRA
+PMDEC_IVAR                        float32 yr^2/mas^2     Inverse variance of PMDEC
+GAIA_PHOT_G_MEAN_MAG              float32 mag            Gaia G band mag
+GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32                Gaia G band signal-to-noise
+GAIA_PHOT_BP_MEAN_MAG             float32 mag            Gaia BP band mag
+GAIA_PHOT_BP_MEAN_FLUX_OVER_ERROR float32                Gaia BP signal-to-noise
+GAIA_PHOT_RP_MEAN_MAG             float32 mag            Gaia RP band mag
+GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32                Gaia RP signal-to-noise
+GAIA_ASTROMETRIC_EXCESS_NOISE     float32                Gaia astrometric excess noise
+URAT_ID                           int64                  URAT ID
+URAT_SEP                          float32 arcsec         Distance separation to the URAT coordinates
+GAIA_PHOT_G_N_OBS                 int32                  Gaia G band number of observations
+HPXPIXEL                          int64                  HEALPixel containing GFA target
+GFA_LOC                           int16                  Covered GFA identifier
+GUIDE_FLAG                        int16                  GUIDING bitmask
+FOCUS_FLAG                        int16                  FOCUS bitmask
+ETC_FLAG                          int16                  ETC bitmask
+================================= ======= ============== ===================
 
 HDU4
 ----
