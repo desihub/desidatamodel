@@ -244,12 +244,12 @@ class UnionStub(Stub):
             if hdu['extension'] == 'BINTABLE':
                 for j, column in enumerate(hdu['format'][1:]):
                     c = column[0]
-                    if self.count_columns[i][c]:
+                    if self.count_columns[i][c] == self.count:
                         log.debug("%s is a required column in HDU%d.", c, i)
                     elif self.count_columns[i][c] > 0:
                         log.debug("%s is an optional column in HDU%d (%d).", c, i, self.count_columns[i][c])
                         co = c + ' ' + self._o
-                        hdu['format'][j] = (co, column[1], column[2], column[3])
+                        hdu['format'][j+1] = (co, column[1], column[2], column[3])
                     else:
                         log.debug("%s is an unused column in HDU%d.", c, i)
         return
