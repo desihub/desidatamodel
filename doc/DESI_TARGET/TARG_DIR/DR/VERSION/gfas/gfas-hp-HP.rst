@@ -45,26 +45,32 @@ Target selection table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ==================================
-KEY      Example Value Type  Comment
-======== ============= ===== ==================================
-NAXIS1   164           int   width of table in bytes
-NAXIS2   142824        int   number of rows in table
-DR       9             int   Legacy Surveys Data Release used to find targets
-MAGLIM   21.0          float magnitude limit on GFA targets in Gaia G-band
-MINDEC   -90.0         float minimum declination for GFAs that are not selected from the Legacy Surveys
-MINGALB  0.0           float closest latitude to Galactic Plane for GFAs that are not selected from the Legacy Surveys
-NOURAT   F             bool  ``True`` if the URAT catalog was not used to supplement missing proper motions
-GAIADR   "edr3"        str   Gaia Data Release used to select GFAs
-HPXNSIDE 64            int   HEALPix nside for column `HPXPIXEL`
-HPXNEST  T             bool  HEALPix nested (not ring) ordering
-FILENSID 2             int   HEALPix nside covered by file
-FILENEST T             bool  HEALPix nested (not ring) ordering
-FILEHPX  11            int   HEALPix pixel(s) covered by file
-======== ============= ===== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ==================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ==================================
+    NAXIS1   164           int   width of table in bytes
+    NAXIS2   142824        int   number of rows in table
+    DR       9             int   Legacy Surveys Data Release used to find targets
+    MAGLIM   21.0          float magnitude limit on GFA targets in Gaia G-band
+    MINDEC   -90.0         float minimum declination for GFAs that are not selected from the Legacy Surveys
+    MINGALB  0.0           float closest latitude to Galactic Plane for GFAs that are not selected from the Legacy Surveys
+    NOURAT   F             bool  ``True`` if the URAT catalog was not used to supplement missing proper motions
+    GAIADR   "edr3"        str   Gaia Data Release used to select GFAs
+    HPXNSIDE 64            int   HEALPix nside for column `HPXPIXEL`
+    HPXNEST  T             bool  HEALPix nested (not ring) ordering
+    FILENSID 2             int   HEALPix nside covered by file
+    FILENEST T             bool  HEALPix nested (not ring) ordering
+    FILEHPX  11            int   HEALPix pixel(s) covered by file
+    ======== ============= ===== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= =========== ================== ===================
 Name                              Type        Units              Description

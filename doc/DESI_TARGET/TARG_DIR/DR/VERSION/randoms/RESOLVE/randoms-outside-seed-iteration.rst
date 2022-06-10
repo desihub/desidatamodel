@@ -3,9 +3,9 @@ randoms
 =======
 
 :Summary: DESI outside-the-footprint random catalogs contain a single binary
-	  table covering areas beyond the `Legacy Surveys`_ footprint.
-	  The columns in this file are simplified compared to the other random
-	  catalogs as entries in additional columns would be zeros.
+table covering areas beyond the `Legacy Surveys`_ footprint.
+The columns in this file are simplified compared to the other random
+catalogs as entries in additional columns would be zeros.
 :Naming Convention: ``randoms-outside-seed-iteration.fits``, where ``seed`` represents
 	the random seed used to generate the catalog and ``iteration`` lists the iteration
 	number of the catalog (several iterations are typically conducted

@@ -2,10 +2,10 @@
 pixweight
 =========
 
-:Summary: DESI HEALPixel weight files contain a single binary table covering the 
+:Summary: DESI HEALPixel weight files contain a single binary table covering the
     entire Legacy Surveys footprint. They contain meta information (the number of
     observations, the depth, etc.) derived from pixels in Legacy Surveys CCDs,
-    together with target densities, conveniently stored as HEALPixel maps. They are 
+    together with target densities, conveniently stored as HEALPixel maps. They are
     derived from corresponding DESI random catalogs and target files, which are
     listed in the README file in the parent `pixweight` directory.
 :Naming Convention: ``PHASEpixweight-SEED-obscon.fits``,
@@ -50,31 +50,37 @@ pixweight catalog table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ========================================
-KEY      Example Value Type  Comment
-======== ============= ===== ========================================
-NAXIS1   132           int   Width of table in bytes
-NAXIS2   786432        int   Number of rows in table
-FILENSID 2             int   HEALPix nside covered by file
-FILENEST T             bool  HEALPix nested (not ring) ordering
-FILEHPX  "11,5,4"      str   HEALPix pixel(s) covered by file
-DR       9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
-DENSITY  45000         int   Number of random points generated per sq. deg.
-APRAD    0.75          float Aperture radius used to calculate flux-related quantities (arcsec)
-SEED     1             int   Seed used to generate random catalog
-ADDMTL   F             bool  ``True`` if MTL-related columns were added to the parent catalog used to build this catalog
-HPXNSIDE 64            int   HEALPix nside
-HPXNEST  T             bool  HEALPix nested (not ring) ordering
-SUPP     F             bool  ``True`` if randoms were generated without using `LS`_ pixels
-RESOLVE  T             bool  ``True`` if from unique imaging
-RESEED   626           int   Seed used to re-shuffle combined random catalogs to ensure randomness
-MTLSPLIT T             bool  ``True`` if MTL-related columns were added to this random catalog
-GAIALOC  "/global/"    str   Location of file used to generate stellar density
-SURVEY   "main"        str   svX for SV, main for Main Survey
-======== ============= ===== ========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ========================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ========================================
+    NAXIS1   132           int   Width of table in bytes
+    NAXIS2   786432        int   Number of rows in table
+    FILENSID 2             int   HEALPix nside covered by file
+    FILENEST T             bool  HEALPix nested (not ring) ordering
+    FILEHPX  "11,5,4"      str   HEALPix pixel(s) covered by file
+    DR       9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
+    DENSITY  45000         int   Number of random points generated per sq. deg.
+    APRAD    0.75          float Aperture radius used to calculate flux-related quantities (arcsec)
+    SEED     1             int   Seed used to generate random catalog
+    ADDMTL   F             bool  ``True`` if MTL-related columns were added to the parent catalog used to build this catalog
+    HPXNSIDE 64            int   HEALPix nside
+    HPXNEST  T             bool  HEALPix nested (not ring) ordering
+    SUPP     F             bool  ``True`` if randoms were generated without using `LS`_ pixels
+    RESOLVE  T             bool  ``True`` if from unique imaging
+    RESEED   626           int   Seed used to re-shuffle combined random catalogs to ensure randomness
+    MTLSPLIT T             bool  ``True`` if MTL-related columns were added to this random catalog
+    GAIALOC  "/global/"    str   Location of file used to generate stellar density
+    SURVEY   "main"        str   svX for SV, main for Main Survey
+    ======== ============= ===== ========================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ============== ======== ============= ===================
 Name           Type     Units         Description
@@ -118,7 +124,7 @@ MWS_NEARBY     float32  deg^-2        Density of MWS_NEARBY targets in HEALPixel
 Notes and Examples
 ==================
 
-See http://legacysurvey.org for more details about the corresponding columns for sources extracted by 
+See http://legacysurvey.org for more details about the corresponding columns for sources extracted by
 the Tractor in the Legacy Surveys, e.g. the units of the depth quantities.
 
 .. _`SFD98`: http://adsabs.harvard.edu/abs/1998ApJ...500..525S

@@ -49,19 +49,25 @@ Target selection table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ==================== ==== ===================================
-KEY      Example Value        Type Comment
-======== ==================== ==== ===================================
-NAXIS1   176                  int  width of table in bytes
-NAXIS2   15050911             int  number of rows in table
-ENCODING ascii                str
-SEED     1028862084           int  initial random seed
-HPXNSIDE 64                   int  HEALPix nside
-HPXNEST  T                    bool HEALPix nested (not ring) ordering
-======== ==================== ==== ===================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ==================== ==== ===================================
+    KEY      Example Value        Type Comment
+    ======== ==================== ==== ===================================
+    NAXIS1   176                  int  width of table in bytes
+    NAXIS2   15050911             int  number of rows in table
+    ENCODING ascii                str
+    SEED     1028862084           int  initial random seed
+    HPXNSIDE 64                   int  HEALPix nside
+    HPXNEST  T                    bool HEALPix nested (not ring) ordering
+    ======== ==================== ==== ===================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================== ======= ===== ===================
 Name               Type    Units Description

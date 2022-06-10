@@ -41,20 +41,26 @@ EXTNAME = TARGETS
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ======================================================== ==== ===================================
-KEY      Example Value                                            Type Comment
-======== ======================================================== ==== ===================================
-EXTNAME  TARGETS                                                  str  name of this binary table extension
-DEPNAM00 desitarget                                               str
-DEPVER00 0.1.0                                                    str  desitarget.__version__
-DEPNAM01 desitarget-git                                           str
-DEPVAL01 0.1.0                                                    str  git revision
-DEPNAM02 tractor-files                                            str
-DEPVER02 /project/projectdirs/cosmo/data/legacysurvey/dr1/tractor str  input directory
-======== ======================================================== ==== ===================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ======================================================== ==== ===================================
+    KEY      Example Value                                            Type Comment
+    ======== ======================================================== ==== ===================================
+    EXTNAME  TARGETS                                                  str  name of this binary table extension
+    DEPNAM00 desitarget                                               str
+    DEPVER00 0.1.0                                                    str  desitarget.__version__
+    DEPNAM01 desitarget-git                                           str
+    DEPVAL01 0.1.0                                                    str  git revision
+    DEPNAM02 tractor-files                                            str
+    DEPVER02 /project/projectdirs/cosmo/data/legacysurvey/dr1/tractor str  input directory
+    ======== ======================================================== ==== ===================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ===================== ========== ===== ===================
 Name                  Type       Units Description

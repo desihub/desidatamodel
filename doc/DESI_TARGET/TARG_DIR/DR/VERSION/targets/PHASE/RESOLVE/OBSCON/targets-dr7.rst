@@ -48,24 +48,30 @@ Target selection table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ==================================
-KEY      Example Value Type Comment
-======== ============= ==== ==================================
-NAXIS1   374           int  width of table in bytes
-NAXIS2   72660205      int  number of rows in table
-OBSCON   DARK|GRAY     str
-HPXNSIDE 64            int  HEALPix nside
-HPXNEST  T             bool HEALPix nested (not ring) ordering
-SURVEY   main          str
-RESOLVE  T             bool
-MASKBITS T             bool
-FILENSID 64            int
-FILENEST T             bool
-FILEHPX  5261          int
-======== ============= ==== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== ==================================
+    KEY      Example Value Type Comment
+    ======== ============= ==== ==================================
+    NAXIS1   374           int  width of table in bytes
+    NAXIS2   72660205      int  number of rows in table
+    OBSCON   DARK|GRAY     str
+    HPXNSIDE 64            int  HEALPix nside
+    HPXNEST  T             bool HEALPix nested (not ring) ordering
+    SURVEY   main          str
+    RESOLVE  T             bool
+    MASKBITS T             bool
+    FILENSID 64            int
+    FILENEST T             bool
+    FILEHPX  5261          int
+    ======== ============= ==== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= ========== ======= ===================
 Name                              Type       Units   Description

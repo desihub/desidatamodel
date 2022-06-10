@@ -43,23 +43,29 @@ Table of secondary targets
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ==================================
-KEY      Example Value Type  Comment
-======== ============= ===== ==================================
-NAXIS1   121           int   width of table in bytes
-NAXIS2   7125595       int   number of rows in table
-SURVEY   "main"        str   svX for SV, main for Main Survey
-PRIMDIR  "/global/"    str   location of directory of information about corresponding primary targets
-SEP      1.0           float matching radius that was used to find primary targets (arcsec)
-MASKED   T             bool  ``True`` if targets were masked to avoid bright sources
-MASKDIR  "masks/"      str   location of directory of masks used to avoid bright sources
-SCNDDIR  "/global/"    str   directory from which secondary targets were read
-OBSCON   "DARK"        str   observing layer for file
-SUBPSEED 717           int   random seed used to generate `SUBPRIORITY` values
-======== ============= ===== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ==================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ==================================
+    NAXIS1   121           int   width of table in bytes
+    NAXIS2   7125595       int   number of rows in table
+    SURVEY   "main"        str   svX for SV, main for Main Survey
+    PRIMDIR  "/global/"    str   location of directory of information about corresponding primary targets
+    SEP      1.0           float matching radius that was used to find primary targets (arcsec)
+    MASKED   T             bool  ``True`` if targets were masked to avoid bright sources
+    MASKDIR  "masks/"      str   location of directory of masks used to avoid bright sources
+    SCNDDIR  "/global/"    str   directory from which secondary targets were read
+    OBSCON   "DARK"        str   observing layer for file
+    SUBPSEED 717           int   random seed used to generate `SUBPRIORITY` values
+    ======== ============= ===== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 =============================== =========== ================ ===================
 Name                            Type        Units            Description

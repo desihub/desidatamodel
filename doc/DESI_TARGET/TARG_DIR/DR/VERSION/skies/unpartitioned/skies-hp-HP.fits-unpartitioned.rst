@@ -49,28 +49,34 @@ Table of sky locations
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ==================================
-KEY      Example Value Type  Comment
-======== ============= ===== ==================================
-NAXIS1   136           int   width of table in bytes
-NAXIS2   1055419       int   number of rows in table
-AP0      0.75          float aperture radius used to calculate flux-related quantities (arcsec)
-SUPP     F             bool  ``True`` if sky location are `not` derived from the `Legacy Surveys`_
-DR       9             int   Legacy Surveys Data Release used to find targets
-NPERSDEG 18000.0       float density of sky locations generated per sq. deg.
-HPXNSIDE 64            int   HEALPix nside for column `HPXPIXEL`
-HPXNEST  T             bool  HEALPix nested (not ring) ordering
-SUBPSEED 805           int   random seed used to generate `SUBPRIORITY` values
-MASKED   T             bool  ``True`` if targets were masked to avoid bright sources
-MASKDIR  "masks/"      str   location of directory of masks used to avoid bright sources
-CMDLINE  "/global/"    str   command-line call used to generate target file
-FILENSID 2             int   HEALPix nside covered by file
-FILENEST T             bool  HEALPix nested (not ring) ordering
-FILEHPX  11            int   HEALPix pixel(s) covered by file
-======== ============= ===== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ==================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ==================================
+    NAXIS1   136           int   width of table in bytes
+    NAXIS2   1055419       int   number of rows in table
+    AP0      0.75          float aperture radius used to calculate flux-related quantities (arcsec)
+    SUPP     F             bool  ``True`` if sky location are `not` derived from the `Legacy Surveys`_
+    DR       9             int   Legacy Surveys Data Release used to find targets
+    NPERSDEG 18000.0       float density of sky locations generated per sq. deg.
+    HPXNSIDE 64            int   HEALPix nside for column `HPXPIXEL`
+    HPXNEST  T             bool  HEALPix nested (not ring) ordering
+    SUBPSEED 805           int   random seed used to generate `SUBPRIORITY` values
+    MASKED   T             bool  ``True`` if targets were masked to avoid bright sources
+    MASKDIR  "masks/"      str   location of directory of masks used to avoid bright sources
+    CMDLINE  "/global/"    str   command-line call used to generate target file
+    FILENSID 2             int   HEALPix nside covered by file
+    FILENEST T             bool  HEALPix nested (not ring) ordering
+    FILEHPX  11            int   HEALPix pixel(s) covered by file
+    ======== ============= ===== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= ========== ======= ===================
 Name                              Type       Units   Description

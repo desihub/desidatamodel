@@ -59,31 +59,37 @@ Target selection table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ==================================
-KEY      Example Value Type Comment
-======== ============= ==== ==================================
-NAXIS1   374           int  width of table in bytes
-NAXIS2   72660205      int  number of rows in table
-OBSCON   "DARK"        str  observing layer for file
-HPXNSIDE 64            int  HEALPix nside for column `HPXPIXEL`
-HPXNEST  T             bool HEALPix nested (not ring) ordering
-SUBPSEED 1154          int  random seed used to generate `SUBPRIORITY` values
-SURVEY   "main"        str  svX for SV, main for Main Survey
-RESOLVE  T             bool ``True`` if from unique imaging
-MASKBITS T             bool ``True`` if masking cuts applied
-BACKUP   F             bool ``True`` for backup/supplemental targets
-DR       9             int  Legacy Surveys Data Release used to find targets
-TCNAMES  "QSO,LRG"     str  run for this target-class subset
-GAIASUB  T             bool ``True`` if Gaia EDR3 astrometric values were substituted for Gaia DR2 quantities.
-CMDLINE  "/global/"    str  command-line call used to generate target file
-SCNDOUT  "/global/"    str  directory from which secondary targets were read
-FILENSID 2             int  HEALPix nside covered by file
-FILENEST T             bool HEALPix nested (not ring) ordering
-FILEHPX  11            int  HEALPix pixel(s) covered by file
-======== ============= ==== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== ==================================
+    KEY      Example Value Type Comment
+    ======== ============= ==== ==================================
+    NAXIS1   374           int  width of table in bytes
+    NAXIS2   72660205      int  number of rows in table
+    OBSCON   "DARK"        str  observing layer for file
+    HPXNSIDE 64            int  HEALPix nside for column `HPXPIXEL`
+    HPXNEST  T             bool HEALPix nested (not ring) ordering
+    SUBPSEED 1154          int  random seed used to generate `SUBPRIORITY` values
+    SURVEY   "main"        str  svX for SV, main for Main Survey
+    RESOLVE  T             bool ``True`` if from unique imaging
+    MASKBITS T             bool ``True`` if masking cuts applied
+    BACKUP   F             bool ``True`` for backup/supplemental targets
+    DR       9             int  Legacy Surveys Data Release used to find targets
+    TCNAMES  "QSO,LRG"     str  run for this target-class subset
+    GAIASUB  T             bool ``True`` if Gaia EDR3 astrometric values were substituted for Gaia DR2 quantities.
+    CMDLINE  "/global/"    str  command-line call used to generate target file
+    SCNDOUT  "/global/"    str  directory from which secondary targets were read
+    FILENSID 2             int  HEALPix nside covered by file
+    FILENEST T             bool HEALPix nested (not ring) ordering
+    FILEHPX  11            int  HEALPix pixel(s) covered by file
+    ======== ============= ==== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= =========== ===================== ===================
 Name                              Type        Units                 Description
@@ -209,15 +215,21 @@ Files used to produce target table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ==================================
-KEY      Example Value Type Comment
-======== ============= ==== ==================================
-NAXIS1   152           int  width of table in bytes
-NAXIS2   6             int  number of rows in table
-======== ============= ==== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== ==================================
+    KEY      Example Value Type Comment
+    ======== ============= ==== ==================================
+    NAXIS1   152           int  width of table in bytes
+    NAXIS2   6             int  number of rows in table
+    ======== ============= ==== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ============= =========== ============ ===================
 Name          Type        Units        Description

@@ -62,26 +62,32 @@ Target selection table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== ==================================
-KEY      Example Value Type Comment
-======== ============= ==== ==================================
-NAXIS1   374           int  width of table in bytes
-NAXIS2   72660205      int  number of rows in table
-OBSCON   DARK|GRAY     str  observing layer for file
-HPXNSIDE 64            int  HEALPix nside for column `HPXPIXEL`
-HPXNEST  T             bool HEALPix nested (not ring) ordering
-SURVEY   main          str  sv1 for SV, main for Main Survey
-RESOLVE  T             bool ``True`` if from unique imaging
-MASKBITS T             bool ``True`` if masking cuts applied
-SUPP     F             bool ``True`` for supplemental targets
-TCNAMES  "QSO,LRG"     str  run for this target-class subset
-FILENSID 2             int  HEALPix nside covered by file
-FILENEST T             bool HEALPix nested (not ring) ordering
-FILEHPX  11            int  HEALPix pixel(s) covered by file
-======== ============= ==== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== ==================================
+    KEY      Example Value Type Comment
+    ======== ============= ==== ==================================
+    NAXIS1   374           int  width of table in bytes
+    NAXIS2   72660205      int  number of rows in table
+    OBSCON   DARK|GRAY     str  observing layer for file
+    HPXNSIDE 64            int  HEALPix nside for column `HPXPIXEL`
+    HPXNEST  T             bool HEALPix nested (not ring) ordering
+    SURVEY   main          str  sv1 for SV, main for Main Survey
+    RESOLVE  T             bool ``True`` if from unique imaging
+    MASKBITS T             bool ``True`` if masking cuts applied
+    SUPP     F             bool ``True`` for supplemental targets
+    TCNAMES  "QSO,LRG"     str  run for this target-class subset
+    FILENSID 2             int  HEALPix nside covered by file
+    FILENEST T             bool HEALPix nested (not ring) ordering
+    FILEHPX  11            int  HEALPix pixel(s) covered by file
+    ======== ============= ==== ==================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================================= ========== ===================== ===================
 Name                              Type       Units                 Description
