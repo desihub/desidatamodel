@@ -8,4 +8,4 @@ observed in.  For example, ``sv1``, ``sv2``, ``sv3``, ``main``.
 .. toctree::
    :maxdepth: 1
 
-   TILEXX
+   TILEXX/index

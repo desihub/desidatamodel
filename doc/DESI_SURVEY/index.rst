@@ -9,4 +9,4 @@ Subdirectories:
 .. toctree::
    :maxdepth: 1
 
-   fiberassign
+   fiberassign/index
