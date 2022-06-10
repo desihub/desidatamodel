@@ -109,6 +109,10 @@ class UnionStub(Stub):
             except KeyError:
                 pass
         model_set = set([k[0] for k in metadata[m]])
+        try:
+            model_set.remove('Name')
+        except KeyError:
+            pass
         #
         # Compare the items that are in both sets.
         #
@@ -144,14 +148,14 @@ class UnionStub(Stub):
                 if meta_type != data_type:
                     log.warning("HDU%d keyword %s has different type (%s != %s).",
                                 hdu, item, data_type, meta_type)
-                    new_item = (item, new_item_[1], data_type, new_item[3])
+                    new_item = (item, new_item[1], data_type, new_item[3])
                 if data_comment and not meta_comment:
                     log.info("Adding comment '%s' to HDU%d keyword %s.", data_comment, hdu, item)
                     new_item = (item, new_item[1], new_item[2], data_comment)
             if new_item != original_item:
                 log.debug("metadata['%s'][%d] = ('%s', '%s', '%s', '%s')",
                           m, meta_index, new_item[0], new_item[1], new_item[2], new_item[3])
-                metadata[m][meta_index] = new_index
+                metadata[m][meta_index] = new_item
         #
         # Add missing items to the union model.
         #
@@ -159,13 +163,11 @@ class UnionStub(Stub):
             log.info('Adding %s to HDU%d missing from model: %s', it, hdu,
                      str(data_set - model_set))
             for item in (data_set - model_set):
-                if item in self.counter[hdu][m]:
-                    self.counter[hdu][m][item] += 1
-                else:
+                if item not in self.counter[hdu][m]:
                     self.counter[hdu][m][item] = 1
                 data_index = [i for i, k in enumerate(data) if k[0] == item][0]
                 data[data_index]
-                foo, data_type, data_units, data_comment = columns[data_index]
+                foo, data_type, data_units, data_comment = data[data_index]
                 log.debug("metadata['%s'].append(('%s', '%s', '%s', '%s'))",
                           it, item, data[data_index][1], data[data_index][2], data[data_index][3])
                 metadata[m].append((item, data[data_index][1], data[data_index][2], data[data_index][3]))
