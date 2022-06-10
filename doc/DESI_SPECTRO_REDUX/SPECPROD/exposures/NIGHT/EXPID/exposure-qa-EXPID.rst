@@ -82,6 +82,7 @@ Required Header Keywords
     MOUNTEL       84.320435           float
     MOUNTHA       -6.689017           float
     AIRMASS       1.004188            float
+    ETCTEFF [1]_  1015.311096         float
     TILERA        199.992             float
     TILEDEC       32.447              float
     GOALTIME [1]_ 180.0               float
