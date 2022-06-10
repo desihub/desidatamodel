@@ -389,7 +389,7 @@ def main():
     log.debug("model.get_regexp('%s', error=%s)", options.directory, options.error)
     model.get_regexp(options.directory, error=options.error)
     log.debug("model.regexp = %s", model.regexp)
-    log.info("Finding scannable files for %s in %s.", filename, options.directory)
+    log.info("Finding scannable files matching %s in %s.", filename, options.directory)
     all_files = collect_files(options.directory, model)
     n_files = len(all_files)
     if n_files == 0:
@@ -405,6 +405,7 @@ def main():
     except DataModelError:
         log.critical("Error detected while loading files!")
         return 1
+    log.info("Running union_metadata on model and stubs.")
     u = union_metadata(model, stubs, error=options.error)
     if options.output is None:
         outfile = os.path.join('.', os.path.basename(options.section))
