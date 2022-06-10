@@ -1025,6 +1025,7 @@ FIBER_DEC             float64
 EXPTIME               float64
 ===================== ======= ===== ===========
 
+.. [1] Optional
 
 Notes and Examples
 ==================
