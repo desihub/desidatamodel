@@ -167,7 +167,7 @@ class UnionStub(Stub):
         #
         # The columns coming into here have the header row in them already.
         #
-        data_columns = set([k[0] for k in columns[1:]])
+        data_columns = set([k[0] for k in columns[1:])
         model_columns = set([k[0].split()[0] for k in metadata['format']])
         # log.debug("data_columns = %s", data_columns)
         # log.debug("model_columns = %s", model_columns)
@@ -242,14 +242,16 @@ class UnionStub(Stub):
                 else:
                     log.debug("%s is an unused keyword in HDU%d.", k, i)
             if hdu['extension'] == 'BINTABLE':
-                for j, column in enumerate(hdu['format'][1:]):
+                for j, column in enumerate(hdu['format']):
+                    if j == 0:
+                        continue
                     c = column[0]
                     if self.count_columns[i][c] == self.count:
                         log.debug("%s is a required column in HDU%d.", c, i)
                     elif self.count_columns[i][c] > 0:
                         log.debug("%s is an optional column in HDU%d (%d).", c, i, self.count_columns[i][c])
                         co = c + ' ' + self._o
-                        hdu['format'][j+1] = (co, column[1], column[2], column[3])
+                        hdu['format'][j] = (co, column[1], column[2], column[3])
                     else:
                         log.debug("%s is an unused column in HDU%d.", c, i)
         return
