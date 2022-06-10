@@ -45,7 +45,7 @@ HDU1
 
 EXTNAME = PIXWEIGHTS
 
-Random catalog table
+pixweight catalog table
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,7 +73,7 @@ GAIALOC  "/global/"    str   Location of file used to generate stellar density
 SURVEY   "main"        str   svX for SV, main for Main Survey
 ======== ============= ===== ========================================
 
-Possible Data Table Columns
+Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ============== ======== ============= ===================
@@ -81,7 +81,7 @@ Name           Type     Units         Description
 ============== ======== ============= ===================
 HPXPIXEL       int32                  HEALPixel in pixweight map at HPXNSIDE
 FRACAREA       float32                Fraction of HEALPixel with at least one observation in any band of the `Legacy Surveys`_
-STARDENS       float32  1/deg^2       The stellar density in the HEALPixel from Gaia
+STARDENS       float32  deg^-2        The stellar density in the HEALPixel from Gaia
 EBV            float32                E(B-V) in HEALPixel from the `SFD98`_ dust map, from the median ``EBV`` in the associated random catalog
 PSFDEPTH_G     float32                PSF depth in `LS`_ g in the HEALPixel, from the median ``PSFDEPTH_G`` in the associated random catalog
 PSFDEPTH_R     float32                PSF depth in `LS`_ r in the HEALPixel, from the median ``PSFDEPTH_R`` in the associated random catalog
@@ -96,22 +96,22 @@ PSFSIZE_R      float32  arcsec        Weighted average PSF FWHM in `LS`_ r in th
 PSFSIZE_Z      float32  arcsec        Weighted average PSF FWHM in `LS`_ z in the HEALPixel, from the median ``PSFSIZE_Z`` in the associated random catalog
 FRACAREA_12290 float32                Fraction of HEALPixel with at least one observation in any band with `LS MASKBITS`_ = X (bitwise OR, so, e.g. if X=7 then fraction for 2^0 | 2^1 | 2^2)
 FRACAREA_8194  float32                Fraction of HEALPixel with at least one observation in any band with `LS MASKBITS`_ = X (bitwise OR, so, e.g. if X=7 then fraction for 2^0 | 2^1 | 2^2)
-ELG            float32  1/deg^2       Density of ELG targets in HEALPixel
-LRG            float32	1/deg^2       Density of LRG targets in HEALPixel
-QSO            float32	1/deg^2       Density of QSO targets in HEALPixel
-BGS_ANY        float32	1/deg^2       Density of BGS_ANY targets in HEALPixel
-MWS_ANY        float32	1/deg^2       Density of MWS_ANY targets in HEALPixel
-ALL            float32	1/deg^2       Density of `all` targets in HEALPixel
-STD_FAINT      float32	1/deg^2       Density of STD_FAINT targets in HEALPixel
-STD_BRIGHT     float32	1/deg^2       Density of STD_BRIGHT targets in HEALPixel
-BGS_FAINT      float32	1/deg^2       Density of BGS_FAINT targets in HEALPixel
-BGS_BRIGHT     float32	1/deg^2       Density of BGS_BRIGHT targets in HEALPixel
-BGS_WISE       float32	1/deg^2       Density of BGS_WISE targets in HEALPixel
-MWS_BROAD      float32	1/deg^2       Density of MWS_BROAD targets in HEALPixel
-MWS_MAIN_RED   float32	1/deg^2       Density of MWS_MAIN_RED targets in HEALPixel
-MWS_MAIN_BLUE  float32	1/deg^2       Density of MWS_MAIN_BLUE targets in HEALPixel
-MWS_WD         float32	1/deg^2       Density of MWS_WD targets in HEALPixel
-MWS_NEARBY     float32	1/deg^2       Density of MWS_NEARBY targets in HEALPixel
+ELG            float32  deg^-2        Density of ELG targets in HEALPixel
+LRG            float32  deg^-2        Density of LRG targets in HEALPixel
+QSO            float32  deg^-2        Density of QSO targets in HEALPixel
+BGS_ANY        float32  deg^-2        Density of BGS_ANY targets in HEALPixel
+MWS_ANY        float32  deg^-2        Density of MWS_ANY targets in HEALPixel
+ALL            float32  deg^-2        Density of `all` targets in HEALPixel
+STD_FAINT      float32  deg^-2        Density of STD_FAINT targets in HEALPixel
+STD_BRIGHT     float32  deg^-2        Density of STD_BRIGHT targets in HEALPixel
+BGS_FAINT      float32  deg^-2        Density of BGS_FAINT targets in HEALPixel
+BGS_BRIGHT     float32  deg^-2        Density of BGS_BRIGHT targets in HEALPixel
+BGS_WISE       float32  deg^-2        Density of BGS_WISE targets in HEALPixel
+MWS_BROAD      float32  deg^-2        Density of MWS_BROAD targets in HEALPixel
+MWS_MAIN_RED   float32  deg^-2        Density of MWS_MAIN_RED targets in HEALPixel
+MWS_MAIN_BLUE  float32  deg^-2        Density of MWS_MAIN_BLUE targets in HEALPixel
+MWS_WD         float32  deg^-2        Density of MWS_WD targets in HEALPixel
+MWS_NEARBY     float32  deg^-2        Density of MWS_NEARBY targets in HEALPixel
 ============== ======== ============= ===================
 
 

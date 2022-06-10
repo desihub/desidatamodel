@@ -70,43 +70,43 @@ RESEED   626           int   Seed used to re-shuffle combined random catalogs to
 MTLSPLIT T             bool  ``True`` if MTL-related columns were added to this random catalog
 ======== ============= ===== ========================================
 
-Possible Data Table Columns
+Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-============= ======== ============= ===================
-Name          Type     Units         Description
-============= ======== ============= ===================
-RA            float64  deg           Right ascension at pixel location
-DEC           float64  deg           Declination at pixel location
-BRICKNAME     char[8]                Name of the brick
-BRICKID       int32                  A unique Brick ID
-NOBS_G        int16                  Number of images at pixel location in `LS`_ g
-NOBS_R        int16                  Number of images at pixel location in `LS`_ r
-NOBS_Z        int16                  Number of images at pixel location in `LS`_ z
-PSFDEPTH_G    float32                PSF-based depth at pixel location in `LS`_ g
-PSFDEPTH_R    float32                PSF-based depth at pixel location in `LS`_ r
-PSFDEPTH_Z    float32                PSF-based depth at pixel location in `LS`_ z
-GALDEPTH_G    float32                Galaxy model-based depth at pixel location in `LS`_ g
-GALDEPTH_R    float32                Galaxy model-based depth at pixel location in `LS`_ r
-GALDEPTH_Z    float32                Galaxy model-based depth at pixel location in `LS`_ z
-PSFDEPTH_W1   float32                PSF-based depth in WISE W1 (AB mag system)
-PSFDEPTH_W2   float32                PSF-based depth in WISE W2 (AB mag system)
-PSFSIZE_G     float32  arcsec        Weighted average PSF FWHM in `LS`_ g
-PSFSIZE_R     float32  arcsec        Weighted average PSF FWHM in `LS`_ r
-PSFSIZE_Z     float32  arcsec        Weighted average PSF FWHM in `LS`_ z
-APFLUX_G      float32  nanomaggy     Total flux extracted in a 0.75 arcsec radius in g
-APFLUX_R      float32  nanomaggy     Total flux extracted in a 0.75 arcsec radius in r      
-APFLUX_Z      float32  nanomaggy     Total flux extracted in a 0.75 arcsec radius in z
-APFLUX_IVAR_G float32  1/nanomaggy^2 Inverse variance of APFLUX_G
-APFLUX_IVAR_R float32  1/nanomaggy^2 Inverse variance of APFLUX_R
-APFLUX_IVAR_Z float32  1/nanomaggy^2 Inverse variance of APFLUX_Z
-MASKBITS      int16                  Bit mask of possible problems with pixel (see the LS `DR9 bitmasks page`_)
-WISEMASK_W1   uint8                  Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
-WISEMASK_W2   uint8                  Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
-EBV           float32                Galactic extinction E(B-V) reddening at pixel from `SFD98`_
-PHOTSYS       char[1]                'N' for an MzLS/BASS location, 'S' for a DECaLS location
-HPXPIXEL      int64                  HEALPixel containing this location at NSIDE=64 in the NESTED scheme
-============= ======== ============= ===================
+============= ======== ============== ===================
+Name          Type     Units          Description
+============= ======== ============== ===================
+RA            float64  deg            Right ascension at pixel location
+DEC           float64  deg            Declination at pixel location
+BRICKNAME     char[8]                 Name of the brick
+BRICKID       int32                   A unique Brick ID
+NOBS_G        int16                   Number of images at pixel location in `LS`_ g
+NOBS_R        int16                   Number of images at pixel location in `LS`_ r
+NOBS_Z        int16                   Number of images at pixel location in `LS`_ z
+PSFDEPTH_G    float32                 PSF-based depth at pixel location in `LS`_ g
+PSFDEPTH_R    float32                 PSF-based depth at pixel location in `LS`_ r
+PSFDEPTH_Z    float32                 PSF-based depth at pixel location in `LS`_ z
+GALDEPTH_G    float32                 Galaxy model-based depth at pixel location in `LS`_ g
+GALDEPTH_R    float32                 Galaxy model-based depth at pixel location in `LS`_ r
+GALDEPTH_Z    float32                 Galaxy model-based depth at pixel location in `LS`_ z
+PSFDEPTH_W1   float32                 PSF-based depth in WISE W1 (AB mag system)
+PSFDEPTH_W2   float32                 PSF-based depth in WISE W2 (AB mag system)
+PSFSIZE_G     float32  arcsec         Weighted average PSF FWHM in `LS`_ g
+PSFSIZE_R     float32  arcsec         Weighted average PSF FWHM in `LS`_ r
+PSFSIZE_Z     float32  arcsec         Weighted average PSF FWHM in `LS`_ z
+APFLUX_G      float32  nanomaggies    Total flux extracted in a 0.75 arcsec radius in g
+APFLUX_R      float32  nanomaggies    Total flux extracted in a 0.75 arcsec radius in r
+APFLUX_Z      float32  nanomaggies    Total flux extracted in a 0.75 arcsec radius in z
+APFLUX_IVAR_G float32  nanomaggies^-2 Inverse variance of APFLUX_G
+APFLUX_IVAR_R float32  nanomaggies^-2 Inverse variance of APFLUX_R
+APFLUX_IVAR_Z float32  nanomaggies^-2 Inverse variance of APFLUX_Z
+MASKBITS      int16                   Bit mask of possible problems with pixel (see the LS `DR9 bitmasks page`_)
+WISEMASK_W1   uint8                   Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W2   uint8                   Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
+EBV           float32                 Galactic extinction E(B-V) reddening at pixel from `SFD98`_
+PHOTSYS       char[1]                 'N' for an MzLS/BASS location, 'S' for a DECaLS location
+HPXPIXEL      int64                   HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+============= ======== ============== ===================
 
 
 Notes and Examples

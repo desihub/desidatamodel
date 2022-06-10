@@ -94,17 +94,17 @@ BRICKNAME                         char[8]                           Brick name f
 BRICK_OBJID                       int32                             OBJID (unique to brick, but not to file)
 MORPHTYPE                         char[4]                           `Morphological Model`_ type
 RA                                float64     deg                   Right ascension
-RA_IVAR                           float32     1/deg^2               Right ascension inverse variance
+RA_IVAR                           float32     deg^-2                Right ascension inverse variance
 DEC                               float64     deg                   Declination
-DEC_IVAR                          float32     1/deg^2               Declination inverse variance
+DEC_IVAR                          float32     deg^-2                Declination inverse variance
 DCHISQ                            float32[5]                        Difference in chi-squared between model fits
 EBV                               float32     mag                   Galactic extinction E(B-V) reddening from `SFD98`_
 FLUX_G                            float32     nanomaggies           `LS`_ flux from tractor input (g)
 FLUX_R                            float32     nanomaggies           `LS`_ flux from tractor input (r)
 FLUX_Z                            float32     nanomaggies           `LS`_ flux from tractor input (z)
-FLUX_IVAR_G                       float32     1/nanomaggy^2         Inverse Variance of FLUX_G
-FLUX_IVAR_R                       float32     1/nanomaggy^2         Inverse Variance of FLUX_R
-FLUX_IVAR_Z                       float32     1/nanomaggy^2         Inverse Variance of FLUX_Z
+FLUX_IVAR_G                       float32     nanomaggies^-2        Inverse Variance of FLUX_G
+FLUX_IVAR_R                       float32     nanomaggies^-2        Inverse Variance of FLUX_R
+FLUX_IVAR_Z                       float32     nanomaggies^-2        Inverse Variance of FLUX_Z
 MW_TRANSMISSION_G                 float32                           Milky Way dust transmission in `LS`_ g
 MW_TRANSMISSION_R                 float32                           Milky Way dust transmission in `LS`_ r
 MW_TRANSMISSION_Z                 float32                           Milky Way dust transmission in `LS`_ z
@@ -120,20 +120,20 @@ FRACIN_Z                          float32                           Fraction of 
 NOBS_G                            int16                             Number of images for central pixel in `LS`_ g
 NOBS_R                            int16                             Number of images for central pixel in `LS`_ r
 NOBS_Z                            int16                             Number of images for central pixel in `LS`_ z
-PSFDEPTH_G                        float32     1/nanomaggy^2         PSF-based depth in `LS`_ g
-PSFDEPTH_R                        float32     1/nanomaggy^2         PSF-based depth in `LS`_ r
-PSFDEPTH_Z                        float32     1/nanomaggy^2         PSF-based depth in `LS`_ z
-GALDEPTH_G                        float32     1/nanomaggy^2         Galaxy model-based depth in `LS`_ g
-GALDEPTH_R                        float32     1/nanomaggy^2         Galaxy model-based depth in `LS`_ r
-GALDEPTH_Z                        float32     1/nanomaggy^2         Galaxy model-based depth in `LS`_ z
+PSFDEPTH_G                        float32     nanomaggies^-2        PSF-based depth in `LS`_ g
+PSFDEPTH_R                        float32     nanomaggies^-2        PSF-based depth in `LS`_ r
+PSFDEPTH_Z                        float32     nanomaggies^-2        PSF-based depth in `LS`_ z
+GALDEPTH_G                        float32     nanomaggies^-2        Galaxy model-based depth in `LS`_ g
+GALDEPTH_R                        float32     nanomaggies^-2        Galaxy model-based depth in `LS`_ r
+GALDEPTH_Z                        float32     nanomaggies^-2        Galaxy model-based depth in `LS`_ z
 FLUX_W1                           float32     nanomaggies           WISE flux in W1 (AB system)
 FLUX_W2                           float32     nanomaggies           WISE flux in W2 (AB)
 FLUX_W3                           float32     nanomaggies           WISE flux in W3 (AB)
 FLUX_W4                           float32     nanomaggies           WISE flux in W4 (AB)
-FLUX_IVAR_W1                      float32     1/nanomaggy^2         Inverse Variance of FLUX_W1 (AB system)
-FLUX_IVAR_W2                      float32     1/nanomaggy^2         Inverse Variance of FLUX_W2 (AB)
-FLUX_IVAR_W3                      float32     1/nanomaggy^2         Inverse Variance of FLUX_W3 (AB)
-FLUX_IVAR_W4                      float32     1/nanomaggy^2         Inverse Variance of FLUX_W4 (AB)
+FLUX_IVAR_W1                      float32     nanomaggies^-2        Inverse Variance of FLUX_W1 (AB system)
+FLUX_IVAR_W2                      float32     nanomaggies^-2        Inverse Variance of FLUX_W2 (AB)
+FLUX_IVAR_W3                      float32     nanomaggies^-2        Inverse Variance of FLUX_W3 (AB)
+FLUX_IVAR_W4                      float32     nanomaggies^-2        Inverse Variance of FLUX_W4 (AB)
 MW_TRANSMISSION_W1                float32                           Milky Way dust transmission in WISE W1
 MW_TRANSMISSION_W2                float32                           Milky Way dust transmission in WISE W2
 MW_TRANSMISSION_W3                float32                           Milky Way dust transmission in WISE W3
@@ -152,17 +152,17 @@ WISEMASK_W1                       byte                              W1 bitmask a
 WISEMASK_W2                       byte                              W2 bitmask as cataloged on the `LS DR9 bitmasks page`_
 MASKBITS                          int16                             bitmask for ``coadd/*/*/*maskbits*`` maps, as on the `LS DR9 bitmasks page`_
 LC_FLUX_W1                        float32[15] nanomaggies           FLUX_W1 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
-LC_FLUX_W2                        float32[15] nanomaggies     	    FLUX_W2 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
-LC_FLUX_IVAR_W1                   float32[15] 1/nanomaggy^2         Inverse variance of LC_FLUX_W1 (AB system; defaults to zero for unused entries)
-LC_FLUX_IVAR_W2	              	  float32[15] 1/nanomaggy^2         Inverse variance of LC_FLUX_W2 (AB system; defaults to zero for unused entries)
-LC_NOBS_W1	              	  int16[15]                         NOBS_W1 in each of up to fifteen unWISE coadd epochs
+LC_FLUX_W2                        float32[15] nanomaggies           FLUX_W2 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
+LC_FLUX_IVAR_W1                   float32[15] nanomaggies^-2        Inverse variance of LC_FLUX_W1 (AB system; defaults to zero for unused entries)
+LC_FLUX_IVAR_W2                   float32[15] nanomaggies^-2        Inverse variance of LC_FLUX_W2 (AB system; defaults to zero for unused entries)
+LC_NOBS_W1                        int16[15]                         NOBS_W1 in each of up to fifteen unWISE coadd epochs
 LC_NOBS_W2                        int16[15]                         NOBS_W2 in each of up to fifteen unWISE coadd epochs
 LC_MJD_W1                         float64[15]                       MJD_W1 in each of up to fifteen unWISE coadd epochs (defaults to zero for unused entries)
 LC_MJD_W2                         float64[15]                       MJD_W2 in each of up to fifteen unWISE coadd epochs (defaults to zero for unused entries)
 SHAPE_R                           float32     arcsec                Half-light radius of galaxy model for galaxy type MORPHTYPE (>0)
 SHAPE_E1                          float32                           `Ellipticity component`_ 1 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2                          float32                           `Ellipticity component`_ 2 of galaxy model for galaxy type MORPHTYPE
-SHAPE_R_IVAR                      float32     1/arcsec^2            Inverse variance of SHAPE_R
+SHAPE_R_IVAR                      float32     arcsec^-2             Inverse variance of SHAPE_R
 SHAPE_E1_IVAR                     float32                           Inverse variance of SHAPE_E1
 SHAPE_E2_IVAR                     float32                           Inverse variance of SHAPE_E2
 SERSIC                            float32                           Power-law index for the Sersic profile model (MORPHTYPE="SER")
@@ -181,7 +181,7 @@ GAIA_DUPLICATED_SOURCE            bool                              `Gaia`_ dupl
 GAIA_ASTROMETRIC_SIGMA5D_MAX      float32     mas                   `Gaia`_ longest semi-major axis of the 5-d error ellipsoid
 GAIA_ASTROMETRIC_PARAMS_SOLVED    int64                             which astrometric parameters were estimated for a `Gaia`_ source
 PARALLAX                          float32     mas                   Reference catalog parallax
-PARALLAX_IVAR                     float32     1/mas^2               Inverse variance of parallax
+PARALLAX_IVAR                     float32     mas^-2                Inverse variance of parallax
 PMRA                              float32     mas / yr              Reference catalog proper motion in the RA direction
 PMRA_IVAR                         float32     yr^2 / mas^2          Inverse variance of PMRA
 PMDEC                             float32     mas / yr              Reference catalog proper motion in the Dec direction
@@ -222,8 +222,8 @@ Required Data Table Columns
 ============= =========== ============ ===================
 Name          Type        Units        Description
 ============= =========== ============ ===================
-FILENAME      char[88]		       `LS`_ sweep files associated with this HEALPixel
-SHASUM        char[64]		       Checksum	for each `LS`_ sweep file
+FILENAME      char[88]                 `LS`_ sweep files associated with this HEALPixel
+SHASUM        char[64]                 Checksum for each `LS`_ sweep file
 ============= =========== ============ ===================
 
 .. _`LS`: https://www.legacysurvey.org/dr9/catalogs/
@@ -238,6 +238,21 @@ SHASUM        char[64]		       Checksum	for each `LS`_ sweep file
 
 Notes
 =====
+
+Some units in this file do not conform to the FITS standard:
+
+* deg^-2 is incorrectly recorded as 1/deg^2
+* nanomaggies^-2 is incorrectly recorded as 1/nanomaggy^2
+* arcsec^-2 is incorrectly recorded as 1/arcsec^2
+* mas^-2 is incorrectly recorded as 1/mas^2
+
+Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:
+
+import astropy.units as u
+from astropy.table import Table
+objs = Table.read(filename, 1)
+u.Unit(str(objs["RA_IVAR"].unit))
+
 
 In general, the above format contains:
 
