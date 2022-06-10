@@ -3,13 +3,13 @@ randoms
 =======
 
 :Summary: DESI outside-the-footprint random catalogs contain a single binary
-table covering areas beyond the `Legacy Surveys`_ footprint.
-The columns in this file are simplified compared to the other random
-catalogs as entries in additional columns would be zeros.
+    table covering areas beyond the `Legacy Surveys`_ footprint.
+    The columns in this file are simplified compared to the other random
+    catalogs as entries in additional columns would be zeros.
 :Naming Convention: ``randoms-outside-seed-iteration.fits``, where ``seed`` represents
-	the random seed used to generate the catalog and ``iteration`` lists the iteration
-	number of the catalog (several iterations are typically conducted
-	during a given run to generate random catalogs).
+    the random seed used to generate the catalog and ``iteration`` lists the iteration
+    number of the catalog (several iterations are typically conducted
+    during a given run to generate random catalogs).
 :Regex: ``randoms-outside-[0-9]+-[0-9]+\.fits``
 :File Type: FITS, 2 GB
 
@@ -46,21 +46,27 @@ Random catalog table
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ========================================
-KEY      Example Value Type  Comment
-======== ============= ===== ========================================
-NAXIS1   281           int   Width of table in bytes
-NAXIS2   1124357626    int   Number of rows in table
-DR       9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
-DENSITY  45000         int   Number of random points generated per sq. deg.
-SEED     1             int   Seed used to generate supplemental random catalog
-ORIGSEED 3             int   Original seed used to generate associated `LS`_ random catalog
-SUPP     T             bool  ``True`` if randoms were generated without using `LS`_ pixels
-RESOLVE  T             bool  ``True`` if from unique imaging
-======== ============= ===== ========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ========================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ========================================
+    NAXIS1   281           int   Width of table in bytes
+    NAXIS2   1124357626    int   Number of rows in table
+    DR       9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
+    DENSITY  45000         int   Number of random points generated per sq. deg.
+    SEED     1             int   Seed used to generate supplemental random catalog
+    ORIGSEED 3             int   Original seed used to generate associated `LS`_ random catalog
+    SUPP     T             bool  ``True`` if randoms were generated without using `LS`_ pixels
+    RESOLVE  T             bool  ``True`` if from unique imaging
+    ======== ============= ===== ========================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ============= ======== ============= ===================
 Name          Type     Units         Description
