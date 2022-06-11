@@ -229,7 +229,7 @@ Required Header Keywords
     MODULE                 CI                                                                    str     Image Sources/Component
     FRAMES [1]_            None                                                                  Unknown Number of Frames in Archive
     COSMSPLT               F                                                                     bool    Cosmics split exposure if true
-    MAXSPLIT               0                                                                     bool    Number of allowed exposure splits
+    MAXSPLIT               0                                                                     int     Number of allowed exposure splits
     SPLITIDS [1]_          68979                                                                 str     List of expids for split exposures
     OBSTYPE                FLAT                                                                  str     Spectrograph observation type
     MANIFEST               F                                                                     bool    DOS exposure manifest
@@ -243,7 +243,7 @@ Required Header Keywords
     ZENITH [1]_            F                                                                     bool    Telescope is at zenith
     SEANNEX [1]_           F                                                                     bool    Telescope is at SE annex
     BEYONDP [1]_           F                                                                     bool    Telescope is beyond pole
-    FIDUCIAL [1]_          off                                                                   Unknown Fiducials status during observation
+    FIDUCIAL [1]_          off                                                                   str     Fiducials status during observation
     AIRMASS [1]_           1.521306                                                              float   Airmass
     FOCUS [1]_             1163.9,-689.8,370.4,13.8,24.2,-0.0                                    str     Telescope focus settings
     TRUSTEMP [1]_          13.267                                                                float   [deg] Average Telescope truss temperature (only
@@ -935,7 +935,7 @@ Required Header Keywords
     MODULE                 CI                                                                                                                                                                                                   str
     FRAMES [1]_            None                                                                                                                                                                                                 Unknown
     COSMSPLT               F                                                                                                                                                                                                    bool
-    MAXSPLIT               0                                                                                                                                                                                                    bool
+    MAXSPLIT               0                                                                                                                                                                                                    int
     SPLITIDS [1]_          68979                                                                                                                                                                                                str
     OBSTYPE                FLAT                                                                                                                                                                                                 str
     MANIFEST               F                                                                                                                                                                                                    bool
@@ -949,7 +949,7 @@ Required Header Keywords
     ZENITH [1]_            F                                                                                                                                                                                                    bool
     SEANNEX [1]_           F                                                                                                                                                                                                    bool
     BEYONDP [1]_           F                                                                                                                                                                                                    bool
-    FIDUCIAL [1]_          off                                                                                                                                                                                                  Unknown
+    FIDUCIAL [1]_          off                                                                                                                                                                                                  str
     AIRMASS [1]_           1.521306                                                                                                                                                                                             float
     FOCUS [1]_             1163.9,-689.8,370.4,13.8,24.2,-0.0                                                                                                                                                                   str
     TRUSTEMP [1]_          13.267                                                                                                                                                                                               float
@@ -1417,7 +1417,7 @@ SHAPE_E2              float32
 PHOTSYS               char[1]
 PRIORITY_INIT         int64
 NUMOBS_INIT           int64
-CMX_TARGET            int64
+CMX_TARGET [1]_       int64
 DESI_TARGET           int64
 BGS_TARGET            int64
 MWS_TARGET            int64

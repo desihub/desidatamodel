@@ -514,7 +514,7 @@ Required Header Keywords
     SP2NIRT [1]_   139.96                                                                float   [K] SP2 NIR temperature
     SP7BLUP [1]_   9.938e-08                                                             float   [mb] SP7 blue pressure
     SP0NIRP [1]_   5.934e-08                                                             float   [mb] SP0 NIR pressure
-    FRAMES [1]_    None                                                                  Unknown Number of Frames in Archive
+    FRAMES [1]_    47                                                                    int     Number of Frames in Archive
     SP4NIRP [1]_   7.072e-08                                                             float   [mb] SP4 NIR pressure
     SP1BLUT [1]_   162.97                                                                float   [K] SP1 blue temperature
     SP6NIRP [1]_   2.873e-07                                                             float   [mb] SP6 NIR pressure
@@ -1026,7 +1026,7 @@ Required Header Keywords
     FGFRMNUM       46                                                                                                                                                                                                                                                                                            int
     FFFRMNUM       6                                                                                                                                                                                                                                                                                             int
     FSFRMNUM       5                                                                                                                                                                                                                                                                                             int
-    FRAMES [1]_    47                                                                                                                                                                                                                                                                                            Unknown
+    FRAMES [1]_    47                                                                                                                                                                                                                                                                                            int
     DELTARA [1]_   None                                                                                                                                                                                                                                                                                          Unknown
     DELTADEC [1]_  None                                                                                                                                                                                                                                                                                          Unknown
     GSGUIDE0 [1]_  (980.05,685.98),(878.97,731.68)                                                                                                                                                                                                                                                               str
