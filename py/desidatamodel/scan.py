@@ -351,9 +351,9 @@ def _options():
     parser.add_argument('-W', '--warning-is-error', dest='error',
                         action='store_true',
                         help='Data model warnings raise exceptions.')
-    parser.add_argument('section', metavar='MODEL_FILE',
+    parser.add_argument('model', metavar='MODEL_FILE',
                         help='Individual data model file.')
-    parser.add_argument('directory', metavar='DATA_DIR',
+    parser.add_argument('directory', metavar='DATA_DIR', nargs='+',
                         help='Check files in this top-level directory that match MODEL_FILE.')
     options = parser.parse_args()
     return options
@@ -380,17 +380,19 @@ def main():
                           "Cannot find data model files!"))
             return 1
     log.debug("DESIDATAMODEL=%s", data_model_root)
-    filename = os.path.join(data_model_root, 'doc', options.section)
-    section = os.path.join(data_model_root, 'doc', '/'.join(options.section.split('/')[:(options.level+1)]))
+    filename = os.path.join(data_model_root, 'doc', options.model)
+    section = os.path.join(data_model_root, 'doc', '/'.join(options.model.split('/')[:(options.level+1)]))
     log.info("Loading individual data model: %s.", filename)
     log.debug("model = DataModel('%s', '%s')", filename, section)
     model = DataModel(filename, section)
     log.info("Processing regular expression.")
-    log.debug("model.get_regexp('%s', error=%s)", options.directory, options.error)
-    model.get_regexp(options.directory, error=options.error)
+    log.debug("model.get_regexp('%s', error=%s)", options.directory[0], options.error)
+    model.get_regexp(options.directory[0], error=options.error)
     log.debug("model.regexp = %s", model.regexp)
-    log.info("Finding scannable files matching %s in %s.", filename, options.directory)
-    all_files = collect_files(options.directory, model)
+    all_files = list()
+    for root in options.directory:
+        log.info("Finding scannable files matching %s in %s.", filename, root)
+        all_files += collect_files(root, model)
     n_files = len(all_files)
     if n_files == 0:
         log.critical("No files found matching %s!", filename)
@@ -408,9 +410,9 @@ def main():
     log.info("Running union_metadata on model and stubs.")
     u = union_metadata(model, stubs, error=options.error)
     if options.output is None:
-        outfile = os.path.join('.', os.path.basename(options.section))
+        outfile = os.path.join('.', os.path.basename(options.model))
     elif os.path.isdir(options.output):
-        outfile = os.path.join(os.path.realpath(options.output), os.path.basename(options.section))
+        outfile = os.path.join(os.path.realpath(options.output), os.path.basename(options.model))
     else:
         outfile = options.output
     log.info("Writing output to %s.", outfile)
