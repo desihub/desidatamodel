@@ -382,7 +382,7 @@ def main():
     log.debug("DESIDATAMODEL=%s", data_model_root)
     filename = os.path.join(data_model_root, 'doc', options.model)
     section = os.path.join(data_model_root, 'doc', '/'.join(options.model.split('/')[:(options.level+1)]))
-    log.info("Loading individual data model: %s.", filename)
+    log.info("Loading data model: %s.", filename)
     log.debug("model = DataModel('%s', '%s')", filename, section)
     model = DataModel(filename, section)
     log.info("Processing regular expression.")
