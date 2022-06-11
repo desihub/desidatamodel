@@ -73,9 +73,21 @@ class TestCheck(DataModelTestCase):
             files_to_regexp('/desi/spectro/data', files, error=True)
         self.assertEqual(str(e.exception), "%s has no file regexp!" % files[0].filename)
 
+    @patch.object(DataModel, '_type_size')
+    def test_files_to_regexp_with_missing_filetype(self, mock_type):
+        """Test compilation of regular expressions; raise exception for missing file type.
+        """
+        mock_type.return_value = (None, None)
+        root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
+        files = scan_model(root)
+        with self.assertRaises(DataModelError) as e:
+            foo = files[0].get_regexp(root, error=True)
+        self.assertEqual(str(e.exception), "%s has missing or invalid file type!" % files[0].filename)
+        mock_type.assert_called_once()
+
     @patch.object(DataModel, '_expectedtypes', ('foo', 'bar'))
     def test_files_to_regexp_with_bad_filetype(self):
-        """Test compilation of regular expressions; raise exception.
+        """Test compilation of regular expressions; log unusual file type.
         """
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
