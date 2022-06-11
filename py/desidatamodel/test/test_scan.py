@@ -147,8 +147,8 @@ class TestScan(DataModelTestCase):
         options = _options()
         self.assertTrue(options.verbose)
         self.assertEqual(options.number, 1000)
-        self.assertEqual(options.section, 'DESI_SPECTRO_DATA/NIGHT/EXPID/desi-EXPID.rst')
-        self.assertEqual(options.directory, '/desi/spectro/data')
+        self.assertEqual(options.model, 'DESI_SPECTRO_DATA/NIGHT/EXPID/desi-EXPID.rst')
+        self.assertListEqual(options.directory, ['/desi/spectro/data'])
 
 
 def test_suite():
