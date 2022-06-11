@@ -761,6 +761,9 @@ Required Header Keywords
     FA_PLAN        2022-07-01T00:00:00.000                                                                                                                                                                                  str
     FA_HA          0.0                                                                                                                                                                                                      float
     FA_RUN         2020-03-06T00:00:00                                                                                                                                                                                      str
+    FA_M_GFA [1]_  0.4                                                                                                                                                                                                      float
+    FA_M_PET [1]_  0.4                                                                                                                                                                                                      float
+    FA_M_POS [1]_  0.05                                                                                                                                                                                                     float
     REQRA          356.0                                                                                                                                                                                                    float
     REQDEC         29.0                                                                                                                                                                                                     float
     FIELDNUM       0                                                                                                                                                                                                        int
@@ -1442,6 +1445,8 @@ SV2_SCND_TARGET [1]_  int64
 SV2_BGS_TARGET [1]_   int64
 CMX_TARGET [1]_       int64
 ===================== ======= ===== ==============================
+
+.. [1] Optional
 
 HDU6
 ----

@@ -672,6 +672,7 @@ PLATEMAKER_DEC [1]_        float32
 PMRA_IVAR [1]_             float32
 ========================== ======= ===== ===========
 
+.. [1] Optional
 
 Notes and Examples
 ==================
