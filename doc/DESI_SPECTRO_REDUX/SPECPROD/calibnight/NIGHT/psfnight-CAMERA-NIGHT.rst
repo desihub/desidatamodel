@@ -181,7 +181,7 @@ Required Header Keywords
     B19RCHI2      1.275991847448398                                           float best fit chi2/ndf for fiber bundle 19
     B19NDATA      143320                                                      int   number of pixels in fit for fiber bundle 19
     B19NPAR       1780                                                        int   number of parameters in fit for fiber bundle 19
-    EXPID         0.0                                                         float
+    EXPID [1]_    0.0                                                         float
     IN_IMAGE [1]_ SPECPROD/preproc/20210508/00087672/preproc-z6-00087672.fits str
     IN_PSF [1]_   SPECPROD/calibnight/20210508/psfnight-z6-20210508.fits      str
     MEANDY [1]_   1.53486325871199e-12                                        float
