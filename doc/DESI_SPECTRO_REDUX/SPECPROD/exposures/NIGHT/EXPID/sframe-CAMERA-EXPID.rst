@@ -619,33 +619,7 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-Resolution matrix stored as a 3D sparse matrix:
-
-Rdata[nspec, ndiag, nwave]
-
-To convert this into sparse matrices for convolving a model that is sampled
-at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
-
-.. code::
-
-    from scipy.sparse import spdiags
-    from astropy.io import fits
-    import numpy as np
-
-    #- read a model and its wavelength vector from somewhere
-    #- IMPORTANT: cast them to .astype(np.float64) to get native endian
-
-    #- read the resolution data
-    resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
-
-    nspec, nwave = model.shape
-    convolvedmodel = np.zeros((nspec, nwave))
-    diags = np.arange(10, -11, -1)
-
-    for i in range(nspec):
-        R = spdiags(resdata[i], diags, nwave, nwave)
-        convolvedmodel[i] = R.dot(model)
-
+Resolution matrix stored as a 3D sparse matrix. the frame :ref:`RESOLUTION documentation <frame-hdu4-resolution>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -667,7 +641,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-Fibermap information combining fiberassign request with actual fiber locations.
+Fibermap information combining fiberassign request with actual fiber locations. See also the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

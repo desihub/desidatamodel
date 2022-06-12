@@ -638,9 +638,8 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-Diagonal elements of convolution matrix describing spectral resolution.
+Resolution matrix stored as a 3D sparse matrix. the frame :ref:`RESOLUTION documentation <frame-hdu4-resolution>` for more details.
 
-TODO: add code example for using this.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -666,7 +665,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-Fibermap of what targets were assigned to what fibers.
+Fibermap information combining fiberassign request with actual fiber locations. See also the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

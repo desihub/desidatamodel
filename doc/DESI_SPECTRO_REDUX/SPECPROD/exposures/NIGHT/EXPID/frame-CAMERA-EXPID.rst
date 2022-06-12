@@ -613,6 +613,8 @@ DATASUM  979185614        str  data unit checksum updated 2021-07-08T12:56:14
 
 Data: FITS image [float64, 2751]
 
+.. _frame-hdu4-resolution:
+
 HDU4
 ----
 
