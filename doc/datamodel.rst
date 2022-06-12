@@ -35,6 +35,12 @@ data model.
     fibermap-EXPID.fits
     ===================
 
+Code setup
+~~~~~~~~~~
+
+To build the datamodel locally, you first need to install the following::
+
+    pip install sphinx-toolbox sphinx-rtd-theme
 
 Building the Documents
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -51,6 +57,11 @@ https://desidatamodel.readthedocs.io
 Sphinx will often print warnings and claim that the "build succeeded" when
 in fact there were syntax errors that break the output. You must pay attention
 to the warnings and fix them!
+
+desidatamodel also includes unit tests; you can run these locally before
+opening a PR using::
+
+    pytest py/desidatamodel/test
 
 .. _`sphinx_rtd_theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
 
