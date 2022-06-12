@@ -33,7 +33,7 @@ HDU0
 
 EXTNAME = FIBERFLAT
 
-Mean fiber flat field correction to homogeneize the response among fibers of the same camera, for each wavelength. 2D array of dimension [nspec, nwave]. nspec is the number of fibers per camera. nwave in the length of the wavelength array. The fiber flat field of all fibers share the same wavelength grid (given in HDU WAVELENGTH). This file is the fiber flat derived for the flat exposure EXPID. It is an intermediate file used as input for the nightly fiber flat.
+Fiber flat field correction to homogeneize the response among fibers of the same camera, for each wavelength. 2D array of dimension [nspec, nwave]. nspec is the number of fibers per camera. nwave in the length of the wavelength array. The fiber flat field of all fibers share the same wavelength grid (given in HDU WAVELENGTH). This file is the fiber flat derived for the flat exposure EXPID. It is an intermediate file used as input for the nightly fiber flat.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
