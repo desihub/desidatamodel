@@ -38,6 +38,7 @@ EXTNAME = FLUX
 
 2D array of calibrated spectral flux of dimension [nspec, nwave] in units of 1e-17 erg / (s cm2 Angstrom). nspec is the number of fibers per camera. nwave in the length of the wavelength array. The spectra of all fibers share the same
 wavelength grid (given in HDU WAVELENGTH). cframe.flux = ( frame.flux / flatfield - sky ) / fluxcalib.
+This calibration of the total flux is valid for point sources only. For extended sources, one may consider the 'fiber flux', which is the flux one would collect in a 1.5 arcsec diameter aperture centered on the object when observed with a 1 arcsec FWHM Gaussian seeing. The 'fiber flux' can be obtained by multiplying the flux array of each fiber by the corresponding entry in fibermap table column 'PSF_TO_FIBER_SPECFLUX'. This is the quantity to use for comparison with the photometric FIBERFLUX values given for several band passes in the fibermap.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
