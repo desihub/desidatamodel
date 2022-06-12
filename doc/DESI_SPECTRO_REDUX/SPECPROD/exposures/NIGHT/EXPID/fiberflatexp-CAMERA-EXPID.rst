@@ -1,6 +1,6 @@
-============
-fiberflatexp
-============
+==============================
+fiberflatexp-CAMERA-EXPID.fits
+==============================
 
 :Summary: This file contains the fiberflat to use for a specific exposure such that newflux = rawflux/fiberflat.
 :Naming Convention: ``fiberflatexp-{CAMERA}-{EXPID}.fits``, where ``{camera}`` is the camera
