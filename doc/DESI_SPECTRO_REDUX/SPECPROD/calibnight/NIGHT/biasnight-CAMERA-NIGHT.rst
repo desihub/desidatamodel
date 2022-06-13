@@ -15,7 +15,7 @@ Contents
 ====== ======= ===== ===================
 Number EXTNAME Type  Contents
 ====== ======= ===== ===================
-HDU0_  BIAS    IMAGE *Brief Description*
+HDU0_  BIAS    IMAGE bias image
 ====== ======= ===== ===================
 
 
