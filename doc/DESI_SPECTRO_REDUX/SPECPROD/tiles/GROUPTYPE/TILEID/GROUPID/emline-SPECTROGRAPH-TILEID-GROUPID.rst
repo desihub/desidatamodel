@@ -78,18 +78,18 @@ DELTACHI2         float64                                   Chi2 difference betw
 TARGET_RA         float64 deg                               Right ascension (from the redrock file)
 TARGET_DEC        float64 deg                               Declination (from the redrock file)
 OBJTYPE           char[3]                                   TGT, SKY, BAD, empty (from the redrock file)
-OII_FLUX          float32 10**-17 erg/(s cm2)               Fitted flux for the OII doublet
-OII_FLUX_IVAR     float32 10**+34 (s2 cm4) / erg2           Inverse variance of the fitted flux for the OII doublet
-OII_SIGMA         float32 Angstrom                          Fitted line width (in the observed frame) for the OII doublet
-OII_SIGMA_IVAR    float32 Angstrom^-2                       Inverse variance of the fitted line width (in the observed frame) for the OII doublet
-OII_CONT          float32 10**-17 erg/(s cm2 Angstrom)      Continuum used for the fitting (fixed value) for the OII doublet
+OII_FLUX          float32 10**-17 erg/(s cm2)               Fitted flux for the [OII] doublet
+OII_FLUX_IVAR     float32 10**+34 (s2 cm4) / erg2           Inverse variance of the fitted flux for the [OII] doublet
+OII_SIGMA         float32 Angstrom                          Fitted line width (in the observed frame) for the [OII] doublet
+OII_SIGMA_IVAR    float32 Angstrom^-2                       Inverse variance of the fitted line width (in the observed frame) for the [OII] doublet
+OII_CONT          float32 10**-17 erg/(s cm2 Angstrom)      Continuum used for the fitting (fixed value) for the [OII] doublet
 OII_CONT_IVAR     float32 10**+34 (s2 cm4 Angstrom2) / erg2 Inverse variance of the continuum
-OII_SHARE         float32                                   Fitted F1/(F0+F1) for the OII doublet, where F0 and F1 are the individual line fluxes
-OII_SHARE_IVAR    float32                                   Inverse variance of the fitted F1/(F0+F1) for the OII doublet
-OII_EW            float32 Angstrom                          Fitted rest-frame equivalent width for the OII doublet
-OII_EW_IVAR       float32 Angstrom^-2                       Inverse variance of the fitted rest-frame equivalent width for the OII doublet
-OII_CHI2          float32                                   Reduced chi2 of the fit for the OII doublet
-OII_NDOF          int32                                     Number of degrees of freedom of the fit for the OII doublet
+OII_SHARE         float32                                   Fitted F1/(F0+F1) for the [OII] doublet, where F0 and F1 are the individual line fluxes
+OII_SHARE_IVAR    float32                                   Inverse variance of the fitted F1/(F0+F1) for the [OII] doublet
+OII_EW            float32 Angstrom                          Fitted rest-frame equivalent width for the [OII] doublet
+OII_EW_IVAR       float32 Angstrom^-2                       Inverse variance of the fitted rest-frame equivalent width for the [OII] doublet
+OII_CHI2          float32                                   Reduced chi2 of the fit for the [OII] doublet
+OII_NDOF          int32                                     Number of degrees of freedom of the fit for the [OII] doublet
 HDELTA_FLUX       float32 10**-17 erg/(s cm2)               Same as OII_FLUX but for the HDELTA line
 HDELTA_FLUX_IVAR  float32 10**+34 (s2 cm4) / erg2           Same as OII_FLUX_IVAR but for the HDELTA line
 HDELTA_SIGMA      float32 Angstrom                          Same as OII_SIGMA but for the HDELTA line
@@ -126,18 +126,18 @@ HBETA_EW          float32 Angstrom                          Same as OII_EW but f
 HBETA_EW_IVAR     float32 Angstrom^-2                       Same as OII_EW_IVAR but for the HBETA line
 HBETA_CHI2        float32                                   Same as OII_CHI2 but for the HBETA line
 HBETA_NDOF        int32                                     Same as OII_NDOF but for the HBETA line
-OIII_FLUX         float32 10**-17 erg/(s cm2)               Same as OII_FLUX but for the OIII doublet
-OIII_FLUX_IVAR    float32 10**+34 (s2 cm4) / erg2           Same as OII_FLUX_IVAR but for the OIII doublet
-OIII_SIGMA        float32 Angstrom                          Same as OII_SIGMA but for the OIII doublet
-OIII_SIGMA_IVAR   float32 Angstrom^-2                       Same as OII_SIGMA_IVAR but for the OIII doublet
-OIII_CONT         float32 10**-17 erg/(s cm2 Angstrom)      Same as OII_CONT but for the OIII doublet
-OIII_CONT_IVAR    float32 10**+34 (s2 cm4 Angstrom2) / erg2 Same as OII_CONT_IVAR but for the OIII doublet
-OIII_SHARE        float32                                   F1/(F0+F1) for the OIII doublet, where F0 and F1 are the individual line fluxes (SHARE value fixed during the fit)
+OIII_FLUX         float32 10**-17 erg/(s cm2)               Same as OII_FLUX but for the [OIII] doublet
+OIII_FLUX_IVAR    float32 10**+34 (s2 cm4) / erg2           Same as OII_FLUX_IVAR but for the [OIII] doublet
+OIII_SIGMA        float32 Angstrom                          Same as OII_SIGMA but for the [OIII] doublet
+OIII_SIGMA_IVAR   float32 Angstrom^-2                       Same as OII_SIGMA_IVAR but for the [OIII] doublet
+OIII_CONT         float32 10**-17 erg/(s cm2 Angstrom)      Same as OII_CONT but for the [OIII] doublet
+OIII_CONT_IVAR    float32 10**+34 (s2 cm4 Angstrom2) / erg2 Same as OII_CONT_IVAR but for the [OIII] doublet
+OIII_SHARE        float32                                   F1/(F0+F1) for the [OIII] doublet, where F0 and F1 are the individual line fluxes (SHARE value fixed during the fit)
 OIII_SHARE_IVAR   float32                                   Infinite value, as SHARE is fixed during the fit)
-OIII_EW           float32 Angstrom                          Same as OII_EW but for the OIII doublet
-OIII_EW_IVAR      float32 Angstrom^-2                       Same as OII_EW_IVAR but for the OIII doublet
-OIII_CHI2         float32                                   Same as OII_CHI2 but for the OIII doublet
-OIII_NDOF         int32                                     Same as OII_NDOF but for the OIII doublet
+OIII_EW           float32 Angstrom                          Same as OII_EW but for the [OIII] doublet
+OIII_EW_IVAR      float32 Angstrom^-2                       Same as OII_EW_IVAR but for the [OIII] doublet
+OIII_CHI2         float32                                   Same as OII_CHI2 but for the [OIII] doublet
+OIII_NDOF         int32                                     Same as OII_NDOF but for the [OIII] doublet
 HALPHA_FLUX       float32 10**-17 erg/(s cm2)               Same as OII_FLUX but for the HALPHA line
 HALPHA_FLUX_IVAR  float32 10**+34 (s2 cm4) / erg2           Same as OII_FLUX_IVAR but for the HALPHA line
 HALPHA_SIGMA      float32 Angstrom                          Same as OII_SIGMA but for the HALPHA line
@@ -157,9 +157,9 @@ Notes and Examples
 ==================
 
 * The fit is done with the desispec.scripts.emline script.
-* OII is fit as a doublet (3927 and 3929), with the line ratio left free during the fit.
-* OIII is fit as a doublet (4960 and 5007), with the line ratio fixed during the fit.
-* The SHARE is fitted only for the OII doublet; for the OIII doublet, its value is fixed (hence the infinite OIII_SHARE_IVAR); for the other lines, the SHARE is not used, and NaN are reported.
+* [OII] is fit as a doublet (3927 and 3929), with the line ratio left free during the fit.
+* [OIII] is fit as a doublet (4960 and 5007), with the line ratio fixed during the fit.
+* The SHARE is fitted only for the [OII] doublet; for the [OIII] doublet, its value is fixed (hence the infinite OIII_SHARE_IVAR); for the other lines, the SHARE is not used, and NaN are reported.
 * If there are not enough pixels to fit or if the fit fails, NaN values are reported.
 * The default settings are designed for the ELGs (e.g. max_sigma); values to be interpreted with caution for the other targets.
 * The fitted flux is not forced to be positive, so negative values can happen.
