@@ -2,9 +2,7 @@
 biasnight-CAMERA-NIGHT.fits
 ===========================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: Master bias frame for the preprocessing of the night data
 :Naming Convention: ``biasnight-CAMERA-NIGHT.fits.gz``, where ``CAMERA`` is
     *e.g.*, "b0", "r5", etc. and ``NIGHT`` is the observation night in
     YYYYMMDD format.
@@ -29,7 +27,8 @@ HDU0
 
 EXTNAME = BIAS
 
-*Summarize the contents of this HDU.*
+2D image with the master bias to subtract to the raw images of the night.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
