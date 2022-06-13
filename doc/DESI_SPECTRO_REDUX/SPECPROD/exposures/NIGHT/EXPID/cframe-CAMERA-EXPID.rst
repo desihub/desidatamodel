@@ -17,8 +17,8 @@ Contents
 ====== ========== ======== ======================================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ======================================
-HDU0_  FLUX       IMAGE    Flux, erg/s/cm2/A
-HDU1_  IVAR       IMAGE    Inverse variance, ``(erg/s/cm2/A)^-2``
+HDU0_  FLUX       IMAGE    Flux, 10^{-17} erg/s/cm2/A
+HDU1_  IVAR       IMAGE    Inverse variance, (10^{-17} erg/s/cm2/A)^-2
 HDU2_  MASK       IMAGE    Mask (0 = good)
 HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
 HDU4_  RESOLUTION IMAGE    Resolution Matrix
@@ -36,7 +36,9 @@ HDU0
 
 EXTNAME = FLUX
 
-Calibrated spectral flux in 1e-17 erg / (s cm2 Angstrom).
+2D array of calibrated spectral flux of dimension [nspec, nwave] in units of 1e-17 erg / (s cm2 Angstrom). nspec is the number of fibers per camera. nwave in the length of the wavelength array. The spectra of all fibers share the same
+wavelength grid (given in HDU WAVELENGTH). cframe.flux = ( frame.flux / flatfield - sky ) / fluxcalib.
+This calibration of the total flux is valid for point sources only. For extended sources, one may consider the 'fiber flux', which is the flux one would collect in a 1.5 arcsec diameter aperture centered on the object when observed with a 1 arcsec FWHM Gaussian seeing. The 'fiber flux' can be obtained by multiplying the flux array of each fiber by the corresponding entry in fibermap table column 'PSF_TO_FIBER_SPECFLUX'. This is the quantity to use for comparison with the photometric FIBERFLUX values given for several band passes in the fibermap.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -613,7 +615,8 @@ HDU1
 
 EXTNAME = IVAR
 
-Inverse variance of flux (*i.e.* ``error**-2``).
+Inverse variance of flux (1/sigma^2) in units of (10^{-17} erg/s/cm2/A)^-2.
+Uncertainties comprise statistical uncertainties from the error propagation of the initial CCD pixel variance, the calibration uncertainties, plus an additional term on bright sky lines to account for the imperfect sky subtraction.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -638,8 +641,7 @@ HDU2
 
 EXTNAME = MASK
 
-Mask of spectra; 0=good.
-
+Mask of spectral data; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 TODO: add documentation link to what bits mean what.
@@ -669,7 +671,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-Wavelengths at which flux is measured.
+1D array of wavelengths. See the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -694,9 +696,8 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-Diagonal elements of convolution matrix describing spectral resolution.
+Resolution matrix stored as a 3D sparse matrix. the frame :ref:`RESOLUTION documentation <frame-hdu4-resolution>` for more details.
 
-TODO: add code example for using this.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -722,7 +723,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-Fibermap of what targets were assigned to what fibers.
+Fibermap information combining fiberassign request with actual fiber locations. See also the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -15,11 +15,11 @@ Contents
 ====== ========= ======== ===================
 Number EXTNAME   Type     Contents
 ====== ========= ======== ===================
-HDU0_  IMAGE     IMAGE    *Brief Description*
-HDU1_  IVAR      IMAGE    *Brief Description*
-HDU2_  MASK      IMAGE    *Brief Description*
-HDU3_  READNOISE IMAGE    *Brief Description*
-HDU4_  FIBERMAP  BINTABLE *Brief Description*
+HDU0_  IMAGE     IMAGE    Flat-fielded pixel values in electrons [FLOAT]
+HDU1_  IVAR      IMAGE    Inverse variance (1/sigma^2) of pixel values [FLOAT]
+HDU2_  MASK      IMAGE    Bitmask to flag bad pixels or cosmics [INT]
+HDU3_  READNOISE IMAGE    Flat-fielded readout noise in electrons [FLOAT]
+HDU4_  FIBERMAP  BINTABLE Table with information about the targets
 ====== ========= ======== ===================
 
 
@@ -31,7 +31,11 @@ HDU0
 
 EXTNAME = IMAGE
 
-*Summarize the contents of this HDU.*
+2D image with flat-fielded pixel values in electrons. Bias level and dark current have been subtracted.
+Electronic gains, converting ADC count to electrons have been applied. Pixel values
+have been divided by a pixel flat field. Additional corrections for some CCDs are electronic
+amplifier cross-talk correction, and negative trails corrections. The pre-scan and over-scan regions
+have been removed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -595,7 +599,10 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+2D image with the inverse variance (1/sigma^2) of the flat-fielded pixel values. The units are 1/electrons^2.
+The variance comprises read noise and Poisson noise from the signal (including Poisson noise from the dark current).
+The Poisson noise is based on a model of the illumination of the CCD to minimize the correlation between the noise realization
+in the pixel value and the estimated variance. The variance also comprise the noise of the calibration data (master bias and master dark).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -620,7 +627,8 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+2D image with CCD pixels bitmask values. Good pixels have a mask=0. See
+the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -645,7 +653,9 @@ HDU3
 
 EXTNAME = READNOISE
 
-*Summarize the contents of this HDU.*
+Flat-fielded read noise in electrons. Read noise abusively includes the Poisson noise
+from clock induced charges for some CCDs along with the Poisson noise from the
+dark current and the calibration frame uncertainties.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -670,7 +680,7 @@ HDU4
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Exposure :doc:`fibermap <fibermap-EXPID>` trimmed to the fibers of this camera.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

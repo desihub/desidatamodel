@@ -32,7 +32,14 @@ HDU0
 
 EXTNAME = FLUXCALIB
 
-Flux calibration model such that calibrated flux = uncalibrated photons / model.
+Flux calibration array 'fluxcal', such that calibrated flux = uncalibrated flux / fluxcal.
+2D array of dimension [nspec, nwave]. nspec is the number of fibers per camera. nwave in the length of the wavelength array.
+The flux calibration of all fibers share the same wavelength grid (given in HDU WAVELENGTH).
+The units are electrons / (10^{-17} ergs/s/cm2), such that the calibrated flux has units of 10^{-17} ergs/s/cm2/Angstrom.
+The flux calibration is obtained by comparing the sky subtracted and flat-fielded flux from standard stars in the :doc:`sframe file <sframe-CAMERA-EXPID>` with stellar models from the :doc:`stdstars file <stdstars-SPECTROGRAPH-EXPID>`.
+This calibration of the total flux is valid for point sources only.
+For extended sources, one may consider using a 'fiber flux', which is the flux one would collect in a 1.5 arcsec diameter aperture centered on the object when observed with a 1 arcsec FWHM Gaussian seeing. The 'fiber flux' can be obtained by multiplying the calibrated flux array of each fiber by the corresponding entry in the FIBERCORR_ table column 'PSF_TO_FIBER_SPECFLUX'.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -608,7 +615,7 @@ HDU1
 
 EXTNAME = IVAR
 
-Inverse variance of flux calibration model.
+Inverse variance of flux calibration array.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -633,8 +640,7 @@ HDU2
 
 EXTNAME = MASK
 
-Mask of flux calibration model; 0=good.
-
+Mask of flux calibration model; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
@@ -662,7 +668,8 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-Wavelengths at which the flux calibration model is evaluated.
+Wavelengths at which the flux calibration is evaluated, in Angstrom. Note the wavelength is in the solar system barycenter frame, so that the calibration can be directly applied to the science frame fluxes which are on the same wavelength grid. In order to compare the
+calibration from different exposures, one has to convert back the wavelength array to the observer frame, by dividing it by Doppler factor saved in header keyword HELIOCOR in HDU0. See also the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -682,12 +689,20 @@ Required Header Keywords
 
 Data: FITS image [float32, 2326]
 
+.. _FIBERCORR:
+
 HDU4
 ----
 
 EXTNAME = FIBERCORR
 
-*Summarize the contents of this HDU.*
+Table with the following adimentional scaling factors for each fiber:
+
+FLAT_TO_PSF_FLUX  = normalized ratio of the flat-fielded flux to the total flux for point sources; **already** included in the flux calibration array.
+
+PSF_TO_FIBER_FLUX = ratio of total flux to 'fiber flux'; **not** included in the flux calibration array.
+
+A 'fiber flux' is the flux one would collect in a 1.5 arcsec diameter aperture centered on the object when observed with a 1 arcsec FWHM Gaussian seeing. The variation of plate scale in the focal plane, the seeing condition of the observations, the fiber positioning errors, and the intrinsic angular size of the sources have been considered to compute those scaling factors.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -714,8 +729,8 @@ Required Data Table Columns
 ================= ======= ===== ===========
 Name              Type    Units Description
 ================= ======= ===== ===========
-FLAT_TO_PSF_FLUX  float64
-PSF_TO_FIBER_FLUX float64
+FLAT_TO_PSF_FLUX  float64       adimentional factor applied to calib to convert flat to psf flux
+PSF_TO_FIBER_FLUX float64       adimentional factor to apply to convert psf to fiber flux
 ================= ======= ===== ===========
 
 HDU5

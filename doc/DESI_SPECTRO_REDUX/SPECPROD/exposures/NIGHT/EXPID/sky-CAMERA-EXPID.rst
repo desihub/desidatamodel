@@ -15,8 +15,8 @@ Contents
 ====== ========== ===== ===================
 Number EXTNAME    Type  Contents
 ====== ========== ===== ===================
-HDU0_  SKY        IMAGE sky model in photons/bin
-HDU1_  IVAR       IMAGE inverse variance ``(photons/bin)^-2``
+HDU0_  SKY        IMAGE sky model in electrons per Angstrom
+HDU1_  IVAR       IMAGE inverse variance of sky model
 HDU2_  MASK       IMAGE sky mask (0 = good)
 HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
 HDU4_  STATIVAR   IMAGE statistical-only inverse variance of sky model
@@ -37,7 +37,8 @@ HDU0
 
 EXTNAME = SKY
 
-Sky model in photons/bin.
+2D array of sky flux model of dimension [nspec, nwave] in units of electrons per Ansgtrom (fiber flat fielded). nspec is the number of fibers per camera. nwave in the length of the wavelength array. The spectra of all fibers share the same
+wavelength grid (given in HDU WAVELENGTH). The sky model is different for each fiber because it is adapted to the resolution of each fiber, it contains corrections on bright sky line, and in some cases an anisotropic component.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -614,7 +615,7 @@ HDU1
 
 EXTNAME = IVAR
 
-Inverse variance of sky model ``(photons/bin)^-2``.
+Inverse variance of sky model in units of (electrons per Ansgtrom)^-2.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -639,8 +640,7 @@ HDU2
 
 EXTNAME = MASK
 
-Sky mask (0 = good).
-
+Sky mask; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
@@ -668,7 +668,11 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-Wavelength in Angstrom.
+1D array of wavelengths, in Angstrom. Note the wavelength is in the solar system barycenter frame, so that the sky flux array
+can be directly subtracted to the flat-fielded frame fluxes which are on the same wavelength grid. In order to compare the
+sky spectrum of different exposures, or with litterature data, one has to convert back the wavelength array to the observer frame,
+by dividing it by Doppler factor saved in header keyword HELIOCOR in HDU0. See also the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -717,7 +721,8 @@ HDU5
 
 EXTNAME = THRPUTCORR
 
-Multiplicative achromatic throughput correction per fiber.
+Multiplicative achromatic throughput correction per fiber. This term has been measured on the bright sky lines
+of each fiber from the exposure (EXPID). It is used as a correction to the mean sky model.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

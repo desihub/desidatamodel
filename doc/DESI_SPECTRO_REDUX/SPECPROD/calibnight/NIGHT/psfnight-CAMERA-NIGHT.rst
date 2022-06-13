@@ -16,9 +16,9 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_  XTRACE  IMAGE    *Brief Description*
-HDU1_  YTRACE  IMAGE    *Brief Description*
-HDU2_  PSF     BINTABLE *Brief Description*
+HDU0_  XTRACE  IMAGE    Legendre coefficient of the fiber trace X CCD coordinates
+HDU1_  YTRACE  IMAGE    Legendre coefficient of the fiber trace Y CCD coordinates
+HDU2_  PSF     BINTABLE Table with PSF shape parameters
 ====== ======= ======== ===================
 
 
@@ -30,7 +30,13 @@ HDU0
 
 EXTNAME = XTRACE
 
-*Summarize the contents of this HDU.*
+Encodes the X coordinate of the fiber traces in the CCD.
+X is in units of pixels, along the cross-dispersion axis (perpendicular to the fiber traces) and increases with increasing fiber number.
+
+XTRACE is a 2D array of size [nfiber,ncoef]. Each row contains the Legendre polynomial coefficients for a fiber trace.
+The polynomial applies to a reduced wavelength = (2*wavelength-(WAVEMIN+WAVEMAX))/(WAVEMAX-WAVEMIN) where
+WAVEMIN and WAVEMAX are header keywords.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +65,13 @@ HDU1
 
 EXTNAME = YTRACE
 
-*Summarize the contents of this HDU.*
+Encodes the Y coordinate of the fiber traces in the CCD.
+Y is in units of pixels, along the dispersion axis and increases with increasing wavelength.
+
+YTRACE is a 2D array of size [nfiber,ncoef]. Each row contains the Legendre polynomial coefficients for a fiber trace.
+The polynomial applies to a reduced wavelength = (2*wavelength-(WAVEMIN+WAVEMAX))/(WAVEMAX-WAVEMIN) where
+WAVEMIN and WAVEMAX are header keywords.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,7 +98,33 @@ HDU2
 
 EXTNAME = PSF
 
-*Summarize the contents of this HDU.*
+Binary table with the PSF shape parameters encoded as Legendre polynomials of wavelength, per fiber.
+
+Each row of the table addresses a parameter. The column PARAM provides its name. The column COEFF contains a 2D array of size [nfiber,ncoef] with its associated Legendre polynomial coefficients.
+
+As for XTRACE and YTRACE, each row of the COEFF array provided the Legendre coefficients of a fiber. The polynomial applies to the reduced wavelength = (2*wavelength-(WAVEMIN+WAVEMAX))/(WAVEMAX-WAVEMIN) where WAVEMIN and WAVEMAX are header keywords.
+
+The additional columns LEGDEGX and LEGDEGW are the degrees along the cross-dispersion and dispersion axes used during the fit.
+
+This format can apply to several PSF models. For the one currently used in DESI, based on Gauss-Hermite polynomials, the parameters are the following:
+ - 'GHSIGX' Gauss-Hermite Gaussian sigma along X
+ - 'GHSIGY' Gauss-Hermite Gaussian sigma along Y
+ - 'GH-I-J' with I and J in the range 0 to 6: Gauss-Hermite polynomial coefficient of degree I along X and J along Y
+ - 'TAILAMP' PSF tail amplitude
+ - 'TAILCORE' PSF tail core size
+ - 'TAILXSCA' relative scaling along X
+ - 'TAILYSCA' relative scaling along Y
+ - 'TAILINDE' PSF tail asymptotic power law index
+ - 'BUNDLE' Index of fiber bundle (or fiber block)
+ - 'STATUS' Not used currently (values = 0)
+ - 'CONT' Value of continuum at this fiber and wavelength
+
+PSF(X,Y) = PSF_CORE(X,Y) + PSF_TAIL(X,Y)
+
+PSF_CORE(X,Y) = [ SUM_ij (GH-i-j)*HERM(i,X/GHSIGX)*HERM(j,Y/GHSIGY)*GAUS(X,GHSIGX)*GAUS(Y,GHSIGY)
+
+PSF_TAIL(X,Y) = TAILAMP*R^2/(TAILCORE^2+R^2)^(1+TAILINDE/2) with R^2=(X/TAILXSCA)^2+(Y/TAILYSCA)^2')
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

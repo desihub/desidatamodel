@@ -33,7 +33,8 @@ HDU0
 
 EXTNAME = FLUX
 
-Extracted electrons[nspec, nwave]
+2D array of fiber flat-fielded and sky subtracted flux of dimension [nspec, nwave] in units of electrons per Angstrom. nspec is the number of fibers per camera. nwave in the length of the wavelength array. The spectra of all fibers share the same
+wavelength grid (given in HDU WAVELENGTH). sframe.flux = frame.flux / flatfield - sky .
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -607,7 +608,7 @@ HDU1
 
 EXTNAME = IVAR
 
-Inverse variance of the electrons in HDU0.
+Inverse variance of the flux in HDU0. The unit is 1/(electrons/Angstrom)^2. The noise from neighboring spectral pixels is uncorrelated.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -632,11 +633,8 @@ HDU2
 
 EXTNAME = MASK
 
-Mask of spectral data; 0=good.
-
+Mask of spectral data; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
-
-TODO: Add link to definition of which bits mean what.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -663,7 +661,7 @@ HDU3
 
 EXTNAME = WAVELENGTH
 
-1D array of wavelengths.
+1D array of wavelengths. See the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -688,33 +686,7 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-Resolution matrix stored as a 3D sparse matrix:
-
-Rdata[nspec, ndiag, nwave]
-
-To convert this into sparse matrices for convolving a model that is sampled
-at the same wavelengths as the extractions (HDU EXTNAME='WAVELENGTH'):
-
-.. code::
-
-    from scipy.sparse import spdiags
-    from astropy.io import fits
-    import numpy as np
-
-    #- read a model and its wavelength vector from somewhere
-    #- IMPORTANT: cast them to .astype(np.float64) to get native endian
-
-    #- read the resolution data
-    resdata = fits.getdata(framefile, 'RESOLUTION').astype(np.float64)
-
-    nspec, nwave = model.shape
-    convolvedmodel = np.zeros((nspec, nwave))
-    diags = np.arange(10, -11, -1)
-
-    for i in range(nspec):
-        R = spdiags(resdata[i], diags, nwave, nwave)
-        convolvedmodel[i] = R.dot(model)
-
+Resolution matrix stored as a 3D sparse matrix. the frame :ref:`RESOLUTION documentation <frame-hdu4-resolution>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -740,7 +712,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-Fibermap information combining fiberassign request with actual fiber locations.
+Fibermap information combining fiberassign request with actual fiber locations. See also the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

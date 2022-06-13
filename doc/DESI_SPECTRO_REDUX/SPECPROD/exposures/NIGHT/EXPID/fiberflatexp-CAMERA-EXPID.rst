@@ -1,10 +1,8 @@
-============
-fiberflatexp
-============
+==============================
+fiberflatexp-CAMERA-EXPID.fits
+==============================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the fiberflat to use for a specific exposure such that newflux = rawflux/fiberflat.
 :Naming Convention: ``fiberflatexp-{CAMERA}-{EXPID}.fits``, where ``{camera}`` is the camera
     name (*e.g.* b0, r1, z9) and ``{EXPID}`` is the zero padded 8-digit exposure ID.
 :Regex: ``fiberflatexp-[brz][0-9]-[0-9]{8}\.fits``
@@ -33,7 +31,7 @@ HDU0
 
 EXTNAME = FIBERFLAT
 
-*Summarize the contents of this HDU.*
+Fiber flat field correction to homogeneize the response among fibers of the same camera, for each wavelength. 2D array of dimension [nspec, nwave]. nspec is the number of fibers per camera. nwave in the length of the wavelength array. The fiber flat field of all fibers share the same wavelength grid (given in HDU WAVELENGTH). This file is valid for a specific exposure as it comprises a correction based on the humidity in the spectrograph enclosure.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -448,7 +446,7 @@ HDU1
 
 EXTNAME = IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance (1/sigma^2) of the fiber flat field in HDU0.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -474,7 +472,8 @@ HDU2
 
 EXTNAME = MASK
 
-*Summarize the contents of this HDU.*
+Mask of the fiberflat; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
+Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -501,7 +500,7 @@ HDU3
 
 EXTNAME = MEANSPEC
 
-*Summarize the contents of this HDU.*
+Average flat lamp spectrum of fibers in this camera frame. The fiber flat field is in first approximation the ratio of the measured spectra to this mean spectrum (in practice we use a deconvolved mean spectrum and reconvolve it with the resolution of each fiber). The units are electrons per Angstrom.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -526,7 +525,7 @@ HDU4
 
 EXTNAME = WAVELENGTH
 
-*Summarize the contents of this HDU.*
+Wavelength grid in Angstrom used by this fiber flat field. Note that contrary to the science frame, this wavelength array is in the observer frame. In consequence, one has to first convert its wavelength to the solar barycenter frame before using this data to flat field a science exposure. See the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -551,7 +550,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap with information about the fiber status.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

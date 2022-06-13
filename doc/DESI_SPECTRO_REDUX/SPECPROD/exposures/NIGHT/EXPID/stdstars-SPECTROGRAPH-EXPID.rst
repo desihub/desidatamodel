@@ -34,7 +34,9 @@ HDU0
 
 EXTNAME = FLUX
 
-Best fit standard star model flux.
+2D array of best fit standard star model fluxes, in units of 10^{-17} ergs/s/cm2/A, at high resolution, including
+the Milky Way extinction, and the Doppler shift from the fitted radial velocity. The size of the array is [nspec, nwave].
+nspec is the number of standard stars and nwave in the length of the wavelength array.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,7 +62,8 @@ HDU1
 
 EXTNAME = WAVELENGTH
 
-Wavelength grid used in Angstroms.
+Wavelength grid in Angstrom (in vacuum, not in air). It is by construction in the same reference frame as the data, which is
+the solar system barycenter (see the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,7 +112,10 @@ HDU3
 
 EXTNAME = METADATA
 
-Metadata about best fit standard star models.
+Metadata about best fit standard star models.  Normally, ``DATA_G-R`` and
+``MODEL_G-R`` columns contain photometric colors, but the columns ``DATA_GAIA-BP-RP``
+and ``MODEL_GAIA-BP-RP`` may be present for "off-footprint" tiles that
+do not have DECaLS photometry.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -132,22 +138,22 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======= ===== ===========
-Name                  Type    Units Description
-===================== ======= ===== ===========
-LOGG                  float64
-TEFF                  float64
-FEH                   float64
-CHI2DOF               float64
-REDSHIFT              float64
-DATA_G-R [1]_         float64
-MODEL_G-R [1]_        float64
-BLUE_SNR              float64
-RED_SNR               float64
-NIR_SNR               float64
-DATA_GAIA-BP-RP [1]_  float64
-MODEL_GAIA-BP-RP [1]_ float64
-===================== ======= ===== ===========
+===================== ======= ====== =======================================
+Name                  Type    Units  Description
+===================== ======= ====== =======================================
+LOGG                  float64        log10( surface gravity / solar value)
+TEFF                  float64 K      Effective temperature
+FEH                   float64        log10( iron abundance / solar value)
+CHI2DOF               float64        reduced chi2
+REDSHIFT              float64        redshift (can be negative)
+DATA_G-R  [1]_        float64        g-r color of the data (from photometry)
+MODEL_G-R [1]_        float64        g-r color of the model
+BLUE_SNR              float64        median signal to noise in blue camera
+RED_SNR               float64        median signal to noise in red camera
+NIR_SNR               float64        median signal to noise in NIR camera
+DATA_GAIA-BP-RP [1]_  float64        Gaia Bp - Rp color of the data
+MODEL_GAIA-BP-RP [1]_ float64        Gaia Bp - Rp color of the model
+===================== ======= ====== =======================================
 
 HDU4
 ----
@@ -181,7 +187,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap with targeting and photometric information for the standard stars. See also the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -34,7 +34,7 @@ HDU0
 
 EXTNAME = FIBERFLAT
 
-Relative fiber-to-fiber variation.  Corrected flux = original flux / fiberflat.
+Fiber flat field correction to homogeneize the response among fibers of the same camera, for each wavelength. 2D array of dimension [nspec, nwave]. nspec is the number of fibers per camera. nwave in the length of the wavelength array. The fiber flat field of all fibers share the same wavelength grid (given in HDU WAVELENGTH). This file is the fiber flat derived from a series of flat field exposures. It is the one used for the science observations during the night.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -444,7 +444,7 @@ HDU1
 
 EXTNAME = IVAR
 
-Inverse variance of fiberflat.
+Inverse variance (1/sigma^2) of the fiber flat field in HDU0.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -470,8 +470,7 @@ HDU2
 
 EXTNAME = MASK
 
-Mask of fiberflat (0=good).
-
+Mask of the fiberflat; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
 Required Header Keywords
@@ -499,7 +498,8 @@ HDU3
 
 EXTNAME = MEANSPEC
 
-Average continuum lamp spectrum.
+Average flat lamp spectrum of fibers in this camera frame. The fiber flat field is in first approximation the ratio of the measured spectra to this mean spectrum (in practice we use a deconvolved mean spectrum and reconvolve it with the resolution of each fiber). The units are electrons per Angstrom.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -524,7 +524,7 @@ HDU4
 
 EXTNAME = WAVELENGTH
 
-Wavelengths in Angstroms at which the fiberflat is measured.
+Wavelength grid in Angstrom used by this fiber flat field. Note that contrary to the science frame, this wavelength array is in the observer frame. In consequence, one has to first convert its wavelength to the solar barycenter frame before using this data to flat field a science exposure. See the frame :ref:`WAVELENGTH documentation <frame-hdu3-wavelength>` for more details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -549,7 +549,7 @@ HDU5
 
 EXTNAME = FIBERMAP
 
-The fibermap HDU copied from other files.
+Fibermap with information about the fiber status.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
