@@ -5,7 +5,11 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
-* No changes yet.
+* Add documentation of various calibration files (PR `#127`_).
+* Further cleanup of ``fuji`` and ``guadalupe`` header keywords and columns (PR `#126`_).
+
+.. _`#126`: https://github.com/desihub/desidatamodel/pull/126
+.. _`#127`: https://github.com/desihub/desidatamodel/pull/127
 
 22.2 (2022-05-31)
 -----------------
