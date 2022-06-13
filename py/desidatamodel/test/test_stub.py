@@ -236,6 +236,7 @@ class TestStub(DataModelTestCase):
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
         self.assertEqual(stub.hdumeta[1]['format'], 'Data: FITS image [int16 (compressed), 10x10]')
+        self.assertEqual(stub.filetype, 'FITS')
         del hdr['ZTENSION']
         stub = Stub(hdulist)
         stub.filename = 'fits_file.fits'

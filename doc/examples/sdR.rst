@@ -5,6 +5,7 @@ sdR
 :Summary: Raw data.
 :Naming Convention: ``sdR-{EXPID}.fits``, where ``EXPID`` is an 8-digit number.
 :Regex: ``sdR-[0-9]{8}\.fits``
+:File Type: FITS, 10 MB
 
 Contents
 ========
