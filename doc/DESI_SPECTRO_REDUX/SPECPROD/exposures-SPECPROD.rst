@@ -167,8 +167,8 @@ TSNR2_QSO       float32
 TSNR2_LRG       float32
 SURVEY          char[7]
 GOALTYPE        char[6]
-FAPRGRM         char[6]
-FAFLAVOR        char[13]
+FAPRGRM         char[*]
+FAFLAVOR        char[*]
 MINTFRAC        float64
 GOALTIME        float64
 =============== ======== ===== ===========
