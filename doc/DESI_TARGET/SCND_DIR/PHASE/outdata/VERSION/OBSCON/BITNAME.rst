@@ -9,7 +9,7 @@ output secondary targets
     where ``BITNAME`` matches the name of the secondary targeting bit used by the desitarget
     pipeline for a given survey phase (see the desitarget GitHub repository for, `e.g.`
     the `sv1`_ or `main`_ secondary target bitmasks).
-:Regex: ``[a-zA-Z]+\.fits``
+:Regex: ``[A-Z_0-9]+\.fits``
 :File Type: FITS, 20 KB - 284 MB
 
 Contents (FITS version; see notes, below, for text version)
