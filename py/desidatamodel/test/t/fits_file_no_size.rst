@@ -10,8 +10,7 @@ fits_file
     is the 8-digit exposure ID.*
 :Regex: ``fits_file.fits`` *Give a regular expression for this filename.
     For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 28 KB  *This section gives the type of the file
-    and its approximate size.*
+:File Type: FITS
 
 Contents
 ========
@@ -41,16 +40,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============ ============= ==== ====================================
-    KEY          Example Value Type Comment
-    ============ ============= ==== ====================================
-    NAXIS1       100           int
-    NAXIS2       100           int
-    BSCALE       1             int
-    BZERO        32768         int  Data are really unsigned 16-bit int.
-    OPTKEY1 [1]_ Optional      str
-    OPTKEY2 [1]_ 123456        str
-    ============ ============= ==== ====================================
+    ====== ============= ==== ====================================
+    KEY    Example Value Type Comment
+    ====== ============= ==== ====================================
+    NAXIS1 100           int
+    NAXIS2 100           int
+    BSCALE 1             int
+    BZERO  32768         int  Data are really unsigned 16-bit int.
+    ====== ============= ==== ====================================
 
 Data: FITS image [int16, 100x100]
 
@@ -80,17 +77,14 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========= ======== ===== ===========
-Name      Type     Units Description
-========= ======== ===== ===========
-target    char[20]
-OPT1 [1]_ int16
-V_mag     float32  mag
-vdisp     float64  km/s
-OPT2 [1]_ float32
-========= ======== ===== ===========
+====== ======== ===== ===========
+Name   Type     Units Description
+====== ======== ===== ===========
+target char[20]
+V_mag  float32  mag
+vdisp  float64  km/s
+====== ======== ===== ===========
 
-.. [1] Optional
 
 Notes and Examples
 ==================
