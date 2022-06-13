@@ -138,9 +138,9 @@ Required Data Table Columns
 ========= ======= ====== =======================================
 Name      Type    Units  Description
 ========= ======= ====== =======================================
-LOGG      float64 dex    log10( surface gravity / solar value)
+LOGG      float64 none   log10( surface gravity / solar value)
 TEFF      float64 Kelvin Effective temperature
-FEH       float64 dex    log10( iron abundance / solar value)
+FEH       float64 none   log10( iron abundance / solar value)
 CHI2DOF   float64 none   reduced chi2
 REDSHIFT  float64 none   redshift (can be negative)
 DATA_G-R  float64 none   g-r color of the data (from photometry)
