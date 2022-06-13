@@ -95,6 +95,7 @@ Unit                                  FITS Standard? Comment
 ``Jy``                                Yes            Jansky.
 ``10**-17 erg/(s cm2 Angstrom)``      Yes            Common unit of spectrophotometric flux.
 ``10**+34 (s2 cm4 Angstrom2) / erg2`` Yes            Inverse variance of flux.
+``A``                                 Yes, but...    ``A`` is the unit for amperes not Ångström.
 ``maggie``                            No, but OK     Standard prefix is also OK: ``nanomaggie``.
 ``mgy``                               No, but OK     Abbreviation for ``maggie``.
 ``electron/Angstrom``                 No, but OK     Used in some calibration files.
