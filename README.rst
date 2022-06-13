@@ -8,8 +8,8 @@ desidatamodel
     :target: https://github.com/desihub/desidatamodel/actions
     :alt: GitHub Actions CI Status
 
-.. |Coveralls Status| image:: https://coveralls.io/repos/desihub/desidatamodel/badge.svg
-    :target: https://coveralls.io/github/desihub/desidatamodel
+.. |Coveralls Status| image:: https://coveralls.io/repos/desihub/desidatamodel/badge.svg?branch=main
+    :target: https://coveralls.io/github/desihub/desidatamodel?branch=main
     :alt: Test Coverage Status
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/desidatamodel/badge/?version=latest

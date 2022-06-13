@@ -32,6 +32,7 @@ MANIFEST
 # Other
 .*.swp
 *~
+*.log
 
 # Mac OSX
 .DS_Store

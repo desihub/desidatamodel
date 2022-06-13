@@ -19,7 +19,7 @@ Contents
 ====== ======= ===== ===================
 Number EXTNAME Type  Contents
 ====== ======= ===== ===================
-HDU0_  BIAS    IMAGE *Brief Description*
+HDU0_  BIAS    IMAGE bias image
 ====== ======= ===== ===================
 
 
@@ -31,7 +31,7 @@ HDU0
 
 EXTNAME = BIAS
 
-*Summarize the contents of this HDU.*
+2D image with the master bias to subtract to the raw images of the night.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
