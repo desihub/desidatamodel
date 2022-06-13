@@ -1,6 +1,6 @@
-=======
-randoms
-=======
+==============
+randoms-allsky
+==============
 
 :Summary: DESI allsky random catalogs contain a single binary table covering
     the entire sky. Inside the `Legacy Surveys`_ (LS) footprint they contain meta

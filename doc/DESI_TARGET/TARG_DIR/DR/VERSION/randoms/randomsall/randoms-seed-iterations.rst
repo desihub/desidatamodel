@@ -1,6 +1,6 @@
-==========
-randomsall
-==========
+========================
+randoms-seed-interations
+========================
 
 :Summary: The larger DESI random catalogs (``randomsall``) contain a single binary
     table covering the entire Legacy Surveys footprint. They contain meta

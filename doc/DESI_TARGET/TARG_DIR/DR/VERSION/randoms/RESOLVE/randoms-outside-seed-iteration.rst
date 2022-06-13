@@ -1,6 +1,6 @@
-=======
-randoms
-=======
+===============
+randoms-outside
+===============
 
 :Summary: DESI outside-the-footprint random catalogs contain a single binary
     table covering areas beyond the `Legacy Surveys`_ footprint.
