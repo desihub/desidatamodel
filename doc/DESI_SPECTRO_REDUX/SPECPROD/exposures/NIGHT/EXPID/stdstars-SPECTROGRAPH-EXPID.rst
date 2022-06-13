@@ -135,20 +135,22 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========= ======= ====== =======================================
-Name      Type    Units  Description
-========= ======= ====== =======================================
-LOGG      float64        log10( surface gravity / solar value)
-TEFF      float64 K      Effective temperature
-FEH       float64        log10( iron abundance / solar value)
-CHI2DOF   float64        reduced chi2
-REDSHIFT  float64        redshift (can be negative)
-DATA_G-R  float64        g-r color of the data (from photometry)
-MODEL_G-R float64        g-r color of the model
-BLUE_SNR  float64        median signal to noise in blue camera
-RED_SNR   float64        median signal to noise in red camera
-NIR_SNR   float64        median signal to noise in NIR camera
-========= ======= ====== =======================================
+===================== ======= ====== =======================================
+Name                  Type    Units  Description
+===================== ======= ====== =======================================
+LOGG                  float64        log10( surface gravity / solar value)
+TEFF                  float64 K      Effective temperature
+FEH                   float64        log10( iron abundance / solar value)
+CHI2DOF               float64        reduced chi2
+REDSHIFT              float64        redshift (can be negative)
+DATA_G-R  [1]_        float64        g-r color of the data (from photometry)
+MODEL_G-R [1]_        float64        g-r color of the model
+BLUE_SNR              float64        median signal to noise in blue camera
+RED_SNR               float64        median signal to noise in red camera
+NIR_SNR               float64        median signal to noise in NIR camera
+DATA_GAIA-BP-RP [1]_  float64
+MODEL_GAIA-BP-RP [1]_ float64
+===================== ======= ====== =======================================
 
 HDU4
 ----
