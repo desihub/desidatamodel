@@ -577,8 +577,8 @@ Required Data Table Columns
 ================= ======= ===== ===========
 Name              Type    Units Description
 ================= ======= ===== ===========
-FLAT_TO_PSF_FLUX  float64 None  adimentional factor applied to calib to convert flat to psf flux
-PSF_TO_FIBER_FLUX float64 None  adimentional factor to apply to convert psf to fiber flux
+FLAT_TO_PSF_FLUX  float64       adimentional factor applied to calib to convert flat to psf flux
+PSF_TO_FIBER_FLUX float64       adimentional factor to apply to convert psf to fiber flux
 ================= ======= ===== ===========
 
 
