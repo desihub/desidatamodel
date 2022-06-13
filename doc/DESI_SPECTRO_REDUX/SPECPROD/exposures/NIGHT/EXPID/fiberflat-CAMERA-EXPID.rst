@@ -523,7 +523,7 @@ Data: FITS image [float32, 2881]
 HDU5
 ----
 
-EXTNAME = STDSTAR_FIBERMAP
+EXTNAME = FIBERMAP
 
 Fibermap with information about the fiber status.
 
