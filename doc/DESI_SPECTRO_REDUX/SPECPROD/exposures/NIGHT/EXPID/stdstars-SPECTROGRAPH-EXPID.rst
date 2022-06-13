@@ -112,7 +112,10 @@ HDU3
 
 EXTNAME = METADATA
 
-Metadata about best fit standard star models.
+Metadata about best fit standard star models.  Normally, ``DATA_G-R`` and
+``MODEL_G-R`` columns contain photometric colors, but the columns ``DATA_GAIA-BP-RP``
+and ``MODEL_GAIA-BP-RP`` may be present for "off-footprint" tiles that
+do not have DECaLS photometry.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -148,8 +151,8 @@ MODEL_G-R [1]_        float64        g-r color of the model
 BLUE_SNR              float64        median signal to noise in blue camera
 RED_SNR               float64        median signal to noise in red camera
 NIR_SNR               float64        median signal to noise in NIR camera
-DATA_GAIA-BP-RP [1]_  float64
-MODEL_GAIA-BP-RP [1]_ float64
+DATA_GAIA-BP-RP [1]_  float64        Gaia Bp - Rp color of the data
+MODEL_GAIA-BP-RP [1]_ float64        Gaia Bp - Rp color of the model
 ===================== ======= ====== =======================================
 
 HDU4
