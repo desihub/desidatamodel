@@ -157,17 +157,10 @@ Notes and Examples
 ==================
 
 * The fit is done with the desispec.scripts.emline script.
-
 * OII is fit as a doublet (3927 and 3929), with the line ratio left free during the fit.
-
 * OIII is fit as a doublet (4960 and 5007), with the line ratio fixed during the fit.
-
 * The SHARE is fitted only for the OII doublet; for the OIII doublet, its value is fixed (hence the infinite OIII_SHARE_IVAR); for the other lines, the SHARE is not used, and NaN are reported.
-
 * If there are not enough pixels to fit or if the fit fails, NaN values are reported.
-
 * The default settings are designed for the ELGs (e.g. max_sigma); values to be interpreted with caution for the other targets.
-
 * The fitted flux is not forced to be positive, so negative values can happen.
-
 * The Z,ZWARN,SPECTYPE,DELTACHI2 (TARGET_RA,TARGET_DEC,OBJTYPE, respectively) columns come from the REDSHIFTS (FIBERMAP, respectively) extension of the input redrock file (see :doc:`redrock-SPECTROGRAPH-TILEID-GROUPID <redrock-SPECTROGRAPH-TILEID-GROUPID>`).
