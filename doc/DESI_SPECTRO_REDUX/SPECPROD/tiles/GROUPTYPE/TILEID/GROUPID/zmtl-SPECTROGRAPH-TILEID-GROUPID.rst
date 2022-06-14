@@ -74,6 +74,14 @@ Name                 Type    Units Description
 RA                   float64 deg   Right ascension
 DEC                  float64 deg   Declination
 TARGETID             int64         Unique targeting ID
+SV1_DESI_TARGET [1]_ int64         DESI (dark time program) target selection bitmask (sv1 phase of DESI Survey Validation)
+SV1_BGS_TARGET [1]_  int64         BGS (bright time program) target selection bitmask (sv1 phase of DESI Survey Validation)
+SV1_MWS_TARGET [1]_  int64         MWS (bright time program) target selection bitmask (sv1 phase of DESI Survey Validation)
+SV1_SCND_TARGET [1]_ int64         SCND (secondary program) target selection bitmask (sv1 phase of DESI Survey Validation)
+SV3_DESI_TARGET [1]_ int64         DESI (dark time program) target selection bitmask (sv3 phase of DESI Survey Validation)
+SV3_BGS_TARGET [1]_  int64         BGS (bright time program) target selection bitmask (sv3 phase of DESI Survey Validation)
+SV3_MWS_TARGET [1]_  int64         MWS (bright time program) target selection bitmask (sv3 phase of DESI Survey Validation)
+SV3_SCND_TARGET [1]_ int64         SCND (secondary program) target selection bitmask (sv3 phase of DESI Survey Validation)
 DESI_TARGET [1]_     int64         DESI (dark time program) target selection bitmask
 BGS_TARGET [1]_      int64         BGS (bright time program) target selection bitmask
 MWS_TARGET [1]_      int64         MWS (bright time program) target selection bitmask
@@ -89,7 +97,8 @@ Z_QN_CONF            float64       Redshift confidence from `QuasarNET`_
 IS_QSO_QN            int16         Spectroscopic classification	from `QuasarNET`_ (1 for a quasar)
 ==================== ======= ===== ===================
 
-.. [1] ``TARGET`` columns are preceded by the survey ``PHASE`` except in the case of Main Survey files
+.. [1] Only `either` the four ``SV1``, ``SV3`` `or` Main Survey columns will be present. ``TARGET``
+       bitmask columns are preceded by the survey ``PHASE`` except in the case of Main Survey files
        (i.e. ``DESI_TARGET`` is called ``SV1_DESI_TARGET`` when the survey ``PHASE`` is ``sv1``).
 
 
