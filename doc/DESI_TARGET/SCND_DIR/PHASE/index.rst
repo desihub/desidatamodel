@@ -25,7 +25,20 @@ survey phase (see the desitarget GitHub repository for, `e.g.` `sv1`_ or
 `main`_). The file `extension` can differ, though (`i.e.` some files in
 ``docs`` would have the extension .ipynb whereas the corresponding file in
 ``outdata`` would have the extension .fits).
- 
+
+A special filename case is the ``veto`` file (i.e. ``veto.txt`` or
+``veto.fits``). The veto file was designed as a mechanism to flag targets
+that should `never` be observed rather than new secondary targets to
+`additionally` observe. The form and contents of the ``veto`` files `are
+consistent with the rest of the data model`, described in the previous two
+paragraphs, except:
+
+- The veto mechanism was never used by DESI --- but the ``desitarget`` code
+  expected the ``veto`` file to exist. Therefore all ``veto`` files contain
+  a single "dummy" object at a location well outside of the DESI footprint.
+- To reflect the singular, peculiar nature of the ``veto`` file, the filename
+  is lower-case.
+
 The ``PHASE`` directory may also contain a ``notes`` file, which
 includes working notes compiled by the run manager for secondary
 targets (Adam D. Myers, University of Wyoming) while sifting
