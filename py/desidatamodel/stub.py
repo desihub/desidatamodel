@@ -101,6 +101,7 @@ class Stub(DataModelUnit):
         self._basef = None
         self._modelname = None
         self._filesize = None
+        self._filetype = None
         self._hdumeta = None
         self._hduname = None
         self._contents = None
@@ -124,6 +125,14 @@ class Stub(DataModelUnit):
             except ValueError:
                 self._modelname = self.basef[0:self.basef.index('.')]
         return self._modelname
+
+    @property
+    def filetype(self):
+        """Type of file. Assumes FITS (for now) unless overridden in a subclass.
+        """
+        if self._filetype is None:
+            self._filetype = 'FITS'
+        return self._filetype
 
     @property
     def filesize(self):
@@ -334,6 +343,9 @@ class Stub(DataModelUnit):
     def format_table(self, table, indent=False):
         """Convert tabular data into reStructuredText-compatible string.
 
+        This function assumes that `table` already has a header as the
+        first row.
+
         Parameters
         ----------
         table : :class:`list`
@@ -421,7 +433,7 @@ class Stub(DataModelUnit):
         kw['title'] = self.modelname
         kw['titlehighlight'] = '='*len(kw['title'])
         kw['filename'] = self.basef
-        kw['filetype'] = 'FITS'
+        kw['filetype'] = self.filetype
         kw['filesize'] = self.filesize
         kw['contents_table'] = ("\n".join(self.format_table(self.contents)) +
                                 "\n")

@@ -73,14 +73,44 @@ class TestCheck(DataModelTestCase):
             files_to_regexp('/desi/spectro/data', files, error=True)
         self.assertEqual(str(e.exception), "%s has no file regexp!" % files[0].filename)
 
+    @patch.object(DataModel, '_type_size')
+    def test_files_to_regexp_with_missing_filetype(self, mock_type):
+        """Test compilation of regular expressions; raise exception for missing file type.
+        """
+        mock_type.return_value = (None, None)
+        root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
+        files = scan_model(root)
+        with self.assertRaises(DataModelError) as e:
+            foo = files[0].get_regexp(root, error=True)
+        self.assertEqual(str(e.exception), "%s has missing or invalid file type!" % files[0].filename)
+        mock_type.assert_called_once()
+
     @patch.object(DataModel, '_expectedtypes', ('foo', 'bar'))
     def test_files_to_regexp_with_bad_filetype(self):
-        """Test compilation of regular expressions; raise exception.
+        """Test compilation of regular expressions; log unusual file type.
         """
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         foo = files[0].get_regexp(root)
         self.assertLog(log, -1, "Unusual file type, fits, detected for {0}!".format(files[0].filename))
+
+    def test_get_regexp_filesize(self):
+        """Test extraction of file size from data model documents.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        foo = model.get_regexp('/desi/spectro/data')
+        self.assertEqual(model.filetype, 'fits')
+        self.assertEqual(model.filesize, '28 KB')
+
+    def test_get_regexp_missing_filesize(self):
+        """Test extraction of file size from data model documents, missing size.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file_no_size.rst')
+        model = DataModel(modelfile, os.path.dirname(modelfile))
+        foo = model.get_regexp('/desi/spectro/data')
+        self.assertEqual(model.filetype, 'fits')
+        self.assertEqual(model.filesize, 'Unknown')
 
     def test_collect_files(self):
         """Test finding files that correspond to data model files.
@@ -158,6 +188,7 @@ class TestCheck(DataModelTestCase):
         modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
+        self.assertEqual(self.title, 'fits_file')
         self.assertEqual(len(meta.keys()), len(ex_meta.keys()))
         for key, m in meta.items():
             self.assertEqual(m['title'], ex_meta[key]['title'])

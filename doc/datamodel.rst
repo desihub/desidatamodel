@@ -35,6 +35,12 @@ data model.
     fibermap-EXPID.fits
     ===================
 
+Code setup
+~~~~~~~~~~
+
+To build the datamodel locally, you first need to install the following::
+
+    pip install sphinx-toolbox sphinx-rtd-theme
 
 Building the Documents
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -58,6 +64,53 @@ opening a PR using::
     pytest py/desidatamodel/test
 
 .. _`sphinx_rtd_theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
+
+Units
+~~~~~
+
+We encourage the documentation of units as well as types. Although not *every*
+FITS file specifies units, we want units to be documented anyway.  FITS
+images that have units should have a ``BUNIT`` header keyword.  FITS
+table columns that have units should have a ``TUNITxx`` keyword. For the purposes
+of documentation though, we want the units to be specified, even if they
+don't actually appear in the file being documented.
+
+Units should follow the `FITS Standard`_, in particular following Section 4.3, and Tables 3, 4,
+and 5 in that document.
+
+You can test units for validity by using `Astropy Units`_. This package
+already supports the FITS Standard. The ``desidatamodel`` package itself
+already uses this internally.  In fact, we have added some units that
+DESI considers acceptable, even if they do not strictly follow the FITS Standard.
+
+Here are some examples of units that are used in this data model, as well as
+a few common gotchas.
+
+===================================== ============== =================================================================
+Unit                                  FITS Standard? Comment
+===================================== ============== =================================================================
+``um``                                Yes            Micrometers, :math:`\mu m`.
+``Angstrom``                          Yes            Ångström.
+``photon``                            Yes            Number of photons.
+``count``                             Yes            Number of counts, usually electrons.
+``adu``                               Yes            Closely related to ``counts``.
+``deg``                               Yes            Degrees.
+``arcsec``                            Yes            Seconds of arc.  Not time!
+``mag``                               Yes            Standard astronomical magnitude. *Not* the same as a ``maggie``.
+``pc``                                Yes            Parsec.
+``Jy``                                Yes            Jansky.
+``10**-17 erg/(s cm2 Angstrom)``      Yes            Common unit of spectrophotometric flux.
+``10**+34 (s2 cm4 Angstrom2) / erg2`` Yes            Inverse variance of flux.
+``A``                                 Yes, but...    ``A`` is the unit for amperes not Ångström.
+``maggie``                            No, but OK     Standard prefix is also OK: ``nanomaggie``.
+``mgy``                               No, but OK     Abbreviation for ``maggie``.
+``electron/Angstrom``                 No, but OK     Used in some calibration files.
+``ergs``                              **No**         ``erg``, not ``ergs``.
+``sec``                               **No**         ``s`` for seconds, not ``sec``. Even though ``arcsec`` is OK.
+===================================== ============== =================================================================
+
+.. _`FITS Standard`: https://fits.gsfc.nasa.gov/standard40/fits_standard40aa-le.pdf
+.. _`Astropy Units`: https://docs.astropy.org/en/stable/units/index.html
 
 Tips and Tests
 ~~~~~~~~~~~~~~
