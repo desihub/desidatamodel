@@ -5,15 +5,17 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
-* Update data model for target files to reflect ets/dr9 release (PR `#105`_).
+* Populate the data model for the zmtl files (PR `#130`_).
 * Improve documenetation of ``emline`` files (PR `#128`_).
 * Add documentation of various calibration files (PR `#127`_).
 * Further cleanup of ``fuji`` and ``guadalupe`` header keywords and columns (PR `#126`_).
+* Update data model for target files to reflect ets/dr9 release (PR `#105`_).
 
 .. _`#105`: https://github.com/desihub/desidatamodel/pull/105
 .. _`#126`: https://github.com/desihub/desidatamodel/pull/126
 .. _`#127`: https://github.com/desihub/desidatamodel/pull/127
 .. _`#128`: https://github.com/desihub/desidatamodel/pull/128
+.. _`#130`: https://github.com/desihub/desidatamodel/pull/130
 
 22.2 (2022-05-31)
 -----------------
