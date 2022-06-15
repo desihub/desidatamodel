@@ -3,12 +3,11 @@ exposures-SPECPROD.fits
 =======================
 
 :Summary: File containing metadata about individual DESI exposures. There are two tables.
-The first is per-exposure and the second is per-camera per-exposure. The per-exposure table
-includes observational information as well as derived quantities
-estimating the observational depth for each target class, quoted
-in seconds of effective, idealized observing time. The second provides similar information on
-a per-camera basis.
-
+    The first is per-exposure and the second is per-camera per-exposure. The per-exposure table
+    includes observational information as well as derived quantities
+    estimating the observational depth for each target class, quoted
+    in seconds of effective, idealized observing time. The second provides similar information on
+    a per-camera basis.
 :Naming Convention: ``exposures-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
     official name of the full reduction, *e.g.* ``everest``.
 :Regex: ``exposures-[a-z0-9_-]+\.fits``

@@ -3,8 +3,8 @@ tiles-SPECPROD.fits
 ===================
 
 :Summary: Table containing cumulative observational metadata as well as derived quantities
-estimating the observational "depth" for each target class, quoted
-in seconds of effective, idealized observing time.
+    estimating the observational "depth" for each target class, quoted
+    in seconds of effective, idealized observing time.
 :Naming Convention: ``tiles-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
     official name of the full reduction, *e.g.* ``everest``.
 :Regex: ``tiles-[a-z0-9_-]+.fits``
