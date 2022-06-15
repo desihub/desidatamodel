@@ -2,9 +2,13 @@
 exposures-SPECPROD.fits
 =======================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: File containing metadata about individual DESI exposures. There are two tables.
+The first is per-exposure and the second is per-camera per-exposure. The per-exposure table
+includes observational information as well as derived quantities
+estimating the observational depth for each target class, quoted
+in seconds of effective, idealized observing time. The second provides similar information on
+a per-camera basis.
+
 :Naming Convention: ``exposures-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
     official name of the full reduction, *e.g.* ``everest``.
 :Regex: ``exposures-[a-z0-9_-]+\.fits``
@@ -124,10 +128,11 @@ HDU2
 
 EXTNAME = FRAMES
 
-Binary table containing metadata about individual DESI exposures. This
+Binary table containing metadata about individual DESI exposures per camera. This
 includes observational information as well as derived quantities
 estimating the observational depth for each target class, quoted
-as TSNR2_*. TSNR2_* can be converted to EFFTIME using
+as TSNR2_*. TSNR2_* can be converted to EFFTIME using the desispec_ function
+*desispec.tsnr.tsnr2_to_efftime(tsnr2,target_type)*.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -180,6 +185,7 @@ GOALTIME        float64  s      Goal for total effective exposure time for the t
 =============== ======== ====== ===========
 
 .. _SFD98: https://ui.adsabs.harvard.edu/abs/1998ApJ...500..525S/abstract
+.. _desispec: https://github.com/desihub/desispec/blob/720153babcf85dd93530252b0c1f631d48edfc0d/py/desispec/tsnr.py#L1140
 
 Notes and Examples
 ==================
