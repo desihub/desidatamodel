@@ -104,7 +104,7 @@ GPB_EFFTIME_BACKUP     float32  s      Effective exposure time for nominal backu
 TRANSPARENCY_GFA       float64         Average airmass during this exposure as measured by GFA.
 SEEING_GFA             float64  arcsec Average FWHM atmospheric seeing during this exposure as measured by GFA.
 FIBER_FRACFLUX_GFA     float64         Fraction of the flux entering the fiber relative to nominal 1.1" seeing using the PSF inferred from the GFAs
-FIBER_FRACFLUX_ELG_GFA float64         Fraction of the flux entering the fiber relative to nominal 1.1" seeing using the PSF inferred from the GFAs for a source with an ELG profile
+FIBER_FRACFLUX_ELG_GFA float64         Fraction of the flux entering the fiber relative to nominal 1.1" seeing using the PSF inferred from the GFAs for a source with an ELG profile (0.45" exponential galaxy profile)
 FIBER_FRACFLUX_BGS_GFA float64         Fraction of the flux entering the fiber relative to nominal 1.1" seeing using the PSF inferred from the GFAs for a source with a BGS profile (deV profile, half light radius of 1.5")
 FIBERFAC_GFA           float64         Fraction of light entering a fiber relative to expectations for 1.1" seeing, transparency 1, for an object with a PSF profile, measured by comparing the flux integrated over a 107 micron diameter circle on the GFA images centered at the PlateMaker expectations for where stars should land.
 FIBERFAC_ELG_GFA       float64         Same as FIBERFAC_GFA except for an ELG profile
