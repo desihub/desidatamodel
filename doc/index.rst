@@ -18,6 +18,7 @@ for testing.
    $DESI_SPECTRO_REDUX : processed spectro data <DESI_SPECTRO_REDUX/index>
    $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_SPECTRO_CALIB : spectro calibration data <DESI_SPECTRO_CALIB/index>
+   $DESI_SURVEY : contains data related to daily operations, fiberassignment, etc. <DESI_SURVEY/index>
    $DESI_TARGET : target selection and fiber assignment (see also Myers et al. 2022) <DESI_TARGET/index>
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>

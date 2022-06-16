@@ -36,7 +36,7 @@ class TestCheck(DataModelTestCase):
         files_to_regexp('/desi/spectro/data', files)
         regexps = ['/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
                    '/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
-                   '/desi/spectro/data/20160703/12345678/fiberassign-12345678.fits.gz',
+                   '/desi/spectro/data/20160703/12345678/fiberassign-123456.fits.gz',
                    '/desi/spectro/data/20160703/12345678/fibermap-12345678.fits',
                    '/desi/spectro/data/20160703/00000123/focus-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/fvc-00000123.fits.fz',
@@ -47,7 +47,7 @@ class TestCheck(DataModelTestCase):
         expected = [os.path.join(root, 'NIGHT', 'EXPID', f) for f in (
             'coordinates-EXPID.rst',
             'desi-EXPID.rst',
-            'fiberassign-EXPID.rst',
+            'fiberassign-TILEID.rst',
             'fibermap-EXPID.rst',
             'focus-EXPID.rst',
             'fvc-EXPID.rst',

@@ -11,7 +11,7 @@ Each exposure id (expid) generates multiple files:
 
    coordinates-{expid}.fits : Coordinates file <coordinates-EXPID>
    desi-{expid}.fits.fz : Raw data <desi-EXPID>
-   fiberassign-{expid}.fits.gz : Table of which fibers were assigned to which targets <fiberassign-EXPID>
+   fiberassign-{tileid}.fits.gz : Table of which fibers were assigned to which targets <fiberassign-TILEID>
    fibermap-{expid}.fits : Table of which fibers were assigned to which targets (*obsolete*) <fibermap-EXPID>
    focus-{expid}.fits.fz : Placeholder for focus GFA raw data <focus-EXPID>
    fvc-{expid}.fits.fz : Fiber View Camera data <fvc-EXPID>
