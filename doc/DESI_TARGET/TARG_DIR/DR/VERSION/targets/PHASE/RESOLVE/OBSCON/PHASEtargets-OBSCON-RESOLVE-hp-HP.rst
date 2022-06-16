@@ -194,16 +194,19 @@ PMDEC                             float32     mas / yr              Reference ca
 PMDEC_IVAR                        float32     yr^2 / mas^2          Inverse variance of PMDEC
 PHOTSYS                           char[1]                           'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 TARGETID                          int64                             Unique targeting ID
-DESI_TARGET                       int64                             DESI (dark time program) target selection bitmask
-BGS_TARGET                        int64                             BGS (bright time program) target selection bitmask
-MWS_TARGET                        int64                             MWS (bright time program) target selection bitmask
+DESI_TARGET [1]_                  int64                             DESI (dark time program) target selection bitmask
+BGS_TARGET  [1]_                  int64                             BGS (bright time program) target selection bitmask
+MWS_TARGET  [1]_                  int64                             MWS (bright time program) target selection bitmask
 SUBPRIORITY                       float64                           Random subpriority [0-1] to break assignment ties
 OBSCONDITIONS                     int64                             Flag target to be observed in combinations of dark/bright observing layer
 PRIORITY_INIT                     int64                             Initial priority for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT                       int64                             Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
-SCND_TARGET                       int64                             SCND (secondary program) target selection bitmask
+SCND_TARGET [1]_                  int64                             SCND (secondary program) target selection bitmask
 HPXPIXEL                          int64                             HEALPixel containing target at HPXNSIDE
 ================================= =========== ===================== ===================
+
+.. [1] ``TARGET`` columns are preceded by the survey ``PHASE`` except in the case of Main Survey files
+       (i.e. ``DESI_TARGET`` is called ``SV1_DESI_TARGET`` when the survey ``PHASE`` is ``sv1``).
 
 HDU2
 ----
