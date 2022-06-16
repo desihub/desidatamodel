@@ -5,6 +5,7 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
+* Document top level exposure and tile summary files (PR `#131`_).
 * Populate the data model for the zmtl files (PR `#130`_).
 * Improve documenetation of ``emline`` files (PR `#128`_).
 * Add documentation of various calibration files (PR `#127`_).
@@ -16,6 +17,7 @@ desidatamodel Change Log
 .. _`#127`: https://github.com/desihub/desidatamodel/pull/127
 .. _`#128`: https://github.com/desihub/desidatamodel/pull/128
 .. _`#130`: https://github.com/desihub/desidatamodel/pull/130
+.. _`#131`: https://github.com/desihub/desidatamodel/pull/131
 
 22.2 (2022-05-31)
 -----------------
