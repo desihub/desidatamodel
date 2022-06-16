@@ -72,7 +72,7 @@ Required Header Keywords
     NGOODFIB      4611                int   Number of fibers with EFFTIME_SPEC above the threshold
     NGOODPET      10                  int   Number of petals with good fibers
     WORSTRDN      5.072375888924774   float Worst read noise for all amplifiers of all cameras
-    FPRMS2D       0.01157238915902728 float [mm] RMS of the positioners accuracy (measured-requested) in the CS5 location of the focal plane 
+    FPRMS2D       0.01157238915902728 float [mm] RMS of the positioners accuracy (measured-requested) in the CS5 location of the focal plane
     PMINEXPF [1]_ 0.8370916420971888  float Deprecated
     PMAXEXPF [1]_ 1.27911264193688    float Deprecated
     EFFTIME       217.9705047607422   float [s] Spectroscopic effective time
@@ -181,5 +181,5 @@ Notes and Examples
 
 * These ``exposure-qa-{expid}`` files are used to compute several of the :doc:`tile-qa-TILEID-GROUPID <../../../tiles/GROUPTYPE/TILEID/GROUPID/tile-qa-TILEID-GROUPID>` entries.
 * The QAFIBERSTATUS bitmasks are defined here :doc:`bitmasks <../../../../../../bitmasks>`.
-* Some FIBERQA extension header keywords are originally coming from the :doc:`fiberassign-TILEID <../../../../../DESI_TARGET/fiberassign/fiberassign-TILEID>` file (TILEID, TILERA, TILEDEC, GOALTIME, GOALTYPE, FAPRGRM, SURVEY, EBVFAC, MINTFRAC).
+* Some FIBERQA extension header keywords are originally coming from the :doc:`fiberassign-TILEID <../../../../../DESI_TARGET/fiberassign/tiles/TILES_VERSION/TILEXX/fiberassign-TILEID>` file (TILEID, TILERA, TILEDEC, GOALTIME, GOALTYPE, FAPRGRM, SURVEY, EBVFAC, MINTFRAC).
 * The FIBERQA EFFTIME_SPEC is proportional to the TSNR2 values in the TSNR2 extension of the :doc:`redrock-SPECTROGRAPH-TILEID-GROUPID <../../../tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>` file; for the BACKUP and BRIGHT programs, the TSNR2_BGS is used; for the DARK program, the TSNR2_ELG or TSNR2_LRG is used.
