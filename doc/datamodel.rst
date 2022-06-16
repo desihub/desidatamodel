@@ -38,7 +38,7 @@ data model.
 Code setup
 ~~~~~~~~~~
 
-To build the datamodel locally, you first need to install the following::
+To build the data model locally, you first need to install the following::
 
     pip install sphinx-toolbox sphinx-rtd-theme
 
@@ -50,7 +50,7 @@ To build the docs::
     sphinx-build -W --keep-going -b html doc doc/_build/html
 
 Then view ``doc/_build/html/index.html`` in a web browser.  If you have
-installed the `sphinx_rtd_theme Python package`_, the docs will be formatted
+installed the `sphinx-rtd-theme Python package`_, the docs will be formatted
 using the ReadTheDocs theme as they will appear at
 https://desidatamodel.readthedocs.io
 
@@ -58,12 +58,22 @@ Sphinx will often print warnings and claim that the "build succeeded" when
 in fact there were syntax errors that break the output. You must pay attention
 to the warnings and fix them!
 
-desidatamodel also includes unit tests; you can run these locally before
+Also note that Spinx builds documents incrementally.  That is, if you run
+:command:`sphinx-build`, change one file, and then run :command`sphinx-build`
+again, it will only rebuild the changed file.  Normally this is fine, but
+if the change causes the directory tree to change, for example, adding
+a file to a table of contents, then the entire document tree should be rebuilt.
+This can be done by simply adding the ``-E`` option to :command`sphinx-build`::
+
+    sphinx-build -E -W --keep-going -b html doc doc/_build/html
+
+desidatamodel_ also includes unit tests; you can run these locally before
 opening a PR using::
 
     pytest py/desidatamodel/test
 
-.. _`sphinx_rtd_theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
+.. _`sphinx-rtd-theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
+.. _desidatamodel: https://github.com/desihub/desidatamodel
 
 Units
 ~~~~~
