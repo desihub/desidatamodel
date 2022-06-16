@@ -99,12 +99,12 @@ PSFDEPTH_W2   float32                 PSF-based depth in WISE W2 (AB mag system)
 PSFSIZE_G     float32  arcsec         Weighted average PSF FWHM in `LS`_ g
 PSFSIZE_R     float32  arcsec         Weighted average PSF FWHM in `LS`_ r
 PSFSIZE_Z     float32  arcsec         Weighted average PSF FWHM in `LS`_ z
-APFLUX_G      float32  nanomaggies    Total flux extracted in a 0.75 arcsec radius in g
-APFLUX_R      float32  nanomaggies    Total flux extracted in a 0.75 arcsec radius in r
-APFLUX_Z      float32  nanomaggies    Total flux extracted in a 0.75 arcsec radius in z
-APFLUX_IVAR_G float32  nanomaggies^-2 Inverse variance of APFLUX_G
-APFLUX_IVAR_R float32  nanomaggies^-2 Inverse variance of APFLUX_R
-APFLUX_IVAR_Z float32  nanomaggies^-2 Inverse variance of APFLUX_Z
+APFLUX_G      float32  nanomaggy      Total flux extracted in a 0.75 arcsec radius in g
+APFLUX_R      float32  nanomaggy      Total flux extracted in a 0.75 arcsec radius in r
+APFLUX_Z      float32  nanomaggy      Total flux extracted in a 0.75 arcsec radius in z
+APFLUX_IVAR_G float32  nanomaggy^-2   Inverse variance of APFLUX_G
+APFLUX_IVAR_R float32  nanomaggy^-2   Inverse variance of APFLUX_R
+APFLUX_IVAR_Z float32  nanomaggy^-2   Inverse variance of APFLUX_Z
 MASKBITS      int16                   Bit mask of possible problems with pixel (see the LS `DR9 bitmasks page`_)
 WISEMASK_W1   uint8                   Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
 WISEMASK_W2   uint8                   Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)

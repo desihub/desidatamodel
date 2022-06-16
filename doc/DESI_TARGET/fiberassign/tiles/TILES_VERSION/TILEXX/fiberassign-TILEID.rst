@@ -153,22 +153,22 @@ BRICKID               int32                  Imaging Surveys brick ID
 BRICK_OBJID           int32                  Imaging surveys OBJID on that brick
 MORPHTYPE             char[4]                Imaging surveys morphological type
 EBV                   float32 mag            Galactic extinction E(B-V) reddening
-FLUX_G                float32 nanomaggies    Flux in g-band
-FLUX_R                float32 nanomaggies    Flux in r-band
-FLUX_Z                float32 nanomaggies    Flux in z-band
-FLUX_W1               float32 nanomaggies    Flux in WISE W1-band
-FLUX_W2               float32 nanomaggies    Flux in WISE W2-band
-FLUX_IVAR_G           float32 nanomaggies^-2 Inverse variance of FLUX_G
-FLUX_IVAR_R           float32 nanomaggies^-2 Inverse variance of FLUX_R
-FLUX_IVAR_Z           float32 nanomaggies^-2 Inverse variance of FLUX_Z
-FLUX_IVAR_W1          float32 nanomaggies^-2 Inverse variance of FLUX_W1
-FLUX_IVAR_W2          float32 nanomaggies^-2 Inverse variance of FLUX_W2
-FIBERFLUX_G           float32 nanomaggies    g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_R           float32 nanomaggies    r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_Z           float32 nanomaggies    z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERTOTFLUX_G        float32 nanomaggies    like FIBERFLUX_G but including all objects overlapping this location
-FIBERTOTFLUX_R        float32 nanomaggies    like FIBERFLUX_R but including all objects overlapping this location
-FIBERTOTFLUX_Z        float32 nanomaggies    like FIBERFLUX_Z but including all objects overlapping this location
+FLUX_G                float32 nanomaggy      Flux in g-band
+FLUX_R                float32 nanomaggy      Flux in r-band
+FLUX_Z                float32 nanomaggy      Flux in z-band
+FLUX_W1               float32 nanomaggy      Flux in WISE W1-band
+FLUX_W2               float32 nanomaggy      Flux in WISE W2-band
+FLUX_IVAR_G           float32 nanomaggy^-2   Inverse variance of FLUX_G
+FLUX_IVAR_R           float32 nanomaggy^-2   Inverse variance of FLUX_R
+FLUX_IVAR_Z           float32 nanomaggy^-2   Inverse variance of FLUX_Z
+FLUX_IVAR_W1          float32 nanomaggy^-2   Inverse variance of FLUX_W1
+FLUX_IVAR_W2          float32 nanomaggy^-2   Inverse variance of FLUX_W2
+FIBERFLUX_G           float32 nanomaggy      g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_R           float32 nanomaggy      r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_Z           float32 nanomaggy      z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERTOTFLUX_G        float32 nanomaggy      like FIBERFLUX_G but including all objects overlapping this location
+FIBERTOTFLUX_R        float32 nanomaggy      like FIBERFLUX_R but including all objects overlapping this location
+FIBERTOTFLUX_Z        float32 nanomaggy      like FIBERFLUX_Z but including all objects overlapping this location
 MASKBITS              int16                  Bitwise mask from the imaging indicating potential issue or blending
 SERSIC                float32                Power-law index for the Sersic profile model
 SHAPE_R               float32 arcsec         Half-light radius of galaxy model for galaxy type
@@ -246,9 +246,9 @@ PETAL_LOC     int16               Petal location [0-9]
 DEVICE_LOC    int32               Device location on focal plane [0-523]
 PRIORITY      int32               Assignment priority; larger = higher priority
 SUBPRIORITY   float64             Assignment subpriority [0-1]
-FIBERFLUX_G   float32 nanomaggies Flux in g-band
-FIBERFLUX_R   float32 nanomaggies Flux in r-band
-FIBERFLUX_Z   float32 nanomaggies Flux in z-band
+FIBERFLUX_G   float32 nanomaggy   Flux in g-band
+FIBERFLUX_R   float32 nanomaggy   Flux in r-band
+FIBERFLUX_Z   float32 nanomaggy   Flux in z-band
 ============= ======= =========== ===================
 
 HDU3
@@ -299,12 +299,12 @@ TARGET_RA_IVAR                    float32 deg^-2         Inverse variance of TAR
 TARGET_DEC_IVAR                   float32 deg^-2         Inverse variance of TARGET_DEC
 MORPHTYPE                         char[4]                Imaging surveys morphological type
 MASKBITS                          int16                  Bitwise mask from the imaging indicating potential issue or blending
-FLUX_G                            float32 nanomaggies    Flux in g-band
-FLUX_R                            float32 nanomaggies    Flux in r-band
-FLUX_Z                            float32 nanomaggies    Flux in z-band
-FLUX_IVAR_G                       float32 nanomaggies^-2 Inverse variance of FLUX_G
-FLUX_IVAR_R                       float32 nanomaggies^-2 Inverse variance of FLUX_R
-FLUX_IVAR_Z                       float32 nanomaggies^-2 Inverse variance of FLUX_Z
+FLUX_G                            float32 nanomaggy      Flux in g-band
+FLUX_R                            float32 nanomaggy      Flux in r-band
+FLUX_Z                            float32 nanomaggy      Flux in z-band
+FLUX_IVAR_G                       float32 nanomaggy^-2   Inverse variance of FLUX_G
+FLUX_IVAR_R                       float32 nanomaggy^-2   Inverse variance of FLUX_R
+FLUX_IVAR_Z                       float32 nanomaggy^-2   Inverse variance of FLUX_Z
 REF_ID                            int64                  Astrometric catalog reference ID (SOURCE_ID from Gaia and SGA; built from TYC1, TYC2, TYC3 for Tycho2)
 REF_CAT                           char[2]                Reference catalog source for this star
 REF_EPOCH                         float32 yr             Reference catalog reference epoch
