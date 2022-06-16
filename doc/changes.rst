@@ -12,7 +12,9 @@ desidatamodel Change Log
 * Add documentation of various calibration files (PR `#127`_).
 * Further cleanup of ``fuji`` and ``guadalupe`` header keywords and columns (PR `#126`_).
 * Update data model for target files to reflect ets/dr9 release (PR `#105`_).
+* Update data model for fiberassign files in the tiles product (PR `#103`_).
 
+.. _`#103`: https://github.com/desihub/desidatamodel/pull/103
 .. _`#105`: https://github.com/desihub/desidatamodel/pull/105
 .. _`#126`: https://github.com/desihub/desidatamodel/pull/126
 .. _`#127`: https://github.com/desihub/desidatamodel/pull/127
