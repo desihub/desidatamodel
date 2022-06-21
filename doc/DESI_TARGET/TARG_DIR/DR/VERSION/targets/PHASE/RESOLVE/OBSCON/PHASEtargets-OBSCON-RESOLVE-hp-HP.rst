@@ -105,12 +105,12 @@ DEC                               float64     deg                   Declination
 DEC_IVAR                          float32     deg^-2                Declination inverse variance
 DCHISQ                            float32[5]                        Difference in chi-squared between model fits
 EBV                               float32     mag                   Galactic extinction E(B-V) reddening from `SFD98`_
-FLUX_G                            float32     nanomaggies           `LS`_ flux from tractor input (g)
-FLUX_R                            float32     nanomaggies           `LS`_ flux from tractor input (r)
-FLUX_Z                            float32     nanomaggies           `LS`_ flux from tractor input (z)
-FLUX_IVAR_G                       float32     nanomaggies^-2        Inverse Variance of FLUX_G
-FLUX_IVAR_R                       float32     nanomaggies^-2        Inverse Variance of FLUX_R
-FLUX_IVAR_Z                       float32     nanomaggies^-2        Inverse Variance of FLUX_Z
+FLUX_G                            float32     nanomaggy             `LS`_ flux from tractor input (g)
+FLUX_R                            float32     nanomaggy             `LS`_ flux from tractor input (r)
+FLUX_Z                            float32     nanomaggy             `LS`_ flux from tractor input (z)
+FLUX_IVAR_G                       float32     nanomaggy^-2          Inverse Variance of FLUX_G
+FLUX_IVAR_R                       float32     nanomaggy^-2          Inverse Variance of FLUX_R
+FLUX_IVAR_Z                       float32     nanomaggy^-2          Inverse Variance of FLUX_Z
 MW_TRANSMISSION_G                 float32                           Milky Way dust transmission in `LS`_ g
 MW_TRANSMISSION_R                 float32                           Milky Way dust transmission in `LS`_ r
 MW_TRANSMISSION_Z                 float32                           Milky Way dust transmission in `LS`_ z
@@ -126,20 +126,20 @@ FRACIN_Z                          float32                           Fraction of 
 NOBS_G                            int16                             Number of images for central pixel in `LS`_ g
 NOBS_R                            int16                             Number of images for central pixel in `LS`_ r
 NOBS_Z                            int16                             Number of images for central pixel in `LS`_ z
-PSFDEPTH_G                        float32     nanomaggies^-2        PSF-based depth in `LS`_ g
-PSFDEPTH_R                        float32     nanomaggies^-2        PSF-based depth in `LS`_ r
-PSFDEPTH_Z                        float32     nanomaggies^-2        PSF-based depth in `LS`_ z
-GALDEPTH_G                        float32     nanomaggies^-2        Galaxy model-based depth in `LS`_ g
-GALDEPTH_R                        float32     nanomaggies^-2        Galaxy model-based depth in `LS`_ r
-GALDEPTH_Z                        float32     nanomaggies^-2        Galaxy model-based depth in `LS`_ z
-FLUX_W1                           float32     nanomaggies           WISE flux in W1 (AB system)
-FLUX_W2                           float32     nanomaggies           WISE flux in W2 (AB)
-FLUX_W3                           float32     nanomaggies           WISE flux in W3 (AB)
-FLUX_W4                           float32     nanomaggies           WISE flux in W4 (AB)
-FLUX_IVAR_W1                      float32     nanomaggies^-2        Inverse Variance of FLUX_W1 (AB system)
-FLUX_IVAR_W2                      float32     nanomaggies^-2        Inverse Variance of FLUX_W2 (AB)
-FLUX_IVAR_W3                      float32     nanomaggies^-2        Inverse Variance of FLUX_W3 (AB)
-FLUX_IVAR_W4                      float32     nanomaggies^-2        Inverse Variance of FLUX_W4 (AB)
+PSFDEPTH_G                        float32     nanomaggy^-2          PSF-based depth in `LS`_ g
+PSFDEPTH_R                        float32     nanomaggy^-2          PSF-based depth in `LS`_ r
+PSFDEPTH_Z                        float32     nanomaggy^-2          PSF-based depth in `LS`_ z
+GALDEPTH_G                        float32     nanomaggy^-2          Galaxy model-based depth in `LS`_ g
+GALDEPTH_R                        float32     nanomaggy^-2          Galaxy model-based depth in `LS`_ r
+GALDEPTH_Z                        float32     nanomaggy^-2          Galaxy model-based depth in `LS`_ z
+FLUX_W1                           float32     nanomaggy             WISE flux in W1 (AB system)
+FLUX_W2                           float32     nanomaggy             WISE flux in W2 (AB)
+FLUX_W3                           float32     nanomaggy             WISE flux in W3 (AB)
+FLUX_W4                           float32     nanomaggy             WISE flux in W4 (AB)
+FLUX_IVAR_W1                      float32     nanomaggy^-2          Inverse Variance of FLUX_W1 (AB system)
+FLUX_IVAR_W2                      float32     nanomaggy^-2          Inverse Variance of FLUX_W2 (AB)
+FLUX_IVAR_W3                      float32     nanomaggy^-2          Inverse Variance of FLUX_W3 (AB)
+FLUX_IVAR_W4                      float32     nanomaggy^-2          Inverse Variance of FLUX_W4 (AB)
 MW_TRANSMISSION_W1                float32                           Milky Way dust transmission in WISE W1
 MW_TRANSMISSION_W2                float32                           Milky Way dust transmission in WISE W2
 MW_TRANSMISSION_W3                float32                           Milky Way dust transmission in WISE W3
@@ -147,20 +147,20 @@ MW_TRANSMISSION_W4                float32                           Milky Way du
 ALLMASK_G                         int16                             Bitwise mask for central pixel in `LS`_ g
 ALLMASK_R                         int16                             Bitwise mask for central pixel in `LS`_ r
 ALLMASK_Z                         int16                             Bitwise mask for central pixel in `LS`_ z
-FIBERFLUX_G                       float32     nanomaggies           g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_R                       float32     nanomaggies           r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERFLUX_Z                       float32     nanomaggies           z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
-FIBERTOTFLUX_G                    float32     nanomaggies           like FIBERFLUX_G but including all objects overlapping this location
-FIBERTOTFLUX_R                    float32     nanomaggies           like FIBERFLUX_R but including all objects overlapping this location
-FIBERTOTFLUX_Z                    float32     nanomaggies           like FIBERFLUX_Z but including all objects overlapping this location
+FIBERFLUX_G                       float32     nanomaggy             g-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_R                       float32     nanomaggy             r-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERFLUX_Z                       float32     nanomaggy             z-band object model flux for 1 arcsec seeing and 1.5 arcsec diameter fiber
+FIBERTOTFLUX_G                    float32     nanomaggy             like FIBERFLUX_G but including all objects overlapping this location
+FIBERTOTFLUX_R                    float32     nanomaggy             like FIBERFLUX_R but including all objects overlapping this location
+FIBERTOTFLUX_Z                    float32     nanomaggy             like FIBERFLUX_Z but including all objects overlapping this location
 REF_EPOCH                         float32     yr                    reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia.
 WISEMASK_W1                       byte                              W1 bitmask as cataloged on the `LS DR9 bitmasks page`_
 WISEMASK_W2                       byte                              W2 bitmask as cataloged on the `LS DR9 bitmasks page`_
 MASKBITS                          int16                             bitmask for ``coadd/*/*/*maskbits*`` maps, as on the `LS DR9 bitmasks page`_
-LC_FLUX_W1                        float32[15] nanomaggies           FLUX_W1 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
-LC_FLUX_W2                        float32[15] nanomaggies           FLUX_W2 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
-LC_FLUX_IVAR_W1                   float32[15] nanomaggies^-2        Inverse variance of LC_FLUX_W1 (AB system; defaults to zero for unused entries)
-LC_FLUX_IVAR_W2                   float32[15] nanomaggies^-2        Inverse variance of LC_FLUX_W2 (AB system; defaults to zero for unused entries)
+LC_FLUX_W1                        float32[15] nanomaggy             FLUX_W1 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
+LC_FLUX_W2                        float32[15] nanomaggy             FLUX_W2 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
+LC_FLUX_IVAR_W1                   float32[15] nanomaggy^-2          Inverse variance of LC_FLUX_W1 (AB system; defaults to zero for unused entries)
+LC_FLUX_IVAR_W2                   float32[15] nanomaggy^-2          Inverse variance of LC_FLUX_W2 (AB system; defaults to zero for unused entries)
 LC_NOBS_W1                        int16[15]                         NOBS_W1 in each of up to fifteen unWISE coadd epochs
 LC_NOBS_W2                        int16[15]                         NOBS_W2 in each of up to fifteen unWISE coadd epochs
 LC_MJD_W1                         float64[15]                       MJD_W1 in each of up to fifteen unWISE coadd epochs (defaults to zero for unused entries)
@@ -257,7 +257,7 @@ Notes
 Some units in this file do not conform to the FITS standard:
 
 * deg^-2 is incorrectly recorded as 1/deg^2
-* nanomaggies^-2 is incorrectly recorded as 1/nanomaggy^2
+* nanomaggy^-2 is incorrectly recorded as 1/nanomaggy^2
 * arcsec^-2 is incorrectly recorded as 1/arcsec^2
 * mas^-2 is incorrectly recorded as 1/mas^2
 

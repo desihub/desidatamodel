@@ -85,12 +85,12 @@ RA_IVAR                           float32     deg**-2            Right ascension
 DEC_IVAR                          float32     deg**-2            Declination inverse variance
 MORPHTYPE                         char[4]                        `Morphological Model`_ type
 MASKBITS                          int16                          Bitmask for ``coadd/*/*/*maskbits*`` maps, as on the `LS DR9 bitmasks page`_
-FLUX_G                            float32     nanomaggies        `LS`_ flux from tractor input (g)
-FLUX_R                            float32     nanomaggies        `LS`_ flux from tractor input (r)
-FLUX_Z                            float32     nanomaggies        `LS`_ flux from tractor input (z)
-FLUX_IVAR_G                       float32     nanomaggies**-2    Inverse Variance of FLUX_G
-FLUX_IVAR_R                       float32     nanomaggies**-2    Inverse Variance of FLUX_R
-FLUX_IVAR_Z                       float32     nanomaggies**-2    Inverse Variance of FLUX_Z
+FLUX_G                            float32     nanomaggy          `LS`_ flux from tractor input (g)
+FLUX_R                            float32     nanomaggy          `LS`_ flux from tractor input (r)
+FLUX_Z                            float32     nanomaggy          `LS`_ flux from tractor input (z)
+FLUX_IVAR_G                       float32     nanomaggy**-2      Inverse Variance of FLUX_G
+FLUX_IVAR_R                       float32     nanomaggy**-2      Inverse Variance of FLUX_R
+FLUX_IVAR_Z                       float32     nanomaggy**-2      Inverse Variance of FLUX_Z
 REF_ID                            int64                          Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
 REF_CAT                           char[2]                        Reference catalog source for star: "T2" for `Tycho-2`_, "G2" for `Gaia`_ DR2, "L2" for the `SGA`_, empty otherwise
 REF_EPOCH                         float32     yr                 Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia.
@@ -129,7 +129,7 @@ Notes
 Some units in this file do not conform to the FITS standard:
 
 * deg^-2 is incorrectly recorded as 1/deg^2
-* nanomaggies^-2 is incorrectly recorded as 1/nanomaggy^2
+* nanomaggy^-2 is incorrectly recorded as 1/nanomaggy^2
 * mas^-2 is incorrectly recorded as 1/mas^2
 
 Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:

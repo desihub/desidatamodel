@@ -1,11 +1,11 @@
-===
-ToO
-===
+=========
+ToO-fiber
+=========
 
-:Summary: Targets of Opportunity ledger (used to assign ToOs on special tiles).
-:Naming Convention: ``ToO.ecsv``
-:Regex: ``ToO\.ecsv``
-:File Type: ecsv, about 100 MB
+:Summary: Targets of Opportunity ledger (used to override fibers on regular, main survey tiles).
+:Naming Convention: ``ToO-fiber.ecsv``
+:Regex: ``ToO-fiber\.ecsv``
+:File Type: ecsv, about 100 KB
 
 Contents
 ========

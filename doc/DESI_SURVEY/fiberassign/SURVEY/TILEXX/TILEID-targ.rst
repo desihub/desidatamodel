@@ -137,4 +137,15 @@ PLATE_REF_EPOCH       float32                label for field  63
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Some units in this file do not conform to the FITS standard:
+
+* nanomaggy^-2 is incorrectly recorded as 1/nanomaggy^2
+
+Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:
+
+.. code-block:: python
+
+    import astropy.units as u
+    from astropy.table import Table
+    objs = Table.read(filename, 1)
+    u.Unit(str(objs["FLUX_IVAR_Z"].unit))

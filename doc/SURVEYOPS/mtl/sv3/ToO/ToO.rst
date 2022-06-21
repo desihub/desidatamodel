@@ -38,9 +38,9 @@ DEC                           float64  deg         Declination
 PMRA                          float64  mas/yr      Proper motion in the RA direction
 PMDEC                         float64  mas/yr      Proper motion in the Dec direction
 REF_EPOCH                     float64  yr          Reference epoch for Gaia/Tycho astrometry
-FLUX_G                        float32  nanomaggies Flux in the Legacy Survey g-band (placeholder; needed by fiberassign)
-FLUX_R                        float32  nanomaggies Flux	in the Legacy Survey r-band (placeholder; needed by fiberassign)
-FLUX_Z                        float32  nanomaggies Flux	in the Legacy Survey z-band (placeholder; needed by fiberassign)
+FLUX_G                        float32  nanomaggy   Flux in the Legacy Survey g-band (placeholder; needed by fiberassign)
+FLUX_R                        float32  nanomaggy   Flux in the Legacy Survey r-band (placeholder; needed by fiberassign)
+FLUX_Z                        float32  nanomaggy   Flux in the Legacy Survey z-band (placeholder; needed by fiberassign)
 PARALLAX                      float32  mas         Parallax (placeholder; needed by fiberassign)
 GAIA_PHOT_G_MEAN_MAG          float32  mag         Magnitude in the Gaia G-band (placeholder; needed by fiberassign)
 GAIA_PHOT_BP_MEAN_MAG         float32  mag         Magnitude in	the Gaia BP-band (placeholder; needed by fiberassign)
@@ -62,3 +62,9 @@ MJD_BEGIN                     float64  d           Start of the allowed observin
 MJD_END                       float64  d           End of the allowed observing window for this target (Modified Julian Date)
 TOOID                         int64                ID for this target assigned by the CHECKER
 ============================= ======== =========== =================================================
+
+Notes
+=====
+
+The unit ``nanomaggy`` in this file is actually recorded as ``nmgy``. This unit
+will be read correctly into an astropy table from a .ecsv file.
