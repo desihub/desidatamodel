@@ -106,4 +106,15 @@ PLATE_REF_EPOCH               float64            label for field  32
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Some units in this file do not conform to the FITS standard:
+
+* d is incorrectly recorded as day
+
+Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:
+
+.. code-block:: python
+
+    import astropy.units as u
+    from astropy.table import Table
+    objs = Table.read(filename, 1)
+    u.Unit(str(objs["MJD_END"].unit))

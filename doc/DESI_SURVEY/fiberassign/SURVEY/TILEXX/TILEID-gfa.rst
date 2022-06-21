@@ -110,4 +110,17 @@ HPXPIXEL                          int64                 label for field  36
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Some units in this file do not conform to the FITS standard:
+
+* deg^-2 is incorrectly recorded as 1/deg^2
+* nanomaggy^-2 is incorrectly recorded as 1/nanomaggy^2
+* mas^-2 is incorrectly recorded as 1/mas^2
+
+Such issues can typically be fixed by parsing the unit through astropy after reading in a Table, e.g.:
+
+.. code-block:: python
+
+    import astropy.units as u
+    from astropy.table import Table
+    objs = Table.read(filename, 1)
+    u.Unit(str(objs["RA_IVAR"].unit))
