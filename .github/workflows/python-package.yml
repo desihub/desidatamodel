@@ -34,6 +34,7 @@ jobs:
               run: |
                 python -m pip install --upgrade pip wheel
                 python -m pip install pytest
+                python -m pip install numpy\<1.23
                 python -m pip install "git+https://github.com/desihub/desiutil.git@${{ matrix.desiutil-version }}#egg=desiutil"
                 python -m pip install "astropy${{ matrix.astropy-version }}"
             - name: Run the test
@@ -63,6 +64,7 @@ jobs:
                 python -m pip install --upgrade pip wheel
                 python -m pip install pytest pytest-cov coveralls
                 python -m pip install -r requirements.txt
+                python -m pip install --upgrade numpy\<1.23
             - name: Run the test with coverage
               run: |
                 pytest --cov
