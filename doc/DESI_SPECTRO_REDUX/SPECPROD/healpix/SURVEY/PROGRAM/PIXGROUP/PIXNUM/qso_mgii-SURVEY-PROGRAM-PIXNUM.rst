@@ -2,9 +2,8 @@
 qso_mgii-SURVEY-PROGRAM-PIXNUM.fits
 ===================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the output of the MgII fitter which is a classifier algortihm
+          to collect spectra with MgII broad emission line.
 :Naming Convention: ``qso_mgii-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
     and ``PIXNUM`` is the HEALPixel number.
@@ -18,7 +17,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Empty.
-HDU1_  MGII    BINTABLE *Brief Description*
+HDU1_  MGII    BINTABLE Output of MgII fitter.
 ====== ======= ======== ===================
 
 
@@ -37,7 +36,7 @@ HDU1
 
 EXTNAME = MGII
 
-*Summarize the contents of this HDU.*
+Output of MgII fitter.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,4 +90,5 @@ VAR_B                float32        error on B
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+*These files are generated with https://github.com/desihub/desispec/blob/master/bin/desi_qso_mgii_afterburner
+*As mentionned on the top of the previous file, the mgII fitter is available here: https://github.com/desihub/desispec/blob/master/py/desispec/mgii_afterburner.py
