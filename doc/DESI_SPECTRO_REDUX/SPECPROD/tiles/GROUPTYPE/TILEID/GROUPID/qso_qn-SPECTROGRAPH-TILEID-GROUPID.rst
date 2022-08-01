@@ -2,9 +2,9 @@
 qso_qn-SPECTROGRAPH-TILEID-GROUPID.fits
 =======================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the output of QuasarNet (QSO classification algorithm and redshift fitter).
+    When there is a disagreement between the redshift from QN and Redrock, a new redshift is fitted
+    using only QSO templates and redshift from QN as prior.
 :Naming Convention: ``qso_qn-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
@@ -18,7 +18,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Empty.
-HDU1_  QN_RR   BINTABLE *Brief Description*
+HDU1_  QN_RR   BINTABLE Output of QuasarNet afterburner.
 ====== ======= ======== ===================
 
 
@@ -37,7 +37,7 @@ HDU1
 
 EXTNAME = QN_RR
 
-*Summarize the contents of this HDU.*
+Contains the result of QuasarNet afterburner and the new redshift fit from run of Redrock with QSO templates and redshift prior from QuasarNet.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,4 +97,4 @@ Z_Halpha             float32           Redshift estimated by quasarnp with Halph
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+These files are generated with https://github.com/desihub/desispec/blob/master/bin/desi_qso_qn_afterburner
