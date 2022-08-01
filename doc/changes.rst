@@ -5,6 +5,7 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
+* Update documentation for QSO afterburner files (PR `#134`_).
 * Resolve maggy/maggies discrepancies in DESI_TARGET/DESI_SURVEY (PR `#133`_).
 * Update documentation of QA files (PR `#132`_).
 * Document top level exposure and tile summary files (PR `#131`_).
@@ -24,6 +25,7 @@ desidatamodel Change Log
 .. _`#131`: https://github.com/desihub/desidatamodel/pull/131
 .. _`#132`: https://github.com/desihub/desidatamodel/pull/132
 .. _`#133`: https://github.com/desihub/desidatamodel/pull/133
+.. _`#134`: https://github.com/desihub/desidatamodel/pull/134
 
 22.2 (2022-05-31)
 -----------------
