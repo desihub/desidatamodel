@@ -1,6 +1,6 @@
-==========
+========================================
 Clustering LSS catalogs for data
-==========
+========================================
 
 :Summary: For each target type, LSS catalogs for the data, ready to be used for clustering measurements, are provided.
 :Naming Convention: ``{TARGET}_{PHOTSYS}_clustering.dat.fits``, where ``{TARGET}`` is the target type and ``{PHOTSYS}`` is the photometric region.
