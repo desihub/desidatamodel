@@ -8,7 +8,7 @@ the early data assembly. Intermediate files are saved, until we build the cluste
 intention of changing `eda_prep` to `edav1` once finalized. Here, ``_RELEASE_`` defines the data release, 
 like ``sv3`` or ``da02``. Only `sv3` will be released publicly with the EDR. When ready, the `edav1\sv3` 
 directory will be copied to `/global/cfs/cdirs/desi/public/edr/vac/sv3v1`. We will negotiate sym-links as 
-necessary. This catalogs are generated using tools from github_lss_repository_
+necessary. The catalogs are generated using tools from github_lss_repository_
 
 .. _github_lss_repository: https://github.com/desihub/LSS
 
