@@ -1,15 +1,10 @@
-=========================
-BGS_BRIGHT_N_0_clustering
-=========================
+==================================================
+Clustering LSS catalogs for randoms
+==================================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``BGS_BRIGHT_N_0_clustering.ran.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``BGS_BRIGHT_N_0_clustering.ran.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
+:Summary: For each target type, LSS catalogs for the randoms, ready to be used for clustering measurements, are provided.
+:Naming Convention: ``{TARGET}_{PHOTSYS}_{RANN}_clustering.ran.fits``, where ``{TARGET}`` is the target type, ``{PHOTSYS}`` is the photometric region, and {RANN} is the number for the random file (18 total, numbered 0 through 17). Each are random with respect to eachother.
+:Regex: For example, ``BGS_BRIGHT_N_0_clustering.ran.fits`` is the randoms for BGS_BRIGHT in the Northern portion of the imaging (BASS/MzLS) for random file 0.
 :File Type: FITS, 193 MB  *This section gives the type of the file
     and its approximate size.*
 
