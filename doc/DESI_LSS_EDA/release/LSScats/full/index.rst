@@ -7,7 +7,7 @@ full
 .. toctree::
    :maxdepth: 1
 
-   TARGET_PHOTSYS_RANNUM_fullVETO.ran.fits : <full_noveto_ran>
-   TARGET_PHOTSYS_fullVETO.dat.fits : <full_noveto_dat>
+   TARGET_RANNUM_fullVETO.ran.fits : <full_noveto_ran>
+   TARGET_fullVETO.dat.fits : <full_noveto_dat>
    
   
