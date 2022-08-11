@@ -2,9 +2,8 @@
 qso_mgii-SPECTROGRAPH-TILEID-GROUPID.fits
 =========================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the output of the MgII fitter which is a classifier algorithm
+    to collect spectra with MgII broad emission line.
 :Naming Convention: ``qso_mgii-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
@@ -17,8 +16,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  MGII    BINTABLE *Brief Description*
+HDU0_          IMAGE    Empty.
+HDU1_  MGII    BINTABLE Output of MgII fitter.
 ====== ======= ======== ===================
 
 
@@ -27,8 +26,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -39,7 +36,7 @@ HDU1
 
 EXTNAME = MGII
 
-*Summarize the contents of this HDU.*
+Output of MgII fitter.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,32 +55,40 @@ Required Header Keywords
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. rst-class::columns
+.. rst-class:: columns
 
 ==================== ======== ===== ===================
 Name                 Type     Units Description
 ==================== ======== ===== ===================
-TARGETID             int64          label for field   1
-RA                   float64        label for field   2
-DEC                  float64        label for field   3
-Z_RR                 float64        label for field   4
-ZERR                 float32        label for field   5
-IS_QSO_MGII          logical        label for field   6
-SV1_DESI_TARGET [1]_ int64
-DESI_TARGET [1]_     int64          label for field   7
-SPECTYPE             char[10]       label for field   8
-DELTA_CHI2           float32        label for field   9
-A                    float32        label for field  10
-SIGMA                float32        label for field  11
-B                    float32        label for field  12
-VAR_A                float32        label for field  13
-VAR_SIGMA            float32        label for field  14
-VAR_B                float32        label for field  15
+TARGETID             int64          Unique target ID
+RA                   float64        Target Right Ascension [degrees]
+DEC                  float64        Target declination [degrees]
+Z_RR                 float64        Redshift collected from redrock file
+ZERR                 float32        Redshift error from redrock file
+IS_QSO_MGII          logical        Is the object pass the MgII selection?
+SV1_DESI_TARGET [1]_ int64          Dark survey + calibration targeting bits for SV1
+DESI_TARGET [1]_     int64          Dark survey + calibration targeting bits
+SPECTYPE             char[10]       Spectype from redrock file
+DELTA_CHI2           float32        Difference of chi2 between redrock fit and MgII fitter over the lambda interval considered during the fit [2]_
+A                    float32        fitted parameter by MgII fitter [2]_ [3]_
+SIGMA                float32        fitted parameter by MgII fitter [2]_ [3]_
+B                    float32        fitted parameter by MgII fitter [3]_
+VAR_A                float32        error on A [2]_
+VAR_SIGMA            float32        error on SIGMA
+VAR_B                float32        error on B
 ==================== ======== ===== ===================
 
 .. [1] Optional
 
+.. [2] MgII selection is performed with these parameters.
+       See: https://github.com/desihub/desispec/blob/720153babcf85dd93530252b0c1f631d48edfc0d/py/desispec/mgii_afterburner.py#L5
+
+.. [3] MgII fitter use the following form: ``fit_function = lambda x, A, sigma, B : A * np.exp(-1.0 * (x)**2 / (2 * sigma**2)) + B``
+       See: https://github.com/desihub/desispec/blob/720153babcf85dd93530252b0c1f631d48edfc0d/py/desispec/mgii_afterburner.py#L283
+
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+These files are generated with https://github.com/desihub/desispec/blob/master/bin/desi_qso_mgii_afterburner
+
+As mentionned on the top of the previous file, the MgII fitter is available here: https://github.com/desihub/desispec/blob/master/py/desispec/mgii_afterburner.py

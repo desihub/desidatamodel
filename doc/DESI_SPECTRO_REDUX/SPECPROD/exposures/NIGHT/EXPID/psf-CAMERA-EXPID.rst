@@ -9,9 +9,9 @@ psf-CAMERA-EXPID.fits
 :Regex: ``psf-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 998 KB
 
-See :doc:`psfnight <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>`.
+See the :doc:`psfnight-CAMERA-NIGHT documentation <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>` for a description of the PSF file content.
 
-Arc exposures have 4 different PSF files per camera:
+Four different PSF files are written per camera for each arc lamp exposure:
 
 1. :doc:`shifted-input-psf-CAMERA-EXPID.fits <shifted-input-psf-CAMERA-EXPID>`:
    Input PSF with spectral trace coordinates and wavelength calibration

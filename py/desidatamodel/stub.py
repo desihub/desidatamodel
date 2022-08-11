@@ -83,8 +83,10 @@ class Stub(DataModelUnit):
     keywords_header = ('KEY', 'Example Value', 'Type', 'Comment')
     columns_header = ('Name', 'Type', 'Units', 'Description')
 
-    def __init__(self, filename, error=False):
+    def __init__(self, filename, description_file=None, error=False):    #AURE
+    #def __init__(self, filename, error=False):
         self.filename = None
+        self.description_file = description_file  #AURE
         self.error = error
         self.headers = list()
         if isinstance(filename, (list, fits.HDUList)):
@@ -101,6 +103,7 @@ class Stub(DataModelUnit):
         self._basef = None
         self._modelname = None
         self._filesize = None
+        self._filetype = None
         self._hdumeta = None
         self._hduname = None
         self._contents = None
@@ -124,6 +127,14 @@ class Stub(DataModelUnit):
             except ValueError:
                 self._modelname = self.basef[0:self.basef.index('.')]
         return self._modelname
+
+    @property
+    def filetype(self):
+        """Type of file. Assumes FITS (for now) unless overridden in a subclass.
+        """
+        if self._filetype is None:
+            self._filetype = 'FITS'
+        return self._filetype
 
     @property
     def filesize(self):
@@ -247,6 +258,10 @@ class Stub(DataModelUnit):
         ncol = hdr['TFIELDS']
         c = list()
         c.append(self.columns_header)
+        if self.description_file is not None:
+            print('You add a file with column descriptions, trying to read column description from here', self.description_file)
+            desc_data = fits.open(self.description_file)[1].data
+
         for j in range(ncol):
             jj = '{0:d}'.format(j+1)
             name = hdr['TTYPE'+jj].strip()
@@ -260,13 +275,16 @@ class Stub(DataModelUnit):
                               bad_unit, j, hdu, self.filename)
             else:
                 units = ''
-            # Check TCOMMnn keyword, otherwise use TTYPE comment
-            # for description.
-            commkey = 'TCOMM'+jj
-            if commkey in hdr:
-                description = escape(hdr[commkey].strip())
+            if self.description_file is not None:
+                description = escape(desc_data[(desc_data['name'] == name)]['desc'][0])
             else:
-                description = escape(hdr.comments['TTYPE'+jj])
+                # Check TCOMMnn keyword, otherwise use TTYPE comment
+                # for description.
+                commkey = 'TCOMM'+jj
+                if commkey in hdr:
+                    description = escape(hdr[commkey].strip())
+                else:
+                    description = escape(hdr.comments['TTYPE'+jj])
             c.append((name, ttype, units, description))
         return c
 
@@ -333,6 +351,9 @@ class Stub(DataModelUnit):
 
     def format_table(self, table, indent=False):
         """Convert tabular data into reStructuredText-compatible string.
+
+        This function assumes that `table` already has a header as the
+        first row.
 
         Parameters
         ----------
@@ -421,7 +442,7 @@ class Stub(DataModelUnit):
         kw['title'] = self.modelname
         kw['titlehighlight'] = '='*len(kw['title'])
         kw['filename'] = self.basef
-        kw['filetype'] = 'FITS'
+        kw['filetype'] = self.filetype
         kw['filesize'] = self.filesize
         kw['contents_table'] = ("\n".join(self.format_table(self.contents)) +
                                 "\n")
@@ -669,11 +690,13 @@ def main():
                         help='Set log level to DEBUG.')
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
+    parser.add_argument("--desc", help="A file with columns description. So far only fits files available. Must have at least columns name and desc", default=None)
+
     options = parser.parse_args()
     if options.verbose:
         log.setLevel(DEBUG)
     for f in options.filename:
-        stub = Stub(f)
+        stub = Stub(f,description_file=options.desc)
         data = str(stub)
         #
         # Write the file

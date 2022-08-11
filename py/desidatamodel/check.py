@@ -29,7 +29,8 @@ class DataModel(DataModelUnit):
     section : :class:`str`
         The full path to the section of the data model containing the file.
     """
-
+    # Marker for optional keywords and columns.
+    _o = '[1]_'
     # A mapping of human-readable metavariables to regular expressions.
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
@@ -49,6 +50,8 @@ class DataModel(DataModelUnit):
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
             'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
             }
+    # Matches titles.
+    _titleline = re.compile(r'=+\n([^=]+)\n=+\n', re.M)
     # Matches HDU section headers.
     _hduline = re.compile(r'HDU(\d+)$')
     # Match HDU range specifications.
@@ -69,9 +72,11 @@ class DataModel(DataModelUnit):
         log.debug('Creating DataModel for %s.', shortname)
         self.filename = filename
         self.section = section
+        self.title = None
         self.ref = None
         self.regexp = None
         self.filetype = None
+        self.filesize = None
         self.hdumeta = None
         self.prototype = None
         self._metafile_data = None
@@ -119,7 +124,7 @@ class DataModel(DataModelUnit):
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
                 if self._filetypeline.match(line) is not None:
-                    self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
+                    self.filetype, self.filesize = self._type_size(line)
         if self.regexp is None and self.ref is not None:
             with open(self.ref) as dm:
                 for line in dm.readlines():
@@ -137,7 +142,7 @@ class DataModel(DataModelUnit):
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
                     if self._filetypeline.match(line) is not None:
-                        self.filetype = line.lower().replace(':', '').replace('file type', '').strip().split(',')[0]
+                        self.filetype, self.filesize = self._type_size(line)
         if self.regexp is None:
             m = "%s has no file regexp!"
             if error:
@@ -157,13 +162,36 @@ class DataModel(DataModelUnit):
                 log.warning("Unusual file type, %s, detected for %s!", self.filetype, self.filename)
         return self.regexp
 
+    def _type_size(self, line):
+        """Obtain file type and size from a matching `line`.
+
+        Parameters
+        ----------
+        line : :class:`str`
+            Line from file that contains the type and size.
+
+        Returns
+        -------
+        :class:`tuple`
+            A tuple containing the type and size.
+        """
+        ts = line.lower().replace(':', '').replace('file type', '').strip().split(',')
+        t = ts[0]
+        try:
+            i = ts[1].upper().index('B')
+        except (ValueError, IndexError):
+            s = 'Unknown'
+        else:
+            s = ts[1].upper()[:(i+1)].strip()
+        return (t, s)
+
     def _cross_reference(self, line):
         """Obtain the path to a file referred to in another file.
 
         Parameters
         ----------
         line : :class:`str`
-            Line from `filename` that *is* the cross-reference.
+            Line from original file that *is* the cross-reference.
 
         Returns
         -------
@@ -240,6 +268,10 @@ class DataModel(DataModelUnit):
         if self._metafile_data is None:
             with open(metafile) as f:
                 self._metafile_data = f.read()
+        if self.title is None:
+            m = self._titleline.match(self._metafile_data)
+            if m is not None:
+                self.title = m.groups()[0]
         lines = self._metafile_data.split('\n')
         hdu_sections = [i for i, l in enumerate(lines)
                         if (self._hduline.match(l) is not None or
@@ -469,11 +501,11 @@ class DataModel(DataModelUnit):
             #
             if not skip_keywords:
                 data_keywords = set([tmp[0] for tmp in stub_meta[i]['keywords']])
-                model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' not in tmp[0]])
-                optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if '[1]_' in tmp[0]])
+                model_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if self._o not in tmp[0]])
+                optional_keywords = set([tmp[0].split()[0] for tmp in modelhdumeta['keywords'] if self._o in tmp[0]])
                 if len(data_keywords - (model_keywords | optional_keywords)) > 0:
                     log.warning('Prototype file %s has these keywords in HDU%d missing from model: %s',
-                                self.prototype, i, str(data_keywords - model_keywords))
+                                self.prototype, i, str(data_keywords - (model_keywords | optional_keywords)))
                 if len(model_keywords - data_keywords) > 0:
                     log.warning('Model file %s has these keywords in HDU%d missing from data: %s',
                                 self.filename, i, str(model_keywords - data_keywords))
@@ -523,8 +555,8 @@ class DataModel(DataModelUnit):
             else:
                 dexf = dexf[1:]  # Get rid of header line.
                 data_columns = set([tmp[0] for tmp in dexf])
-                model_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' not in tmp[0]])
-                optional_columns = set([tmp[0].split()[0] for tmp in mexf if '[1]_' in tmp[0]])
+                model_columns = set([tmp[0].split()[0] for tmp in mexf if self._o not in tmp[0]])
+                optional_columns = set([tmp[0].split()[0] for tmp in mexf if self._o in tmp[0]])
                 #
                 # Do we really care if the number of columns is off?
                 # We want all of the required columns to be there, but some or all

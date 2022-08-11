@@ -5,7 +5,27 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
-* No changes yet.
+* Update documentation for QSO afterburner files (PR `#134`_).
+* Resolve maggy/maggies discrepancies in DESI_TARGET/DESI_SURVEY (PR `#133`_).
+* Update documentation of QA files (PR `#132`_).
+* Document top level exposure and tile summary files (PR `#131`_).
+* Populate the data model for the zmtl files (PR `#130`_).
+* Improve documenetation of ``emline`` files (PR `#128`_).
+* Add documentation of various calibration files (PR `#127`_).
+* Further cleanup of ``fuji`` and ``guadalupe`` header keywords and columns (PR `#126`_).
+* Update data model for target files to reflect ets/dr9 release (PR `#105`_).
+* Update data model for fiberassign files in the tiles product (PR `#103`_).
+
+.. _`#103`: https://github.com/desihub/desidatamodel/pull/103
+.. _`#105`: https://github.com/desihub/desidatamodel/pull/105
+.. _`#126`: https://github.com/desihub/desidatamodel/pull/126
+.. _`#127`: https://github.com/desihub/desidatamodel/pull/127
+.. _`#128`: https://github.com/desihub/desidatamodel/pull/128
+.. _`#130`: https://github.com/desihub/desidatamodel/pull/130
+.. _`#131`: https://github.com/desihub/desidatamodel/pull/131
+.. _`#132`: https://github.com/desihub/desidatamodel/pull/132
+.. _`#133`: https://github.com/desihub/desidatamodel/pull/133
+.. _`#134`: https://github.com/desihub/desidatamodel/pull/134
 
 22.2 (2022-05-31)
 -----------------
