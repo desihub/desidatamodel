@@ -1,15 +1,10 @@
-===========================
-ELG_LOPnotqso_7_full_noveto
-===========================
+================================
+'full' LSS catalogs for randoms
+================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``ELG_LOPnotqso_7_full_noveto.ran.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``ELG_LOPnotqso_7_full_noveto.ran.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
+:Summary: LSS catalogs containing information on all of the random targets identified as reachable by DESI fiberassign, for one of the input randoms. The files are split by target type, random file number, and whether of not vetos for angular positions have been applied.
+:Naming Convention: ``{TARGET}_{RANN}_full{VETO}.ran.fits``, where ``{TARGET}`` is the target type, {RANN} is the number between 0 and 17 designating the given random file, and ``{VETO}`` is _noveto if vetos have not been applied and blank otherwise.
+:Regex: For example, ``ELG_LOPnotqso_7_full_noveto.ran.fits`` is the file for ELG_LOP targets that are not QSO targets, using the 7th random file, before and vetos.
 :File Type: FITS, 1 GB  *This section gives the type of the file
     and its approximate size.*
 
