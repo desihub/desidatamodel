@@ -57,45 +57,45 @@ Required Data Table Columns
 ========================== ======= ===== =================
 Name                       Type    Units Description
 ========================== ======= ===== =================
-LOCATION                   int64         Fiber location
-FIBER                      int32         Fiber ID
-TARGETID                   int64         Random target ID
-RA                         float64 deg   Right Ascension
-DEC                        float64 deg   Declination
-TILEID                     int64         Tile ID
-ZWARN                      int64         z warnings
-COADD_FIBERSTATUS          int32         FA status
-FIBERASSIGN_X              float32       FA position, x
-FIBERASSIGN_Y              float32       FA position, y
-COADD_NUMEXP               int16         Target num exp
-COADD_EXPTIME              float32       Exposure time
-COADD_NUMNIGHT             int16         numnight ID
-MEAN_DELTA_X               float32       Delta x target
-RMS_DELTA_X                float32       RMS Delta x
-MEAN_DELTA_Y               float32       Delta y target
-RMS_DELTA_Y                float32       RMS Delta y
-MEAN_PSF_TO_FIBER_SPECFLUX float32       Target info
-TSNR2_ELG_B                float32       Target info
-TSNR2_LYA_B                float32       Target info
-TSNR2_BGS_B                float32       Target info
-TSNR2_QSO_B                float32       Target info
-TSNR2_LRG_B                float32       Target info
-TSNR2_ELG_R                float32       Target info
-TSNR2_LYA_R                float32       Target info
-TSNR2_BGS_R                float32       Target info
-TSNR2_QSO_R                float32       Target info
-TSNR2_LRG_R                float32       Target info
-TSNR2_ELG_Z                float32       Target info
-TSNR2_LYA_Z                float32       Target info
-TSNR2_BGS_Z                float32       Target info
-TSNR2_QSO_Z                float32       Target info
-TSNR2_LRG_Z                float32       Target info
-TSNR2_ELG                  float32       Target info
-TSNR2_LYA                  float32       Target info
-TSNR2_BGS                  float32       Target info
-TSNR2_QSO                  float32       Target info
-TSNR2_LRG                  float32       Target info
-TILELOCID                  int64         Tile loc ID
+LOCATION                   int64         From fiberassign fba FAVAIL HDU (link)
+FIBER                      int32         ""
+TARGETID                   int64         From target random (link)
+RA                         float64 deg   ""
+DEC                        float64 deg   ""
+TILEID                     int64         From fiberassign file name
+ZWARN                      int64         From redrock catalog, matched to TILEID,LOCATION (link)
+COADD_FIBERSTATUS          int32         ""
+FIBERASSIGN_X              float32       ""
+FIBERASSIGN_Y              float32       ""
+COADD_NUMEXP               int16         ""
+COADD_EXPTIME              float32       ""
+COADD_NUMNIGHT             int16         ""
+MEAN_DELTA_X               float32       ""
+RMS_DELTA_X                float32       ""
+MEAN_DELTA_Y               float32       ""
+RMS_DELTA_Y                float32       ""
+MEAN_PSF_TO_FIBER_SPECFLUX float32       ""
+TSNR2_ELG_B                float32       ""
+TSNR2_LYA_B                float32       ""
+TSNR2_BGS_B                float32       ""
+TSNR2_QSO_B                float32       ""
+TSNR2_LRG_B                float32       ""
+TSNR2_ELG_R                float32       ""
+TSNR2_LYA_R                float32       ""
+TSNR2_BGS_R                float32       ""
+TSNR2_QSO_R                float32       ""
+TSNR2_LRG_R                float32       ""
+TSNR2_ELG_Z                float32       ""
+TSNR2_LYA_Z                float32       ""
+TSNR2_BGS_Z                float32       ""
+TSNR2_QSO_Z                float32       ""
+TSNR2_LRG_Z                float32       ""
+TSNR2_ELG                  float32       ""
+TSNR2_LYA                  float32       ""
+TSNR2_BGS                  float32       ""
+TSNR2_QSO                  float32       ""
+TSNR2_LRG                  float32       ""
+TILELOCID                  int64         10000*TILEID+LOCATION
 ========================== ======= ===== =================
 
 

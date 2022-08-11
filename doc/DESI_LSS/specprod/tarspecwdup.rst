@@ -3,7 +3,7 @@ tarspecwdup
 ==============================
 
 :Summary: Match of targets (with duplicates after FA) with spectroscopic data from the
-         specprod (either daily or everest...)
+         specprod (fuji/guadalupe for SV3/DA02)
 :Naming Convention: ``datcomb_{program}_tarspecwdup_{tag}.fits``, where ``{program}``
                     is dark or bright, ``{tag}`` is a string identifier
 :Regex: ``datcomb_[a-z]_tarspecwdup_[a-z]\.fits``
@@ -54,66 +54,66 @@ Required Data Table Columns
 ========================== =========== ===== ==================
 Name                       Type        Units Description
 ========================== =========== ===== ==================
-RA                         float64     deg   Right Ascension
-DEC                        float64     deg   Declination
-TARGETID                   int64             Unique ID
-DESI_TARGET                int64             If in DESI
-BGS_TARGET                 int64             If in BGS
-MWS_TARGET                 int64             If in MWS
-SUBPRIORITY                float64           Subpriority
-PRIORITY_INIT              int64             Initial priority
-TARGET_STATE               char[30]          Target state
-TIMESTAMP                  char[25]          Time stamp
-PRIORITY                   int64             Priority
-FIBER                      int32             Fiber ID
-LOCATION                   int64             Location fiber
-TILEID                     int64             Tile ID
-TILELOCID                  int64             Tile loc ID
-CHI2                       float64           Chi2 SED
-COEFF                      float64[10]       Coefficient
-Z                          float64           Redshift
-ZERR                       float64           Uncertainty in Z
-ZWARN                      int64             Z warnings
-NPIXELS                    int64             N pixels
-SPECTYPE                   char[6]           Spec type
-SUBTYPE                    char[20]          Spec Sub-type
-NCOEFF                     int64             N coefficients
-DELTACHI2                  float64           Delta chi2
-COADD_FIBERSTATUS          int32             Fiber status
-FIBERASSIGN_X              float32           Fiber position, x
-FIBERASSIGN_Y              float32           Fiber position, y
-COADD_NUMEXP               int16             Number exposures
-COADD_EXPTIME              float32           Exposre time
-COADD_NUMNIGHT             int16             Numnight ID
-MEAN_DELTA_X               float32           Delta x target
-RMS_DELTA_X                float32           RMS Delta x
-MEAN_DELTA_Y               float32           Delta y target
-RMS_DELTA_Y                float32           RMS Delta y
-MEAN_PSF_TO_FIBER_SPECFLUX float32           Target info
-TSNR2_ELG_B                float32           Target info
-TSNR2_LYA_B                float32           Target info
-TSNR2_BGS_B                float32           Target info
-TSNR2_QSO_B                float32           Target info
-TSNR2_LRG_B                float32           Target info
-TSNR2_ELG_R                float32           Target info
-TSNR2_LYA_R                float32           Target info
-TSNR2_BGS_R                float32           Target info
-TSNR2_QSO_R                float32           Target info
-TSNR2_LRG_R                float32           Target info
-TSNR2_ELG_Z                float32           Target info
-TSNR2_LYA_Z                float32           Target info
-TSNR2_BGS_Z                float32           Target info
-TSNR2_QSO_Z                float32           Target info
-TSNR2_LRG_Z                float32           Target info
-TSNR2_ELG                  float32           Target info
-TSNR2_LYA                  float32           Target info
-TSNR2_BGS                  float32           Target info
-TSNR2_QSO                  float32           Target info
-TSNR2_LRG                  float32           Target info
-ZWARN_MTL                  int64             Z warnings in MTL
-Z_QN                       float64           Z if QUASAR
-Z_QN_CONF                  float64           Confidence of QSO
-IS_QSO_QN                  int16             If it is QSO
+RA                         float64     deg   Taken from target ledger at TIMESTAMP (link)
+DEC                        float64     deg   ""
+TARGETID                   int64             ""
+DESI_TARGET                int64             ""
+BGS_TARGET                 int64             ""
+MWS_TARGET                 int64             ""
+SUBPRIORITY                float64           ""
+PRIORITY_INIT              int64             ""
+TARGET_STATE               char[30]          ""
+TIMESTAMP                  char[25]          ""
+PRIORITY                   int64             ""
+FIBER                      int32             Taken from redrock catalog; see description there (link)
+LOCATION                   int64             ""
+TILEID                     int64             ""
+TILELOCID                  int64             10000*TILEID+LOCATION
+CHI2                       float64           Taken from redrock catalog; see description there (link)
+COEFF                      float64[10]       ""
+Z                          float64           ""
+ZERR                       float64           ""
+ZWARN                      int64             ""
+NPIXELS                    int64             ""
+SPECTYPE                   char[6]           ""
+SUBTYPE                    char[20]          ""
+NCOEFF                     int64             ""
+DELTACHI2                  float64           ""
+COADD_FIBERSTATUS          int32             ""
+FIBERASSIGN_X              float32           ""
+FIBERASSIGN_Y              float32           ""
+COADD_NUMEXP               int16             ""
+COADD_EXPTIME              float32           ""
+COADD_NUMNIGHT             int16             ""
+MEAN_DELTA_X               float32           ""
+RMS_DELTA_X                float32           ""
+MEAN_DELTA_Y               float32           ""
+RMS_DELTA_Y                float32           ""
+MEAN_PSF_TO_FIBER_SPECFLUX float32           ""
+TSNR2_ELG_B                float32           ""
+TSNR2_LYA_B                float32           ""
+TSNR2_BGS_B                float32           ""
+TSNR2_QSO_B                float32           ""
+TSNR2_LRG_B                float32           ""
+TSNR2_ELG_R                float32           ""
+TSNR2_LYA_R                float32           ""
+TSNR2_BGS_R                float32           ""
+TSNR2_QSO_R                float32           ""
+TSNR2_LRG_R                float32           ""
+TSNR2_ELG_Z                float32           ""
+TSNR2_LYA_Z                float32           ""
+TSNR2_BGS_Z                float32           ""
+TSNR2_QSO_Z                float32           ""
+TSNR2_LRG_Z                float32           ""
+TSNR2_ELG                  float32           ""
+TSNR2_LYA                  float32           ""
+TSNR2_BGS                  float32           ""
+TSNR2_QSO                  float32           ""
+TSNR2_LRG                  float32           ""
+ZWARN_MTL                  int64             ZWARN flag taken from target ledger at TIMESTAMP (link)
+Z_QN                       float64           column shouldn't be in this file Z if QUASAR
+Z_QN_CONF                  float64           column shouldn't be in this file Confidence of QSO
+IS_QSO_QN                  int16             column shouldn't be in this file If it is QSO
 ========================== =========== ===== ==================
 
 

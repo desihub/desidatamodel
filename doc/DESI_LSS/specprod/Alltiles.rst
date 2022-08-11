@@ -2,8 +2,8 @@
 Alltiles
 ============================
 
-:Summary: For targets, the list of unique TARGETIDs with number of observations
-          after fiber assigment.
+:Summary: For targets, the list of unique TARGETIDs with number of appearances as reachable
+          according to fiber assigment and details on those appearances.
 :Naming Convention: ``Alltiles_{program}_tilelocs.dat.fits``, 
                     where ``{program}`` is dark or bright
 :Regex: ``Alltiles_[a-z]_tilelocs\.dat\.fits``

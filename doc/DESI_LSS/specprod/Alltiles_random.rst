@@ -3,8 +3,8 @@ Alltiles_random
 ============================
 
 :Summary: For random associated with RANNUM given in the directory,
-          the list of unique TARGETIDs with number of observations (NOBS)
-          after fiber assigment.
+          the list of unique TARGETIDs with number of appearances as reachable
+          according to fiber assigment and details on those appearances.
 :Naming Convention: ``rancomb_{RANNUM}{program}_Alltilelocinfo.fits``, where ``{RANNUM}``
                     is the random number and ``{program}`` is dark or bright
 :Regex: ``rancomb_[0-9][a-z]_Alltilelocinfo\.fits``
