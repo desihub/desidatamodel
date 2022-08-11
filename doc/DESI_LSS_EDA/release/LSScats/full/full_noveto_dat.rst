@@ -1,15 +1,11 @@
-======================
-BGS_BRIGHT_full_noveto
-======================
+============================================
+The "full" LSS catalogs for data
+============================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``BGS_BRIGHT_full_noveto.dat.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``BGS_BRIGHT_full_noveto.dat.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
+:Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign. The files are split by target type and whether of not vetos for angular positions have been applied.
+:Naming Convention: ``{TARGET}_full{VETO}.dat.fits``, where ``{TARGET}`` is the target type and ``{VETO}`` is _noveto if vetos have not been applied and blank otherwise.
+:Regex: For example, ``BGS_BRIGHT_full_noveto.dat.fits`` is the file for BGS_BRIGHT targets before any vetos have been applied.
+    
 :File Type: FITS, 1 GB  *This section gives the type of the file
     and its approximate size.*
 
