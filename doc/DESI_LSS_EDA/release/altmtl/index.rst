@@ -1,13 +1,12 @@
 =======
-release
+altmtl
 =======
 
-:envvar:`release` contains directories for the end-products LSS catalogs (`LSScats`), inputs based on processing of the spectroscopic reductions (`inputs_wspec`), and from processing of fiberassign information (`potential_assignments`). Products come from the root :envvar:`DESI_LSS_EDA`. 
-The name reflects the name of the release, like `sv3` or `da02`.
+:envvar:`altmtl` contains the merged target list (mtl) decisions with subpriorities re-seeded, but following the fiber-specific observational information on whether the target assigned to a particular positioner was successful. These are split into the bright and dark time observations.
 
 .. toctree::
    :maxdepth: 1
 
-   LSScats/index
-   inputs_wspec/index
-   potential_assignments/index
+   dark/index
+   bright/index
+   
