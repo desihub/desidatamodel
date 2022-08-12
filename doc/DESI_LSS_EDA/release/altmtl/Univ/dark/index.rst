@@ -2,8 +2,8 @@
 dark
 ====
 
-The ``dark`` directory hosts MTL ledgers for the DESI dark-time program.
-Targets are stored in ledgers that are split by HEALPixel (in the NESTED
+Each of the ``dark`` directories associated with each `{UNUM}' hosts an alternative MTL ledger for the DESI dark-time program, with a data format matching that used for actual observations.
+These ledgers are split by HEALPixel (in the NESTED
 scheme) at a resolution of nside=32.
 
 The filename for each ledger resembles mtl-dark-hp-HPX.ecsv, where HPX
