@@ -2,12 +2,11 @@
 The "full" LSS catalogs for data
 ============================================
 
-:Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign. The files are split by target type and whether of not vetos for angular positions have been applied.
+:Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign, with one entry for each. The files are split by target type and whether of not vetos for angular positions have been applied.
 :Naming Convention: ``{TARGET}_full{VETO}.dat.fits``, where ``{TARGET}`` is the target type and ``{VETO}`` is _noveto if vetos have not been applied and blank otherwise.
 :Regex: For example, ``BGS_BRIGHT_full_noveto.dat.fits`` is the file for BGS_BRIGHT targets before any vetos have been applied.
     
-:File Type: FITS, 1 GB  *This section gives the type of the file
-    and its approximate size.*
+:File Type: FITS, 1 GB  (size varies considerably depending on target type)
 
 Contents
 ========
@@ -15,8 +14,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  LSS     BINTABLE *Brief Description*
+HDU0_          IMAGE    Empty HDU
+HDU1_  LSS     BINTABLE Catalog
 ====== ======= ======== ===================
 
 
@@ -25,8 +24,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -37,7 +34,7 @@ HDU1
 
 EXTNAME = LSS
 
-*Summarize the contents of this HDU.*
+Catalog data for the given target type; one entry per unique TARGETID
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,20 +168,21 @@ DESI_TARGET                int64             Dark survey + calibration targeting
 BGS_TARGET                 int64             Bright Galaxy Survey targeting bits
 COMP_TILE                  float64           Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID            float64           The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
-elg_mask_optional          binary            Imaging mask bits relevant to ELG targets
-OII_FLUX_optional          float32           Fitted flux for the [OII] doublet
-OII_FLUX_IVAR_optional     float32           Inverse variance of the fitted flux for the [OII] doublet
-o2c_optional               float64           The criteria for assessing strength of OII emission for ELG observations
-lrg_mask_optional          binary            Imaging mask bits relevant to LRG targets
-Z_RR_optional              float64           Redshift collected from redrock file
-ZERR_QF_optional           float64
-TSNR2_LYA_QF_optional      float32
-TSNR2_QSO_QF_optional      float32
-Z_QN_QF_optional           float32
-QSO_MASKBITS_optional      int32
+elg_mask [1]_              binary            Imaging mask bits relevant to ELG targets; only in ELG files
+OII_FLUX [1]_              float32           Fitted flux for the [OII] doublet; only in ELG files
+OII_FLUX_IVAR [1]_         float32           Inverse variance of the fitted flux for the [OII] doublet; only in ELG files
+o2c [1]_                   float64           The criteria for assessing strength of OII emission for ELG observations; only in ELG files
+lrg_mask [1]_              binary            Imaging mask bits relevant to LRG targets; only in LRG files
+Z_RR_ [1]_                 float64           Redshift collected from redrock file; only in QSO files
+ZERR_QF [1]_               float64
+TSNR2_LYA_QF [1]_          float32
+TSNR2_QSO_QF [1]_          float32
+Z_QN_QF [1]_               float32
+QSO_MASKBITS [1]_.         int32
 
 ========================== =========== ===== =====================================================================================================================================
 
+.. [1] Optional
 
 Notes and Examples
 ==================
