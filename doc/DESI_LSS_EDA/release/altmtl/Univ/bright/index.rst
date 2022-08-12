@@ -2,11 +2,11 @@
 bright
 ======
 
-The ``bright`` directory hosts MTL ledgers for the DESI bright-time program.
-Targets are stored in ledgers that are split by HEALPixel (in the NESTED
+Each of the ``bright`` directories associated with each `{UNUM}' hosts an alternative MTL ledger for the DESI bright-time program, with a data format matching that used for actual observations.
+These ledgers are split by HEALPixel (in the NESTED
 scheme) at a resolution of nside=32.
 
-The filename for each ledger resembles mtl-bright-hp-HPX.ecsv, where HPX
+The filename for each ledger resembles mtl-dark-hp-HPX.ecsv, where HPX
 is the healpixel number.
 
 .. toctree::
