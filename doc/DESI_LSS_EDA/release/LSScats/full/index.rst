@@ -8,6 +8,6 @@ full
    :maxdepth: 1
 
    TARGET_RANNUM_fullVETO.ran.fits : <full_noveto_ran>
-   TARGET_fullVETO.dat.fits : <full_noveto_dat>
+   TARGET_fullVETO.dat.fits : <fullVETO_dat>
    
   
