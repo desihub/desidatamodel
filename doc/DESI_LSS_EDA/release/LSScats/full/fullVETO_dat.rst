@@ -69,16 +69,16 @@ FIBER                      int32             Fiber ID on the CCDs [0-4999]
 LOCATION                   int64             Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 TILEID                     int64             Unique DESI tile ID
 TILELOCID                  int64             Is 10000*TILEID+LOCATION
-Z                          float64           Redshift measured by Redrock
-ZERR                       float64           Redshift error from redrock
-ZWARN                      int64             Redshift warning bitmask measured by Redrock
-CHI2                       float64           Best fit :math:`\chi^2`
-COEFF                      float64[10]       Redrock template coefficients
+Z_not4clus                 float64           Redshift measured by Redrock, using only the data from the single TILEID
+ZERR                       float64           Redshift error from Redrock, using only the data from the single TILEID
+ZWARN                      int64             Redshift warning bitmask measured by Redrock, using only the data from the single TILEID
+CHI2                       float64           Best fit :math:`\chi^2`, using only the data from the single TILEID
+COEFF                      float64[10]       Redrock template coefficients, using only the data from the single TILEID
 NPIXELS                    int64
-SPECTYPE                   char[6]           Spectype from redrock file
-SUBTYPE                    char[20]          Spectral subtype
+SPECTYPE                   char[6]           Spectype from redrock file, using only the data from the single TILEID
+SUBTYPE                    char[20]          Spectral subtype, using only the data from the single TILEID
 NCOEFF                     int64
-DELTACHI2                  float64           Delta-chi-squared for template fit from Redrock
+DELTACHI2                  float64           Delta-chi-squared for template fit from Redrock, using only the data from the single TILEID
 COADD_FIBERSTATUS          int32
 FIBERASSIGN_X              float32           Expected CS5 X location on focal plane
 FIBERASSIGN_Y              float32           Expected CS5 Y location on focal plane
@@ -105,11 +105,11 @@ TSNR2_LYA_Z                float32           LYA Z template (S/N)^2
 TSNR2_BGS_Z                float32           BGS Z template (S/N)^2
 TSNR2_QSO_Z                float32           QSO Z template (S/N)^2
 TSNR2_LRG_Z                float32           LRG Z template (S/N)^2
-TSNR2_ELG                  float32           ELG template (S/N)^2 summed over B,R,Z
-TSNR2_LYA                  float32           LYA template (S/N)^2 summed over B,R,Z
-TSNR2_BGS                  float32           BGS template (S/N)^2 summed over B,R,Z
-TSNR2_QSO                  float32           QSO template (S/N)^2 summed over B,R,Z
-TSNR2_LRG                  float32           LRG template (S/N)^2 summed over B,R,Z
+TSNR2_ELG                  float32           ELG template (S/N)^2 summed over B,R,Z, using only the data from the single TILEID
+TSNR2_LYA                  float32           LYA template (S/N)^2 summed over B,R,Z, using only the data from the single TILEID
+TSNR2_BGS                  float32           BGS template (S/N)^2 summed over B,R,Z, using only the data from the single TILEID
+TSNR2_QSO                  float32           QSO template (S/N)^2 summed over B,R,Z, using only the data from the single TILEID
+TSNR2_LRG                  float32           LRG template (S/N)^2 summed over B,R,Z, using only the data from the single TILEID
 ZWARN_MTL                  int64             The ZWARN from the zmtl file (contains extra bits)
 Z_QN                       float64           Redshift measured by QuasarNET
 Z_QN_CONF                  float64           Redshift confidence from QuasarNET
@@ -164,10 +164,20 @@ WISEMASK_W2                binary            Bitwise mask for WISE W2 data
 MASKBITS                   int16             Bitwise mask from the imaging indicating potential issue or blending
 SHAPE_R                    float32           Half-light radius of galaxy model (&gt;0)
 PHOTSYS                    char[1]           N for the MzLS/BASS photometric system, S for DECaLS
-DESI_TARGET                int64             Dark survey + calibration targeting bits
+DESI_TARGET                int64             Main survey targeting bits
 BGS_TARGET                 int64             Bright Galaxy Survey targeting bits
 COMP_TILE                  float64           Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID            float64           The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
+Z_HP                       float64           Redshift measured by Redrock; using spectra coadded across all TILEIDs
+DELTACHI2_HP               float64           Delta-chi-squared for template fit from Redrock, using spectra coadded across all TILEIDs
+TSNR2_ELG_HP               float32           ELG template (S/N)^2 summed over B,R,Z, using spectra coadded across all TILEIDs
+TSNR2_BGS_HP               float32           BGS template (S/N)^2 summed over B,R,Z, using spectra coadded across all TILEIDs
+TSNR2_QSO_HP               float32           QSO template (S/N)^2 summed over B,R,Z, using spectra coadded across all TILEIDs
+TSNR2_LRG_HP               float32           LRG template (S/N)^2 summed over B,R,Z, using spectra coadded across all TILEIDs
+rosette_number             float64           Number identification for the targeting region (one of 20 `rosettes`)
+rosette_r                  float64           Angular distance from rosette center in degrees
+BITWEIGHTS                 int64[2]          Bit array denoting which of the 128 realizations the target was assigned in
+PROB_OBS                   float64           Probability of being observed, given `BITWEIGHTS`
 elg_mask [1]_              binary            Imaging mask bits relevant to ELG targets; only in ELG files
 OII_FLUX [1]_              float32           Fitted flux for the [OII] doublet; only in ELG files
 OII_FLUX_IVAR [1]_         float32           Inverse variance of the fitted flux for the [OII] doublet; only in ELG files
