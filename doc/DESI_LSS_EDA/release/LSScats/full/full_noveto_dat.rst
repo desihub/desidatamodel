@@ -173,7 +173,7 @@ OII_FLUX [1]_              float32           Fitted flux for the [OII] doublet; 
 OII_FLUX_IVAR [1]_         float32           Inverse variance of the fitted flux for the [OII] doublet; only in ELG files
 o2c [1]_                   float64           The criteria for assessing strength of OII emission for ELG observations; only in ELG files
 lrg_mask [1]_              binary            Imaging mask bits relevant to LRG targets; only in LRG files
-Z_RR_ [1]_                 float64           Redshift collected from redrock file; only in QSO files
+Z_RR [1]_                  float64           Redshift collected from redrock file; only in QSO files
 ZERR_QF [1]_               float64
 TSNR2_LYA_QF [1]_          float32
 TSNR2_QSO_QF [1]_          float32
