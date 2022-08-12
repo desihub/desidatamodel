@@ -7,5 +7,6 @@ Univ
 .. toctree::
    :maxdepth: 1
 
-   PROGRAM/index
+   dark/index
+   bright/index
    
