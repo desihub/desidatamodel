@@ -117,6 +117,7 @@ elg_mask [1]_              binary         Imaging mask bits relevant to ELG targ
 lrg_mask [1]_              binary         Imaging mask bits relevant to LRG targets
 ========================== ======== ===== ==========================================================================================================================
 
+.. [1] Optional
 
 Notes and Examples
 ==================
