@@ -1,15 +1,14 @@
 ============================
-datcomb_bright_tarwdup_zdone
+datcomb_tarwdup
 ============================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``datcomb_bright_tarwdup_zdone.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``datcomb_bright_tarwdup_zdone.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
+:Naming Convention: ``datcomb_{PROG}_tarwdup_alltiles.fits``, where ``{PROG}`` refers to the observing program, either dark or bright.
+    
+:Regex: For example, the bright time file is ``datcomb_bright_tarwdup_alltiles.fits``
+
 :File Type: FITS, 1 GB  *This section gives the type of the file
     and its approximate size.*
 
@@ -19,8 +18,8 @@ Contents
 ====== ===================== ======== ===================
 Number EXTNAME               Type     Contents
 ====== ===================== ======== ===================
-HDU0_                        IMAGE    *Brief Description*
-HDU1_  POTENTIAL_ASSIGNMENTS BINTABLE *Brief Description*
+HDU0_                        IMAGE    Empty
+HDU1_  POTENTIAL_ASSIGNMENTS BINTABLE Catalog data
 ====== ===================== ======== ===================
 
 
@@ -29,8 +28,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -55,21 +52,6 @@ Required Header Keywords
     ======== ========================= ===== =====================
     NAXIS1   151                       int   length of dimension 1
     NAXIS2   10117500                  int   length of dimension 2
-    TILEID   22465                     int
-    TILERA   269.625                   float
-    TILEDEC  29.534                    float
-    FIELDROT -0.143659054471033        float
-    FA_PLAN  2022-07-01T00:00:00.000   str
-    FA_HA    16.53                     float
-    FA_RUN   2021-06-26T04:16:33+00:00 str
-    REQRA    269.625                   float
-    REQDEC   29.534                    float
-    FIELDNUM 0                         int
-    FA_VER   5.0.0                     str
-    FA_SURV  main                      str
-    FA_M_GFA 0.4                       float
-    FA_M_PET 0.4                       float
-    FA_M_POS 0.05                      float
     ======== ========================= ===== =====================
 
 Required Data Table Columns
