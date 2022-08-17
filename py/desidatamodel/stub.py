@@ -83,10 +83,9 @@ class Stub(DataModelUnit):
     keywords_header = ('KEY', 'Example Value', 'Type', 'Comment')
     columns_header = ('Name', 'Type', 'Units', 'Description')
 
-    def __init__(self, filename, description_file=None, error=False):    #AURE
-    #def __init__(self, filename, error=False):
+    def __init__(self, filename, description_file=None, error=False):
         self.filename = None
-        self.description_file = description_file  #AURE
+        self.description_file = description_file
         self.error = error
         self.headers = list()
         if isinstance(filename, (list, fits.HDUList)):
@@ -696,7 +695,7 @@ def main():
     if options.verbose:
         log.setLevel(DEBUG)
     for f in options.filename:
-        stub = Stub(f,description_file=options.desc)
+        stub = Stub(f, description_file=options.desc)
         data = str(stub)
         #
         # Write the file
