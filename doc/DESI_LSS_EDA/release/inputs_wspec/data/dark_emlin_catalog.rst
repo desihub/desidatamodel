@@ -4,7 +4,7 @@ dark_emlin_catalog
 
 :Summary: Concatenation of all of the dark time emission line healpix file outputs
 :Naming Convention: ``emline_darkallhealpix.fits``
-:Regex: ``dark_emlin_catalog.fits`` 
+:Regex: ``emline_darkallhealpix.fits`` 
 :File Type: FITS, 372 MB  *This section gives the type of the file
     and its approximate size.*
 
