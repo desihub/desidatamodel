@@ -24,8 +24,7 @@ for testing.
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
    $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
    $SURVEYOPS : data files used for day-to-day survey operations <SURVEYOPS/index>
-   DESI_LSS : data files used for LSS day-to-day operations <DESI_LSS/index>
-   DESI_LSS_EDA: LSS archival data files for public releases <DESI_LSS_EDA/index>
+   $DESI_LSS_EDA: LSS archival data files for public releases <DESI_LSS_EDA/index>
    bitmasks
    datamodel
    api
