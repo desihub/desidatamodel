@@ -5,10 +5,9 @@ rancomb_13bright_Alltilelocinfo
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``rancomb_13bright_Alltilelocinfo.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``rancomb_13bright_Alltilelocinfo.fits`` *Give a regular expression for this filename.
+:Naming Convention: ``rancomb_{RANN}{PROGRAM}_Alltilelocinfo.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either dark or bright.
+    
+:Regex: ``rancomb_13dark_Alltilelocinfo.fits`` *Give a regular expression for this filename.
     For example, a six-digit number would correspond to ``[0-9]{6}``.*
 :File Type: FITS, 327 MB  *This section gives the type of the file
     and its approximate size.*
@@ -19,8 +18,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_          BINTABLE *Brief Description*
+HDU0_          IMAGE    Empty
+HDU1_  TLINFO  BINTABLE Catalog data
 ====== ======= ======== ===================
 
 
@@ -30,7 +29,7 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
+Empty
 
 This HDU has no non-standard required keywords.
 
@@ -39,7 +38,9 @@ Empty HDU.
 HDU1
 ----
 
-*Summarize the contents of this HDU.*
+EXTNAME = TLINFO
+
+Information on the tiles and locations that a given random appears on.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
