@@ -83,10 +83,11 @@ class Stub(DataModelUnit):
     keywords_header = ('KEY', 'Example Value', 'Type', 'Comment')
     columns_header = ('Name', 'Type', 'Units', 'Description')
 
-    def __init__(self, filename, error=False):
+    def __init__(self, filename, description_file=None, error=False):
         self.filename = None
         self.error = error
         self.headers = list()
+        self.description_file = description_file
         if isinstance(filename, (list, fits.HDUList)):
             self.nhdr = len(filename)
             for k in range(self.nhdr):
@@ -256,26 +257,44 @@ class Stub(DataModelUnit):
         ncol = hdr['TFIELDS']
         c = list()
         c.append(self.columns_header)
+        if self.description_file is not None:
+            print('You add a file with column descriptions and units, reading column description and units from here', self.description_file)
+            desc_data = fits.open(self.description_file)[1].data
+
         for j in range(ncol):
-            jj = '{0:d}'.format(j+1)
-            name = hdr['TTYPE'+jj].strip()
-            ttype = fits_column_format(hdr['TFORM'+jj].strip())
-            tunit = 'TUNIT'+jj
-            if tunit in hdr:
-                units = hdr[tunit].strip()
+
+            if self.description_file is not None:
+                
+                units = desc_data[(desc_data['NAME'] == name)]['UNIT'][0].strip()
                 bad_unit = self.check_unit(units, error=error)
-                if bad_unit:
-                    log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                    if bad_unit:
+                        log.debug("Non-standard (but acceptable) unit %s detected for column %s in column description file",
+                              bad_unit, self.filename)
+
+            else:
+                jj = '{0:d}'.format(j+1)
+                name = hdr['TTYPE'+jj].strip()
+                ttype = fits_column_format(hdr['TFORM'+jj].strip())
+                tunit = 'TUNIT'+jj
+                if tunit in hdr:
+                    units = hdr[tunit].strip()
+                    bad_unit = self.check_unit(units, error=error)
+                    if bad_unit:
+                        log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                               bad_unit, j, hdu, self.filename)
+                else:
+                    units = ''
+
+            if self.description_file is not None:
+                description = escape(desc_data[(desc_data['NAME'] == name)]['DESC'][0])
             else:
-                units = ''
-            # Check TCOMMnn keyword, otherwise use TTYPE comment
-            # for description.
-            commkey = 'TCOMM'+jj
-            if commkey in hdr:
-                description = escape(hdr[commkey].strip())
-            else:
-                description = escape(hdr.comments['TTYPE'+jj])
+                # Check TCOMMnn keyword, otherwise use TTYPE comment
+                # for description.
+                commkey = 'TCOMM'+jj
+                if commkey in hdr:
+                    description = escape(hdr[commkey].strip())
+                else:
+                    description = escape(hdr.comments['TTYPE'+jj])
             c.append((name, ttype, units, description))
         return c
 
@@ -681,6 +700,8 @@ def main():
                         help='Set log level to DEBUG.')
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
+    parser.add_argument("--desc", help="A file with columns description. So far only fits files available. Must have at least columns name and desc", default=None)
+
     options = parser.parse_args()
     if options.verbose:
         log.setLevel(DEBUG)
