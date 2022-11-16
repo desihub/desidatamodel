@@ -2,14 +2,16 @@
 spectra-SPECTROGRAPH-TILEID-GROUPID.fits
 ========================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: Collection of non-coadded spectra across exposures and cameras
+    for a given TILEID on a given SPECTROGRAPH [0-9].
 :Naming Convention: ``spectra-SPECTROGRAPH-TILEID-GROUPID.fits``, where
-    ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
+    ``SPECTROGRAPH`` is the spectrograph ID (0-9),
+    ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
 :Regex: ``spectra-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 198 MB
+
+spectra files can have different groupings.
 
 Contents
 ========
