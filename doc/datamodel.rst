@@ -59,21 +59,30 @@ in fact there were syntax errors that break the output. You must pay attention
 to the warnings and fix them!
 
 Also note that Spinx builds documents incrementally.  That is, if you run
-:command:`sphinx-build`, change one file, and then run :command`sphinx-build`
+:command:`sphinx-build`, change one file, and then run :command:`sphinx-build`
 again, it will only rebuild the changed file.  Normally this is fine, but
 if the change causes the directory tree to change, for example, adding
 a file to a table of contents, then the entire document tree should be rebuilt.
-This can be done by simply adding the ``-E`` option to :command`sphinx-build`::
+This can be done by simply adding the ``-E`` option to :command:`sphinx-build`::
 
     sphinx-build -E -W --keep-going -b html doc doc/_build/html
+
+Once the build is complete, you can open the file ``doc/_build/html/index.html`` in
+a browser, *e.g.*: ``file:///home/user/desidatamodel/doc/_build/html/index.html``.
+In macOS, there is a shortcut for this::
+
+    open doc/_build/html/index.html
+
+.. _`sphinx-rtd-theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
+.. _desidatamodel: https://github.com/desihub/desidatamodel
+
+Code Tests
+~~~~~~~~~~
 
 desidatamodel_ also includes unit tests; you can run these locally before
 opening a PR using::
 
     pytest py/desidatamodel/test
-
-.. _`sphinx-rtd-theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
-.. _desidatamodel: https://github.com/desihub/desidatamodel
 
 Units
 ~~~~~
@@ -96,9 +105,9 @@ DESI considers acceptable, even if they do not strictly follow the FITS Standard
 Here are some examples of units that are used in this data model, as well as
 a few common gotchas.
 
-===================================== ============== =================================================================
+===================================== ============== =====================================================================
 Unit                                  FITS Standard? Comment
-===================================== ============== =================================================================
+===================================== ============== =====================================================================
 ``um``                                Yes            Micrometers, :math:`\mu m`.
 ``Angstrom``                          Yes            Ångström.
 ``photon``                            Yes            Number of photons.
@@ -112,12 +121,13 @@ Unit                                  FITS Standard? Comment
 ``10**-17 erg/(s cm2 Angstrom)``      Yes            Common unit of spectrophotometric flux.
 ``10**+34 (s2 cm4 Angstrom2) / erg2`` Yes            Inverse variance of flux.
 ``A``                                 Yes, but...    ``A`` is the unit for amperes not Ångström.
-``maggie``                            No, but OK     Standard prefix is also OK: ``nanomaggie``.
+``maggie``                            No, but OK     Standard prefix is also OK: ``nanomaggie``. ``nanomaggy`` is also OK.
 ``mgy``                               No, but OK     Abbreviation for ``maggie``.
 ``electron/Angstrom``                 No, but OK     Used in some calibration files.
 ``ergs``                              **No**         ``erg``, not ``ergs``.
 ``sec``                               **No**         ``s`` for seconds, not ``sec``. Even though ``arcsec`` is OK.
-===================================== ============== =================================================================
+``1/deg^2``                           **No**         ``1`` is not a unit.  Use ``deg^-2`` instead. ``deg**-2`` is also OK.
+===================================== ============== =====================================================================
 
 .. _`FITS Standard`: https://fits.gsfc.nasa.gov/standard40/fits_standard40aa-le.pdf
 .. _`Astropy Units`: https://docs.astropy.org/en/stable/units/index.html
@@ -246,9 +256,9 @@ Strings
 Depending on how data sets are collated, it sometimes happens that sets of
 strings may be written out to FITS files with different lengths.
 
-For example, data sets A and B are supposedly identical (same columns,
-same types, etc.).  However set A has a string-valued column ``NAME`` that has values
-from the set ``{'one', 'two', 'three'}``, while in set B the same column has
+For example, data files A and B are supposedly identical (same columns,
+same types, etc.).  However data file A has a string-valued column ``NAME`` that has values
+from the set ``{'one', 'two', 'three'}``, while in data file B the same column has
 values from the set ``{'one', 'two', 'six'}``.  When written out, file A
 has the ``NAME`` column represented as ``char[5]`` (``5A`` in FITS notation), while file B
 has the same column represented as ``char[3]`` (``3A``).
