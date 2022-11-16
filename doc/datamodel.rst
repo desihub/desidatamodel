@@ -45,33 +45,32 @@ To build the data model locally, you first need to install the following::
 Building the Documents
 ~~~~~~~~~~~~~~~~~~~~~~
 
-To build the docs::
+To build all the documents, in your git clone directory::
 
-    sphinx-build -W --keep-going -b html doc doc/_build/html
+    cd doc
+    make html
 
-Then view ``doc/_build/html/index.html`` in a web browser.  If you have
-installed the `sphinx-rtd-theme Python package`_, the docs will be formatted
-using the ReadTheDocs theme as they will appear at
-https://desidatamodel.readthedocs.io
+Once the build is complete, you can open the file ``_build/html/index.html`` in
+a browser, *e.g.*: ``file:///home/user/desidatamodel/doc/_build/html/index.html``.
+If you have installed the `sphinx-rtd-theme Python package`_, the docs will be formatted
+using the ReadTheDocs theme as they will appear at https://desidatamodel.readthedocs.io
+In macOS, there is a shortcut for this::
+
+    open _build/html/index.html
 
 Sphinx will often print warnings and claim that the "build succeeded" when
 in fact there were syntax errors that break the output. You must pay attention
 to the warnings and fix them!
 
-Also note that Spinx builds documents incrementally.  That is, if you run
-:command:`sphinx-build`, change one file, and then run :command:`sphinx-build`
+Also note that Sphinx builds documents incrementally.  That is, if you run
+:command:`make html`, change one file, and then run :command:`make html`
 again, it will only rebuild the changed file.  Normally this is fine, but
 if the change causes the directory tree to change, for example, adding
 a file to a table of contents, then the entire document tree should be rebuilt.
-This can be done by simply adding the ``-E`` option to :command:`sphinx-build`::
+This can be done by simply cleaning up first::
 
-    sphinx-build -E -W --keep-going -b html doc doc/_build/html
-
-Once the build is complete, you can open the file ``doc/_build/html/index.html`` in
-a browser, *e.g.*: ``file:///home/user/desidatamodel/doc/_build/html/index.html``.
-In macOS, there is a shortcut for this::
-
-    open doc/_build/html/index.html
+    make clean
+    make html
 
 .. _`sphinx-rtd-theme Python package`: https://pypi.org/project/sphinx-rtd-theme/
 .. _desidatamodel: https://github.com/desihub/desidatamodel
