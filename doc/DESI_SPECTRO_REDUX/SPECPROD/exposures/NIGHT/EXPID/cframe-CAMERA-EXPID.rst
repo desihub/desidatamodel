@@ -644,8 +644,6 @@ EXTNAME = MASK
 Mask of spectral data; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
-TODO: add documentation link to what bits mean what.
-
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 

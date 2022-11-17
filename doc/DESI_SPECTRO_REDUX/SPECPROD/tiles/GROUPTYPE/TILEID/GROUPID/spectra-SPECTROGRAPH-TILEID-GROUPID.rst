@@ -11,7 +11,24 @@ spectra-SPECTROGRAPH-TILEID-GROUPID.fits
 :Regex: ``spectra-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 198 MB
 
-spectra files can have different groupings.
+See the top-level :doc:`SPECPROD/tiles/ <../../../index>` description for an overview
+of the GROUPTYPE and GROUPID options.
+
+The contents of the spectra files are a reformatting of the data in multiple
+input :doc:`cframe files </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>` files.
+Spectra files do not contain any additional information or calculations beyond
+what is already in the cframe files, but they provide an analysis convenience
+to get all the data for a given tile petal in a single file without having to find
+and read multiple cframe files across multiple nights, exposures, and cameras.
+
+See :doc:`coadd files <coadd-SPECTROGRAPH-TILEID-GROUPID>` for a coadded
+version of the same spectra.
+
+The FIBERMAP and SCORES tables are concatenated from the input cframe files,
+with one row per target per exposure.  The WAVELENGTH, FLUX, IVAR, MASK,
+and RESOLUTION HDUs of the input cframes are combined and stored here
+with a \[BRZ\]\_ prefix, e.g. B_FLUX for the stack of all FLUX HDUs from
+the input B-camera cframes.
 
 Contents
 ========
@@ -20,25 +37,24 @@ Contents
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
 HDU00_              IMAGE    Keywords only
-HDU01_ FIBERMAP     BINTABLE *Brief Description*
-HDU02_ SCORES       BINTABLE *Brief Description*
-HDU03_ B_WAVELENGTH IMAGE    *Brief Description*
-HDU04_ B_FLUX       IMAGE    *Brief Description*
-HDU05_ B_IVAR       IMAGE    *Brief Description*
-HDU06_ B_MASK       BINTABLE *Brief Description*
-HDU07_ B_RESOLUTION IMAGE    *Brief Description*
-HDU08_ R_WAVELENGTH IMAGE    *Brief Description*
-HDU09_ R_FLUX       IMAGE    *Brief Description*
-HDU10_ R_IVAR       IMAGE    *Brief Description*
-HDU11_ R_MASK       BINTABLE *Brief Description*
-HDU12_ R_RESOLUTION IMAGE    *Brief Description*
-HDU13_ Z_WAVELENGTH IMAGE    *Brief Description*
-HDU14_ Z_FLUX       IMAGE    *Brief Description*
-HDU15_ Z_IVAR       IMAGE    *Brief Description*
-HDU16_ Z_MASK       BINTABLE *Brief Description*
-HDU17_ Z_RESOLUTION IMAGE    *Brief Description*
+HDU01_ FIBERMAP     BINTABLE Target photometry, metadata, and what fibers they are assigned to
+HDU02_ SCORES       BINTABLE QA metrics calculated from the data
+HDU03_ B_WAVELENGTH IMAGE    Wavelength grid from the B-cameras
+HDU04_ B_FLUX       IMAGE    Spectral Flux, 10^{-17} erg/s/cm2/Angstrom
+HDU05_ B_IVAR       IMAGE    Inverse variance of B_FLUX
+HDU06_ B_MASK       BINTABLE Mask, 0=good
+HDU07_ B_RESOLUTION IMAGE    Resolution Matrix diagonals
+HDU08_ R_WAVELENGTH IMAGE    Wavelength grid from the R-cameras
+HDU09_ R_FLUX       IMAGE    Spectral Flux, 10^{-17} erg/s/cm2/Angstrom
+HDU10_ R_IVAR       IMAGE    Inverse variance of R_FLUX
+HDU11_ R_MASK       BINTABLE Mask, 0=good
+HDU12_ R_RESOLUTION IMAGE    Resolution Matrix diagonals
+HDU13_ Z_WAVELENGTH IMAGE    Wavelength grid from the Z-cameras
+HDU14_ Z_FLUX       IMAGE    Spectral Flux, 10^{-17} erg/s/cm2/Angstrom
+HDU15_ Z_IVAR       IMAGE    Inverse variance of Z_FLUX
+HDU16_ Z_MASK       BINTABLE Mask, 0=good
+HDU17_ Z_RESOLUTION IMAGE    Resolution Matrix diagonals
 ====== ============ ======== ===================
-
 
 FITS Header Units
 =================
@@ -46,7 +62,7 @@ FITS Header Units
 HDU00
 -----
 
-*Summarize the contents of this HDU.*
+Keywords only
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,24 +74,37 @@ Required Header Keywords
     ========== ================ ==== ==============================================
     KEY        Example Value    Type Comment
     ========== ================ ==== ==============================================
-    SPGRP      1x_depth         str
-    SPGRPVAL   3                int
-    NIGHT [1]_ 20210708         int
-    TILEID     80605            int
-    SPECTRO    6                int
-    PETAL      6                int
+    SPGRP      pernight         str  :doc:`GROUPTYPE <../../../index>` how these spectra are grouped
+    SPGRPVAL   20201215         int  :doc:`GROUPID <../../../index>` value
+    TILEID     80605            int  Integer tile ID
+    SPECTRO    6                int  Spectrograph number (same as PETAL)
+    PETAL      6                int  Focal plane petal number (same as SPECTRO)
     CHECKSUM   cXXRdWUQcWUQcWUQ str  HDU checksum updated 2021-07-15T00:33:13
     DATASUM    0                str  data unit checksum updated 2021-07-15T00:33:13
     ========== ================ ==== ==============================================
 
-Empty HDU.
+    Depending upon the SPGRP=GROUPTYPE, there may be additional keywords with more
+    human-friendly names for the SPGRPVAL, e.g.
+
+    .. rst-class:: keywords
+
+    =============== ==============
+    SPGRP=GROUPTYPE Extra keywords
+    =============== ==============
+    cumulative      NIGHT: all data through this YEARMMDD
+    pernight        NIGHT: only data on this YEARMMDD
+    perexp          NIGHT, EXPID: only data from this YEARMMDD and exposure ID
+    =============== ==============
+
+HDU 0 does not contain any data.
 
 HDU01
 -----
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap information combining the targeting photometry and metadata,
+fiberassign requested positions, and actual as-observed fiber locations.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -87,14 +116,17 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   413              int  length of dimension 1
-    NAXIS2   500              int  length of dimension 2
+    NAXIS1   413              int  Width of table in bytes
+    NAXIS2   500              int  Number of unique targets (table rows)
     CHECKSUM TcPqUbPoTbPoTbPo str  HDU checksum updated 2021-07-15T00:33:13
     DATASUM  1051947488       str  data unit checksum updated 2021-07-15T00:33:13
     ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page
+for detailed descriptions of the columns.
 
 .. rst-class:: columns
 
@@ -193,7 +225,10 @@ HDU02
 
 EXTNAME = SCORES
 
-*Summarize the contents of this HDU.*
+Scores / metrics measured from the spectra for use in QA and systematics studies.
+These are propagated from the input
+:doc:`cframe SCORES HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`;
+see that page for details.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -206,78 +241,81 @@ Required Header Keywords
     KEY    Example Value Type Comment
     ====== ============= ==== =======================
     NAXIS1 488           int  width of table in bytes
-    NAXIS2 500           int  number of rows in table
+    NAXIS2 500           int  ``nspec`` number of rows in table
     ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See the :doc:`cframe SCORES HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`
+documentation for details about the columns.
 
 .. rst-class:: columns
 
 ===================== ======= ===== ===================
 Name                  Type    Units Description
 ===================== ======= ===== ===================
-TARGETID              int64         label for field   1
-SUM_RAW_COUNT_B       float64       label for field   2
-MEDIAN_RAW_COUNT_B    float64       label for field   3
-MEDIAN_RAW_SNR_B      float64       label for field   4
-SUM_FFLAT_COUNT_B     float64       label for field   5
-MEDIAN_FFLAT_COUNT_B  float64       label for field   6
-MEDIAN_FFLAT_SNR_B    float64       label for field   7
-SUM_SKYSUB_COUNT_B    float64       label for field   8
-MEDIAN_SKYSUB_COUNT_B float64       label for field   9
-MEDIAN_SKYSUB_SNR_B   float64       label for field  10
-SUM_CALIB_COUNT_B     float64       label for field  11
-MEDIAN_CALIB_COUNT_B  float64       label for field  12
-MEDIAN_CALIB_SNR_B    float64       label for field  13
-TSNR2_GPBDARK_B       float64       label for field  14
-TSNR2_ELG_B           float64       label for field  15
-TSNR2_GPBBRIGHT_B     float64       label for field  16
-TSNR2_LYA_B           float64       label for field  17
-TSNR2_BGS_B           float64       label for field  18
-TSNR2_GPBBACKUP_B     float64       label for field  19
-TSNR2_QSO_B           float64       label for field  20
-TSNR2_LRG_B           float64       label for field  21
-SUM_RAW_COUNT_R       float64       label for field  22
-MEDIAN_RAW_COUNT_R    float64       label for field  23
-MEDIAN_RAW_SNR_R      float64       label for field  24
-SUM_FFLAT_COUNT_R     float64       label for field  25
-MEDIAN_FFLAT_COUNT_R  float64       label for field  26
-MEDIAN_FFLAT_SNR_R    float64       label for field  27
-SUM_SKYSUB_COUNT_R    float64       label for field  28
-MEDIAN_SKYSUB_COUNT_R float64       label for field  29
-MEDIAN_SKYSUB_SNR_R   float64       label for field  30
-SUM_CALIB_COUNT_R     float64       label for field  31
-MEDIAN_CALIB_COUNT_R  float64       label for field  32
-MEDIAN_CALIB_SNR_R    float64       label for field  33
-TSNR2_GPBDARK_R       float64       label for field  34
-TSNR2_ELG_R           float64       label for field  35
-TSNR2_GPBBRIGHT_R     float64       label for field  36
-TSNR2_LYA_R           float64       label for field  37
-TSNR2_BGS_R           float64       label for field  38
-TSNR2_GPBBACKUP_R     float64       label for field  39
-TSNR2_QSO_R           float64       label for field  40
-TSNR2_LRG_R           float64       label for field  41
-SUM_RAW_COUNT_Z       float64       label for field  42
-MEDIAN_RAW_COUNT_Z    float64       label for field  43
-MEDIAN_RAW_SNR_Z      float64       label for field  44
-SUM_FFLAT_COUNT_Z     float64       label for field  45
-MEDIAN_FFLAT_COUNT_Z  float64       label for field  46
-MEDIAN_FFLAT_SNR_Z    float64       label for field  47
-SUM_SKYSUB_COUNT_Z    float64       label for field  48
-MEDIAN_SKYSUB_COUNT_Z float64       label for field  49
-MEDIAN_SKYSUB_SNR_Z   float64       label for field  50
-SUM_CALIB_COUNT_Z     float64       label for field  51
-MEDIAN_CALIB_COUNT_Z  float64       label for field  52
-MEDIAN_CALIB_SNR_Z    float64       label for field  53
-TSNR2_GPBDARK_Z       float64       label for field  54
-TSNR2_ELG_Z           float64       label for field  55
-TSNR2_GPBBRIGHT_Z     float64       label for field  56
-TSNR2_LYA_Z           float64       label for field  57
-TSNR2_BGS_Z           float64       label for field  58
-TSNR2_GPBBACKUP_Z     float64       label for field  59
-TSNR2_QSO_Z           float64       label for field  60
-TSNR2_LRG_Z           float64       label for field  61
+TARGETID              int64         Unique target identifer
+SUM_RAW_COUNT_B       float64
+MEDIAN_RAW_COUNT_B    float64
+MEDIAN_RAW_SNR_B      float64
+SUM_FFLAT_COUNT_B     float64
+MEDIAN_FFLAT_COUNT_B  float64
+MEDIAN_FFLAT_SNR_B    float64
+SUM_SKYSUB_COUNT_B    float64
+MEDIAN_SKYSUB_COUNT_B float64
+MEDIAN_SKYSUB_SNR_B   float64
+SUM_CALIB_COUNT_B     float64
+MEDIAN_CALIB_COUNT_B  float64
+MEDIAN_CALIB_SNR_B    float64
+TSNR2_GPBDARK_B       float64
+TSNR2_ELG_B           float64
+TSNR2_GPBBRIGHT_B     float64
+TSNR2_LYA_B           float64
+TSNR2_BGS_B           float64
+TSNR2_GPBBACKUP_B     float64
+TSNR2_QSO_B           float64
+TSNR2_LRG_B           float64
+SUM_RAW_COUNT_R       float64
+MEDIAN_RAW_COUNT_R    float64
+MEDIAN_RAW_SNR_R      float64
+SUM_FFLAT_COUNT_R     float64
+MEDIAN_FFLAT_COUNT_R  float64
+MEDIAN_FFLAT_SNR_R    float64
+SUM_SKYSUB_COUNT_R    float64
+MEDIAN_SKYSUB_COUNT_R float64
+MEDIAN_SKYSUB_SNR_R   float64
+SUM_CALIB_COUNT_R     float64
+MEDIAN_CALIB_COUNT_R  float64
+MEDIAN_CALIB_SNR_R    float64
+TSNR2_GPBDARK_R       float64
+TSNR2_ELG_R           float64
+TSNR2_GPBBRIGHT_R     float64
+TSNR2_LYA_R           float64
+TSNR2_BGS_R           float64
+TSNR2_GPBBACKUP_R     float64
+TSNR2_QSO_R           float64
+TSNR2_LRG_R           float64
+SUM_RAW_COUNT_Z       float64
+MEDIAN_RAW_COUNT_Z    float64
+MEDIAN_RAW_SNR_Z      float64
+SUM_FFLAT_COUNT_Z     float64
+MEDIAN_FFLAT_COUNT_Z  float64
+MEDIAN_FFLAT_SNR_Z    float64
+SUM_SKYSUB_COUNT_Z    float64
+MEDIAN_SKYSUB_COUNT_Z float64
+MEDIAN_SKYSUB_SNR_Z   float64
+SUM_CALIB_COUNT_Z     float64
+MEDIAN_CALIB_COUNT_Z  float64
+MEDIAN_CALIB_SNR_Z    float64
+TSNR2_GPBDARK_Z       float64
+TSNR2_ELG_Z           float64
+TSNR2_GPBBRIGHT_Z     float64
+TSNR2_LYA_Z           float64
+TSNR2_BGS_Z           float64
+TSNR2_GPBBACKUP_Z     float64
+TSNR2_QSO_Z           float64
+TSNR2_LRG_Z           float64
 ===================== ======= ===== ===================
 
 HDU03
@@ -285,7 +323,8 @@ HDU03
 
 EXTNAME = B_WAVELENGTH
 
-*Summarize the contents of this HDU.*
+1D array of B-camera wavelengths in Angstrom, in vacuum (not in air),
+in the rest frame of the solar system barycenter.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -297,7 +336,7 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 2751          int  length of data axis 1
+    NAXIS1 2751          int  number of wavelengths
     BUNIT  Angstrom      str
     ====== ============= ==== =====================
 
@@ -308,7 +347,11 @@ HDU04
 
 EXTNAME = B_FLUX
 
-*Summarize the contents of this HDU.*
+2D array of calibrated spectral flux of dimension ``[nspec, nwave]``
+in units of 1e-17 erg / (s cm2 Angstrom).
+``nspec`` is the number of fibers per camera.
+``nwave`` in the length of the wavelength array.
+The spectra of all fibers share the same wavelength grid, given in HDU B_WAVELENGTH.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -320,8 +363,8 @@ Required Header Keywords
     ====== ============================ ==== =====================
     KEY    Example Value                Type Comment
     ====== ============================ ==== =====================
-    NAXIS1 2751                         int  length of data axis 1
-    NAXIS2 500                          int  length of data axis 2
+    NAXIS1 2751                         int  ``nwave`` number of wavelengths
+    NAXIS2 500                          int  ``nspec`` number of spectra
     BUNIT  10**-17 erg/(s cm2 Angstrom) str
     ====== ============================ ==== =====================
 
@@ -332,7 +375,11 @@ HDU05
 
 EXTNAME = B_IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux (1/sigma^2) in units of (10^{-17} erg/s/cm2/A)^-2.
+Uncertainties comprise statistical uncertainties from the error propagation
+of the initial CCD pixel variance, the calibration uncertainties,
+plus an additional term on bright sky lines to account for the
+imperfect sky subtraction.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -344,8 +391,8 @@ Required Header Keywords
     ====== ================================= ==== =====================
     KEY    Example Value                     Type Comment
     ====== ================================= ==== =====================
-    NAXIS1 2751                              int  length of data axis 1
-    NAXIS2 500                               int  length of data axis 2
+    NAXIS1 2751                              int  ``nwave`` number of wavelengths
+    NAXIS2 500                               int  ``nspec`` number of spectra
     BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
     ====== ================================= ==== =====================
 
@@ -356,7 +403,8 @@ HDU06
 
 EXTNAME = B_MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectral data; 0=good.
+See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -368,8 +416,8 @@ Required Header Keywords
     ====== ============= ==== ==========================================
     KEY    Example Value Type Comment
     ====== ============= ==== ==========================================
-    NAXIS1 8             int  width of table in bytes
-    NAXIS2 500           int  number of rows in table
+    NAXIS1 2751          int  ``nwave`` number of wavelengths
+    NAXIS2 500           int  ``nspec`` number of spectra
     BZERO  2147483648    int  offset data range to that of unsigned long
     BSCALE 1             int  default scaling factor
     ====== ============= ==== ==========================================
@@ -381,7 +429,10 @@ HDU07
 
 EXTNAME = B_RESOLUTION
 
-*Summarize the contents of this HDU.*
+Resolution matrix stored as a 3D sparse matrix, modeling the
+per-fiber non-Gaussian effective line-spread-function resolution.
+See the :doc:`frame RESOLUTION HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`
+documentation for details about using this HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -393,9 +444,9 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 2751          int  length of data axis 1
-    NAXIS2 11            int  length of data axis 2
-    NAXIS3 500           int  length of data axis 3
+    NAXIS1 2751          int  ``nwave`` number of wavelengths
+    NAXIS2 11            int  ``ndiag`` number of diagonals
+    NAXIS3 500           int  ``nspec`` number of spectra
     ====== ============= ==== =====================
 
 Data: FITS image [float32, 2751x11x500]
@@ -405,7 +456,8 @@ HDU08
 
 EXTNAME = R_WAVELENGTH
 
-*Summarize the contents of this HDU.*
+1D array of R-camera wavelengths in Angstrom, in vacuum (not in air),
+in the rest frame of the solar system barycenter.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -417,7 +469,7 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 2326          int  length of data axis 1
+    NAXIS1 2326          int  number of wavelengths
     BUNIT  Angstrom      str
     ====== ============= ==== =====================
 
@@ -428,7 +480,11 @@ HDU09
 
 EXTNAME = R_FLUX
 
-*Summarize the contents of this HDU.*
+2D array of calibrated spectral flux of dimension ``[nspec, nwave]``
+in units of 1e-17 erg / (s cm2 Angstrom).
+``nspec`` is the number of fibers per camera.
+``nwave`` in the length of the wavelength array.
+The spectra of all fibers share the same wavelength grid, given in HDU R_WAVELENGTH.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -440,8 +496,8 @@ Required Header Keywords
     ====== ============================ ==== =====================
     KEY    Example Value                Type Comment
     ====== ============================ ==== =====================
-    NAXIS1 2326                         int  length of data axis 1
-    NAXIS2 500                          int  length of data axis 2
+    NAXIS1 2326                         int  ``nwave`` number of wavelengths
+    NAXIS2 500                          int  ``nspec`` number of spectra
     BUNIT  10**-17 erg/(s cm2 Angstrom) str
     ====== ============================ ==== =====================
 
@@ -452,7 +508,11 @@ HDU10
 
 EXTNAME = R_IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux (1/sigma^2) in units of (10^{-17} erg/s/cm2/A)^-2.
+Uncertainties comprise statistical uncertainties from the error propagation
+of the initial CCD pixel variance, the calibration uncertainties,
+plus an additional term on bright sky lines to account for the
+imperfect sky subtraction.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -464,8 +524,8 @@ Required Header Keywords
     ====== ================================= ==== =====================
     KEY    Example Value                     Type Comment
     ====== ================================= ==== =====================
-    NAXIS1 2326                              int  length of data axis 1
-    NAXIS2 500                               int  length of data axis 2
+    NAXIS1 2326                              int  ``nwave`` number of wavelengths
+    NAXIS2 500                               int  ``nspec`` number of spectra
     BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
     ====== ================================= ==== =====================
 
@@ -476,7 +536,8 @@ HDU11
 
 EXTNAME = R_MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectral data; 0=good.
+See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -488,8 +549,8 @@ Required Header Keywords
     ====== ============= ==== ==========================================
     KEY    Example Value Type Comment
     ====== ============= ==== ==========================================
-    NAXIS1 8             int  width of table in bytes
-    NAXIS2 500           int  number of rows in table
+    NAXIS1 2326          int  ``nwave`` number of wavelengths
+    NAXIS2 500           int  ``nspec`` number of spectra
     BZERO  2147483648    int  offset data range to that of unsigned long
     BSCALE 1             int  default scaling factor
     ====== ============= ==== ==========================================
@@ -501,7 +562,10 @@ HDU12
 
 EXTNAME = R_RESOLUTION
 
-*Summarize the contents of this HDU.*
+Resolution matrix stored as a 3D sparse matrix, modeling the
+per-fiber non-Gaussian effective line-spread-function resolution.
+See the :doc:`frame RESOLUTION HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`
+documentation for details about using this HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -513,9 +577,9 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 2326          int  length of data axis 1
-    NAXIS2 11            int  length of data axis 2
-    NAXIS3 500           int  length of data axis 3
+    NAXIS1 2326          int  ``nwave`` number of wavelengths
+    NAXIS2 11            int  ``ndiag`` number of diagonals
+    NAXIS3 500           int  ``nspec`` number of spectra
     ====== ============= ==== =====================
 
 Data: FITS image [float32, 2326x11x500]
@@ -525,7 +589,8 @@ HDU13
 
 EXTNAME = Z_WAVELENGTH
 
-*Summarize the contents of this HDU.*
+1D array of Z-camera wavelengths in Angstrom, in vacuum (not in air),
+in the rest frame of the solar system barycenter.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -537,7 +602,7 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 2881          int  length of data axis 1
+    NAXIS1 2881          int  ``nwave`` number of wavelengths
     BUNIT  Angstrom      str
     ====== ============= ==== =====================
 
@@ -548,7 +613,11 @@ HDU14
 
 EXTNAME = Z_FLUX
 
-*Summarize the contents of this HDU.*
+2D array of calibrated spectral flux of dimension ``[nspec, nwave]``
+in units of 1e-17 erg / (s cm2 Angstrom).
+``nspec`` is the number of fibers per camera.
+``nwave`` in the length of the wavelength array.
+The spectra of all fibers share the same wavelength grid, given in HDU Z_WAVELENGTH.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -560,8 +629,8 @@ Required Header Keywords
     ====== ============================ ==== =====================
     KEY    Example Value                Type Comment
     ====== ============================ ==== =====================
-    NAXIS1 2881                         int  length of data axis 1
-    NAXIS2 500                          int  length of data axis 2
+    NAXIS1 2881                         int  ``nwave`` number of wavelengths
+    NAXIS2 500                          int  ``nspec`` number of spectra
     BUNIT  10**-17 erg/(s cm2 Angstrom) str
     ====== ============================ ==== =====================
 
@@ -572,7 +641,11 @@ HDU15
 
 EXTNAME = Z_IVAR
 
-*Summarize the contents of this HDU.*
+Inverse variance of flux (1/sigma^2) in units of (10^{-17} erg/s/cm2/A)^-2.
+Uncertainties comprise statistical uncertainties from the error propagation
+of the initial CCD pixel variance, the calibration uncertainties,
+plus an additional term on bright sky lines to account for the
+imperfect sky subtraction.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -584,8 +657,8 @@ Required Header Keywords
     ====== ================================= ==== =====================
     KEY    Example Value                     Type Comment
     ====== ================================= ==== =====================
-    NAXIS1 2881                              int  length of data axis 1
-    NAXIS2 500                               int  length of data axis 2
+    NAXIS1 2881                              int  ``nwave`` number of wavelengths
+    NAXIS2 500                               int  ``nspec`` number of spectra
     BUNIT  10**+34 (s2 cm4 Angstrom2) / erg2 str
     ====== ================================= ==== =====================
 
@@ -596,7 +669,8 @@ HDU16
 
 EXTNAME = Z_MASK
 
-*Summarize the contents of this HDU.*
+Mask of spectral data; 0=good.
+See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -608,8 +682,8 @@ Required Header Keywords
     ====== ============= ==== ==========================================
     KEY    Example Value Type Comment
     ====== ============= ==== ==========================================
-    NAXIS1 8             int  width of table in bytes
-    NAXIS2 500           int  number of rows in table
+    NAXIS1 2881          int  ``nwave`` number of wavelengths
+    NAXIS2 500           int  ``nspec`` number of spectra
     BZERO  2147483648    int  offset data range to that of unsigned long
     BSCALE 1             int  default scaling factor
     ====== ============= ==== ==========================================
@@ -621,7 +695,10 @@ HDU17
 
 EXTNAME = Z_RESOLUTION
 
-*Summarize the contents of this HDU.*
+Resolution matrix stored as a 3D sparse matrix, modeling the
+per-fiber non-Gaussian effective line-spread-function resolution.
+See the :doc:`frame RESOLUTION HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`
+documentation for details about using this HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -633,9 +710,9 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 2881          int  length of data axis 1
-    NAXIS2 11            int  length of data axis 2
-    NAXIS3 500           int  length of data axis 3
+    NAXIS1 2881          int  ``nwave`` number of wavelengths
+    NAXIS2 11            int  ``ndiag`` number of diagonals
+    NAXIS3 500           int  ``nspec`` number of spectra
     ====== ============= ==== =====================
 
 Data: FITS image [float32, 2881x11x500]
@@ -644,4 +721,14 @@ Data: FITS image [float32, 2881x11x500]
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Spectra files can be read using `desispec <https://github.com/desihub/desispec>`_::
+
+    from desispec.io import read_spectra
+    sp = read_spectra('spectra-0-100-thru20210505.fits')
+
+    import matplotlib.pyplot as plt
+    ispec = 217
+    for camera in sp.bands:
+        plt.plot(sp.wave[camera], sp.flux[camera][ispec])
+
+    plt.show()
