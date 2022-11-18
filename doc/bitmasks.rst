@@ -12,6 +12,18 @@ BIT_MASK                            URL
 ZWARN		                        `ZWARN`_
 =================================== ==================
 
+Spectroscopic reduction masks
+
+=================================== ==================
+BIT_MASK                            URL
+=================================== ==================
+QAFIBERSTATUS	                    `MASKBITS_L55`_
+FIBERSTATUS		                    `MASKBITS_L55`_
+COADD_FIBERSTATUS                   `MASKBITS_L55`_
+MASK		                        `MASKBITS_L84`_
+=================================== ==================
+
+
 Target masks
 
 =================================== ==================
@@ -34,17 +46,6 @@ BGS_TARGET		                    `TARGET`_
 MWS_TARGET		                    `TARGET`_
 SCND_TARGET		                    `TARGET`_
 OBSCONDITIONS		                `TARGET_L188`_
-=================================== ==================
-
-Spectroscopic reduction masks
-
-=================================== ==================
-BIT_MASK                            URL
-=================================== ==================
-QAFIBERSTATUS	                    `MASKBITS_L55`_
-FIBERSTATUS		                    `MASKBITS_L55`_
-COADD_FIBERSTATUS                   `MASKBITS_L55`_
-MASK		                        `MASKBITS_L84`_
 =================================== ==================
 
 
