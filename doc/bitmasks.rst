@@ -36,7 +36,7 @@ SCND_TARGET		                    `TARGET`_
 OBSCONDITIONS		                `TARGET_L188`_
 =================================== ==================
 
-Fiberstatus masks
+Spectroscopic reduction masks
 
 =================================== ==================
 BIT_MASK                            URL
