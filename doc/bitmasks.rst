@@ -2,11 +2,18 @@
 Bit Masks in DESI
 =================
 
-This page describes bit masks in DESI.
-
 This page linkgs to the URLs defining the bitmasks found in DESI.
 
+Redshift fitting (Redrock) masks
+
+=================================== ==================
+BIT_MASK                            URL
+=================================== ==================
+ZWARN		                        `ZWARN`_
+=================================== ==================
+
 Target masks
+
 =================================== ==================
 BIT_MASK                            URL
 =================================== ==================
@@ -26,21 +33,23 @@ DESI_TARGET		                    `TARGET`_
 BGS_TARGET		                    `TARGET`_
 MWS_TARGET		                    `TARGET`_
 SCND_TARGET		                    `TARGET`_
+OBSCONDITIONS		                `TARGET_L188`_
 =================================== ==================
 
 Fiberstatus masks
+
 =================================== ==================
 BIT_MASK                            URL
 =================================== ==================
 QAFIBERSTATUS	                    `MASKBITS_L55`_
 FIBERSTATUS		                    `MASKBITS_L55`_
 COADD_FIBERSTATUS                   `MASKBITS_L55`_
-OBSCONDITIONS		                `TARGET_L188`_
 MASK		                        `MASKBITS_L84`_
 =================================== ==================
 
 
 Imaging masks
+
 =================================== ==================
 BIT_MASK                            URL
 =================================== ==================
@@ -48,14 +57,6 @@ WISEMASK_W1		                    `BITMASKS_LEGACY`_
 WISEMASK_W2		                    `BITMASKS_LEGACY`_
 MASKBITS		                    `BITMASKS_LEGACY`_
 =================================== ==================
-
-Redshift fitting (Redrock) masks
-=================================== ==================
-BIT_MASK                            URL
-=================================== ==================
-ZWARN		                        `ZWARN`_
-=================================== ==================
-
 
 
 .. _`CMX`: https://github.com/desihub/desitarget/blob/2.5.0/py/desitarget/cmx/data/cmx_targetmask.yaml
