@@ -2,7 +2,7 @@
 Bit Masks in DESI
 =================
 
-This page linkgs to the URLs defining the bitmasks found in DESI.
+This page links to the URLs defining the bitmasks found in DESI files.
 
 Redshift fitting (Redrock) masks
 
