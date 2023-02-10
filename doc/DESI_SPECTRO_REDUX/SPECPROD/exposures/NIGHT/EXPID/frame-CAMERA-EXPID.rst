@@ -20,7 +20,7 @@ HDU0_  FLUX       IMAGE    Extracted flux in electrons per Angstrom
 HDU1_  IVAR       IMAGE    Inverse variance of the extracted flux
 HDU2_  MASK       IMAGE    Bad value mask; 0=good
 HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction (Angstrom)
-HDU3_  RESOLUTION IMAGE    Resolution matrix
+HDU4_  RESOLUTION IMAGE    Resolution matrix
 HDU5_  FIBERMAP   BINTABLE Fibermap
 HDU6_  CHI2PIX    IMAGE    chi2 of PSF fit to CCD pixels
 ====== ========== ======== ===================
@@ -695,7 +695,7 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-Resolution matrix stored as a 3D sparse matrix:
+Resolution matrix stored as the diagonals of a 3D sparse matrix:
 
 Rdata[nspec, ndiag, nwave]
 

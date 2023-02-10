@@ -2,8 +2,12 @@
 TILEID
 ======
 
-During commissioning and survey validation, per-tile spectra, coadds, and redshifts
-are grouped in ``tiles/GROUPTYPE/TILEID/GROUPID``.
+Per-tile spectra, coadds, and redshifts
+are grouped in ``tiles/GROUPTYPE/TILEID/GROUPID``;
+See the :doc:`top-level tiles/ description <../../index>` for an overview
+of the GROUPTYPE and GROUPID options.
+
+Subdirectories of tiles/GROUPTYPE/TILEID:
 
 .. toctree::
    :maxdepth: 1
