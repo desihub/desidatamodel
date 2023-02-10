@@ -33,6 +33,15 @@ organized under the :doc:`healpix <../healpix/index>` directories.
     Similar to ``1x_depth``, but selected to achieve a combined depth of 4x
     the main survey depth.
 
+``lowspeed``
+    Coadds of deep tiles using only exposures taken under poor observing
+    conditions, for systematics checks vs. coadds using data taken under
+    normal/good conditions.
+    "lowspeed" refers to the rate at which S/N is accumulated.
+
+Other custom ``GROUPTYPE`` may appear in future produtions, and not every
+production will include every ``GROUPTYPE``.
+
 The ``GROUPID`` depends on the ``GROUPTYPE``:
 
 =========== =======
@@ -43,6 +52,7 @@ pernight    YEARMMDD NIGHT - only data from that night
 perexp      EXPID - only data from that single exposure
 1x_depth    subset number
 4x_depth    subset number
+lowspeed    subset number
 =========== =======
 
 e.g. spectra, coadds, and
