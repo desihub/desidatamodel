@@ -41,14 +41,15 @@ GROUPTYPE   GROUPID
 cumulative  YEARMMDD NIGHT - all data through that night
 pernight    YEARMMDD NIGHT - only data from that night
 perexp      EXPID - only data from that single exposure
-1x_depth    subset number 
+1x_depth    subset number
 4x_depth    subset number
 =========== =======
 
 e.g. spectra, coadds, and
 redshifts for all exposures of tile 80605 observed on 20210109 are
-under ``tiles/pernight/80605/20210109``, while all data for tile 80605 
-for all nights through 20210205 are under ``tiles/cumulative/80605/20210205``.
+under ``tiles/pernight/80605/20210109``, while all data for tile 80605
+for all nights through 20210205 (including previous nights like 20210109)
+are under ``tiles/cumulative/80605/20210205``.
 
 Subdirectories of ``tiles/`` :
 
