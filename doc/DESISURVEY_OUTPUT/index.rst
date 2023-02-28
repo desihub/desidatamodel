@@ -7,6 +7,10 @@ with the canonical location of ``$DESI_ROOT/survey``.  We expect this
 directory structure will be updated as part of integrating desisurvey
 (afternoon planning and next tile selector) into online operations.
 
+.. warning::
+    These files are not expected to be released, and :envvar:`DESISURVEY_OUTPUT` is
+    not normally defined automatically in the DESI environment.
+
 .. toctree::
    :maxdepth: 1
    

@@ -19,11 +19,11 @@ for testing.
    $DESI_SPECTRO_SIM : simulated spectro data <DESI_SPECTRO_SIM/index>
    $DESI_SPECTRO_CALIB : spectro calibration data <DESI_SPECTRO_CALIB/index>
    $DESI_SURVEY : contains data related to daily operations, fiberassignment, etc. <DESI_SURVEY/index>
-   $DESI_TARGET : target selection and fiber assignment (see also Myers et al. 2022) <DESI_TARGET/index>
+   $DESI_SURVEYOPS : data files used for day-to-day survey operations <DESI_SURVEYOPS/index>
+   $DESI_TARGET : target selection and fiber assignment (see also `Myers *et al.* 2023`_) <DESI_TARGET/index>
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
+   $DESISURVEY_OUTPUT : outputs from desisurvey_ and surveysim_ <DESISURVEY_OUTPUT/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
-   $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
-   $SURVEYOPS : data files used for day-to-day survey operations <SURVEYOPS/index>
    bitmasks
    datamodel
    api
@@ -31,6 +31,10 @@ for testing.
 
 Imaging data and their catalogs are documented separately by the
 `Legacy Survey <http://legacysurvey.org/>`_.
+
+.. _desisurvey: https://github.com/desihub/desisurvey
+.. _surveysim: https://github.com/desihub/surveysim
+.. _`Myers *et al.* 2023`: https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract
 
 Indices and Tables
 ------------------

@@ -3,7 +3,7 @@ zmtl-SPECTROGRAPH-TILEID-thruGROUPID.fits
 =========================================
 
 :Summary: The ``zmtl`` files contain information about redshifts used by the
-	  :doc:`MTL ("Merged Target List") process </SURVEYOPS/mtl/index>` to update
+	  :doc:`MTL ("Merged Target List") process </DESI_SURVEYOPS/mtl/index>` to update
 	  the observational state of targets in the MTL ledgers. In particular,
 	  the redshift information is crucial for deciding whether a target
 	  is a Lyman-alpha quasar that requires additional DESI observations.
