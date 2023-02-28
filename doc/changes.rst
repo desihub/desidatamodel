@@ -2,9 +2,10 @@
 desidatamodel Change Log
 ========================
 
-22.5 (unreleased)
+23.1 (unreleased)
 -----------------
 
+* Rename SURVEYOPS (PR `#142`_).
 * Add links to maskbit definitions (PR `#139`_).
 * Update :doc:`the contributing page <datamodel>` (PR `#138`_).
 * Update documentation for QSO afterburner files (PR `#134`_).
@@ -30,6 +31,7 @@ desidatamodel Change Log
 .. _`#134`: https://github.com/desihub/desidatamodel/pull/134
 .. _`#138`: https://github.com/desihub/desidatamodel/pull/138
 .. _`#139`: https://github.com/desihub/desidatamodel/pull/139
+.. _`#142`: https://github.com/desihub/desidatamodel/pull/142
 
 22.2 (2022-05-31)
 -----------------
