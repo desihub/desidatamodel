@@ -298,7 +298,7 @@ class Stub(DataModelUnit):
                 desc_units = desc_data[name]['Units']
                 if units != '' and units != desc_units:
                     log.warning('Overriding header units "%s" with units "%s" from %s',
-                            units, desc_units, self.description_file)
+                                units, desc_units, self.description_file)
 
                     bad_unit = self.check_unit(desc_units, error=error)
                     if bad_unit:
@@ -310,7 +310,7 @@ class Stub(DataModelUnit):
                 descfile_description = escape(desc_data[name]['Description'])
                 if description != '' and description != descfile_description:
                     log.warning('Overriding header description "%s" with description "%s" from %s',
-                            description, descfile_description, self.description_file)
+                                description, descfile_description, self.description_file)
 
                 description = descfile_description
 
