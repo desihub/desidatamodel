@@ -4,7 +4,7 @@
 """
 import os
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, call
 from pkg_resources import resource_filename
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
@@ -651,9 +651,11 @@ class TestStub(DataModelTestCase):
         self.assertIn('Units', coldesc[colname].keys())
         self.assertIn('Description', coldesc[colname].keys())
 
-    def test_Stub_with_descriptions(self):
+    @patch('desidatamodel.stub.log')
+    def test_Stub_with_descriptions(self, mock_log):
         descfile = resource_filename('desidatamodel.test', 't/column_descriptions.csv')
         filename = resource_filename('desidatamodel.test', 't/fits_file.fits')
+        filename_desc = resource_filename('desidatamodel.test', 't/fits_file_desc.fits')
 
         # no descriptions
         stub = Stub(filename)
@@ -665,6 +667,19 @@ class TestStub(DataModelTestCase):
         lines = str(stub).split('\n')
         # note changed units and added description
         self.assertEqual(lines[85], 'vdisp  float64  m/s       Velocity dispersion')
+
+        # with external descriptions added that override an existing description
+        stub = Stub(filename_desc, description_file=descfile)
+        lines = str(stub).split('\n')
+        # note changed units and added description
+        self.assertEqual(lines[85], 'vdisp  float64  m/s       Velocity dispersion')
+        mock_log.warning.assert_has_calls([call('Overriding header units %s with column description units %s', 'mag', 'nanomaggy'),
+                                           call('Overriding header units %s with column description units %s', 'km/s', 'm/s'),
+                                           call('Overriding header units %s with column description units %s', 'mag', 'nanomaggy'),
+                                           call('Overriding header units %s with column description units %s', 'km/s', 'm/s'),
+                                           call('Overriding header description %s with column description file description %s',
+                                                'Velocity Dispersion',
+                                                descfile)])
 
         # incorrect format column description file
         baddescfile = resource_filename('desidatamodel.test', 't/bad_column_descriptions.csv')
