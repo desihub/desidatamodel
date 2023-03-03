@@ -5,7 +5,7 @@
 desidatamodel.update
 ====================
 
-Tools to update column units and descriptions in a pre-existing datamodel file
+Tools to update column units and descriptions in a pre-existing datamodel file.
 """
 
 import re
@@ -20,6 +20,7 @@ from astropy.io.ascii import RST
 from desiutil.log import get_logger
 
 from .stub import read_column_descriptions
+
 
 def read_table_rows(lines, i):
     """
@@ -73,6 +74,7 @@ def read_table_rows(lines, i):
 
     return rows
 
+
 def format_rst_table(table):
     """
     Format an astropy Table in left-aligned RST format
@@ -108,6 +110,7 @@ def format_rst_table(table):
 
     return rows
 
+
 def update(lines, force=False):
     """Update units and descriptions for data tables in datamodel lines
 
@@ -135,7 +138,7 @@ def update(lines, force=False):
 
     # Iterate over input lines looking for data tables
     i = 0
-    while i<len(lines):
+    while i < len(lines):
         if re.match('(=+) (=+) (=+) (=+)', lines[i]):
             rows = read_table_rows(lines, i)
 
@@ -204,8 +207,14 @@ def update(lines, force=False):
 
     return output_lines
 
+
 def main():
     """Updates a datamodel file with standard units and descriptions
+
+    Returns
+    -------
+    :class:`int`
+        An integer suitable for passing to :func:`sys.exit`.
     """
 
     import argparse
@@ -213,8 +222,8 @@ def main():
     parser.add_argument('-i', '--infile', help='Input model filename')
     parser.add_argument('-o', '--outfile', help='Output model filename')
     parser.add_argument('--force', action='store_true',
-            help="Update non-blank pre-existing entries that differ from "
-                 "reference units and descriptions")
+                        help="Update non-blank pre-existing entries that differ from "
+                             "reference units and descriptions")
     args = parser.parse_args()
 
     # Read input data model file
@@ -227,3 +236,4 @@ def main():
         with open(args.outfile, 'w') as fp:
             for line in output_lines:
                 fp.write(line+'\n')
+    return 0

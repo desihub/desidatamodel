@@ -1,6 +1,11 @@
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
+# -*- coding: utf-8 -*-
+"""Test desidatamodel.update functions
+"""
 import unittest
 
 from ..update import update
+
 
 class TestUpdate(unittest.TestCase):
 

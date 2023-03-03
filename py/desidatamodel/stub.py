@@ -278,7 +278,7 @@ class Stub(DataModelUnit):
                 bad_unit = self.check_unit(units, error=error)
                 if bad_unit:
                     log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
-                          bad_unit, j, hdu, self.filename)
+                              bad_unit, j, hdu, self.filename)
             else:
                 units = ''
 
@@ -302,13 +302,14 @@ class Stub(DataModelUnit):
                     bad_unit = self.check_unit(desc_units, error=error)
                     if bad_unit:
                         log.debug("Non-standard (but acceptable) unit %s detected for column %s in column description file %s",
-                              bad_unit, name, self.description_file)
+                                  bad_unit, name, self.description_file)
 
                 units = desc_units
 
                 descfile_description = escape(desc_data[name]['Description'])
                 if description != '' and description != descfile_description:
-                    log.warning('Overriding header description %s with column description file description %s', description, self.description_file)
+                    log.warning('Overriding header description %s with column description file description %s',
+                                description, self.description_file)
 
                 description = descfile_description
 
@@ -689,13 +690,15 @@ def extract_keywords(hdr):
             keywords.append((key, value, ktype, escape(hdr.comments[key])))
     return keywords
 
+
 def read_column_descriptions(filename):
     """Read column descriptions csv file and return dictionary
 
     Args:
         filename (str): csv filename with columns NAME,TYPE,UNITS,DESCRIPTION
 
-    Returns coldesc_dict[NAME] = dict with keys TYPE, UNITS, DESCRIPTION
+    Returns:
+        coldesc_dict[NAME] = dict with keys TYPE, UNITS, DESCRIPTION
     """
 
     # Use python csv library instead of astropy Table to avoid
@@ -745,9 +748,9 @@ def main():
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
     parser.add_argument("--column_descriptions",
-        help="CSV file with column info Name,Type,Units,Description; "
-             "default=%(default)s",
-        default=resource_filename('desidatamodel', 'data/column_descriptions.csv'))
+                        help="CSV file with column info Name,Type,Units,Description; "
+                             "default=%(default)s",
+                        default=resource_filename('desidatamodel', 'data/column_descriptions.csv'))
 
     options = parser.parse_args()
     if options.verbose:
