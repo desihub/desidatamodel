@@ -48,19 +48,19 @@ def read_table_rows(lines, i):
     h2 = lines[i+1]  # expected column names
     h3 = lines[i+2]  # expected repeat of header separator
 
-    #- check this is the right kind of table, or not at start of table
+    # check this is the right kind of table, or not at start of table
     if h1 != h3 or h2.split() != ['Name', 'Type', 'Units', 'Description']:
         return None
 
-    #- column indices where each column starts
+    # column indices where each column starts
     itype = h2.index('Type')
     iunit = h2.index('Units')
     idesc = h2.index('Description')
 
-    #- Assemble the rows as a list of dict objects
+    # Assemble the rows as a list of dict objects
     rows = list()
     for j in range(i+3, len(lines)):
-        if lines[j] == h3:   #- table footer === === === ===
+        if lines[j] == h3:   # table footer === === === ===
             break
 
         line = lines[j]
@@ -69,7 +69,7 @@ def read_table_rows(lines, i):
         coltype = line[itype:iunit].strip()
         colunit = line[iunit:idesc].strip()
         coldesc = line[idesc:].strip()
-        rows.append( dict(Name=colname, Type=coltype, Units=colunit, Description=coldesc) )
+        rows.append(dict(Name=colname, Type=coltype, Units=colunit, Description=coldesc))
 
     return rows
 
@@ -130,34 +130,34 @@ def update(lines, force=False):
 
     output_lines = list()
 
-    #- Strip trailing whitespace (including newline)
+    # Strip trailing whitespace (including newline)
     lines = [x.rstrip() for x in lines]
 
-    #- Iterate over input lines looking for data tables
+    # Iterate over input lines looking for data tables
     i = 0
     while i<len(lines):
         if re.match('(=+) (=+) (=+) (=+)', lines[i]):
             rows = read_table_rows(lines, i)
 
-            #- if it wasn't a Name Type Units Description table, continue
+            # if it wasn't a Name Type Units Description table, continue
             if rows is None:
                 output_lines.append(lines[i])
                 i += 1
                 continue
 
-            #- We have a table, update units and descriptions
+            # We have a table, update units and descriptions
             for j in range(len(rows)):
-                #- get just the first word of the Name column to avoid
-                #- possible footnotes marking them as optional
+                # get just the first word of the Name column to avoid
+                # possible footnotes marking them as optional
                 name = rows[j]['Name'].split()[0]
 
                 if name in coldefs:
-                    #- standard Units and Descriptions for this Name
+                    # standard Units and Descriptions for this Name
                     units = escape(coldefs[name]['Units']).strip()
                     description = escape(coldefs[name]['Description']).strip()
 
-                    #- updating a blank entry = info
-                    #- changing a pre-existing entry = warning
+                    # updating a blank entry = info
+                    # changing a pre-existing entry = warning
                     current_units = rows[j]['Units']
                     if current_units != units:
                         if current_units == '' or force:
@@ -182,20 +182,19 @@ def update(lines, force=False):
                         else:
                             log.warning(f'{name} Descriptions differ but not updating; "{current_desc}" vs. "{description}"')
 
-
-            #- convert to table, then undo masking of blank strings
+            # convert to table, then undo masking of blank strings
             table = Table(rows, names=['Name', 'Type', 'Units', 'Description'])
             for colname in table.colnames:
                 try:
                     table[colname].mask = np.zeros(len(table), dtype=bool)
                 except AttributeError:
-                    pass  #- column not masked
-            
+                    pass  # column not masked
+
             for line in format_rst_table(table):
                 output_lines.append(line)
 
-            #- skip forward by length of table
-            #- 3 header lines, 1 footer line, plus actual table length
+            # skip forward by length of table
+            # 3 header lines, 1 footer line, plus actual table length
             i += 4 + len(table)
 
         # end of processing a table block; just output whatever line this was
@@ -204,7 +203,7 @@ def update(lines, force=False):
             i += 1
 
     return output_lines
-    
+
 def main():
     """Updates a datamodel file with standard units and descriptions
     """
@@ -218,7 +217,7 @@ def main():
                  "reference units and descriptions")
     args = parser.parse_args()
 
-    #- Read input data model file
+    # Read input data model file
     with open(args.infile) as fp:
         input_lines = fp.readlines()
 
@@ -228,9 +227,3 @@ def main():
         with open(args.outfile, 'w') as fp:
             for line in output_lines:
                 fp.write(line+'\n')
-
-
-
-
-
-
