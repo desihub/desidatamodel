@@ -9,15 +9,17 @@ coadd-SPECTROGRAPH-TILEID-GROUPID.fits
 :Regex: ``coadd-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 213 MB
 
+Coadd files contain spectra for multiple targets coadded across exposures
+but not across spectrograph cameras.
 This file follows nearly the same format as the
 :doc:`spectra files <spectra-SPECTROGRAPH-TILEID-GROUPID>`, except there is
 one entry per target instead of one entry per exposure per target, and
 the FIBERMAP is split into two HDUs:
 
   * FIBERMAP: values such as fluxes and targeting bits that remain applicable
-    even after a coadd.
-  * EXP_FIBERMAP: values like fiber offsets and seeing that apply to the
-    individual exposures contributing to the coadd.
+    for each target even after a coadd.
+  * EXP_FIBERMAP: values like fiber offsets and atmospheric seeing that
+    apply to the individual exposures contributing to the coadd.
 
 The coadded FIBERMAP also gets some new summary columns,
 *e.g.* ``COADD_NUMEXP`` and ``COADD_NUMTILE`` recording the number of
@@ -50,6 +52,9 @@ HDU17_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
 HDU18_ SCORES       BINTABLE QA scores table
 ====== ============ ======== ===================
 
+Note: the above is the order in which these HDUs appear in DESI spectroscopic
+pipeline output, but the order is arbitrary and they should be read by
+name not by number.
 
 FITS Header Units
 =================
@@ -761,6 +766,10 @@ TSNR2_LRG           float32       LRG template (S/N)^2 summed over B,R,Z
 
 Notes and Examples
 ==================
+
+Coadd files can be read and interpreted using the same code examples
+shown in the "Notes and Examples" section of the
+:doc:`spectra files <spectra-SPECTROGRAPH-TILEID-GROUPID>` documentation.
 
 The format supports arbitrary channel (camera) names as long as for each channel {X}
 there is a set of HDUs named {X}_WAVELENGTH, {X}_FLUX, {X}_IVAR, {X}_MASK,

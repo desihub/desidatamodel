@@ -11,24 +11,39 @@ spectra-SPECTROGRAPH-TILEID-GROUPID.fits
 :Regex: ``spectra-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 198 MB
 
-See the top-level :doc:`SPECPROD/tiles/ <../../../index>` description for an overview
-of the GROUPTYPE and GROUPID options.
+Spectra files contain non-coadded spectra for multiple targets observed on
+multiple individual exposures and cameras.  The format can contain any
+arbitrary set of targets, though the standard DESI spectroscopic pipeline
+outputs are grouped either by a single petal of a given tile,
+or all targets on a single healpix.
 
-The contents of the spectra files are a reformatting of the data in multiple
-input :doc:`cframe files </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>` files.
-Spectra files do not contain any additional information or calculations beyond
-what is already in the cframe files, but they provide an analysis convenience
-to get all the data for a given tile petal in a single file without having to find
-and read multiple cframe files across multiple nights, exposures, and cameras.
+Tile-based spectra can be grouped in multiple ways across
+exposures and nights;  see the top-level :doc:`SPECPROD/tiles/ <../../../index>`
+description for an overview of the per-tile GROUPTYPE and GROUPID options.
+Healpix-based spectra are grouped by SURVEY and PROGRAM.
+Science analyses may release spectra in other groups, e.g. all the spectra
+selected for a particular analysis.
 
 See :doc:`coadd files <coadd-SPECTROGRAPH-TILEID-GROUPID>` for a coadded
-version of the same spectra.
+version of the same spectra in a very similar format.
 
-The FIBERMAP and SCORES tables are concatenated from the input cframe files,
-with one row per target per exposure.  The WAVELENGTH, FLUX, IVAR, MASK,
-and RESOLUTION HDUs of the input cframes are combined and stored here
-with a \[BRZ\]\_ prefix, e.g. B_FLUX for the stack of all FLUX HDUs from
-the input B-camera cframes.
+The FIBERMAP table contains metadata about each target, with one row per
+target per exposure.  The corresponding SCORES table contains quantities
+measured from the spectra, also with one row per target per exposure.
+
+The spectra themselves are in a set of image HDUs for the FLUX,
+IVAR (inverse variance), MASK, and spectral RESOLUTION, each prefixed
+with a spectrograph camera name, e.g. B, R, or Z for DESI, though the format
+in general could support other numbers and names of cameras for other
+instruments.  A row of each image HDU correponds to the target from the
+same row index of the FIBERMAP and SCORES HDUs.
+
+Details are given below, with examples for reading and interpreting the
+spectra files at the end.
+
+Note: the above is the order in which these HDUs appear in DESI spectroscopic
+pipeline output, but the order is arbitrary and they should be read by
+name not by number.
 
 Contents
 ========
@@ -721,14 +736,77 @@ Data: FITS image [float32, 2881x11x500]
 Notes and Examples
 ==================
 
-Spectra files can be read using `desispec <https://github.com/desihub/desispec>`_::
+Spectra can be read and plotted with Python code like::
 
-    from desispec.io import read_spectra
-    sp = read_spectra('spectra-0-100-thru20210505.fits')
+    from astropy.io import fits
+
+    wave = dict()
+    flux = dict()
+    with fits.open('spectra-0-100-thru20210505.fits.gz') as hdus:
+        for camera in ['B', 'R', 'Z']:
+            wave[camera] = hdus[f'{camera}_WAVELENGTH'].data
+            flux[camera] = hdus[f'{camera}_FLUX'].data
 
     import matplotlib.pyplot as plt
+    plt.figure(figsize=(6,3))
+    ispec = 217
+    for camera in wave.keys():
+        plt.plot(wave[camera], flux[camera][ispec])
+
+    plt.xlabel('Wavelength [Angstrom]')
+    plt.ylabel('Flux [1e-17 erg/s/cm2/Angstrom]')
+    plt.tight_layout()
+    plt.show()
+
+.. image:: example_spectrum.png
+
+The `desispec <https://github.com/desihub/desispec>`_ package provides
+utility functions and classes for reading, slicing, combining, and writing
+spectra.  e.g. the same plot can be made with::
+
+    from desispec.io import read_spectra
+    sp = read_spectra('spectra-0-100-thru20210505.fits.gz')
+
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=(6,3))
     ispec = 217
     for camera in sp.bands:
         plt.plot(sp.wave[camera], sp.flux[camera][ispec])
 
+    plt.xlabel('Wavelength [Angstrom]')
+    plt.ylabel('Flux [1e-17 erg/s/cm2/Angstrom]')
+    plt.tight_layout()
     plt.show()
+
+or multiple spectra files can be read, sub-selected, combined, and re-written with::
+
+    from desispec.io import read_spectra, write_spectra
+    from desispec.spectra import stack
+    spectra = list()
+    for petal in range (10):
+        sp = read_spectra(f'spectra-{petal}-100-thru20210505.fits')
+        keep = sp.fibermap['FLUX_R'] > 10**((22.5-17)/2.5)   # mag_r > 17
+        spectra.append(sp[keep])
+
+    combined_spectra = stack(spectra)
+    write_spectra('bright_spectra.fits', combined_spectra)
+
+
+The format supports arbitrary channel (camera) names as long as for each channel {X}
+there is a set of HDUs named {X}_WAVELENGTH, {X}_FLUX, {X}_IVAR, {X}_MASK,
+{X}_RESOLUTION.
+
+The contents of the spectra files are a reformatting of the data in multiple
+input :doc:`cframe files </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>` files.
+Spectra files do not contain any additional information or calculations beyond
+what is already in the cframe files, but they provide an analysis convenience
+to get all the data for a given tile petal or healpix in a single file without
+having to find and read multiple cframe files across multiple nights,
+exposures, and cameras.
+
+The FIBERMAP and SCORES tables are concatenated from the input cframe files,
+with one row per target per exposure.  The WAVELENGTH, FLUX, IVAR, MASK,
+and RESOLUTION HDUs of the input cframes are combined and stored here
+with a \[BRZ\]\_ prefix, e.g. B_FLUX for the stack of all FLUX HDUs from
+the input B-camera cframes.
+
