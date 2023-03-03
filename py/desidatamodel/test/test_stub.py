@@ -13,7 +13,7 @@ from collections import OrderedDict
 from .datamodeltestcase import DataModelTestCase
 from .. import DataModelError
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
-                    extract_keywords, log)
+                    extract_keywords, log, read_column_descriptions)
 
 
 class sim_comments(dict):
@@ -637,6 +637,34 @@ class TestStub(DataModelTestCase):
         for i, l in enumerate(data.split('\n')):
             self.assertEqual(l, modellines[i])
 
+    def test_read_column_descriptions(self):
+        """Test reading column descriptions file
+        """
+        # this test mainly verifies that future edits of
+        # data/column_descriptions.csv didn't break the format,
+        # e.g. descriptions with spaces and commas are properly quoted
+        filename = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+        coldesc = read_column_descriptions(filename)
+        colname = 'FLUX_R'
+        self.assertIn(colname, coldesc.keys())
+        self.assertIn('Type', coldesc[colname].keys())
+        self.assertIn('Units', coldesc[colname].keys())
+        self.assertIn('Description', coldesc[colname].keys())
+
+    def test_Stub_with_descriptions(self):
+        descfile = resource_filename('desidatamodel.test', 't/column_descriptions.csv')
+        filename = resource_filename('desidatamodel.test', 't/fits_file.fits')
+
+        # no descriptions
+        stub = Stub(filename)
+        lines = str(stub).split('\n')
+        self.assertEqual(lines[85], 'vdisp  float64  km/s')
+
+        # with external descriptions added
+        stub = Stub(filename, description_file=descfile)
+        lines = str(stub).split('\n')
+        # note changed units and added description
+        self.assertEqual(lines[85], 'vdisp  float64  m/s   Velocity dispersion')
 
 def test_suite():
     """Allows testing of only this module with the command::

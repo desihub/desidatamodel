@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+"""
+Update column units and descriptions in a datamodel file
+"""
+
+import sys
+from desidatamodel.update import main
+
+sys.exit(main())
+

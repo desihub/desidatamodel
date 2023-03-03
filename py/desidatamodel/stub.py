@@ -10,8 +10,10 @@ Generate data model files from FITS files.
 import os
 import re
 from html import escape
+from pkg_resources import resource_filename
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
+from astropy.table import Table
 
 from desiutil.log import log, DEBUG
 
@@ -258,43 +260,58 @@ class Stub(DataModelUnit):
         c = list()
         c.append(self.columns_header)
         if self.description_file is not None:
-            print('You add a file with column descriptions and units, reading column description and units from here', self.description_file)
-            desc_data = fits.open(self.description_file)[1].data
+            log.info('Using column description and units from %s',
+                     self.description_file)
+            desc_data = read_column_descriptions(self.description_file)
+        else:
+            desc_data = None
 
         for j in range(ncol):
 
-            if self.description_file is not None:
-                
-                units = desc_data[(desc_data['NAME'] == name)]['UNIT'][0].strip()
+            # Get units from header if possible
+            jj = '{0:d}'.format(j+1)
+            name = hdr['TTYPE'+jj].strip()
+            ttype = fits_column_format(hdr['TFORM'+jj].strip())
+            tunit = 'TUNIT'+jj
+            if tunit in hdr:
+                units = hdr[tunit].strip()
                 bad_unit = self.check_unit(units, error=error)
+                if bad_unit:
+                    log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
+                          bad_unit, j, hdu, self.filename)
+            else:
+                units = ''
+
+            # Check TCOMMnn keyword, otherwise use TTYPE comment
+            # for description.
+            commkey = 'TCOMM'+jj
+            if commkey in hdr:
+                description = escape(hdr[commkey].strip())
+            else:
+                description = escape(hdr.comments['TTYPE'+jj])
+
+            # For both UNITS and DESCRIPTION, column description file trumps
+            # fits header (in case fits header was wrong and we need to
+            # override it), but at least print warning if they don't match
+
+            if desc_data is not None and name in desc_data:
+                desc_units = desc_data[name]['Units']
+                if units != '' and units != desc_units:
+                    log.warning('Overriding header units %s with column description units %s', units, desc_units)
+
+                    bad_unit = self.check_unit(desc_units, error=error)
                     if bad_unit:
                         log.debug("Non-standard (but acceptable) unit %s detected for column %s in column description file",
-                              bad_unit, self.filename)
+                              bad_unit, name, self.description_filename)
 
-            else:
-                jj = '{0:d}'.format(j+1)
-                name = hdr['TTYPE'+jj].strip()
-                ttype = fits_column_format(hdr['TFORM'+jj].strip())
-                tunit = 'TUNIT'+jj
-                if tunit in hdr:
-                    units = hdr[tunit].strip()
-                    bad_unit = self.check_unit(units, error=error)
-                    if bad_unit:
-                        log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
-                              bad_unit, j, hdu, self.filename)
-                else:
-                    units = ''
+                units = desc_units
 
-            if self.description_file is not None:
-                description = escape(desc_data[(desc_data['NAME'] == name)]['DESC'][0])
-            else:
-                # Check TCOMMnn keyword, otherwise use TTYPE comment
-                # for description.
-                commkey = 'TCOMM'+jj
-                if commkey in hdr:
-                    description = escape(hdr[commkey].strip())
-                else:
-                    description = escape(hdr.comments['TTYPE'+jj])
+                descfile_description = escape(desc_data[name]['Description'])
+                if description != '' and description != descfile_description:
+                    log.warning('Overriding header description %s with column description file description %s', description, descfile_description)
+
+                description = descfile_description
+
             c.append((name, ttype, units, description))
         return c
 
@@ -672,6 +689,33 @@ def extract_keywords(hdr):
             keywords.append((key, value, ktype, escape(hdr.comments[key])))
     return keywords
 
+def read_column_descriptions(filename):
+    """Read column descriptions csv file and return dictionary
+
+    Args:
+        filename (str): csv filename with columns NAME,TYPE,UNITS,DESCRIPTION
+
+    Returns coldesc_dict[NAME] = dict with keys TYPE, UNITS, DESCRIPTION
+    """
+
+    # Use python csv library instead of astropy Table to avoid
+    # unwanted masking of blank strings
+    import csv
+
+    with open(filename) as fp:
+        header = fp.readline().strip()
+        correct_header = 'Name,Type,Units,Description'
+        if header != correct_header:
+            raise ValueError(f'{filename} header {header} should be {correct_header}')
+
+        coldesc = dict()
+        csvreader = csv.reader(fp)
+        for row in csvreader:
+            name, dtype, units, desc = row
+            coldesc[name] = dict(Type=dtype, Units=units, Description=desc)
+
+    return coldesc
+
 
 def main():
     """Entry point for the generate_model script.
@@ -700,13 +744,16 @@ def main():
                         help='Set log level to DEBUG.')
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
-    parser.add_argument("--desc", help="A file with columns description. So far only fits files available. Must have at least columns name and desc", default=None)
+    parser.add_argument("--column_descriptions",
+        help="CSV file with column info Name,Type,Units,Description; "
+             "default=%(default)s",
+        default=resource_filename('desidatamodel', 'data/column_descriptions.csv'))
 
     options = parser.parse_args()
     if options.verbose:
         log.setLevel(DEBUG)
     for f in options.filename:
-        stub = Stub(f)
+        stub = Stub(f, description_file=options.column_descriptions)
         data = str(stub)
         #
         # Write the file
