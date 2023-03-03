@@ -297,19 +297,20 @@ class Stub(DataModelUnit):
             if desc_data is not None and name in desc_data:
                 desc_units = desc_data[name]['Units']
                 if units != '' and units != desc_units:
-                    log.warning('Overriding header units %s with column description units %s', units, desc_units)
+                    log.warning('Overriding header units "%s" with units "%s" from %s',
+                            units, desc_units, self.description_file)
 
                     bad_unit = self.check_unit(desc_units, error=error)
                     if bad_unit:
-                        log.debug("Non-standard (but acceptable) unit %s detected for column %s in column description file %s",
+                        log.debug('Non-standard (but acceptable) units "%s" detected for column %s in %s',
                                   bad_unit, name, self.description_file)
 
                 units = desc_units
 
                 descfile_description = escape(desc_data[name]['Description'])
                 if description != '' and description != descfile_description:
-                    log.warning('Overriding header description %s with column description file description %s',
-                                description, self.description_file)
+                    log.warning('Overriding header description "%s" with description "%s" from %s',
+                            description, descfile_description, self.description_file)
 
                 description = descfile_description
 

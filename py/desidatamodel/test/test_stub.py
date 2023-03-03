@@ -673,13 +673,13 @@ class TestStub(DataModelTestCase):
         lines = str(stub).split('\n')
         # note changed units and added description
         self.assertEqual(lines[85], 'vdisp  float64  m/s       Velocity dispersion')
-        mock_log.warning.assert_has_calls([call('Overriding header units %s with column description units %s', 'mag', 'nanomaggy'),
-                                           call('Overriding header units %s with column description units %s', 'km/s', 'm/s'),
-                                           call('Overriding header units %s with column description units %s', 'mag', 'nanomaggy'),
-                                           call('Overriding header units %s with column description units %s', 'km/s', 'm/s'),
-                                           call('Overriding header description %s with column description file description %s',
-                                                'Velocity Dispersion',
-                                                descfile)])
+        mock_log.warning.assert_has_calls([call('Overriding header units "%s" with units "%s" from %s', 'mag', 'nanomaggy', descfile),
+                                           call('Overriding header units "%s" with units "%s" from %s', 'km/s', 'm/s', descfile),
+                                           call('Overriding header units "%s" with units "%s" from %s', 'mag', 'nanomaggy', descfile),
+                                           call('Overriding header units "%s" with units "%s" from %s', 'km/s', 'm/s', descfile),
+                                           call('Overriding header description "%s" with description "%s" from %s',
+                                                'Velocity Dispersion', 'Velocity dispersion', descfile)
+                                           ])
 
         # incorrect format column description file
         baddescfile = resource_filename('desidatamodel.test', 't/bad_column_descriptions.csv')
