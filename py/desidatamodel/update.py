@@ -184,7 +184,7 @@ def update(lines, force=False):
 
 
             #- convert to table, then undo masking of blank strings
-            table = Table(rows)
+            table = Table(rows, names=['Name', 'Type', 'Units', 'Description'])
             for colname in table.colnames:
                 try:
                     table[colname].mask = np.zeros(len(table), dtype=bool)
