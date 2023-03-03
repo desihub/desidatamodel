@@ -301,14 +301,14 @@ class Stub(DataModelUnit):
 
                     bad_unit = self.check_unit(desc_units, error=error)
                     if bad_unit:
-                        log.debug("Non-standard (but acceptable) unit %s detected for column %s in column description file",
-                              bad_unit, name, self.description_filename)
+                        log.debug("Non-standard (but acceptable) unit %s detected for column %s in column description file %s",
+                              bad_unit, name, self.description_file)
 
                 units = desc_units
 
                 descfile_description = escape(desc_data[name]['Description'])
                 if description != '' and description != descfile_description:
-                    log.warning('Overriding header description %s with column description file description %s', description, descfile_description)
+                    log.warning('Overriding header description %s with column description file description %s', description, self.description_file)
 
                 description = descfile_description
 

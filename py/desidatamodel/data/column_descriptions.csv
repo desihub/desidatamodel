@@ -362,4 +362,3 @@ ZPOSSLOC,,,True/False whether the location could have been assigned to the given
 ZTILEID,,,
 ZWARN,int64,,Redshift warning bitmask measured by Redrock
 ZWARN_MTL,int64,,The ZWARN from the zmtl file (contains extra bits)
-vdisp,float64,km/s,Velocity dispersion

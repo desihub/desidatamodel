@@ -664,7 +664,14 @@ class TestStub(DataModelTestCase):
         stub = Stub(filename, description_file=descfile)
         lines = str(stub).split('\n')
         # note changed units and added description
-        self.assertEqual(lines[85], 'vdisp  float64  m/s   Velocity dispersion')
+        self.assertEqual(lines[85], 'vdisp  float64  m/s       Velocity dispersion')
+
+        # incorrect format column description file
+        baddescfile = resource_filename('desidatamodel.test', 't/bad_column_descriptions.csv')
+        with self.assertRaises(ValueError):
+            stub = Stub(filename, description_file=baddescfile)
+            lines = str(stub)
+
 
 def test_suite():
     """Allows testing of only this module with the command::
