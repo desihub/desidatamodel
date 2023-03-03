@@ -131,7 +131,7 @@ def update(lines, force=False):
     output_lines = list()
 
     #- Strip trailing whitespace (including newline)
-    lines = [x.strip() for x in lines]
+    lines = [x.rstrip() for x in lines]
 
     #- Iterate over input lines looking for data tables
     i = 0
