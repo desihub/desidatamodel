@@ -9,15 +9,17 @@ coadd-SPECTROGRAPH-TILEID-GROUPID.fits
 :Regex: ``coadd-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 213 MB
 
+Coadd files contain spectra for multiple targets coadded across exposures
+but not across spectrograph cameras.
 This file follows nearly the same format as the
 :doc:`spectra files <spectra-SPECTROGRAPH-TILEID-GROUPID>`, except there is
 one entry per target instead of one entry per exposure per target, and
 the FIBERMAP is split into two HDUs:
 
   * FIBERMAP: values such as fluxes and targeting bits that remain applicable
-    even after a coadd.
-  * EXP_FIBERMAP: values like fiber offsets and seeing that apply to the
-    individual exposures contributing to the coadd.
+    for each target even after a coadd.
+  * EXP_FIBERMAP: values like fiber offsets and atmospheric seeing that
+    apply to the individual exposures contributing to the coadd.
 
 The coadded FIBERMAP also gets some new summary columns,
 *e.g.* ``COADD_NUMEXP`` and ``COADD_NUMTILE`` recording the number of
@@ -50,6 +52,9 @@ HDU17_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
 HDU18_ SCORES       BINTABLE QA scores table
 ====== ============ ======== ===================
 
+Note: the above is the order in which these HDUs appear in DESI spectroscopic
+pipeline output, but the order is arbitrary and they should be read by
+name not by number.
 
 FITS Header Units
 =================
@@ -70,7 +75,7 @@ Required Header Keywords
     KEY        Example Value                   Type Comment
     ========== =============================== ==== ==============================================
     SPGRP      cumulative                      str  Method of grouping spectra for coadd, e.g. PERNIGHT or CUMULATIVE
-    SPGRPVAL   20210205                        int  Group value for this coadd, e.g. 
+    SPGRPVAL   20210205                        int  Group value for this coadd, e.g.
     NIGHT [1]_ 20210708                        int  YEARMMDD night identifier for "pernight" and "cumulative" groups
     TILEID     80605                           int  DESI Tile ID
     SPECTRO    2                               int  Spectrograph number
@@ -106,7 +111,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   387              int  
+    NAXIS1   387              int
     NAXIS2   500              int  Number of targets
     ENCODING ascii            str
     LONGSTRN OGIP 1.0         str
@@ -121,96 +126,96 @@ TODO: add units
 
 .. rst-class:: columns
 
-========================== ======= ===== =====================================================
-Name                       Type    Units Description
-========================== ======= ===== =====================================================
-TARGETID                   int64         Unique target ID
-PETAL_LOC                  int16         Petal location [0-9]
-DEVICE_LOC                 int32         Device location on focal plane [0-523]
-LOCATION                   int64         FP location PETAL_LOC*1000 + DEVICE_LOC
-FIBER                      int32         Fiber ID on the CCDs [0-4999]
-COADD_FIBERSTATUS          int32         Logical AND of FIBERSTATUS bitmasks from input fibermaps
-TARGET_RA                  float64       Target Right Ascension [degrees]
-TARGET_DEC                 float64       Target declination [degrees]
-PMRA                       float32       PM in +RA dir (already incl cos(dec))
-PMDEC                      float32       Proper motion in +dec direction
-REF_EPOCH                  float32       proper motion reference epoch
-LAMBDA_REF                 float32       Wavelength at which fiber was centered
-FA_TARGET                  int64
-FA_TYPE                    binary        Internal fiberassign target type
-OBJTYPE                    char[3]       SKY, TGT, NON
-FIBERASSIGN_X              float32       Expected CS5 X on focal plane
-FIBERASSIGN_Y              float32       Expected CS5 Y on focal plane
-PRIORITY                   int32         Assignment priority; larger=higher priority
-SUBPRIORITY                float64       Assignment subpriority [0-1)
-OBSCONDITIONS              int32         bitmask of allowable observing conditions
-RELEASE                    int16         imaging surveys release ID
-BRICKID                    int32         Imaging Surveys brick ID
-BRICK_OBJID                int32         Imaging Surveys OBJID on that brick
-MORPHTYPE                  char[4]       Imaging Surveys morphological type
-FLUX_G                     float32       g-band flux
-FLUX_R                     float32       r-band flux
-FLUX_Z                     float32       z-band flux
-FLUX_IVAR_G                float32       Inverse variance of FLUX_G
-FLUX_IVAR_R                float32       Inverse variance of FLUX_R
-FLUX_IVAR_Z                float32       Inverse variance of FLUX_Z
-MASKBITS                   int16         Photometry mask bits
-REF_ID                     int64         Astrometric cat refID (Gaia SOURCE_ID)
-REF_CAT                    char[2]       astrometry reference catalog
-GAIA_PHOT_G_MEAN_MAG       float32       Gaia G band mag
-GAIA_PHOT_BP_MEAN_MAG      float32       Gaia BP band mag
-GAIA_PHOT_RP_MEAN_MAG      float32       Gaia RP band mag
-PARALLAX                   float32       Parallax
-BRICKNAME                  char[8]       Imaging Surveys brick name
-EBV                        float32       Galactic extinction E(B-V) reddening from SFD98
-FLUX_W1                    float32       WISE W1-band flux
-FLUX_W2                    float32       WISE W2-band flux
-FLUX_IVAR_W1               float32       Inverse variance of FLUX_W1
-FLUX_IVAR_W2               float32       Inverse variance of FLUX_W2
-FIBERFLUX_G                float32       g-band model flux 1&quot; seeing, 1.5&quot; dia fiber
-FIBERFLUX_R                float32       r-band model flux 1&quot; seeing, 1.5&quot; dia fiber
-FIBERFLUX_Z                float32       z-band model flux 1&quot; seeing, 1.5&quot; dia fiber
-FIBERTOTFLUX_G             float32       fiberflux model incl. all objs at this loc
-FIBERTOTFLUX_R             float32       fiberflux model incl. all objs at this loc
-FIBERTOTFLUX_Z             float32       fiberflux model incl. all objs at this loc
-SERSIC                     float32       Power-law index for the Sersic profile model
-SHAPE_R                    float32       Half-light radius of galaxy model
-SHAPE_E1                   float32       Ellipticity component 1 for galaxy model
-SHAPE_E2                   float32       Ellipticity component 2 for galaxy model
-PHOTSYS                    char[1]       N for BASS/MzLS, S for DECam
-PRIORITY_INIT              int64         initial priority
-NUMOBS_INIT                int64         initial number of requested observations
-SV1_DESI_TARGET [1]_       int64
-SV1_BGS_TARGET [1]_        int64
-SV1_MWS_TARGET [1]_        int64
-SV1_SCND_TARGET [1]_       int64
-SV3_DESI_TARGET [1]_       int64
-SV3_BGS_TARGET [1]_        int64
-SV3_MWS_TARGET [1]_        int64
-SV3_SCND_TARGET [1]_       int64
-DESI_TARGET                int64         Dark survey + calibration targeting bits
-BGS_TARGET                 int64         Bright Galaxy Survey targeting bits
-MWS_TARGET                 int64         Milky Way Survey targeting bits
-SCND_TARGET [1]_           int64         Secondary targeting bits
-PLATE_RA                   float64       Right Ascension for Platemaker to use [degrees]
-PLATE_DEC                  float64       declination for Platemaker to use [degrees]
-TILEID                     int32         DESI tile ID
-COADD_NUMEXP               int16         Number of exposures included in the coadd for this target
-COADD_EXPTIME              float32       Sum of input exposure times
-COADD_NUMNIGHT             int16         Number of different nights included in the coadd for this target
-COADD_NUMTILE              int16         Number of different tiles included in the coadd for this target
-MEAN_DELTA_X               float32       Mean of fiber X offsets from requested location on focal plane
-RMS_DELTA_X                float32       RMS of fiber X offsets from requested location on focal plane
-MEAN_DELTA_Y               float32       Mean of fiber Y offsets from requested location on focal plane
-RMS_DELTA_Y                float32       RMS of fiber Y offsets from requested location on focal plane
-MEAN_FIBER_RA              float64       Mean of fiber RA locations on sky
-STD_FIBER_RA               float32       Standard deviation of fiber RA locations on sky
-MEAN_FIBER_DEC             float64       Mean of fiber Declination locations on sky
-STD_FIBER_DEC              float32       Standard deviation of fiber Declination locations on sky
-MEAN_PSF_TO_FIBER_SPECFLUX float32       Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-MEAN_FIBER_X               float32       Mean of fiber X locations on focal plane for this target
-MEAN_FIBER_Y               float32       Mean of fiber Y locations on focal plane for this target
-========================== ======= ===== =====================================================
+========================== ======= ============ ===============================================================================================================================
+Name                       Type    Units        Description
+========================== ======= ============ ===============================================================================================================================
+TARGETID                   int64                Unique target ID
+PETAL_LOC                  int16                Petal location [0-9]
+DEVICE_LOC                 int32                Device location on focal plane [0-523]
+LOCATION                   int64                FP location PETAL_LOC*1000 + DEVICE_LOC
+FIBER                      int32                Fiber ID on the CCDs [0-4999]
+COADD_FIBERSTATUS          int32                Logical AND of FIBERSTATUS bitmasks from input fibermaps
+TARGET_RA                  float64 deg          Target Right Ascension [degrees]
+TARGET_DEC                 float64 deg          Target declination [degrees]
+PMRA                       float32 mas yr^-1    PM in +RA dir (already incl cos(dec))
+PMDEC                      float32 mas yr^-1    Proper motion in +dec direction
+REF_EPOCH                  float32 yr           proper motion reference epoch
+LAMBDA_REF                 float32              Wavelength at which fiber was centered
+FA_TARGET                  int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE                    binary               Internal fiberassign target type
+OBJTYPE                    char[3]              SKY, TGT, NON
+FIBERASSIGN_X              float32              Expected CS5 X on focal plane
+FIBERASSIGN_Y              float32              Expected CS5 Y on focal plane
+PRIORITY                   int32                Assignment priority; larger=higher priority
+SUBPRIORITY                float64              Assignment subpriority [0-1)
+OBSCONDITIONS              int32                bitmask of allowable observing conditions
+RELEASE                    int16                imaging surveys release ID
+BRICKID                    int32                Imaging Surveys brick ID
+BRICK_OBJID                int32                Imaging Surveys OBJID on that brick
+MORPHTYPE                  char[4]              Imaging Surveys morphological type
+FLUX_G                     float32 nanomaggy    g-band flux
+FLUX_R                     float32 nanomaggy    r-band flux
+FLUX_Z                     float32 nanomaggy    z-band flux
+FLUX_IVAR_G                float32 nanomaggy^-2 Inverse variance of FLUX_G
+FLUX_IVAR_R                float32 nanomaggy^-2 Inverse variance of FLUX_R
+FLUX_IVAR_Z                float32 nanomaggy^-2 Inverse variance of FLUX_Z
+MASKBITS                   int16                Photometry mask bits
+REF_ID                     int64                Astrometric cat refID (Gaia SOURCE_ID)
+REF_CAT                    char[2]              astrometry reference catalog
+GAIA_PHOT_G_MEAN_MAG       float32 mag          Gaia G band mag
+GAIA_PHOT_BP_MEAN_MAG      float32 mag          Gaia BP band mag
+GAIA_PHOT_RP_MEAN_MAG      float32 mag          Gaia RP band mag
+PARALLAX                   float32 mas          Parallax
+BRICKNAME                  char[8]              Imaging Surveys brick name
+EBV                        float32 mag          Galactic extinction E(B-V) reddening from SFD98
+FLUX_W1                    float32 nanomaggy    WISE W1-band flux
+FLUX_W2                    float32 nanomaggy    WISE W2-band flux
+FLUX_IVAR_W1               float32 nanomaggy^-2 Inverse variance of FLUX_W1
+FLUX_IVAR_W2               float32 nanomaggy^-2 Inverse variance of FLUX_W2
+FIBERFLUX_G                float32 nanomaggy    g-band model flux 1&quot; seeing, 1.5&quot; dia fiber
+FIBERFLUX_R                float32 nanomaggy    r-band model flux 1&quot; seeing, 1.5&quot; dia fiber
+FIBERFLUX_Z                float32 nanomaggy    z-band model flux 1&quot; seeing, 1.5&quot; dia fiber
+FIBERTOTFLUX_G             float32 nanomaggy    fiberflux model incl. all objs at this loc
+FIBERTOTFLUX_R             float32 nanomaggy    fiberflux model incl. all objs at this loc
+FIBERTOTFLUX_Z             float32 nanomaggy    fiberflux model incl. all objs at this loc
+SERSIC                     float32              Power-law index for the Sersic profile model
+SHAPE_R                    float32 arcsec       Half-light radius of galaxy model
+SHAPE_E1                   float32              Ellipticity component 1 for galaxy model
+SHAPE_E2                   float32              Ellipticity component 2 for galaxy model
+PHOTSYS                    char[1]              N for BASS/MzLS, S for DECam
+PRIORITY_INIT              int64                initial priority
+NUMOBS_INIT                int64                initial number of requested observations
+SV1_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_        int64                BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_        int64                MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_       int64                Secondary target selection bitmask for SV1
+SV3_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_        int64                BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_        int64                MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_       int64                Secondary target selection bitmask for SV3
+DESI_TARGET                int64                Dark survey + calibration targeting bits
+BGS_TARGET                 int64                Bright Galaxy Survey targeting bits
+MWS_TARGET                 int64                Milky Way Survey targeting bits
+SCND_TARGET [1]_           int64                Secondary targeting bits
+PLATE_RA                   float64 deg          Right Ascension for Platemaker to use [degrees]
+PLATE_DEC                  float64 deg          declination for Platemaker to use [degrees]
+TILEID                     int32                DESI tile ID
+COADD_NUMEXP               int16                Number of exposures included in the coadd for this target
+COADD_EXPTIME              float32 s            Sum of input exposure times
+COADD_NUMNIGHT             int16                Number of different nights included in the coadd for this target
+COADD_NUMTILE              int16                Number of different tiles included in the coadd for this target
+MEAN_DELTA_X               float32              Mean of fiber X offsets from requested location on focal plane
+RMS_DELTA_X                float32              RMS of fiber X offsets from requested location on focal plane
+MEAN_DELTA_Y               float32              Mean of fiber Y offsets from requested location on focal plane
+RMS_DELTA_Y                float32              RMS of fiber Y offsets from requested location on focal plane
+MEAN_FIBER_RA              float64 deg          Mean of fiber RA locations on sky
+STD_FIBER_RA               float32 deg          Standard deviation of fiber RA locations on sky
+MEAN_FIBER_DEC             float64 deg          Mean of fiber Declination locations on sky
+STD_FIBER_DEC              float32 deg          Standard deviation of fiber Declination locations on sky
+MEAN_PSF_TO_FIBER_SPECFLUX float32              Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+MEAN_FIBER_X               float32              Mean of fiber X locations on focal plane for this target
+MEAN_FIBER_Y               float32              Mean of fiber Y locations on focal plane for this target
+========================== ======= ============ ===============================================================================================================================
 
 .. [1] Optional
 
@@ -234,7 +239,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   162              int  
+    NAXIS1   162              int
     NAXIS2   1000             int  Number of input target exposures
     ENCODING ascii            str
     CHECKSUM 3f5X4e3U3e3U3e3U str  HDU checksum updated 2021-07-16T14:01:46
@@ -246,9 +251,9 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======= ===== ===============================================
+===================== ======= ===== =============================================================================================================================
 Name                  Type    Units Description
-===================== ======= ===== ===============================================
+===================== ======= ===== =============================================================================================================================
 TARGETID              int64         Unique target ID
 PRIORITY              int32         Assignment priority; larger=higher priority
 SUBPRIORITY           float64       Assignment subpriority [0-1)
@@ -256,7 +261,7 @@ NIGHT                 int32         YEARMMDD date of sunset for the night of thi
 EXPID                 int32         DESI exposure ID
 MJD                   float64       Modified Julien Date
 TILEID                int32         DESI tile ID
-EXPTIME               float64       Exposure time
+EXPTIME               float64 s     Exposure time
 PETAL_LOC             int16         Petal location [0-9]
 DEVICE_LOC            int32         Device location on focal plane [0-523]
 LOCATION              int64         FP location PETAL_LOC*1000 + DEVICE_LOC
@@ -265,17 +270,17 @@ FIBERSTATUS           int32         Fiber status; 0=good
 FIBERASSIGN_X         float32       Expected CS5 X on focal plane
 FIBERASSIGN_Y         float32       Expected CS5 Y on focal plane
 LAMBDA_REF            float32       Wavelength at which fiber was centered
-PLATE_RA              float64       Right Ascension for Platemaker to use [degrees]
-PLATE_DEC             float64       declination for Platemaker to use [degrees]
+PLATE_RA              float64 deg   Right Ascension for Platemaker to use [degrees]
+PLATE_DEC             float64 deg   declination for Platemaker to use [degrees]
 NUM_ITER              int64         Number of positioner iterations
 FIBER_X               float64       CS5 X location requested by PlateMaker
 FIBER_Y               float64       CS5 Y location requested by PlateMaker
 DELTA_X               float64       CS5 X diff requested and actual position
 DELTA_Y               float64       CS5 Y diff requested and actual position
-FIBER_RA              float64       RA of actual fiber position
-FIBER_DEC             float64       DEC of actual fiber position
+FIBER_RA              float64 deg   RA of actual fiber position
+FIBER_DEC             float64 deg   DEC of actual fiber position
 PSF_TO_FIBER_SPECFLUX float64       Fraction of light from a point-source captured by a 1.5 arcsec diameter fiber given the astmospheric seeing for this exposure
-===================== ======= ===== ===============================================
+===================== ======= ===== =============================================================================================================================
 
 HDU03
 -----
@@ -699,7 +704,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   172              int  
+    NAXIS1   172              int
     NAXIS2   500              int  Number of spectra
     ENCODING ascii            str
     CHECKSUM EpXcGmWcEmWcEmWc str  HDU checksum updated 2021-07-16T14:01:59
@@ -761,6 +766,10 @@ TSNR2_LRG           float32       LRG template (S/N)^2 summed over B,R,Z
 
 Notes and Examples
 ==================
+
+Coadd files can be read and interpreted using the same code examples
+shown in the "Notes and Examples" section of the
+:doc:`spectra files <spectra-SPECTROGRAPH-TILEID-GROUPID>` documentation.
 
 The format supports arbitrary channel (camera) names as long as for each channel {X}
 there is a set of HDUs named {X}_WAVELENGTH, {X}_FLUX, {X}_IVAR, {X}_MASK,
