@@ -5,6 +5,7 @@ desidatamodel Change Log
 22.5 (unreleased)
 -----------------
 
+* Update column descriptions from a master list of columns (PR `#144`_).
 * Update spectra and coadd text with additional examples (PR `#143`_).
 * Add links to maskbit definitions (PR `#139`_).
 * Update :doc:`the contributing page <datamodel>` (PR `#138`_).
@@ -32,6 +33,7 @@ desidatamodel Change Log
 .. _`#138`: https://github.com/desihub/desidatamodel/pull/138
 .. _`#139`: https://github.com/desihub/desidatamodel/pull/139
 .. _`#143`: https://github.com/desihub/desidatamodel/pull/143
+.. _`#144`: https://github.com/desihub/desidatamodel/pull/144
 
 22.2 (2022-05-31)
 -----------------

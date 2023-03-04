@@ -4,7 +4,7 @@
 """
 import os
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, call
 from pkg_resources import resource_filename
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
@@ -13,7 +13,7 @@ from collections import OrderedDict
 from .datamodeltestcase import DataModelTestCase
 from .. import DataModelError
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
-                    extract_keywords, log)
+                    extract_keywords, log, read_column_descriptions)
 
 
 class sim_comments(dict):
@@ -636,6 +636,56 @@ class TestStub(DataModelTestCase):
         modellines = modeldata.split('\n')
         for i, l in enumerate(data.split('\n')):
             self.assertEqual(l, modellines[i])
+
+    def test_read_column_descriptions(self):
+        """Test reading column descriptions file
+        """
+        # this test mainly verifies that future edits of
+        # data/column_descriptions.csv didn't break the format,
+        # e.g. descriptions with spaces and commas are properly quoted
+        filename = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+        coldesc = read_column_descriptions(filename)
+        colname = 'FLUX_R'
+        self.assertIn(colname, coldesc.keys())
+        self.assertIn('Type', coldesc[colname].keys())
+        self.assertIn('Units', coldesc[colname].keys())
+        self.assertIn('Description', coldesc[colname].keys())
+
+    @patch('desidatamodel.stub.log')
+    def test_Stub_with_descriptions(self, mock_log):
+        descfile = resource_filename('desidatamodel.test', 't/column_descriptions.csv')
+        filename = resource_filename('desidatamodel.test', 't/fits_file.fits')
+        filename_desc = resource_filename('desidatamodel.test', 't/fits_file_desc.fits')
+
+        # no descriptions
+        stub = Stub(filename)
+        lines = str(stub).split('\n')
+        self.assertEqual(lines[85], 'vdisp  float64  km/s')
+
+        # with external descriptions added
+        stub = Stub(filename, description_file=descfile)
+        lines = str(stub).split('\n')
+        # note changed units and added description
+        self.assertEqual(lines[85], 'vdisp  float64  m/s       Velocity dispersion')
+
+        # with external descriptions added that override an existing description
+        stub = Stub(filename_desc, description_file=descfile)
+        lines = str(stub).split('\n')
+        # note changed units and added description
+        self.assertEqual(lines[85], 'vdisp  float64  m/s       Velocity dispersion')
+        mock_log.warning.assert_has_calls([call('Overriding header units "%s" with units "%s" from %s', 'mag', 'nanomaggy', descfile),
+                                           call('Overriding header units "%s" with units "%s" from %s', 'km/s', 'm/s', descfile),
+                                           call('Overriding header units "%s" with units "%s" from %s', 'mag', 'nanomaggy', descfile),
+                                           call('Overriding header units "%s" with units "%s" from %s', 'km/s', 'm/s', descfile),
+                                           call('Overriding header description "%s" with description "%s" from %s',
+                                                'Velocity Dispersion', 'Velocity dispersion', descfile)
+                                           ])
+
+        # incorrect format column description file
+        baddescfile = resource_filename('desidatamodel.test', 't/bad_column_descriptions.csv')
+        with self.assertRaises(ValueError):
+            stub = Stub(filename, description_file=baddescfile)
+            lines = str(stub)
 
 
 def test_suite():
