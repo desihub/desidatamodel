@@ -1,8 +1,8 @@
-===========
-DESI_SURVEY
-===========
+======
+survey
+======
 
-:envvar:`DESI_SURVEY` contains data related to daily operations, fiberassignment, etc.
+``${DESI_ROOT}/survey`` contains data related to daily operations, fiberassignment, etc.
 
 Subdirectories:
 

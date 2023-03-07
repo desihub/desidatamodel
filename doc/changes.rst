@@ -7,7 +7,7 @@ desidatamodel Change Log
 
 * Update column descriptions from a master list of columns (PR `#144`_).
 * Update spectra and coadd text with additional examples (PR `#143`_).
-* Rename SURVEYOPS (PR `#142`_).
+* Rename ``SURVEYOPS`` (PR `#142`_).
 * Add links to maskbit definitions (PR `#139`_).
 * Update :doc:`the contributing page <datamodel>` (PR `#138`_).
 * Update documentation for QSO afterburner files (PR `#134`_).
