@@ -3,8 +3,10 @@ DESISURVEY_OUTPUT
 =================
 
 :envvar:`DESISURVEY_OUTPUT` contains the outputs of desisurvey_ and surveysim_,
-with the canonical location of ``$DESI_ROOT/survey``.  We expect this
-directory structure will be updated as part of integrating desisurvey
+and is expected to be manually by users of these packages.
+There is no one, official location for these files in the DESI directory tree.
+
+We expect this directory structure will be updated as part of integrating desisurvey
 (afternoon planning and next tile selector) into online operations.
 
 .. _desisurvey: https://github.com/desihub/desisurvey
