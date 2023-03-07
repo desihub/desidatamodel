@@ -58,40 +58,41 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-==================== =========== ===== ===================
+==================== =========== ===== ========================================================================================
 Name                 Type        Units Description
-==================== =========== ===== ===================
-TARGETID             int64             Unique target ID
-RA                   float64           Target Right Ascension [degrees]
-DEC                  float64           Target declination [degrees]
+==================== =========== ===== ========================================================================================
+TARGETID             int64             Unique DESI target ID
+RA                   float64     deg   Target Right Ascension
+DEC                  float64     deg   Target declination
 Z_NEW                float64           New redshift computed with redrock with QN prior and only qso templates
 ZERR_NEW             float32           Redshift error from the new run of redrock
-SV1_DESI_TARGET [1]_ int64             Dark survey + calibration targeting bits for SV1
-DESI_TARGET [1]_     int64             Dark survey + calibration targeting bits
+SV1_DESI_TARGET [1]_ int64             DESI (dark time program) target selection bitmask for SV1
+DESI_TARGET [1]_     int64             DESI (dark time program) target selection bitmask
 COEFFS               float32[10]       Coefficient of the fit for the new run of redrock
-SPECTYPE             char[10]          Spectype from the redrock file
+SPECTYPE             char[10]          Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 Z_RR                 float32           Redshift collected from redrock file
-Z_QN                 float32           Redshift computed with quasarnp [2]_
+Z_QN                 float32           Redshift measured by QuasarNET
 IS_QSO_QN_NEW_RR     logical           Is the object detected QSO with quasarnp and a new redshift fit with prior is performed?
-C_LYA                float32           Confidence line for LYA (*i.e.*) ~ probability to be a QSO [3]_
-C_CIV                float32           Confidence line for CIV [3]_
-C_CIII               float32           Confidence line for CIII [3]_
-C_MgII               float32           Confidence line for MgII [3]_
-C_Hbeta              float32           Confidence line for Hbeta [3]_
-C_Halpha             float32           Confidence line for Halpha [3]_
-Z_LYA                float32           Redshift estimated by quasarnp with LYA line [2]_
-Z_CIV                float32           Redshift estimated by quasarnp with CIV line [2]_
-Z_CIII               float32           Redshift estimated by quasarnp with CIII line [2]_
-Z_MgII               float32           Redshift estimated by quasarnp with MgII line [2]_
-Z_Hbeta              float32           Redshift estimated by quasarnp with Hbeta line [2]_
-Z_Halpha             float32           Redshift estimated by quasarnp with Halpha line [2]_
-==================== =========== ===== ===================
+C_LYA                float32           Confidence line for LYA, i.e. ~probability to be a QSO
+C_CIV                float32           Confidence line for CIV
+C_CIII               float32           Confidence line for CIII
+C_MgII               float32           Confidence line for MgII
+C_Hbeta              float32           Confidence line for Hbeta
+C_Halpha             float32           Confidence line for Halpha
+Z_LYA                float32           Redshift estimated by QuasarNET with LYA line
+Z_CIV                float32           Redshift estimated by QuasarNET with CIV line
+Z_CIII               float32           Redshift estimated by QuasarNET with CIII line
+Z_MgII               float32           Redshift estimated by QuasarNET with MgII line
+Z_Hbeta              float32           Redshift estimated by QuasarNET with Hbeta line
+Z_Halpha             float32           Redshift estimated by QuasarNET with Halpha line
+==================== =========== ===== ========================================================================================
 
 .. [1] Optional
 
-.. [2] Z_QN is the redshift estimated on the line of the highest confidence
+Notes:
 
-.. [3] The QN selection is performed with these parameters. As it stands, in QN afterburner everything with np.max(confindence) > 0.5 is considered as a quasar. However, specific cut will be used depends on each target class; QSO_target will use np.max(confidence) > 0.95.
+ * Z_QN is the redshift estimated on the line of the highest confidence
+ * The QN selection is performed with the C_XXX parameters. As it stands, in QN afterburner everything with np.max(confidence) > 0.5 is considered as a quasar. However, specific cut will be used depending on each target class; QSO_target will use np.max(confidence) > 0.95.
        See: https://github.com/echaussidon/desispec/blob/720153babcf85dd93530252b0c1f631d48edfc0d/bin/desi_qso_qn_afterburner#L236
 
 Notes and Examples

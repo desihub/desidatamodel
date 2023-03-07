@@ -23,12 +23,12 @@ COADD_NUMTILE,int16,,Number of tiles in coadd
 COEFF,float64[10],,Redrock template coefficients
 COMP_TILE,,,Assignment completeness for all targets of this type with the same value for TILES
 DCHISQ,float32[5],,Difference in chi-squared between Tractor model fits
-DEC,float64,deg,Declination
+DEC,float64,deg,Target declination
 DEC_IVAR,float32,deg^-2,"Inverse variance of DEC, excluding astrometric calibration errors"
 DELTA_CHI2_MGII,,,chi2 diff between redrock model fit and MgII fit
 DELTA_X,float64,mm,CS5 X requested minus actual position
 DELTA_Y,float64,mm,CS5 Y requested minus actual position
-DELTACHI2,float64,,Delta-chi-squared for template fit from Redrock
+DELTACHI2,float64,,chi2 difference between first- and second-best redrock template fits
 DESI_TARGET,int64,,DESI (dark time program) target selection bitmask
 DEVICE_LOC,int32,,Device location on focal plane [0-523]
 DEVICE_TYPE,,,Device type
@@ -186,14 +186,14 @@ NOBS_Z,int16,,Number of images for central pixel in z-band
 NPIXELS,int64,,
 NTILE,,,Number of tiles target was available on
 NUM_ITER,int64,,Number of positioner iterations
-NUMOBS,int64,,Number of times target has been observed
+NUMOBS,int64,,"Number of spectroscopic observations (on this specific, single tile)"
 NUMOBS_INIT,int64,,Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_MORE,int64,,Number of additional observations needed
 NZ,,,"The comoving number density of the tracer at the given redshift, in units (h/Mpc)^3, assuming complete sample"
 o2c,,,The criteria for assessing strength of OII emission for ELG observations
 OBJID,int32,,Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD"
-OBSCONDITIONS,int32,,Bit-coded of allowed observing conditions
+OBSCONDITIONS,int32,,Bitmask of allowed observing conditions
 OII_CHI2,float32,,Reduced chi2 of the fit for the [OII] doublet
 OII_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum used for the fitting (fixed value) for the [OII] doublet
 OII_CONT_IVAR,float32,10**+34 (s2 cm4 Angstrom2) / erg2,Inverse variance of the continuum for the [OII] doublet
@@ -224,9 +224,9 @@ PETAL_LOC,,,Petal location [0-9]
 PHOTSYS,char[1],,"'N' for the MzLS/BASS photometric system, 'S' for DECaLS"
 PLATE_DEC,float64,deg,Declination to be used by PlateMaker
 PLATE_RA,float64,deg,Right Ascension to be used by PlateMaker
-PMDEC,float32,mas yr^-1,Reference catalog proper motion in the Dec direction
+PMDEC,float32,mas yr^-1,Proper motion in the +Dec direction
 PMDEC_IVAR,float32,yr^2 mas^-2,Inverse variance of PMDEC
-PMRA,float32,mas yr^-1,Reference catalog proper motion in the RA direction
+PMRA,float32,mas yr^-1,"proper motion in the +RA direction (already including cos(dec))"
 PMRA_IVAR,float32,yr^2 mas^-2,Inverse variance of PMRA
 PRIORITY,,,Target current priority
 PRIORITY_INIT,int64,,Target initial priority from target selection bitmasks and OBSCONDITIONS
@@ -242,7 +242,7 @@ PSFSIZE_R,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects 
 PSFSIZE_Z,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 PSF_TO_FIBER_SPECFLUX,float64,,fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 QSO_MASKBITS,,,
-RA,float64,deg,Right Ascension
+RA,float64,deg,Target Right Ascension
 RA_IVAR,float32,deg^-2,"Inverse variance of RA (no cosine term!), excluding astrometric calibration errors"
 REF_CAT,char[2],,"Reference catalog source for star: “T2” for Tycho-2, “G2” for Gaia DR2, “L2” for the SGA, empty otherwise"
 REF_ID,int64,,"Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; “sourceid” for Gaia DR2"
@@ -276,11 +276,11 @@ SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
 sort,,,Number constructed to sort the table prior to cutting to unique TARGETID
-SPECTYPE,char[6],,Spectype from redrock file
+SPECTYPE,char[6],,"Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
 SPGRPVAL,int32,,Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 STD_FIBER_DEC,float32,arcsec,Standard deviation (over exposures) of DEC of actual fiber position
 STD_FIBER_RA,float32,arcsec,Standard deviation (over exposures) of RA of actual fiber position
-SUBPRIORITY,float64,,Random subpriority [0-1] to break assignment ties
+SUBPRIORITY,float64,,Random subpriority [0-1) to break assignment ties
 SUBTYPE,char[20],,Spectral subtype
 SURVEY,char[7],,Survey name
 SV_NSPEC,int32,,Number of coadded spectra for this TARGETID in SV (SV1+2+3)
@@ -363,5 +363,5 @@ ZERR,float64,,Redshift error from redrock
 ZERR_QF,,,
 ZPOSSLOC,,,True/False whether the location could have been assigned to the given target class
 ZTILEID,int32,,ID of tile that most recently updated target's state
-ZWARN,int64,,Redshift warning bitmask measured by Redrock
+ZWARN,int64,,Redshift warning bitmask from Redrock
 ZWARN_MTL,int64,,The ZWARN from the zmtl file (contains extra bits)

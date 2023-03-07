@@ -145,93 +145,93 @@ for detailed descriptions of the columns.
 
 .. rst-class:: columns
 
-===================== ======= ===== ===========
-Name                  Type    Units Description
-===================== ======= ===== ===========
-TARGETID              int64
-PETAL_LOC             int16
-DEVICE_LOC            int32
-LOCATION              int64
+===================== ======= ============ =========================================================================================================================
+Name                  Type    Units        Description
+===================== ======= ============ =========================================================================================================================
+TARGETID              int64                Unique DESI target ID
+PETAL_LOC             int16                Petal location [0-9]
+DEVICE_LOC            int32                Device location on focal plane [0-523]
+LOCATION              int64                Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 FIBER                 int32
-FIBERSTATUS           int32
-TARGET_RA             float64
-TARGET_DEC            float64
-PMRA                  float32
-PMDEC                 float32
-REF_EPOCH             float32
-LAMBDA_REF            float32
-FA_TARGET             int64
-FA_TYPE               binary
-OBJTYPE               char[3]
-FIBERASSIGN_X         float32
-FIBERASSIGN_Y         float32
-PRIORITY              int32
-SUBPRIORITY           float64
-OBSCONDITIONS         int32
-RELEASE               int16
-BRICKID               int32
-BRICK_OBJID           int32
-MORPHTYPE             char[4]
-FLUX_G                float32
-FLUX_R                float32
-FLUX_Z                float32
-FLUX_IVAR_G           float32
-FLUX_IVAR_R           float32
-FLUX_IVAR_Z           float32
-MASKBITS              int16
-REF_ID                int64
-REF_CAT               char[2]
-GAIA_PHOT_G_MEAN_MAG  float32
-GAIA_PHOT_BP_MEAN_MAG float32
-GAIA_PHOT_RP_MEAN_MAG float32
-PARALLAX              float32
-BRICKNAME             char[8]
-EBV                   float32
-FLUX_W1               float32
-FLUX_W2               float32
-FLUX_IVAR_W1          float32
-FLUX_IVAR_W2          float32
-FIBERFLUX_G           float32
-FIBERFLUX_R           float32
-FIBERFLUX_Z           float32
-FIBERTOTFLUX_G        float32
-FIBERTOTFLUX_R        float32
-FIBERTOTFLUX_Z        float32
-SERSIC                float32
-SHAPE_R               float32
-SHAPE_E1              float32
-SHAPE_E2              float32
-PHOTSYS               char[1]
-PRIORITY_INIT         int64
-NUMOBS_INIT           int64
-SV1_DESI_TARGET [1]_  int64
-SV1_BGS_TARGET [1]_   int64
-SV1_MWS_TARGET [1]_   int64
-SV1_SCND_TARGET [1]_  int64
-SV3_DESI_TARGET [1]_  int64
-SV3_BGS_TARGET [1]_   int64
-SV3_MWS_TARGET [1]_   int64
-SV3_SCND_TARGET [1]_  int64
-DESI_TARGET           int64
-BGS_TARGET            int64
-MWS_TARGET            int64
-SCND_TARGET [1]_      int64
-PLATE_RA              float64
-PLATE_DEC             float64
-NUM_ITER              int64
-FIBER_X               float64
-FIBER_Y               float64
-DELTA_X               float64
-DELTA_Y               float64
-FIBER_RA              float64
-FIBER_DEC             float64
-EXPTIME               float64
-PSF_TO_FIBER_SPECFLUX float64
+FIBERSTATUS           int32                Fiber status mask. 0=good
+TARGET_RA             float64 deg          Target right ascension
+TARGET_DEC            float64 deg          Target declination
+PMRA                  float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
+PMDEC                 float32 mas yr^-1    Proper motion in the +Dec direction
+REF_EPOCH             float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+LAMBDA_REF            float32 Angstrom     Requested wavelength at which targets should be centered on fibers
+FA_TARGET             int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE               binary               Fiberassign internal target type (science, standard, sky, safe, suppsky)
+OBJTYPE               char[3]              Object type: TGT, SKY, NON, BAD
+FIBERASSIGN_X         float32 mm           Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y         float32 mm           Fiberassign expected CS5 Y location on focal plane
+PRIORITY              int32                Target current priority
+SUBPRIORITY           float64              Random subpriority [0-1) to break assignment ties
+OBSCONDITIONS         int32                Bitmask of allowed observing conditions
+RELEASE               int16                Imaging surveys release ID
+BRICKID               int32                Brick ID from tractor input
+BRICK_OBJID           int32                Imaging Surveys OBJID on that brick
+MORPHTYPE             char[4]              Imaging Surveys morphological type from Tractor
+FLUX_G                float32 nanomaggy    Flux in the Legacy Survey g-band (AB)
+FLUX_R                float32 nanomaggy    Flux in the Legacy Survey r-band (AB)
+FLUX_Z                float32 nanomaggy    Flux in the Legacy Survey z-band (AB)
+FLUX_IVAR_G           float32 nanomaggy^-2 Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R           float32 nanomaggy^-2 Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z           float32 nanomaggy^-2 Inverse variance of FLUX_Z (AB)
+MASKBITS              int16                Bitwise mask from the imaging indicating potential issue or blending
+REF_ID                int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; “sourceid” for Gaia DR2
+REF_CAT               char[2]              Reference catalog source for star: “T2” for Tycho-2, “G2” for Gaia DR2, “L2” for the SGA, empty otherwise
+GAIA_PHOT_G_MEAN_MAG  float32 mag          Gaia G band magnitude
+GAIA_PHOT_BP_MEAN_MAG float32 mag          Gaia BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG float32 mag          Gaia RP band magnitude
+PARALLAX              float32 mas          Reference catalog parallax
+BRICKNAME             char[8]              Brick name from tractor input
+EBV                   float32 mag          Galactic extinction E(B-V) reddening from SFD98
+FLUX_W1               float32 nanomaggy    WISE flux in W1 (AB)
+FLUX_W2               float32 nanomaggy    WISE flux in W2 (AB)
+FLUX_IVAR_W1          float32 nanomaggy^-2 Inverse variance of FLUX_W1 (AB)
+FLUX_IVAR_W2          float32 nanomaggy^-2 Inverse variance of FLUX_W2 (AB)
+FIBERFLUX_G           float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_R           float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z           float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_G        float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_R        float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_Z        float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+SERSIC                float32              Power-law index for the Sersic profile model (MORPHTYPE=”SER”)
+SHAPE_R               float32 arcsec       Half-light radius of galaxy model (&gt;0)
+SHAPE_E1              float32              Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
+SHAPE_E2              float32              Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
+PHOTSYS               char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PRIORITY_INIT         int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT           int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+SV1_DESI_TARGET [1]_  int64                DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_   int64                BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_   int64                MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_  int64                Secondary target selection bitmask for SV1
+SV3_DESI_TARGET [1]_  int64                DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_   int64                BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_   int64                MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_  int64                Secondary target selection bitmask for SV3
+DESI_TARGET           int64                DESI (dark time program) target selection bitmask
+BGS_TARGET            int64                BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET            int64                Milky Way Survey targeting bits
+SCND_TARGET [1]_      int64                Target selection bitmask for secondary programs
+PLATE_RA              float64 deg          Right Ascension to be used by PlateMaker
+PLATE_DEC             float64 deg          Declination to be used by PlateMaker
+NUM_ITER              int64                Number of positioner iterations
+FIBER_X               float64 mm           CS5 X location requested by PlateMaker
+FIBER_Y               float64 mm           CS5 Y location requested by PlateMaker
+DELTA_X               float64 mm           CS5 X requested minus actual position
+DELTA_Y               float64 mm           CS5 Y requested minus actual position
+FIBER_RA              float64 deg          RA of actual fiber position
+FIBER_DEC             float64 deg          DEC of actual fiber position
+EXPTIME               float64 s            Length of time shutter was open
+PSF_TO_FIBER_SPECFLUX float64              fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 NIGHT                 int32
-EXPID                 int32
-MJD                   float64
-TILEID                int32
-===================== ======= ===== ===========
+EXPID                 int32                DESI Exposure ID number
+MJD                   float64              Modified Julian Date when shutter was opened for this exposure
+TILEID                int32                Unique DESI tile ID
+===================== ======= ============ =========================================================================================================================
 
 .. [1] Optional
 
@@ -267,10 +267,10 @@ documentation for details about the columns.
 
 .. rst-class:: columns
 
-===================== ======= ===== ===================
+===================== ======= ===== ======================
 Name                  Type    Units Description
-===================== ======= ===== ===================
-TARGETID              int64         Unique target identifer
+===================== ======= ===== ======================
+TARGETID              int64         Unique DESI target ID
 SUM_RAW_COUNT_B       float64
 MEDIAN_RAW_COUNT_B    float64
 MEDIAN_RAW_SNR_B      float64
@@ -284,13 +284,13 @@ SUM_CALIB_COUNT_B     float64
 MEDIAN_CALIB_COUNT_B  float64
 MEDIAN_CALIB_SNR_B    float64
 TSNR2_GPBDARK_B       float64
-TSNR2_ELG_B           float64
+TSNR2_ELG_B           float64       ELG B template (S/N)^2
 TSNR2_GPBBRIGHT_B     float64
-TSNR2_LYA_B           float64
-TSNR2_BGS_B           float64
+TSNR2_LYA_B           float64       LYA B template (S/N)^2
+TSNR2_BGS_B           float64       BGS B template (S/N)^2
 TSNR2_GPBBACKUP_B     float64
-TSNR2_QSO_B           float64
-TSNR2_LRG_B           float64
+TSNR2_QSO_B           float64       QSO B template (S/N)^2
+TSNR2_LRG_B           float64       LRG B template (S/N)^2
 SUM_RAW_COUNT_R       float64
 MEDIAN_RAW_COUNT_R    float64
 MEDIAN_RAW_SNR_R      float64
@@ -304,13 +304,13 @@ SUM_CALIB_COUNT_R     float64
 MEDIAN_CALIB_COUNT_R  float64
 MEDIAN_CALIB_SNR_R    float64
 TSNR2_GPBDARK_R       float64
-TSNR2_ELG_R           float64
+TSNR2_ELG_R           float64       ELG R template (S/N)^2
 TSNR2_GPBBRIGHT_R     float64
-TSNR2_LYA_R           float64
-TSNR2_BGS_R           float64
+TSNR2_LYA_R           float64       LYA R template (S/N)^2
+TSNR2_BGS_R           float64       BGS R template (S/N)^2
 TSNR2_GPBBACKUP_R     float64
-TSNR2_QSO_R           float64
-TSNR2_LRG_R           float64
+TSNR2_QSO_R           float64       QSO R template (S/N)^2
+TSNR2_LRG_R           float64       LRG R template (S/N)^2
 SUM_RAW_COUNT_Z       float64
 MEDIAN_RAW_COUNT_Z    float64
 MEDIAN_RAW_SNR_Z      float64
@@ -324,14 +324,14 @@ SUM_CALIB_COUNT_Z     float64
 MEDIAN_CALIB_COUNT_Z  float64
 MEDIAN_CALIB_SNR_Z    float64
 TSNR2_GPBDARK_Z       float64
-TSNR2_ELG_Z           float64
+TSNR2_ELG_Z           float64       ELG Z template (S/N)^2
 TSNR2_GPBBRIGHT_Z     float64
-TSNR2_LYA_Z           float64
-TSNR2_BGS_Z           float64
+TSNR2_LYA_Z           float64       LYA Z template (S/N)^2
+TSNR2_BGS_Z           float64       BGS Z template (S/N)^2
 TSNR2_GPBBACKUP_Z     float64
-TSNR2_QSO_Z           float64
-TSNR2_LRG_Z           float64
-===================== ======= ===== ===================
+TSNR2_QSO_Z           float64       QSO Z template (S/N)^2
+TSNR2_LRG_Z           float64       LRG Z template (S/N)^2
+===================== ======= ===== ======================
 
 HDU03
 -----
