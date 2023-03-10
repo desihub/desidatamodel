@@ -35,7 +35,6 @@ DEVICE_TYPE,,,Device type
 EBV,float32,mag,Galactic extinction E(B-V) reddening from SFD98
 EFFTIME_ETC,float64,s,Effective exposure time for nominal conditions inferred from ETC data
 EFFTIME_SPEC,float64,s,Effective exposure time for nominal conditions derived from the TSNR2 fits to the spectroscopy
-elg_mask,,,Imaging mask bits relevant to ELG targets
 EXPID,int32,,DESI Exposure ID number
 EXPTIME,float64,s,Length of time shutter was open
 FA_TARGET,int64,,Targeting bit internally used by fiberassign (linked with FA_TYPE)
@@ -56,20 +55,20 @@ FIBERTOTFLUX_G,float32,nanomaggy,Predicted g-band flux within a fiber of diamete
 FIBERTOTFLUX_R,float32,nanomaggy,Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_Z,float32,nanomaggy,Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FLUX_G,float32,nanomaggy,Flux in the Legacy Survey g-band (AB)
-flux_g_dered,,,Flux in the g-band after correcting for Galactic extinction (AB system)
+FLUX_G_DERED,float32,nanomaggy,Flux in the g-band after correcting for Galactic extinction (AB system)
 FLUX_IVAR_G,float32,nanomaggy^-2,Inverse variance of FLUX_G (AB)
 FLUX_IVAR_R,float32,nanomaggy^-2,Inverse variance of FLUX_R (AB)
 FLUX_IVAR_W1,float32,nanomaggy^-2,Inverse variance of FLUX_W1 (AB)
 FLUX_IVAR_W2,float32,nanomaggy^-2,Inverse variance of FLUX_W2 (AB)
 FLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of FLUX_Z (AB)
 FLUX_R,float32,nanomaggy,Flux in the Legacy Survey r-band (AB)
-flux_r_dered,,,Flux in the r-band after correcting for Galactic extinction (AB system)
+FLUX_R_DERED,float32,nanomaggy,Flux in the r-band after correcting for Galactic extinction (AB system)
 FLUX_W1,float32,nanomaggy,WISE flux in W1 (AB)
-flux_w1_dered,,,Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
+FLUX_W1_DERED,float32,nanomaggy,Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
 FLUX_W2,float32,nanomaggy,WISE flux in W2 (AB)
-flux_w2_dered,,,Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
+FLUX_W2_DERED,float32,nanomaggy,Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
 FLUX_Z,float32,nanomaggy,Flux in the Legacy Survey z-band (AB)
-flux_z_dered,,,Flux in the z-band after correcting for Galactic extinction (AB system)
+FLUX_Z_DERED,float32,nanomaggy,Flux in the z-band after correcting for Galactic extinction (AB system)
 FRACZ_TILELOCID,,,The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 GALDEPTH_G,float32,nanomaggy^-2,Galaxy model-based depth in LS g-band
 GALDEPTH_R,float32,nanomaggy^-2,Galaxy model-based depth in LS r-band
@@ -144,7 +143,7 @@ HGAMMA_SIGMA,float32,Angstrom,Fitted line width (in the observed frame) for the 
 HGAMMA_SIGMA_IVAR,float32,Angstrom^-2,Inverse variance of the fitted line width (in the observed frame) for the HGAMMA line
 HPXPIXEL,int64,,HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 IN_RADIUS,,arcsec,
-IS_QSO_MGII,logical,,Boolean: True if the object passes the MgII selection
+IS_QSO_MGII,bool,,Boolean: True if the object passes the MgII selection
 IS_QSO_QN,,,Spectroscopic classification from QuasarNET (1 for a quasar)
 LAMBDA_REF,float32,Angstrom,Requested wavelength at which targets should be centered on fibers
 LC_FLUX_IVAR_W1,float32[15],nanomaggy^-2,Inverse variance of LC_FLUX_W1 (AB system; defaults to zero for unused entries)
@@ -156,9 +155,8 @@ LC_MJD_W2,float64[15],,MJD_W2 in each of up to fifteen unWISE coadd epochs (defa
 LC_NOBS_W1,int16[15],,NOBS_W1 in each of up to fifteen unWISE coadd epochs
 LC_NOBS_W2,int16[15],,NOBS_W2 in each of up to fifteen unWISE coadd epochs
 LOCATION,int64,,Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-LOCATION_ASSIGNED,,,0/1 for unassigned/assigned for the target in question
-LOCFULL,,,True/False whether all targets of the given target type available at the location were assigned on some tile
-lrg_mask,,,Imaging mask bits relevant to LRG targets
+LOCATION_ASSIGNED,bool,,True/False for assigned/unassigned for the target in question
+LRG_MASK,uint8,,Imaging mask bits relevant to LRG targets
 MASKBITS,int16,,Bitwise mask from the imaging indicating potential issue or blending
 MEAN_DELTA_X,float32,mm,Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
 MEAN_DELTA_Y,float32,mm,Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
@@ -190,7 +188,7 @@ NUMOBS,int64,,"Number of spectroscopic observations (on this specific, single ti
 NUMOBS_INIT,int64,,Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_MORE,int64,,Number of additional observations needed
 NZ,,,"The comoving number density of the tracer at the given redshift, in units (h/Mpc)^3, assuming complete sample"
-o2c,,,The criteria for assessing strength of OII emission for ELG observations
+O2C,float64,,The criteria for assessing strength of OII emission for ELG observations
 OBJID,int32,,Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD"
 OBSCONDITIONS,int32,,Bitmask of allowed observing conditions
@@ -275,7 +273,6 @@ SHAPE_E2_IVAR,float32,,Inverse variance of SHAPE_E2
 SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
-sort,,,Number constructed to sort the table prior to cutting to unique TARGETID
 SPECTYPE,char[6],,"Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
 SPGRPVAL,int32,,Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 STD_FIBER_DEC,float32,arcsec,Standard deviation (over exposures) of DEC of actual fiber position
@@ -352,7 +349,6 @@ Z_Halpha,float64,,Redshift estimated by QuasarNET with Halpha line
 Z_Hbeta,float64,,Redshift estimated by QuasarNET with Hbeta line
 Z_LYA,float64,,Redshift estimated by QuasarNET with LyA line
 Z_MgII,float64,,Redshift estimated by QuasarNET with MgII line
-Z_not4clus,float64,,Redshift name changed after vetos are applied
 Z_QN,float64,,Redshift measured by QuasarNET using line with highest confidence
 Z_QN_CONF,float64,,Redshift confidence from QuasarNET
 Z_QN_QF,float64,,
