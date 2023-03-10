@@ -57,18 +57,18 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-==================== ======== ===== ===================
+==================== ======== ===== ==============================================================================================================
 Name                 Type     Units Description
-==================== ======== ===== ===================
-TARGETID             int64          Unique target ID
-RA                   float64        Target Right Ascension [degrees]
-DEC                  float64        Target declination [degrees]
+==================== ======== ===== ==============================================================================================================
+TARGETID             int64          Unique DESI target ID
+RA                   float64  deg   Target Right Ascension
+DEC                  float64  deg   Target declination
 Z_RR                 float64        Redshift collected from redrock file
-ZERR                 float32        Redshift error from redrock file
-IS_QSO_MGII          logical        Is the object pass the MgII selection?
-SV1_DESI_TARGET [1]_ int64          Dark survey + calibration targeting bits for SV1
-DESI_TARGET [1]_     int64          Dark survey + calibration targeting bits
-SPECTYPE             char[10]       Spectype from redrock file
+ZERR                 float32        Redshift error from redrock
+IS_QSO_MGII          logical        Boolean: True if the object passes the MgII selection
+SV1_DESI_TARGET [1]_ int64          DESI (dark time program) target selection bitmask for SV1
+DESI_TARGET [1]_     int64          DESI (dark time program) target selection bitmask
+SPECTYPE             char[10]       Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 DELTA_CHI2           float32        Difference of chi2 between redrock fit and MgII fitter over the lambda interval considered during the fit [2]_
 A                    float32        fitted parameter by MgII fitter [2]_ [3]_
 SIGMA                float32        fitted parameter by MgII fitter [2]_ [3]_
@@ -76,7 +76,7 @@ B                    float32        fitted parameter by MgII fitter [3]_
 VAR_A                float32        error on A [2]_
 VAR_SIGMA            float32        error on SIGMA
 VAR_B                float32        error on B
-==================== ======== ===== ===================
+==================== ======== ===== ==============================================================================================================
 
 .. [1] Optional
 

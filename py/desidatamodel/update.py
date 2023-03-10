@@ -219,12 +219,26 @@ def main():
 
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--infile', help='Input model filename')
-    parser.add_argument('-o', '--outfile', help='Output model filename')
+    parser.add_argument('-i', '--infile', required=True,
+                        help='Input model filename')
+    parser.add_argument('-o', '--outfile',
+                        help='Output model filename')
+    parser.add_argument('--inplace', action='store_true',
+                        help="Update input file inplace, equivalent to specifying "
+                             "--outfile with same name as --infile")
     parser.add_argument('--force', action='store_true',
                         help="Update non-blank pre-existing entries that differ from "
                              "reference units and descriptions")
     args = parser.parse_args()
+
+    log = get_logger()
+
+    if args.inplace:
+        if args.outfile is not None:
+            raise ValueError("When using --inplace, don't specify --outfile")
+        args.outfile = args.infile
+    elif args.outfile is None:
+        log.info('Neither --inplace nor --outfile specified; will print changes but not write output')
 
     # Read input data model file
     with open(args.infile) as fp:

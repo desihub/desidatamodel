@@ -95,32 +95,32 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============= ======= ===== ===========
+============= ======= ===== =========================================================================================================
 Name          Type    Units Description
-============= ======= ===== ===========
-TARGETID      int64         Unique target ID
+============= ======= ===== =========================================================================================================
+TARGETID      int64         Unique DESI target ID
 PETAL_LOC     int16         Petal location [0-9]
 DEVICE_LOC    int32         Device location on focal plane [0-523]
 LOCATION      int64         Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 FIBER         int32         Fiber ID on the CCDs [0-4999]
-TARGET_RA     float64 deg   Target Right Ascension
-TARGET_DEC    float64 deg   Target Declination
+TARGET_RA     float64 deg   Target right ascension
+TARGET_DEC    float64 deg   Target declination
 MEAN_FIBER_X  float32 mm    Mean (over exposures) fiber CS5 X location on focal plane
 MEAN_FIBER_Y  float32 mm    Mean (over exposures) fiber CS5 Y location on focal plane
-MEAN_DELTA_X  float32 mm    Mean (over exposures) fiber difference between measured and requested CS5 X location on focal plane
-MEAN_DELTA_Y  float32 mm    Mean (over exposures) fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_DELTA_X  float32 mm    Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
+MEAN_DELTA_Y  float32 mm    Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 RMS_DELTA_X   float32 mm    RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
 RMS_DELTA_Y   float32 mm    RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
-DESI_TARGET   int64         Dark survey + calibration bitmask
-BGS_TARGET    int64         Bright Galaxy Survey bitmask
-EBV           float32 mag   Galactic extinction E(B-V) reddening
-TSNR2_LRG     float64       LRG Template-based squared signal-to-noise ratio
-Z             float64       Spectroscopic redshift (from the redrock file)
-SPECTYPE      char[6]       Spectroscopic type (from the redrock file)
-DELTACHI2     float64       Chi2 difference between the first- and second best redshifts (from the redrock file)
+DESI_TARGET   int64         DESI (dark time program) target selection bitmask
+BGS_TARGET    int64         BGS (Bright Galaxy Survey) target selection bitmask
+EBV           float32 mag   Galactic extinction E(B-V) reddening from SFD98
+TSNR2_LRG     float64       LRG template (S/N)^2 summed over B,R,Z
+Z             float64       Redshift measured by Redrock
+SPECTYPE      char[6]       Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
+DELTACHI2     float64       chi2 difference between first- and second-best redrock template fits
 QAFIBERSTATUS int32         Fiber status bitmask, inflated with further QA diagnoses
-EFFTIME_SPEC  float32 s     Spectroscopic effective time, based on template-based squared signal-to-noise ratio
-============= ======= ===== ===========
+EFFTIME_SPEC  float32 s     Effective exposure time for nominal conditions derived from the TSNR2 fits to the spectroscopy
+============= ======= ===== =========================================================================================================
 
 HDU2
 ----
@@ -154,9 +154,9 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============== ======= ===== ===========
+============== ======= ===== ==============================================================================================
 Name           Type    Units Description
-============== ======= ===== ===========
+============== ======= ===== ==============================================================================================
 PETAL_LOC      int16         Petal location [0-9]
 WORSTREADNOISE float32       Mean of the per-exposure WORSREADNOISE
 NGOODPOS       float32       Mean of the per-exposure NGOODPOS
@@ -173,8 +173,8 @@ ZSKYCHI2PDF    float32       Mean of the per-exposure ZSKYCHI2PDF
 BTHRUFRAC      float32       Mean of the per-exposure BTHRUFRAC
 RTHRUFRAC      float32       Mean of the per-exposure RTHRUFRAC
 ZTHRUFRAC      float32       Mean of the per-exposure ZTHRUFRAC
-EFFTIME_SPEC   float32 s     Median of the EFFTIME_SPEC values for all good fibers (for all exposures) from that petal
-============== ======= ===== ===========
+EFFTIME_SPEC   float32 s     Median effective exposure time for nominal conditions derived from the TSNR2 fits to the spectroscopy
+============== ======= ===== ==============================================================================================
 
 .. [1] Optional
 
