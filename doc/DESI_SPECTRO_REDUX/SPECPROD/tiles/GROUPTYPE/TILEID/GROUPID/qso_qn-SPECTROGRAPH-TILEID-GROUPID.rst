@@ -71,15 +71,15 @@ DESI_TARGET [1]_     int64             DESI (dark time program) target selection
 COEFFS               float32[10]       Coefficient of the fit for the new run of redrock
 SPECTYPE             char[10]          Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 Z_RR                 float32           Redshift collected from redrock file
-Z_QN                 float32           Redshift measured by QuasarNET
-IS_QSO_QN_NEW_RR     logical           Is the object detected QSO with quasarnp and a new redshift fit with prior is performed?
-C_LYA                float32           Confidence line for LYA, i.e. ~probability to be a QSO
-C_CIV                float32           Confidence line for CIV
-C_CIII               float32           Confidence line for CIII
-C_MgII               float32           Confidence line for MgII
-C_Hbeta              float32           Confidence line for Hbeta
-C_Halpha             float32           Confidence line for Halpha
-Z_LYA                float32           Redshift estimated by QuasarNET with LYA line
+Z_QN                 float32           Redshift measured by QuasarNET using line with highest confidence
+IS_QSO_QN_NEW_RR     bool              QN identified as QSO at different redshift or classification than Redrock
+C_LYA                float32           Confidence for LyA line, i.e. ~probability to be a QSO
+C_CIV                float32           Confidence for CIV line
+C_CIII               float32           Confidence for CIII line
+C_MgII               float32           Confidence for MgII line
+C_Hbeta              float32           Confidence for Hbeta line
+C_Halpha             float32           Confidence for Halpha line
+Z_LYA                float32           Redshift estimated by QuasarNET with LyA line
 Z_CIV                float32           Redshift estimated by QuasarNET with CIV line
 Z_CIII               float32           Redshift estimated by QuasarNET with CIII line
 Z_MgII               float32           Redshift estimated by QuasarNET with MgII line
@@ -91,11 +91,18 @@ Z_Halpha             float32           Redshift estimated by QuasarNET with Halp
 
 Notes:
 
- * Z_QN is the redshift estimated on the line of the highest confidence
- * The QN selection is performed with the C_XXX parameters. As it stands, in QN afterburner everything with np.max(confidence) > 0.5 is considered as a quasar. However, specific cut will be used depending on each target class; QSO_target will use np.max(confidence) > 0.95.
-       See: https://github.com/echaussidon/desispec/blob/720153babcf85dd93530252b0c1f631d48edfc0d/bin/desi_qso_qn_afterburner#L236
+``IS_QSO_QN_NEW_RR`` is set if QuasarNET selects this as a QSO *and* the answer
+is different from Redrock, either because Redrock didn't identify it as a QSO
+or because the Redrock redshift differed by more than 0.05.  If both
+QuasarNET and Redrock agree that it is a QSO and agree on the redshift, then
+``IS_QSO_QN_NEW_RR=False``.
+
+The QuasarNET QSO selection is performed with the C_XXX confidence parameters.
+``IS_QSO_QN_NEW_RR`` uses a relatively loose cut of ``max(C_XXX) >= 0.5``;
+downstream code may choose to use a tighter cut.
+
 
 Notes and Examples
 ==================
 
-These files are generated with https://github.com/desihub/desispec/blob/master/bin/desi_qso_qn_afterburner
+These files are generated with https://github.com/desihub/desispec/blob/main/bin/desi_qso_qn_afterburner

@@ -7,12 +7,12 @@ BGS_TARGET,int64,,BGS (Bright Galaxy Survey) target selection bitmask
 BRICK_OBJID,int32,,Imaging Surveys OBJID on that brick
 BRICKID,int32,,Brick ID from tractor input
 BRICKNAME,char[8],,Brick name from tractor input
-C_CIII,,,Confidence line for CIII
-C_CIV,,,Confidence line for CIV
-C_Halpha,,,Confidence line for Halpha
-C_Hbeta,,,Confidence line for Hbeta
-C_LYA,,,"Confidence line for LYA, i.e. ~probability to be a QSO"
-C_MgII,,,Confidence line for MgII
+C_CIII,,,Confidence for CIII line
+C_CIV,,,Confidence for CIV line
+C_Halpha,,,Confidence for Halpha line
+C_Hbeta,,,Confidence for Hbeta line
+C_LYA,,,"Confidence for LyA line, i.e. ~probability to be a QSO"
+C_MgII,,,Confidence for MgII line
 CHI2,float64,,Best fit chi squared
 CMX_TARGET,int64,,Target selection bitmask for commissioning
 COADD_EXPTIME,float32,s,Summed exposure time for coadd
@@ -350,10 +350,10 @@ Z_CIII,float64,,Redshift estimated by QuasarNET with CIII line
 Z_CIV,float64,,Redshift estimated by QuasarNET with CIV line
 Z_Halpha,float64,,Redshift estimated by QuasarNET with Halpha line
 Z_Hbeta,float64,,Redshift estimated by QuasarNET with Hbeta line
-Z_LYA,float64,,Redshift estimated by QuasarNET with LYA line
+Z_LYA,float64,,Redshift estimated by QuasarNET with LyA line
 Z_MgII,float64,,Redshift estimated by QuasarNET with MgII line
 Z_not4clus,float64,,Redshift name changed after vetos are applied
-Z_QN,float64,,Redshift measured by QuasarNET
+Z_QN,float64,,Redshift measured by QuasarNET using line with highest confidence
 Z_QN_CONF,float64,,Redshift confidence from QuasarNET
 Z_QN_QF,float64,,
 Z_RR,float64,,Redshift collected from redrock file
