@@ -68,34 +68,34 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-==================== ======= ===== ===================
+==================== ======= ===== ====================================================================
 Name                 Type    Units Description
-==================== ======= ===== ===================
-RA                   float64 deg   Right ascension
-DEC                  float64 deg   Declination
-TARGETID             int64         Unique targeting ID
-SV1_DESI_TARGET [1]_ int64         DESI (dark time program) target selection bitmask (sv1 phase of DESI Survey Validation)
-SV1_BGS_TARGET [1]_  int64         BGS (bright time program) target selection bitmask (sv1 phase of DESI Survey Validation)
-SV1_MWS_TARGET [1]_  int64         MWS (bright time program) target selection bitmask (sv1 phase of DESI Survey Validation)
-SV1_SCND_TARGET [1]_ int64         SCND (secondary program) target selection bitmask (sv1 phase of DESI Survey Validation)
-SV3_DESI_TARGET [1]_ int64         DESI (dark time program) target selection bitmask (sv3 phase of DESI Survey Validation)
-SV3_BGS_TARGET [1]_  int64         BGS (bright time program) target selection bitmask (sv3 phase of DESI Survey Validation)
-SV3_MWS_TARGET [1]_  int64         MWS (bright time program) target selection bitmask (sv3 phase of DESI Survey Validation)
-SV3_SCND_TARGET [1]_ int64         SCND (secondary program) target selection bitmask (sv3 phase of DESI Survey Validation)
+==================== ======= ===== ====================================================================
+RA                   float64 deg   Target Right Ascension
+DEC                  float64 deg   Target declination
+TARGETID             int64         Unique DESI target ID
+SV1_DESI_TARGET [1]_ int64         DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_  int64         BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_  int64         MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_ int64         Secondary target selection bitmask for SV1
+SV3_DESI_TARGET [1]_ int64         DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_  int64         BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_  int64         MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_ int64         Secondary target selection bitmask for SV3
 DESI_TARGET [1]_     int64         DESI (dark time program) target selection bitmask
-BGS_TARGET [1]_      int64         BGS (bright time program) target selection bitmask
-MWS_TARGET [1]_      int64         MWS (bright time program) target selection bitmask
-SCND_TARGET  [1]_    int64         SCND (secondary program) target selection bitmask
-Z                    float64       Redshift from ``Redrock``
-ZWARN                int64         Redshift warning bimask
-SPECTYPE             char[6]       Spectroscopic classification from ``Redrock``
-DELTACHI2            float64       Chi-squared difference between the first- and second-best redshifts from ``Redrock``
+BGS_TARGET [1]_      int64         BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET [1]_      int64         Milky Way Survey targeting bits
+SCND_TARGET  [1]_    int64         Target selection bitmask for secondary programs
+Z                    float64       Redshift measured by Redrock
+ZWARN                int64         Redshift warning bitmask from Redrock, plus DESI-specific bits set
+SPECTYPE             char[6]       Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
+DELTACHI2            float64       chi2 difference between first- and second-best redrock template fits
 NUMOBS               int32         Number of spectroscopic observations (on this specific, single tile)
-ZTILEID              int32         Unique tile ID (identical to ``TILEID``)
-Z_QN                 float64       Redshift from `QuasarNET`_
-Z_QN_CONF            float64       Redshift confidence from `QuasarNET`_
-IS_QSO_QN            int16         Spectroscopic classification	from `QuasarNET`_ (1 for a quasar)
-==================== ======= ===== ===================
+ZTILEID              int32         ID of tile that most recently updated target&#x27;s state
+Z_QN                 float64       Redshift measured by QuasarNET
+Z_QN_CONF            float64       Redshift confidence from QuasarNET
+IS_QSO_QN            int16         Spectroscopic classification from QuasarNET (1 for a quasar)
+==================== ======= ===== ====================================================================
 
 .. [1] Only `either` the four ``SV1``, ``SV3`` `or` Main Survey columns will be present. ``TARGET``
        bitmask columns are preceded by the survey ``PHASE`` except in the case of Main Survey files
@@ -109,6 +109,8 @@ See the DESI Survey Operations paper (Schlafly et al., in preparation) for
 details of how the quantities in the ``zmtl`` files are used to update the
 observational state of a target in the MTL ledgers.
 
+For more information, see `QuasarNET`_ for QuasarNET and
+`SQUEzE`_ for SQUEzE.
 
 .. _`QuasarNET`: https://ui.adsabs.harvard.edu/abs/2018arXiv180809955B/abstract
 .. _`SQUEzE`: https://ui.adsabs.harvard.edu/abs/2020MNRAS.496.4931P/abstract
