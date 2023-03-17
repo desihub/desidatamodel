@@ -23,7 +23,7 @@ HDU2_  MASK       IMAGE    Mask (0 = good)
 HDU3_  WAVELENGTH IMAGE    wavelength in Angstrom
 HDU4_  RESOLUTION IMAGE    Resolution Matrix
 HDU5_  FIBERMAP   BINTABLE Fibermap
-HDU6_  CHI2PIX    IMAGE    chi2 fit of PSF model to CCD image
+HDU6_  CHI2PIX    IMAGE    chi2 of fit of PSF model to CCD image
 HDU7_  SCORES     BINTABLE Quality Assurance scores
 ====== ========== ======== ======================================
 
@@ -644,8 +644,6 @@ EXTNAME = MASK
 Mask of spectral data; 0=good. See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 Prior to desispec/0.24.0 and software release 18.9, the MASK HDU was compressed.
 
-TODO: add documentation link to what bits mean what.
-
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -696,7 +694,8 @@ HDU4
 
 EXTNAME = RESOLUTION
 
-Resolution matrix stored as a 3D sparse matrix. the frame :ref:`RESOLUTION documentation <frame-hdu4-resolution>` for more details.
+Resolution matrix stored as a 3D sparse matrix.
+See the frame :ref:`RESOLUTION documentation <frame-hdu4-resolution>` for more details.
 
 
 Required Header Keywords
@@ -1491,8 +1490,6 @@ have the complete set of ``_C`` columns where ``_C`` (for camera) represents
 SCORES tables from individual frames can be later combined into a summary
 table for the exposure.
 
-TODO: document wavelength ranges covered per camera.
-
 .. rst-class:: columns
 
 ========================== ======= ===== ============================================
@@ -1563,4 +1560,4 @@ TSNR2_ELG_R [1]_           float64       from calc_frame_tsnr
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+TODO

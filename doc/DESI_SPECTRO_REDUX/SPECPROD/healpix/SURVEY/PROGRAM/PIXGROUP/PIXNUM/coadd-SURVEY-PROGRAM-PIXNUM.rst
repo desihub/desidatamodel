@@ -86,7 +86,7 @@ HDU01
 
 EXTNAME = FIBERMAP
 
-fibermap table with two additional columns NIGHT and EXPID.
+Fibermap table with two additional columns NIGHT and EXPID.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -194,7 +194,7 @@ HDU02
 
 EXTNAME = EXP_FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap information on all exposures used to create this coadd.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
