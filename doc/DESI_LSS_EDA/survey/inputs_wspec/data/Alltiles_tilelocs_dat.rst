@@ -4,9 +4,8 @@ Alltiles_tilelocs
 
 :Summary: Information on the tiles and locations each target appears on 
 :Naming Convention: ``Alltiles_{PROGRAM}_tilelocs.dat.fits``, where ``{PROGRAM}`` denotes the observing program, either dark or bright
-:Regex: For bright time ``Alltiles_bright_tilelocs.dat.fits`` 
-:File Type: FITS, 544 MB  *This section gives the type of the file
-    and its approximate size.*
+:Regex: ``Alltiles_[a-z]{4,6}_tilelocs.dat.fits`` 
+:File Type: FITS, 544 MB
 
 Contents
 ========
@@ -70,4 +69,3 @@ TILELOCIDS char[39]       TILELOCIDs that the target was available for, separate
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
