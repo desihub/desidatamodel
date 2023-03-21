@@ -84,7 +84,7 @@ Required Header Keywords
     MAXTIME       5400.0                                                                float   [s] Maximum exposure time for entire visit (fro
     ESTTIME       3705.79                                                               float   [s] Estimated exposure time for visit (from ETC
     MINTIME       300.0                                                                 float   [s] Minimum exposure time (from NTS, used by ET
-    MIDTIME       915.0                                                                 float   [s] Exposure midpoint time used by PlateMaker
+    MIDTIME [1]_  915.0                                                                 float   [s] Exposure midpoint time used by PlateMaker
     PROPID        2020B-5000                                                            str     Proposal ID
     OBSERVER      Jessica Chellino, Corentin Ravoux                                     str     Names of observers
     LEAD          Martin Landriau                                                       str     Lead observer
@@ -129,12 +129,12 @@ Required Header Keywords
     TRUSTEMP      12.267                                                                float   [deg] Average Telescope truss temperature (only
     PMIRTEMP      11.675                                                                float   [deg] Average primary mirror temperature (nit,e
     PMREADY       T                                                                     bool    Primary mirror ready
-    PMCOVER      open                                                                  str     Primary mirror cover
+    PMCOVER       open                                                                  str     Primary mirror cover
     PMCOOL        off                                                                   str     Primary mirror cooling
-    DOMSHUTU      open                                                                  str     Upper dome shutter
-    DOMSHUTL      open                                                                  str     Lower dome shutter
-    DOMLIGHH      off                                                                   str     High dome lights
-    DOMLIGHL      off                                                                   str     Low dome lights
+    DOMSHUTU [1]_ open                                                                  str     Upper dome shutter
+    DOMSHUTL [1]_ open                                                                  str     Lower dome shutter
+    DOMLIGHH [1]_ off                                                                   str     High dome lights
+    DOMLIGHL [1]_ off                                                                   str     Low dome lights
     DOMEAZ        180.062                                                               float   [deg] Dome azimuth angle
     DOMINPOS      T                                                                     bool    Dome is in position
     EPOCH         2000.0                                                                float   Epoch of observation
@@ -177,7 +177,7 @@ Required Header Keywords
     SKYLEVEL      7.516                                                                 float   [unit?] PM/ETC sky level
     PMSEEING      None                                                                  Unknown [arcsec] PlateMaker GFAPROC seeing
     PMTRANSP      None                                                                  Unknown [%] PlateMaker GFAPROC transparency
-    ETCSEENG      1.1695                                                                float   [arcsec] ETC seeing
+    ETCSEENG [1]_ 1.1695                                                                float   [arcsec] ETC seeing
     ETCTEFF       1.113899                                                              float   [s] ETC effective exposure time
     ETCREAL       580.104492                                                            float   [s] ETC real open shutter time
     ETCPREV       454.940948                                                            float   [s] ETC cummulative t_eff for visit
@@ -241,7 +241,7 @@ Required Header Keywords
     TAIRFLOW      0.0                                                                   float   Telescope air flow
     TAIRITMP      12.5                                                                  float   [deg] Telescope air in temperature
     TAIROTMP      12.7                                                                  float   [deg] Telescope air out temperature
-    TAIRTEMP      11.05                                                                 float   [deg] Telescope air temperature
+    TAIRTEMP [1]_ 11.05                                                                 float   [deg] Telescope air temperature
     TCASITMP      6.6                                                                   float   [deg] Telescope Cass Cage in temperature
     TCASOTMP      12.2                                                                  float   [deg] Telescope Cass Cage out temperature
     TCSITEMP      12.1                                                                  float   [deg] Telescope center section in temperature
@@ -256,28 +256,28 @@ Required Header Keywords
     TFLOWOUT      0.0                                                                   float   Telescope flow rate out
     TGLYCOLI      12.8                                                                  float   [deg] Telescope glycol in temperature
     TGLYCOLO      12.6                                                                  float   [deg] Telescope glycol out temperature
-    THINGES       12.1                                                                  float   [deg] Telescope hinge S temperature
-    THINGEW       22.3                                                                  float   [deg] Telescope hinge W temperature
-    TPMAVERT      11.658                                                                float   [deg] Telescope mirror averagetemperature
-    TPMDESIT      6.0                                                                   float   [deg] Telescope mirror desired temperature
-    TPMEIBT       12.1                                                                  float   [deg] Telescope mirror EIB temperature
-    TPMEITT       11.5                                                                  float   [deg] Telescope mirror EIT temperature
-    TPMEOBT       12.3                                                                  float   [deg] Telescope mirror EOB temperature
-    TPMEOTT       12.0                                                                  float   [deg] Telescope mirror EOT temperature
-    TPMNIBT       11.9                                                                  float   [deg] Telescope mirror NIB temperature
-    TPMNITT       11.4                                                                  float   [deg] Telescope mirror NIT temperature
-    TPMNOBT       12.3                                                                  float   [deg] Telescope mirror NOB temperature
-    TPMNOTT       12.0                                                                  float   [deg] Telescope mirror NOT temperature
-    TPMRTDT       11.67                                                                 float   [deg] Telescope mirror RTD temperature
-    TPMSIBT       12.1                                                                  float   [deg] Telescope mirror SIB temperature
-    TPMSITT       11.5                                                                  float   [deg] Telescope mirror SIT temperature
-    TPMSOBT       12.0                                                                  float   [deg] Telescope mirror SOB temperature
-    TPMSOTT       11.7                                                                  float   [deg] Telescope mirror SOT temperature
-    TPMSTAT       ready                                                                 str     Telescope mirror status
-    TPMWIBT       11.9                                                                  float   [deg] Telescope mirror WIB temperature
-    TPMWITT       11.3                                                                  float   [deg] Telescope mirror WIT temperature
-    TPMWOBT       11.9                                                                  float   [deg] Telescope mirror WOB temperature
-    TPMWOTT       11.8                                                                  float   [deg] Telescope mirror WOT temperature
+    THINGES [1]_  12.1                                                                  float   [deg] Telescope hinge S temperature
+    THINGEW [1]_  22.3                                                                  float   [deg] Telescope hinge W temperature
+    TPMAVERT [1]_ 11.658                                                                float   [deg] Telescope mirror averagetemperature
+    TPMDESIT [1]_ 6.0                                                                   float   [deg] Telescope mirror desired temperature
+    TPMEIBT [1]_  12.1                                                                  float   [deg] Telescope mirror EIB temperature
+    TPMEITT [1]_  11.5                                                                  float   [deg] Telescope mirror EIT temperature
+    TPMEOBT [1]_  12.3                                                                  float   [deg] Telescope mirror EOB temperature
+    TPMEOTT [1]_  12.0                                                                  float   [deg] Telescope mirror EOT temperature
+    TPMNIBT [1]_  11.9                                                                  float   [deg] Telescope mirror NIB temperature
+    TPMNITT [1]_  11.4                                                                  float   [deg] Telescope mirror NIT temperature
+    TPMNOBT [1]_  12.3                                                                  float   [deg] Telescope mirror NOB temperature
+    TPMNOTT [1]_  12.0                                                                  float   [deg] Telescope mirror NOT temperature
+    TPMRTDT [1]_  11.67                                                                 float   [deg] Telescope mirror RTD temperature
+    TPMSIBT [1]_  12.1                                                                  float   [deg] Telescope mirror SIB temperature
+    TPMSITT [1]_  11.5                                                                  float   [deg] Telescope mirror SIT temperature
+    TPMSOBT [1]_  12.0                                                                  float   [deg] Telescope mirror SOB temperature
+    TPMSOTT [1]_  11.7                                                                  float   [deg] Telescope mirror SOT temperature
+    TPMSTAT [1]_  ready                                                                 str     Telescope mirror status
+    TPMWIBT [1]_  11.9                                                                  float   [deg] Telescope mirror WIB temperature
+    TPMWITT [1]_  11.3                                                                  float   [deg] Telescope mirror WIT temperature
+    TPMWOBT [1]_  11.9                                                                  float   [deg] Telescope mirror WOB temperature
+    TPMWOTT [1]_  11.8                                                                  float   [deg] Telescope mirror WOT temperature
     TPCITEMP      12.1                                                                  float   [deg] Telescope primary cell in temperature
     TPCOTEMP      12.0                                                                  float   [deg] Telescope primary cell out temperature
     TPR1HUM       0.0                                                                   float   Telescope probe 1 humidity
@@ -299,7 +299,7 @@ Required Header Keywords
     TTRUTSTT      12.2                                                                  float   [deg] Telescope truss TST temperature
     TTRUWTBT      11.6                                                                  float   [deg] Telescope truss WTB temperature
     TTRUWTTT      11.6                                                                  float   [deg] Telescope truss WTT temperature
-    ALARM         F                                                                     bool    UPS major alarm or check battery
+    ALARM [1]_    F                                                                     bool    UPS major alarm or check battery
     ALARM-ON      F                                                                     bool    UPS active alarm condition
     BATTERY       100.0                                                                 float   [%] UPS Battery left
     SECLEFT       6312.0                                                                float   [s] UPS Seconds left
@@ -438,7 +438,7 @@ Required Header Keywords
     TCSPIRA       0.9,0.0,0.0,0.0                                                       str     TCS PI settings (P, I (gain, error window, satu
     TCSPIDEC      0.9,0.0,0.0,0.0                                                       str     TCS PI settings (P, I (gain, error window, satu
     GUIEXPID      118526                                                                int     Guider exposure id at start of spectro exp.
-    IGFRMNUM      2                                                                     int     Guider frame number at start of spectro exp.
+    IGFRMNUM [1]_ 2                                                                     int     Guider frame number at start of spectro exp.
     FOCEXPID      118526                                                                int     Focus exposure id at start of spectro exp.
     IFFRMNUM      0                                                                     int     Focus frame number at start of spectro exp.
     SKYEXPID      118526                                                                int     Sky exposure id at start of spectro exp.
