@@ -171,7 +171,7 @@ LC_NOBS_W1,int16[15],,NOBS_W1 in each of up to fifteen unWISE coadd epochs
 LC_NOBS_W2,int16[15],,NOBS_W2 in each of up to fifteen unWISE coadd epochs
 LOCATION,int64,,Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 LOCATION_ASSIGNED,bool,,True/False for assigned/unassigned for the target in question
-LRG_MASK,uint8,,Imaging mask bits relevant to LRG targets
+LRG_MASK,binary,,Imaging mask bits relevant to LRG targets
 MASKBITS,int16,,Bitwise mask from the imaging indicating potential issue or blending
 MEAN_DELTA_X,float32,mm,Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
 MEAN_DELTA_Y,float32,mm,Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
@@ -196,7 +196,7 @@ NIGHT,int32,,
 NOBS_G,int16,,Number of images for central pixel in g-band
 NOBS_R,int16,,Number of images for central pixel in r-band
 NOBS_Z,int16,,Number of images for central pixel in z-band
-NPIXELS,int64,,
+NPIXELS,int64,,Number of unmasked pixels contributing to the Redrock fit
 NTILE,,,Number of tiles target was available on
 NUM_ITER,int64,,Number of positioner iterations
 NUMOBS,int64,,"Number of spectroscopic observations (on this specific, single tile)"
@@ -243,7 +243,7 @@ PMRA,float32,mas yr^-1,"proper motion in the +RA direction (already including co
 PMRA_IVAR,float32,yr^2 mas^-2,Inverse variance of PMRA
 PRIORITY,,,Target current priority
 PRIORITY_INIT,int64,,Target initial priority from target selection bitmasks and OBSCONDITIONS
-PROB_OBS,float64,,The number alternative assignment histories that the target was assigned in, divided by 128
+PROB_OBS,float64,,The number alternative assignment histories that the target was assigned in divided by 128
 PROBA_RF,,,
 PROGRAM,char[6],,"DESI program type - BRIGHT, DARK, BACKUP, OTHER"
 PSFDEPTH_G,float32,nanomaggy^-2,PSF-based depth in g-band
@@ -255,7 +255,6 @@ PSFSIZE_G,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects 
 PSFSIZE_R,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 PSF_TO_FIBER_SPECFLUX,float64,,fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-QSO_MASKBITS,,,
 RA,float64,deg,Target Right Ascension
 RA_IVAR,float32,deg^-2,"Inverse variance of RA (no cosine term!), excluding astrometric calibration errors"
 REF_CAT,char[2],,"Reference catalog source for star: “T2” for Tycho-2, “G2” for Gaia DR2, “L2” for the SGA, empty otherwise"
@@ -267,6 +266,8 @@ REST_GMR_0P0,float64,,Rest-frame g-r colour at redshift=0.0
 REST_GMR_0P1,float64,,Rest-frame g-r colour at redshift=0.1
 RMS_DELTA_X,float32,mm,RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
 RMS_DELTA_Y,float32,mm,RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+ROSETTE_NUMBER,int32,,Rosette number ID [0-19]
+ROSETTE_R,float64,deg,Radius from the center of the rosette to the target
 SCND_TARGET,int64,,Target selection bitmask for secondary programs
 SEEING_ETC,float64,arcsec,Average FWHM atmospheric seeing during this exposure as measured by ETC
 SEEING_GFA,float64,arcsec,Average FWHM atmospheric seeing during this exposure as measured by GFA
@@ -338,12 +339,10 @@ TSNR2_LRG_R,float32,,LRG R template (S/N)^2
 TSNR2_LRG_Z,float32,,LRG Z template (S/N)^2
 TSNR2_LYA,float32,,"LYA template (S/N)^2 summed over B,R,Z"
 TSNR2_LYA_B,float32,,LYA B template (S/N)^2
-TSNR2_LYA_QF,float32,,
 TSNR2_LYA_R,float32,,LYA R template (S/N)^2
 TSNR2_LYA_Z,float32,,LYA Z template (S/N)^2
 TSNR2_QSO,float32,,"QSO template (S/N)^2 summed over B,R,Z"
 TSNR2_QSO_B,float32,,QSO B template (S/N)^2
-TSNR2_QSO_QF,float32,,
 TSNR2_QSO_R,float32,,QSO R template (S/N)^2
 TSNR2_QSO_Z,float32,,QSO Z template (S/N)^2
 TYPE,char[4],,Morphological Model type from Tractor; renamed MORPHTYPE in most files
@@ -370,12 +369,10 @@ Z_LYA,float64,,Redshift estimated by QuasarNET with LyA line
 Z_MgII,float64,,Redshift estimated by QuasarNET with MgII line
 Z_QN,float64,,Redshift measured by QuasarNET using line with highest confidence
 Z_QN_CONF,float64,,Redshift confidence from QuasarNET
-Z_QN_QF,float64,,
 Z_RR,float64,,Redshift collected from redrock file
 ZCAT_NSPEC,int32,,Number of coadded spectra for this TARGETID in this zcatalog
 ZCAT_PRIMARY,bool,,Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
 ZERR,float64,,Redshift error from redrock
-ZERR_QF,,,
 ZPOSSLOC,,,True/False whether the location could have been assigned to the given target class
 ZTILEID,int32,,ID of tile that most recently updated target's state
 ZWARN,int64,,Redshift warning bitmask from Redrock
