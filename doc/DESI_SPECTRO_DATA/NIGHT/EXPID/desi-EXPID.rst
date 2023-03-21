@@ -104,6 +104,8 @@ EXTNAME = SPEC
     CAMSHUT  open                                                                  str     Shutter status during observation
     ST       11:13:28.582000                                                       str     Local Sidereal time at observation start (HH:MM
     EXPTIME  579.1588                                                              float   [s] Actual exposure time
+    DELTARA  0.                                                                    float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC 0.                                                                    float   [arcsec] Offset], declination, observer input
     ACQTIME  15.0                                                                  float   [s] acqusition image exposure time
     GUIDTIME 5.0                                                                   float   [s] guider GFA exposure time
     FOCSTIME 60.0                                                                  float   [s] focus GFA exposure time
@@ -494,6 +496,8 @@ Required Header Keywords
     OPENSHUT 2022-01-14T11:04:18.577390                           str     Time shutter opened
     ST       11:13:28.540000                                      str     Local Sidereal time at observation start (HH:MM
     EXPTIME  579.193                                              float   [s] Actual exposure time
+    DELTARA  0.                                                   float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC 0.                                                   float   [arcsec] Offset], declination, observer input
     REQRA    170.239                                              float   [deg] Requested right ascension (observer input
     REQDEC   -7.093                                               float   [deg] Requested declination (observer input)
     FOCUS    946.6,-231.6,-83.4,-18.3,9.8,139.4                   str     Telescope focus settings
@@ -698,6 +702,8 @@ Required Header Keywords
     CORRCTOR DESI Corrector                                                                                               str     Corrector Identification
     NIGHT    20220113                                                                                                     int     Observing night
     TIMESYS  UTC                                                                                                          str     Time system used for date-obs
+    DELTARA  0.                                                                                                           float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC 0.                                                                                                           float   [arcsec] Offset], declination, observer input
     REQRA    170.239                                                                                                      float   [deg] Requested right ascension (observer input
     REQDEC   -7.093                                                                                                       float   [deg] Requested declination (observer input)
     FOCUS    946.6,-231.6,-83.4,-18.3,9.8,139.4                                                                           str     Telescope focus settings
