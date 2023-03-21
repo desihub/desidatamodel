@@ -394,8 +394,23 @@ class TestCheck(DataModelTestCase):
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
-        f.prototype = None
+        f._prototypes = None
         f.validate_prototype(error=True)
+
+    def test_validate_prototype_oserror(self):
+        """Test the data model validation method with a file that throws an error.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        # self.assertListEqual(f._prototypes, [os.path.join(os.path.dirname(modelfile), 'fits_file.fits'), ''])
+        f._prototypes = [os.path.join(os.path.dirname(modelfile), 'data_table.txt'),
+                         os.path.join(os.path.dirname(modelfile), 'fits_file.fits')]
+        f.validate_prototype(error=True)
+        self.assertLog(log, -3, "Error opening {0}, skipping to next candidate.".format(f._prototypes[0]))
+        self.assertLog(log, -2, "Message was: 'No SIMPLE card found, this file does not appear to be a valid FITS file. If this is really a FITS file, try with ignore_missing_simple=True'.")
+        self.assertLog(log, -1, "Comparing {0} to {1}.".format(f._prototypes[1], modelfile))
 
     def test_validate_prototype_hdu_mismatch(self):
         """Test the data model validation method with wrong number of HDUs.
