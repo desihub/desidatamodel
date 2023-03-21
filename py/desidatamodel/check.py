@@ -82,6 +82,7 @@ class DataModel(DataModelUnit):
         self._metafile_data = None
         self._stub = None
         self._stub_meta = None
+        self._prototypes = None
         return
 
     def get_regexp(self, root, error=False):
@@ -451,16 +452,33 @@ class DataModel(DataModelUnit):
         * Use set theory to compare the data headers to model headers.  This should
           automatically find missing headers, extraneous headers, etc.
         """
-        if self.prototype is None:
+        if self._prototypes is None:
             #
             # A warning should have been issued already, so just skip silently.
             #
             return
-        log.info("Comparing %s to %s.", self.prototype, self.filename)
-        if self._stub is None:
-            self._stub = Stub(self.prototype, error=error)
-        stub_meta = self._stub_meta = self._stub.hdumeta
         modelmeta = self.extract_metadata(error=error)
+        for p in self._prototypes:
+            try:
+                s = Stub(p, error=error)
+            except OSError as err:
+                log.warning("Error opening %s, skipping to next candidate.", p)
+                log.warning("Message was: '%s'.", err)
+            else:
+                if s.nhdr == len(modelmeta.keys()):
+                    self.prototype = p
+                    self._stub = s
+                    break
+                else:
+                    log.warning("%s has the wrong number of " +
+                                "sections (HDUs) according to %s, " +
+                                "skipping to next candidate.",
+                                p, self.filename)
+        if self.prototype is None:
+            log.error("No useful prototype files found for %s!", self.filename)
+            return
+        log.info("Comparing %s to %s.", self.prototype, self.filename)
+        stub_meta = self._stub_meta = self._stub.hdumeta
         #
         # Check number of headers.
         #
@@ -642,7 +660,7 @@ def files_to_regexp(root, files, error=False):
     return
 
 
-def collect_files(root, files):
+def collect_files(root, files, n_prototypes=5):
     """Scan a directory tree for files that correspond to data model files.
 
     Parameters
@@ -651,6 +669,9 @@ def collect_files(root, files):
         Path to real files on disk.
     files : :class:`list`
         A list of data model files.
+    n_prototypes : :class:`int`, optional
+        Save up to `n_prototypes` possible prototype files, in case the
+        first one is bad. Defaults to 5.
 
     Notes
     -----
@@ -683,8 +704,11 @@ def collect_files(root, files):
                     m = r.regexp.match(fullname)
                     if m is not None:
                         extraneous_file = False
-                        if r.prototype is None:
-                            r.prototype = fullname
+                        if r._prototypes is None:
+                            r._prototypes = [fullname]
+                        else:
+                            if len(r._prototypes) < n_prototypes:
+                                r._prototypes.append(fullname)
 
             if extraneous_file:
                 log.warning("Extraneous file detected: %s", fullname)
@@ -694,7 +718,7 @@ def collect_files(root, files):
     # be flagged elsewhere.
     #
     for r in files:
-        if r.regexp is not None and r.prototype is None:
+        if r.regexp is not None and r._prototypes is None:
             log.warning("No files found matching %s!", r.filename)
     return
 

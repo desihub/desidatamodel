@@ -28,18 +28,20 @@ HDU08_ GUIDE3_1  BINTABLE *Brief Description*
 HDU09_ GUIDE3_1T BINTABLE *Brief Description*
 HDU10_ GUIDE2_0  BINTABLE *Brief Description*
 HDU11_ GUIDE2_0T BINTABLE *Brief Description*
-HDU12_ GUIDE7_0  BINTABLE *Brief Description*
-HDU13_ GUIDE7_0T BINTABLE *Brief Description*
-HDU14_ GUIDE7_1  BINTABLE *Brief Description*
-HDU15_ GUIDE7_1T BINTABLE *Brief Description*
-HDU16_ GUIDE8_0  BINTABLE *Brief Description*
-HDU17_ GUIDE8_0T BINTABLE *Brief Description*
-HDU18_ GUIDE8_1  BINTABLE *Brief Description*
-HDU19_ GUIDE8_1T BINTABLE *Brief Description*
-HDU20_ GUIDE0_0  BINTABLE *Brief Description*
-HDU21_ GUIDE0_0T BINTABLE *Brief Description*
-HDU22_ GUIDE0_1  BINTABLE *Brief Description*
-HDU23_ GUIDE0_1T BINTABLE *Brief Description*
+HDU12_ GUIDE2_1  BINTABLE *Brief Description*
+HDU13_ GUIDE2_1T BINTABLE *Brief Description*
+HDU14_ GUIDE7_0  BINTABLE *Brief Description*
+HDU15_ GUIDE7_0T BINTABLE *Brief Description*
+HDU16_ GUIDE7_1  BINTABLE *Brief Description*
+HDU17_ GUIDE7_1T BINTABLE *Brief Description*
+HDU18_ GUIDE8_0  BINTABLE *Brief Description*
+HDU19_ GUIDE8_0T BINTABLE *Brief Description*
+HDU20_ GUIDE8_1  BINTABLE *Brief Description*
+HDU21_ GUIDE8_1T BINTABLE *Brief Description*
+HDU22_ GUIDE0_0  BINTABLE *Brief Description*
+HDU23_ GUIDE0_0T BINTABLE *Brief Description*
+HDU24_ GUIDE0_1  BINTABLE *Brief Description*
+HDU25_ GUIDE0_1T BINTABLE *Brief Description*
 ====== ========= ======== ===================
 
 
@@ -1159,6 +1161,159 @@ CRVAL2   float64        label for field  21
 HDU12
 -----
 
+EXTNAME = GUIDE2_1
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ==================================================== ======= ===============================================
+KEY      Example Value                                        Type    Comment
+======== ==================================================== ======= ===============================================
+NAXIS1   24                                                   int     width of table in bytes
+NAXIS2   3600                                                 int     number of rows in table
+ZTILE3   1                                                    int     size of tiles to be compressed
+ZQUANTIZ SUBTRACTIVE_DITHER_1                                 str     Pixel Quantization Algorithm
+ZDITHER0 674                                                  int     dithering offset when quantizing floats
+DEVICE   GUIDE2                                               str     Device/controller name
+UNIT     2                                                    int     Unit number/letter
+UNITTYPE GUIDE                                                str     Image Sources/Component
+EXPID    118526                                               int     Exposure number
+FRAMES   72                                                   int     Number of Frames in Archive
+TILEID   4403                                                 int     DESI Tile ID
+FIBASSGN /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz str     Fiber assign
+FLAVOR   SCIENCE                                              str     Observation type
+SEQUENCE _Split                                               str     OCS Sequence name
+PURPOSE  Main Survey                                          str     Purpose of observing night
+PROGRAM  DARK                                                 str     Program name
+PROPID   2020B-5000                                           str     Proposal ID
+OBSERVER Jessica Chellino, Corentin Ravoux                    str     Names of observers
+LEAD     Martin Landriau                                      str     Lead observer
+INSTRUME DESI                                                 str     Instrument name
+OBSERVAT KPNO                                                 str     Observatory name
+OBS-LAT  31.96403                                             str     [deg] Observatory latitude
+OBS-LONG -111.59989                                           str     [deg] Observatory east longitude
+OBS-ELEV 2097.0                                               float   [m] Observatory elevation
+TELESCOP KPNO 4.0-m telescope                                 str     Telescope name
+CORRCTOR DESI Corrector                                       str     Corrector Identification
+NIGHT    20220113                                             int     Observing night
+TIMESYS  UTC                                                  str     Time system used for date-obs
+DATE-OBS 2022-01-14T11:03:58.317551                           str     [UTC] Observation data and start time
+MJD-OBS  59593.46109164                                       float   Modified Julian Date of observation
+OPENSHUT 2022-01-14T11:03:58.317551                           str     Time shutter opened
+ST       11:13:16.9462                                        str     Local Sidereal time at observation start (HH:MM
+ACQTIME  15.0                                                 float   [s] acqusition image exposure time
+GUIDTIME 5.0                                                  float   [s] guider GFA exposure time
+REQRA    170.239                                              float   [deg] Requested right ascension (observer input
+REQDEC   -7.093                                               float   [deg] Requested declination (observer input)
+DELTARA  None                                                 Unknown [arcsec] Offset], right ascension, observer inp
+DELTADEC None                                                 Unknown [arcsec] Offset], declination, observer input
+FOCUS    946.6,-231.6,-83.4,-18.3,9.8,139.4                   str     Telescope focus settings
+TRUSTEMP 12.267                                               float   [deg] Average Telescope truss temperature (only
+PMIRTEMP 11.675                                               float   [deg] Average primary mirror temperature (nit,e
+EPOCH    2000.0                                               float   Epoch of observation
+EQUINOX  2000.0                                               float   Equinox of selected coordinate reference frame
+MOUNTAZ  176.725567                                           float   [deg] Mount azimuth angle
+MOUNTDEC -7.102329                                            float   [deg] Mount declination
+MOUNTEL  50.883914                                            float   [deg] Mount elevation angle
+MOUNTHA  -2.081118                                            float   [deg] Mount hour angle
+SKYDEC   -7.102329                                            float   [deg] Telescope declination (pointing on sky)
+SKYRA    170.24163                                            float   [deg] Telescope right ascension (pointing on sk
+TARGTDEC -7.102329                                            float   [deg] Target declination (to TCS)
+TARGTRA  170.24163                                            float   [deg] Target right ascension (to TCS)
+USEETC   T                                                    bool    ETC data available if true
+ACQCAM   GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8            str     Acquisition cameras used
+GUIDECAM GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8            str     Guide cameras used for t
+FOCUSCAM FOCUS1,FOCUS4,FOCUS6,FOCUS9                          str     Focus cameras used for this exposure
+SKYCAM   SKYCAM0,SKYCAM1                                      str     Sky cameras used for this exposure
+ADC1PHI  None                                                 Unknown [deg] ADC 1 angle
+USESKY   T                                                    bool    DOS Control: use Sky Monitor
+USEFOCUS T                                                    bool    DOS Control: use focus
+HEXPOS   946.7,-231.6,-83.4,-18.3,9.9,138.8                   str     Hexapod position
+HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                              str     Hexapod trim values
+USEROTAT T                                                    bool    DOS Control: use rotator
+ROTOFFST 138.8                                                float   [arcsec] Rotator offset
+ROTENBLD T                                                    bool    Rotator enabled
+ROTRATE  0.513                                                float   [arcsec/min] Rotator rate
+USEGUIDR T                                                    bool    DOS Control: use guider
+USEDONUT T                                                    bool    DOS Control: use donuts
+WCSAXES  2                                                    int
+RADESYS  FK5                                                  str     Coordinate reference frame of major/minor axes
+CTYPE1   RA---TAN                                             str
+CTYPE2   DEC--TAN                                             str
+CD1_1    1.9486e-07                                           float
+CD1_2    5.4424e-05                                           float
+CD2_1    5.9241e-05                                           float
+CD2_2    -1.8383e-07                                          float
+SHAPE    None                                                 Unknown
+DOSVER   trunk                                                str     DOS software version
+OCSVER   1.2                                                  float   OCS software version
+CONSTVER DESI:CURRENT                                         str     Constants version
+INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini     str     DOS Configuration
+ADCPHI2  None                                                 Unknown
+ROI      664,38                                               str
+ROIWIDTH 25,25                                                str
+GEXPMODE normal                                               str     GFA readout mode (loop/normal)
+DEVICEID dev06                                                str     GFA device id (serial number)
+REQTIME  1860.0                                               float   [s] Requested exposure time
+CHECKSUM oaOfoUMcoZMcoZMc                                     str     HDU checksum updated 2022-01-14T11:13:58
+DATASUM  836997168                                            str     data unit checksum updated 2022-01-14T11:13:58
+======== ==================================================== ======= ===============================================
+
+Data: FITS image [float64 (compressed), 50x50x72]
+
+HDU13
+-----
+
+EXTNAME = GUIDE2_1T
+
+*Summarize the contents of this HDU.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ================ ==== ==============================================
+KEY      Example Value    Type Comment
+======== ================ ==== ==============================================
+NAXIS1   242              int  width of table in bytes
+NAXIS2   72               int  number of rows in table
+CHECKSUM klHAml93klG9kl99 str  HDU checksum updated 2022-01-14T11:13:58
+DATASUM  2746564241       str  data unit checksum updated 2022-01-14T11:13:58
+======== ================ ==== ==============================================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+======== ======== ===== ===================
+Name     Type     Units Description
+======== ======== ===== ===================
+EXPTIME  float64        label for field   1
+NIGHT    int64          label for field   2
+DATE-OBS char[26]       label for field   3
+TIME-OBS char[15]       label for field   4
+MJD-OBS  float64        label for field   5
+OPENSHUT char[26]       label for field   6
+ST       char[13]       label for field   7
+HEXPOS   char[34]       label for field   8
+GAMBNTT  float64        label for field   9
+GFPGAT   float64        label for field  10
+GFILTERT float64        label for field  11
+GCOLDTEC float64        label for field  12
+GHOTTEC  float64        label for field  13
+GCCDTEMP float64        label for field  14
+GCAMTEMP float64        label for field  15
+GHUMID2  float64        label for field  16
+GHUMID3  float64        label for field  17
+CRPIX1   float64        label for field  18
+CRPIX2   float64        label for field  19
+CRVAL1   float64        label for field  20
+CRVAL2   float64        label for field  21
+======== ======== ===== ===================
+
+HDU14
+-----
+
 EXTNAME = GUIDE7_0
 
 *Summarize the contents of this HDU.*
@@ -1261,7 +1416,7 @@ DATASUM  91966036                                             str     data unit 
 
 Data: FITS image [float64 (compressed), 50x50x72]
 
-HDU13
+HDU15
 -----
 
 EXTNAME = GUIDE7_0T
@@ -1309,7 +1464,7 @@ CRVAL1   float64        label for field  20
 CRVAL2   float64        label for field  21
 ======== ======== ===== ===================
 
-HDU14
+HDU16
 -----
 
 EXTNAME = GUIDE7_1
@@ -1414,7 +1569,7 @@ DATASUM  3736249036                                           str     data unit 
 
 Data: FITS image [float64 (compressed), 50x50x72]
 
-HDU15
+HDU17
 -----
 
 EXTNAME = GUIDE7_1T
@@ -1462,7 +1617,7 @@ CRVAL1   float64        label for field  20
 CRVAL2   float64        label for field  21
 ======== ======== ===== ===================
 
-HDU16
+HDU18
 -----
 
 EXTNAME = GUIDE8_0
@@ -1567,7 +1722,7 @@ DATASUM  1481156710                                           str     data unit 
 
 Data: FITS image [float64 (compressed), 50x50x72]
 
-HDU17
+HDU19
 -----
 
 EXTNAME = GUIDE8_0T
@@ -1615,7 +1770,7 @@ CRVAL1   float64        label for field  20
 CRVAL2   float64        label for field  21
 ======== ======== ===== ===================
 
-HDU18
+HDU20
 -----
 
 EXTNAME = GUIDE8_1
@@ -1720,7 +1875,7 @@ DATASUM  3014792423                                           str     data unit 
 
 Data: FITS image [float64 (compressed), 50x50x72]
 
-HDU19
+HDU21
 -----
 
 EXTNAME = GUIDE8_1T
@@ -1768,7 +1923,7 @@ CRVAL1   float64        label for field  20
 CRVAL2   float64        label for field  21
 ======== ======== ===== ===================
 
-HDU20
+HDU22
 -----
 
 EXTNAME = GUIDE0_0
@@ -1873,7 +2028,7 @@ DATASUM  2939767313                                           str     data unit 
 
 Data: FITS image [float64 (compressed), 50x50x72]
 
-HDU21
+HDU23
 -----
 
 EXTNAME = GUIDE0_0T
@@ -1921,7 +2076,7 @@ CRVAL1   float64        label for field  20
 CRVAL2   float64        label for field  21
 ======== ======== ===== ===================
 
-HDU22
+HDU24
 -----
 
 EXTNAME = GUIDE0_1
@@ -2026,7 +2181,7 @@ DATASUM  881151304                                            str     data unit 
 
 Data: FITS image [float64 (compressed), 50x50x72]
 
-HDU23
+HDU25
 -----
 
 EXTNAME = GUIDE0_1T

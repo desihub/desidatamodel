@@ -2,10 +2,11 @@
 guide-EXPID
 ===========
 
-:Summary: Datamodel for the guider GFA raw data
-:Naming Convention: ``guide-EXPID.fits.fz``, where EXPID is the zero-padded
-    8-digit exposure ID.
-:Regex: ``guide-[0-9]{8}\.fits\.fz``
+:Summary: Datamodel for the guider GFA raw data.
+:Naming Convention: ``guide-EXPID.fits.fz``, where ``EXPID`` is the zero-padded
+    8-digit exposure ID.  Sometimes ``EXPID`` takes the form ``EXPID-0000``.
+    Sometimes the ``.fz`` is missing.
+:Regex: ``guide-[0-9]{8}(-[0-9]{4})?\.fits(\.fz)?``
 :File Type: FITS, 732 MB
 
 

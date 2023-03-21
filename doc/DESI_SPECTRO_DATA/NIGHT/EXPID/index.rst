@@ -15,6 +15,9 @@ Each exposure id (expid) generates multiple files:
    fibermap-{expid}.fits : Table of which fibers were assigned to which targets (*obsolete*) <fibermap-EXPID>
    focus-{expid}.fits.fz : Placeholder for focus GFA raw data <focus-EXPID>
    fvc-{expid}.fits.fz : Fiber View Camera data <fvc-EXPID>
+   fvc-primary-{expid}.fits : Fiber View Camera data <fvc-primary-EXPID>
+   FVC-measure-{expid}.fits : Fiber View Camera data <FVC-measure-EXPID>
+   gfa-{expid}.fits : GFA file <gfa-EXPID>
    guide-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-EXPID>
    guide-rois-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-rois-EXPID>
    pm-{expid}.fits : Platemaker data <pm-EXPID>
