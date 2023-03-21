@@ -4,6 +4,7 @@
 """
 import os
 import sys
+from packaging import version
 import unittest
 from unittest.mock import patch
 from pkg_resources import resource_filename
@@ -409,7 +410,11 @@ class TestCheck(DataModelTestCase):
                          os.path.join(os.path.dirname(modelfile), 'fits_file.fits')]
         f.validate_prototype(error=True)
         self.assertLog(log, -3, "Error opening {0}, skipping to next candidate.".format(f._prototypes[0]))
-        self.assertLog(log, -2, "Message was: 'No SIMPLE card found, this file does not appear to be a valid FITS file. If this is really a FITS file, try with ignore_missing_simple=True'.")
+        if self.astropyVersion < version.parse('5.0'):
+            empty = 'Empty or corrupt FITS file'
+        else:
+            empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file. If this is really a FITS file, try with ignore_missing_simple=True'
+        self.assertLog(log, -2, "Message was: '{0}'.".format(empty))
         self.assertLog(log, -1, "Comparing {0} to {1}.".format(f._prototypes[1], modelfile))
 
     def test_validate_prototype_hdu_mismatch(self):
