@@ -9,5 +9,5 @@ This directory contains intermediate files, including the concatenation of poten
 .. toctree::
    :maxdepth: 1
    
-   rancomb_RANNUMPROGRAM_Alltilelocinfo.fits : aa <rancomb_Alltilelocinfo>  
-   rancomb_RANNUMPROGRAMwdupspec_zdone.fits : bb <rancomb_wdupspec_zdone>
+   rancomb_RANNPROGRAM_Alltilelocinfo.fits : List of random points with number of observations <rancomb_Alltilelocinfo>  
+   rancomb_RANNPROGRAMwdupspec_Alltiles.fits : All potential fiberassigments on randoms <rancomb_wdupspec>

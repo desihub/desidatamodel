@@ -1,17 +1,11 @@
-==============================
-rancomb_13brightwdupspec_zdone
-==============================
+================
+rancomb_wdupspec
+================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``rancomb_13brightwdupspec_zdone.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``rancomb_13brightwdupspec_zdone.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 1 GB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: Match of randoms with information from the spectroscopic and target sample. 
+:Naming Convention: ``rancomb_{RANN}{PROGRAM}wdupspec_zdone.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either ``dark`` or ``bright``.
+:Regex: ``rancomb_[0-17][a-z]{4,6}wdupspec_Alltiles.fits``
+:File Type: FITS, 1 GB
 
 Contents
 ========
@@ -19,8 +13,8 @@ Contents
 ====== ======== ======== ===================
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
-HDU0_           IMAGE    *Brief Description*
-HDU1_  ZCATALOG BINTABLE *Brief Description*
+HDU0_           IMAGE    Empty
+HDU1_  ZCATALOG BINTABLE Catalog data
 ====== ======== ======== ===================
 
 
@@ -29,8 +23,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -41,7 +33,7 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-*Summarize the contents of this HDU.*
+*Main data HDU. Merger of randoms to target info in given fibers*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,28 +91,28 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========================== ======= ===== =========================================================================================================
+========================== ======= ===== ===============================================================================================================================
 Name                       Type    Units Description
-========================== ======= ===== =========================================================================================================
+========================== ======= ===== ===============================================================================================================================
 LOCATION                   int64         Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 FIBER                      int32         Fiber ID on the CCDs [0-4999]
 TARGETID                   int64         Unique DESI target ID
-RA                         float64       Right Ascension
-DEC                        float64       Declination
+RA                         float64 deg   Target Right Ascension
+DEC                        float64 deg   Target declination
 TILEID                     int64         Unique DESI tile ID
-ZWARN                      int64         Redshift warning bitmask measured by Redrock
-COADD_FIBERSTATUS          int32
-FIBERASSIGN_X              float32       Expected CS5 X location on focal plane
-FIBERASSIGN_Y              float32       Expected CS5 Y location on focal plane
+ZWARN                      int64         Redshift warning bitmask from Redrock
+COADD_FIBERSTATUS          int32         bitwise-AND of input FIBERSTATUS
+FIBERASSIGN_X              float32 mm    Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y              float32 mm    Fiberassign expected CS5 Y location on focal plane
 PRIORITY                   int32         Target current priority
-COADD_NUMEXP               int16
-COADD_EXPTIME              float32
-COADD_NUMNIGHT             int16
-MEAN_DELTA_X               float32       Mean (over exposures) fiber difference between measured and requested CS5 X location on focal plane
-RMS_DELTA_X                float32       RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
-MEAN_DELTA_Y               float32       Mean (over exposures) fiber CS5 Y location on focal plane
-RMS_DELTA_Y                float32       RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
-MEAN_PSF_TO_FIBER_SPECFLUX float32
+COADD_NUMEXP               int16         Number of exposures in coadd
+COADD_EXPTIME              float32 s     Summed exposure time for coadd
+COADD_NUMNIGHT             int16         Number of nights in coadd
+MEAN_DELTA_X               float32 mm    Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
+RMS_DELTA_X                float32 mm    RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
+MEAN_DELTA_Y               float32 mm    Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
+RMS_DELTA_Y                float32 mm    RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_PSF_TO_FIBER_SPECFLUX float32       Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 TSNR2_ELG_B                float32       ELG B template (S/N)^2
 TSNR2_LYA_B                float32       LYA B template (S/N)^2
 TSNR2_BGS_B                float32       BGS B template (S/N)^2
@@ -142,10 +134,5 @@ TSNR2_BGS                  float32       BGS template (S/N)^2 summed over B,R,Z
 TSNR2_QSO                  float32       QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG                  float32       LRG template (S/N)^2 summed over B,R,Z
 TILELOCID                  int64         Is 10000*TILEID+LOCATION
-========================== ======= ===== =========================================================================================================
+========================== ======= ===== ===============================================================================================================================
 
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

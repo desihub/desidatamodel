@@ -3,10 +3,10 @@ nz
 ==
 
 :Summary: Contains target densities, as a function of redshift.
-:Naming Convention: ``{TARGET}_{PHOTSYS}_nz.txt``, where ``{TARGET}`` is ``QSO``, ``ELG``, ``LRG`` 
-                    for dark or ``BGS_BRIGHT-21.5``, ``BGS_BRIGHT`` for bright. ``{PHOTSYS}`` is the photometric region 
+:Naming Convention: ``{TARGET}_{PHOTSYS}_nz.txt``, where ``{TARGET}`` is ``QSO``, ``ELG``, ``ELGnotqso``, ``ELG_HIP``, ``ELG_HIPnotqso``, ``LRG``, ``LRG_main``,
+                    for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{PHOTSYS}`` is the photometric region 
                     N or S
-:Regex: For example, ``LRG_N_nz.txt`` is for LRG in the northern portion (BASS/MzLS) of the imaging data
+:Regex: ``[a-zA-Z]{3,}_[NS].txt``
 :File Type: ASCII
 
 Contents

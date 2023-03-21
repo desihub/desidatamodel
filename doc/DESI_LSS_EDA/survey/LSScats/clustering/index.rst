@@ -7,6 +7,6 @@ clustering
 .. toctree::
    :maxdepth: 1
 
-   TARGET_PHOTSYS_RANNUM_clustering.ran.fits : <clustering_ran>  
+   TARGET_PHOTSYS_RANN_clustering.ran.fits : <clustering_ran>  
    TARGET_PHOTSYS_clustering.dat.fits : <clustering_dat>
 

@@ -1,16 +1,11 @@
-===============================
-rancomb_13bright_Alltilelocinfo
-===============================
+======================
+rancomb_Alltilelocinfo
+======================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``rancomb_{RANN}{PROGRAM}_Alltilelocinfo.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either dark or bright.
-    
-:Regex: ``rancomb_13dark_Alltilelocinfo.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 327 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: For random associated with RANN given in the directory, the list of unique TARGETIDs with number of appearances as reachable according to fiber assigment and details on those appearances. 
+:Naming Convention: ``rancomb_{RANN}{PROGRAM}_Alltilelocinfo.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either ``dark`` or ``bright``.
+:Regex: ``rancomb_[0-17][a-z]{4,6}_Alltilelocinfo.fits`` 
+:File Type: FITS, 327 MB 
 
 Contents
 ========
@@ -28,8 +23,6 @@ FITS Header Units
 
 HDU0
 ----
-
-Empty
 
 This HDU has no non-standard required keywords.
 
@@ -70,8 +63,3 @@ TILES      char[11]       TILEIDs of those tile, in string form separated by &#x
 TILELOCIDS char[39]       TILELOCIDs that the target was available for, separated by &#x27;-&#x27;
 ========== ======== ===== ========================================================================
 
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

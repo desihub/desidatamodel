@@ -7,6 +7,6 @@ LSScats
 .. toctree::
    :maxdepth: 1
 
-   TARGET_PHOTSYS_nz.txt : nz <nz_lss>
+   TARGET_PHOTSYS_nz.txt : Target densities as a function of redshift <nz_lss>
    clustering/index
    full/index

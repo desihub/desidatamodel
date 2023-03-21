@@ -3,7 +3,7 @@ datcomb_tarspecwdup_Alltiles
 ===================================
 
 :Summary: Match of targets (with duplicates after FA) with spectroscopic data from the specprod (fuji/guadalupe for SV3/DA02).
-:Naming Convention: ``datcomb_{PROGRAM}_tarspecwdup_Alltiles.fits``, where ``{PROGRAM}`` denotes the observing program, either dark or bright.
+:Naming Convention: ``datcomb_{PROGRAM}_tarspecwdup_Alltiles.fits``, where ``{PROGRAM}`` denotes the observing program, either ``dark`` or ``bright``.
 :Regex: ``datcomb_[a-z]{4,6}_tarspecwdup_Alltiles.fits`` 
 :File Type: FITS, 2 GB
 
@@ -24,8 +24,6 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
-
 This HDU has no non-standard required keywords.
 
 Empty HDU.
@@ -35,7 +33,7 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-*Summarize the contents of this HDU.*
+*Match catalog between spectroscopic information and duplicate targets after running fiber assigments*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,7 +98,7 @@ ZWARN_MTL                  int64                 The ZWARN from the zmtl file (c
 ZTILEID                    int32                 ID of tile that most recently updated target&#x27;s state
 TARGET_STATE               char[30]              Combination of target class and its current observational state
 TIMESTAMP                  char[25]    s         UTC/ISO time at which the target state was updated
-VERSION                    char[14]
+VERSION                    char[14]              Tag of desitarget used to create the target catalog
 PRIORITY                   int64                 Target current priority
 LOCATION                   int64                 Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 TILEID                     int64                 Unique DESI tile ID
@@ -110,12 +108,12 @@ ZERR                       float64               Redshift error from redrock
 ZWARN                      int64                 Redshift warning bitmask from Redrock
 CHI2                       float64               Best fit chi squared
 COEFF                      float64[10]           Redrock template coefficients
-NPIXELS                    int64
+NPIXELS                    int64                 Number of unmasked pixels contributing to the Redrock fit
 SPECTYPE                   char[6]               Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 SUBTYPE                    char[20]              Spectral subtype
 NCOEFF                     int64                 Number of Redrock template coefficients
 DELTACHI2                  float64               chi2 difference between first- and second-best redrock template fits
-FIBER                      int32
+FIBER                      int32                 Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32                 bitwise-AND of input FIBERSTATUS
 FIBERASSIGN_X              float32     mm        Fiberassign expected CS5 X location on focal plane
 FIBERASSIGN_Y              float32     mm        Fiberassign expected CS5 Y location on focal plane
@@ -153,7 +151,3 @@ SV3_MWS_TARGET             int64                 MWS (bright time program) targe
 ========================== =========== ========= ===============================================================================================================================
 
 
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*
