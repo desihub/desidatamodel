@@ -410,8 +410,10 @@ class TestCheck(DataModelTestCase):
                          os.path.join(os.path.dirname(modelfile), 'fits_file.fits')]
         f.validate_prototype(error=True)
         self.assertLog(log, -3, "Error opening {0}, skipping to next candidate.".format(f._prototypes[0]))
-        if self.astropyVersion < version.parse('5.0'):
+        if self.astropyVersion < version.parse('4.1'):
             empty = 'Empty or corrupt FITS file'
+        elif self.astropyVersion < version.parse('5.0'):
+            empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file'
         else:
             empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file. If this is really a FITS file, try with ignore_missing_simple=True'
         self.assertLog(log, -2, "Message was: '{0}'.".format(empty))
