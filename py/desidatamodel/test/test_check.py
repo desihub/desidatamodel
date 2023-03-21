@@ -40,6 +40,9 @@ class TestCheck(DataModelTestCase):
                    '/desi/spectro/data/20160703/12345678/fibermap-12345678.fits',
                    '/desi/spectro/data/20160703/00000123/focus-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/fvc-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/FVC-measure-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/fvc-primary-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/gfa-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-rois-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/pm-00000123.fits',
@@ -51,6 +54,9 @@ class TestCheck(DataModelTestCase):
             'fibermap-EXPID.rst',
             'focus-EXPID.rst',
             'fvc-EXPID.rst',
+            'FVC-measure-EXPID.rst',
+            'fvc-primary-EXPID.rst',
+            'gfa-EXPID.rst',
             'guide-EXPID.rst',
             'guide-rois-EXPID.rst',
             'pm-EXPID.rst',
@@ -132,10 +138,10 @@ class TestCheck(DataModelTestCase):
         for f in files:
             if os.path.basename(f.filename) == 'badModel.rst':
                 self.assertIsNone(f.regexp)
-                self.assertIsNone(f.prototype)
+                self.assertIsNone(f._prototypes)
             else:
                 self.assertIsNotNone(f.regexp)
-                self.assertIsNotNone(f.prototype)
+                self.assertIsNotNone(f._prototypes)
         for f in test_files:
             os.remove(f)
 
@@ -398,10 +404,11 @@ class TestCheck(DataModelTestCase):
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
-        f.validate_prototype()
-        f._stub.nhdr = 3
+        foo = f.extract_metadata()
+        f.hdumeta['foobar'] = 'baz'
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has the wrong number of sections (HDUs) according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -2, "{0} has the wrong number of sections (HDUs) according to {1}, skipping to next candidate.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "No useful prototype files found for {0}!".format(modelfile))
 
     def test_validate_prototype_hdu_keyword_mismatch(self):
         """Test the data model validation method with wrong number of HDU keywords.

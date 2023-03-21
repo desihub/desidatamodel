@@ -458,35 +458,31 @@ class DataModel(DataModelUnit):
             #
             return
         modelmeta = self.extract_metadata(error=error)
-        for p in self._prototypes:
-            try:
-                s = Stub(p, error=error)
-            except OSError as err:
-                log.warning("Error opening %s, skipping to next candidate.", p)
-                log.warning("Message was: '%s'.", err)
-            else:
-                if s.nhdr == len(modelmeta.keys()):
-                    self.prototype = p
-                    self._stub = s
-                    break
+        if self._stub is None:
+            for p in self._prototypes:
+                try:
+                    s = Stub(p, error=error)
+                except OSError as err:
+                    log.warning("Error opening %s, skipping to next candidate.", p)
+                    log.warning("Message was: '%s'.", err)
                 else:
-                    log.warning("%s has the wrong number of " +
-                                "sections (HDUs) according to %s, " +
-                                "skipping to next candidate.",
-                                p, self.filename)
+                    if s.nhdr == len(modelmeta.keys()):
+                        self.prototype = p
+                        self._stub = s
+                        break
+                    else:
+                        log.warning("%s has the wrong number of " +
+                                    "sections (HDUs) according to %s, " +
+                                    "skipping to next candidate.",
+                                    p, self.filename)
         if self.prototype is None:
             log.error("No useful prototype files found for %s!", self.filename)
             return
         log.info("Comparing %s to %s.", self.prototype, self.filename)
         stub_meta = self._stub_meta = self._stub.hdumeta
         #
-        # Check number of headers.
+        # Compare HDUs.
         #
-        if self._stub.nhdr != len(modelmeta.keys()):
-            log.warning("Prototype file %s has the wrong number of " +
-                        "sections (HDUs) according to %s.",
-                        self.prototype, self.filename)
-            return
         for i in range(self._stub.nhdr):
             dexex = stub_meta[i]['extname']
             if dexex == '' and i > 0:

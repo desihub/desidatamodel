@@ -8,7 +8,7 @@ gfa-EXPID
 :Naming Convention: ``gfa-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``gfa-[0-9]{8}\.fits\.fz``
-:File Type: FITS, 26 mB
+:File Type: FITS, 26 MB
 
 Contents
 ========
