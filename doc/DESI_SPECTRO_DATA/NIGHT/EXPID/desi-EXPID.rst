@@ -462,189 +462,191 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ==================================================== ======= ===============================================
-    KEY      Example Value                                        Type    Comment
-    ======== ==================================================== ======= ===============================================
-    NAXIS1   8                                                    int     width of table in bytes
-    NAXIS2   4194                                                 int     number of rows in table
-    BZERO    32768                                                int     offset data range to that of unsigned short
-    BSCALE   1                                                    int     default scaling factor
-    EXPID    118526                                               int     Exposure number
-    EXPFRAME 0                                                    int     Frame number
-    FRAMES   None                                                 Unknown Number of Frames in Archive
-    TILEID   4403                                                 int     DESI Tile ID
-    FIBASSGN /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz str     Fiber assign
-    FLAVOR   science                                              str     Observation type
-    SEQUENCE _Split                                               str     OCS Sequence name
-    PURPOSE  Main Survey                                          str     Purpose of observing night
-    PROGRAM  DARK                                                 str     Program name
-    PROPID   2020B-5000                                           str     Proposal ID
-    OBSERVER Jessica Chellino, Corentin Ravoux                    str     Names of observers
-    LEAD     Martin Landriau                                      str     Lead observer
-    INSTRUME DESI                                                 str     Instrument name
-    OBSERVAT KPNO                                                 str     Observatory name
-    OBS-LAT  31.96403                                             str     [deg] Observatory latitude
-    OBS-LONG -111.59989                                           str     [deg] Observatory east longitude
-    OBS-ELEV 2097.0                                               float   [m] Observatory elevation
-    TELESCOP KPNO 4.0-m telescope                                 str     Telescope name
-    CORRCTOR DESI Corrector                                       str     Corrector Identification
-    NIGHT    20220113                                             int     Observing night
-    TIMESYS  UTC                                                  str     Time system used for date-obs
-    DATE-OBS 2022-01-14T11:04:17.790636032                        str     [UTC] Observation data and start tim
-    TIME-OBS 2022-01-14T11:04:17.790636032                        str     [UTC] Observation start time
-    MJD-OBS  59593.46131702                                       float   Modified Julian Date of observation
-    OPENSHUT 2022-01-14T11:04:18.577390                           str     Time shutter opened
-    ST       11:13:28.540000                                      str     Local Sidereal time at observation start (HH:MM
-    EXPTIME  579.193                                              float   [s] Actual exposure time
-    DELTARA  0.                                                   float   [arcsec] Offset], right ascension, observer inp
-    DELTADEC 0.                                                   float   [arcsec] Offset], declination, observer input
-    REQRA    170.239                                              float   [deg] Requested right ascension (observer input
-    REQDEC   -7.093                                               float   [deg] Requested declination (observer input)
-    FOCUS    946.6,-231.6,-83.4,-18.3,9.8,139.4                   str     Telescope focus settings
-    VCCD     ON                                                   str     True (ON) if CCD voltage is on
-    VCCDON   2022-01-10T20:55:43.758808                           str     Time when CCD voltage was turned on
-    VCCDSEC  310751.8                                             float   [s] CCD on time in seconds
-    TRUSTEMP 12.267                                               float   [deg] Average Telescope truss temperature (only
-    PMIRTEMP 11.675                                               float   [deg] Average primary mirror temperature (nit,e
-    EPOCH    2000.0                                               float   Epoch of observation
-    MOUNTAZ  176.725567                                           float   [deg] Mount azimuth angle
-    MOUNTDEC -7.102329                                            float   [deg] Mount declination
-    MOUNTEL  50.883914                                            float   [deg] Mount elevation angle
-    MOUNTHA  -2.081118                                            float   [deg] Mount hour angle
-    SKYDEC   -7.102329                                            float   [deg] Telescope declination (pointing on sky)
-    SKYRA    170.24163                                            float   [deg] Telescope right ascension (pointing on sk
-    TARGTDEC -7.102329                                            float   [deg] Target declination (to TCS)
-    TARGTRA  170.24163                                            float   [deg] Target right ascension (to TCS)
-    USEETC   T                                                    bool    ETC data available if true
-    USESKY   T                                                    bool    DOS Control: use Sky Monitor
-    USEFOCUS T                                                    bool    DOS Control: use focus
-    HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                              str     Hexapod trim values
-    USEROTAT T                                                    bool    DOS Control: use rotator
-    ROTOFFST 138.8                                                float   [arcsec] Rotator offset
-    ROTENBLD T                                                    bool    Rotator enabled
-    ROTRATE  0.513                                                float   [arcsec/min] Rotator rate
-    USEGUIDR T                                                    bool    DOS Control: use guider
-    USEDONUT T                                                    bool    DOS Control: use donuts
-    SPECGRPH 0                                                    int     Spectrograph logical name (SP)
-    SPECID   4                                                    int     Spectrograph serial number (SM)
-    FEEBOX   lbnl082                                              str     CCD Controller serial number
-    VESSEL   17                                                   int     Cryostat serial number
-    FEEVER   v20160312                                            str     CCD Controller version
-    DETFLVER FAILED: invalid argument for get command             str     CCD Controller detector f
-    FEEPOWER ON                                                   str     FEE power status
-    FEEDMASK 2134851391                                           int     FEE dac mask
-    FEECMASK 1048575                                              int     FEE clk mask
-    CCDTEMP  -137.5647                                            float   [deg C] CCD controller CCD temperature
-    RADESYS  FK5                                                  str     Coordinate reference frame of major/minor axes
-    DOSVER   trunk                                                str     DOS software version
-    OCSVER   1.2                                                  float   OCS software version
-    CONSTVER DESI:CURRENT                                         str     Constants version
-    INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini     str     DOS Configuration
-    CAMERA   z0                                                   str     Camera name
-    DAC2     -9.0002,-8.8271                                      str     [V] set value, measured value
-    DATASECA [8:2064, 2:2065]                                     str     Data section for quadrant A
-    CLOCK6   9.9999,0.0                                           str     [V] high rail, low rail
-    DIGITIME 56.4524                                              float   [s] Time to digitize image
-    DAC17    20.0008,11.834                                       str     [V] set value, measured value
-    CLOCK15  9.9992,2.9993                                        str     [V] high rail, low rail
-    DETSECB  [2058:4114, 1:2064]                                  str     Detector section for quadrant B
-    CLOCK0   9.9999,0.0                                           str     [V] high rail, low rail
-    CRYOPRES 7.360e-08                                            str     [mb] Cryostat pressure (IP)
-    AMPSECC  [1:2057, 4128:2065]                                  str     AMP section for quadrant C
-    CCDTMING flatdark_lbnl_timing.txt                             str     CCD timing file
-    CLOCK8   9.9992,2.9993                                        str     [V] high rail, low rail
-    CLOCK4   9.9999,0.0                                           str     [V] high rail, low rail
-    PRESECB  [4250:4256, 2:2065]                                  str     Prescan section for quadrant B
-    DAC1     -9.0002,-8.8683                                      str     [V] set value, measured value
-    PRRSECC  [8:2064, 4194:4194]                                  str     Row prescan section for quadrant C
-    DAC10    -25.0003,-24.7976                                    str     [V] set value, measured value
-    OFFSET2  0.4000000059604645,-8.8271                           str     [V] set value, measured value
-    CLOCK14  9.9992,2.9993                                        str     [V] high rail, low rail
-    DAC16    39.9961,39.039                                       str     [V] set value, measured value
-    ORSECB   [2193:4249, 2066:2097]                               str     Row overscan section for quadrant B
-    AMPSECA  [1:2057, 1:2064]                                     str     AMP section for quadrant A
-    DAC14    0.0,0.1039                                           str     [V] set value, measured value
-    DAC11    -25.0003,-24.0556                                    str     [V] set value, measured value
-    CLOCK7   -2.0001,3.9999                                       str     [V] high rail, low rail
-    PGAGAIN  3                                                    int     Controller gain
-    ORSECA   [8:2064, 2066:2097]                                  str     Row overscan section for quadrant A
-    DAC15    0.0,0.089                                            str     [V] set value, measured value
-    DETSECD  [2058:4114, 2065:4128]                               str     Detector section for quadrant D
-    ORSECD   [2193:4249, 2098:2129]                               str     Row bias section for quadrant D
-    OFFSET0  0.4000000059604645,-8.7962                           str     [V] set value, measured value
-    OFFSET6  2.0,6.0911                                           str     [V] set value, measured value
-    PRRSECD  [2193:4249, 4194:4194]                               str     Row prescan section for quadrant D
-    DAC13    0.0,0.1187                                           str     [V] set value, measured value
-    OFFSET3  0.4000000059604645,-8.8786                           str     [V] set value, measured value
-    AMPSECD  [4114:2058, 4128:2065]                               str     AMP section for quadrant D
-    DAC9     -25.0003,-24.946                                     str     [V] set value, measured value
-    DELAYS   20, 20, 25, 40, 7, 3000, 7, 7, 400, 7                str     [10] Delay settings
-    SETTINGS detectors_sm_20210128.json                           str     Name of DESI CCD settings file
-    DETSECA  [1:2057, 1:2064]                                     str     Detector section for quadrant A
-    CLOCK5   9.9999,0.0                                           str     [V] high rail, low rail
-    PRRSECB  [2193:4249, 1:1]                                     str     Row prescan section for quadrant B
-    DETECTOR M1-53                                                str     Detector (ccd) identification
-    CLOCK12  9.9992,2.9993                                        str     [V] high rail, low rail
-    DAC12    0.0,0.1039                                           str     [V] set value, measured value
-    TRIMSECA [8:2064, 2:2065]                                     str     Trim section for quadrant A
-    DATASECB [2193:4249, 2:2065]                                  str     Data section for quadrant B
-    CDSPARMS 400, 400, 8, 2000                                    str     CDS parameters
-    TRIMSECC [8:2064, 2130:4193]                                  str     Trim section for quadrant C
-    DAC3     -9.0002,-8.8683                                      str     [V] set value, measured value
-    BIASSECA [2065:2128, 2:2065]                                  str     Bias section for quadrant A
-    TRIMSECB [2193:4249, 2:2065]                                  str     Trim section for quadrant B
-    CASETEMP 60.1833                                              float   [deg C] CCD controller case temperature
-    CPUTEMP  59.5781                                              float   [deg C] CCD controller CPU temperature
-    OFFSET5  2.0,6.0806                                           str     [V] set value, measured value
-    CCDSECD  [2058:4114, 2065:4128]                               str     CCD section for quadrant D
-    CCDNAME  CCDSM4Z                                              str     CCD name
-    DAC4     5.9998,6.0648                                        str     [V] set value, measured value
-    BLDTIME  0.3529                                               float   [s] Time to build image
-    CLOCK13  9.9992,2.9993                                        str     [V] high rail, low rail
-    CLOCK1   9.9999,0.0                                           str     [V] high rail, low rail
-    PRESECA  [1:7, 2:2065]                                        str     Prescan section for quadrant A
-    CCDSIZE  4194,4256                                            str     CCD size in pixels (rows, columns)
-    DATASECC [8:2064, 2130:4193]                                  str     Data section for quadrant C
-    CLOCK18  9.0,0.9999                                           str     [V] high rail, low rail
-    CLOCK10  9.9992,2.9993                                        str     [V] high rail, low rail
-    CRYOTEMP 139.962                                              float   [deg K] Cryostat CCD temperature
-    CLOCK3   -2.0001,3.9999                                       str     [V] high rail, low rail
-    DAC0     -9.0002,-8.7962                                      str     [V] set value, measured value
-    CCDSECA  [1:2057, 1:2064]                                     str     CCD section for quadrant A
-    CLOCK11  9.9992,2.9993                                        str     [V] high rail, low rail
-    CLOCK2   9.9999,0.0                                           str     [V] high rail, low rail
-    CLOCK9   9.9992,2.9993                                        str     [V] high rail, low rail
-    CLOCK17  9.0,0.9999                                           str     [V] high rail, low rail
-    ORSECC   [8:2064, 2098:2129]                                  str     Row overscan section for quadrant C
-    CCDSECC  [1:2057, 2065:4128]                                  str     CCD section for quadrant C
-    PRESECD  [4250:4256, 2130:4193]                               str     Prescan section for quadrant D
-    BIASSECD [2129:2192, 2130:4193]                               str     Bias section for quadrant D
-    AMPSECB  [4114:2058, 1:2064]                                  str     AMP section for quadrant B
-    CCDCFG   default_lbnl_20210128.cfg                            str     CCD configuration file
-    BIASSECB [2129:2192, 2:2065]                                  str     Bias section for quadrant B
-    BIASSECC [2065:2128, 2130:4193]                               str     Bias section for quadrant C
-    CLOCK16  9.9999,3.0                                           str     [V] high rail, low rail
-    CCDPREP  purge,clear                                          str     CCD prep actions
-    DAC8     -25.0003,-24.8273                                    str     [V] set value, measured value
-    PRRSECA  [8:2064, 1:1]                                        str     Row prescan section for quadrant A
-    DATASECD [2193:4249, 2130:4193]                               str     Data section for quadrant D
-    DAC5     5.9998,6.0806                                        str     [V] set value, measured value
-    PRESECC  [1:7, 2130:4193]                                     str     Prescan section for quadrant C
-    OFFSET1  0.4000000059604645,-8.8786                           str     [V] set value, measured value
-    OFFSET4  2.0,6.0595                                           str     [V] set value, measured value
-    DAC7     5.9998,5.9964                                        str     [V] set value, measured value
-    DAC6     5.9998,6.0963                                        str     [V] set value, measured value
-    OFFSET7  2.0,5.9911                                           str     [V] set value, measured value
-    DETSECC  [1:2057, 2065:4128]                                  str     Detector section for quadrant C
-    TRIMSECD [2193:4249, 2130:4193]                               str     Trim section for quadrant D
-    CCDSECB  [2058:4114, 1:2064]                                  str     CCD section for quadrant B
-    REQTIME  1860.0                                               float   [s] Requested exposure time
-    OBSID    kp4m20220114t110417                                  str     Unique observation identifier
-    PROCTYPE RAW                                                  str     Data processing level
-    PRODTYPE image                                                str     Data product type
-    CHECKSUM mqJSonIQmnIQmnIQ                                     str     HDU checksum updated 2022-01-14T11:15:05
-    DATASUM  3453799606                                           str     data unit checksum updated 2022-01-14T11:15:05
-    ======== ==================================================== ======= ===============================================
+    ============= ==================================================== ======= ===============================================
+    KEY           Example Value                                        Type    Comment
+    ============= ==================================================== ======= ===============================================
+    NAXIS1        8                                                    int     width of table in bytes
+    NAXIS2        4194                                                 int     number of rows in table
+    BZERO         32768                                                int     offset data range to that of unsigned short
+    BSCALE        1                                                    int     default scaling factor
+    EXPID         118526                                               int     Exposure number
+    EXPFRAME      0                                                    int     Frame number
+    FRAMES [1]_   None                                                 Unknown Number of Frames in Archive
+    TILEID        4403                                                 int     DESI Tile ID
+    FIBASSGN [1]_ /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz str     Fiber assign
+    FLAVOR        science                                              str     Observation type
+    SEQUENCE      _Split                                               str     OCS Sequence name
+    PURPOSE       Main Survey                                          str     Purpose of observing night
+    PROGRAM       DARK                                                 str     Program name
+    PROPID        2020B-5000                                           str     Proposal ID
+    OBSERVER      Jessica Chellino, Corentin Ravoux                    str     Names of observers
+    LEAD          Martin Landriau                                      str     Lead observer
+    INSTRUME      DESI                                                 str     Instrument name
+    OBSERVAT      KPNO                                                 str     Observatory name
+    OBS-LAT       31.96403                                             str     [deg] Observatory latitude
+    OBS-LONG      -111.59989                                           str     [deg] Observatory east longitude
+    OBS-ELEV      2097.0                                               float   [m] Observatory elevation
+    TELESCOP      KPNO 4.0-m telescope                                 str     Telescope name
+    CORRCTOR      DESI Corrector                                       str     Corrector Identification
+    NIGHT         20220113                                             int     Observing night
+    TIMESYS       UTC                                                  str     Time system used for date-obs
+    DATE-OBS      2022-01-14T11:04:17.790636032                        str     [UTC] Observation data and start tim
+    TIME-OBS      2022-01-14T11:04:17.790636032                        str     [UTC] Observation start time
+    MJD-OBS       59593.46131702                                       float   Modified Julian Date of observation
+    OPENSHUT      2022-01-14T11:04:18.577390                           str     Time shutter opened
+    ST            11:13:28.540000                                      str     Local Sidereal time at observation start (HH:MM
+    EXPTIME       579.193                                              float   [s] Actual exposure time
+    DELTARA       0.                                                   float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC      0.                                                   float   [arcsec] Offset], declination, observer input
+    REQRA [1]_    170.239                                              float   [deg] Requested right ascension (observer input
+    REQDEC [1]_   -7.093                                               float   [deg] Requested declination (observer input)
+    FOCUS [1]_    946.6,-231.6,-83.4,-18.3,9.8,139.4                   str     Telescope focus settings
+    VCCD          ON                                                   str     True (ON) if CCD voltage is on
+    VCCDON        2022-01-10T20:55:43.758808                           str     Time when CCD voltage was turned on
+    VCCDSEC       310751.8                                             float   [s] CCD on time in seconds
+    TRUSTEMP [1]_ 12.267                                               float   [deg] Average Telescope truss temperature (only
+    PMIRTEMP [1]_ 11.675                                               float   [deg] Average primary mirror temperature (nit,e
+    EPOCH         2000.0                                               float   Epoch of observation
+    MOUNTAZ [1]_  176.725567                                           float   [deg] Mount azimuth angle
+    MOUNTDEC [1]_ -7.102329                                            float   [deg] Mount declination
+    MOUNTEL [1]_  50.883914                                            float   [deg] Mount elevation angle
+    MOUNTHA [1]_  -2.081118                                            float   [deg] Mount hour angle
+    SKYDEC [1]_   -7.102329                                            float   [deg] Telescope declination (pointing on sky)
+    SKYRA [1]_    170.24163                                            float   [deg] Telescope right ascension (pointing on sk
+    TARGTDEC [1]_ -7.102329                                            float   [deg] Target declination (to TCS)
+    TARGTRA [1]_  170.24163                                            float   [deg] Target right ascension (to TCS)
+    USEETC [1]_   T                                                    bool    ETC data available if true
+    USESKY [1]_   T                                                    bool    DOS Control: use Sky Monitor
+    USEFOCUS [1]_ T                                                    bool    DOS Control: use focus
+    HEXTRIM [1]_  0.0,0.0,0.0,0.0,0.0,0.0                              str     Hexapod trim values
+    USEROTAT [1]_ T                                                    bool    DOS Control: use rotator
+    ROTOFFST [1]_ 138.8                                                float   [arcsec] Rotator offset
+    ROTENBLD [1]_ T                                                    bool    Rotator enabled
+    ROTRATE [1]_  0.513                                                float   [arcsec/min] Rotator rate
+    USEGUIDR [1]_ T                                                    bool    DOS Control: use guider
+    USEDONUT [1]_ T                                                    bool    DOS Control: use donuts
+    SPECGRPH      0                                                    int     Spectrograph logical name (SP)
+    SPECID        4                                                    int     Spectrograph serial number (SM)
+    FEEBOX        lbnl082                                              str     CCD Controller serial number
+    VESSEL        17                                                   int     Cryostat serial number
+    FEEVER        v20160312                                            str     CCD Controller version
+    DETFLVER      FAILED: invalid argument for get command             str     CCD Controller detector f
+    FEEPOWER      ON                                                   str     FEE power status
+    FEEDMASK      2134851391                                           int     FEE dac mask
+    FEECMASK      1048575                                              int     FEE clk mask
+    CCDTEMP       -137.5647                                            float   [deg C] CCD controller CCD temperature
+    RADESYS       FK5                                                  str     Coordinate reference frame of major/minor axes
+    DOSVER        trunk                                                str     DOS software version
+    OCSVER        1.2                                                  float   OCS software version
+    CONSTVER      DESI:CURRENT                                         str     Constants version
+    INIFILE       /data/msdos/dos_home/architectures/kpno/desi.ini     str     DOS Configuration
+    CAMERA        z0                                                   str     Camera name
+    DAC2          -9.0002,-8.8271                                      str     [V] set value, measured value
+    DATASECA      [8:2064, 2:2065]                                     str     Data section for quadrant A
+    CLOCK6        9.9999,0.0                                           str     [V] high rail, low rail
+    DIGITIME      56.4524                                              float   [s] Time to digitize image
+    DAC17         20.0008,11.834                                       str     [V] set value, measured value
+    CLOCK15       9.9992,2.9993                                        str     [V] high rail, low rail
+    DETSECB       [2058:4114, 1:2064]                                  str     Detector section for quadrant B
+    CLOCK0        9.9999,0.0                                           str     [V] high rail, low rail
+    CRYOPRES      7.360e-08                                            str     [mb] Cryostat pressure (IP)
+    AMPSECC       [1:2057, 4128:2065]                                  str     AMP section for quadrant C
+    CCDTMING      flatdark_lbnl_timing.txt                             str     CCD timing file
+    CLOCK8        9.9992,2.9993                                        str     [V] high rail, low rail
+    CLOCK4        9.9999,0.0                                           str     [V] high rail, low rail
+    PRESECB       [4250:4256, 2:2065]                                  str     Prescan section for quadrant B
+    DAC1          -9.0002,-8.8683                                      str     [V] set value, measured value
+    PRRSECC       [8:2064, 4194:4194]                                  str     Row prescan section for quadrant C
+    DAC10         -25.0003,-24.7976                                    str     [V] set value, measured value
+    OFFSET2       0.4000000059604645,-8.8271                           str     [V] set value, measured value
+    CLOCK14       9.9992,2.9993                                        str     [V] high rail, low rail
+    DAC16         39.9961,39.039                                       str     [V] set value, measured value
+    ORSECB        [2193:4249, 2066:2097]                               str     Row overscan section for quadrant B
+    AMPSECA       [1:2057, 1:2064]                                     str     AMP section for quadrant A
+    DAC14         0.0,0.1039                                           str     [V] set value, measured value
+    DAC11         -25.0003,-24.0556                                    str     [V] set value, measured value
+    CLOCK7        -2.0001,3.9999                                       str     [V] high rail, low rail
+    PGAGAIN       3                                                    int     Controller gain
+    ORSECA        [8:2064, 2066:2097]                                  str     Row overscan section for quadrant A
+    DAC15         0.0,0.089                                            str     [V] set value, measured value
+    DETSECD       [2058:4114, 2065:4128]                               str     Detector section for quadrant D
+    ORSECD        [2193:4249, 2098:2129]                               str     Row bias section for quadrant D
+    OFFSET0       0.4000000059604645,-8.7962                           str     [V] set value, measured value
+    OFFSET6       2.0,6.0911                                           str     [V] set value, measured value
+    PRRSECD       [2193:4249, 4194:4194]                               str     Row prescan section for quadrant D
+    DAC13         0.0,0.1187                                           str     [V] set value, measured value
+    OFFSET3       0.4000000059604645,-8.8786                           str     [V] set value, measured value
+    AMPSECD       [4114:2058, 4128:2065]                               str     AMP section for quadrant D
+    DAC9          -25.0003,-24.946                                     str     [V] set value, measured value
+    DELAYS        20, 20, 25, 40, 7, 3000, 7, 7, 400, 7                str     [10] Delay settings
+    SETTINGS      detectors_sm_20210128.json                           str     Name of DESI CCD settings file
+    DETSECA       [1:2057, 1:2064]                                     str     Detector section for quadrant A
+    CLOCK5        9.9999,0.0                                           str     [V] high rail, low rail
+    PRRSECB       [2193:4249, 1:1]                                     str     Row prescan section for quadrant B
+    DETECTOR      M1-53                                                str     Detector (ccd) identification
+    CLOCK12       9.9992,2.9993                                        str     [V] high rail, low rail
+    DAC12         0.0,0.1039                                           str     [V] set value, measured value
+    TRIMSECA      [8:2064, 2:2065]                                     str     Trim section for quadrant A
+    DATASECB      [2193:4249, 2:2065]                                  str     Data section for quadrant B
+    CDSPARMS      400, 400, 8, 2000                                    str     CDS parameters
+    TRIMSECC      [8:2064, 2130:4193]                                  str     Trim section for quadrant C
+    DAC3          -9.0002,-8.8683                                      str     [V] set value, measured value
+    BIASSECA      [2065:2128, 2:2065]                                  str     Bias section for quadrant A
+    TRIMSECB      [2193:4249, 2:2065]                                  str     Trim section for quadrant B
+    CASETEMP      60.1833                                              float   [deg C] CCD controller case temperature
+    CPUTEMP       59.5781                                              float   [deg C] CCD controller CPU temperature
+    OFFSET5       2.0,6.0806                                           str     [V] set value, measured value
+    CCDSECD       [2058:4114, 2065:4128]                               str     CCD section for quadrant D
+    CCDNAME       CCDSM4Z                                              str     CCD name
+    DAC4          5.9998,6.0648                                        str     [V] set value, measured value
+    BLDTIME       0.3529                                               float   [s] Time to build image
+    CLOCK13       9.9992,2.9993                                        str     [V] high rail, low rail
+    CLOCK1        9.9999,0.0                                           str     [V] high rail, low rail
+    PRESECA       [1:7, 2:2065]                                        str     Prescan section for quadrant A
+    CCDSIZE       4194,4256                                            str     CCD size in pixels (rows, columns)
+    DATASECC      [8:2064, 2130:4193]                                  str     Data section for quadrant C
+    CLOCK18       9.0,0.9999                                           str     [V] high rail, low rail
+    CLOCK10       9.9992,2.9993                                        str     [V] high rail, low rail
+    CRYOTEMP      139.962                                              float   [deg K] Cryostat CCD temperature
+    CLOCK3        -2.0001,3.9999                                       str     [V] high rail, low rail
+    DAC0          -9.0002,-8.7962                                      str     [V] set value, measured value
+    CCDSECA       [1:2057, 1:2064]                                     str     CCD section for quadrant A
+    CLOCK11       9.9992,2.9993                                        str     [V] high rail, low rail
+    CLOCK2        9.9999,0.0                                           str     [V] high rail, low rail
+    CLOCK9        9.9992,2.9993                                        str     [V] high rail, low rail
+    CLOCK17       9.0,0.9999                                           str     [V] high rail, low rail
+    ORSECC        [8:2064, 2098:2129]                                  str     Row overscan section for quadrant C
+    CCDSECC       [1:2057, 2065:4128]                                  str     CCD section for quadrant C
+    PRESECD       [4250:4256, 2130:4193]                               str     Prescan section for quadrant D
+    BIASSECD      [2129:2192, 2130:4193]                               str     Bias section for quadrant D
+    AMPSECB       [4114:2058, 1:2064]                                  str     AMP section for quadrant B
+    CCDCFG        default_lbnl_20210128.cfg                            str     CCD configuration file
+    BIASSECB      [2129:2192, 2:2065]                                  str     Bias section for quadrant B
+    BIASSECC      [2065:2128, 2130:4193]                               str     Bias section for quadrant C
+    CLOCK16       9.9999,3.0                                           str     [V] high rail, low rail
+    CCDPREP       purge,clear                                          str     CCD prep actions
+    DAC8          -25.0003,-24.8273                                    str     [V] set value, measured value
+    PRRSECA       [8:2064, 1:1]                                        str     Row prescan section for quadrant A
+    DATASECD      [2193:4249, 2130:4193]                               str     Data section for quadrant D
+    DAC5          5.9998,6.0806                                        str     [V] set value, measured value
+    PRESECC       [1:7, 2130:4193]                                     str     Prescan section for quadrant C
+    OFFSET1       0.4000000059604645,-8.8786                           str     [V] set value, measured value
+    OFFSET4       2.0,6.0595                                           str     [V] set value, measured value
+    DAC7          5.9998,5.9964                                        str     [V] set value, measured value
+    DAC6          5.9998,6.0963                                        str     [V] set value, measured value
+    OFFSET7       2.0,5.9911                                           str     [V] set value, measured value
+    DETSECC       [1:2057, 2065:4128]                                  str     Detector section for quadrant C
+    TRIMSECD      [2193:4249, 2130:4193]                               str     Trim section for quadrant D
+    CCDSECB       [2058:4114, 1:2064]                                  str     CCD section for quadrant B
+    REQTIME       1860.0                                               float   [s] Requested exposure time
+    OBSID         kp4m20220114t110417                                  str     Unique observation identifier
+    PROCTYPE      RAW                                                  str     Data processing level
+    PRODTYPE      image                                                str     Data product type
+    CHECKSUM      mqJSonIQmnIQmnIQ                                     str     HDU checksum updated 2022-01-14T11:15:05
+    DATASUM       3453799606                                           str     data unit checksum updated 2022-01-14T11:15:05
+    ============= ==================================================== ======= ===============================================
+
+    .. [1] Optional
 
 Data: FITS image [int16 (compressed), 4256x4194]
 
@@ -676,72 +678,74 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============================================================================================================ ======= ===============================================
-    KEY      Example Value                                                                                                Type    Comment
-    ======== ============================================================================================================ ======= ===============================================
-    NAXIS1   352                                                                                                          int     width of table in bytes
-    NAXIS2   10                                                                                                           int     number of rows in table
-    EXPID    118526                                                                                                       int     Exposure number
-    EXPFRAME 0                                                                                                            int     Frame number
-    FRAMES   None                                                                                                         Unknown Number of Frames in Archive
-    TILEID   4403                                                                                                         int     DESI Tile ID
-    FIBASSGN /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz                                                         str     Fiber assign
-    FLAVOR   science                                                                                                      str     Observation type
-    SEQUENCE _Split                                                                                                       str     OCS Sequence name
-    PURPOSE  Main Survey                                                                                                  str     Purpose of observing night
-    PROGRAM  DARK                                                                                                         str     Program name
-    PROPID   2020B-5000                                                                                                   str     Proposal ID
-    OBSERVER Jessica Chellino, Corentin Ravoux                                                                            str     Names of observers
-    LEAD     Martin Landriau                                                                                              str     Lead observer
-    INSTRUME DESI                                                                                                         str     Instrument name
-    OBSERVAT KPNO                                                                                                         str     Observatory name
-    OBS-LAT  31.96403                                                                                                     str     [deg] Observatory latitude
-    OBS-LONG -111.59989                                                                                                   str     [deg] Observatory east longitude
-    OBS-ELEV 2097.0                                                                                                       float   [m] Observatory elevation
-    TELESCOP KPNO 4.0-m telescope                                                                                         str     Telescope name
-    CORRCTOR DESI Corrector                                                                                               str     Corrector Identification
-    NIGHT    20220113                                                                                                     int     Observing night
-    TIMESYS  UTC                                                                                                          str     Time system used for date-obs
-    DELTARA  0.                                                                                                           float   [arcsec] Offset], right ascension, observer inp
-    DELTADEC 0.                                                                                                           float   [arcsec] Offset], declination, observer input
-    REQRA    170.239                                                                                                      float   [deg] Requested right ascension (observer input
-    REQDEC   -7.093                                                                                                       float   [deg] Requested declination (observer input)
-    FOCUS    946.6,-231.6,-83.4,-18.3,9.8,139.4                                                                           str     Telescope focus settings
-    TRUSTEMP 12.267                                                                                                       float   [deg] Average Telescope truss temperature (only
-    PMIRTEMP 11.675                                                                                                       float   [deg] Average primary mirror temperature (nit,e
-    EPOCH    2000.0                                                                                                       float   Epoch of observation
-    MOUNTAZ  176.725567                                                                                                   float   [deg] Mount azimuth angle
-    MOUNTDEC -7.102329                                                                                                    float   [deg] Mount declination
-    MOUNTEL  50.883914                                                                                                    float   [deg] Mount elevation angle
-    MOUNTHA  -2.081118                                                                                                    float   [deg] Mount hour angle
-    SKYDEC   -7.102329                                                                                                    float   [deg] Telescope declination (pointing on sky)
-    SKYRA    170.24163                                                                                                    float   [deg] Telescope right ascension (pointing on sk
-    TARGTDEC -7.102329                                                                                                    float   [deg] Target declination (to TCS)
-    TARGTRA  170.24163                                                                                                    float   [deg] Target right ascension (to TCS)
-    USEETC   T                                                                                                            bool    ETC data available if true
-    USESKY   T                                                                                                            bool    DOS Control: use Sky Monitor
-    USEFOCUS T                                                                                                            bool    DOS Control: use focus
-    HEXTRIM  0.0,0.0,0.0,0.0,0.0,0.0                                                                                      str     Hexapod trim values
-    USEROTAT T                                                                                                            bool    DOS Control: use rotator
-    ROTOFFST 138.8                                                                                                        float   [arcsec] Rotator offset
-    ROTENBLD T                                                                                                            bool    Rotator enabled
-    ROTRATE  0.513                                                                                                        float   [arcsec/min] Rotator rate
-    USEGUIDR T                                                                                                            bool    DOS Control: use guider
-    USEDONUT T                                                                                                            bool    DOS Control: use donuts
-    SPCGRPHS SP4, SP9, SP8, SP2, SP0, SP5, SP7, SP6, SP1, SP3                                                             str     Participating spe
-    DEVICES  SPECTCON4, SPECTCON9, SPECTCON8, SPECTCON2, SPECTCON0, SPECTCON5, SPECTCON7, SPECTCON6, SPECTCON1, SPECTCON3 str     Participating devices (spectro controller)
-    RADESYS  FK5                                                                                                          str     Coordinate reference frame of major/minor axes
-    DOSVER   trunk                                                                                                        str     DOS software version
-    OCSVER   1.2                                                                                                          float   OCS software version
-    CONSTVER DESI:CURRENT                                                                                                 str     Constants version
-    INIFILE  /data/msdos/dos_home/architectures/kpno/desi.ini                                                             str     DOS Configuration
-    REQTIME  1860.0                                                                                                       float   [s] Requested exposure time
-    OBSID    kp4m20220114t110417                                                                                          str     Unique observation identifier
-    PROCTYPE RAW                                                                                                          str     Data processing level
-    PRODTYPE image                                                                                                        str     Data product type
-    CHECKSUM 0YhA1VZ30VfA0VZ3                                                                                             str     HDU checksum updated 2022-01-14T11:15:09
-    DATASUM  2915472531                                                                                                   str     data unit checksum updated 2022-01-14T11:15:09
-    ======== ============================================================================================================ ======= ===============================================
+    ========== ============================================================================================================ ======= ===============================================
+    KEY        Example Value                                                                                                Type    Comment
+    ========== ============================================================================================================ ======= ===============================================
+    NAXIS1     352                                                                                                          int     width of table in bytes
+    NAXIS2     10                                                                                                           int     number of rows in table
+    EXPID      118526                                                                                                       int     Exposure number
+    EXPFRAME   0                                                                                                            int     Frame number
+    FRAMES     None                                                                                                         Unknown Number of Frames in Archive
+    TILEID     4403                                                                                                         int     DESI Tile ID
+    FIBASSGN   /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz                                                         str     Fiber assign
+    FLAVOR     science                                                                                                      str     Observation type
+    SEQUENCE   _Split                                                                                                       str     OCS Sequence name
+    PURPOSE    Main Survey                                                                                                  str     Purpose of observing night
+    PROGRAM    DARK                                                                                                         str     Program name
+    PROPID     2020B-5000                                                                                                   str     Proposal ID
+    OBSERVER   Jessica Chellino, Corentin Ravoux                                                                            str     Names of observers
+    LEAD       Martin Landriau                                                                                              str     Lead observer
+    INSTRUME   DESI                                                                                                         str     Instrument name
+    OBSERVAT   KPNO                                                                                                         str     Observatory name
+    OBS-LAT    31.96403                                                                                                     str     [deg] Observatory latitude
+    OBS-LONG   -111.59989                                                                                                   str     [deg] Observatory east longitude
+    OBS-ELEV   2097.0                                                                                                       float   [m] Observatory elevation
+    TELESCOP   KPNO 4.0-m telescope                                                                                         str     Telescope name
+    CORRCTOR   DESI Corrector                                                                                               str     Corrector Identification
+    NIGHT      20220113                                                                                                     int     Observing night
+    TIMESYS    UTC                                                                                                          str     Time system used for date-obs
+    DELTARA    0.                                                                                                           float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC   0.                                                                                                           float   [arcsec] Offset], declination, observer input
+    REQRA      170.239                                                                                                      float   [deg] Requested right ascension (observer input
+    REQDEC     -7.093                                                                                                       float   [deg] Requested declination (observer input)
+    FOCUS      946.6,-231.6,-83.4,-18.3,9.8,139.4                                                                           str     Telescope focus settings
+    TRUSTEMP   12.267                                                                                                       float   [deg] Average Telescope truss temperature (only
+    PMIRTEMP   11.675                                                                                                       float   [deg] Average primary mirror temperature (nit,e
+    EPOCH      2000.0                                                                                                       float   Epoch of observation
+    MOUNTAZ    176.725567                                                                                                   float   [deg] Mount azimuth angle
+    MOUNTDEC   -7.102329                                                                                                    float   [deg] Mount declination
+    MOUNTEL    50.883914                                                                                                    float   [deg] Mount elevation angle
+    MOUNTHA    -2.081118                                                                                                    float   [deg] Mount hour angle
+    SKYDEC     -7.102329                                                                                                    float   [deg] Telescope declination (pointing on sky)
+    SKYRA [1]_ 170.24163                                                                                                    float   [deg] Telescope right ascension (pointing on sk
+    TARGTDEC   -7.102329                                                                                                    float   [deg] Target declination (to TCS)
+    TARGTRA    170.24163                                                                                                    float   [deg] Target right ascension (to TCS)
+    USEETC     T                                                                                                            bool    ETC data available if true
+    USESKY     T                                                                                                            bool    DOS Control: use Sky Monitor
+    USEFOCUS   T                                                                                                            bool    DOS Control: use focus
+    HEXTRIM    0.0,0.0,0.0,0.0,0.0,0.0                                                                                      str     Hexapod trim values
+    USEROTAT   T                                                                                                            bool    DOS Control: use rotator
+    ROTOFFST   138.8                                                                                                        float   [arcsec] Rotator offset
+    ROTENBLD   T                                                                                                            bool    Rotator enabled
+    ROTRATE    0.513                                                                                                        float   [arcsec/min] Rotator rate
+    USEGUIDR   T                                                                                                            bool    DOS Control: use guider
+    USEDONUT   T                                                                                                            bool    DOS Control: use donuts
+    SPCGRPHS   SP4, SP9, SP8, SP2, SP0, SP5, SP7, SP6, SP1, SP3                                                             str     Participating spe
+    DEVICES    SPECTCON4, SPECTCON9, SPECTCON8, SPECTCON2, SPECTCON0, SPECTCON5, SPECTCON7, SPECTCON6, SPECTCON1, SPECTCON3 str     Participating devices (spectro controller)
+    RADESYS    FK5                                                                                                          str     Coordinate reference frame of major/minor axes
+    DOSVER     trunk                                                                                                        str     DOS software version
+    OCSVER     1.2                                                                                                          float   OCS software version
+    CONSTVER   DESI:CURRENT                                                                                                 str     Constants version
+    INIFILE    /data/msdos/dos_home/architectures/kpno/desi.ini                                                             str     DOS Configuration
+    REQTIME    1860.0                                                                                                       float   [s] Requested exposure time
+    OBSID      kp4m20220114t110417                                                                                          str     Unique observation identifier
+    PROCTYPE   RAW                                                                                                          str     Data processing level
+    PRODTYPE   image                                                                                                        str     Data product type
+    CHECKSUM   0YhA1VZ30VfA0VZ3                                                                                             str     HDU checksum updated 2022-01-14T11:15:09
+    DATASUM    2915472531                                                                                                   str     data unit checksum updated 2022-01-14T11:15:09
+    ========== ============================================================================================================ ======= ===============================================
+
+    .. [1] Optional
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
