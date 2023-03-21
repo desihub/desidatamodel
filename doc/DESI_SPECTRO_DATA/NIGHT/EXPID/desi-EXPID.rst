@@ -34,8 +34,6 @@ FITS Header Units
 HDU00
 -----
 
-*Summarize the contents of this HDU.*
-
 This HDU has no non-standard required keywords.
 
 Empty HDU.
@@ -660,10 +658,12 @@ HDU32
 
 EXTNAME = SPECTCONS
 
-This is a telemetry table.
+This is a telemetry table. This table contains variable-length arrays, whose
+length depends on the exact number of HDUs included in this file.
 
 Note: this is the last HDU, but its exact number will depend upon the number of
 cameras in included in the file.
+
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -745,12 +745,12 @@ Required Data Table Columns
 ======== =========== ===== ===================
 Name     Type        Units Description
 ======== =========== ===== ===================
-unit     int64             **UNEXPECTED**: Why is this not all-caps?
-specid   int64             **UNEXPECTED**: Why is this not all-caps?
+unit     int64             label for field   1
+specid   int64             label for field   2
 EXPTIME  float64           label for field   3
-DATE-OBS char stream       **WARNING**: Hyphen could cause problems.
-TIME-OBS char stream       **WARNING**: Hyphen could cause problems.
-MJD-OBS  float64           **WARNING**: Hyphen could cause problems.
+DATE-OBS char stream       label for field   4
+TIME-OBS char stream       label for field   5
+MJD-OBS  float64           label for field   6
 ST       char stream       label for field   7
 OPENSHUT char stream       label for field   8
 OBSID    char stream       label for field   9
@@ -792,7 +792,6 @@ RCAM     char stream       label for field  44
 ======== =========== ===== ===================
 
 
-
 Notes and Examples
 ==================
 
@@ -801,43 +800,18 @@ Provenance
 
 * 2019-02-21: Revised based on headers from spectrograph functional verification files.
 * 2019-04-03: Revised based on raw data files created from spectrograph functional verification files.
+* 2023-03-21: Revised in preparation for first public data release.
 
-Problems
---------
+Known Issues
+------------
 
-Maybe not a real problem: In a previous version of this model, the CCD quadrants were labeled 1, 2, 3, 4;
-now they are labeled A, B, C, D.
-
-The compressed HDUs in the "sp0" files contain ``ZSIMPLE`` keyword.  This would
-be appropriate in a compressed *primary* HDU but not in a compressed extension.
-Make sure that the images are actually compressed *as extensions*, not as
-individual images that are then shoved into an HDU.
-
-In the SPECTCONS table, array-valued columns have been replaced with pointers.  We *know* the number
-of spectrographs, why does the array length need to be variable.
-
-Why are many duplicate keywords present in SPECTCONS?  Can't we just use INHERIT?
-
-Does ``MJD-OBS`` save sufficient decimal precision to actually reconstruct ``DATE-OBS`` to microsecond precision?
-
-This datamodel documents the format for a full set of 10 spectrographs, though
-no real data are available with all 10 yet.
-
-I have noted problems with individual header keywords or table columns using these terms:
-
-MISSING
-    Listed in a previous version of this file, but are not present in the most recent ``desi`` file constructed
-    from spectrograph functional verification test ``desi-*.fits.fz`` files.
-UNEXPECTED
-    These don't appear to be relevant to DESI.
-TYPE
-    Appears to have the wrong type.
-WARNING
-    Generated a warning message from ``fitsverify``.
+* The compressed ``SPEC`` HDU contains the ``ZSIMPLE`` keyword. This would
+  be appropriate in a compressed *primary* HDU but not in a compressed extension.
+* Does ``MJD-OBS`` save sufficient decimal precision to actually reconstruct ``DATE-OBS`` to microsecond precision?
+* Some header keywords contain empty values. These will produce
+  warnings when files of this type are examined with ``fitsverify``.
 
 Expected Changes
 ----------------
 
 * Coordinate with ICS for header keywords (*e.g.* ``FLAVOR`` -> ``PROGRAM``).
-* Update telemetry HDU.
-* Spectrographs will be in arbitrary order in the file.
