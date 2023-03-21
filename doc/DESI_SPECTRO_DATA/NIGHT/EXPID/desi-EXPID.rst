@@ -472,7 +472,7 @@ Required Header Keywords
     EXPID         118526                                               int     Exposure number
     EXPFRAME      0                                                    int     Frame number
     FRAMES [1]_   None                                                 Unknown Number of Frames in Archive
-    TILEID        4403                                                 int     DESI Tile ID
+    TILEID [1]_   4403                                                 int     DESI Tile ID
     FIBASSGN [1]_ /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz str     Fiber assign
     FLAVOR        science                                              str     Observation type
     SEQUENCE      _Split                                               str     OCS Sequence name
@@ -678,71 +678,71 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ========== ============================================================================================================ ======= ===============================================
-    KEY        Example Value                                                                                                Type    Comment
-    ========== ============================================================================================================ ======= ===============================================
-    NAXIS1     352                                                                                                          int     width of table in bytes
-    NAXIS2     10                                                                                                           int     number of rows in table
-    EXPID      118526                                                                                                       int     Exposure number
-    EXPFRAME   0                                                                                                            int     Frame number
-    FRAMES     None                                                                                                         Unknown Number of Frames in Archive
-    TILEID     4403                                                                                                         int     DESI Tile ID
-    FIBASSGN   /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz                                                         str     Fiber assign
-    FLAVOR     science                                                                                                      str     Observation type
-    SEQUENCE   _Split                                                                                                       str     OCS Sequence name
-    PURPOSE    Main Survey                                                                                                  str     Purpose of observing night
-    PROGRAM    DARK                                                                                                         str     Program name
-    PROPID     2020B-5000                                                                                                   str     Proposal ID
-    OBSERVER   Jessica Chellino, Corentin Ravoux                                                                            str     Names of observers
-    LEAD       Martin Landriau                                                                                              str     Lead observer
-    INSTRUME   DESI                                                                                                         str     Instrument name
-    OBSERVAT   KPNO                                                                                                         str     Observatory name
-    OBS-LAT    31.96403                                                                                                     str     [deg] Observatory latitude
-    OBS-LONG   -111.59989                                                                                                   str     [deg] Observatory east longitude
-    OBS-ELEV   2097.0                                                                                                       float   [m] Observatory elevation
-    TELESCOP   KPNO 4.0-m telescope                                                                                         str     Telescope name
-    CORRCTOR   DESI Corrector                                                                                               str     Corrector Identification
-    NIGHT      20220113                                                                                                     int     Observing night
-    TIMESYS    UTC                                                                                                          str     Time system used for date-obs
-    DELTARA    0.                                                                                                           float   [arcsec] Offset], right ascension, observer inp
-    DELTADEC   0.                                                                                                           float   [arcsec] Offset], declination, observer input
-    REQRA      170.239                                                                                                      float   [deg] Requested right ascension (observer input
-    REQDEC     -7.093                                                                                                       float   [deg] Requested declination (observer input)
-    FOCUS      946.6,-231.6,-83.4,-18.3,9.8,139.4                                                                           str     Telescope focus settings
-    TRUSTEMP   12.267                                                                                                       float   [deg] Average Telescope truss temperature (only
-    PMIRTEMP   11.675                                                                                                       float   [deg] Average primary mirror temperature (nit,e
-    EPOCH      2000.0                                                                                                       float   Epoch of observation
-    MOUNTAZ    176.725567                                                                                                   float   [deg] Mount azimuth angle
-    MOUNTDEC   -7.102329                                                                                                    float   [deg] Mount declination
-    MOUNTEL    50.883914                                                                                                    float   [deg] Mount elevation angle
-    MOUNTHA    -2.081118                                                                                                    float   [deg] Mount hour angle
-    SKYDEC     -7.102329                                                                                                    float   [deg] Telescope declination (pointing on sky)
-    SKYRA [1]_ 170.24163                                                                                                    float   [deg] Telescope right ascension (pointing on sk
-    TARGTDEC   -7.102329                                                                                                    float   [deg] Target declination (to TCS)
-    TARGTRA    170.24163                                                                                                    float   [deg] Target right ascension (to TCS)
-    USEETC     T                                                                                                            bool    ETC data available if true
-    USESKY     T                                                                                                            bool    DOS Control: use Sky Monitor
-    USEFOCUS   T                                                                                                            bool    DOS Control: use focus
-    HEXTRIM    0.0,0.0,0.0,0.0,0.0,0.0                                                                                      str     Hexapod trim values
-    USEROTAT   T                                                                                                            bool    DOS Control: use rotator
-    ROTOFFST   138.8                                                                                                        float   [arcsec] Rotator offset
-    ROTENBLD   T                                                                                                            bool    Rotator enabled
-    ROTRATE    0.513                                                                                                        float   [arcsec/min] Rotator rate
-    USEGUIDR   T                                                                                                            bool    DOS Control: use guider
-    USEDONUT   T                                                                                                            bool    DOS Control: use donuts
-    SPCGRPHS   SP4, SP9, SP8, SP2, SP0, SP5, SP7, SP6, SP1, SP3                                                             str     Participating spe
-    DEVICES    SPECTCON4, SPECTCON9, SPECTCON8, SPECTCON2, SPECTCON0, SPECTCON5, SPECTCON7, SPECTCON6, SPECTCON1, SPECTCON3 str     Participating devices (spectro controller)
-    RADESYS    FK5                                                                                                          str     Coordinate reference frame of major/minor axes
-    DOSVER     trunk                                                                                                        str     DOS software version
-    OCSVER     1.2                                                                                                          float   OCS software version
-    CONSTVER   DESI:CURRENT                                                                                                 str     Constants version
-    INIFILE    /data/msdos/dos_home/architectures/kpno/desi.ini                                                             str     DOS Configuration
-    REQTIME    1860.0                                                                                                       float   [s] Requested exposure time
-    OBSID      kp4m20220114t110417                                                                                          str     Unique observation identifier
-    PROCTYPE   RAW                                                                                                          str     Data processing level
-    PRODTYPE   image                                                                                                        str     Data product type
-    CHECKSUM   0YhA1VZ30VfA0VZ3                                                                                             str     HDU checksum updated 2022-01-14T11:15:09
-    DATASUM    2915472531                                                                                                   str     data unit checksum updated 2022-01-14T11:15:09
+    ============= ============================================================================================================ ======= ===============================================
+    KEY           Example Value                                                                                                Type    Comment
+    ============= ============================================================================================================ ======= ===============================================
+    NAXIS1        352                                                                                                          int     width of table in bytes
+    NAXIS2        10                                                                                                           int     number of rows in table
+    EXPID         118526                                                                                                       int     Exposure number
+    EXPFRAME      0                                                                                                            int     Frame number
+    FRAMES [1]_   None                                                                                                         Unknown Number of Frames in Archive
+    TILEID [1]_   4403                                                                                                         int     DESI Tile ID
+    FIBASSGN [1]_ /data/tiles/SVN_tiles/004/fiberassign-004403.fits.gz                                                         str     Fiber assign
+    FLAVOR        science                                                                                                      str     Observation type
+    SEQUENCE      _Split                                                                                                       str     OCS Sequence name
+    PURPOSE       Main Survey                                                                                                  str     Purpose of observing night
+    PROGRAM       DARK                                                                                                         str     Program name
+    PROPID        2020B-5000                                                                                                   str     Proposal ID
+    OBSERVER      Jessica Chellino, Corentin Ravoux                                                                            str     Names of observers
+    LEAD          Martin Landriau                                                                                              str     Lead observer
+    INSTRUME      DESI                                                                                                         str     Instrument name
+    OBSERVAT      KPNO                                                                                                         str     Observatory name
+    OBS-LAT       31.96403                                                                                                     str     [deg] Observatory latitude
+    OBS-LONG      -111.59989                                                                                                   str     [deg] Observatory east longitude
+    OBS-ELEV      2097.0                                                                                                       float   [m] Observatory elevation
+    TELESCOP      KPNO 4.0-m telescope                                                                                         str     Telescope name
+    CORRCTOR      DESI Corrector                                                                                               str     Corrector Identification
+    NIGHT         20220113                                                                                                     int     Observing night
+    TIMESYS       UTC                                                                                                          str     Time system used for date-obs
+    DELTARA       0.                                                                                                           float   [arcsec] Offset], right ascension, observer inp
+    DELTADEC      0.                                                                                                           float   [arcsec] Offset], declination, observer input
+    REQRA [1]_    170.239                                                                                                      float   [deg] Requested right ascension (observer input
+    REQDEC [1]_   -7.093                                                                                                       float   [deg] Requested declination (observer input)
+    FOCUS [1]_    946.6,-231.6,-83.4,-18.3,9.8,139.4                                                                           str     Telescope focus settings
+    TRUSTEMP [1]_ 12.267                                                                                                       float   [deg] Average Telescope truss temperature (only
+    PMIRTEMP [1]_ 11.675                                                                                                       float   [deg] Average primary mirror temperature (nit,e
+    EPOCH         2000.0                                                                                                       float   Epoch of observation
+    MOUNTAZ [1]_  176.725567                                                                                                   float   [deg] Mount azimuth angle
+    MOUNTDEC [1]_ -7.102329                                                                                                    float   [deg] Mount declination
+    MOUNTEL [1]_  50.883914                                                                                                    float   [deg] Mount elevation angle
+    MOUNTHA [1]_  -2.081118                                                                                                    float   [deg] Mount hour angle
+    SKYDEC [1]_   -7.102329                                                                                                    float   [deg] Telescope declination (pointing on sky)
+    SKYRA [1]_    170.24163                                                                                                    float   [deg] Telescope right ascension (pointing on sk
+    TARGTDEC [1]_ -7.102329                                                                                                    float   [deg] Target declination (to TCS)
+    TARGTRA [1]_  170.24163                                                                                                    float   [deg] Target right ascension (to TCS)
+    USEETC [1]_   T                                                                                                            bool    ETC data available if true
+    USESKY [1]_   T                                                                                                            bool    DOS Control: use Sky Monitor
+    USEFOCUS [1]_ T                                                                                                            bool    DOS Control: use focus
+    HEXTRIM [1]_  0.0,0.0,0.0,0.0,0.0,0.0                                                                                      str     Hexapod trim values
+    USEROTAT [1]_ T                                                                                                            bool    DOS Control: use rotator
+    ROTOFFST [1]_ 138.8                                                                                                        float   [arcsec] Rotator offset
+    ROTENBLD [1]_ T                                                                                                            bool    Rotator enabled
+    ROTRATE [1]_  0.513                                                                                                        float   [arcsec/min] Rotator rate
+    USEGUIDR [1]_ T                                                                                                            bool    DOS Control: use guider
+    USEDONUT [1]_ T                                                                                                            bool    DOS Control: use donuts
+    SPCGRPHS      SP4, SP9, SP8, SP2, SP0, SP5, SP7, SP6, SP1, SP3                                                             str     Participating spe
+    DEVICES       SPECTCON4, SPECTCON9, SPECTCON8, SPECTCON2, SPECTCON0, SPECTCON5, SPECTCON7, SPECTCON6, SPECTCON1, SPECTCON3 str     Participating devices (spectro controller)
+    RADESYS       FK5                                                                                                          str     Coordinate reference frame of major/minor axes
+    DOSVER        trunk                                                                                                        str     DOS software version
+    OCSVER        1.2                                                                                                          float   OCS software version
+    CONSTVER      DESI:CURRENT                                                                                                 str     Constants version
+    INIFILE       /data/msdos/dos_home/architectures/kpno/desi.ini                                                             str     DOS Configuration
+    REQTIME       1860.0                                                                                                       float   [s] Requested exposure time
+    OBSID         kp4m20220114t110417                                                                                          str     Unique observation identifier
+    PROCTYPE      RAW                                                                                                          str     Data processing level
+    PRODTYPE      image                                                                                                        str     Data product type
+    CHECKSUM      0YhA1VZ30VfA0VZ3                                                                                             str     HDU checksum updated 2022-01-14T11:15:09
+    DATASUM       2915472531                                                                                                   str     data unit checksum updated 2022-01-14T11:15:09
     ========== ============================================================================================================ ======= ===============================================
 
     .. [1] Optional
@@ -805,13 +805,6 @@ RCAM     char stream       label for field  44
 Notes and Examples
 ==================
 
-Provenance
-----------
-
-* 2019-02-21: Revised based on headers from spectrograph functional verification files.
-* 2019-04-03: Revised based on raw data files created from spectrograph functional verification files.
-* 2023-03-21: Revised in preparation for first public data release.
-
 Known Issues
 ------------
 
@@ -825,3 +818,11 @@ Expected Changes
 ----------------
 
 * Coordinate with ICS for header keywords (*e.g.* ``FLAVOR`` -> ``PROGRAM``).
+
+Provenance
+----------
+
+* 2019-02-21: Revised based on headers from spectrograph functional verification files.
+* 2019-04-03: Revised based on raw data files created from spectrograph functional verification files.
+* 2023-03-21: Revised in preparation for first public data release.
+
