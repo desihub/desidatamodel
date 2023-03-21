@@ -48,6 +48,9 @@ EXTNAME = SPEC
 
 *Description needed.*
 
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. collapse:: Required Header Keywords Table
 
     .. rst-class:: keywords
@@ -446,6 +449,8 @@ EXTNAME = SPEC
     DATASUM  306780459                                                             str     data unit checksum updated 2022-01-14T11:15:03
     ======== ===================================================================== ======= ===============================================
 
+    .. [1] Optional
+
 Data: FITS image [int16 (compressed), 10]
 
 HDU02
@@ -646,7 +651,6 @@ Required Header Keywords
     DATASUM       3453799606                                           str     data unit checksum updated 2022-01-14T11:15:05
     ============= ==================================================== ======= ===============================================
 
-    .. [1] Optional
 
 Data: FITS image [int16 (compressed), 4256x4194]
 
@@ -744,8 +748,6 @@ Required Header Keywords
     CHECKSUM      0YhA1VZ30VfA0VZ3                                                                                             str     HDU checksum updated 2022-01-14T11:15:09
     DATASUM       2915472531                                                                                                   str     data unit checksum updated 2022-01-14T11:15:09
     ========== ============================================================================================================ ======= ===============================================
-
-    .. [1] Optional
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
