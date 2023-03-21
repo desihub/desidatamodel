@@ -95,7 +95,9 @@ Required Header Keywords
     OBS-ELEV 2097.0                                                                float   [m] Observatory elevation
     TELESCOP KPNO 4.0-m telescope                                                  str     Telescope name
     CORRCTOR DESI Corrector                                                        str     Corrector Identification
+    SEQID    5 requests                                                            str     Exposure sequence identifier
     SEQNUM   1                                                                     int     Number of exposure in sequence
+    SEQTOT   5                                                                     int     Total number of exposures in sequence
     NIGHT    20220113                                                              int     Observing night
     SEQSTART 2022-01-14T11:03:08.447408                                            str     Start time of sequence processing
     TIMESYS  UTC                                                                   str     Time system used for date-obs
@@ -747,7 +749,7 @@ Required Header Keywords
     PRODTYPE      image                                                                                                        str     Data product type
     CHECKSUM      0YhA1VZ30VfA0VZ3                                                                                             str     HDU checksum updated 2022-01-14T11:15:09
     DATASUM       2915472531                                                                                                   str     data unit checksum updated 2022-01-14T11:15:09
-    ========== ============================================================================================================ ======= ===============================================
+    ============= ============================================================================================================ ======= ===============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
