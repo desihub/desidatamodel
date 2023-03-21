@@ -238,19 +238,19 @@ Required Header Keywords
     ILLSPECS      SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                               str     Participating illuminate s
     CCDSPECS      SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9                               str     Participating ccd spectrog
     TDEWPNT       -32.86                                                                float   Telescope air dew point
-    TAIRFLOW      0.0                                                                   float   Telescope air flow
-    TAIRITMP      12.5                                                                  float   [deg] Telescope air in temperature
-    TAIROTMP      12.7                                                                  float   [deg] Telescope air out temperature
+    TAIRFLOW [1]_ 0.0                                                                   float   Telescope air flow
+    TAIRITMP [1]_ 12.5                                                                  float   [deg] Telescope air in temperature
+    TAIROTMP [1]_ 12.7                                                                  float   [deg] Telescope air out temperature
     TAIRTEMP [1]_ 11.05                                                                 float   [deg] Telescope air temperature
-    TCASITMP      6.6                                                                   float   [deg] Telescope Cass Cage in temperature
-    TCASOTMP      12.2                                                                  float   [deg] Telescope Cass Cage out temperature
+    TCASITMP [1]_ 6.6                                                                   float   [deg] Telescope Cass Cage in temperature
+    TCASOTMP [1]_ 12.2                                                                  float   [deg] Telescope Cass Cage out temperature
     TCSITEMP      12.1                                                                  float   [deg] Telescope center section in temperature
     TCSOTEMP      12.3                                                                  float   [deg] Telescope center section out temperature
-    TCIBTEMP      0.0                                                                   float   [deg] Telescope chimney IB temperature
-    TCIMTEMP      0.0                                                                   float   [deg] Telescope chimney IM temperature
-    TCITTEMP      0.0                                                                   float   [deg] Telescope chimney IT temperature
-    TCOSTEMP      0.0                                                                   float   [deg] Telescope chimney OS temperature
-    TCOWTEMP      0.0                                                                   float   [deg] Telescope chimney OW temperature
+    TCIBTEMP [1]_ 0.0                                                                   float   [deg] Telescope chimney IB temperature
+    TCIMTEMP [1]_ 0.0                                                                   float   [deg] Telescope chimney IM temperature
+    TCITTEMP [1]_ 0.0                                                                   float   [deg] Telescope chimney IT temperature
+    TCOSTEMP [1]_ 0.0                                                                   float   [deg] Telescope chimney OS temperature
+    TCOWTEMP [1]_ 0.0                                                                   float   [deg] Telescope chimney OW temperature
     TDBTEMP       12.4                                                                  float   [deg] Telescope dec bore temperature
     TFLOWIN       0.0                                                                   float   Telescope flow rate in
     TFLOWOUT      0.0                                                                   float   Telescope flow rate out
@@ -278,27 +278,27 @@ Required Header Keywords
     TPMWITT [1]_  11.3                                                                  float   [deg] Telescope mirror WIT temperature
     TPMWOBT [1]_  11.9                                                                  float   [deg] Telescope mirror WOB temperature
     TPMWOTT [1]_  11.8                                                                  float   [deg] Telescope mirror WOT temperature
-    TPCITEMP      12.1                                                                  float   [deg] Telescope primary cell in temperature
-    TPCOTEMP      12.0                                                                  float   [deg] Telescope primary cell out temperature
-    TPR1HUM       0.0                                                                   float   Telescope probe 1 humidity
-    TPR1TEMP      0.0                                                                   float   [deg] Telescope probe1 temperature
-    TPR2HUM       0.0                                                                   float   Telescope probe 2 humidity
-    TPR2TEMP      0.0                                                                   float   [deg] Telescope probe2 temperature
-    TSERVO        40.0                                                                  float   Telescope servo setpoint
-    TTRSTEMP      11.9                                                                  float   [deg] Telescope top ring S temperature
-    TTRWTEMP      11.7                                                                  float   [deg] Telescope top ring W temperature
-    TTRUETBT      -1.5                                                                  float   [deg] Telescope truss ETB temperature
-    TTRUETTT      11.6                                                                  float   [deg] Telescope truss ETT temperature
-    TTRUNTBT      11.7                                                                  float   [deg] Telescope truss NTB temperature
-    TTRUNTTT      11.6                                                                  float   [deg] Telescope truss NTT temperature
-    TTRUSTBT      11.7                                                                  float   [deg] Telescope truss STB temperature
-    TTRUSTST      10.8                                                                  float   [deg] Telescope truss STS temperature
-    TTRUSTTT      11.7                                                                  float   [deg] Telescope truss STT temperature
-    TTRUTSBT      12.2                                                                  float   [deg] Telescope truss TSB temperature
-    TTRUTSMT      12.2                                                                  float   [deg] Telescope truss TSM temperature
-    TTRUTSTT      12.2                                                                  float   [deg] Telescope truss TST temperature
-    TTRUWTBT      11.6                                                                  float   [deg] Telescope truss WTB temperature
-    TTRUWTTT      11.6                                                                  float   [deg] Telescope truss WTT temperature
+    TPCITEMP [1]_ 12.1                                                                  float   [deg] Telescope primary cell in temperature
+    TPCOTEMP [1]_ 12.0                                                                  float   [deg] Telescope primary cell out temperature
+    TPR1HUM [1]_  0.0                                                                   float   Telescope probe 1 humidity
+    TPR1TEMP [1]_ 0.0                                                                   float   [deg] Telescope probe1 temperature
+    TPR2HUM [1]_  0.0                                                                   float   Telescope probe 2 humidity
+    TPR2TEMP [1]_ 0.0                                                                   float   [deg] Telescope probe2 temperature
+    TSERVO [1]_   40.0                                                                  float   Telescope servo setpoint
+    TTRSTEMP [1]_ 11.9                                                                  float   [deg] Telescope top ring S temperature
+    TTRWTEMP [1]_ 11.7                                                                  float   [deg] Telescope top ring W temperature
+    TTRUETBT [1]_ -1.5                                                                  float   [deg] Telescope truss ETB temperature
+    TTRUETTT [1]_ 11.6                                                                  float   [deg] Telescope truss ETT temperature
+    TTRUNTBT [1]_ 11.7                                                                  float   [deg] Telescope truss NTB temperature
+    TTRUNTTT [1]_ 11.6                                                                  float   [deg] Telescope truss NTT temperature
+    TTRUSTBT [1]_ 11.7                                                                  float   [deg] Telescope truss STB temperature
+    TTRUSTST [1]_ 10.8                                                                  float   [deg] Telescope truss STS temperature
+    TTRUSTTT [1]_ 11.7                                                                  float   [deg] Telescope truss STT temperature
+    TTRUTSBT [1]_ 12.2                                                                  float   [deg] Telescope truss TSB temperature
+    TTRUTSMT [1]_ 12.2                                                                  float   [deg] Telescope truss TSM temperature
+    TTRUTSTT [1]_ 12.2                                                                  float   [deg] Telescope truss TST temperature
+    TTRUWTBT [1]_ 11.6                                                                  float   [deg] Telescope truss WTB temperature
+    TTRUWTTT [1]_ 11.6                                                                  float   [deg] Telescope truss WTT temperature
     ALARM [1]_    F                                                                     bool    UPS major alarm or check battery
     ALARM-ON      F                                                                     bool    UPS active alarm condition
     BATTERY       100.0                                                                 float   [%] UPS Battery left
@@ -440,12 +440,12 @@ Required Header Keywords
     GUIEXPID      118526                                                                int     Guider exposure id at start of spectro exp.
     IGFRMNUM [1]_ 2                                                                     int     Guider frame number at start of spectro exp.
     FOCEXPID      118526                                                                int     Focus exposure id at start of spectro exp.
-    IFFRMNUM      0                                                                     int     Focus frame number at start of spectro exp.
+    IFFRMNUM [1]_ 0                                                                     int     Focus frame number at start of spectro exp.
     SKYEXPID      118526                                                                int     Sky exposure id at start of spectro exp.
-    ISFRMNUM      0                                                                     int     Sky frame number at start of spectro exp.
-    FGFRMNUM      72                                                                    int     Guider frame number at end of spectro exp.
-    FFFRMNUM      9                                                                     int     Focus frame number at end of spectro exp.
-    FSFRMNUM      7                                                                     int     Sky frame number at end of spectro exp.
+    ISFRMNUM [1]_ 0                                                                     int     Sky frame number at start of spectro exp.
+    FGFRMNUM [1]_ 72                                                                    int     Guider frame number at end of spectro exp.
+    FFFRMNUM [1]_ 9                                                                     int     Focus frame number at end of spectro exp.
+    FSFRMNUM [1]_ 7                                                                     int     Sky frame number at end of spectro exp.
     ETCSKYLV      7.8081                                                                float   [unit?] ETC skylevel
     CHECKSUM      OlYZPlXZOlXZOlXZ                                                      str     HDU checksum updated 2022-01-14T11:15:03
     DATASUM       306780459                                                             str     data unit checksum updated 2022-01-14T11:15:03
