@@ -756,54 +756,55 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-======== =========== ===== ===================
+======== =========== ===== ===============================================================
 Name     Type        Units Description
-======== =========== ===== ===================
-unit     int64             label for field   1
-specid   int64             label for field   2
-EXPTIME  float64           label for field   3
-DATE-OBS char stream       label for field   4
-TIME-OBS char stream       label for field   5
-MJD-OBS  float64           label for field   6
-ST       char stream       label for field   7
-OPENSHUT char stream       label for field   8
-OBSID    char stream       label for field   9
-STATUS   char stream       label for field  10
-HARTL    char stream       label for field  11
-HARTLP   char stream       label for field  12
-HARTR    char stream       label for field  13
-HARTRP   char stream       label for field  14
-WAGO     char stream       label for field  15
-NIRSHUT  char stream       label for field  16
-NIRSEAL  char stream       label for field  17
-NIRPOW   char stream       label for field  18
-EXPSHUT  char stream       label for field  19
-EXPSEAL  char stream       label for field  20
-EXPPOW   char stream       label for field  21
-ILLUM    char stream       label for field  22
-ZTEMP    float64           label for field  23
-ZHUMID   float64           label for field  24
-BTEMP    float64           label for field  25
-BHUMID   float64           label for field  26
-RTEMP    float64           label for field  27
-RHUMID   float64           label for field  28
-IEBTEMP  float64           label for field  29
-COLLTEMP float64           label for field  30
-CRYOTEMP float64           label for field  31
-BZTEMP   float64           label for field  32
-MIRROR   char stream       label for field  33
-MOUNT    char stream       label for field  34
-EXPMEC   char stream       label for field  35
-ZDICHR   char stream       label for field  36
-NIRMEC   char stream       label for field  37
-RDICHR   char stream       label for field  38
-BVPHG    char stream       label for field  39
-ZVPHG    char stream       label for field  40
-RVPHG    char stream       label for field  41
-BCAM     char stream       label for field  42
-ZCAM     char stream       label for field  43
-RCAM     char stream       label for field  44
-======== =========== ===== ===================
+======== =========== ===== ===============================================================
+unit     int64             spectrograph ID (SP notation)
+specid   int64             spectrograph ID (SP notation)
+EXPTIME  float64     s     exposure time for this spectrograph
+DATE-OBS char stream       timestamp (date and time  of observation for this spectrograph)
+TIME-OBS char stream       timestamp (time of observation for this spectrograph)
+MJD-OBS  float64     d     MJD time of observation for this spectrograph
+ST       char stream       timestamp (local sidereal time for this spectrograph)
+OPENSHUT char stream       timestamp (shutter open time for this spectrograph)
+CLOSSHUT float64     s     time to close shutter for this spectrograph
+OBSID    char stream       unique identifier for this exposure
+STATUS   char stream       Overall spectro-controller status
+HARTL    char stream       Status of left Hartmann door (open, closed, error)
+HARTLP   char stream       Left Hartmann door power (on, off, error)
+HARTR    char stream       Status of right Hartmann door (open, closed, error)
+HARTRP   char stream       Right Hartmann door power (on, off, error)
+WAGO     char stream       Status of WAGO PLC (ready, error)
+NIRSHUT  char stream       Status of NIR shutter (open, closed, error)
+NIRSEAL  char stream       NIR shutter seal (inflated, deflated, error)
+NIRPOW   char stream       NIR shutter power (ON, OFF)
+EXPSHUT  char stream       Status of EXP shutter (open, closed, error)
+EXPSEAL  char stream       EXP shutter seal (inflated, deflated, error)
+EXPPOW   char stream       EXP shutter power (ON, OFF)
+ILLUM    char stream       Fiber illuminator (on, off, notready, ready, error, flashing)
+ZTEMP    float64           [degrees] NIR camera temperature
+ZHUMID   float64           [%] NIR camera humidity
+BTEMP    float64           [degrees] blue camera temperature
+BHUMID   float64           [%] blue camera humidity
+RTEMP    float64           [degrees] red camera temperature
+RHUMID   float64           [%] red camera humidity
+IEBTEMP  float64           [degrees] electronics board temperature
+COLLTEMP float64           [degrees] enclosure temperature near collimator
+CRYOTEMP float64           [degrees] enclosure temperature near cryostat
+BZTEMP   float64           [degrees] enclosure temperature near NIR shutter
+MIRROR   char stream       Serial number for this hardware component
+MOUNT    char stream       Serial number for this hardware component
+EXPMEC   char stream       Serial number for this hardware component
+ZDICHR   char stream       Serial number for this hardware component
+NIRMEC   char stream       Serial number for this hardware component
+RDICHR   char stream       Serial number for this hardware component
+BVPHG    char stream       Serial number for this hardware component
+ZVPHG    char stream       Serial number for this hardware component
+RVPHG    char stream       Serial number for this hardware component
+BCAM     char stream       Serial number for this hardware component
+ZCAM     char stream       Serial number for this hardware component
+RCAM     char stream       Serial number for this hardware component
+======== =========== ===== ===============================================================
 
 
 Notes and Examples

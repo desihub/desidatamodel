@@ -42,23 +42,27 @@ This HDU has no non-standard required keywords.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================= ===== ========================================
-KEY      Example Value     Type  Comment
-======== ================= ===== ========================================
-NAXIS1   0                 int
-TILEID   1165              int
-REQRA    150.69            float
-REQDEC   33.86             float
-TILERA   150.69            float
-TILEDEC  33.86             float
-REFEPOCH 2015.5            str
-NIGHT    20201010          int
-EXPID    123456            int
-FLAVOR   science           str
-FIELDNUM 0                 int   Field configuration number for this tile
-TELRA    150.6899871709776 float
-TELDEC   150.6899913445232 float
-======== ================= ===== ========================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================= ===== ========================================
+    KEY      Example Value     Type  Comment
+    ======== ================= ===== ========================================
+    NAXIS1   0                 int
+    TILEID   1165              int
+    REQRA    150.69            float
+    REQDEC   33.86             float
+    TILERA   150.69            float
+    TILEDEC  33.86             float
+    REFEPOCH 2015.5            str
+    NIGHT    20201010          int
+    EXPID    123456            int
+    FLAVOR   science           str
+    FIELDNUM 0                 int   Field configuration number for this tile
+    TELRA    150.6899871709776 float
+    TELDEC   150.6899913445232 float
+    ======== ================= ===== ========================================
 
 Data: FITS image [float64, 0]
 
@@ -74,35 +78,41 @@ augmented with columns describing where the fibers actually ended up.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ======================= ===== =======================================
-KEY      Example Value           Type  Comment
-======== ======================= ===== =======================================
-NAXIS1   378                     int   length of dimension 1
-NAXIS2   5000                    int   length of dimension 2
-NIGHT    20170327                str   YEARMMDD of sunset for this night
-EXPID    2                       int   unique DESI exposure ID
-TILEID   4                       int   DESI tile ID
-PROGRAM  DARK                    str   program [dark, bright, gray, calib, ...]
-FLAVOR   science                 str   Flavor [arc, flat, science, zero, ...]
-REQRA    335.03                  float Requested telescope RA [degrees]
-REQDEC   19.88                   float Requested telescope dec [degrees]
-REQRA    335.03                  float Requested telescope RA [degrees]
-REQDEC   19.88                   float Requested telescope dec [degrees]
-TELRA    335.03                  float Actual telescope pointing RA [degrees]
-TELDEC   19.88                   float Actual telescope pointing dec [degrees]
-AIRMASS  1.17754                 float Airmass at middle of exposure
-EXPTIME  629.827                 float Exposure time [sec]
-SEEING   0.7769                  float Seeing FWHM [arcsec]
-MOONFRAC 0.4083                  float Moon illumination fraction 0-1; 1=full
-MOONALT  -72.8225                float Moon altitude [degrees]
-MOONSEP  131.1832                float Moon:tile separation angle [degrees]
-DATE-OBS 2020-03-17T03:35:05.835 str   Start of exposure
-======== ======================= ===== =======================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ======================= ===== =======================================
+    KEY      Example Value           Type  Comment
+    ======== ======================= ===== =======================================
+    NAXIS1   378                     int   length of dimension 1
+    NAXIS2   5000                    int   length of dimension 2
+    NIGHT    20170327                str   YEARMMDD of sunset for this night
+    EXPID    2                       int   unique DESI exposure ID
+    TILEID   4                       int   DESI tile ID
+    PROGRAM  DARK                    str   program [dark, bright, gray, calib, ...]
+    FLAVOR   science                 str   Flavor [arc, flat, science, zero, ...]
+    REQRA    335.03                  float Requested telescope RA [degrees]
+    REQDEC   19.88                   float Requested telescope dec [degrees]
+    REQRA    335.03                  float Requested telescope RA [degrees]
+    REQDEC   19.88                   float Requested telescope dec [degrees]
+    TELRA    335.03                  float Actual telescope pointing RA [degrees]
+    TELDEC   19.88                   float Actual telescope pointing dec [degrees]
+    AIRMASS  1.17754                 float Airmass at middle of exposure
+    EXPTIME  629.827                 float Exposure time [sec]
+    SEEING   0.7769                  float Seeing FWHM [arcsec]
+    MOONFRAC 0.4083                  float Moon illumination fraction 0-1; 1=full
+    MOONALT  -72.8225                float Moon altitude [degrees]
+    MOONSEP  131.1832                float Moon:tile separation angle [degrees]
+    DATE-OBS 2020-03-17T03:35:05.835 str   Start of exposure
+    ======== ======================= ===== =======================================
 
 TODO: standardize keywords with ICS, *e.g.* ``FLAVOR -> PROGRAM``.
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================ ======= ============ ===========
 Name             Type    Units        Description
@@ -184,27 +194,33 @@ this HDU.  In the future it will either be included or deprecated and removed.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== =====================
-KEY      Example Value Type Comment
-======== ============= ==== =====================
-NAXIS1   184           int  length of dimension 1
-NAXIS2   5000          int  length of dimension 2
-TNULL1   999999        int
-TNULL3   999999        int
-TNULL31  999999        int
-TNULL32  999999        int
-TNULL33  999999        int
-TNULL34  999999        int
-TNULL35  999999        int
-TNULL36  999999        int
-ENCODING ascii         str
-SEED     1028862084    int
-HPXNSIDE 64            int
-HPXNEST  T             bool
-======== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== =====================
+    KEY      Example Value Type Comment
+    ======== ============= ==== =====================
+    NAXIS1   184           int  length of dimension 1
+    NAXIS2   5000          int  length of dimension 2
+    TNULL1   999999        int
+    TNULL3   999999        int
+    TNULL31  999999        int
+    TNULL32  999999        int
+    TNULL33  999999        int
+    TNULL34  999999        int
+    TNULL35  999999        int
+    TNULL36  999999        int
+    ENCODING ascii         str
+    SEED     1028862084    int
+    HPXNSIDE 64            int
+    HPXNEST  T             bool
+    ======== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ================== ======= ===== ===========
 Name               Type    Units Description
@@ -249,7 +265,7 @@ OBSCONDITIONS      int64
 
 Notes:
 
-  * Future versions will include IVAR columns
+* Future versions will include IVAR columns
 
 Notes and Examples
 ==================
