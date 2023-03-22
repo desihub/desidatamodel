@@ -22,7 +22,7 @@ depending upon the state of the hardware and the ICS configuration.
 Number            EXTNAME   Type             Contents
 ================= ========= ================ ====================================
 HDU00_                      IMAGE            Empty HDU
-HDU01_            SPEC      Compressed IMAGE *Brief Description*
+HDU01_            SPEC      Compressed IMAGE Global header keywords
 HDU02_            Z0        Compressed IMAGE Raw data from the Z0 spectrograph
 `HDU03 -- HDU31`_ various   Compressed IMAGE Raw data similar to Z0 spectrograph.
 HDU32_            SPECTCONS BINTABLE         Telemetry data
@@ -46,7 +46,11 @@ HDU01
 
 EXTNAME = SPEC
 
-*Description needed.*
+This HDU should be treated as the primary HDU.  In particular, this HDU
+contains header keywords that should be treated as belonging to the entire file.
+
+The data contents are a dummy payload that should not be used.  The dummy value
+is typically ``[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`` in compressed format.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
