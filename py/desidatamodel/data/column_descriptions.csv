@@ -352,12 +352,12 @@ VAR_A_MGII,float32,,Variance of MgII fit amplitude parameter A
 VAR_B_MGII,float32,,Variance of MgII fit offset parameter B
 VAR_SIGMA_MGII,float32,,Variance of MgII fit width parameter sigma
 VERSION,char[14],,Tag of desitarget used to create the target catalog 
-WEIGHT,,,The combination of all weights to use
-WEIGHT_COMP,,,1/FRACZ_TILELOCID
-WEIGHT_FKP,,,"1/(1+NZ*P0), with P0 different for each tracer"
-WEIGHT_SYS,,,"Correction for fluctuations in projected density with imaging conditions, from random forrest method"
-WEIGHT_SYSEB,,,"Correction for fluctuations in projected density with imaging conditions, from linear regression method applied to eBOSS"
-WEIGHT_ZFAIL,,,Should be all 1 at this point for main survey
+WEIGHT,float64,,The combination of all weights to use
+WEIGHT_COMP,float64,,1/FRACZ_TILELOCID
+WEIGHT_FKP,float64,,"1/(1+NZ*P0), with P0 different for each tracer"
+WEIGHT_SYS,float64,,"Correction for fluctuations in projected density with imaging conditions, from random forrest method"
+WEIGHT_SYSEB,float64,,"Correction for fluctuations in projected density with imaging conditions, from linear regression method applied to eBOSS"
+WEIGHT_ZFAIL,float64,,Should be all 1 at this point for main survey
 WISEMASK_W1,byte,,Bitwise mask for WISE W1 data
 WISEMASK_W2,byte,,Bitwise mask for WISE W2 data
 Z,float64,,Redshift measured by Redrock
