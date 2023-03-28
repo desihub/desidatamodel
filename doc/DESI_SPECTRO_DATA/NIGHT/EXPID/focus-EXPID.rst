@@ -242,26 +242,27 @@ Required Data Table Columns
 Name     Type     Units Description
 ======== ======== ===== ===================
 EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+REQTIME  float64        label for field   2
+NIGHT    int64          label for field   3
+DATE-OBS char[*]        label for field   4
+TIME-OBS char[*]        label for field   5
+MJD-OBS  float64        label for field   6
+OPENSHUT char[*]        label for field   7
+ST       char[*]        label for field   8
+HEXPOS   char[*]        label for field   9
+GAMBNTT  float64        label for field  10
+GFPGAT   float64        label for field  11
+GFILTERT float64        label for field  12
+GCOLDTEC float64        label for field  13
+GHOTTEC  float64        label for field  14
+GCCDTEMP float64        label for field  15
+GCAMTEMP float64        label for field  16
+GHUMID2  float64        label for field  17
+GHUMID3  float64        label for field  18
+CRPIX1   float64        label for field  19
+CRPIX2   float64        label for field  20
+CRVAL1   float64        label for field  21
+CRVAL2   float64        label for field  22
 ======== ======== ===== ===================
 
 HDU3
@@ -404,26 +405,27 @@ Required Data Table Columns
 Name     Type     Units Description
 ======== ======== ===== ===================
 EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+REQTIME  float64        label for field   2
+NIGHT    int64          label for field   3
+DATE-OBS char[*]        label for field   4
+TIME-OBS char[*]        label for field   5
+MJD-OBS  float64        label for field   6
+OPENSHUT char[*]        label for field   7
+ST       char[*]        label for field   8
+HEXPOS   char[*]        label for field   9
+GAMBNTT  float64        label for field  10
+GFPGAT   float64        label for field  11
+GFILTERT float64        label for field  12
+GCOLDTEC float64        label for field  13
+GHOTTEC  float64        label for field  14
+GCCDTEMP float64        label for field  15
+GCAMTEMP float64        label for field  16
+GHUMID2  float64        label for field  17
+GHUMID3  float64        label for field  18
+CRPIX1   float64        label for field  19
+CRPIX2   float64        label for field  20
+CRVAL1   float64        label for field  21
+CRVAL2   float64        label for field  22
 ======== ======== ===== ===================
 
 HDU5
@@ -566,26 +568,27 @@ Required Data Table Columns
 Name     Type     Units Description
 ======== ======== ===== ===================
 EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+REQTIME  float64        label for field   2
+NIGHT    int64          label for field   3
+DATE-OBS char[*]        label for field   4
+TIME-OBS char[*]        label for field   5
+MJD-OBS  float64        label for field   6
+OPENSHUT char[*]        label for field   7
+ST       char[*]        label for field   8
+HEXPOS   char[*]        label for field   9
+GAMBNTT  float64        label for field  10
+GFPGAT   float64        label for field  11
+GFILTERT float64        label for field  12
+GCOLDTEC float64        label for field  13
+GHOTTEC  float64        label for field  14
+GCCDTEMP float64        label for field  15
+GCAMTEMP float64        label for field  16
+GHUMID2  float64        label for field  17
+GHUMID3  float64        label for field  18
+CRPIX1   float64        label for field  19
+CRPIX2   float64        label for field  20
+CRVAL1   float64        label for field  21
+CRVAL2   float64        label for field  22
 ======== ======== ===== ===================
 
 HDU7
@@ -728,26 +731,27 @@ Required Data Table Columns
 Name     Type     Units Description
 ======== ======== ===== ===================
 EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+REQTIME  float64        label for field   2
+NIGHT    int64          label for field   3
+DATE-OBS char[*]        label for field   4
+TIME-OBS char[*]        label for field   5
+MJD-OBS  float64        label for field   6
+OPENSHUT char[*]        label for field   7
+ST       char[*]        label for field   8
+HEXPOS   char[*]        label for field   9
+GAMBNTT  float64        label for field  10
+GFPGAT   float64        label for field  11
+GFILTERT float64        label for field  12
+GCOLDTEC float64        label for field  13
+GHOTTEC  float64        label for field  14
+GCCDTEMP float64        label for field  15
+GCAMTEMP float64        label for field  16
+GHUMID2  float64        label for field  17
+GHUMID3  float64        label for field  18
+CRPIX1   float64        label for field  19
+CRPIX2   float64        label for field  20
+CRVAL1   float64        label for field  21
+CRVAL2   float64        label for field  22
 ======== ======== ===== ===================
 
 
