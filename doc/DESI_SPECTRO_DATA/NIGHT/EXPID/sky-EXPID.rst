@@ -2,7 +2,7 @@
 sky-EXPID
 =========
 
-:Summary: Placeholder data model for the sky monitor raw data
+:Summary: Raw data from the two DESI Sky Cameras, with one fpack-compressed HDU for each camera.
 :Naming Convention: ``sky-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``sky-[0-9]{8}\.fits\.fz``
@@ -25,10 +25,6 @@ The SKYCAMERA data will be 3D[nframes, ny, nx] such that
 ``data[i]`` is the 2D sky camera frame number ``i``.  Row ``i`` of the
 SKYCAM[01]T table will contain the metadata about that frame, *e.g.* the
 DATE-OBS and EXPTIME.
-
-*Needs confirmation*: SKYCAM1 and SKYCAM0 may appear in any order?  Will there
-ever be any HDUs besides these?
-
 
 FITS Header Units
 =================
@@ -90,7 +86,9 @@ HDU1
 
 EXTNAME = SKYCAM1
 
-*Summarize the contents of this HDU.*
+Contains the raw data from multiple exposures of SkyCam1, normally taken concurrently with a DESI spectrograph exposure.
+Each raw image contains spots from the ETC fibers whose total flux is a measure of relative sky brightness in the r band.
+Use the ``desietc.sky`` module to reduce these images and measure sky fiber fluxes.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,7 +181,7 @@ HDU2
 
 EXTNAME = SKYCAM1T
 
-*Summarize the contents of this HDU.*
+A table of timestamps and instrument parameters for each SkyCam0 exposure stored in HDU SKYCAM1.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,7 +225,9 @@ HDU3
 
 EXTNAME = SKYCAM0
 
-*Summarize the contents of this HDU.*
+Contains the raw data from multiple exposures of SkyCam0, normally taken concurrently with a DESI spectrograph exposure.
+Each raw image contains spots from the ETC fibers whose total flux is a measure of relative sky brightness in the r band.
+Use the ``desietc.sky`` module to reduce these images and measure sky fiber fluxes.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -320,7 +320,7 @@ HDU4
 
 EXTNAME = SKYCAM0T
 
-*Summarize the contents of this HDU.*
+A table of timestamps and instrument parameters for each SkyCam0 exposure stored in HDU SKYCAM0.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
