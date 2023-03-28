@@ -6,7 +6,7 @@ etc-EXPID
     exposure.
 :Naming Convention: ``etc-EXPID.json``, where EXPID is the zero-padded 8-digit
     exposure ID.
-:Regex: etc-[0-9]{8}\.json
+:Regex: ``etc-[0-9]{8}\.json``
 :File Type: JSON, 100 kB
 
 Contents

@@ -5,7 +5,7 @@ fvc-EXPID
 :Summary: Fiber View Camera data
 :Naming Convention: ``fvc-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
-:Regex: ``fvc-[0-9]{8}\.fits\.fz``
+:Regex: ``fvc-[0-9]{8}\.fits(\.fz)?``
 :File Type: FITS, 30 MB
 
 Contents
