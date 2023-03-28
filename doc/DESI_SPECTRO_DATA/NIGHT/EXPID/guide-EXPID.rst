@@ -2,7 +2,7 @@
 guide-EXPID
 ===========
 
-:Summary: Datamodel for the guider GFA raw data.
+:Summary: Raw data from the 6 in-focus GFA cameras captured during a DESI spectrograph exposure.
 :Naming Convention: ``guide-EXPID.fits.fz``, where ``EXPID`` is the zero-padded
     8-digit exposure ID.  Sometimes ``EXPID`` takes the form ``EXPID-0000``.
     Sometimes the ``.fz`` is missing.
@@ -31,6 +31,12 @@ HDU11_ GUIDE8T  BINTABLE         GUIDE8 image cube metadata
 HDU12_ GUIDE0   Compressed IMAGE GUIDE0 image cube
 HDU13_ GUIDE0T  BINTABLE         GUIDE0 image cube metadata
 ====== ======== ================ ===================
+
+GFA raw data is used to acuquire a new field, guide the telescope, determine the
+mapping from sky coordinates to focal-plane coordinates, and estimate the accumulated
+signal to noise in the spectrographs.
+
+One option for reducing GFA raw data is to use the ``desietc.gfa`` module.
 
 The GUIDEn data will be 3D[nframes, ny, nx] such that
 ``data[i]`` is the 2D GFA frame number ``i``.  Row ``i`` of the

@@ -7,6 +7,7 @@ desidatamodel Change Log
 
 * Updates to raw data files; validation now selects multiple candidate
   files for testing (PR `#151`_).
+* Update description of guide files in raw data (PR `#154`_)
 * Update description of sky files in raw data (PR `#153`_)
 * Update column descriptions for galaxy clustering files meeting EDR datamodel (PR `#152`_).
 * Update column descriptions for tile-based spectra/redshift/afterburner files
@@ -46,6 +47,7 @@ desidatamodel Change Log
 .. _`#151`: https://github.com/desihub/desidatamodel/pull/151
 .. _`#152`: https://github.com/desihub/desidatamodel/pull/152
 .. _`#153`: https://github.com/desihub/desidatamodel/pull/153
+.. _`#154`: https://github.com/desihub/desidatamodel/pull/154
 
 22.2 (2022-05-31)
 -----------------
