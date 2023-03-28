@@ -65,7 +65,7 @@ class DataModel(DataModelUnit):
     # Matches table borders.
     _tableboundary = re.compile(r'[= ]+$')
     # The list of file types allowed by the data model.
-    _expectedtypes = ('ascii', 'csv', 'ecsv', 'fits', 'yaml')
+    _expectedtypes = ('ascii', 'csv', 'ecsv', 'fits', 'json', 'yaml')
 
     def __init__(self, filename, section):
         shortname = filename.replace(f'{section}/', '')
