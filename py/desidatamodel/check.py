@@ -682,7 +682,9 @@ def collect_files(root, files, n_prototypes=5):
       it is 'ignored'.
     """
     ignore_directories = ('logs', 'scripts')
-    include_extensions = ('.fits', '.fits.fz', '.fits.gz')
+    include_extensions = ('.csv', '.ecsv',
+                          '.fits', '.fits.fz', '.fits.gz',
+                          '.json', '.yaml')
     for dirpath, dirnames, filenames in os.walk(root):
         for d in ignore_directories:
             try:
