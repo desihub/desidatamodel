@@ -2,7 +2,7 @@
 focus-EXPID
 ===========
 
-:Summary: Placeholder data model for the focus GFA raw data.
+:Summary: Raw images from focus cameras.
 :Naming Convention: ``focus-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``focus-[0-9]{8}\.fits\.fz``
@@ -25,6 +25,10 @@ HDU7_  FOCUS6  Compressed IMAGE Focus image 6
 HDU8_  FOCUS6T BINTABLE         Focus image 6 metadata
 ====== ======= ================ ===================
 
+Raw images from focus cameras. The data are deliberately
+out of focus with one half positive out of focus and the other half negative.
+There is a region in between that vignetted by the filter holder.
+
 The FOCUSn data will be 3D[nframes, ny, nx] such that
 ``data[i]`` is the 2D GFA frame number ``i``.  Row ``i`` of the
 FOCUSnT table will contain the metadata about that frame, e.g. the
@@ -32,14 +36,12 @@ DATE-OBS and EXPTIME.
 
 Note that other than the blank data primary HDU, the order of the other
 HDUs is arbitrary and some FOCUSn(T) HDUs may even be missing.  The
-nominal set (1,3,6,8) is the plan for full DESI, but particularly during
-commissioning other combinations will appear in the data.
+nominal set (1,4,6,9) is the plan for full DESI, but particularly during
+commissioning other combinations will appear in the data. Always access by
+``EXTNAME`` not HDU number.
 
 Other than the name and number of the HDUs, the structure of this format
 is identical to the guide GFA raw data.
-
-*Needs help*: are the camera numbers, *e.g.* ``FOCUS4``, always the same?  Does
-the order of camera numbers vary from file to file?
 
 FITS Header Units
 =================
