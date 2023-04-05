@@ -9,6 +9,7 @@ Each exposure id (expid) generates multiple files:
 .. toctree::
    :maxdepth: 1
 
+   centroids-{expid}.json : Guide camera centroids <centroids-EXPID>
    coordinates-{expid}.fits : Coordinates file <coordinates-EXPID>
    desi-{expid}.fits.fz : Raw data <desi-EXPID>
    etc-{expid}.json : Exposure Time Calculator (ETC) analysis <etc-EXPID>
@@ -22,4 +23,5 @@ Each exposure id (expid) generates multiple files:
    guide-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-EXPID>
    guide-rois-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-rois-EXPID>
    pm-{expid}.fits : Platemaker data <pm-EXPID>
+   request-{expid}.json : Commands used to initiate an exposure <request-EXPID>
    sky-{expid}.fits.fz : Placeholder for guide GFA raw data <sky-EXPID>
