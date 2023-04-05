@@ -1,8 +1,8 @@
 ============
-DESI_LSS_EDA
+DESI_LSS_EDR
 ============
 
-:envvar:`DESI_LSS_EDA` contains LSS catalogs reading from most other DESI products, ready for archiving with 
+:envvar:`DESI_LSS_EDR` contains LSS catalogs reading from most other DESI products, ready for archiving with 
 the early data assembly. Intermediate files are saved, until we build the clustering-ready catalogs 
 (including weights). The canonical location is ``$DESI_ROOT/survey/catalogs/edav1/_SURVEY_``, with the 
 intention of changing `eda_prep` to `edav1` once finalized. Here, ``_SURVEY_`` defines the LSS-defined selection of tiles, 
