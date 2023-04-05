@@ -5,6 +5,7 @@ desidatamodel Change Log
 23.1 (unreleased)
 -----------------
 
+* Update column descriptions for galaxy clustering files meeting EDR datamodel (PR `#152`_).
 * Update column descriptions for tile-based spectra/redshift/afterburner files
   (PR `#145`_).
 * Update column descriptions from a master list of columns (PR `#144`_).
@@ -39,6 +40,7 @@ desidatamodel Change Log
 .. _`#143`: https://github.com/desihub/desidatamodel/pull/143
 .. _`#144`: https://github.com/desihub/desidatamodel/pull/144
 .. _`#145`: https://github.com/desihub/desidatamodel/pull/145
+.. _`#152`: https://github.com/desihub/desidatamodel/pull/152
 
 22.2 (2022-05-31)
 -----------------
