@@ -22,6 +22,7 @@ Each exposure id (expid) generates multiple files:
    gfa-{expid}.fits : GFA file <gfa-EXPID>
    guide-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-EXPID>
    guide-rois-{expid}.fits.fz : Placeholder for guide GFA raw data <guide-rois-EXPID>
+   manifest_{expid}.json : Manifest file used in early commissioning <manifest_EXPID>
    pm-{expid}.fits : Platemaker data <pm-EXPID>
    request-{expid}.json : Commands used to initiate an exposure <request-EXPID>
    sky-{expid}.fits.fz : Placeholder for guide GFA raw data <sky-EXPID>

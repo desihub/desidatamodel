@@ -35,7 +35,8 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         files_to_regexp('/desi/spectro/data', files)
-        regexps = ['/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
+        regexps = ['/desi/spectro/data/20160703/12345678/centroids-12345678.json',
+                   '/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
                    '/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
                    '/desi/spectro/data/20160703/12345678/etc-12345678.json',
                    '/desi/spectro/data/20160703/12345678/fiberassign-123456.fits.gz',
@@ -47,9 +48,12 @@ class TestCheck(DataModelTestCase):
                    '/desi/spectro/data/20160703/00000123/gfa-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-rois-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/manifest_00000123.json',
                    '/desi/spectro/data/20160703/00000123/pm-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/request-00000123.json',
                    '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz']
         expected = [os.path.join(root, 'NIGHT', 'EXPID', f) for f in (
+            'centroids-EXPID.rst',
             'coordinates-EXPID.rst',
             'desi-EXPID.rst',
             'etc-EXPID.rst',
@@ -62,7 +66,9 @@ class TestCheck(DataModelTestCase):
             'gfa-EXPID.rst',
             'guide-EXPID.rst',
             'guide-rois-EXPID.rst',
+            'manifest_EXPID.rst',
             'pm-EXPID.rst',
+            'request-EXPID.rst',
             'sky-EXPID.rst',)]
         expected_f2r = dict(zip(expected, regexps))
         for f in files:
