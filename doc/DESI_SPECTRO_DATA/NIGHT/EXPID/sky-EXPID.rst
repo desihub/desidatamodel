@@ -212,27 +212,30 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-======== ======== ===== ===================
-Name     Type     Units Description
-======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[4]        label for field   8
-GAMBNTT  char[4]        label for field   9
-GFPGAT   char[4]        label for field  10
-GFILTERT char[4]        label for field  11
-GCOLDTEC char[4]        label for field  12
-GHOTTEC  char[4]        label for field  13
-GCCDTEMP char[4]        label for field  14
-GCAMTEMP char[4]        label for field  15
-GHUMID2  char[4]        label for field  16
-GHUMID3  char[4]        label for field  17
-======== ======== ===== ===================
+============ ======== ===== ===================
+Name         Type     Units Description
+============ ======== ===== ===================
+EXPTIME      float64        label for field   0
+REQTIME [1]_ float64        label for field   1
+NIGHT        int64          label for field   2
+DATE-OBS     char[26]       label for field   3
+TIME-OBS     char[15]       label for field   4
+MJD-OBS      float64        label for field   5
+OPENSHUT     char[*]        label for field   6
+ST           char[*]        label for field   7
+HEXPOS       char[4]        label for field   8
+GAMBNTT      char[4]        label for field   9
+GFPGAT       char[4]        label for field  10
+GFILTERT     char[4]        label for field  11
+GCOLDTEC     char[4]        label for field  12
+GHOTTEC      char[4]        label for field  13
+GCCDTEMP     char[4]        label for field  14
+GCAMTEMP     char[4]        label for field  15
+GHUMID2      char[4]        label for field  16
+GHUMID3      char[4]        label for field  17
+============ ======== ===== ===================
+
+.. [1] Optional
 
 HDU3
 ----
@@ -361,24 +364,25 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-======== ======== ===== ===================
-Name     Type     Units Description
-======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
-HEXPOS   char[4]        label for field   8
-GAMBNTT  char[4]        label for field   9
-GFPGAT   char[4]        label for field  10
-GFILTERT char[4]        label for field  11
-GCOLDTEC char[4]        label for field  12
-GHOTTEC  char[4]        label for field  13
-GCCDTEMP char[4]        label for field  14
-GCAMTEMP char[4]        label for field  15
-GHUMID2  char[4]        label for field  16
-GHUMID3  char[4]        label for field  17
-======== ======== ===== ===================
+============ ======== ===== ===================
+Name         Type     Units Description
+============ ======== ===== ===================
+EXPTIME      float64        label for field   0
+REQTIME [1]_ float64        label for field   1
+NIGHT        int64          label for field   2
+DATE-OBS     char[26]       label for field   3
+TIME-OBS     char[15]       label for field   4
+MJD-OBS      float64        label for field   5
+OPENSHUT     char[*]        label for field   6
+ST           char[*]        label for field   7
+HEXPOS       char[4]        label for field   8
+GAMBNTT      char[4]        label for field   9
+GFPGAT       char[4]        label for field  10
+GFILTERT     char[4]        label for field  11
+GCOLDTEC     char[4]        label for field  12
+GHOTTEC      char[4]        label for field  13
+GCCDTEMP     char[4]        label for field  14
+GCAMTEMP     char[4]        label for field  15
+GHUMID2      char[4]        label for field  16
+GHUMID3      char[4]        label for field  17
+============ ======== ===== ===================

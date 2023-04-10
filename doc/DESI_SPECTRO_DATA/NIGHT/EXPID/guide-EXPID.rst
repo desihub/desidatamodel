@@ -414,6 +414,8 @@ GUIDE_FLAG    int64         Guiding bitmask
 ETC_FLAG [1]_ int64         ETC bitmask
 ============= ======= ===== ===================
 
+.. [1] Optional
+
 ``COL`` is the x pixel coordinate of each star in a convention
 where the left edge of the image has x = 0.
 
