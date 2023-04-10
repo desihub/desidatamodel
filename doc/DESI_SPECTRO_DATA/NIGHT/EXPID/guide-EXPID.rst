@@ -398,21 +398,21 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========== ======= ===== ===================
-Name       Type    Units Description
-========== ======= ===== ===================
-GFA_LOC    char[6]       PETAL_LOC number
-RA         float64       Star RA in degrees
-DEC        float64       Star Dec in degrees
-ROW        float64       Star y pixel coord
-COL        float64       Star x pixel coord
-RA_IVAR    float64       RA inverse variance
-DEC_IVAR   float64       Dec inverse variance
-MAG        float64       Star magnitude
-MORPHTYPE  int64         Morphological type
-GUIDE_FLAG int64         Guiding bitmask
-ETC_FLAG   int64         ETC bitmask
-========== ======= ===== ===================
+============= ======= ===== ===================
+Name          Type    Units Description
+============= ======= ===== ===================
+GFA_LOC       char[6]       PETAL_LOC number
+RA            float64       Star RA in degrees
+DEC           float64       Star Dec in degrees
+ROW           float64       Star y pixel coord
+COL           float64       Star x pixel coord
+RA_IVAR       float64       RA inverse variance
+DEC_IVAR      float64       Dec inverse variance
+MAG           float64       Star magnitude
+MORPHTYPE     int64         Morphological type
+GUIDE_FLAG    int64         Guiding bitmask
+ETC_FLAG [1]_ int64         ETC bitmask
+============= ======= ===== ===================
 
 ``COL`` is the x pixel coordinate of each star in a convention
 where the left edge of the image has x = 0.
@@ -588,8 +588,8 @@ NIGHT    int64          Observing night
 DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
 TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
 MJD-OBS  float64        MJD (start of frame)
-OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
-ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+OPENSHUT char[*]        YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[*]        HH:MM:SS.SS (Local Sidereal Time at frame start)
 HEXPOS   char[34]       Hexapod position
 GAMBNTT  float64        GFA ambient temp (C)
 GFPGAT   float64        GFA FPGA temp (C)
@@ -755,8 +755,8 @@ NIGHT    int64          Observing night
 DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
 TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
 MJD-OBS  float64        MJD (start of frame)
-OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
-ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+OPENSHUT char[*]        YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[*]        HH:MM:SS.SS (Local Sidereal Time at frame start)
 HEXPOS   char[34]       Hexapod position
 GAMBNTT  float64        GFA ambient temp (C)
 GFPGAT   float64        GFA FPGA temp (C)
@@ -918,8 +918,8 @@ NIGHT    int64          Observing night
 DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
 TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
 MJD-OBS  float64        MJD (start of frame)
-OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
-ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+OPENSHUT char[*]        YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[*]        HH:MM:SS.SS (Local Sidereal Time at frame start)
 HEXPOS   char[34]       Hexapod position
 GAMBNTT  float64        GFA ambient temp (C)
 GFPGAT   float64        GFA FPGA temp (C)
@@ -1081,8 +1081,8 @@ NIGHT    int64          Observing night
 DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
 TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
 MJD-OBS  float64        MJD (start of frame)
-OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
-ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+OPENSHUT char[*]        YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[*]        HH:MM:SS.SS (Local Sidereal Time at frame start)
 HEXPOS   char[34]       Hexapod position
 GAMBNTT  float64        GFA ambient temp (C)
 GFPGAT   float64        GFA FPGA temp (C)
@@ -1244,8 +1244,8 @@ NIGHT    int64          Observing night
 DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
 TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
 MJD-OBS  float64        MJD (start of frame)
-OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
-ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+OPENSHUT char[*]        YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[*]        HH:MM:SS.SS (Local Sidereal Time at frame start)
 HEXPOS   char[34]       Hexapod position
 GAMBNTT  float64        GFA ambient temp (C)
 GFPGAT   float64        GFA FPGA temp (C)
@@ -1407,8 +1407,8 @@ NIGHT    int64          Observing night
 DATE-OBS char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
 TIME-OBS char[15]       HH:MM:SS.SSSSSS (UT)
 MJD-OBS  float64        MJD (start of frame)
-OPENSHUT char[26]       YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
-ST       char[13]       HH:MM:SS.SS (Local Sidereal Time at frame start)
+OPENSHUT char[*]        YYYY-MM-DDTHH:MM:SS.SSSSSS (UT)
+ST       char[*]        HH:MM:SS.SS (Local Sidereal Time at frame start)
 HEXPOS   char[34]       Hexapod position
 GAMBNTT  float64        GFA ambient temp (C)
 GFPGAT   float64        GFA FPGA temp (C)
