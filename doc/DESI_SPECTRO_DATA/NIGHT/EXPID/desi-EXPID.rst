@@ -761,9 +761,9 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============ =========== ===== ===============================================================
-Name         Type        Units Description
-============ =========== ===== ===============================================================
+============= =========== ===== ===============================================================
+Name          Type        Units Description
+============= =========== ===== ===============================================================
 unit          int64             spectrograph ID (SP notation)
 specid        int64             spectrograph ID (SP notation)
 smid [1]_     int64             spectrograph hardware ID (SM notation)

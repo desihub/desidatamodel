@@ -387,21 +387,21 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========== ======= ===== ===================
-Name       Type    Units Description
-========== ======= ===== ===================
-GFA_LOC    char[6]       label for field   1
-RA         float64       label for field   2
-DEC        float64       label for field   3
-ROW        float64       label for field   4
-COL        float64       label for field   5
-RA_IVAR    float64       label for field   6
-DEC_IVAR   float64       label for field   7
-MAG        float64       label for field   8
-MORPHTYPE  int64         label for field   9
-GUIDE_FLAG int64         label for field  10
-ETC_FLAG   int64         label for field  11
-========== ======= ===== ===================
+============= ======= ===== ===================
+Name          Type    Units Description
+============= ======= ===== ===================
+GFA_LOC       char[6]       label for field   1
+RA            float64       label for field   2
+DEC           float64       label for field   3
+ROW           float64       label for field   4
+COL           float64       label for field   5
+RA_IVAR       float64       label for field   6
+DEC_IVAR      float64       label for field   7
+MAG           float64       label for field   8
+MORPHTYPE     int64         label for field   9
+GUIDE_FLAG    int64         label for field  10
+ETC_FLAG [1]_ int64         label for field  11
+============= ======= ===== ===================
 
 HDU02
 -----
@@ -548,8 +548,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -711,8 +711,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -874,8 +874,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -1037,8 +1037,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -1200,8 +1200,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -1363,8 +1363,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -1526,8 +1526,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -1689,8 +1689,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -1852,8 +1852,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[12]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -2015,8 +2015,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[12]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -2178,8 +2178,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
@@ -2341,8 +2341,8 @@ NIGHT    int64          label for field   2
 DATE-OBS char[26]       label for field   3
 TIME-OBS char[15]       label for field   4
 MJD-OBS  float64        label for field   5
-OPENSHUT char[26]       label for field   6
-ST       char[13]       label for field   7
+OPENSHUT char[*]        label for field   6
+ST       char[*]        label for field   7
 HEXPOS   char[34]       label for field   8
 GAMBNTT  float64        label for field   9
 GFPGAT   float64        label for field  10
