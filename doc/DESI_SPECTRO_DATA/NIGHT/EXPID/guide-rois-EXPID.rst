@@ -403,6 +403,8 @@ GUIDE_FLAG    int64         label for field  10
 ETC_FLAG [1]_ int64         label for field  11
 ============= ======= ===== ===================
 
+.. [1] Optional
+
 HDU02
 -----
 
