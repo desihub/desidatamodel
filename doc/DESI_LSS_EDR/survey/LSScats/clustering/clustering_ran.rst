@@ -68,24 +68,23 @@ COMP_TILE          float64            Assignment completeness for all targets of
 ROSETTE_NUMBER     float64            Rosette number ID [0-19]
 ROSETTE_R          float64  deg       Radius from the center of the rosette to the target
 WEIGHT             float64            The combination of all weights to use
-FLUX_G_DERED [1]_  float32  nanomaggy Flux in the g-band after correcting for Galactic extinction (AB system). Only BGS samples
-FLUX_R_DERED [1]_  float32  nanomaggy Flux in the r-band after correcting for Galactic extinction (AB system). Only BGS samples
-FLUX_Z_DERED [1]_  float32  nanomaggy Flux in the z-band after correcting for Galactic extinction (AB system). Only BGS samples
-FLUX_W1_DERED [1]_ float32  nanomaggy Flux in the WISE W1-band after correcting for Galactic extinction (AB system). Only BGS samples
-FLUX_W2_DERED [1]_ float32  nanomaggy Flux in the WISE W2-band after correcting for Galactic extinction (AB system). Only BGS samples
-REST_GMR_0P1 [1]_  float64            Rest-frame g-r colour at redshift=0.1. Only BGS samples
-KCORR_R0P1 [1]_    float64            r-band k-correction at redshift=0.1. Only BGS samples
-KCORR_G0P1 [1]_    float64            g-band k-correction at redshift=0.1. Only BGS samples
-KCORR_R0P0 [1]_    float64            r-band k-correction at redshift=0.0. Only BGS samples
-KCORR_G0P0 [1]_    float64            g-band k-correction at redshift=0.0. Only BGS samples
-REST_GMR_0P0 [1]_  float64            Rest-frame g-r colour at redshift=0.0. Only BGS samples
-EQ_ALL_0P0 [1]_    float64            e-correction at redshift=0.0. Only BGS samples
-EQ_ALL_0P1 [1]_    float64            e-correction at redshift=0.1. Only BGS samples
-ABSMAG_R [1]_      float64            Absolute magnitude in the r-band after k-correction. Only BGS samples
+FLUX_G_DERED [1]_  float32  nanomaggy Flux in the g-band after correcting for Galactic extinction (AB system)
+FLUX_R_DERED [1]_  float32  nanomaggy Flux in the r-band after correcting for Galactic extinction (AB system)
+FLUX_Z_DERED [1]_  float32  nanomaggy Flux in the z-band after correcting for Galactic extinction (AB system)
+FLUX_W1_DERED [1]_ float32  nanomaggy Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
+FLUX_W2_DERED [1]_ float32  nanomaggy Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
+REST_GMR_0P1 [1]_  float64            Rest-frame g-r colour at redshift=0.1
+KCORR_R0P1 [1]_    float64            r-band k-correction at redshift=0.1
+KCORR_G0P1 [1]_    float64            g-band k-correction at redshift=0.1
+KCORR_R0P0 [1]_    float64            r-band k-correction at redshift=0.0
+KCORR_G0P0 [1]_    float64            g-band k-correction at redshift=0.0
+REST_GMR_0P0 [1]_  float64            Rest-frame g-r colour at redshift=0.0
+EQ_ALL_0P0 [1]_    float64            e-correction at redshift=0.0
+EQ_ALL_0P1 [1]_    float64            e-correction at redshift=0.1
+ABSMAG_R [1]_      float64            Absolute magnitude in the r-band after k-correction
 NZ                 float64  (h/Mpc)^3 The comoving number density of the tracer at the given redshift, assuming complete sample
 WEIGHT_FKP         float64            1/(1+NZ*P0), with P0 different for each tracer
 ================== ======== ========= =====================================================================================================================================
 
-.. [1] Optional
-
+.. [1] Only present in BGS samples
 

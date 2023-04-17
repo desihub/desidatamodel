@@ -143,5 +143,5 @@ COMP_TILE                  float64                Assignment completeness for al
 LRG_MASK [1]_              binary                 Imaging mask bits relevant to LRG targets
 ========================== ========= ============ ===============================================================================================================================
 
-.. [1] Optional
+.. [1] Only present in LRG samples
 

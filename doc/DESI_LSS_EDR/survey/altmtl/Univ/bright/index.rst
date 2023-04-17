@@ -2,7 +2,7 @@
 bright
 ======
 
-Each of the ``bright`` directories associated with each `{UNUM}` hosts an alternative MTL ledger for the DESI bright-time program, with a data format matching that used for actual observations.
+Each of the ``bright`` directories associated with each ``{UNUM}`` hosts an alternative MTL ledger for the DESI bright-time program, with a data format matching that used for actual observations.
 These ledgers are split by HEALPixel (in the NESTED
 scheme) at a resolution of nside=32.
 

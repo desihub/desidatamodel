@@ -169,12 +169,14 @@ ROSETTE_R                  float64     deg          Radius from the center of th
 FRACZ_TILELOCID            float64                  The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 BITWEIGHTS                 int64[2]                 A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 PROB_OBS                   float64                  The number alternative assignment histories that the target was assigned in divided by 128
-LRG_MASK [1]_              binary                   Imaging mask bits relevant to LRG targets; only in LRG files
-OII_FLUX [1]_              float32                  Fitted flux for the [OII] doublet; only in ELG files
-OII_FLUX_IVAR [1]_         float32                  Inverse variance of the fitted flux for the [OII] doublet; only in ELG files
-O2C [1]_                   float64                  The criteria for assessing strength of OII emission for ELG observations; only in ELG files
-Z_RR [1]_                  float64                  Redshift collected from redrock file; only in QSO files
+LRG_MASK [1]_              binary                   Imaging mask bits relevant to LRG targets
+OII_FLUX [2]_              float32                  Fitted flux for the [OII] doublet
+OII_FLUX_IVAR [2]_         float32                  Inverse variance of the fitted flux for the [OII] doublet
+O2C [2]_                   float64                  The criteria for assessing strength of OII emission for ELG observations
+Z_RR [3]_                  float64                  Redshift collected from redrock file
 ========================== =========== ============ =====================================================================================================================================
 
-.. [1] Optional
+.. [1] Only present in LRG samples
+.. [2] Only present in ELG samples
+.. [3] Only present in QSO samples
 
