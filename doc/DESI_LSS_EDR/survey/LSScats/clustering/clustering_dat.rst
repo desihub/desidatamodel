@@ -87,7 +87,7 @@ REST_GMR_0P0 [1]_  float64            Rest-frame g-r colour at redshift=0.0. Onl
 EQ_ALL_0P0 [1]_    float64            e-correction at redshift=0.0. Only BGS samples
 EQ_ALL_0P1 [1]_    float64            e-correction at redshift=0.1. Only BGS samples
 ABSMAG_R [1]_      float64            Absolute magnitude in the r-band after k-correction. Only BGS samples
-NZ                 float64            The comoving number density of the tracer at the given redshift, in units (h/Mpc)^3, assuming complete sample
+NZ                 float64  (h/Mpc)^3 The comoving number density of the tracer at the given redshift, assuming complete sample
 WEIGHT_FKP         float64            1/(1+NZ*P0), with P0 different for each tracer
 ================== ======== ========= =====================================================================================================================================
 
