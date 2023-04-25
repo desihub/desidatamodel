@@ -74,6 +74,7 @@ LOCATION                   int64                    Location on the focal plane 
 TILEID                     int64                    Unique DESI tile ID
 TILELOCID                  int64                    Is 10000*TILEID+LOCATION
 Z                          float64                  Redshift measured by Redrock
+Z_HP                       float64                  Redshift from Healpix coadd
 ZERR                       float64                  Redshift error from redrock
 ZWARN                      int64                    Redshift warning bitmask from Redrock
 CHI2                       float64                  Best fit chi squared

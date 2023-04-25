@@ -365,6 +365,7 @@ Z_CIII,float64,,Redshift estimated by QuasarNET with CIII line
 Z_CIV,float64,,Redshift estimated by QuasarNET with CIV line
 Z_Halpha,float64,,Redshift estimated by QuasarNET with Halpha line
 Z_Hbeta,float64,,Redshift estimated by QuasarNET with Hbeta line
+Z_HP,float64,,Redshift from Healpix coadd
 Z_LYA,float64,,Redshift estimated by QuasarNET with LyA line
 Z_MgII,float64,,Redshift estimated by QuasarNET with MgII line
 Z_QN,float64,,Redshift measured by QuasarNET using line with highest confidence

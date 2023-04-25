@@ -4,12 +4,15 @@ DESI_LSS_EDR
 
 :envvar:`DESI_LSS_EDR` contains LSS catalogs reading from most other DESI products, ready for archiving with 
 the early data release. Intermediate files are saved, until we build the clustering-ready catalogs 
-(including weights). The canonical location is ``$DESI_ROOT/survey/catalogs/edav1/_SURVEY_``, with the 
-intention of changing `eda_prep` to `edav1` once finalized. Here, ``_SURVEY_`` defines the LSS-defined selection of tiles (release), 
-like ``sv3``. When ready, the `edav1/sv3` directory will be copied to `/global/cfs/cdirs/desi/public/edr/vac/LSS/sv3/v1.0`. We will negotiate sym-links as 
-necessary. The catalogs are generated using tools from github_lss_repository_
+(including weights). Here ``_release_`` defines the LSS-defined selection of tiles for the Early Data Release. 
+The final clustering-ready catalogs can be found under ``LSScats/clustering`` together with the random samples for the same target types. 
+Information about the different target types and the use of the different weights can be found in REF1_ and in the explanation of LSScats subdirectory.
+The catalogs are generated using tools from github_lss_repository_.
+
+References: REF1_
 
 .. _github_lss_repository: https://github.com/desihub/LSS
+.. _REF1: https_//refref
 
 .. toctree::
    :maxdepth: 1
