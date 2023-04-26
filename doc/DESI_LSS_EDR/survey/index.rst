@@ -2,8 +2,8 @@
 release
 =======
 
-:envvar:`release` contains directories for the end-products LSS catalogs (`LSScats`), inputs based on processing of the spectroscopic reductions (`inputs_wspec`) and from processing of fiberassign information (`potential_assignments`), as well as the Alternative Merged Target List (MTL) ledgers (`altmtl`). Products come from the root :envvar:`DESI_LSS_EDR`. 
-The name reflects the name of the release, like `sv3`.
+:envvar:`release` contains directories for the end-products LSS catalogs (``LSScats``), inputs based on processing of the spectroscopic reductions (``inputs_wspec``) and from processing of fiberassign information (``potential_assignments``), as well as the Alternative Merged Target List (MTL) ledgers (``altmtl``). Products come from the root :envvar:`DESI_LSS_EDR`. 
+The name reflects the name of the release, like :envvar:`sv3`.
 
 .. toctree::
    :maxdepth: 1
