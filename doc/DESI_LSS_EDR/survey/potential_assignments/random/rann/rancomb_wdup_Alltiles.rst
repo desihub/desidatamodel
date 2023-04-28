@@ -42,24 +42,12 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ========================= ===== =====================
-    KEY      Example Value             Type  Comment
-    ======== ========================= ===== =====================
-    NAXIS1   40                        int   length of dimension 1
-    NAXIS2   3825185                   int   length of dimension 2
-    TILEID   49                        int
-    TILERA   179.691                   float
-    TILEDEC  -0.078                    float
-    FIELDROT 0.000359628494740581      float
-    FA_PLAN  2022-07-01T00:00:00.000   str
-    FA_HA    0.0                       float
-    FA_RUN   2021-05-03T20:56:22+00:00 str
-    REQRA    179.691                   float
-    REQDEC   -0.078                    float
-    FIELDNUM 0                         int
-    FA_VER   2.3.0                     str
-    FA_SURV  sv3                       str
-    ======== ========================= ===== =====================
+    ======== ============= ===== =====================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== =====================
+    NAXIS1   40            int   length of dimension 1
+    NAXIS2   3825185       int   length of dimension 2
+    ======== ============= ===== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

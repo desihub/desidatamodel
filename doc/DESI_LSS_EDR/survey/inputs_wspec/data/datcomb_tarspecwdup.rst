@@ -47,31 +47,6 @@ Required Header Keywords
     ======== ============= ==== =====================
     NAXIS1   499           int  length of dimension 1
     NAXIS2   4461559       int  length of dimension 2
-    LONGSTRN OGIP 1.0      str
-    RRVER    0.15.2        str
-    TEMNAM00 GALAXY        str
-    TEMVER00 2.6           str
-    TEMNAM01 QSO           str
-    TEMVER01 0.1           str
-    TEMNAM02 STAR:::A      str
-    TEMVER02 0.1           str
-    TEMNAM03 STAR:::B      str
-    TEMVER03 0.1           str
-    TEMNAM04 STAR:::CV     str
-    TEMVER04 0.1           str
-    TEMNAM05 STAR:::F      str
-    TEMVER05 0.1           str
-    TEMNAM06 STAR:::G      str
-    TEMVER06 0.1           str
-    TEMNAM07 STAR:::K      str
-    TEMVER07 0.1           str
-    TEMNAM08 STAR:::M      str
-    TEMVER08 0.1           str
-    TEMNAM09 STAR:::WD     str
-    TEMVER09 0.1           str
-    SPGRP    cumulative    str
-    SURVEY   sv3           str
-    PROGRAM  bright        str
     ======== ============= ==== =====================
 
 Required Data Table Columns
