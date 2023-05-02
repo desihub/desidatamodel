@@ -47,43 +47,6 @@ Required Header Keywords
     ======== ========================= ===== =====================
     NAXIS1   184                       int   length of dimension 1
     NAXIS2   6045226                   int   length of dimension 2
-    TILEID   21166                     int
-    TILERA   212.136                   float
-    TILEDEC  46.298                    float
-    FIELDROT -0.096432263112936        float
-    FA_PLAN  2022-07-01T00:00:00.000   str
-    FA_HA    0.0                       float
-    FA_RUN   2021-05-18T22:12:52+00:00 str
-    REQRA    212.136                   float
-    REQDEC   46.298                    float
-    FIELDNUM 0                         int
-    FA_VER   4.0.0                     str
-    FA_SURV  main                      str
-    LONGSTRN OGIP 1.0                  str
-    RRVER    0.15.2                    str
-    TEMNAM00 GALAXY                    str
-    TEMVER00 2.6                       str
-    TEMNAM01 QSO                       str
-    TEMVER01 0.1                       str
-    TEMNAM02 STAR:::A                  str
-    TEMVER02 0.1                       str
-    TEMNAM03 STAR:::B                  str
-    TEMVER03 0.1                       str
-    TEMNAM04 STAR:::CV                 str
-    TEMVER04 0.1                       str
-    TEMNAM05 STAR:::F                  str
-    TEMVER05 0.1                       str
-    TEMNAM06 STAR:::G                  str
-    TEMVER06 0.1                       str
-    TEMNAM07 STAR:::K                  str
-    TEMVER07 0.1                       str
-    TEMNAM08 STAR:::M                  str
-    TEMVER08 0.1                       str
-    TEMNAM09 STAR:::WD                 str
-    TEMVER09 0.1                       str
-    SPGRP    cumulative                str
-    SURVEY   main                      str
-    PROGRAM  bright                    str
     ======== ========================= ===== =====================
 
 Required Data Table Columns
