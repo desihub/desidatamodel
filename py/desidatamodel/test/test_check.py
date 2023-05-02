@@ -4,6 +4,7 @@
 """
 import os
 import sys
+from packaging import version
 import unittest
 from unittest.mock import patch
 from pkg_resources import resource_filename
@@ -34,26 +35,40 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         files_to_regexp('/desi/spectro/data', files)
-        regexps = ['/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
+        regexps = ['/desi/spectro/data/20160703/12345678/centroids-12345678.json',
+                   '/desi/spectro/data/20160703/12345678/coordinates-12345678.fits',
                    '/desi/spectro/data/20160703/12345678/desi-12345678.fits.fz',
+                   '/desi/spectro/data/20160703/12345678/etc-12345678.json',
                    '/desi/spectro/data/20160703/12345678/fiberassign-123456.fits.gz',
                    '/desi/spectro/data/20160703/12345678/fibermap-12345678.fits',
                    '/desi/spectro/data/20160703/00000123/focus-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/fvc-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/FVC-measure-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/fvc-primary-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/gfa-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-00000123.fits.fz',
                    '/desi/spectro/data/20160703/00000123/guide-rois-00000123.fits.fz',
+                   '/desi/spectro/data/20160703/00000123/manifest_00000123.json',
                    '/desi/spectro/data/20160703/00000123/pm-00000123.fits',
+                   '/desi/spectro/data/20160703/00000123/request-00000123.json',
                    '/desi/spectro/data/20160703/00000123/sky-00000123.fits.fz']
         expected = [os.path.join(root, 'NIGHT', 'EXPID', f) for f in (
+            'centroids-EXPID.rst',
             'coordinates-EXPID.rst',
             'desi-EXPID.rst',
+            'etc-EXPID.rst',
             'fiberassign-TILEID.rst',
             'fibermap-EXPID.rst',
             'focus-EXPID.rst',
             'fvc-EXPID.rst',
+            'FVC-measure-EXPID.rst',
+            'fvc-primary-EXPID.rst',
+            'gfa-EXPID.rst',
             'guide-EXPID.rst',
             'guide-rois-EXPID.rst',
+            'manifest_EXPID.rst',
             'pm-EXPID.rst',
+            'request-EXPID.rst',
             'sky-EXPID.rst',)]
         expected_f2r = dict(zip(expected, regexps))
         for f in files:
@@ -132,10 +147,10 @@ class TestCheck(DataModelTestCase):
         for f in files:
             if os.path.basename(f.filename) == 'badModel.rst':
                 self.assertIsNone(f.regexp)
-                self.assertIsNone(f.prototype)
+                self.assertIsNone(f._prototypes)
             else:
                 self.assertIsNotNone(f.regexp)
-                self.assertIsNotNone(f.prototype)
+                self.assertIsNotNone(f._prototypes)
         for f in test_files:
             os.remove(f)
 
@@ -388,8 +403,29 @@ class TestCheck(DataModelTestCase):
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
-        f.prototype = None
+        f._prototypes = None
         f.validate_prototype(error=True)
+
+    def test_validate_prototype_oserror(self):
+        """Test the data model validation method with a file that throws an error.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        # self.assertListEqual(f._prototypes, [os.path.join(os.path.dirname(modelfile), 'fits_file.fits'), ''])
+        f._prototypes = [os.path.join(os.path.dirname(modelfile), 'data_table.txt'),
+                         os.path.join(os.path.dirname(modelfile), 'fits_file.fits')]
+        f.validate_prototype(error=True)
+        self.assertLog(log, -3, "Error opening {0}, skipping to next candidate.".format(f._prototypes[0]))
+        if self.astropyVersion < version.parse('4.1'):
+            empty = 'Empty or corrupt FITS file'
+        elif self.astropyVersion < version.parse('5.0'):
+            empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file'
+        else:
+            empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file. If this is really a FITS file, try with ignore_missing_simple=True'
+        self.assertLog(log, -2, "Message was: '{0}'.".format(empty))
+        self.assertLog(log, -1, "Comparing {0} to {1}.".format(f._prototypes[1], modelfile))
 
     def test_validate_prototype_hdu_mismatch(self):
         """Test the data model validation method with wrong number of HDUs.
@@ -398,10 +434,11 @@ class TestCheck(DataModelTestCase):
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
-        f.validate_prototype()
-        f._stub.nhdr = 3
+        foo = f.extract_metadata()
+        f.hdumeta['foobar'] = 'baz'
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has the wrong number of sections (HDUs) according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -2, "{0} has the wrong number of sections (HDUs) according to {1}, skipping to next candidate.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "No useful prototype files found for {0}!".format(modelfile))
 
     def test_validate_prototype_hdu_keyword_mismatch(self):
         """Test the data model validation method with wrong number of HDU keywords.

@@ -33,58 +33,62 @@ EXTNAME = COORDS
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ========================================= ======= =======
-KEY      Example Value                             Type    Comment
-======== ========================================= ======= =======
-TILEID   4403                                      int
-TILERA   170.239                                   float
-TILEDEC  -7.093                                    float
-FIELDROT 0.0210480650645507                        float
-FA_PLAN  2022-07-01T00:00:00.000                   str
-FA_HA    -6.72                                     float
-FA_RUN   2022-01-03T17:00:31+00:00                 str
-FA_M_GFA 0.4                                       float
-FA_M_PET 0.4                                       float
-FA_M_POS 0.05                                      float
-REQRA    170.239                                   float
-REQDEC   -7.093                                    float
-FIELDNUM 0                                         int
-FA_VER   5.4.0                                     str
-FA_SURV  main                                      str
-EXPID    118526                                    int
-FLAVOR   science                                   str
-SEQUENCE _Split                                    str
-GUIDECAM GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8 str
-ACQCAM   GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8 str
-GUIDTIME 5.0                                       float
-ACQTIME  15.0                                      float
-FOCUSCAM FOCUS1,FOCUS4,FOCUS6,FOCUS9               str
-FOCSTIME 60.0                                      float
-SKYCAM   SKYCAM0,SKYCAM1                           str
-SKYTIME  60.0                                      float
-SPCGRPHS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9   str
-CCDSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9   str
-ILLSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9   str
-OBSTYPE  SCIENCE                                   str
-EXPTIME  None                                      Unknown
-ESTTIME  3705.79                                   float
-MAXTIME  5400.0                                    float
-MINTIME  300.0                                     float
-REQTIME  1860.0                                    float
-MIDTIME  915.0                                     float
-NIGHT    20220113                                  int
-SEQSTART 2022-01-14T11:03:08.447408                str
-POSRMS   None                                      Unknown
-TURBRMS  None                                      Unknown
-POSENABL None                                      Unknown
-POSDISAB None                                      Unknown
-POSONTGT None                                      Unknown
-POSONFRC None                                      Unknown
-POSCVFRC None                                      Unknown
-POSCYCLE None                                      Unknown
-POSCNVGD None                                      Unknown
-CONVERGD None                                      Unknown
-======== ========================================= ======= =======
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ========================================= ======= =======
+    KEY      Example Value                             Type    Comment
+    ======== ========================================= ======= =======
+    TILEID   4403                                      int
+    TILERA   170.239                                   float
+    TILEDEC  -7.093                                    float
+    FIELDROT 0.0210480650645507                        float
+    FA_PLAN  2022-07-01T00:00:00.000                   str
+    FA_HA    -6.72                                     float
+    FA_RUN   2022-01-03T17:00:31+00:00                 str
+    FA_M_GFA 0.4                                       float
+    FA_M_PET 0.4                                       float
+    FA_M_POS 0.05                                      float
+    REQRA    170.239                                   float
+    REQDEC   -7.093                                    float
+    FIELDNUM 0                                         int
+    FA_VER   5.4.0                                     str
+    FA_SURV  main                                      str
+    EXPID    118526                                    int
+    FLAVOR   science                                   str
+    SEQUENCE _Split                                    str
+    GUIDECAM GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8 str
+    ACQCAM   GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8 str
+    GUIDTIME 5.0                                       float
+    ACQTIME  15.0                                      float
+    FOCUSCAM FOCUS1,FOCUS4,FOCUS6,FOCUS9               str
+    FOCSTIME 60.0                                      float
+    SKYCAM   SKYCAM0,SKYCAM1                           str
+    SKYTIME  60.0                                      float
+    SPCGRPHS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9   str
+    CCDSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9   str
+    ILLSPECS SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9   str
+    OBSTYPE  SCIENCE                                   str
+    EXPTIME  None                                      Unknown
+    ESTTIME  3705.79                                   float
+    MAXTIME  5400.0                                    float
+    MINTIME  300.0                                     float
+    REQTIME  1860.0                                    float
+    MIDTIME  915.0                                     float
+    NIGHT    20220113                                  int
+    SEQSTART 2022-01-14T11:03:08.447408                str
+    POSRMS   None                                      Unknown
+    TURBRMS  None                                      Unknown
+    POSENABL None                                      Unknown
+    POSDISAB None                                      Unknown
+    POSONTGT None                                      Unknown
+    POSONFRC None                                      Unknown
+    POSCVFRC None                                      Unknown
+    POSCYCLE None                                      Unknown
+    POSCNVGD None                                      Unknown
+    CONVERGD None                                      Unknown
+    ======== ========================================= ======= =======
 
 Empty HDU.
 
@@ -98,15 +102,21 @@ EXTNAME = DATA
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 240           int  width of table in bytes
-NAXIS2 5133          int  number of rows in table
-====== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =======================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =======================
+    NAXIS1 240           int  width of table in bytes
+    NAXIS2 5133          int  number of rows in table
+    ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ============ ======= ===== ===================
 Name         Type    Units Description
@@ -154,15 +164,21 @@ EXTNAME = STATIONARY
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-====== ============= ==== =======================
-KEY    Example Value Type Comment
-====== ============= ==== =======================
-NAXIS1 358           int  width of table in bytes
-NAXIS2 796           int  number of rows in table
-====== ============= ==== =======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ====== ============= ==== =======================
+    KEY    Example Value Type Comment
+    ====== ============= ==== =======================
+    NAXIS1 358           int  width of table in bytes
+    NAXIS2 796           int  number of rows in table
+    ====== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst-class:: columns
 
 ========== ========= ===== ===================
 Name       Type      Units Description
