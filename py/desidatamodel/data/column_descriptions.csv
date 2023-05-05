@@ -202,7 +202,7 @@ NUM_ITER,int64,,Number of positioner iterations
 NUMOBS,int64,,"Number of spectroscopic observations (on this specific, single tile)"
 NUMOBS_INIT,int64,,Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_MORE,int64,,Number of additional observations needed
-NZ,float64,(h/Mpc)^3,"The comoving number density of the tracer at the given redshift, assuming complete sample"
+NZ,float64,h^3 Mpc^-3,"The comoving number density of the tracer at the given redshift, assuming complete sample"
 O2C,float64,,The criteria for assessing strength of OII emission for ELG observations
 OBJID,int32,,Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD"

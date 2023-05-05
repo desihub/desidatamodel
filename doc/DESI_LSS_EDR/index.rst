@@ -1,8 +1,8 @@
 ===
-lss
+LSS
 ===
 
-:envvar:`lss` contains LSS catalogs reading from most other DESI products, ready for archiving with 
+:envvar:`LSS` contains LSS catalogs reading from most other DESI products, ready for archiving with 
 the early data release. Intermediate files are saved, until we build the clustering-ready catalogs 
 (including weights). 
 
