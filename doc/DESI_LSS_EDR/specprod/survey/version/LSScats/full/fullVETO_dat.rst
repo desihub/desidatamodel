@@ -49,6 +49,7 @@ Required Header Keywords
     ====== ============= ==== =======================
     NAXIS1 712           int  width of table in bytes
     NAXIS2 1781907       int  number of rows in table
+    DESIDR edr           str  DESI Data Release
     ====== ============= ==== =======================
 
 Required Data Table Columns

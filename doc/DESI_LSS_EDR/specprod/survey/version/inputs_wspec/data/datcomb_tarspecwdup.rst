@@ -42,12 +42,13 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ==== =====================
+    ======== ============= ==== =======================
     KEY      Example Value Type Comment
-    ======== ============= ==== =====================
-    NAXIS1   499           int  length of dimension 1
-    NAXIS2   4461559       int  length of dimension 2
-    ======== ============= ==== =====================
+    ======== ============= ==== =======================
+    NAXIS1   499           int  width of table in bytes
+    NAXIS2   4461559       int  number of rows in table
+    DESIDR   edr           str  DESI Data Release
+    ======== ============= ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

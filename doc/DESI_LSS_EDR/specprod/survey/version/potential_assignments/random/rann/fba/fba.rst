@@ -89,6 +89,7 @@ Required Header Keywords
     FIELDNUM 0                         int
     FA_VER   2.3.0                     str
     FA_SURV  sv3                       str
+    DESIDR   edr                       str   DESI Data Release
     ======== ========================= ===== =======================
 
 Required Data Table Columns
@@ -146,6 +147,7 @@ Required Header Keywords
     FIELDNUM 0                         int
     FA_VER   2.3.0                     str
     FA_SURV  sv3                       str
+    DESIDR   edr                       str   DESI Data Release
     ======== ========================= ===== =======================
 
 Required Data Table Columns
@@ -197,6 +199,7 @@ Required Header Keywords
     FIELDNUM 0                         int
     FA_VER   2.3.0                     str
     FA_SURV  sv3                       str
+    DESIDR   edr                       str   DESI Data Release
     ======== ========================= ===== =======================
 
 Required Data Table Columns
