@@ -1,11 +1,11 @@
-===============
-mtl-dark-hp-HPX
-===============
+======================
+RELEASEmtl-dark-hp-HPX
+======================
 
 :Summary: MTL ledgers for the DESI dark-time program.
-:Naming Convention: ``mtl-dark-hp-HPX.ecsv``, where
+:Naming Convention: ``RELEASEmtl-dark-hp-HPX.ecsv``, where RELEASE is the LSS-defined selection of tiles (sv3 for EDR) and
     HPX is the nside=32 (NESTED) HEALPixel integer.
-:Regex: ``mtl-dark-hp-[0-12287]\.ecsv``
+:Regex: ``[a-fA-F0-9]{*}mtl-dark-hp-[0-12287]\.ecsv``
 :File Type: ecsv, 0-10 MB
 
 Contents
