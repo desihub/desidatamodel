@@ -12,3 +12,4 @@ Subdirectories:
    :maxdepth: 1
 
    survey/index
+   vac/index
