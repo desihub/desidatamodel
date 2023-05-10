@@ -66,11 +66,11 @@ Final text
         for line in output_lines[22:]:
             # gained units and descriptions
             if line.startswith('TARGET_RA'):
-                self.assertEqual(line, 'TARGET_RA       float64 deg       Target right ascension')
+                self.assertEqual(line, 'TARGET_RA       float64 deg       Barycentric right ascension in ICRS')
 
             # Footnote was preserved while adding units and description
             if line.startswith('TARGET_DEC'):
-                self.assertEqual(line, 'TARGET_DEC [1]_ float64 deg       Target declination')
+                self.assertEqual(line, 'TARGET_DEC [1]_ float64 deg       Barycentric declination in ICRS')
 
             if line.startswith('FLUX_R'):
                 self.assertEqual(line, 'FLUX_R          float32 nanomaggy Flux in the Legacy Survey r-band (AB)')
