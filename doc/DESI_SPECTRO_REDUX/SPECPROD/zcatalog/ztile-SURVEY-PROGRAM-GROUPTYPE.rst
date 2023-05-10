@@ -107,8 +107,8 @@ DEVICE_LOC                 int32             label for field  13
 LOCATION                   int64             label for field  14
 FIBER                      int32             label for field  15
 COADD_FIBERSTATUS          int32             label for field  16
-TARGET_RA                  float64           Right ascension at equinox J2000
-TARGET_DEC                 float64           Declination at equinox J2000
+TARGET_RA                  float64           Barycentric Right Ascension in ICRS
+TARGET_DEC                 float64           Barycentric Declination in ICRS
 PMRA                       float32           Reference catalog proper motion in the RA direction
 PMDEC                      float32           Reference catalog proper motion in the Dec direction
 REF_EPOCH                  float32           Reference catalog reference epoch (*e.g.*, 2015.5 for Gaia_ DR2)

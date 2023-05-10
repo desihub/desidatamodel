@@ -31,7 +31,7 @@ COADD_NUMTILE,int16,,Number of tiles in coadd
 COEFF,float64[10],,Redrock template coefficients
 COMP_TILE,,,Assignment completeness for all targets of this type with the same value for TILES
 DCHISQ,float32[5],,Difference in chi-squared between Tractor model fits
-DEC,float64,deg,Target declination
+DEC,float64,deg,Barycentric declination in ICRS
 DEC_IVAR,float32,deg^-2,"Inverse variance of DEC, excluding astrometric calibration errors"
 DELTA_CHI2_MGII,,,chi2 diff between redrock model fit and MgII fit
 DELTA_X,float64,mm,CS5 X requested minus actual position
@@ -235,8 +235,8 @@ PARALLAX,float32,mas,Reference catalog parallax
 PARALLAX_IVAR,float32,mas^-2,Inverse variance of PARALLAX
 PETAL_LOC,,,Petal location [0-9]
 PHOTSYS,char[1],,"'N' for the MzLS/BASS photometric system, 'S' for DECaLS"
-PLATE_DEC,float64,deg,Declination to be used by PlateMaker
-PLATE_RA,float64,deg,Right Ascension to be used by PlateMaker
+PLATE_DEC,float64,deg,Barycentric Declination in ICRS to be used by PlateMaker
+PLATE_RA,float64,deg,Barycentric Right Ascension in ICRS to be used by PlateMaker
 PMDEC,float32,mas yr^-1,Proper motion in the +Dec direction
 PMDEC_IVAR,float32,yr^2 mas^-2,Inverse variance of PMDEC
 PMRA,float32,mas yr^-1,"proper motion in the +RA direction (already including cos(dec))"
@@ -255,7 +255,7 @@ PSFSIZE_G,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects 
 PSFSIZE_R,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z,float32,arcsec,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 PSF_TO_FIBER_SPECFLUX,float64,,fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-RA,float64,deg,Target Right Ascension
+RA,float64,deg,Barycentric Right Ascension in ICRS
 RA_IVAR,float32,deg^-2,"Inverse variance of RA (no cosine term!), excluding astrometric calibration errors"
 REF_CAT,char[2],,"Reference catalog source for star: “T2” for Tycho-2, “G2” for Gaia DR2, “L2” for the SGA, empty otherwise"
 REF_ID,int64,,"Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; “sourceid” for Gaia DR2"
@@ -313,16 +313,16 @@ SV3_BGS_TARGET,int64,,BGS (bright time program) target selection bitmask for SV3
 SV3_DESI_TARGET,int64,,DESI (dark time program) target selection bitmask for SV3
 SV3_MWS_TARGET,int64,,MWS (bright time program) target selection bitmask for SV3
 SV3_SCND_TARGET,int64,,Secondary target selection bitmask for SV3
-TARGET_DEC,float64,deg,Target declination
-TARGET_RA,float64,deg,Target right ascension
+TARGET_DEC,float64,deg,Barycentric declination in ICRS
+TARGET_RA,float64,deg,Barycentric right ascension in ICRS
 TARGET_STATE,,,Combination of target class and its current observational state
 TARGETID,int64,,Unique DESI target ID
-TILEDEC,float64,deg,Declination of the center of a tile
+TILEDEC,float64,deg,Barycentric declination of tile center in ICRS
 TILEID,int32,,Unique DESI tile ID
 TILELOCID,,,Is 10000*TILEID+LOCATION
 TILELOCID_ASSIGNED,,,0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 TILELOCIDS,,,"TILELOCIDs that the target was available for, separated by '-'"
-TILERA,float64,deg,Right Ascension (RA) of the center of a tile
+TILERA,float64,deg,Barycentric Right Ascension of tile center in ICRS
 TILES,str,,"TILEIDs of those tile, in string form separated by '-'"
 TIMESTAMP,str,s,UTC/ISO time at which the target state was updated
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z"
