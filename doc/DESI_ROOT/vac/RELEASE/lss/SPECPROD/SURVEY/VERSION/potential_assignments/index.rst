@@ -2,7 +2,7 @@
 potential_assignments
 =====================
 
-This directory contains directories for the potential assigment outputs from fiber assigment, concatenated into single files, for data and randoms separately.
+``$DESI_ROOT/vac/RELEASE/lss/SPECPROD/SURVEY/VERSION/potential_assignments`` contains directories for the potential assigment outputs from fiber assigment, concatenated into single files, for data and randoms separately.
 
 
 .. toctree::

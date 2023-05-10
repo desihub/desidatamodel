@@ -2,7 +2,7 @@
 data
 ====
 
-This directory contains the concatenated potential assigments outputs. 
+This directory contains the concatenated potential assigments outputs for data. 
 
 
 .. toctree::

@@ -1,5 +1,5 @@
 ======
-rannum
+RANN
 ======
 
 This directory contains a directory to the original fiber assigment files for randoms, under `fba` and the concatenated potential assigments file. 

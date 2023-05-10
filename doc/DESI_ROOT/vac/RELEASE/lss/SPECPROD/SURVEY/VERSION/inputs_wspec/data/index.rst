@@ -2,7 +2,7 @@
 data
 ====
 
-This directory contains intermediate files, including the concatenation of potential assigments with observations, statistics on tiles, redRock results...  
+This directory contains intermediate files, including the concatenation of potential assigments with observations, statistics on tiles, redRock results for data.  
 
 
 .. toctree::

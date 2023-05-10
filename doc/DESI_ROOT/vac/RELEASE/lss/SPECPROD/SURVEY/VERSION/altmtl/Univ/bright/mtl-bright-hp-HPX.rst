@@ -1,11 +1,11 @@
 ========================
-RELEASEmtl-bright-hp-HPX
+sv3mtl-bright-hp-HPX
 ========================
 
 :Summary: MTL ledgers for the DESI bright-time program.
-:Naming Convention: ``RELEASEmtl-bright-hp-HPX.ecsv``, where RELEASE is the LSS-defined selection of tiles (sv3 for EDR) and
+:Naming Convention: ``sv3mtl-bright-hp-HPX.ecsv``, where 
     HPX is the nside=32 (NESTED) HEALPixel integer.
-:Regex: ``[a-fA-F0-9]{*}mtl-bright-hp-[0-12287]\.ecsv``
+:Regex: ``sv3mtl-bright-hp-[0-12287]\.ecsv``
 :File Type: ecsv, 0-10 MB
 
 

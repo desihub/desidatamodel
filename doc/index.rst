@@ -24,7 +24,6 @@ for testing.
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
-   $DESI_LSS_EDR: LSS archival data files for public releases <DESI_LSS_EDR/index>
    bitmasks
    datamodel
    api
