@@ -2,8 +2,8 @@
 rancomb_wdupspec
 ================
 
-:Summary: Match of randoms with information from the spectroscopic and target sample. 
-:Naming Convention: ``rancomb_{RANN}{PROGRAM}wdupspec_zdone.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either ``dark`` or ``bright``.
+:Summary: Match of potential assignments from randoms with information from the observed spectroscopic and target sample given the tile and the location. 
+:Naming Convention: ``rancomb_{RANN}{PROGRAM}wdupspec__Alltiles.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either ``dark`` or ``bright``.
 :Regex: ``rancomb_[0-17][a-z]{4,6}wdupspec_Alltiles.fits``
 :File Type: FITS, 1 GB
 

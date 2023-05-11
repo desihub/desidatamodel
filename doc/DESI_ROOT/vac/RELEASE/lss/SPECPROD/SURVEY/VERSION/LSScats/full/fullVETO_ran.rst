@@ -1,6 +1,6 @@
-================================
-'full' LSS catalogs for randoms
-================================
+===================================
+The 'full' LSS catalogs for randoms
+===================================
 
 :Summary: LSS catalogs containing information on all of the random targets identified as reachable by DESI fiberassign, for one of the input randoms. The files are split by target type, random file number, and whether of not vetos for angular positions have been applied.
 :Naming Convention: ``{TARGET}_{RANN}_full{VETO}.ran.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG``, ``ELGnotqso``, ``ELG_HIP``, ``ELG_HIPnotqso``, ``LRG``, ``LRG_main``,

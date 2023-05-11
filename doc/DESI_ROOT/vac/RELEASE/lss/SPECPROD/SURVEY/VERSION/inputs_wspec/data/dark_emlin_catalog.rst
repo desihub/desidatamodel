@@ -1,6 +1,6 @@
-==================
-dark_emlin_catalog
-==================
+=====================
+emline_darkallhealpix
+=====================
 
 :Summary: Concatenation of all of the dark time emission line healpix file outputs
 :Naming Convention: ``emline_darkallhealpix.fits``

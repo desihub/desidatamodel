@@ -2,7 +2,7 @@
 rancomb_Alltilelocinfo
 ======================
 
-:Summary: For random associated with RANN given in the directory, the list of unique TARGETIDs with number of appearances as reachable according to fiber assigment and details on those appearances. 
+:Summary: For a random associated with ``{RANN}``, the list of unique TARGETIDs with number of appearances as reachable according to fiber assigment and details on those appearances. 
 :Naming Convention: ``rancomb_{RANN}{PROGRAM}_Alltilelocinfo.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either ``dark`` or ``bright``.
 :Regex: ``rancomb_[0-17][a-z]{4,6}_Alltilelocinfo.fits`` 
 :File Type: FITS, 327 MB 

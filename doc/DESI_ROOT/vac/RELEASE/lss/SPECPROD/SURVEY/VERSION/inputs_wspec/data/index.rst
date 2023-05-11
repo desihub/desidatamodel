@@ -9,7 +9,7 @@ This directory contains intermediate files, including the concatenation of poten
    :maxdepth: 1
 
    Alltiles_PROGRAM_tilelocs.dat.fits : Information on the tiles and locations <Alltiles_tilelocs_dat>  
-   dark_emlin_catalog.fits : ELG dark time emission line outputs <dark_emlin_catalog>
+   emline_darkallhealpix.fits : ELG dark time emission line outputs <dark_emlin_catalog>
    datcomb_PROGRAM_tarspecwdup_Alltiles.fits : Match of targets <datcomb_tarspecwdup>
    lrg+bgs_3sig_bad_fibers.rst : Bad fibers in LRG + BGS samples <lrg+bgs_3sig_bad_fibers>
 

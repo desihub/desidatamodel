@@ -2,7 +2,7 @@
 random
 ======
 
-This directory contains intermediate files, including the concatenation of potential assigments with observations, statistics on tiles for randoms.
+This directory contains intermediate files for randoms, precursors of the LSScats files. It includes the concatenation of potential assigments with observations and statistics on tiles.
 
 
 
