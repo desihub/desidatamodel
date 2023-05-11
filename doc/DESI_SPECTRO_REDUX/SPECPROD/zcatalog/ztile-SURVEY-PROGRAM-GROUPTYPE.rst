@@ -2,7 +2,10 @@
 ztile-SURVEY-PROGRAM-GROUPTYPE.fits
 ===================================
 
-:Summary: This file summarizes some set of files TBD.
+:Summary: This file contatenates the individual
+          :doc:`tile-based Redrock redshift catalogs </DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>`
+          into a single file per SURVEY, PROGRAM, and spectral GROUPTYPE.
+
 :Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``,
     and ``GROUPTYPE`` is ``cumulative`` or ``pernight``.
@@ -17,7 +20,7 @@ Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
 HDU0_               IMAGE    Empty
 HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
-HDU2_  EXP_FIBERMAP BINTABLE *Brief Description*
+HDU2_  EXP_FIBERMAP BINTABLE Per-exposure entries from input fibermaps
 ====== ============ ======== ===================
 
 
@@ -38,7 +41,12 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-*Summarize the contents of this HDU.*
+Redshift catalog joined with the targeting metadata from the REDSHIFTS
+and FIBERMAP HDUs of the
+:doc:`input redrock files </DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>`.
+
+``TEMNAMnn`` and ``TEMVERnn`` record the redrock template names and versions
+used for the redshift fits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,8 +62,8 @@ Required Header Keywords
     NAXIS2       5000          int  number of rows in table
     LONGSTRN     OGIP 1.0      str
     RRVER        0.15.0        str  Redrock version
-    TEMNAM00     GALAXY        str
-    TEMVER00     2.6           str
+    TEMNAM00     GALAXY        str  Redrock template 00 name
+    TEMVER00     2.6           str  Redrock template 00 version
     TEMNAM01     QSO           str
     TEMVER01     0.1           str
     TEMNAM02     STAR:::A      str
@@ -74,9 +82,9 @@ Required Header Keywords
     TEMVER08     0.1           str
     TEMNAM09     STAR:::WD     str
     TEMVER09     0.1           str
-    SPGRP        cumulative    str
-    SURVEY [1]_  special       str
-    PROGRAM [1]_ dark          str
+    SPGRP        cumulative    str  Spectral grouping method
+    SURVEY [1]_  sv3           str  DESI sub-survey (e.g. sv1, sv3, main)
+    PROGRAM [1]_ dark          str  DESI program (e.g. dark, bright)
     ============ ============= ==== =======================
 
 Required Data Table Columns
@@ -84,153 +92,153 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========================== =========== ===== ===================
-Name                       Type        Units Description
-========================== =========== ===== ===================
-TARGETID                   int64             ID (unique to file? and the whole survey?)
-SURVEY [1]_                char[7]
-PROGRAM [1]_               char[6]
+========================== =========== ============ =====================================================================================================================================
+Name                       Type        Units        Description
+========================== =========== ============ =====================================================================================================================================
+TARGETID                   int64                    ID (unique to file? and the whole survey?)
+SURVEY [1]_                char[7]                  Survey name
+PROGRAM [1]_               char[6]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
 LASTNIGHT                  int32
-SPGRPVAL                   int32
-Z                          float64           label for field   4
-ZERR                       float64           label for field   5
-ZWARN                      int64             label for field   6
-CHI2                       float64           label for field   2
-COEFF                      float64[10]       label for field   3
-NPIXELS                    int64             label for field   7
-SPECTYPE                   char[6]           label for field   8
-SUBTYPE                    char[20]          label for field   9
-NCOEFF                     int64             label for field  10
-DELTACHI2                  float64           label for field  11
-PETAL_LOC                  int16             label for field  12
-DEVICE_LOC                 int32             label for field  13
-LOCATION                   int64             label for field  14
-FIBER                      int32             label for field  15
-COADD_FIBERSTATUS          int32             label for field  16
-TARGET_RA                  float64           Barycentric Right Ascension in ICRS
-TARGET_DEC                 float64           Barycentric Declination in ICRS
-PMRA                       float32           Reference catalog proper motion in the RA direction
-PMDEC                      float32           Reference catalog proper motion in the Dec direction
-REF_EPOCH                  float32           Reference catalog reference epoch (*e.g.*, 2015.5 for Gaia_ DR2)
-LAMBDA_REF                 float32           label for field  22
-FA_TARGET                  int64             label for field  23
-FA_TYPE                    binary            label for field  24
-OBJTYPE                    char[3]           label for field  25
-FIBERASSIGN_X              float32           label for field  26
-FIBERASSIGN_Y              float32           label for field  27
-PRIORITY                   int32             label for field  28
-SUBPRIORITY                float64           Random subpriority [0-1] to break assignment ties
-OBSCONDITIONS              int32             Flag the target to be observed in graytime.
-RELEASE                    int16             Legacy Surveys (`LS`_) `Release`_
-BRICKNAME                  char[8]           Brick name from tractor input
-BRICKID                    int32             Brick ID from tractor input
-BRICK_OBJID                int32             OBJID (unique to brick, but not to file)
-MORPHTYPE                  char[4]           `Morphological Model`_ type
-EBV                        float32           Galactic extinction E(B-V) reddening from SFD98_
-FLUX_G                     float32           `LS`_ flux from tractor input (g)
-FLUX_R                     float32           `LS`_ flux from tractor input (r)
-FLUX_Z                     float32           `LS`_ flux from tractor input (z)
-FLUX_W1                    float32           WISE flux in W1
-FLUX_W2                    float32           WISE flux in W2
-FLUX_IVAR_G                float32           Inverse Variance of FLUX_G
-FLUX_IVAR_R                float32           Inverse Variance of FLUX_R
-FLUX_IVAR_Z                float32           Inverse Variance of FLUX_Z
-FLUX_IVAR_W1               float32           Inverse Variance of FLUX_W1
-FLUX_IVAR_W2               float32           Inverse Variance of FLUX_W2
-FIBERFLUX_G                float32           Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_R                float32           Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_Z                float32           Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERTOTFLUX_G             float32           Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
-FIBERTOTFLUX_R             float32           Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
-FIBERTOTFLUX_Z             float32           Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
-MASKBITS                   int16             Bitwise mask indicating that an object touches a pixel in the ``coadd/*/*/*maskbits*`` maps, as cataloged on the `DR9 bitmasks page`_
-SERSIC                     float32           Power-law index for the Sersic profile model (``type="SER"``)
-SHAPE_R                    float32           Half-light radius of galaxy model for galaxy type ``type`` (>0)
-SHAPE_E1                   float32           `Ellipticity component`_ 1 of galaxy model for galaxy type ``type``
-SHAPE_E2                   float32           `Ellipticity component`_ 2 of galaxy model for galaxy type ``type``
-REF_ID                     int64             Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
-REF_CAT                    char[2]           Reference catalog source for this star: "T2" for `Tycho-2`_, "G2" for `Gaia`_ DR2, "L3" for the SGA_, empty otherwise
-GAIA_PHOT_G_MEAN_MAG       float32           `Gaia`_ G band magnitude
-GAIA_PHOT_BP_MEAN_MAG      float32           `Gaia`_ BP band magnitude
-GAIA_PHOT_RP_MEAN_MAG      float32           `Gaia`_ RP band magnitude
-PARALLAX                   float32           Reference catalog parallax
-PHOTSYS                    char[1]           'N' for the MzLS/BASS photometric system, 'S' for DECaLS
-PRIORITY_INIT              int64             label for field  65
-NUMOBS_INIT                int64             label for field  66
-CMX_TARGET [1]_            int64             Target selection bitmask for commissioning
-SV1_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV1
-SV1_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV1
-SV1_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV1
-SV1_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV1
-SV2_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV2
-SV2_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV2
-SV2_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV2
-SV2_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV2
-SV3_DESI_TARGET [1]_       int64             DESI (dark time program) target selection bitmask for SV3
-SV3_BGS_TARGET [1]_        int64             BGS (bright time program) target selection bitmask for SV3
-SV3_MWS_TARGET [1]_        int64             MWS (bright time program) target selection bitmask for SV3
-SV3_SCND_TARGET [1]_       int64             Secondary target selection bitmask for SV3
-DESI_TARGET                int64             DESI (dark time program) target selection bitmask
-BGS_TARGET                 int64             BGS (bright time program) target selection bitmask
-MWS_TARGET                 int64             MWS (bright time program) target selection bitmask
-SCND_TARGET                int64             Secondary target selection bitmask
-PLATE_RA                   float64           label for field  74
-PLATE_DEC                  float64           label for field  75
-TILEID                     int32             label for field  76
-COADD_NUMEXP               int16             label for field  77
-COADD_EXPTIME              float32           label for field  78
-COADD_NUMNIGHT             int16             label for field  79
-COADD_NUMTILE              int16             label for field  80
-MEAN_DELTA_X               float32           label for field  81
-RMS_DELTA_X                float32           label for field  82
-MEAN_DELTA_Y               float32           label for field  83
-RMS_DELTA_Y                float32           label for field  84
-MEAN_FIBER_RA              float64           label for field  85
-STD_FIBER_RA               float32           label for field  86
-MEAN_FIBER_DEC             float64           label for field  87
-STD_FIBER_DEC              float32           label for field  88
-MEAN_PSF_TO_FIBER_SPECFLUX float32           label for field  89
-MEAN_FIBER_X               float32           label for field  90
-MEAN_FIBER_Y               float32           label for field  91
-TSNR2_GPBDARK_B            float32           label for field  92
-TSNR2_ELG_B                float32           label for field  93
-TSNR2_GPBBRIGHT_B          float32           label for field  94
-TSNR2_LYA_B                float32           label for field  95
-TSNR2_BGS_B                float32           label for field  96
-TSNR2_GPBBACKUP_B          float32           label for field  97
-TSNR2_QSO_B                float32           label for field  98
-TSNR2_LRG_B                float32           label for field  99
-TSNR2_GPBDARK_R            float32           label for field 100
-TSNR2_ELG_R                float32           label for field 101
-TSNR2_GPBBRIGHT_R          float32           label for field 102
-TSNR2_LYA_R                float32           label for field 103
-TSNR2_BGS_R                float32           label for field 104
-TSNR2_GPBBACKUP_R          float32           label for field 105
-TSNR2_QSO_R                float32           label for field 106
-TSNR2_LRG_R                float32           label for field 107
-TSNR2_GPBDARK_Z            float32           label for field 108
-TSNR2_ELG_Z                float32           label for field 109
-TSNR2_GPBBRIGHT_Z          float32           label for field 110
-TSNR2_LYA_Z                float32           label for field 111
-TSNR2_BGS_Z                float32           label for field 112
-TSNR2_GPBBACKUP_Z          float32           label for field 113
-TSNR2_QSO_Z                float32           label for field 114
-TSNR2_LRG_Z                float32           label for field 115
-TSNR2_GPBDARK              float32           label for field 116
-TSNR2_ELG                  float32           label for field 117
-TSNR2_GPBBRIGHT            float32           label for field 118
-TSNR2_LYA                  float32           label for field 119
-TSNR2_BGS                  float32           label for field 120
-TSNR2_GPBBACKUP            float32           label for field 121
-TSNR2_QSO                  float32           label for field 122
-TSNR2_LRG                  float32           label for field 123
-SV_NSPEC [1]_              int32
-SV_PRIMARY [1]_            logical
-MAIN_NSPEC [1]_            int32
-MAIN_PRIMARY [1]_          logical
-ZCAT_NSPEC                 int16
-ZCAT_PRIMARY               logical
-========================== =========== ===== ===================
+SPGRPVAL                   int32                    Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
+Z                          float64                  Redshift measured by Redrock
+ZERR                       float64                  Redshift error from redrock
+ZWARN                      int64                    Redshift warning bitmask from Redrock
+CHI2                       float64                  Best fit chi squared
+COEFF                      float64[10]              Redrock template coefficients
+NPIXELS                    int64                    Number of unmasked pixels contributing to the Redrock fit
+SPECTYPE                   char[6]                  Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
+SUBTYPE                    char[20]                 Spectral subtype
+NCOEFF                     int64                    Number of Redrock template coefficients
+DELTACHI2                  float64                  chi2 difference between first- and second-best redrock template fits
+PETAL_LOC                  int16                    Petal location [0-9]
+DEVICE_LOC                 int32                    Device location on focal plane [0-523]
+LOCATION                   int64                    Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                      int32                    Fiber ID on the CCDs [0-4999]
+COADD_FIBERSTATUS          int32                    bitwise-AND of input FIBERSTATUS
+TARGET_RA                  float64     deg          Barycentric Right Ascension in ICRS
+TARGET_DEC                 float64     deg          Barycentric Declination in ICRS
+PMRA                       float32     mas yr^-1    Reference catalog proper motion in the RA direction
+PMDEC                      float32     mas yr^-1    Reference catalog proper motion in the Dec direction
+REF_EPOCH                  float32     yr           Reference catalog reference epoch (*e.g.*, 2015.5 for Gaia_ DR2)
+LAMBDA_REF                 float32     Angstrom     Requested wavelength at which targets should be centered on fibers
+FA_TARGET                  int64                    Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE                    binary                   Fiberassign internal target type (science, standard, sky, safe, suppsky)
+OBJTYPE                    char[3]                  Object type: TGT, SKY, NON, BAD
+FIBERASSIGN_X              float32     mm           Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y              float32     mm           Fiberassign expected CS5 Y location on focal plane
+PRIORITY                   int32                    Target current priority
+SUBPRIORITY                float64                  Random subpriority [0-1] to break assignment ties
+OBSCONDITIONS              int32                    Flag the target to be observed in graytime.
+RELEASE                    int16                    Legacy Surveys (`LS`_) `Release`_
+BRICKNAME                  char[8]                  Brick name from tractor input
+BRICKID                    int32                    Brick ID from tractor input
+BRICK_OBJID                int32                    OBJID (unique to brick, but not to file)
+MORPHTYPE                  char[4]                  `Morphological Model`_ type
+EBV                        float32     mag          Galactic extinction E(B-V) reddening from SFD98_
+FLUX_G                     float32     nanomaggy    `LS`_ flux from tractor input (g)
+FLUX_R                     float32     nanomaggy    `LS`_ flux from tractor input (r)
+FLUX_Z                     float32     nanomaggy    `LS`_ flux from tractor input (z)
+FLUX_W1                    float32     nanomaggy    WISE flux in W1
+FLUX_W2                    float32     nanomaggy    WISE flux in W2
+FLUX_IVAR_G                float32     nanomaggy^-2 Inverse Variance of FLUX_G
+FLUX_IVAR_R                float32     nanomaggy^-2 Inverse Variance of FLUX_R
+FLUX_IVAR_Z                float32     nanomaggy^-2 Inverse Variance of FLUX_Z
+FLUX_IVAR_W1               float32     nanomaggy^-2 Inverse Variance of FLUX_W1
+FLUX_IVAR_W2               float32     nanomaggy^-2 Inverse Variance of FLUX_W2
+FIBERFLUX_G                float32     nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_R                float32     nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z                float32     nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_G             float32     nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_R             float32     nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_Z             float32     nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+MASKBITS                   int16                    Bitwise mask indicating that an object touches a pixel in the ``coadd/*/*/*maskbits*`` maps, as cataloged on the `DR9 bitmasks page`_
+SERSIC                     float32                  Power-law index for the Sersic profile model (``type="SER"``)
+SHAPE_R                    float32     arcsec       Half-light radius of galaxy model for galaxy type ``type`` (>0)
+SHAPE_E1                   float32                  `Ellipticity component`_ 1 of galaxy model for galaxy type ``type``
+SHAPE_E2                   float32                  `Ellipticity component`_ 2 of galaxy model for galaxy type ``type``
+REF_ID                     int64                    Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
+REF_CAT                    char[2]                  Reference catalog source for this star: "T2" for `Tycho-2`_, "G2" for `Gaia`_ DR2, "L3" for the SGA_, empty otherwise
+GAIA_PHOT_G_MEAN_MAG       float32     mag          `Gaia`_ G band magnitude
+GAIA_PHOT_BP_MEAN_MAG      float32     mag          `Gaia`_ BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG      float32     mag          `Gaia`_ RP band magnitude
+PARALLAX                   float32     mas          Reference catalog parallax
+PHOTSYS                    char[1]                  'N' for the MzLS/BASS photometric system, 'S' for DECaLS
+PRIORITY_INIT              int64                    Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT                int64                    Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+CMX_TARGET [1]_            int64                    Target selection bitmask for commissioning
+SV1_DESI_TARGET [1]_       int64                    DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_        int64                    BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_        int64                    MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_       int64                    Secondary target selection bitmask for SV1
+SV2_DESI_TARGET [1]_       int64                    DESI (dark time program) target selection bitmask for SV2
+SV2_BGS_TARGET [1]_        int64                    BGS (bright time program) target selection bitmask for SV2
+SV2_MWS_TARGET [1]_        int64                    MWS (bright time program) target selection bitmask for SV2
+SV2_SCND_TARGET [1]_       int64                    Secondary target selection bitmask for SV2
+SV3_DESI_TARGET [1]_       int64                    DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_        int64                    BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_        int64                    MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_       int64                    Secondary target selection bitmask for SV3
+DESI_TARGET                int64                    DESI (dark time program) target selection bitmask
+BGS_TARGET                 int64                    BGS (bright time program) target selection bitmask
+MWS_TARGET                 int64                    MWS (bright time program) target selection bitmask
+SCND_TARGET                int64                    Secondary target selection bitmask
+PLATE_RA                   float64     deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC                  float64     deg          Barycentric Declination in ICRS to be used by PlateMaker
+TILEID                     int32                    Unique DESI tile ID
+COADD_NUMEXP               int16                    Number of exposures in coadd
+COADD_EXPTIME              float32     s            Summed exposure time for coadd
+COADD_NUMNIGHT             int16                    Number of nights in coadd
+COADD_NUMTILE              int16                    Number of tiles in coadd
+MEAN_DELTA_X               float32     mm           Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
+RMS_DELTA_X                float32     mm           RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
+MEAN_DELTA_Y               float32     mm           Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
+RMS_DELTA_Y                float32     mm           RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_FIBER_RA              float64     deg          Mean (over exposures) RA of actual fiber position
+STD_FIBER_RA               float32     arcsec       Standard deviation (over exposures) of RA of actual fiber position
+MEAN_FIBER_DEC             float64     deg          Mean (over exposures) DEC of actual fiber position
+STD_FIBER_DEC              float32     arcsec       Standard deviation (over exposures) of DEC of actual fiber position
+MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+MEAN_FIBER_X               float32                  label for field  90
+MEAN_FIBER_Y               float32                  label for field  91
+TSNR2_GPBDARK_B            float32                  label for field  92
+TSNR2_ELG_B                float32                  ELG B template (S/N)^2
+TSNR2_GPBBRIGHT_B          float32                  label for field  94
+TSNR2_LYA_B                float32                  LYA B template (S/N)^2
+TSNR2_BGS_B                float32                  BGS B template (S/N)^2
+TSNR2_GPBBACKUP_B          float32                  label for field  97
+TSNR2_QSO_B                float32                  QSO B template (S/N)^2
+TSNR2_LRG_B                float32                  LRG B template (S/N)^2
+TSNR2_GPBDARK_R            float32                  label for field 100
+TSNR2_ELG_R                float32                  ELG R template (S/N)^2
+TSNR2_GPBBRIGHT_R          float32                  label for field 102
+TSNR2_LYA_R                float32                  LYA R template (S/N)^2
+TSNR2_BGS_R                float32                  BGS R template (S/N)^2
+TSNR2_GPBBACKUP_R          float32                  label for field 105
+TSNR2_QSO_R                float32                  QSO R template (S/N)^2
+TSNR2_LRG_R                float32                  LRG R template (S/N)^2
+TSNR2_GPBDARK_Z            float32                  label for field 108
+TSNR2_ELG_Z                float32                  ELG Z template (S/N)^2
+TSNR2_GPBBRIGHT_Z          float32                  label for field 110
+TSNR2_LYA_Z                float32                  LYA Z template (S/N)^2
+TSNR2_BGS_Z                float32                  BGS Z template (S/N)^2
+TSNR2_GPBBACKUP_Z          float32                  label for field 113
+TSNR2_QSO_Z                float32                  QSO Z template (S/N)^2
+TSNR2_LRG_Z                float32                  LRG Z template (S/N)^2
+TSNR2_GPBDARK              float32                  label for field 116
+TSNR2_ELG                  float32                  ELG template (S/N)^2 summed over B,R,Z
+TSNR2_GPBBRIGHT            float32                  label for field 118
+TSNR2_LYA                  float32                  LYA template (S/N)^2 summed over B,R,Z
+TSNR2_BGS                  float32                  BGS template (S/N)^2 summed over B,R,Z
+TSNR2_GPBBACKUP            float32                  label for field 121
+TSNR2_QSO                  float32                  QSO template (S/N)^2 summed over B,R,Z
+TSNR2_LRG                  float32                  LRG template (S/N)^2 summed over B,R,Z
+SV_NSPEC [1]_              int32                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)
+SV_PRIMARY [1]_            logical                  Boolean flag (True/False) for the primary coadded spectrum in SV (SV1+2+3)
+MAIN_NSPEC [1]_            int32                    Number of coadded spectra for this TARGETID in Main survey
+MAIN_PRIMARY [1]_          logical                  Boolean flag (True/False) for the primary coadded spectrum in Main survey
+ZCAT_NSPEC                 int16                    Number of coadded spectra for this TARGETID in this zcatalog
+ZCAT_PRIMARY               logical                  Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
+========================== =========== ============ =====================================================================================================================================
 
 .. [1] Optional
 .. _`LS`: https://www.legacysurvey.org/
@@ -243,12 +251,19 @@ ZCAT_PRIMARY               logical
 .. _SFD98: https://ui.adsabs.harvard.edu/abs/1998ApJ...500..525S/abstract
 .. _SGA: https://www.legacysurvey.org/sga/sga2020
 
+Note: ztile files do not have ``SV_NSPEC`` or ``SV_PRIMARY`` columns;
+these are added when the ztile files are combined into
+:doc:`zall-tilecumulative <./zall-tilecumulative-SPECPROD>` files.
+``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are reserved for future data releases
+for the DESI Main Survey.
+
 HDU2
 ----
 
 EXTNAME = EXP_FIBERMAP
 
-*Summarize the contents of this HDU.*
+Input fibermap entries for columns that apply per-exposure and can't be coadded,
+e.g. the individual TILEIDs and FIBERs on which each target was observed.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -269,39 +284,39 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======= ===== ===================
-Name                  Type    Units Description
-===================== ======= ===== ===================
-TARGETID              int64         label for field   1
-PRIORITY              int32         label for field   2
-SUBPRIORITY           float64       label for field   3
-NIGHT                 int32         label for field   4
-EXPID                 int32         label for field   5
-MJD                   float64       label for field   6
-TILEID                int32         label for field   7
-EXPTIME               float64       label for field   8
-PETAL_LOC             int16         label for field   9
-DEVICE_LOC            int32         label for field  10
-LOCATION              int64         label for field  11
-FIBER                 int32         label for field  12
-FIBERSTATUS           int32         label for field  13
-FIBERASSIGN_X         float32       label for field  14
-FIBERASSIGN_Y         float32       label for field  15
-LAMBDA_REF            float32       label for field  16
-PLATE_RA              float64       label for field  17
-PLATE_DEC             float64       label for field  18
-NUM_ITER              int64         label for field  19
-FIBER_X               float64       label for field  20
-FIBER_Y               float64       label for field  21
-DELTA_X               float64       label for field  22
-DELTA_Y               float64       label for field  23
-FIBER_RA              float64       label for field  24
-FIBER_DEC             float64       label for field  25
-PSF_TO_FIBER_SPECFLUX float64       label for field  26
-===================== ======= ===== ===================
+===================== ======= ======== =======================================================================================================
+Name                  Type    Units    Description
+===================== ======= ======== =======================================================================================================
+TARGETID              int64            Unique DESI target ID
+PRIORITY              int32            Target current priority
+SUBPRIORITY           float64          Random subpriority [0-1) to break assignment ties
+NIGHT                 int32
+EXPID                 int32            DESI Exposure ID number
+MJD                   float64          Modified Julian Date when shutter was opened for this exposure
+TILEID                int32            Unique DESI tile ID
+EXPTIME               float64 s        Length of time shutter was open
+PETAL_LOC             int16            Petal location [0-9]
+DEVICE_LOC            int32            Device location on focal plane [0-523]
+LOCATION              int64            Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                 int32            Fiber ID on the CCDs [0-4999]
+FIBERSTATUS           int32            Fiber status mask. 0=good
+FIBERASSIGN_X         float32 mm       Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y         float32 mm       Fiberassign expected CS5 Y location on focal plane
+LAMBDA_REF            float32 Angstrom Requested wavelength at which targets should be centered on fibers
+PLATE_RA              float64 deg      Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64 deg      Barycentric Declination in ICRS to be used by PlateMaker
+NUM_ITER              int64            Number of positioner iterations
+FIBER_X               float64 mm       CS5 X location requested by PlateMaker
+FIBER_Y               float64 mm       CS5 Y location requested by PlateMaker
+DELTA_X               float64 mm       CS5 X requested minus actual position
+DELTA_Y               float64 mm       CS5 Y requested minus actual position
+FIBER_RA              float64 deg      RA of actual fiber position
+FIBER_DEC             float64 deg      DEC of actual fiber position
+PSF_TO_FIBER_SPECFLUX float64          fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+===================== ======= ======== =======================================================================================================
 
 
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+None yet.
