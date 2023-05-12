@@ -5,7 +5,6 @@ ztile-SURVEY-PROGRAM-GROUPTYPE.fits
 :Summary: This file contatenates the individual
           :doc:`tile-based Redrock redshift catalogs </DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>`
           into a single file per SURVEY, PROGRAM, and spectral GROUPTYPE.
-
 :Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``,
     and ``GROUPTYPE`` is ``cumulative`` or ``pernight``.
