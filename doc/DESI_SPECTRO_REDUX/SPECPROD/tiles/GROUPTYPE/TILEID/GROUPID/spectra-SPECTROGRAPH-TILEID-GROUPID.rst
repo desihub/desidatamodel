@@ -41,7 +41,7 @@ same row index of the FIBERMAP and SCORES HDUs.
 Details are given below, with examples for reading and interpreting the
 spectra files at the end.
 
-Note: the above is the order in which these HDUs appear in DESI spectroscopic
+Note: the table below is the order in which these HDUs appear in DESI spectroscopic
 pipeline output, but the order is arbitrary and they should be read by
 name not by number.
 
@@ -133,15 +133,14 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     NAXIS1   413              int  Width of table in bytes
     NAXIS2   500              int  Number of unique targets (table rows)
-    CHECKSUM TcPqUbPoTbPoTbPo str  HDU checksum updated 2021-07-15T00:33:13
-    DATASUM  1051947488       str  data unit checksum updated 2021-07-15T00:33:13
+    CHECKSUM TcPqUbPoTbPoTbPo str  HDU checksum
+    DATASUM  1051947488       str  data unit checksum
     ======== ================ ==== ==============================================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See the :doc:`fibermap documentation </DESI_SPECTRO_REDUX/SPECPROD/preproc/NIGHT/EXPID/fibermap-EXPID>` page
-for detailed descriptions of the columns.
+Propagated from the FIBERMAP HDU of the input :doc:`cframe files </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`.
 
 .. rst-class:: columns
 
@@ -152,10 +151,10 @@ TARGETID              int64                Unique DESI target ID
 PETAL_LOC             int16                Petal location [0-9]
 DEVICE_LOC            int32                Device location on focal plane [0-523]
 LOCATION              int64                Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-FIBER                 int32
+FIBER                 int32                Fiber ID on the CCDs [0-4999]
 FIBERSTATUS           int32                Fiber status mask. 0=good
-TARGET_RA             float64 deg          Target right ascension
-TARGET_DEC            float64 deg          Target declination
+TARGET_RA             float64 deg          Barycentric right ascension in ICRS
+TARGET_DEC            float64 deg          Barycentric declination in ICRS
 PMRA                  float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
 PMDEC                 float32 mas yr^-1    Proper motion in the +Dec direction
 REF_EPOCH             float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
@@ -216,8 +215,8 @@ DESI_TARGET           int64                DESI (dark time program) target selec
 BGS_TARGET            int64                BGS (Bright Galaxy Survey) target selection bitmask
 MWS_TARGET            int64                Milky Way Survey targeting bits
 SCND_TARGET [1]_      int64                Target selection bitmask for secondary programs
-PLATE_RA              float64 deg          Right Ascension to be used by PlateMaker
-PLATE_DEC             float64 deg          Declination to be used by PlateMaker
+PLATE_RA              float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
 NUM_ITER              int64                Number of positioner iterations
 FIBER_X               float64 mm           CS5 X location requested by PlateMaker
 FIBER_Y               float64 mm           CS5 Y location requested by PlateMaker
@@ -242,8 +241,7 @@ EXTNAME = SCORES
 
 Scores / metrics measured from the spectra for use in QA and systematics studies.
 These are propagated from the input
-:doc:`cframe SCORES HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`;
-see that page for details.
+:doc:`cframe SCORES HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -267,71 +265,71 @@ documentation for details about the columns.
 
 .. rst-class:: columns
 
-===================== ======= ===== ======================
+===================== ======= ===== ============================================================
 Name                  Type    Units Description
-===================== ======= ===== ======================
+===================== ======= ===== ============================================================
 TARGETID              int64         Unique DESI target ID
-SUM_RAW_COUNT_B       float64
-MEDIAN_RAW_COUNT_B    float64
-MEDIAN_RAW_SNR_B      float64
-SUM_FFLAT_COUNT_B     float64
-MEDIAN_FFLAT_COUNT_B  float64
-MEDIAN_FFLAT_SNR_B    float64
-SUM_SKYSUB_COUNT_B    float64
-MEDIAN_SKYSUB_COUNT_B float64
-MEDIAN_SKYSUB_SNR_B   float64
-SUM_CALIB_COUNT_B     float64
-MEDIAN_CALIB_COUNT_B  float64
-MEDIAN_CALIB_SNR_B    float64
-TSNR2_GPBDARK_B       float64
+SUM_RAW_COUNT_B       float64       Sum of raw counts in B camera
+MEDIAN_RAW_COUNT_B    float64       Median of raw counts in B camera
+MEDIAN_RAW_SNR_B      float64       Median(raw signal/noise) in B camera
+SUM_FFLAT_COUNT_B     float64       Sum of fiber-flatfielded counts B camera
+MEDIAN_FFLAT_COUNT_B  float64       Median of fiber-flatfielded counts in B camera
+MEDIAN_FFLAT_SNR_B    float64       Median(S/N) of fiberflatfielded counts in B camera
+SUM_SKYSUB_COUNT_B    float64       Sum of sky-subtracted counts in B camera
+MEDIAN_SKYSUB_COUNT_B float64       Median of sky-subtracted counts in B camera
+MEDIAN_SKYSUB_SNR_B   float64       Median(S/N) of sky-subtracted counts in B camera
+SUM_CALIB_COUNT_B     float64       Sum of calibrated flux in B camera
+MEDIAN_CALIB_COUNT_B  float64       Median of calibrated flux in B camera
+MEDIAN_CALIB_SNR_B    float64       Median(S/N) of calibrated flux in B camera
+TSNR2_GPBDARK_B       float64       template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B           float64       ELG B template (S/N)^2
-TSNR2_GPBBRIGHT_B     float64
+TSNR2_GPBBRIGHT_B     float64       template (S/N)^2 for bright targets in guider pass band on B
 TSNR2_LYA_B           float64       LYA B template (S/N)^2
 TSNR2_BGS_B           float64       BGS B template (S/N)^2
 TSNR2_GPBBACKUP_B     float64
 TSNR2_QSO_B           float64       QSO B template (S/N)^2
 TSNR2_LRG_B           float64       LRG B template (S/N)^2
-SUM_RAW_COUNT_R       float64
-MEDIAN_RAW_COUNT_R    float64
-MEDIAN_RAW_SNR_R      float64
-SUM_FFLAT_COUNT_R     float64
-MEDIAN_FFLAT_COUNT_R  float64
-MEDIAN_FFLAT_SNR_R    float64
-SUM_SKYSUB_COUNT_R    float64
-MEDIAN_SKYSUB_COUNT_R float64
-MEDIAN_SKYSUB_SNR_R   float64
-SUM_CALIB_COUNT_R     float64
-MEDIAN_CALIB_COUNT_R  float64
-MEDIAN_CALIB_SNR_R    float64
-TSNR2_GPBDARK_R       float64
+SUM_RAW_COUNT_R       float64       Sum of raw counts in R camera
+MEDIAN_RAW_COUNT_R    float64       Median of raw counts in R camera
+MEDIAN_RAW_SNR_R      float64       Median(raw signal/noise) in R camera
+SUM_FFLAT_COUNT_R     float64       Sum of fiber-flatfielded counts R camera
+MEDIAN_FFLAT_COUNT_R  float64       Median of fiber-flatfielded counts in R camera
+MEDIAN_FFLAT_SNR_R    float64       Median(S/N) of fiberflatfielded counts in R camera
+SUM_SKYSUB_COUNT_R    float64       Sum of sky-subtracted counts in R camera
+MEDIAN_SKYSUB_COUNT_R float64       Median of sky-subtracted counts in R camera
+MEDIAN_SKYSUB_SNR_R   float64       Median(S/N) of sky-subtracted counts in R camera
+SUM_CALIB_COUNT_R     float64       Sum of calibrated flux in R camera
+MEDIAN_CALIB_COUNT_R  float64       Median of calibrated flux in R camera
+MEDIAN_CALIB_SNR_R    float64       Median(S/N) of calibrated flux in R camera
+TSNR2_GPBDARK_R       float64       template (S/N)^2 for dark targets in guider pass band on R
 TSNR2_ELG_R           float64       ELG R template (S/N)^2
-TSNR2_GPBBRIGHT_R     float64
+TSNR2_GPBBRIGHT_R     float64       template (S/N)^2 for bright targets in guider pass band on R
 TSNR2_LYA_R           float64       LYA R template (S/N)^2
 TSNR2_BGS_R           float64       BGS R template (S/N)^2
 TSNR2_GPBBACKUP_R     float64
 TSNR2_QSO_R           float64       QSO R template (S/N)^2
 TSNR2_LRG_R           float64       LRG R template (S/N)^2
-SUM_RAW_COUNT_Z       float64
-MEDIAN_RAW_COUNT_Z    float64
-MEDIAN_RAW_SNR_Z      float64
-SUM_FFLAT_COUNT_Z     float64
-MEDIAN_FFLAT_COUNT_Z  float64
-MEDIAN_FFLAT_SNR_Z    float64
-SUM_SKYSUB_COUNT_Z    float64
-MEDIAN_SKYSUB_COUNT_Z float64
-MEDIAN_SKYSUB_SNR_Z   float64
-SUM_CALIB_COUNT_Z     float64
-MEDIAN_CALIB_COUNT_Z  float64
-MEDIAN_CALIB_SNR_Z    float64
-TSNR2_GPBDARK_Z       float64
+SUM_RAW_COUNT_Z       float64       Sum of raw counts in Z camera
+MEDIAN_RAW_COUNT_Z    float64       Median of raw counts in Z camera
+MEDIAN_RAW_SNR_Z      float64       Median(raw signal/noise) in Z camera
+SUM_FFLAT_COUNT_Z     float64       Sum of fiber-flatfielded counts Z camera
+MEDIAN_FFLAT_COUNT_Z  float64       Median of fiber-flatfielded counts in Z camera
+MEDIAN_FFLAT_SNR_Z    float64       Median(S/N) of fiberflatfielded counts in Z camera
+SUM_SKYSUB_COUNT_Z    float64       Sum of sky-subtracted counts in Z camera
+MEDIAN_SKYSUB_COUNT_Z float64       Median of sky-subtracted counts in Z camera
+MEDIAN_SKYSUB_SNR_Z   float64       Median(S/N) of sky-subtracted counts in Z camera
+SUM_CALIB_COUNT_Z     float64       Sum of calibrated flux in Z camera
+MEDIAN_CALIB_COUNT_Z  float64       Median of calibrated flux in Z camera
+MEDIAN_CALIB_SNR_Z    float64       Median(S/N) of calibrated flux in Z camera
+TSNR2_GPBDARK_Z       float64       template (S/N)^2 for dark targets in guider pass band on Z
 TSNR2_ELG_Z           float64       ELG Z template (S/N)^2
-TSNR2_GPBBRIGHT_Z     float64
+TSNR2_GPBBRIGHT_Z     float64       template (S/N)^2 for bright targets in guider pass band on Z
 TSNR2_LYA_Z           float64       LYA Z template (S/N)^2
 TSNR2_BGS_Z           float64       BGS Z template (S/N)^2
 TSNR2_GPBBACKUP_Z     float64
 TSNR2_QSO_Z           float64       QSO Z template (S/N)^2
 TSNR2_LRG_Z           float64       LRG Z template (S/N)^2
-===================== ======= ===== ======================
+===================== ======= ===== ============================================================
 
 HDU03
 -----
@@ -465,6 +463,19 @@ Required Header Keywords
     ====== ============= ==== =====================
 
 Data: FITS image [float32, 2751x11x500]
+
+A sparse resolution matrix may be created for spectrum ``i`` with::
+
+    from desispec.resolution import Resolution
+    R = Resolution(data[i])
+
+Or using lower-level scipy.sparse matrices::
+
+    import scipy.sparse
+    import numpy as np
+    nspec, ndiag, nwave = data.shape
+    offsets = ndiag//2 - np.arange(ndiag, dtype=int)
+    R = scipy.sparse.dia_matrix((data[i], offsets), shape=(nwave, nwave))
 
 HDU08
 -----

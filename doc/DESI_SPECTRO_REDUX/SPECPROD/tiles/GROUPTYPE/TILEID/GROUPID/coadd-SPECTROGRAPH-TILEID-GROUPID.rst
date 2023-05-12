@@ -122,8 +122,6 @@ Required Header Keywords
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO: add units
-
 .. rst-class:: columns
 
 ========================== ======= ============ ===============================================================================================================================
@@ -135,8 +133,8 @@ DEVICE_LOC                 int32                Device location on focal plane [
 LOCATION                   int64                Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 FIBER                      int32                Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32                bitwise-AND of input FIBERSTATUS
-TARGET_RA                  float64 deg          Target right ascension
-TARGET_DEC                 float64 deg          Target declination
+TARGET_RA                  float64 deg          Barycentric right ascension in ICRS
+TARGET_DEC                 float64 deg          Barycentric declination in ICRS
 PMRA                       float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
 PMDEC                      float32 mas yr^-1    Proper motion in the +Dec direction
 REF_EPOCH                  float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
@@ -197,8 +195,8 @@ DESI_TARGET                int64                DESI (dark time program) target 
 BGS_TARGET                 int64                BGS (Bright Galaxy Survey) target selection bitmask
 MWS_TARGET                 int64                Milky Way Survey targeting bits
 SCND_TARGET [1]_           int64                Target selection bitmask for secondary programs
-PLATE_RA                   float64 deg          Right Ascension to be used by PlateMaker
-PLATE_DEC                  float64 deg          Declination to be used by PlateMaker
+PLATE_RA                   float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC                  float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
 TILEID                     int32                Unique DESI tile ID
 COADD_NUMEXP               int16                Number of exposures in coadd
 COADD_EXPTIME              float32 s            Summed exposure time for coadd
@@ -270,8 +268,8 @@ FIBERSTATUS           int32            Fiber status mask. 0=good
 FIBERASSIGN_X         float32 mm       Fiberassign expected CS5 X location on focal plane
 FIBERASSIGN_Y         float32 mm       Fiberassign expected CS5 Y location on focal plane
 LAMBDA_REF            float32 Angstrom Requested wavelength at which targets should be centered on fibers
-PLATE_RA              float64 deg      Right Ascension to be used by PlateMaker
-PLATE_DEC             float64 deg      Declination to be used by PlateMaker
+PLATE_RA              float64 deg      Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64 deg      Barycentric Declination in ICRS to be used by PlateMaker
 NUM_ITER              int64            Number of positioner iterations
 FIBER_X               float64 mm       CS5 X location requested by PlateMaker
 FIBER_Y               float64 mm       CS5 Y location requested by PlateMaker
@@ -395,7 +393,7 @@ EXTNAME = B_RESOLUTION
 
 Resolution matrix stored as diagonals of a 3D sparse matrix.
 See the frame file :ref:`RESOLUTION documentation <frame-hdu4-resolution>`
-for how thease are interpreted and used.
+for how these are interpreted and used.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -415,6 +413,19 @@ Required Header Keywords
     ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2751x11x500]
+
+A sparse resolution matrix may be created for spectrum ``i`` with::
+
+    from desispec.resolution import Resolution
+    R = Resolution(data[i])
+
+Or using lower-level scipy.sparse matrices::
+
+    import scipy.sparse
+    import numpy as np
+    nspec, ndiag, nwave = data.shape
+    offsets = ndiag//2 - np.arange(ndiag, dtype=int)
+    R = scipy.sparse.dia_matrix((data[i], offsets), shape=(nwave, nwave))
 
 HDU08
 -----
@@ -692,7 +703,7 @@ EXTNAME = SCORES
 Scores / metrics measured from the spectra for use in QA and systematics studies.
 These are coadded from the input
 :doc:`cframe SCORES HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`
-files;  see that page for details.
+files.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -704,7 +715,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   172              int
+    NAXIS1   172              int  Width of table in bytes
     NAXIS2   500              int  Number of spectra
     ENCODING ascii            str
     CHECKSUM EpXcGmWcEmWcEmWc str  HDU checksum updated 2021-07-16T14:01:59
@@ -716,9 +727,9 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-=================== ======= ===== ============================================
+=================== ======= ===== ============================================================
 Name                Type    Units Description
-=================== ======= ===== ============================================
+=================== ======= ===== ============================================================
 TARGETID            int64         Unique DESI target ID
 INTEG_COADD_FLUX_B  float32       integ. flux in wave. range 4000,5800A
 MEDIAN_COADD_FLUX_B float32       median flux in wave. range 4000,5800A
@@ -729,39 +740,39 @@ MEDIAN_COADD_SNR_R  float32       median SNR/sqrt(A) in wave. range 5800,7600A
 INTEG_COADD_FLUX_Z  float32       integ. flux in wave. range 7600,9800A
 MEDIAN_COADD_FLUX_Z float32       median flux in wave. range 7600,9800A
 MEDIAN_COADD_SNR_Z  float32       median SNR/sqrt(A) in wave. range 7600,9800A
-TSNR2_GPBDARK_B     float32       GPBDARK B template (S/N)^2
+TSNR2_GPBDARK_B     float32       template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B         float32       ELG B template (S/N)^2
-TSNR2_GPBBRIGHT_B   float32       GPBBRIGHT B template (S/N)^2
+TSNR2_GPBBRIGHT_B   float32       template (S/N)^2 for bright targets in guider pass band on B
 TSNR2_LYA_B         float32       LYA B template (S/N)^2
 TSNR2_BGS_B         float32       BGS B template (S/N)^2
 TSNR2_GPBBACKUP_B   float32       GPBBACKUP B template (S/N)^2
 TSNR2_QSO_B         float32       QSO B template (S/N)^2
 TSNR2_LRG_B         float32       LRG B template (S/N)^2
-TSNR2_GPBDARK_R     float32       GPBDARK R template (S/N)^2
+TSNR2_GPBDARK_R     float32       template (S/N)^2 for dark targets in guider pass band on R
 TSNR2_ELG_R         float32       ELG R template (S/N)^2
-TSNR2_GPBBRIGHT_R   float32       GPBBRIGHT R template (S/N)^2
+TSNR2_GPBBRIGHT_R   float32       template (S/N)^2 for bright targets in guider pass band on R
 TSNR2_LYA_R         float32       LYA R template (S/N)^2
 TSNR2_BGS_R         float32       BGS R template (S/N)^2
 TSNR2_GPBBACKUP_R   float32       GPBBACKUP R template (S/N)^2
 TSNR2_QSO_R         float32       QSO R template (S/N)^2
 TSNR2_LRG_R         float32       LRG R template (S/N)^2
-TSNR2_GPBDARK_Z     float32       GPBDARK Z template (S/N)^2
+TSNR2_GPBDARK_Z     float32       template (S/N)^2 for dark targets in guider pass band on Z
 TSNR2_ELG_Z         float32       ELG Z template (S/N)^2
-TSNR2_GPBBRIGHT_Z   float32       GPBBRIGHT Z template (S/N)^2
+TSNR2_GPBBRIGHT_Z   float32       template (S/N)^2 for bright targets in guider pass band on Z
 TSNR2_LYA_Z         float32       LYA Z template (S/N)^2
 TSNR2_BGS_Z         float32       BGS Z template (S/N)^2
 TSNR2_GPBBACKUP_Z   float32       GPBBACKUP Z template (S/N)^2
 TSNR2_QSO_Z         float32       QSO Z template (S/N)^2
 TSNR2_LRG_Z         float32       LRG Z template (S/N)^2
-TSNR2_GPBDARK       float32       GPBDARK template (S/N)^2 summed over B,R,Z
+TSNR2_GPBDARK       float32       template (S/N)^2 for dark targets in guider pass band
 TSNR2_ELG           float32       ELG template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBRIGHT     float32       GPBBRIGHT template (S/N)^2 summed over B,R,Z
+TSNR2_GPBBRIGHT     float32       template (S/N)^2 for bright targets in guider pass band
 TSNR2_LYA           float32       LYA template (S/N)^2 summed over B,R,Z
 TSNR2_BGS           float32       BGS template (S/N)^2 summed over B,R,Z
 TSNR2_GPBBACKUP     float32       GPBBACKUP template (S/N)^2 summed over B,R,Z
 TSNR2_QSO           float32       QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG           float32       LRG template (S/N)^2 summed over B,R,Z
-=================== ======= ===== ============================================
+=================== ======= ===== ============================================================
 
 
 Notes and Examples
