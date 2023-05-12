@@ -2,9 +2,7 @@
 tilepix.fits
 ============
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file maps which DESI tiles overlap which HEALpix pixels (nested nside=64).
 :Naming Convention: ``tilepix.fits``
 :Regex: ``tilepix\.fits``
 :File Type: FITS, 630 KB
@@ -15,8 +13,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  TILEPIX BINTABLE *Brief Description*
+HDU0_          IMAGE    Blank
+HDU1_  TILEPIX BINTABLE table with healpix:tile mapping
 ====== ======= ======== ===================
 
 
@@ -26,10 +24,6 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
-
-This HDU has no non-standard required keywords.
-
 Empty HDU.
 
 HDU1
@@ -37,7 +31,7 @@ HDU1
 
 EXTNAME = TILEPIX
 
-*Summarize the contents of this HDU.*
+Table mapping tile petals to HEALPix pixels (nested nside=64).
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,15 +57,37 @@ Required Data Table Columns
 ========= ======= ===== ===========
 Name      Type    Units Description
 ========= ======= ===== ===========
-TILEID    int32         *Description needed*
-SURVEY    char[7]       *Description needed*
-PROGRAM   char[6]       *Description needed*
-PETAL_LOC int16         *Description needed*
-HEALPIX   int32         *Description needed*
+TILEID    int32         DESI Tile ID
+SURVEY    char[7]       DESI survey (sv1, sv3, main...)
+PROGRAM   char[6]       DESI program (dark, bright, ...)
+PETAL_LOC int16         Petal location 0-9 = spectrograph number
+HEALPIX   int32         Nested nside=64 healpix number
 ========= ======= ===== ===========
 
 
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Each DESI tile has 10 petals/spectrographs, each of which overlaps multiple
+healpixels.  Similarly, each healpixel could be covered by multiple tile petals.
+Since many DESI files are split by petal (spectrograph), this map gives the
+individual petal coverage as well, not just that the tile overlaps the healpixel.
+
+Example::
+
+    import numpy as np
+    from astropy.table import Table
+    tilepix = Table.read('tilepix.fits')
+
+    #- All healpix that cover tile 100 (20 healpix)
+    np.unique(tilepix['HEALPIX'][tilepix['TILEID']==100])
+
+    #- All tiles that cover healpix 11250 (28 tiles)
+    np.unique(tilepix['TILEID'][tilepix['HEALPIX'] == 11250])
+
+There is also a json version of this file with a dictionary structured as::
+
+    tilepix[tileid][petal] -> list of healpix covered by that tile+petal
+
+Due to limitations of the json format, the ``tileid`` and ``petal`` keys of the
+dictionary are strings, not integers.
