@@ -2,11 +2,24 @@
 zall-tilecumulative-SPECPROD.fits
 =================================
 
-:Summary: Concatenation of all ``ztile-*.fits`` files.
-:Naming Convention: ``zall-pix-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
-    official name of the full reduction, *e.g.* ``everest``.
+:Summary: Concatenation of all ``ztile-*-cumulative.fits`` files.
+:Naming Convention: ``zall-tilecumulative-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
+    official name of the full reduction, *e.g.* ``fuji``.
 :Regex: ``zall-tilecumulative-[a-z0-9_-]+\.fits``
 :File Type: FITS, 2 GB
+
+This file contains a concatenation of all input
+:doc:`ztile-*-cumulative.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE>`
+files, combining
+redshift catalog entries across TILEs, SURVEYs and PROGRAMs.  It additionally adds
+a column ``SV_PRIMARY`` to indicate the best recommended redshift if the same
+``TARGETID`` appears multiple times, and ``SV_NSPEC`` for how many times each
+target appears.
+
+e.g. if the same Survey Validation ``TARGETID`` was observed on two different tiles, 
+it will appear as separate redshifts in separate ztile files, and will
+appear twice in this file with one of the entries having ``SV_PRIMARY==True``.
+Any target that appears only once will also have ``SV_PRIMARY==True``.
 
 Contents
 ========

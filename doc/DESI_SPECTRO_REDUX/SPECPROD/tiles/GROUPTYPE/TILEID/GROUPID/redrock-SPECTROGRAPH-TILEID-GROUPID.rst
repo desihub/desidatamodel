@@ -2,14 +2,17 @@
 redrock-SPECTROGRAPH-TILEID-GROUPID.fits
 ========================================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: Redshifts and spectral classifications from Redrock.
 :Naming Convention: ``redrock-SPECTROGRAPH-TILEID-GROUPID.fits``, where
     ``SPECTROGRAPH`` is the spectrograph ID, ``TILEID`` is the tile number and
     ``GROUPID`` depends on the ``GROUPTYPE`` of the tile coadd.
 :Regex: ``redrock-[0-9]-[0-9]+-([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})\.fits``
 :File Type: FITS, 450 KB
+
+This file contains spectral classifications and redshifts for spectra
+coadded across exposures of an individual tile.  For a similar file
+that also combined data across multiple tiles, see
+:doc:`healpix-based Redrock files </DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/redrock-SURVEY-PROGRAM-PIXNUM>`.
 
 Contents
 ========
@@ -18,10 +21,10 @@ Contents
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
 HDU0_               IMAGE    Keywords only
-HDU1_  REDSHIFTS    BINTABLE *Brief Description*
-HDU2_  FIBERMAP     BINTABLE *Brief Description*
-HDU3_  EXP_FIBERMAP BINTABLE *Brief Description*
-HDU4_  TSNR2        BINTABLE *Brief Description*
+HDU1_  REDSHIFTS    BINTABLE Table with redshifts and spectral classifications
+HDU2_  FIBERMAP     BINTABLE Target photometry, metadata, and what fibers they are assigned to
+HDU3_  EXP_FIBERMAP BINTABLE Per-exposure entries from input fibermaps
+HDU4_  TSNR2        BINTABLE Template signal-to-noise values from input coadd SCORES table
 ====== ============ ======== ===================
 
 
@@ -30,8 +33,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,8 +46,8 @@ Required Header Keywords
     ========== ============= ==== ===============
     LONGSTRN   OGIP 1.0      str
     RRVER      0.15.0        str  Redrock version
-    TEMNAM00   GALAXY        str
-    TEMVER00   2.6           str
+    TEMNAM00   GALAXY        str  Redrock template 00 name
+    TEMVER00   2.6           str  Redrock template 00 version
     TEMNAM01   QSO           str
     TEMVER01   0.1           str
     TEMNAM02   STAR:::A      str
@@ -65,12 +66,12 @@ Required Header Keywords
     TEMVER08   0.1           str
     TEMNAM09   STAR:::WD     str
     TEMVER09   0.1           str
-    SPGRP      1x_depth      str
-    SPGRPVAL   3             int
-    TILEID     80605         int
-    SPECTRO    6             int
-    PETAL      6             int
-    NIGHT [1]_ 20210708      int
+    SPGRP      cumulative    str  Exposure grouping (pernight, cumulative, ...)
+    SPGRPVAL   20210205      int  Value of grouping (night, expid, ...)
+    TILEID     80605         int  DESI Tile ID
+    SPECTRO    6             int  Spectrograph number
+    PETAL      6             int  Focal plane petal number (same as SPECTRO)
+    NIGHT [1]_ 20210205      int  (Last) night of data included, if applicable to grouping
     ========== ============= ==== ===============
 
 Empty HDU.
@@ -80,7 +81,7 @@ HDU1
 
 EXTNAME = REDSHIFTS
 
-*Summarize the contents of this HDU.*
+Spectral classifications and redshifts from Redrock.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -92,8 +93,8 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 170           int  length of dimension 1
-    NAXIS2 500           int  length of dimension 2
+    NAXIS1 170           int  Width of table in bytes
+    NAXIS2 500           int  Number of targets in table
     ====== ============= ==== =====================
 
 Required Data Table Columns
@@ -110,7 +111,7 @@ COEFF     float64[10]       Redrock template coefficients
 Z         float64           Redshift measured by Redrock
 ZERR      float64           Redshift error from redrock
 ZWARN     int64             Redshift warning bitmask from Redrock
-NPIXELS   int64
+NPIXELS   int64             Number of unmasked pixels contributing to the Redrock fit
 SPECTYPE  char[6]           Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 SUBTYPE   char[20]          Spectral subtype
 NCOEFF    int64             Number of Redrock template coefficients
@@ -122,7 +123,9 @@ HDU2
 
 EXTNAME = FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap with target metadata such as photometry, target selection bits,
+and what fibers each target was assigned to.
+This table is row-matched to the REDSHIFTS table.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,8 +137,8 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 371           int  length of dimension 1
-    NAXIS2 500           int  length of dimension 2
+    NAXIS1 371           int  Width of table in bytes
+    NAXIS2 500           int  Number of targets in table.
     ====== ============= ==== =====================
 
 Required Data Table Columns
@@ -150,10 +153,10 @@ TARGETID                   int64                Unique DESI target ID
 PETAL_LOC                  int16                Petal location [0-9]
 DEVICE_LOC                 int32                Device location on focal plane [0-523]
 LOCATION                   int64                Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-FIBER                      int32
+FIBER                      int32                Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32                bitwise-AND of input FIBERSTATUS
-TARGET_RA                  float64 deg          Target right ascension
-TARGET_DEC                 float64 deg          Target declination
+TARGET_RA                  float64 deg          Barycentric right ascension in ICRS
+TARGET_DEC                 float64 deg          Barycentric declination in ICRS
 PMRA                       float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
 PMDEC                      float32 mas yr^-1    Proper motion in the +Dec direction
 REF_EPOCH                  float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
@@ -210,8 +213,8 @@ DESI_TARGET                int64                DESI (dark time program) target 
 BGS_TARGET                 int64                BGS (Bright Galaxy Survey) target selection bitmask
 MWS_TARGET                 int64                Milky Way Survey targeting bits
 SCND_TARGET [1]_           int64                Target selection bitmask for secondary programs
-PLATE_RA                   float64 deg          Right Ascension to be used by PlateMaker
-PLATE_DEC                  float64 deg          Declination to be used by PlateMaker
+PLATE_RA                   float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC                  float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
 TILEID                     int32                Unique DESI tile ID
 COADD_NUMEXP               int16                Number of exposures in coadd
 COADD_EXPTIME              float32 s            Summed exposure time for coadd
@@ -237,7 +240,9 @@ HDU3
 
 EXTNAME = EXP_FIBERMAP
 
-*Summarize the contents of this HDU.*
+Fibermap entries that vary from exposure to exposure, e.g. what exposures
+were include in the coadd and what focalplane (x,y) each target was located
+at for each exposure.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -249,8 +254,8 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 162           int  length of dimension 1
-    NAXIS2 500           int  length of dimension 2
+    NAXIS1 162           int  Width of table in bytes
+    NAXIS2 500           int  Number of input target-exposures = rows in table
     ====== ============= ==== =====================
 
 Required Data Table Columns
@@ -272,13 +277,13 @@ EXPTIME               float64 s        Length of time shutter was open
 PETAL_LOC             int16            Petal location [0-9]
 DEVICE_LOC            int32            Device location on focal plane [0-523]
 LOCATION              int64            Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-FIBER                 int32
+FIBER                 int32            Fiber ID on the CCDs [0-4999]
 FIBERSTATUS           int32            Fiber status mask. 0=good
 FIBERASSIGN_X         float32 mm       Fiberassign expected CS5 X location on focal plane
 FIBERASSIGN_Y         float32 mm       Fiberassign expected CS5 Y location on focal plane
 LAMBDA_REF            float32 Angstrom Requested wavelength at which targets should be centered on fibers
-PLATE_RA              float64 deg      Right Ascension to be used by PlateMaker
-PLATE_DEC             float64 deg      Declination to be used by PlateMaker
+PLATE_RA              float64 deg      Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64 deg      Barycentric Declination in ICRS to be used by PlateMaker
 NUM_ITER              int64            Number of positioner iterations
 FIBER_X               float64 mm       CS5 X location requested by PlateMaker
 FIBER_Y               float64 mm       CS5 Y location requested by PlateMaker
@@ -294,7 +299,14 @@ HDU4
 
 EXTNAME = TSNR2
 
-*Summarize the contents of this HDU.*
+Template signal-to-noise squared.
+These quantities weight the observed (S/N)^2 by which wavelengths matter
+most for different target types, e.g. QSOs weight blue wavelengths more
+while ELGs weight redder wavelengths more due to the wavelengths of the
+observed emission lines.  For more details, see section 4.14 of
+`Guy et al 2023 <https://ui.adsabs.harvard.edu/abs/2023AJ....165..144G/abstract>`_.
+
+This table is row-matched to the REDSHIFTS table.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -306,8 +318,8 @@ Required Header Keywords
     ====== ============= ==== =====================
     KEY    Example Value Type Comment
     ====== ============= ==== =====================
-    NAXIS1 136           int  length of dimension 1
-    NAXIS2 500           int  length of dimension 2
+    NAXIS1 136           int  Width of table in bytes.
+    NAXIS2 500           int  Number of targets = number of table rows.
     ====== ============= ==== =====================
 
 Required Data Table Columns
@@ -357,4 +369,15 @@ TSNR2_LRG         float32       LRG template (S/N)^2 summed over B,R,Z
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+The REDSHIFTS, FIBERMAP, and TSNR2 tables are row-matched with one row per
+target.  They also include a TARGETID column for confirmation and
+database-like joins with other tables.
+The EXP_FIBERMAP HDU has one row per target-exposure, and thus will have
+multiple entries per target when a target was observed on multiple
+input exposures.
+
+This file is for redshifts from an individual spectrograph/petal of an
+individual tile.  For a contatenation of all such files within a given
+survey and program, see the
+:doc:`ztile file </DESI_SPECTRO_REDUX/SPECPROD/zcatalog/ztile-SURVEY-PROGRAM-GROUPTYPE>`.
+

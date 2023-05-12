@@ -175,10 +175,10 @@ def update(lines, force=False):
 
                     current_desc = rows[j]['Description']
                     if current_desc != description:
-                        if current_desc == '' or force:
+                        if current_desc == '' or current_desc.startswith('label for field ') or force:
                             rows[j]['Description'] = description
 
-                        if current_desc == '':
+                        if current_desc == '' or current_desc.startswith('label for field '):
                             log.info(f'Adding {name} Description "{description}"')
                         elif force:
                             log.warning(f'Updating {name} Description from "{current_desc}" to "{description}"')
