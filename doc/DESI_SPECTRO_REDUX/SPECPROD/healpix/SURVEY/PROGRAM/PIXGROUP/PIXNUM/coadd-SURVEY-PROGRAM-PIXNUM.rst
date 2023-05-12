@@ -5,7 +5,7 @@ coadd-SURVEY-PROGRAM-PIXNUM.fits
 :Summary: This holds the calibrated coadded spectra organized by healpix location
     on the sky.
 :Naming Convention: ``coadd-SURVEY-PROGRAM-PIXNUM.fits``, where ``SURVEY`` is
-    *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``
+    *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright`` or ``dark``
     and ``PIXNUM`` is the HEALPixel number.
 :Regex: ``coadd-(cmx|main|special|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.fits``
 :File Type: FITS, 219 MB
@@ -16,9 +16,6 @@ one entry per target instead of one entry per exposure per target, and
 the FIBERMAP replaces some exposure-specific columns with summary columns,
 e.g. ``NIGHT`` becomes ``FIRST_NIGHT``, ``LAST_NIGHT``, and ``NUM_NIGHT``.
 
-As-of software release 20.4 (desispec 0.34.4), the SCORES HDU is the last
-HDU instead of HDU2.
-
 Contents
 ========
 
@@ -27,7 +24,7 @@ Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
 HDU00_              IMAGE    Keywords only
 HDU01_ FIBERMAP     BINTABLE fibermap table
-HDU02_ EXP_FIBERMAP BINTABLE *Brief Description*
+HDU02_ EXP_FIBERMAP BINTABLE Per-exposure entries from input fibermaps
 HDU03_ B_WAVELENGTH IMAGE    Wavelength array of b-channel spectra
 HDU04_ B_FLUX       IMAGE    Flux of b-channel spectra
 HDU05_ B_IVAR       IMAGE    Inverse variance of b-channel spectra
@@ -46,6 +43,9 @@ HDU17_ Z_RESOLUTION IMAGE    Resolution matrices of z-channel spectra
 HDU18_ SCORES       BINTABLE scores table
 ====== ============ ======== ===================
 
+Note: the above is the order in which these HDUs appear in DESI spectroscopic
+pipeline output, but the order is arbitrary and they should be read by
+name not by number.
 
 FITS Header Units
 =================
@@ -65,13 +65,13 @@ Required Header Keywords
     ======== =========================== ==== ==============================================
     KEY      Example Value               Type Comment
     ======== =========================== ==== ==============================================
-    SPGRP    healpix                     str
-    SPGRPVAL 32637                       int
-    HPXPIXEL 38863                       int
-    HPXNSIDE 64                          int
-    HPXNEST  True                        str
-    SURVEY   special                     str
-    PROGRAM  dark                        str
+    SPGRP    healpix                     str  Method of grouping spectra (always healpix for this file)
+    SPGRPVAL 38863                       int  Healpix number 
+    HPXPIXEL 38863                       int  Healpix number
+    HPXNSIDE 64                          int  Healpix nside
+    HPXNEST  True                        str  Healpix nested? (vs. ring)
+    SURVEY   sv3                         str  DESI survey (sv1, sv3, main...)
+    PROGRAM  dark                        str  DESI program (dark, bright, ...)
     CHECKSUM 96ZDB6YB96YBA6YB            str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  0                           str  data unit checksum updated 2021-07-20T01:03:03
     FIBERMIN -513                        int
@@ -86,7 +86,12 @@ HDU01
 
 EXTNAME = FIBERMAP
 
-Fibermap table with two additional columns NIGHT and EXPID.
+Fibermap information combining the targeting photometry and metadata,
+and fiberassign requested positions.  In the coadds, this HDU contains
+only the information that remains applicable to coadded spectra, e.g.
+the target flux values.  Values that are only meaningful per-exposure
+(*e.g.* FIBER_X, FIBER_Y) are contained in the separate
+`EXP_FIBERMAP <#hdu02>`_ HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,8 +103,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   341              int  length of dimension 1
-    NAXIS2   514              int  length of dimension 2
+    NAXIS1   341              int  Width of table in bytes
+    NAXIS2   514              int  Number of targets
     ENCODING ascii            str
     LONGSTRN OGIP 1.0         str
     CHECKSUM 4aNU7WKR4aKR4UKR str  HDU checksum updated 2021-07-20T01:03:03
@@ -111,81 +116,81 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========================== ======= ===== =====================================================
-Name                       Type    Units Description
-========================== ======= ===== =====================================================
-TARGETID                   int64         Unique target ID
-COADD_FIBERSTATUS          int32
-TARGET_RA                  float64       Target Right Ascension [degrees]
-TARGET_DEC                 float64       Target declination [degrees]
-PMRA                       float32       PM in +RA dir (already incl cos(dec))
-PMDEC                      float32       Proper motion in +dec direction
-REF_EPOCH                  float32       proper motion reference epoch
-FA_TARGET                  int64
-FA_TYPE                    binary        Internal fiberassign target type
-OBJTYPE                    char[3]       SKY, TGT, NON
-SUBPRIORITY                float64       Assignment subpriority [0-1)
-OBSCONDITIONS              int32         bitmask of allowable observing conditions
-RELEASE                    int16         imaging surveys release ID
-BRICKID                    int32         Imaging Surveys brick ID
-BRICK_OBJID                int32         Imaging Surveys OBJID on that brick
-MORPHTYPE                  char[4]       Imaging Surveys morphological type
-FLUX_G                     float32       g-band flux
-FLUX_R                     float32       r-band flux
-FLUX_Z                     float32       z-band flux
-FLUX_IVAR_G                float32       Inverse variance of FLUX_G
-FLUX_IVAR_R                float32       Inverse variance of FLUX_R
-FLUX_IVAR_Z                float32       Inverse variance of FLUX_Z
-MASKBITS                   int16         Photometry mask bits
-REF_ID                     int64         Astrometric cat refID (Gaia SOURCE_ID)
-REF_CAT                    char[2]       astrometry reference catalog
-GAIA_PHOT_G_MEAN_MAG       float32       Gaia G band mag
-GAIA_PHOT_BP_MEAN_MAG      float32       Gaia BP band mag
-GAIA_PHOT_RP_MEAN_MAG      float32       Gaia RP band mag
-PARALLAX                   float32       Parallax
-BRICKNAME                  char[8]       Imaging Surveys brick name
-EBV                        float32       Galactic extinction E(B-V) reddening from SFD98
-FLUX_W1                    float32       WISE W1-band flux
-FLUX_W2                    float32       WISE W2-band flux
-FLUX_IVAR_W1               float32       Inverse variance of FLUX_W1
-FLUX_IVAR_W2               float32       Inverse variance of FLUX_W2
-FIBERFLUX_G                float32       g-band model flux 1&quot; seeing, 1.5&quot; dia fiber
-FIBERFLUX_R                float32       r-band model flux 1&quot; seeing, 1.5&quot; dia fiber
-FIBERFLUX_Z                float32       z-band model flux 1&quot; seeing, 1.5&quot; dia fiber
-FIBERTOTFLUX_G             float32       fiberflux model incl. all objs at this loc
-FIBERTOTFLUX_R             float32       fiberflux model incl. all objs at this loc
-FIBERTOTFLUX_Z             float32       fiberflux model incl. all objs at this loc
-SERSIC                     float32       Power-law index for the Sersic profile model
-SHAPE_R                    float32       Half-light radius of galaxy model
-SHAPE_E1                   float32       Ellipticity component 1 for galaxy model
-SHAPE_E2                   float32       Ellipticity component 2 for galaxy model
-PHOTSYS                    char[1]       N for BASS/MzLS, S for DECam
-PRIORITY_INIT              int64         initial priority
-NUMOBS_INIT                int64         initial number of requested observations
-SV1_DESI_TARGET [1]_       int64
-SV1_BGS_TARGET [1]_        int64
-SV1_MWS_TARGET [1]_        int64
-SV1_SCND_TARGET [1]_       int64
-DESI_TARGET                int64         Dark survey + calibration targeting bits
-BGS_TARGET                 int64         Bright Galaxy Survey targeting bits
-MWS_TARGET                 int64         Milky Way Survey targeting bits
-SCND_TARGET                int64         Secondary targeting bits
-PLATE_RA                   float64       Right Ascension for Platemaker to use [degrees]
-PLATE_DEC                  float64       declination for Platemaker to use [degrees]
-COADD_NUMEXP               int16
-COADD_EXPTIME              float32
-COADD_NUMNIGHT             int16
-COADD_NUMTILE              int16
-MEAN_DELTA_X               float32
-RMS_DELTA_X                float32
-MEAN_DELTA_Y               float32
-RMS_DELTA_Y                float32
-MEAN_FIBER_RA              float64
-STD_FIBER_RA               float32
-MEAN_FIBER_DEC             float64
-STD_FIBER_DEC              float32
-MEAN_PSF_TO_FIBER_SPECFLUX float32
-========================== ======= ===== =====================================================
+========================== ======= ============ ===============================================================================================================================
+Name                       Type    Units        Description
+========================== ======= ============ ===============================================================================================================================
+TARGETID                   int64                Unique DESI target ID
+COADD_FIBERSTATUS          int32                bitwise-AND of input FIBERSTATUS
+TARGET_RA                  float64 deg          Barycentric right ascension in ICRS
+TARGET_DEC                 float64 deg          Barycentric declination in ICRS
+PMRA                       float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
+PMDEC                      float32 mas yr^-1    Proper motion in the +Dec direction
+REF_EPOCH                  float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+FA_TARGET                  int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE                    binary               Fiberassign internal target type (science, standard, sky, safe, suppsky)
+OBJTYPE                    char[3]              Object type: TGT, SKY, NON, BAD
+SUBPRIORITY                float64              Random subpriority [0-1) to break assignment ties
+OBSCONDITIONS              int32                Bitmask of allowed observing conditions
+RELEASE                    int16                Imaging surveys release ID
+BRICKID                    int32                Brick ID from tractor input
+BRICK_OBJID                int32                Imaging Surveys OBJID on that brick
+MORPHTYPE                  char[4]              Imaging Surveys morphological type from Tractor
+FLUX_G                     float32 nanomaggy    Flux in the Legacy Survey g-band (AB)
+FLUX_R                     float32 nanomaggy    Flux in the Legacy Survey r-band (AB)
+FLUX_Z                     float32 nanomaggy    Flux in the Legacy Survey z-band (AB)
+FLUX_IVAR_G                float32 nanomaggy^-2 Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R                float32 nanomaggy^-2 Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z                float32 nanomaggy^-2 Inverse variance of FLUX_Z (AB)
+MASKBITS                   int16                Bitwise mask from the imaging indicating potential issue or blending
+REF_ID                     int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; “sourceid” for Gaia DR2
+REF_CAT                    char[2]              Reference catalog source for star: “T2” for Tycho-2, “G2” for Gaia DR2, “L2” for the SGA, empty otherwise
+GAIA_PHOT_G_MEAN_MAG       float32 mag          Gaia G band magnitude
+GAIA_PHOT_BP_MEAN_MAG      float32 mag          Gaia BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG      float32 mag          Gaia RP band magnitude
+PARALLAX                   float32 mas          Reference catalog parallax
+BRICKNAME                  char[8]              Brick name from tractor input
+EBV                        float32 mag          Galactic extinction E(B-V) reddening from SFD98
+FLUX_W1                    float32 nanomaggy    WISE flux in W1 (AB)
+FLUX_W2                    float32 nanomaggy    WISE flux in W2 (AB)
+FLUX_IVAR_W1               float32 nanomaggy^-2 Inverse variance of FLUX_W1 (AB)
+FLUX_IVAR_W2               float32 nanomaggy^-2 Inverse variance of FLUX_W2 (AB)
+FIBERFLUX_G                float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_R                float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z                float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_G             float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_R             float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_Z             float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+SERSIC                     float32              Power-law index for the Sersic profile model (MORPHTYPE=”SER”)
+SHAPE_R                    float32 arcsec       Half-light radius of galaxy model (&gt;0)
+SHAPE_E1                   float32              Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
+SHAPE_E2                   float32              Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
+PHOTSYS                    char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PRIORITY_INIT              int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT                int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+SV1_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_        int64                BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_        int64                MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_       int64                Secondary target selection bitmask for SV1
+DESI_TARGET                int64                DESI (dark time program) target selection bitmask
+BGS_TARGET                 int64                BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET                 int64                Milky Way Survey targeting bits
+SCND_TARGET                int64                Target selection bitmask for secondary programs
+PLATE_RA                   float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC                  float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
+COADD_NUMEXP               int16                Number of exposures in coadd
+COADD_EXPTIME              float32 s            Summed exposure time for coadd
+COADD_NUMNIGHT             int16                Number of nights in coadd
+COADD_NUMTILE              int16                Number of tiles in coadd
+MEAN_DELTA_X               float32 mm           Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
+RMS_DELTA_X                float32 mm           RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
+MEAN_DELTA_Y               float32 mm           Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
+RMS_DELTA_Y                float32 mm           RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_FIBER_RA              float64 deg          Mean (over exposures) RA of actual fiber position
+STD_FIBER_RA               float32 arcsec       Standard deviation (over exposures) of RA of actual fiber position
+MEAN_FIBER_DEC             float64 deg          Mean (over exposures) DEC of actual fiber position
+STD_FIBER_DEC              float32 arcsec       Standard deviation (over exposures) of DEC of actual fiber position
+MEAN_PSF_TO_FIBER_SPECFLUX float32              Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+========================== ======= ============ ===============================================================================================================================
 
 .. [1] Optional
 
@@ -194,7 +199,10 @@ HDU02
 
 EXTNAME = EXP_FIBERMAP
 
-Fibermap information on all exposures used to create this coadd.
+Fibermap entries that only apply to individual exposures, not to a coadd.
+This table has one row per input target per exposure.
+Also see the `FIBERMAP <#hdu01>`_ HDU for coadded fibermap quantities
+with one row per target.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -206,8 +214,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   162              int  length of dimension 1
-    NAXIS2   7112             int  length of dimension 2
+    NAXIS1   162              int  Width of table in bytes
+    NAXIS2   7112             int  Number of input target-exposures
     ENCODING ascii            str
     CHECKSUM g3Nmh2Nlg2Nlg2Nl str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  3607867694       str  data unit checksum updated 2021-07-20T01:03:03
@@ -218,36 +226,36 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======= ===== ===============================================
-Name                  Type    Units Description
-===================== ======= ===== ===============================================
-TARGETID              int64         Unique target ID
-PRIORITY              int32         Assignment priority; larger=higher priority
-SUBPRIORITY           float64       Assignment subpriority [0-1)
+===================== ======= ======== =======================================================================================================
+Name                  Type    Units    Description
+===================== ======= ======== =======================================================================================================
+TARGETID              int64            Unique DESI target ID
+PRIORITY              int32            Target current priority
+SUBPRIORITY           float64          Random subpriority [0-1) to break assignment ties
 NIGHT                 int32
-EXPID                 int32
-MJD                   float64
-TILEID                int32
-EXPTIME               float64       Exposure time
-PETAL_LOC             int16         Petal location [0-9]
-DEVICE_LOC            int32         Device location on focal plane [0-523]
-LOCATION              int64         FP location PETAL_LOC*1000 + DEVICE_LOC
-FIBER                 int32         Fiber ID on the CCDs [0-4999]
-FIBERSTATUS           int32         Fiber status; 0=good
-FIBERASSIGN_X         float32       Expected CS5 X on focal plane
-FIBERASSIGN_Y         float32       Expected CS5 Y on focal plane
-LAMBDA_REF            float32       Wavelength at which fiber was centered
-PLATE_RA              float64       Right Ascension for Platemaker to use [degrees]
-PLATE_DEC             float64       declination for Platemaker to use [degrees]
-NUM_ITER              int64         Number of positioner iterations
-FIBER_X               float64       CS5 X location requested by PlateMaker
-FIBER_Y               float64       CS5 Y location requested by PlateMaker
-DELTA_X               float64       CS5 X diff requested and actual position
-DELTA_Y               float64       CS5 Y diff requested and actual position
-FIBER_RA              float64       RA of actual fiber position
-FIBER_DEC             float64       DEC of actual fiber position
-PSF_TO_FIBER_SPECFLUX float64
-===================== ======= ===== ===============================================
+EXPID                 int32            DESI Exposure ID number
+MJD                   float64          Modified Julian Date when shutter was opened for this exposure
+TILEID                int32            Unique DESI tile ID
+EXPTIME               float64 s        Length of time shutter was open
+PETAL_LOC             int16            Petal location [0-9]
+DEVICE_LOC            int32            Device location on focal plane [0-523]
+LOCATION              int64            Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                 int32            Fiber ID on the CCDs [0-4999]
+FIBERSTATUS           int32            Fiber status mask. 0=good
+FIBERASSIGN_X         float32 mm       Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y         float32 mm       Fiberassign expected CS5 Y location on focal plane
+LAMBDA_REF            float32 Angstrom Requested wavelength at which targets should be centered on fibers
+PLATE_RA              float64 deg      Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64 deg      Barycentric Declination in ICRS to be used by PlateMaker
+NUM_ITER              int64            Number of positioner iterations
+FIBER_X               float64 mm       CS5 X location requested by PlateMaker
+FIBER_Y               float64 mm       CS5 Y location requested by PlateMaker
+DELTA_X               float64 mm       CS5 X requested minus actual position
+DELTA_Y               float64 mm       CS5 Y requested minus actual position
+FIBER_RA              float64 deg      RA of actual fiber position
+FIBER_DEC             float64 deg      DEC of actual fiber position
+PSF_TO_FIBER_SPECFLUX float64          fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+===================== ======= ======== =======================================================================================================
 
 HDU03
 -----
@@ -266,7 +274,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2751             int
+    NAXIS1   2751             int  Number of wavelength bins
     BUNIT    Angstrom         str
     CHECKSUM 9FJDF9H99CHCC9H9 str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  979185614        str  data unit checksum updated 2021-07-20T01:03:03
@@ -291,8 +299,8 @@ Required Header Keywords
     ======== ============================ ==== ==============================================
     KEY      Example Value                Type Comment
     ======== ============================ ==== ==============================================
-    NAXIS1   2751                         int
-    NAXIS2   514                          int
+    NAXIS1   2751                         int  Number of wavelength bins
+    NAXIS2   514                          int  Number of spectra
     BUNIT    10**-17 erg/(s cm2 Angstrom) str
     CHECKSUM KdcnKccnKccnKccn             str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  1454063034                   str  data unit checksum updated 2021-07-20T01:03:03
@@ -317,8 +325,8 @@ Required Header Keywords
     ======== ================================= ==== ==============================================
     KEY      Example Value                     Type Comment
     ======== ================================= ==== ==============================================
-    NAXIS1   2751                              int
-    NAXIS2   514                               int
+    NAXIS1   2751                              int  Number of wavelength bings
+    NAXIS2   514                               int  Number of spectra
     BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
     CHECKSUM 1AE635E61AE613E6                  str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  2902189966                        str  data unit checksum updated 2021-07-20T01:03:03
@@ -331,7 +339,8 @@ HDU06
 
 EXTNAME = B_MASK
 
-Mask[nspec,nwave] of b-channel flux array.
+Mask[nspec,nwave] of b-channel flux array; 0=good.
+See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -343,8 +352,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2751             int
-    NAXIS2   514              int
+    NAXIS1   2751             int  Number of wavelength bins
+    NAXIS2   514              int  Number of spectra
     BSCALE   1                int
     BZERO    2147483648       int
     CHECKSUM 78fA97f677fA77f3 str  HDU checksum updated 2021-07-20T01:03:03
@@ -358,7 +367,9 @@ HDU07
 
 EXTNAME = B_RESOLUTION
 
-Diagonals of b-channel resolution matrix
+Resolution matrix stored as diagonals of a 3D sparse matrix.
+See the frame file :ref:`RESOLUTION documentation <frame-hdu4-resolution>`
+for how these are interpreted and used.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -370,9 +381,9 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2751             int
-    NAXIS2   11               int
-    NAXIS3   514              int
+    NAXIS1   2751             int  Number of wavelength bins
+    NAXIS2   11               int  Number of diagonals
+    NAXIS3   514              int  Number of spectra
     CHECKSUM 4q1B4o094o0A4o09 str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  1510900028       str  data unit checksum updated 2021-07-20T01:03:03
     ======== ================ ==== ==============================================
@@ -409,7 +420,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2326             int
+    NAXIS1   2326             int  Number of wavelength bins
     BUNIT    Angstrom         str
     CHECKSUM 9JTAFHQ79HQACHQ7 str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  456732359        str  data unit checksum updated 2021-07-20T01:03:03
@@ -434,8 +445,8 @@ Required Header Keywords
     ======== ============================ ==== ==============================================
     KEY      Example Value                Type Comment
     ======== ============================ ==== ==============================================
-    NAXIS1   2326                         int
-    NAXIS2   514                          int
+    NAXIS1   2326                         int  Number of wavelength bins
+    NAXIS2   514                          int  Number of spectra
     BUNIT    10**-17 erg/(s cm2 Angstrom) str
     CHECKSUM PCCbR99bPACbP99b             str  HDU checksum updated 2021-07-20T01:03:03
     DATASUM  54356891                     str  data unit checksum updated 2021-07-20T01:03:03
@@ -448,7 +459,7 @@ HDU10
 
 EXTNAME = R_IVAR
 
-Mask[nspec,nwave] of r-channel flux array.
+Inverse variance of the R_FLUX HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -474,7 +485,8 @@ HDU11
 
 EXTNAME = R_MASK
 
-Mask[nspec,nwave] of r-channel flux array.
+Mask[nspec,nwave] of r-channel flux array.  0==good.
+See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -486,8 +498,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2326             int
-    NAXIS2   514              int
+    NAXIS1   2326             int  Number of wavelengths
+    NAXIS2   514              int  Number of spectra
     BSCALE   1                int
     BZERO    2147483648       int
     CHECKSUM T5gdV3dcT3dcT3dc str  HDU checksum updated 2021-07-20T01:03:03
@@ -515,9 +527,9 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2326             int
-    NAXIS2   11               int
-    NAXIS3   514              int
+    NAXIS1   2326             int  Number of wavelengths
+    NAXIS2   11               int  Number of diagonals
+    NAXIS3   514              int  Number of spectra
     CHECKSUM DkAIDj3GDjAGDj3G str  HDU checksum updated 2021-07-20T01:03:04
     DATASUM  1927301622       str  data unit checksum updated 2021-07-20T01:03:04
     ======== ================ ==== ==============================================
@@ -541,7 +553,7 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2881             int
+    NAXIS1   2881             int  Number of wavelengths
     BUNIT    Angstrom         str
     CHECKSUM iaWMkYVMiaVMiYVM str  HDU checksum updated 2021-07-20T01:03:04
     DATASUM  3106662670       str  data unit checksum updated 2021-07-20T01:03:04
@@ -566,8 +578,8 @@ Required Header Keywords
     ======== ============================ ==== ==============================================
     KEY      Example Value                Type Comment
     ======== ============================ ==== ==============================================
-    NAXIS1   2881                         int
-    NAXIS2   514                          int
+    NAXIS1   2881                         int  Number of wavelengths
+    NAXIS2   514                          int  Number of spectra
     BUNIT    10**-17 erg/(s cm2 Angstrom) str
     CHECKSUM 0aea1VdZ0Zda0ZdY             str  HDU checksum updated 2021-07-20T01:03:04
     DATASUM  1889497861                   str  data unit checksum updated 2021-07-20T01:03:04
@@ -592,8 +604,8 @@ Required Header Keywords
     ======== ================================= ==== ==============================================
     KEY      Example Value                     Type Comment
     ======== ================================= ==== ==============================================
-    NAXIS1   2881                              int
-    NAXIS2   514                               int
+    NAXIS1   2881                              int  Number of wavelengths
+    NAXIS2   514                               int  Number of spectra
     BUNIT    10**+34 (s2 cm4 Angstrom2) / erg2 str
     CHECKSUM ni6Dpi3Cni3Cni3C                  str  HDU checksum updated 2021-07-20T01:03:04
     DATASUM  105099897                         str  data unit checksum updated 2021-07-20T01:03:04
@@ -606,7 +618,8 @@ HDU16
 
 EXTNAME = Z_MASK
 
-Mask[nspec,nwave] of z-channel flux array.
+Mask[nspec,nwave] of z-channel flux array.  0==good.
+See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -618,8 +631,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2881             int
-    NAXIS2   514              int
+    NAXIS1   2881             int  Number of wavelengths
+    NAXIS2   514              int  Number of spectra
     BSCALE   1                int
     BZERO    2147483648       int
     CHECKSUM X6iYY4gYX4gYX4gY str  HDU checksum updated 2021-07-20T01:03:04
@@ -647,9 +660,9 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   2881             int
-    NAXIS2   11               int
-    NAXIS3   514              int
+    NAXIS1   2881             int  Number of wavelengths
+    NAXIS2   11               int  Number of diagonals
+    NAXIS3   514              int  Number of spectra
     CHECKSUM oocZpnbYonbYonbY str  HDU checksum updated 2021-07-20T01:03:04
     DATASUM  1564215354       str  data unit checksum updated 2021-07-20T01:03:04
     ======== ================ ==== ==============================================
@@ -661,7 +674,10 @@ HDU18
 
 EXTNAME = SCORES
 
-*Summarize the contents of this HDU.*
+Scores / metrics measured from the spectra for use in QA and systematics studies.
+These are coadded from the input
+:doc:`cframe SCORES HDU </DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`
+files.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -673,8 +689,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   172              int  length of dimension 1
-    NAXIS2   514              int  length of dimension 2
+    NAXIS1   172              int  Width of table in bytes
+    NAXIS2   514              int  Number of spectra
     ENCODING ascii            str
     CHECKSUM XQAAZP89XPAAXP79 str  HDU checksum updated 2021-07-20T01:03:05
     DATASUM  3357773203       str  data unit checksum updated 2021-07-20T01:03:05
@@ -685,10 +701,10 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-=================== ======= ===== ============================================
+=================== ======= ===== ============================================================
 Name                Type    Units Description
-=================== ======= ===== ============================================
-TARGETID            int64         DESI Unique Target ID
+=================== ======= ===== ============================================================
+TARGETID            int64         Unique DESI target ID
 INTEG_COADD_FLUX_B  float32       integ. flux in wave. range 4000,5800A
 MEDIAN_COADD_FLUX_B float32       median flux in wave. range 4000,5800A
 MEDIAN_COADD_SNR_B  float32       median SNR/sqrt(A) in wave. range 4000,5800A
@@ -698,42 +714,49 @@ MEDIAN_COADD_SNR_R  float32       median SNR/sqrt(A) in wave. range 5800,7600A
 INTEG_COADD_FLUX_Z  float32       integ. flux in wave. range 7600,9800A
 MEDIAN_COADD_FLUX_Z float32       median flux in wave. range 7600,9800A
 MEDIAN_COADD_SNR_Z  float32       median SNR/sqrt(A) in wave. range 7600,9800A
-TSNR2_GPBDARK_B     float32       GPBDARK B template (S/N)^2
+TSNR2_GPBDARK_B     float32       template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B         float32       ELG B template (S/N)^2
-TSNR2_GPBBRIGHT_B   float32       GPBBRIGHT B template (S/N)^2
+TSNR2_GPBBRIGHT_B   float32       template (S/N)^2 for bright targets in guider pass band on B
 TSNR2_LYA_B         float32       LYA B template (S/N)^2
 TSNR2_BGS_B         float32       BGS B template (S/N)^2
 TSNR2_GPBBACKUP_B   float32       GPBBACKUP B template (S/N)^2
 TSNR2_QSO_B         float32       QSO B template (S/N)^2
 TSNR2_LRG_B         float32       LRG B template (S/N)^2
-TSNR2_GPBDARK_R     float32       GPBDARK R template (S/N)^2
+TSNR2_GPBDARK_R     float32       template (S/N)^2 for dark targets in guider pass band on R
 TSNR2_ELG_R         float32       ELG R template (S/N)^2
-TSNR2_GPBBRIGHT_R   float32       GPBBRIGHT R template (S/N)^2
+TSNR2_GPBBRIGHT_R   float32       template (S/N)^2 for bright targets in guider pass band on R
 TSNR2_LYA_R         float32       LYA R template (S/N)^2
 TSNR2_BGS_R         float32       BGS R template (S/N)^2
 TSNR2_GPBBACKUP_R   float32       GPBBACKUP R template (S/N)^2
 TSNR2_QSO_R         float32       QSO R template (S/N)^2
 TSNR2_LRG_R         float32       LRG R template (S/N)^2
-TSNR2_GPBDARK_Z     float32       GPBDARK Z template (S/N)^2
+TSNR2_GPBDARK_Z     float32       template (S/N)^2 for dark targets in guider pass band on Z
 TSNR2_ELG_Z         float32       ELG Z template (S/N)^2
-TSNR2_GPBBRIGHT_Z   float32       GPBBRIGHT Z template (S/N)^2
+TSNR2_GPBBRIGHT_Z   float32       template (S/N)^2 for bright targets in guider pass band on Z
 TSNR2_LYA_Z         float32       LYA Z template (S/N)^2
 TSNR2_BGS_Z         float32       BGS Z template (S/N)^2
 TSNR2_GPBBACKUP_Z   float32       GPBBACKUP Z template (S/N)^2
 TSNR2_QSO_Z         float32       QSO Z template (S/N)^2
 TSNR2_LRG_Z         float32       LRG Z template (S/N)^2
-TSNR2_GPBDARK       float32       GPBDARK template (S/N)^2 summed over B,R,Z
+TSNR2_GPBDARK       float32       template (S/N)^2 for dark targets in guider pass band
 TSNR2_ELG           float32       ELG template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBRIGHT     float32       GPBBRIGHT template (S/N)^2 summed over B,R,Z
+TSNR2_GPBBRIGHT     float32       template (S/N)^2 for bright targets in guider pass band
 TSNR2_LYA           float32       LYA template (S/N)^2 summed over B,R,Z
 TSNR2_BGS           float32       BGS template (S/N)^2 summed over B,R,Z
 TSNR2_GPBBACKUP     float32       GPBBACKUP template (S/N)^2 summed over B,R,Z
 TSNR2_QSO           float32       QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG           float32       LRG template (S/N)^2 summed over B,R,Z
-=================== ======= ===== ============================================
+=================== ======= ===== ============================================================
 
 
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+Coadd files can be read and interpreted using the same code examples
+shown in the "Notes and Examples" section of the
+:doc:`spectra files </DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/spectra-SPECTROGRAPH-TILEID-GROUPID>` documentation.
+
+The format supports arbitrary channel (camera) names as long as for each channel {X}
+there is a set of HDUs named {X}_WAVELENGTH, {X}_FLUX, {X}_IVAR, {X}_MASK,
+{X}_RESOLUTION.
+

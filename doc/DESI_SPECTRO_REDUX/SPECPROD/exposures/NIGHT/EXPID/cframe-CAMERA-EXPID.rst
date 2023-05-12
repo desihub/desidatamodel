@@ -1340,94 +1340,94 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======= ===== ==============================
-Name                  Type    Units Description
-===================== ======= ===== ==============================
-TARGETID              int64         Unique target ID
-PETAL_LOC             int16         Focal plane petal location 0-9
-DEVICE_LOC            int32         Device location 0-5xx
-LOCATION              int64         1000*PETAL_LOC + DEVICE_LOC
-FIBER                 int32         Fiber number 0-4999
-FIBERSTATUS           int32         Fiber status mask; 0=good
-TARGET_RA             float64
-TARGET_DEC            float64
-PMRA                  float32
-PMDEC                 float32
-REF_EPOCH             float32
-LAMBDA_REF            float32
-FA_TARGET             int64
-FA_TYPE               binary
-OBJTYPE               char[3]
-FIBERASSIGN_X         float32
-FIBERASSIGN_Y         float32
-PRIORITY              int32
-SUBPRIORITY           float64
-OBSCONDITIONS         int32
-RELEASE               int16
-BRICKID               int32
-BRICK_OBJID           int32
-MORPHTYPE             char[4]
-FLUX_G                float32
-FLUX_R                float32
-FLUX_Z                float32
-FLUX_IVAR_G           float32
-FLUX_IVAR_R           float32
-FLUX_IVAR_Z           float32
-MASKBITS              int16
-REF_ID                int64
-REF_CAT               char[2]
-GAIA_PHOT_G_MEAN_MAG  float32
-GAIA_PHOT_BP_MEAN_MAG float32
-GAIA_PHOT_RP_MEAN_MAG float32
-PARALLAX              float32
-BRICKNAME             char[8]
-EBV                   float32
-FLUX_W1               float32
-FLUX_W2               float32
-FLUX_IVAR_W1          float32
-FLUX_IVAR_W2          float32
-FIBERFLUX_G           float32
-FIBERFLUX_R           float32
-FIBERFLUX_Z           float32
-FIBERTOTFLUX_G        float32
-FIBERTOTFLUX_R        float32
-FIBERTOTFLUX_Z        float32
-SERSIC                float32
-SHAPE_R               float32
-SHAPE_E1              float32
-SHAPE_E2              float32
-PHOTSYS               char[1]
-PRIORITY_INIT         int64
-NUMOBS_INIT           int64
-SV1_DESI_TARGET [1]_  int64
-SV1_BGS_TARGET [1]_   int64
-SV1_MWS_TARGET [1]_   int64
-SV1_SCND_TARGET [1]_  int64
-DESI_TARGET           int64
-BGS_TARGET            int64
-MWS_TARGET            int64
-SCND_TARGET [1]_      int64
-PLATE_RA              float64
-PLATE_DEC             float64
-NUM_ITER              int64
-FIBER_X               float64
-FIBER_Y               float64
-DELTA_X               float64
-DELTA_Y               float64
-FIBER_RA              float64
-FIBER_DEC             float64
-EXPTIME               float64
-PSF_TO_FIBER_SPECFLUX float64
-SV3_MWS_TARGET [1]_   int64
-SV3_SCND_TARGET [1]_  int64
-SV3_DESI_TARGET [1]_  int64
-SV3_BGS_TARGET [1]_   int64
-SV2_DESI_TARGET [1]_  int64
-SV2_BGS_TARGET [1]_   int64
-SV2_MWS_TARGET [1]_   int64
-SV2_SCND_TARGET [1]_  int64
-CMX_TARGET [1]_       int64
-===================== ======= ===== ==============================
+===================== ======= ============ =========================================================================================================================
+Name                  Type    Units        Description
+===================== ======= ============ =========================================================================================================================
+TARGETID              int64                Unique DESI target ID
+PETAL_LOC             int16                Petal location [0-9]
+DEVICE_LOC            int32                Device location on focal plane [0-523]
+LOCATION              int64                Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                 int32                Fiber ID on the CCDs [0-4999]
+FIBERSTATUS           int32                Fiber status mask. 0=good
+TARGET_RA             float64 deg          Barycentric right ascension in ICRS
+TARGET_DEC            float64 deg          Barycentric declination in ICRS
+PMRA                  float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
+PMDEC                 float32 mas yr^-1    Proper motion in the +Dec direction
+REF_EPOCH             float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+LAMBDA_REF            float32 Angstrom     Requested wavelength at which targets should be centered on fibers
+FA_TARGET             int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE               binary               Fiberassign internal target type (science, standard, sky, safe, suppsky)
+OBJTYPE               char[3]              Object type: TGT, SKY, NON, BAD
+FIBERASSIGN_X         float32 mm           Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y         float32 mm           Fiberassign expected CS5 Y location on focal plane
+PRIORITY              int32                Target current priority
+SUBPRIORITY           float64              Random subpriority [0-1) to break assignment ties
+OBSCONDITIONS         int32                Bitmask of allowed observing conditions
+RELEASE               int16                Imaging surveys release ID
+BRICKID               int32                Brick ID from tractor input
+BRICK_OBJID           int32                Imaging Surveys OBJID on that brick
+MORPHTYPE             char[4]              Imaging Surveys morphological type from Tractor
+FLUX_G                float32 nanomaggy    Flux in the Legacy Survey g-band (AB)
+FLUX_R                float32 nanomaggy    Flux in the Legacy Survey r-band (AB)
+FLUX_Z                float32 nanomaggy    Flux in the Legacy Survey z-band (AB)
+FLUX_IVAR_G           float32 nanomaggy^-2 Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R           float32 nanomaggy^-2 Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z           float32 nanomaggy^-2 Inverse variance of FLUX_Z (AB)
+MASKBITS              int16                Bitwise mask from the imaging indicating potential issue or blending
+REF_ID                int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; “sourceid” for Gaia DR2
+REF_CAT               char[2]              Reference catalog source for star: “T2” for Tycho-2, “G2” for Gaia DR2, “L2” for the SGA, empty otherwise
+GAIA_PHOT_G_MEAN_MAG  float32 mag          Gaia G band magnitude
+GAIA_PHOT_BP_MEAN_MAG float32 mag          Gaia BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG float32 mag          Gaia RP band magnitude
+PARALLAX              float32 mas          Reference catalog parallax
+BRICKNAME             char[8]              Brick name from tractor input
+EBV                   float32 mag          Galactic extinction E(B-V) reddening from SFD98
+FLUX_W1               float32 nanomaggy    WISE flux in W1 (AB)
+FLUX_W2               float32 nanomaggy    WISE flux in W2 (AB)
+FLUX_IVAR_W1          float32 nanomaggy^-2 Inverse variance of FLUX_W1 (AB)
+FLUX_IVAR_W2          float32 nanomaggy^-2 Inverse variance of FLUX_W2 (AB)
+FIBERFLUX_G           float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_R           float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z           float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_G        float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_R        float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_Z        float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+SERSIC                float32              Power-law index for the Sersic profile model (MORPHTYPE=”SER”)
+SHAPE_R               float32 arcsec       Half-light radius of galaxy model (&gt;0)
+SHAPE_E1              float32              Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
+SHAPE_E2              float32              Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
+PHOTSYS               char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PRIORITY_INIT         int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT           int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+SV1_DESI_TARGET [1]_  int64                DESI (dark time program) target selection bitmask for SV1
+SV1_BGS_TARGET [1]_   int64                BGS (bright time program) target selection bitmask for SV1
+SV1_MWS_TARGET [1]_   int64                MWS (bright time program) target selection bitmask for SV1
+SV1_SCND_TARGET [1]_  int64                Secondary target selection bitmask for SV1
+DESI_TARGET           int64                DESI (dark time program) target selection bitmask
+BGS_TARGET            int64                BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET            int64                Milky Way Survey targeting bits
+SCND_TARGET [1]_      int64                Target selection bitmask for secondary programs
+PLATE_RA              float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
+NUM_ITER              int64                Number of positioner iterations
+FIBER_X               float64 mm           CS5 X location requested by PlateMaker
+FIBER_Y               float64 mm           CS5 Y location requested by PlateMaker
+DELTA_X               float64 mm           CS5 X requested minus actual position
+DELTA_Y               float64 mm           CS5 Y requested minus actual position
+FIBER_RA              float64 deg          RA of actual fiber position
+FIBER_DEC             float64 deg          DEC of actual fiber position
+EXPTIME               float64 s            Length of time shutter was open
+PSF_TO_FIBER_SPECFLUX float64              fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+SV3_MWS_TARGET [1]_   int64                MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_  int64                Secondary target selection bitmask for SV3
+SV3_DESI_TARGET [1]_  int64                DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_   int64                BGS (bright time program) target selection bitmask for SV3
+SV2_DESI_TARGET [1]_  int64                DESI (dark time program) target selection bitmask for SV2
+SV2_BGS_TARGET [1]_   int64                BGS (bright time program) target selection bitmask for SV2
+SV2_MWS_TARGET [1]_   int64                MWS (bright time program) target selection bitmask for SV2
+SV2_SCND_TARGET [1]_  int64                Secondary target selection bitmask for SV2
+CMX_TARGET [1]_       int64                Target selection bitmask for commissioning
+===================== ======= ============ =========================================================================================================================
 
 .. [1] Optional
 
@@ -1492,72 +1492,80 @@ table for the exposure.
 
 .. rst-class:: columns
 
-========================== ======= ===== ============================================
+========================== ======= ===== ============================================================
 Name                       Type    Units Description
-========================== ======= ===== ============================================
-SUM_RAW_COUNT_Z [1]_       float64       sum counts in wave. range 7600,9800A
-MEDIAN_RAW_COUNT_Z [1]_    float64       median counts/A in wave. range 7600,9800A
-MEDIAN_RAW_SNR_Z [1]_      float64       median SNR/sqrt(A) in wave. range 7600,9800A
-SUM_FFLAT_COUNT_Z [1]_     float64       sum counts in wave. range 7600,9800A
-MEDIAN_FFLAT_COUNT_Z [1]_  float64       median counts/A in wave. range 7600,9800A
-MEDIAN_FFLAT_SNR_Z [1]_    float64       median SNR/sqrt(A) in wave. range 7600,9800A
-SUM_SKYSUB_COUNT_Z [1]_    float64       sum counts in wave. range 7600,9800A
-MEDIAN_SKYSUB_COUNT_Z [1]_ float64       median counts/A in wave. range 7600,9800A
-MEDIAN_SKYSUB_SNR_Z [1]_   float64       median SNR/sqrt(A) in wave. range 7600,9800A
-SUM_CALIB_COUNT_Z [1]_     float64       sum counts in wave. range 7600,9800A
-MEDIAN_CALIB_COUNT_Z [1]_  float64       median counts/A in wave. range 7600,9800A
-MEDIAN_CALIB_SNR_Z [1]_    float64       median SNR/sqrt(A) in wave. range 7600,9800A
-TSNR2_GPBDARK_Z [1]_       float64       from calc_frame_tsnr
-TSNR2_ELG_Z [1]_           float64       from calc_frame_tsnr
-TSNR2_GPBBRIGHT_Z [1]_     float64       from calc_frame_tsnr
-TSNR2_LYA_Z [1]_           float64       from calc_frame_tsnr
-TSNR2_BGS_Z [1]_           float64       from calc_frame_tsnr
+========================== ======= ===== ============================================================
+SUM_RAW_COUNT_Z [1]_       float64       Sum of raw counts in Z camera
+MEDIAN_RAW_COUNT_Z [1]_    float64       Median of raw counts in Z camera
+MEDIAN_RAW_SNR_Z [1]_      float64       Median(raw signal/noise) in Z camera
+SUM_FFLAT_COUNT_Z [1]_     float64       Sum of fiber-flatfielded counts Z camera
+MEDIAN_FFLAT_COUNT_Z [1]_  float64       Median of fiber-flatfielded counts in Z camera
+MEDIAN_FFLAT_SNR_Z [1]_    float64       Median(S/N) of fiberflatfielded counts in Z camera
+SUM_SKYSUB_COUNT_Z [1]_    float64       Sum of sky-subtracted counts in Z camera
+MEDIAN_SKYSUB_COUNT_Z [1]_ float64       Median of sky-subtracted counts in Z camera
+MEDIAN_SKYSUB_SNR_Z [1]_   float64       Median(S/N) of sky-subtracted counts in Z camera
+SUM_CALIB_COUNT_Z [1]_     float64       Sum of calibrated flux in Z camera
+MEDIAN_CALIB_COUNT_Z [1]_  float64       Median of calibrated flux in Z camera
+MEDIAN_CALIB_SNR_Z [1]_    float64       Median(S/N) of calibrated flux in Z camera
+TSNR2_GPBDARK_Z [1]_       float64       template (S/N)^2 for dark targets in guider pass band on Z
+TSNR2_ELG_Z [1]_           float64       ELG Z template (S/N)^2
+TSNR2_GPBBRIGHT_Z [1]_     float64       template (S/N)^2 for bright targets in guider pass band on Z
+TSNR2_LYA_Z [1]_           float64       LYA Z template (S/N)^2
+TSNR2_BGS_Z [1]_           float64       BGS Z template (S/N)^2
 TSNR2_GPBBACKUP_Z [1]_     float64       from calc_frame_tsnr
-TSNR2_QSO_Z [1]_           float64       from calc_frame_tsnr
-TSNR2_LRG_Z [1]_           float64       from calc_frame_tsnr
-TSNR2_LRG_B [1]_           float64       from calc_frame_tsnr
-TSNR2_GPBDARK_B [1]_       float64       from calc_frame_tsnr
-MEDIAN_SKYSUB_SNR_B [1]_   float64       median SNR/sqrt(A) in wave. range 4000,5800A
-MEDIAN_FFLAT_SNR_B [1]_    float64       median SNR/sqrt(A) in wave. range 4000,5800A
-TSNR2_ELG_B [1]_           float64       from calc_frame_tsnr
-TSNR2_BGS_B [1]_           float64       from calc_frame_tsnr
-MEDIAN_CALIB_SNR_B [1]_    float64       median SNR/sqrt(A) in wave. range 4000,5800A
-MEDIAN_FFLAT_COUNT_B [1]_  float64       median counts/A in wave. range 4000,5800A
-TSNR2_QSO_B [1]_           float64       from calc_frame_tsnr
-MEDIAN_SKYSUB_COUNT_B [1]_ float64       median counts/A in wave. range 4000,5800A
-MEDIAN_RAW_COUNT_B [1]_    float64       median counts/A in wave. range 4000,5800A
-TSNR2_GPBBRIGHT_B [1]_     float64       from calc_frame_tsnr
-TSNR2_LYA_B [1]_           float64       from calc_frame_tsnr
-SUM_SKYSUB_COUNT_B [1]_    float64       sum counts in wave. range 4000,5800A
-MEDIAN_CALIB_COUNT_B [1]_  float64       median counts/A in wave. range 4000,5800A
+TSNR2_QSO_Z [1]_           float64       QSO Z template (S/N)^2
+TSNR2_LRG_Z [1]_           float64       LRG Z template (S/N)^2
+TSNR2_LRG_B [1]_           float64       LRG B template (S/N)^2
+TSNR2_GPBDARK_B [1]_       float64       template (S/N)^2 for dark targets in guider pass band on B
+MEDIAN_SKYSUB_SNR_B [1]_   float64       Median(S/N) of sky-subtracted counts in B camera
+MEDIAN_FFLAT_SNR_B [1]_    float64       Median(S/N) of fiberflatfielded counts in B camera
+TSNR2_ELG_B [1]_           float64       ELG B template (S/N)^2
+TSNR2_BGS_B [1]_           float64       BGS B template (S/N)^2
+MEDIAN_CALIB_SNR_B [1]_    float64       Median(S/N) of calibrated flux in B camera
+MEDIAN_FFLAT_COUNT_B [1]_  float64       Median of fiber-flatfielded counts in B camera
+TSNR2_QSO_B [1]_           float64       QSO B template (S/N)^2
+MEDIAN_SKYSUB_COUNT_B [1]_ float64       Median of sky-subtracted counts in B camera
+MEDIAN_RAW_COUNT_B [1]_    float64       Median of raw counts in B camera
+TSNR2_GPBBRIGHT_B [1]_     float64       template (S/N)^2 for bright targets in guider pass band on B
+TSNR2_LYA_B [1]_           float64       LYA B template (S/N)^2
+SUM_SKYSUB_COUNT_B [1]_    float64       Sum of sky-subtracted counts in B camera
+MEDIAN_CALIB_COUNT_B [1]_  float64       Median of calibrated flux in B camera
 TSNR2_GPBBACKUP_B [1]_     float64       from calc_frame_tsnr
-SUM_FFLAT_COUNT_B [1]_     float64       sum counts in wave. range 4000,5800A
-SUM_RAW_COUNT_B [1]_       float64       sum counts in wave. range 4000,5800A
-SUM_CALIB_COUNT_B [1]_     float64       sum counts in wave. range 4000,5800A
-MEDIAN_RAW_SNR_B [1]_      float64       median SNR/sqrt(A) in wave. range 4000,5800A
-SUM_CALIB_COUNT_R [1]_     float64       sum counts in wave. range 5800,7600A
-MEDIAN_RAW_COUNT_R [1]_    float64       median counts/A in wave. range 5800,7600A
-TSNR2_QSO_R [1]_           float64       from calc_frame_tsnr
-TSNR2_LRG_R [1]_           float64       from calc_frame_tsnr
-TSNR2_LYA_R [1]_           float64       from calc_frame_tsnr
-TSNR2_GPBBRIGHT_R [1]_     float64       from calc_frame_tsnr
-SUM_SKYSUB_COUNT_R [1]_    float64       sum counts in wave. range 5800,7600A
-SUM_RAW_COUNT_R [1]_       float64       sum counts in wave. range 5800,7600A
-SUM_FFLAT_COUNT_R [1]_     float64       sum counts in wave. range 5800,7600A
-MEDIAN_FFLAT_SNR_R [1]_    float64       median SNR/sqrt(A) in wave. range 5800,7600A
-TSNR2_BGS_R [1]_           float64       from calc_frame_tsnr
+SUM_FFLAT_COUNT_B [1]_     float64       Sum of fiber-flatfielded counts B camera
+SUM_RAW_COUNT_B [1]_       float64       Sum of raw counts in B camera
+SUM_CALIB_COUNT_B [1]_     float64       Sum of calibrated flux in B camera
+MEDIAN_RAW_SNR_B [1]_      float64       Median(raw signal/noise) in B camera
+SUM_CALIB_COUNT_R [1]_     float64       Sum of calibrated flux in R camera
+MEDIAN_RAW_COUNT_R [1]_    float64       Median of raw counts in R camera
+TSNR2_QSO_R [1]_           float64       QSO R template (S/N)^2
+TSNR2_LRG_R [1]_           float64       LRG R template (S/N)^2
+TSNR2_LYA_R [1]_           float64       LYA R template (S/N)^2
+TSNR2_GPBBRIGHT_R [1]_     float64       template (S/N)^2 for bright targets in guider pass band on R
+SUM_SKYSUB_COUNT_R [1]_    float64       Sum of sky-subtracted counts in R camera
+SUM_RAW_COUNT_R [1]_       float64       Sum of raw counts in R camera
+SUM_FFLAT_COUNT_R [1]_     float64       Sum of fiber-flatfielded counts R camera
+MEDIAN_FFLAT_SNR_R [1]_    float64       Median(S/N) of fiberflatfielded counts in R camera
+TSNR2_BGS_R [1]_           float64       BGS R template (S/N)^2
 TSNR2_GPBBACKUP_R [1]_     float64       from calc_frame_tsnr
-MEDIAN_SKYSUB_SNR_R [1]_   float64       median SNR/sqrt(A) in wave. range 5800,7600A
-MEDIAN_CALIB_SNR_R [1]_    float64       median SNR/sqrt(A) in wave. range 5800,7600A
-MEDIAN_FFLAT_COUNT_R [1]_  float64       median counts/A in wave. range 5800,7600A
-MEDIAN_RAW_SNR_R [1]_      float64       median SNR/sqrt(A) in wave. range 5800,7600A
-MEDIAN_SKYSUB_COUNT_R [1]_ float64       median counts/A in wave. range 5800,7600A
-MEDIAN_CALIB_COUNT_R [1]_  float64       median counts/A in wave. range 5800,7600A
-TSNR2_GPBDARK_R [1]_       float64       from calc_frame_tsnr
-TSNR2_ELG_R [1]_           float64       from calc_frame_tsnr
-========================== ======= ===== ============================================
+MEDIAN_SKYSUB_SNR_R [1]_   float64       Median(S/N) of sky-subtracted counts in R camera
+MEDIAN_CALIB_SNR_R [1]_    float64       Median(S/N) of calibrated flux in R camera
+MEDIAN_FFLAT_COUNT_R [1]_  float64       Median of fiber-flatfielded counts in R camera
+MEDIAN_RAW_SNR_R [1]_      float64       Median(raw signal/noise) in R camera
+MEDIAN_SKYSUB_COUNT_R [1]_ float64       Median of sky-subtracted counts in R camera
+MEDIAN_CALIB_COUNT_R [1]_  float64       Median of calibrated flux in R camera
+TSNR2_GPBDARK_R [1]_       float64       template (S/N)^2 for dark targets in guider pass band on R
+TSNR2_ELG_R [1]_           float64       ELG R template (S/N)^2
+========================== ======= ===== ============================================================
 
 Notes and Examples
 ==================
 
-TODO
+The TSNR2 columns are for "template signal-to-noise squared".
+These measure the signal-to-noise squared weighted by which wavelengths matter
+most for different target types, e.g. QSOs weight blue wavelengths more
+while ELGs weight redder wavelengths more due to the wavelengths of the
+observed emission lines.  For more details, see section 4.14 of
+`Guy et al 2023 <https://ui.adsabs.harvard.edu/abs/2023AJ....165..144G/abstract>`_.
+
+
+
