@@ -4,9 +4,21 @@ zall-pix-SPECPROD.fits
 
 :Summary: Concatenation of all ``zpix-*.fits`` files.
 :Naming Convention: ``zall-pix-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
-    official name of the full reduction, *e.g.* ``everest``.
+    official name of the full reduction, *e.g.* ``fuji``.
 :Regex: ``zall-pix-[a-z0-9_-]+\.fits``
 :File Type: FITS, 2 GB
+
+This file contains a concatenation of all input :doc:`zpix-*.fits <./zpix-SURVEY-PROGRAM>` files, combining
+redshift catalog entries across SURVEYs and PROGRAMs.  It additionally adds
+a column ``SV_PRIMARY`` to indicate the best recommended redshift if the same
+``TARGETID`` appears multiple times, and ``SV_NSPEC`` for how many times each
+target appears.
+
+e.g. if the same Survey Validation ``TARGETID`` was observed during
+both Target Selection Validation (sv1) and the One-Percent Survey (sv3),
+it will appear as separate redshifts in separate zpix files, and will
+appear twice in this file with one of the entries having ``SV_PRIMARY==True``.
+Any target that appears only once will also have ``SV_PRIMARY==True``.
 
 Contents
 ========
@@ -32,4 +44,5 @@ Empty HDU.
 HDU1
 ----
 
-See `HDU1 of zpix-SURVEY-PROGRAM.fits <zpix-SURVEY-PROGRAM.html#hdu1>`_.
+See `ZCATALOG HDU1 of zpix-SURVEY-PROGRAM.fits <zpix-SURVEY-PROGRAM.html#hdu1>`_.
+
