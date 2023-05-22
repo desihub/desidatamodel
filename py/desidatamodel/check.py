@@ -45,6 +45,7 @@ class DataModel(DataModelUnit):
             'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
             'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
+            'RANN': '[0-9]+',  # Realization number for LSS random catalogs
             'RELEASE': '[edr0-9]+',  # Data Release
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
