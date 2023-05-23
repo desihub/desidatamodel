@@ -4,8 +4,8 @@ Clustering LSS catalogs for data
 
 :Summary: For each target type, LSS catalogs for the data, ready to be used for clustering measurements, are provided.
 :Naming Convention: ``{TARGET}_{PHOTSYS}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG``, ``ELGnotqso``, ``ELG_HIP``, ``ELG_HIPnotqso``, ``LRG``, ``LRG_main``,
-                    for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{PHOTSYS}`` is the photometric region N or S.
-:Regex: ``[a-zA-Z]{3,}_[NS]_clustering.dat.fits``
+                    for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{PHOTSYS}`` is the photometric region ``N`` or ``S``.
+:Regex: ``[a-zA-Z_]+_[NS]_clustering.dat.fits``
 :File Type: FITS, 8 MB
 
 
@@ -64,10 +64,10 @@ RA                 float64  deg        Target Right Ascension
 DEC                float64  deg        Target declination
 TARGETID           int64               Unique DESI target ID
 NTILE              int64               Number of tiles target was available on
-TILES              char[43]            TILEIDs of those tile, in string form separated by &#x27;-&#x27;
+TILES              char[*]             TILEIDs of those tile, in string form separated by &#x27;-&#x27;
 Z                  float64             Redshift measured by Redrock
 COMP_TILE          float64             Assignment completeness for all targets of this type with the same value for TILES
-ROSETTE_NUMBER     float64             Rosette number ID [0-19]
+ROSETTE_NUMBER     int32               Rosette number ID [0-19]
 ROSETTE_R          float64  deg        Radius from the center of the rosette to the target
 FRACZ_TILELOCID    float64             The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 BITWEIGHTS         int64[2]            A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in

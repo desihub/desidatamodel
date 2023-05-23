@@ -5,7 +5,7 @@ The "full" LSS catalogs for data
 :Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign, with one entry for each. The files are split by target type and whether of not vetos for angular positions have been applied.
 :Naming Convention: ``{TARGET}_full{VETO}.dat.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG``, ``ELGnotqso``, ``ELG_HIP``, ``ELG_HIPnotqso``, ``LRG``, ``LRG_main``,
                     for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{VETO}`` is _noveto if vetos have not been applied and blank otherwise
-:Regex: ``[a-zA-Z]{3,}_full[a-z]{0,7}.dat.fits``
+:Regex: ``[a-zA-Z_]+\_full[a-z_]{0,7}.dat.fits``
 :File Type: FITS, 1 GB  (size varies considerably depending on target type)
 
 
@@ -172,13 +172,11 @@ FRACZ_TILELOCID            float64                  The fraction of targets of t
 BITWEIGHTS                 int64[2]                 A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 PROB_OBS                   float64                  The number alternative assignment histories that the target was assigned in divided by 128
 LRG_MASK [1]_              binary                   Imaging mask bits relevant to LRG targets
-OII_FLUX [2]_              float32                  Fitted flux for the [OII] doublet
-OII_FLUX_IVAR [2]_         float32                  Inverse variance of the fitted flux for the [OII] doublet
-O2C [2]_                   float64                  The criteria for assessing strength of OII emission for ELG observations
-Z_RR [3]_                  float64                  Redshift collected from redrock file
+OII_FLUX [1]_              float32                  Fitted flux for the [OII] doublet
+OII_FLUX_IVAR [1]_         float32                  Inverse variance of the fitted flux for the [OII] doublet
+O2C [1]_                   float64                  The criteria for assessing strength of OII emission for ELG observations
+Z_RR [1]_                  float64                  Redshift collected from redrock file
 ========================== =========== ============ =====================================================================================================================================
 
-.. [1] Only present in LRG samples
-.. [2] Only present in ELG samples
-.. [3] Only present in QSO samples
+.. [1] Optional. LRG_MASK only available for LRG samples. OII_FLUX, OII_FLUX_IVAR and O2C only present in ELG samples. Z_RR only present in QSO samples
 

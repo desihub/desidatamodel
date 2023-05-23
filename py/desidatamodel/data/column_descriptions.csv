@@ -356,10 +356,10 @@ TARGET_STATE,,,Combination of target class and its current observational state
 TILEDEC,float64,deg,Barycentric declination of tile center in ICRS
 TILEID,int32,,Unique DESI tile ID
 TILELOCID,,,Is 10000*TILEID+LOCATION
-TILELOCIDS,,,"TILELOCIDs that the target was available for, separated by '-'"
+TILELOCIDS,char[*],,"TILELOCIDs that the target was available for, separated by '-'"
 TILELOCID_ASSIGNED,,,0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 TILERA,float64,deg,Barycentric Right Ascension of tile center in ICRS
-TILES,str,,"TILEIDs of those tile, in string form separated by '-'"
+TILES,char[*],,"TILEIDs of those tile, in string form separated by '-'"
 TIMESTAMP,str,s,UTC/ISO time at which the target state was updated
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z"
 TSNR2_BGS_B,float32,,BGS B template (S/N)^2

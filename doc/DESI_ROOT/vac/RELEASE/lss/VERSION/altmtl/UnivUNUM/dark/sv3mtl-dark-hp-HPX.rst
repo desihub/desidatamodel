@@ -5,7 +5,7 @@ sv3mtl-dark-hp-HPX
 :Summary: MTL ledgers for the DESI dark-time program.
 :Naming Convention: ``sv3mtl-dark-hp-HPX.ecsv``, where 
     HPX is the nside=32 (NESTED) HEALPixel integer.
-:Regex: ``sv3mtl-dark-hp-[0-12287]\.ecsv``
+:Regex: ``sv3mtl-dark-hp-[0-9]+.ecsv``
 :File Type: ecsv, 0-10 MB
 
 Contents

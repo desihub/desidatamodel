@@ -5,7 +5,7 @@ The 'full' LSS catalogs for randoms
 :Summary: LSS catalogs containing information on all of the random targets identified as reachable by DESI fiberassign, for one of the input randoms. The files are split by target type, random file number, and whether of not vetos for angular positions have been applied.
 :Naming Convention: ``{TARGET}_{RANN}_full{VETO}.ran.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG``, ``ELGnotqso``, ``ELG_HIP``, ``ELG_HIPnotqso``, ``LRG``, ``LRG_main``,
                     for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{RANN}`` is the number between 0 and 17 designating the given random file, and ``{VETO}`` is _noveto if vetos have not been applied and blank otherwise.
-:Regex: ``[a-zA-Z]{3,}_[0-17]_full[a-z]{0,7}.ran.fits``
+:Regex: ``[a-zA-Z_]+\_[0-9]+\_full[a-z_]{0,7}.ran.fits``
 :File Type: FITS, 1 GB  
 
 
@@ -138,7 +138,7 @@ PHOTSYS                    char[1]                &#x27;N&#x27; for the MzLS/BAS
 HPXPIXEL                   int64                  HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 GOODPRI                    logical                True/False whether the priority of what was assigned to the location was &lt;= the base priority of the given target class
 GOODTSNR                   logical                True/False whether the TSNR_&lt;class&gt; value used was above the minimum threshold for the given target class
-ROSETTE_NUMBER             int64                  Rosette number ID [0-19]
+ROSETTE_NUMBER             int32                  Rosette number ID [0-19]
 ROSETTE_R                  float64   deg          Radius from the center of the rosette to the target
 COMP_TILE                  float64                Assignment completeness for all targets of this type with the same value for TILES
 LRG_MASK [1]_              binary                 Imaging mask bits relevant to LRG targets

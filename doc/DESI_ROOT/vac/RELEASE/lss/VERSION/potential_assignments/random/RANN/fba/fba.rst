@@ -4,7 +4,7 @@ fba
 
 :Summary: The fiberassign file contains the fiber positioner configuration information for each exposure for the given randoms.
 :Naming Convention: ``fba-{TILEID}.fits``, where `{TILEID}` is the 8-digit exposure ID.
-:Regex: ``fba-[0-9]{8}.fits``
+:Regex: ``fba-[0-9]{6}.fits``
 :File Type: FITS, 1 MB
 
 Contents

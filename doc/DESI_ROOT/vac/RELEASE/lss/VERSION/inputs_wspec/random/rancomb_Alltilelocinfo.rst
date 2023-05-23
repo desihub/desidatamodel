@@ -4,7 +4,7 @@ rancomb_Alltilelocinfo
 
 :Summary: For a random associated with ``{RANN}``, the list of unique TARGETIDs with number of appearances as reachable according to fiber assigment and details on those appearances. 
 :Naming Convention: ``rancomb_{RANN}{PROGRAM}_Alltilelocinfo.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{PROGRAM}`` is the observing program, either ``dark`` or ``bright``.
-:Regex: ``rancomb_[0-17][a-z]{4,6}_Alltilelocinfo.fits`` 
+:Regex: ``rancomb_[0-9]+(dark|bright)_Alltilelocinfo.fits`` 
 :File Type: FITS, 327 MB 
 
 Contents
@@ -60,7 +60,7 @@ Name       Type     Units Description
 ========== ======== ===== ========================================================================
 TARGETID   int64          Unique DESI target ID
 NTILE      int64          Number of tiles target was available on
-TILES      char[11]       TILEIDs of those tile, in string form separated by &#x27;-&#x27;
-TILELOCIDS char[39]       TILELOCIDs that the target was available for, separated by &#x27;-&#x27;
+TILES      char[*]        TILEIDs of those tile, in string form separated by &#x27;-&#x27;
+TILELOCIDS char[*]        TILELOCIDs that the target was available for, separated by &#x27;-&#x27;
 ========== ======== ===== ========================================================================
 
