@@ -45,10 +45,14 @@ class DataModel(DataModelUnit):
             'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
             'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
+            'RANN': '[0-9]+',  # Realization number for LSS random catalogs
+            'RELEASE': '[edr0-9]+',  # Data Release
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
             'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
+            'UnivUNUM': 'Univ[0-9][0-9][0-9]',  # Realizations of MTL ledgers, in LSS catalog
+            'VERSION': '[v0-9.]+',  # A version string, e.g. v2.0
             }
     # Matches titles.
     _titleline = re.compile(r'=+\n([^=]+)\n=+\n', re.M)
@@ -684,7 +688,7 @@ def collect_files(root, files, n_prototypes=5):
     ignore_directories = ('logs', 'scripts')
     include_extensions = ('.csv', '.ecsv',
                           '.fits', '.fits.fz', '.fits.gz',
-                          '.json', '.yaml')
+                          '.json', '.txt', '.yaml')
     for dirpath, dirnames, filenames in os.walk(root):
         for d in ignore_directories:
             try:

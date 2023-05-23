@@ -87,6 +87,7 @@ class Stub(DataModelUnit):
 
     def __init__(self, filename, description_file=None, error=False):
         self.filename = None
+        self.description_file = description_file
         self.error = error
         self.headers = list()
         self.description_file = description_file

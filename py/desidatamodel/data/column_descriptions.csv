@@ -226,7 +226,7 @@ NUMOBS,int64,,"Number of spectroscopic observations (on this specific, single ti
 NUMOBS_INIT,int64,,Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_MORE,int64,,Number of additional observations needed
 NUM_ITER,int64,,Number of positioner iterations
-NZ,,,"The comoving number density of the tracer at the given redshift, in units (h/Mpc)^3, assuming complete sample"
+NZ,float64,h^3 Mpc^-3,"The comoving number density of the tracer at the given redshift, assuming complete sample"
 O2C,float64,,The criteria for assessing strength of OII emission for ELG observations
 OBJID,int32,,Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD"
@@ -356,10 +356,10 @@ TARGET_STATE,,,Combination of target class and its current observational state
 TILEDEC,float64,deg,Barycentric declination of tile center in ICRS
 TILEID,int32,,Unique DESI tile ID
 TILELOCID,,,Is 10000*TILEID+LOCATION
-TILELOCIDS,,,"TILELOCIDs that the target was available for, separated by '-'"
+TILELOCIDS,char[*],,"TILELOCIDs that the target was available for, separated by '-'"
 TILELOCID_ASSIGNED,,,0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 TILERA,float64,deg,Barycentric Right Ascension of tile center in ICRS
-TILES,str,,"TILEIDs of those tile, in string form separated by '-'"
+TILES,char[*],,"TILEIDs of those tile, in string form separated by '-'"
 TIMESTAMP,str,s,UTC/ISO time at which the target state was updated
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z"
 TSNR2_BGS_B,float32,,BGS B template (S/N)^2
@@ -395,7 +395,7 @@ URAT_SEP,,arcsec,
 VAR_A_MGII,float32,,Variance of MgII fit amplitude parameter A
 VAR_B_MGII,float32,,Variance of MgII fit offset parameter B
 VAR_SIGMA_MGII,float32,,Variance of MgII fit width parameter sigma
-VERSION,char[14],,Tag of desitarget used to create the target catalog 
+VERSION,char[14],,Tag of desitarget used to create the target catalog
 WEIGHT,float64,,The combination of all weights to use
 WEIGHT_COMP,float64,,1/FRACZ_TILELOCID
 WEIGHT_FKP,float64,,"1/(1+NZ*P0), with P0 different for each tracer"
@@ -416,6 +416,7 @@ Z_CIII,float64,,Redshift estimated by QuasarNET with CIII line
 Z_CIV,float64,,Redshift estimated by QuasarNET with CIV line
 Z_Halpha,float64,,Redshift estimated by QuasarNET with Halpha line
 Z_Hbeta,float64,,Redshift estimated by QuasarNET with Hbeta line
+Z_HP,float64,,Redshift from Healpix coadd
 Z_LYA,float64,,Redshift estimated by QuasarNET with LyA line
 Z_MgII,float64,,Redshift estimated by QuasarNET with MgII line
 Z_QN,float64,,Redshift measured by QuasarNET using line with highest confidence
