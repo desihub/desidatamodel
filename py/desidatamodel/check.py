@@ -688,7 +688,7 @@ def collect_files(root, files, n_prototypes=5):
     ignore_directories = ('logs', 'scripts')
     include_extensions = ('.csv', '.ecsv',
                           '.fits', '.fits.fz', '.fits.gz',
-                          '.json', '.yaml')
+                          '.json', '.txt', '.yaml')
     for dirpath, dirnames, filenames in os.walk(root):
         for d in ignore_directories:
             try:
