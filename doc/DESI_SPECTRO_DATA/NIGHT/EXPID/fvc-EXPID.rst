@@ -502,9 +502,3 @@ fwhm      float64       label for field   4
 flags     int64         label for field   5
 device_id int64         label for field   6
 ========= ======= ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

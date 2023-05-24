@@ -138,9 +138,3 @@ fwhm    float64       label for field   5
 flags   int64         label for field   6
 y       float64       label for field   7
 ======= ======= ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -605,8 +605,3 @@ CMX_TARGET [1]_       int64                Target selection bitmask for commissi
 ===================== ======= ============ =========================================================================================================================
 
 .. [1] Optional
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

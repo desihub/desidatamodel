@@ -74,9 +74,3 @@ brightdec     float64[3] deg     Decs of 3 brightest Tycho-2 stars in tile
 brightvtmag   float32[3] mag     V_T magnitudes of 3 brightest Tycho-2 stars in tile
 centerid      int32              Unique tile ID of pass 0 tile corresponding to this tile
 ============= ========== ======= ===========
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

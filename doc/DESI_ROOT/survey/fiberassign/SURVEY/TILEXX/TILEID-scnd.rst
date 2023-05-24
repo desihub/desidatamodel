@@ -105,9 +105,3 @@ PLATE_RA              float64            label for field  34
 PLATE_DEC             float64            label for field  35
 PLATE_REF_EPOCH       float32            label for field  36
 ===================== ======== ========= ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -72,9 +72,3 @@ SLIT        int32
 SLITBLOCK   int64
 BLOCKFIBER  int64
 =========== ======= ===== ==========================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

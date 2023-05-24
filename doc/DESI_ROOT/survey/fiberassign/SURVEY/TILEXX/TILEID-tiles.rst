@@ -69,9 +69,3 @@ OBSCONDITIONS int32         label for field   4
 IN_DESI       int16         label for field   5
 PROGRAM       char[6]       label for field   6
 ============= ======= ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

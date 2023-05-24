@@ -85,9 +85,3 @@ EXTNAME MASK     str  extension name
 ======= ======== ==== ==============
 
 Data: FITS image
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

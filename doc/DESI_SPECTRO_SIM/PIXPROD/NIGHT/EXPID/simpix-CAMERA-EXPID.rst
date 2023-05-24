@@ -143,9 +143,3 @@ WMAX_ALL 5949          int  Max wavelength seen by all spectra [Ang]
 ======== ============= ==== ========================================
 
 Data: FITS image [float64]
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

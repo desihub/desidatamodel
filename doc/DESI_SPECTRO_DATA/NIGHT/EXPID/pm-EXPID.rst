@@ -140,9 +140,3 @@ XPIX       float64       label for field   3
 YPIX       float64       label for field   4
 FLAGS      int64         label for field   5
 ========== ======= ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

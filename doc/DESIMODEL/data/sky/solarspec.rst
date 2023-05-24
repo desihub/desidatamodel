@@ -18,8 +18,3 @@ The first two columns are completely redundant since::
     first_column*10 == second_column
 
 exactly.
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -96,9 +96,3 @@ lrg        float64          throughput for typical LRG
 star       float64          throughput for typical point source
 sky        float64          throughput for uniform source
 ========== ======= ======== ===========
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -915,9 +915,3 @@ NIGHT  int64
 EXPID  int64
 CAMERA char[2]
 ====== ======= ===== ===========
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

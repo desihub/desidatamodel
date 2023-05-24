@@ -1387,8 +1387,3 @@ SV2_MWS_TARGET [1]_   int64
 ===================== ======= ================== ===========
 
 .. [1] Optional
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

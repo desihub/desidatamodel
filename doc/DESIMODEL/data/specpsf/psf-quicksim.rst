@@ -139,9 +139,3 @@ fwhm_spatial      float64 pixel          FWHM in cross-dispersion (x) direction
 neff_spatial      float64 pixel          Number of effective pixels covered
 angstroms_per_row float64 Angstrom/bin   Angstroms per CCD pixels at this wavelength
 ================= ======= ============== ===========================================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

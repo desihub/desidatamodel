@@ -245,8 +245,3 @@ COEFF   float64[1000]       label for field   2
 LEGDEGX int32               label for field   3
 LEGDEGW int32               label for field   4
 ======= ============= ===== ===================
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

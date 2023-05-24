@@ -59,9 +59,3 @@ Name       Type    Units Description
 WAVELENGTH float64       Wavelength in Angstroms
 EXTINCTION float64       Extinction in magnitudes per airmass
 ========== ======= ===== ====================================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

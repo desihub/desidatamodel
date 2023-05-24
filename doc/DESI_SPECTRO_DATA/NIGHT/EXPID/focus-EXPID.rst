@@ -753,9 +753,3 @@ CRPIX2   float64        label for field  20
 CRVAL1   float64        label for field  21
 CRVAL2   float64        label for field  22
 ======== ======== ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

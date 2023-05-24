@@ -155,9 +155,3 @@ Required Header Keywords
     ======== ============================================= ===== =======================================
 
 Data: FITS image [float32, 4232x4162]
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -12,8 +12,3 @@ Contents
 
 This ASCII file contains two columns, wavelength [Å] and filter response
 [fraction transmitted].
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

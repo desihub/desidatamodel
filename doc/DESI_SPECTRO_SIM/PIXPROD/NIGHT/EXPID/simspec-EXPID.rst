@@ -629,8 +629,3 @@ TARGETID int64
 TEFF     float32
 LOGG     float32
 ======== ======= ===== ===========
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

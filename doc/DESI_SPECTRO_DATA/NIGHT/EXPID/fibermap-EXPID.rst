@@ -107,8 +107,6 @@ Required Header Keywords
     DATE-OBS 2020-03-17T03:35:05.835 str   Start of exposure
     ======== ======================= ===== =======================================
 
-TODO: standardize keywords with ICS, *e.g.* ``FLAVOR -> PROGRAM``.
-
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -263,11 +261,8 @@ HPXPIXEL           int64
 OBSCONDITIONS      int64
 ================== ======= ===== ===========
 
-Notes:
-
-* Future versions will include IVAR columns
 
 Notes and Examples
 ==================
 
-To do...
+* Future versions will include IVAR columns
