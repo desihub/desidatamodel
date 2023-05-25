@@ -189,36 +189,36 @@ STD_FIBER_RA               float32     arcsec       Standard deviation (over exp
 MEAN_FIBER_DEC             float64     deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32     arcsec       Standard deviation (over exposures) of DEC of actual fiber position
 MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-TSNR2_GPBDARK_B            float32                  label for field  81
+TSNR2_GPBDARK_B            float32                  template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B                float32                  ELG B template (S/N)^2
-TSNR2_GPBBRIGHT_B          float32                  label for field  83
+TSNR2_GPBBRIGHT_B          float32                  template (S/N)^2 for bright targets in guider pass band on B
 TSNR2_LYA_B                float32                  LYA B template (S/N)^2
 TSNR2_BGS_B                float32                  BGS B template (S/N)^2
-TSNR2_GPBBACKUP_B          float32                  label for field  86
+TSNR2_GPBBACKUP_B          float32                  template (S/N)^2 for backup targets in guider pass band on B
 TSNR2_QSO_B                float32                  QSO B template (S/N)^2
 TSNR2_LRG_B                float32                  LRG B template (S/N)^2
-TSNR2_GPBDARK_R            float32                  label for field  89
+TSNR2_GPBDARK_R            float32                  template (S/N)^2 for dark targets in guider pass band on R
 TSNR2_ELG_R                float32                  ELG R template (S/N)^2
-TSNR2_GPBBRIGHT_R          float32                  label for field  91
+TSNR2_GPBBRIGHT_R          float32                  template (S/N)^2 for bright targets in guider pass band on R
 TSNR2_LYA_R                float32                  LYA R template (S/N)^2
 TSNR2_BGS_R                float32                  BGS R template (S/N)^2
-TSNR2_GPBBACKUP_R          float32                  label for field  94
+TSNR2_GPBBACKUP_R          float32                  template (S/N)^2 for backup targets in guider pass band on R
 TSNR2_QSO_R                float32                  QSO R template (S/N)^2
 TSNR2_LRG_R                float32                  LRG R template (S/N)^2
-TSNR2_GPBDARK_Z            float32                  label for field  97
+TSNR2_GPBDARK_Z            float32                  template (S/N)^2 for dark targets in guider pass band on Z
 TSNR2_ELG_Z                float32                  ELG Z template (S/N)^2
-TSNR2_GPBBRIGHT_Z          float32                  label for field  99
+TSNR2_GPBBRIGHT_Z          float32                  template (S/N)^2 for bright targets in guider pass band on Z
 TSNR2_LYA_Z                float32                  LYA Z template (S/N)^2
 TSNR2_BGS_Z                float32                  BGS Z template (S/N)^2
-TSNR2_GPBBACKUP_Z          float32                  label for field 102
+TSNR2_GPBBACKUP_Z          float32                  template (S/N)^2 for backup targets in guider pass band on Z
 TSNR2_QSO_Z                float32                  QSO Z template (S/N)^2
 TSNR2_LRG_Z                float32                  LRG Z template (S/N)^2
-TSNR2_GPBDARK              float32                  label for field 105
+TSNR2_GPBDARK              float32                  template (S/N)^2 for dark targets in guider pass band
 TSNR2_ELG                  float32                  ELG template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBRIGHT            float32                  label for field 107
+TSNR2_GPBBRIGHT            float32                  template (S/N)^2 for bright targets in guider pass band
 TSNR2_LYA                  float32                  LYA template (S/N)^2 summed over B,R,Z
 TSNR2_BGS                  float32                  BGS template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBACKUP            float32                  label for field 110
+TSNR2_GPBBACKUP            float32                  template (S/N)^2 for backup targets in guider pass band
 TSNR2_QSO                  float32                  QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG                  float32                  LRG template (S/N)^2 summed over B,R,Z
 SV_NSPEC [1]_              int32                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)

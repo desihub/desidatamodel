@@ -179,6 +179,8 @@ MEAN_DELTA_X,float32,mm,Mean (over exposures) fiber difference requested - actua
 MEAN_DELTA_Y,float32,mm,Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 MEAN_FIBER_DEC,float64,deg,Mean (over exposures) DEC of actual fiber position
 MEAN_FIBER_RA,float64,deg,Mean (over exposures) RA of actual fiber position
+MEAN_FIBER_X,float32,mm,Mean (over exposures) fiber CS5 X location on focal plane
+MEAN_FIBER_Y,float32,mm,Mean (over exposures) fiber CS5 Y location on focal plane
 MEAN_PSF_TO_FIBER_SPECFLUX,float32,,Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 MEDIAN_CALIB_COUNT_B,float64,,Median of calibrated flux in B camera
 MEDIAN_CALIB_COUNT_R,float64,,Median of calibrated flux in R camera
@@ -369,6 +371,10 @@ TSNR2_ELG,float32,,"ELG template (S/N)^2 summed over B,R,Z"
 TSNR2_ELG_B,float32,,ELG B template (S/N)^2
 TSNR2_ELG_R,float32,,ELG R template (S/N)^2
 TSNR2_ELG_Z,float32,,ELG Z template (S/N)^2
+TSNR2_GPBBACKUP,float64,,template (S/N)^2 for backup targets in guider pass band
+TSNR2_GPBBACKUP_B,float64,,template (S/N)^2 for backup targets in guider pass band on B
+TSNR2_GPBBACKUP_R,float64,,template (S/N)^2 for backup targets in guider pass band on R
+TSNR2_GPBBACKUP_Z,float64,,template (S/N)^2 for backup targets in guider pass band on Z
 TSNR2_GPBBRIGHT,float64,,template (S/N)^2 for bright targets in guider pass band
 TSNR2_GPBBRIGHT_B,float64,,template (S/N)^2 for bright targets in guider pass band on B
 TSNR2_GPBBRIGHT_R,float64,,template (S/N)^2 for bright targets in guider pass band on R
