@@ -97,7 +97,7 @@ Name                       Type        Units        Description
 TARGETID                   int64                    ID (unique to file? and the whole survey?)
 SURVEY [1]_                char[7]                  Survey name
 PROGRAM [1]_               char[6]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
-LASTNIGHT                  int32
+LASTNIGHT                  int32                    Final night of observation included in a series of coadds
 SPGRPVAL                   int32                    Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 Z                          float64                  Redshift measured by Redrock
 ZERR                       float64                  Redshift error from redrock
@@ -289,7 +289,7 @@ Name                  Type    Units    Description
 TARGETID              int64            Unique DESI target ID
 PRIORITY              int32            Target current priority
 SUBPRIORITY           float64          Random subpriority [0-1) to break assignment ties
-NIGHT                 int32
+NIGHT                 int32            Night of observation (YYYYMMDD) starting at local noon before observations start
 EXPID                 int32            DESI Exposure ID number
 MJD                   float64          Modified Julian Date when shutter was opened for this exposure
 TILEID                int32            Unique DESI tile ID

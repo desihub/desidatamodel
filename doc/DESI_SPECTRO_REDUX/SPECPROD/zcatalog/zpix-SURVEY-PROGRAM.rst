@@ -280,7 +280,7 @@ Name                  Type    Units    Description
 TARGETID              int64            Unique DESI target ID
 PRIORITY              int32            Target current priority
 SUBPRIORITY           float64          Random subpriority [0-1) to break assignment ties
-NIGHT                 int32
+NIGHT                 int32            Night of observation (YYYYMMDD) starting at local noon before observations start
 EXPID                 int32            DESI Exposure ID number
 MJD                   float64          Modified Julian Date when shutter was opened for this exposure
 TILEID                int32            Unique DESI tile ID

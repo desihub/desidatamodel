@@ -3,11 +3,24 @@
 """Test desidatamodel.update functions
 """
 import unittest
+import csv
+from pkg_resources import resource_filename
 
 from ..update import update
 
 
 class TestUpdate(unittest.TestCase):
+
+    def test_column_descriptions(self):
+        """Ensure that every column described in the CSV file at least
+        has a non-empty type and description.
+        """
+        coldef_file = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+        with open(coldef_file, newline='') as csv_columns:
+            reader = csv.reader(csv_columns)
+            self.assertTrue(all([row[1] for row in reader]))
+            foo = csv_columns.seek(0)
+            self.assertTrue(all([row[3] for row in reader]))
 
     def test_update(self):
         input_lines = """
