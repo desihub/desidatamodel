@@ -57,13 +57,13 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============= ======= ===== ===================
+============= ======= ===== ===============================================
 Name          Type    Units Description
-============= ======= ===== ===================
-TILEID        int32         label for field   1
-RA            float64       label for field   2
-DEC           float64       label for field   3
-OBSCONDITIONS int32         label for field   4
+============= ======= ===== ===============================================
+TILEID        int32         Unique DESI tile ID
+RA            float64 deg   Barycentric Right Ascension in ICRS
+DEC           float64 deg   Barycentric declination in ICRS
+OBSCONDITIONS int32         Bitmask of allowed observing conditions
 IN_DESI       int16         label for field   5
-PROGRAM       char[6]       label for field   6
-============= ======= ===== ===================
+PROGRAM       char[6]       DESI program type - BRIGHT, DARK, BACKUP, OTHER
+============= ======= ===== ===============================================

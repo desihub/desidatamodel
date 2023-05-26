@@ -59,34 +59,34 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-================ ======= ============= ===================
-Name             Type    Units         Description
-================ ======= ============= ===================
-RELEASE          int32                 label for field   1
-BRICKID          int32                 label for field   2
-BRICKNAME        char[8]               label for field   3
-BRICK_OBJID      int32                 label for field   4
-RA               float64 deg           label for field   5
-DEC              float64 deg           label for field   6
-BLOBDIST         float32 pix           label for field   7
-FIBERFLUX_G      float32 nanomaggy     label for field   8
-FIBERFLUX_R      float32 nanomaggy     label for field   9
-FIBERFLUX_Z      float32 nanomaggy     label for field  10
-FIBERFLUX_IVAR_G float32 nanomaggy^-2  label for field  11
-FIBERFLUX_IVAR_R float32 nanomaggy^-2  label for field  12
-FIBERFLUX_IVAR_Z float32 nanomaggy^-2  label for field  13
-TARGETID         int64                 label for field  14
-DESI_TARGET      int64                 label for field  15
-BGS_TARGET       int64                 label for field  16
-MWS_TARGET       int64                 label for field  17
-SUBPRIORITY      float64               label for field  18
-OBSCONDITIONS    int64                 label for field  19
-PRIORITY_INIT    int64                 label for field  20
-NUMOBS_INIT      int64                 label for field  21
-HPXPIXEL         int64                 label for field  22
-PLATE_RA         float64               label for field  23
-PLATE_DEC        float64               label for field  24
-================ ======= ============= ===================
+================ ======= ============ ========================================================================================================
+Name             Type    Units        Description
+================ ======= ============ ========================================================================================================
+RELEASE          int32                Imaging surveys release ID
+BRICKID          int32                Brick ID from tractor input
+BRICKNAME        char[8]              Brick name from tractor input
+BRICK_OBJID      int32                Imaging Surveys OBJID on that brick
+RA               float64 deg          Barycentric Right Ascension in ICRS
+DEC              float64 deg          Barycentric declination in ICRS
+BLOBDIST         float32 pix          label for field   7
+FIBERFLUX_G      float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_R      float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z      float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_IVAR_G float32 nanomaggy^-2 label for field  11
+FIBERFLUX_IVAR_R float32 nanomaggy^-2 label for field  12
+FIBERFLUX_IVAR_Z float32 nanomaggy^-2 label for field  13
+TARGETID         int64                Unique DESI target ID
+DESI_TARGET      int64                DESI (dark time program) target selection bitmask
+BGS_TARGET       int64                BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET       int64                Milky Way Survey targeting bits
+SUBPRIORITY      float64              Random subpriority [0-1) to break assignment ties
+OBSCONDITIONS    int64                Bitmask of allowed observing conditions
+PRIORITY_INIT    int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT      int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+HPXPIXEL         int64                HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+PLATE_RA         float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC        float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
+================ ======= ============ ========================================================================================================
 
 
 Notes and Examples

@@ -63,46 +63,46 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-================================= ======= ============= ===================
-Name                              Type    Units         Description
-================================= ======= ============= ===================
-RELEASE                           int32                 label for field   1
-TARGETID                          int64                 label for field   2
-BRICKID                           int32                 label for field   3
-BRICK_OBJID                       int32                 label for field   4
-RA                                float64 deg           label for field   5
-DEC                               float64 deg           label for field   6
-RA_IVAR                           float32 deg^-2        label for field   7
-DEC_IVAR                          float32 deg^-2        label for field   8
-MORPHTYPE                         char[4]               label for field   9
-MASKBITS                          int16                 label for field  10
-FLUX_G                            float32 nanomaggy     label for field  11
-FLUX_R                            float32 nanomaggy     label for field  12
-FLUX_Z                            float32 nanomaggy     label for field  13
-FLUX_IVAR_G                       float32 nanomaggy^-2  label for field  14
-FLUX_IVAR_R                       float32 nanomaggy^-2  label for field  15
-FLUX_IVAR_Z                       float32 nanomaggy^-2  label for field  16
-REF_ID                            int64                 label for field  17
-REF_CAT                           char[2]               label for field  18
-REF_EPOCH                         float32 yr            label for field  19
-PARALLAX                          float32 mas           label for field  20
-PARALLAX_IVAR                     float32 mas^-2        label for field  21
-PMRA                              float32 mas / yr      label for field  22
-PMDEC                             float32 mas / yr      label for field  23
-PMRA_IVAR                         float32 yr^2 / mas^2  label for field  24
-PMDEC_IVAR                        float32 yr^2 / mas^2  label for field  25
-GAIA_PHOT_G_MEAN_MAG              float32 mag           label for field  26
-GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32               label for field  27
-GAIA_PHOT_BP_MEAN_MAG             float32 mag           label for field  28
-GAIA_PHOT_BP_MEAN_FLUX_OVER_ERROR float32               label for field  29
-GAIA_PHOT_RP_MEAN_MAG             float32 mag           label for field  30
-GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32               label for field  31
-GAIA_ASTROMETRIC_EXCESS_NOISE     float32               label for field  32
-URAT_ID                           int64                 label for field  33
-URAT_SEP                          float32 arcsec        label for field  34
-GAIA_PHOT_G_N_OBS                 int32                 label for field  35
-HPXPIXEL                          int64                 label for field  36
-================================= ======= ============= ===================
+================================= ======= ============ =======================================================================================================================================
+Name                              Type    Units        Description
+================================= ======= ============ =======================================================================================================================================
+RELEASE                           int32                Imaging surveys release ID
+TARGETID                          int64                Unique DESI target ID
+BRICKID                           int32                Brick ID from tractor input
+BRICK_OBJID                       int32                Imaging Surveys OBJID on that brick
+RA                                float64 deg          Barycentric Right Ascension in ICRS
+DEC                               float64 deg          Barycentric declination in ICRS
+RA_IVAR                           float32 deg^-2       Inverse variance of RA (no cosine term!), excluding astrometric calibration errors
+DEC_IVAR                          float32 deg^-2       Inverse variance of DEC, excluding astrometric calibration errors
+MORPHTYPE                         char[4]              Imaging Surveys morphological type from Tractor
+MASKBITS                          int16                Bitwise mask from the imaging indicating potential issue or blending
+FLUX_G                            float32 nanomaggy    Flux in the Legacy Survey g-band (AB)
+FLUX_R                            float32 nanomaggy    Flux in the Legacy Survey r-band (AB)
+FLUX_Z                            float32 nanomaggy    Flux in the Legacy Survey z-band (AB)
+FLUX_IVAR_G                       float32 nanomaggy^-2 Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R                       float32 nanomaggy^-2 Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z                       float32 nanomaggy^-2 Inverse variance of FLUX_Z (AB)
+REF_ID                            int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2
+REF_CAT                           char[2]              Reference catalog source for star: &#x27;T2&#x27; for Tycho-2, &#x27;G2&#x27; for Gaia DR2, &#x27;L2&#x27; for the SGA, empty otherwise
+REF_EPOCH                         float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+PARALLAX                          float32 mas          Reference catalog parallax
+PARALLAX_IVAR                     float32 mas^-2       Inverse variance of PARALLAX
+PMRA                              float32 mas / yr     proper motion in the +RA direction (already including cos(dec))
+PMDEC                             float32 mas / yr     Proper motion in the +Dec direction
+PMRA_IVAR                         float32 yr^2 / mas^2 Inverse variance of PMRA
+PMDEC_IVAR                        float32 yr^2 / mas^2 Inverse variance of PMDEC
+GAIA_PHOT_G_MEAN_MAG              float32 mag          Gaia G band magnitude
+GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32              Gaia G band signal-to-noise
+GAIA_PHOT_BP_MEAN_MAG             float32 mag          Gaia BP band magnitude
+GAIA_PHOT_BP_MEAN_FLUX_OVER_ERROR float32              Gaia BP band signal-to-noise
+GAIA_PHOT_RP_MEAN_MAG             float32 mag          Gaia RP band magnitude
+GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32              Gaia RP band signal-to-noise
+GAIA_ASTROMETRIC_EXCESS_NOISE     float32              Gaia astrometric excess noise
+URAT_ID                           int64                ID in the URAT catalog for sources where URAT supplemented missing Gaia astrometric information
+URAT_SEP                          float32 arcsec       Separation between URAT and Gaia sources where URAT supplemented missing Gaia astrometric information
+GAIA_PHOT_G_N_OBS                 int32                Gaia G band number of observations
+HPXPIXEL                          int64                HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+================================= ======= ============ =======================================================================================================================================
 
 
 Notes and Examples
