@@ -16,7 +16,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
+HDU0_          IMAGE    Empty HDU
 HDU1_  TARGETS BINTABLE *Brief Description*
 ====== ======= ======== ===================
 
@@ -26,8 +26,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 

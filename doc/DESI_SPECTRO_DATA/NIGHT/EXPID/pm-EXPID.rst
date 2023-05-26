@@ -11,17 +11,17 @@ pm-EXPID
 Contents
 ========
 
-====== ======== ======== ===================
+====== ======== ======== ====================================
 Number EXTNAME  Type     Contents
-====== ======== ======== ===================
+====== ======== ======== ====================================
 HDU0_  PM       IMAGE    Header Keywords
-HDU1_  PMGSTARS BINTABLE *Brief Description*
-HDU2_  PMGWCS   BINTABLE *Brief Description*
-HDU3_  PMFIDPOS BINTABLE *Brief Description*
-HDU4_  PMPOSPOS BINTABLE *Brief Description*
-HDU5_  PMCNTPOS BINTABLE *Brief Description*
-HDU6_  PMFIBMAP BINTABLE *Brief Description*
-====== ======== ======== ===================
+HDU1_  PMGSTARS BINTABLE Guide stars
+HDU2_  PMGWCS   BINTABLE Guider WCS
+HDU3_  PMFIDPOS BINTABLE Predicted fiducial postitons
+HDU4_  PMPOSPOS BINTABLE Predicted fiber positions
+HDU5_  PMCNTPOS BINTABLE Predicted center-of-travel positions
+HDU6_  PMFIBMAP BINTABLE Positions after calibration
+====== ======== ======== ====================================
 
 
 FITS Header Units
