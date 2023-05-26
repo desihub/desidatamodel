@@ -30,8 +30,6 @@ HDU0
 
 EXTNAME = META
 
-*Summarize the contents of this HDU.*
-
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
