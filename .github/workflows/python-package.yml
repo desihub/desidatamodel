@@ -17,8 +17,8 @@ jobs:
             fail-fast: true
             matrix:
                 os: [ubuntu-latest]
-                python-version: ['3.9', '3.10', '3.11']
-                astropy-version: ['<5.1', '<5.2', '<6.0']
+                python-version: ['3.9', '3.10']  #, '3.11'] possible conflicts between numpy & astropy on 3.11.
+                astropy-version: ['<5.1', '<5.3', '<6.0']
                 desiutil-version: ['3.3.0']
 
         steps:
@@ -125,7 +125,7 @@ jobs:
                 python -m pip install --upgrade pip setuptools wheel
                 python -m pip install git+https://github.com/desihub/desiutil.git@${{ matrix.desiutil-version }}#egg=desiutil
             - name: Generate api.rst
-              run: desi_api_file --api ./api.rst desitransfer
+              run: desi_api_file --api ./api.rst desidatamodel
             - name: Compare generated api.rst to checked-in version
               run: diff --ignore-space-change --ignore-blank-lines ./api.rst ./doc/api.rst
 
