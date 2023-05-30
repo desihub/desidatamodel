@@ -11,10 +11,12 @@ APFLUX_Z,float32,nanomaggy,Total flux in nanomaggies extracted in a 0.75 arcsec 
 A_MGII,float32,,Fitted parameter A (amplitude) by MgII fitter
 BGS_TARGET,int64,,BGS (Bright Galaxy Survey) target selection bitmask
 BITWEIGHTS,int64[2],,A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
+BLOBDIST,float32,pix,Maximum distance from a detected Legacy Surveys source
 BRICKID,int32,,Brick ID from tractor input
 BRICKNAME,char[8],,Brick name from tractor input
 BRICK_OBJID,int32,,Imaging Surveys OBJID on that brick
 B_MGII,float32,,Fitted parameter B (constant) by MgII fitter
+CHECKER,char[5],,Initials of researcher who vetted the target
 CHI2,float64,,Best fit chi squared
 CMX_TARGET,int64,,Target selection bitmask for commissioning
 COADD_EXPTIME,float32,s,Summed exposure time for coadd
@@ -57,6 +59,9 @@ FIBERASSIGN_Y,float32,mm,Fiberassign expected CS5 Y location on focal plane
 FIBERFLUX_G,float32,nanomaggy,Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_R,float32,nanomaggy,Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_Z,float32,nanomaggy,Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_IVAR_G,float32,nanomaggy^-2,Inverse variance of ``FIBERFLUX_G``
+FIBERFLUX_IVAR_R,float32,nanomaggy^-2,Inverse variance of ``FIBERFLUX_R``
+FIBERFLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of ``FIBERFLUX_Z``
 FIBERSTATUS,int32,,Fiber status mask. 0=good
 FIBERTOTFLUX_G,float32,nanomaggy,Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_R,float32,nanomaggy,Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
@@ -156,6 +161,7 @@ HGAMMA_SHARE_IVAR,float32,,NaN (SHARE not relevant for HGAMMA line)
 HGAMMA_SIGMA,float32,Angstrom,Fitted line width (in the observed frame) for the HGAMMA line
 HGAMMA_SIGMA_IVAR,float32,Angstrom^-2,Inverse variance of the fitted line width (in the observed frame) for the HGAMMA line
 HPXPIXEL,int64,,HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+IN_DESI,int16,,Used by fiberassign to make a tile in the DESI footprint; always set to 1
 IN_RADIUS,float32,arcsec,Radius used to set the ``IN_BRIGHT_OBJECT`` bit in the ``DESI_TARGET`` bitmask.
 IS_QSO_MGII,bool,,Boolean: True if the object passes the MgII selection
 IS_QSO_QN,int16,,Spectroscopic classification from QuasarNET (1 for a quasar)
@@ -210,7 +216,9 @@ MEDIAN_SKYSUB_COUNT_Z,float64,,Median of sky-subtracted counts in Z camera
 MEDIAN_SKYSUB_SNR_B,float64,,Median(S/N) of sky-subtracted counts in B camera
 MEDIAN_SKYSUB_SNR_R,float64,,Median(S/N) of sky-subtracted counts in R camera
 MEDIAN_SKYSUB_SNR_Z,float64,,Median(S/N) of sky-subtracted counts in Z camera
-MJD,float64,,Modified Julian Date when shutter was opened for this exposure
+MJD,float64,d,Modified Julian Date when shutter was opened for this exposure
+MJD_BEGIN,float64,d,Start of the allowed observing window for this target (Modified Julian Date)
+MJD_END,float64,d,End of the allowed observing window for this target (Modified Julian Date)
 MORPHTYPE,char[4],,Imaging Surveys morphological type from Tractor
 MWS_TARGET,int64,,Milky Way Survey targeting bits
 MW_TRANSMISSION_G,float32,,Milky Way dust transmission in LS g-band
@@ -237,6 +245,7 @@ O2C,float64,,The criteria for assessing strength of OII emission for ELG observa
 OBJID,int32,,Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD"
 OBSCONDITIONS,int32,,Bitmask of allowed observing conditions
+OCLAYER,char[6],,Either "DARK" for dark-time or "BRIGHT" to observe in either bright- or dark-time
 OIII_CHI2,float32,,Reduced chi2 of the fit for the [OIII] doublet
 OIII_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum used for the fitting (fixed value) for the [OIII] doublet
 OIII_CONT_IVAR,float32,10**+34 (s2 cm4 Angstrom2) / erg2,Inverse variance of the continuum for the [OIII] doublet
@@ -267,6 +276,7 @@ PETAL_LOC,int16,,Petal location [0-9]
 PHOTSYS,char[1],,"'N' for the MzLS/BASS photometric system, 'S' for DECaLS"
 PLATE_DEC,float64,deg,Barycentric Declination in ICRS to be used by PlateMaker
 PLATE_RA,float64,deg,Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_REF_EPOCH,float64,yr,Copy of REF_EPOCH to be used by PlateMaker
 PMDEC,float32,mas yr^-1,Proper motion in the +Dec direction
 PMDEC_IVAR,float32,yr^2 mas^-2,Inverse variance of PMDEC
 PMRA,float32,mas yr^-1,"proper motion in the +RA direction (already including cos(dec))"
@@ -299,6 +309,7 @@ RMS_DELTA_Y,float32,mm,RMS (over exposures) of the fiber difference between meas
 ROSETTE_NUMBER,int32,,Rosette number ID [0-19]
 ROSETTE_R,float64,deg,Radius from the center of the rosette to the target
 SCND_TARGET,int64,,Target selection bitmask for secondary programs
+SCND_ORDER,int32,,Number of row for target entry in secondary file (placeholder; needed by fiberassign)
 SEEING_ETC,float64,arcsec,Average FWHM atmospheric seeing during this exposure as measured by ETC
 SEEING_GFA,float64,arcsec,Average FWHM atmospheric seeing during this exposure as measured by GFA
 SERSIC,float32,,Power-law index for the Sersic profile model (MORPHTYPE='SER')
@@ -367,6 +378,9 @@ TILELOCID_ASSIGNED,int64,,0/1 for unassigned/assigned for TILELOCID in question 
 TILERA,float64,deg,Barycentric Right Ascension of tile center in ICRS
 TILES,char[*],,"TILEIDs of those tile, in string form separated by '-'"
 TIMESTAMP,str,s,UTC/ISO time at which the target state was updated
+TOOID,int64,,ID for this target assigned by the ``CHECKER``
+TOO_PRIO,char[2],,Either "HI" for a very-high-priority target or "LO" for a very-low-priority target
+TOO_TYPE,char[5],,Either "TILE" for a special tile or "FIBER" for a fiber-override ToO
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z"
 TSNR2_BGS_B,float32,,BGS B template (S/N)^2
 TSNR2_BGS_R,float32,,BGS R template (S/N)^2

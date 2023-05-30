@@ -2,9 +2,7 @@
 TILEID-sky.fits
 ===============
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the sky targets covered by the tile disk-footprint.
 :Naming Convention: ``{TILEID}-sky.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-sky\.fits``
@@ -13,12 +11,12 @@ TILEID-sky.fits
 Contents
 ========
 
-====== =========== ======== ===================
+====== =========== ======== ===============================================
 Number EXTNAME     Type     Contents
-====== =========== ======== ===================
+====== =========== ======== ===============================================
 HDU0_              IMAGE    Empty HDU
-HDU1_  SKY_TARGETS BINTABLE *Brief Description*
-====== =========== ======== ===================
+HDU1_  SKY_TARGETS BINTABLE Sky targets covered by the tile disk-footprint.
+====== =========== ======== ===============================================
 
 
 FITS Header Units
@@ -36,7 +34,8 @@ HDU1
 
 EXTNAME = SKY_TARGETS
 
-*Summarize the contents of this HDU.*
+Sky targets covered by the tile disk-footprint: those are read from the
+desitarget catalogs and provided as input to fiberassign.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,13 +67,13 @@ BRICKNAME        char[8]              Brick name from tractor input
 BRICK_OBJID      int32                Imaging Surveys OBJID on that brick
 RA               float64 deg          Barycentric Right Ascension in ICRS
 DEC              float64 deg          Barycentric declination in ICRS
-BLOBDIST         float32 pix          label for field   7
+BLOBDIST         float32 pix          Maximum distance from a detected Legacy Surveys source
 FIBERFLUX_G      float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_R      float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_Z      float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_IVAR_G float32 nanomaggy^-2 label for field  11
-FIBERFLUX_IVAR_R float32 nanomaggy^-2 label for field  12
-FIBERFLUX_IVAR_Z float32 nanomaggy^-2 label for field  13
+FIBERFLUX_IVAR_G float32 nanomaggy^-2 Inverse variance of ``FIBERFLUX_G``
+FIBERFLUX_IVAR_R float32 nanomaggy^-2 Inverse variance of ``FIBERFLUX_R``
+FIBERFLUX_IVAR_Z float32 nanomaggy^-2 Inverse variance of ``FIBERFLUX_Z``
 TARGETID         int64                Unique DESI target ID
 DESI_TARGET      int64                DESI (dark time program) target selection bitmask
 BGS_TARGET       int64                BGS (Bright Galaxy Survey) target selection bitmask

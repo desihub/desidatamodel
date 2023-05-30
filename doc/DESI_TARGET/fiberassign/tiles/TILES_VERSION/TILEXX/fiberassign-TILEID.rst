@@ -1,6 +1,6 @@
-=================
-fiberassign-EXPID
-=================
+==================
+fiberassign-TILEID
+==================
 
 :Summary: The fiberassign file contains the fiber positioner configuration information for
     each exposure: what fiber is placed where, what target that is, etc.
@@ -377,7 +377,7 @@ FA_TYPE       binary        Target type (science, standard, sky, safe, suppsky)
 PRIORITY      int32         Assignment priority; larger = higher priority
 SUBPRIORITY   float64       Assignment subpriority [0-1]
 OBSCONDITIONS int32         Bit-coded of allowed observing conditions
-DESI_TARGET   int64         Dark survey + calibration bitmask 
+DESI_TARGET   int64         Dark survey + calibration bitmask
 BGS_TARGET    int64         Bright Galaxy Survey bitmask
 MWS_TARGET    int64         Milky Way Survey bitmask
 SCND_TARGET   int64         Secondary programs bitmask

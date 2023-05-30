@@ -2,9 +2,7 @@
 TILEID-too.fits
 ===============
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the Target-of-Opportunity targets covered by the tile disk-footprint.
 :Naming Convention: ``{TILEID}-too.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-too\.fits``
@@ -17,7 +15,7 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    Empty HDU
-HDU1_  TARGETS BINTABLE *Brief Description*
+HDU1_  TARGETS BINTABLE Target-of-Opportunity targets covered by the tile disk-footprint.
 ====== ======= ======== ===================
 
 
@@ -36,7 +34,9 @@ HDU1
 
 EXTNAME = TARGETS
 
-*Summarize the contents of this HDU.*
+Target-of-Opportunity targets covered by the tile disk-footprint:
+those are read from the MTL ledgers and desitarget catalogs and provided
+as input to fiberassign.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,22 +82,22 @@ GAIA_ASTROMETRIC_EXCESS_NOISE float32            Gaia astrometric excess noise
 TARGETID                      int64              Unique DESI target ID
 DESI_TARGET                   int64              DESI (dark time program) target selection bitmask
 SCND_TARGET                   int64              Target selection bitmask for secondary programs
-SCND_ORDER                    int32              label for field  17
+SCND_ORDER                    int32              Number of row for target entry in secondary file (placeholder; needed by fiberassign)
 PRIORITY_INIT                 int64              Target initial priority from target selection bitmasks and OBSCONDITIONS
 SUBPRIORITY                   float64            Random subpriority [0-1) to break assignment ties
 NUMOBS_INIT                   int64              Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 OBSCONDITIONS                 int64              Bitmask of allowed observing conditions
-CHECKER                       char[5]            label for field  22
-TOO_TYPE                      char[5]            label for field  23
-TOO_PRIO                      char[2]            label for field  24
-OCLAYER                       char[6]            label for field  25
-MJD_BEGIN                     float64  d         label for field  26
-MJD_END                       float64  d         label for field  27
-TOOID                         int64              label for field  28
+CHECKER                       char[5]            Initials of researcher who vetted the target
+TOO_TYPE                      char[5]            Either "TILE" for a special tile or "FIBER" for a fiber-override ToO
+TOO_PRIO                      char[2]            Either "HI" for a very-high-priority target or "LO" for a very-low-priority target
+OCLAYER                       char[6]            Either "DARK" for dark-time or "BRIGHT" to observe in either bright- or dark-time
+MJD_BEGIN                     float64  d         Start of the allowed observing window for this target (Modified Julian Date)
+MJD_END                       float64  d         End of the allowed observing window for this target (Modified Julian Date)
+TOOID                         int64              ID for this target assigned by the ``CHECKER``
 TIMESTAMP                     char[25] s         UTC/ISO time at which the target state was updated
 PLATE_RA                      float64  deg       Barycentric Right Ascension in ICRS to be used by PlateMaker
 PLATE_DEC                     float64  deg       Barycentric Declination in ICRS to be used by PlateMaker
-PLATE_REF_EPOCH               float64            label for field  32
+PLATE_REF_EPOCH               float64  yr        Copy of REF_EPOCH to be used by PlateMaker
 ============================= ======== ========= =======================================================================================================
 
 

@@ -2,9 +2,7 @@
 TILEID-gfa.fits
 ===============
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the stars for the ETC / GUIDE / FOCUS covered by the tile disk-footprint.
 :Naming Convention: ``{TILEID}-gfa.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-gfa\.fits``
@@ -13,12 +11,12 @@ TILEID-gfa.fits
 Contents
 ========
 
-====== ======= ======== ===================
+====== ======= ======== =====================================================================
 Number EXTNAME Type     Contents
-====== ======= ======== ===================
+====== ======= ======== =====================================================================
 HDU0_          IMAGE    Empty HDU
-HDU1_  TARGETS BINTABLE *Brief Description*
-====== ======= ======== ===================
+HDU1_  TARGETS BINTABLE Stars for the ETC / GUIDE / FOCUS covered by the tile disk-footprint.
+====== ======= ======== =====================================================================
 
 
 FITS Header Units
@@ -36,7 +34,8 @@ HDU1
 
 EXTNAME = TARGETS
 
-*Summarize the contents of this HDU.*
+Stars for the ETC / GUIDE / FOCUS covered by the tile disk-footprint:
+those are read from the desitarget catalogs and provided as input to fiberassign.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

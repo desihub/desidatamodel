@@ -2,9 +2,7 @@
 TILEID-targ.fits
 ================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the primary science targets covered by the tile disk-footprint.
 :Naming Convention: ``{TILEID}-targ.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-targ\.fits``
@@ -13,12 +11,12 @@ TILEID-targ.fits
 Contents
 ========
 
-====== ======= ======== ===================
+====== ======= ======== ===========================================================
 Number EXTNAME Type     Contents
-====== ======= ======== ===================
+====== ======= ======== ===========================================================
 HDU0_          IMAGE    Empty HDU
-HDU1_  TARGETS BINTABLE *Brief Description*
-====== ======= ======== ===================
+HDU1_  TARGETS BINTABLE Primary science targets covered by the tile disk-footprint.
+====== ======= ======== ===========================================================
 
 
 FITS Header Units
@@ -36,7 +34,8 @@ HDU1
 
 EXTNAME = TARGETS
 
-*Summarize the contents of this HDU.*
+Primary science targets covered by the tile disk-footprint: those are read
+from the MTL ledgers and desitarget catalogs and provided as input to fiberassign.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,7 +127,7 @@ VERSION               char[14]              Tag of desitarget used to create the
 PRIORITY              int64                 Target current priority
 PLATE_RA              float64  deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
 PLATE_DEC             float64  deg          Barycentric Declination in ICRS to be used by PlateMaker
-PLATE_REF_EPOCH       float32               label for field  63
+PLATE_REF_EPOCH       float32  yr           Copy of REF_EPOCH to be used by PlateMaker
 ===================== ======== ============ =======================================================================================================================================
 
 
