@@ -68,9 +68,9 @@ BRICK_OBJID      int32                Imaging Surveys OBJID on that brick
 RA               float64 deg          Barycentric Right Ascension in ICRS
 DEC              float64 deg          Barycentric declination in ICRS
 BLOBDIST         float32 pix          Maximum distance from a detected Legacy Surveys source
-FIBERFLUX_G      float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_R      float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_Z      float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_G      float32 nanomaggy    g-band flux measured in aperture of radius 0.75 arcsec, extracted from the Legacy Surveys `coadd stacks`_
+FIBERFLUX_R      float32 nanomaggy    r-band flux measured in aperture of radius 0.75 arcsec, extracted from the Legacy Surveys `coadd stacks`_
+FIBERFLUX_Z      float32 nanomaggy    z-band flux measured in aperture of radius 0.75 arcsec, extracted from the Legacy Surveys `coadd stacks`_
 FIBERFLUX_IVAR_G float32 nanomaggy^-2 Inverse variance of ``FIBERFLUX_G``
 FIBERFLUX_IVAR_R float32 nanomaggy^-2 Inverse variance of ``FIBERFLUX_R``
 FIBERFLUX_IVAR_Z float32 nanomaggy^-2 Inverse variance of ``FIBERFLUX_Z``
@@ -87,9 +87,15 @@ PLATE_RA         float64 deg          Barycentric Right Ascension in ICRS to be 
 PLATE_DEC        float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
 ================ ======= ============ ========================================================================================================
 
+.. _`coadd stacks`: https://www.legacysurvey.org/dr9/files/#image-stacks-region-coadd
 
 Notes and Examples
 ==================
+
+The ``FIBERFLUX`` quantities use a different definition ``FIBERFLUX`` as measured
+in other files.  See also the :doc:`skies files <../../../../../DESI_TARGET/TARG_DIR/DR/VERSION/skies/skies-hp-HP>` files produced by desitarget_.
+
+.. _desitarget: https://github.com/desihub/desitarget
 
 Some units in this file do not conform to the FITS standard:
 
