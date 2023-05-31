@@ -2,9 +2,8 @@
 FVC-measure-EXPID
 =================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file type is found in early commissioning data, but should
+    be considered obsolete.
 :Naming Convention: ``FVC-measure-EXPID.fits``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``FVC-measure-[0-9]{8}\.fits``
@@ -16,9 +15,9 @@ Contents
 ====== ======== ======== ===================
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
-HDU0_  PM       IMAGE    *Brief Description*
-HDU1_  FVCCNTRD BINTABLE *Brief Description*
-HDU2_  FVCCNTER BINTABLE *Brief Description*
+HDU0_  PM       IMAGE    TODO: description needed
+HDU1_  FVCCNTRD BINTABLE TODO: description needed
+HDU2_  FVCCNTER BINTABLE TODO: description needed
 ====== ======== ======== ===================
 
 
@@ -30,7 +29,7 @@ HDU0
 
 EXTNAME = PM
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,7 +60,7 @@ HDU1
 
 EXTNAME = FVCCNTRD
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,12 +88,12 @@ Required Data Table Columns
 ====== ======= ===== ===================
 Name   Type    Units Description
 ====== ======= ===== ===================
-mag    float64       label for field   1
-serial int64         label for field   2
-x      float64       label for field   3
-fwhm   float64       label for field   4
-flags  int64         label for field   5
-y      float64       label for field   6
+mag    float64       TODO: description needed
+serial int64         TODO: description needed
+x      float64       TODO: description needed
+fwhm   float64       TODO: description needed
+flags  int64         TODO: description needed
+y      float64       TODO: description needed
 ====== ======= ===== ===================
 
 HDU2
@@ -102,7 +101,7 @@ HDU2
 
 EXTNAME = FVCCNTER
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,11 +129,11 @@ Required Data Table Columns
 ======= ======= ===== ===================
 Name    Type    Units Description
 ======= ======= ===== ===================
-mag     float64       label for field   1
-serial  int64         label for field   2
-comment char[5]       label for field   3
-x       float64       label for field   4
-fwhm    float64       label for field   5
-flags   int64         label for field   6
-y       float64       label for field   7
+mag     float64       TODO: description needed
+serial  int64         TODO: description needed
+comment char[5]       TODO: description needed
+x       float64       TODO: description needed
+fwhm    float64       TODO: description needed
+flags   int64         TODO: description needed
+y       float64       TODO: description needed
 ======= ======= ===== ===================

@@ -240,8 +240,8 @@ Required Data Table Columns
 ======= ============= ===== ===================
 Name    Type          Units Description
 ======= ============= ===== ===================
-PARAM   char[8]             label for field   1
-COEFF   float64[1000]       label for field   2
-LEGDEGX int32               label for field   3
-LEGDEGW int32               label for field   4
+PARAM   char[8]             TODO: description needed
+COEFF   float64[1000]       TODO: description needed
+LEGDEGX int32               TODO: description needed
+LEGDEGW int32               TODO: description needed
 ======= ============= ===== ===================

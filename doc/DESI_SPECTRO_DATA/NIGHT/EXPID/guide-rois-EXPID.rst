@@ -2,9 +2,7 @@
 guide-rois-EXPID
 ================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: TODO: description needed
 :Naming Convention: ``guide-rois-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``guide-rois-[0-9]{8}\.fits\.fz``
@@ -16,32 +14,32 @@ Contents
 ====== ========= ======== ===================
 Number EXTNAME   Type     Contents
 ====== ========= ======== ===================
-HDU00_ GUIDER    IMAGE    *Brief Description*
-HDU01_ PMGSTARS  BINTABLE *Brief Description*
-HDU02_ GUIDE5_0  BINTABLE *Brief Description*
-HDU03_ GUIDE5_0T BINTABLE *Brief Description*
-HDU04_ GUIDE5_1  BINTABLE *Brief Description*
-HDU05_ GUIDE5_1T BINTABLE *Brief Description*
-HDU06_ GUIDE3_0  BINTABLE *Brief Description*
-HDU07_ GUIDE3_0T BINTABLE *Brief Description*
-HDU08_ GUIDE3_1  BINTABLE *Brief Description*
-HDU09_ GUIDE3_1T BINTABLE *Brief Description*
-HDU10_ GUIDE2_0  BINTABLE *Brief Description*
-HDU11_ GUIDE2_0T BINTABLE *Brief Description*
-HDU12_ GUIDE2_1  BINTABLE *Brief Description*
-HDU13_ GUIDE2_1T BINTABLE *Brief Description*
-HDU14_ GUIDE7_0  BINTABLE *Brief Description*
-HDU15_ GUIDE7_0T BINTABLE *Brief Description*
-HDU16_ GUIDE7_1  BINTABLE *Brief Description*
-HDU17_ GUIDE7_1T BINTABLE *Brief Description*
-HDU18_ GUIDE8_0  BINTABLE *Brief Description*
-HDU19_ GUIDE8_0T BINTABLE *Brief Description*
-HDU20_ GUIDE8_1  BINTABLE *Brief Description*
-HDU21_ GUIDE8_1T BINTABLE *Brief Description*
-HDU22_ GUIDE0_0  BINTABLE *Brief Description*
-HDU23_ GUIDE0_0T BINTABLE *Brief Description*
-HDU24_ GUIDE0_1  BINTABLE *Brief Description*
-HDU25_ GUIDE0_1T BINTABLE *Brief Description*
+HDU00_ GUIDER    IMAGE    Header keywords only
+HDU01_ PMGSTARS  BINTABLE Guide stars from PlateMaker
+HDU02_ GUIDE5_0  BINTABLE TODO: description needed
+HDU03_ GUIDE5_0T BINTABLE TODO: description needed
+HDU04_ GUIDE5_1  BINTABLE TODO: description needed
+HDU05_ GUIDE5_1T BINTABLE TODO: description needed
+HDU06_ GUIDE3_0  BINTABLE TODO: description needed
+HDU07_ GUIDE3_0T BINTABLE TODO: description needed
+HDU08_ GUIDE3_1  BINTABLE TODO: description needed
+HDU09_ GUIDE3_1T BINTABLE TODO: description needed
+HDU10_ GUIDE2_0  BINTABLE TODO: description needed
+HDU11_ GUIDE2_0T BINTABLE TODO: description needed
+HDU12_ GUIDE2_1  BINTABLE TODO: description needed
+HDU13_ GUIDE2_1T BINTABLE TODO: description needed
+HDU14_ GUIDE7_0  BINTABLE TODO: description needed
+HDU15_ GUIDE7_0T BINTABLE TODO: description needed
+HDU16_ GUIDE7_1  BINTABLE TODO: description needed
+HDU17_ GUIDE7_1T BINTABLE TODO: description needed
+HDU18_ GUIDE8_0  BINTABLE TODO: description needed
+HDU19_ GUIDE8_0T BINTABLE TODO: description needed
+HDU20_ GUIDE8_1  BINTABLE TODO: description needed
+HDU21_ GUIDE8_1T BINTABLE TODO: description needed
+HDU22_ GUIDE0_0  BINTABLE TODO: description needed
+HDU23_ GUIDE0_0T BINTABLE TODO: description needed
+HDU24_ GUIDE0_1  BINTABLE TODO: description needed
+HDU25_ GUIDE0_1T BINTABLE TODO: description needed
 ====== ========= ======== ===================
 
 
@@ -53,7 +51,7 @@ HDU00
 
 EXTNAME = GUIDER
 
-*Summarize the contents of this HDU.*
+Header keywords only.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -364,7 +362,7 @@ HDU01
 
 EXTNAME = PMGSTARS
 
-*Summarize the contents of this HDU.*
+Table of guide stars to be used for guiding.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -387,21 +385,21 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============= ======= ===== ===================
-Name          Type    Units Description
-============= ======= ===== ===================
-GFA_LOC       char[6]       label for field   1
-RA            float64       label for field   2
-DEC           float64       label for field   3
-ROW           float64       label for field   4
-COL           float64       label for field   5
-RA_IVAR       float64       label for field   6
-DEC_IVAR      float64       label for field   7
-MAG           float64       label for field   8
-MORPHTYPE     int64         label for field   9
-GUIDE_FLAG    int64         label for field  10
-ETC_FLAG [1]_ int64         label for field  11
-============= ======= ===== ===================
+============= ======= ====== ============================================================================
+Name          Type    Units  Description
+============= ======= ====== ============================================================================
+GFA_LOC       char[6]        Location on focal plane of GFA (same numbering convention as petal location)
+RA            float64 deg    Barycentric Right Ascension in ICRS
+DEC           float64 deg    Barycentric declination in ICRS
+ROW           float64        GFA pixel row coordinate
+COL           float64        GFA pixel col coordinate
+RA_IVAR       float64 deg^-2 Inverse variance of RA (no cosine term!), excluding astrometric calibration errors
+DEC_IVAR      float64 deg^-2 Inverse variance of DEC, excluding astrometric calibration errors
+MAG           float64        Gaia "G" magnitude
+MORPHTYPE     int64          Imaging Surveys morphological type from Tractor
+GUIDE_FLAG    int64          Should be 1
+ETC_FLAG [1]_ int64          Should be 0
+============= ======= ====== ============================================================================
 
 .. [1] Optional
 
@@ -410,7 +408,7 @@ HDU02
 
 EXTNAME = GUIDE5_0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -519,7 +517,7 @@ HDU03
 
 EXTNAME = GUIDE5_0T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -545,27 +543,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU04
@@ -573,7 +571,7 @@ HDU04
 
 EXTNAME = GUIDE5_1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -682,7 +680,7 @@ HDU05
 
 EXTNAME = GUIDE5_1T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -708,27 +706,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU06
@@ -736,7 +734,7 @@ HDU06
 
 EXTNAME = GUIDE3_0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -845,7 +843,7 @@ HDU07
 
 EXTNAME = GUIDE3_0T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -871,27 +869,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU08
@@ -899,7 +897,7 @@ HDU08
 
 EXTNAME = GUIDE3_1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1008,7 +1006,7 @@ HDU09
 
 EXTNAME = GUIDE3_1T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1034,27 +1032,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU10
@@ -1062,7 +1060,7 @@ HDU10
 
 EXTNAME = GUIDE2_0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1171,7 +1169,7 @@ HDU11
 
 EXTNAME = GUIDE2_0T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1197,27 +1195,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU12
@@ -1225,7 +1223,7 @@ HDU12
 
 EXTNAME = GUIDE2_1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1334,7 +1332,7 @@ HDU13
 
 EXTNAME = GUIDE2_1T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1360,27 +1358,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU14
@@ -1388,7 +1386,7 @@ HDU14
 
 EXTNAME = GUIDE7_0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1497,7 +1495,7 @@ HDU15
 
 EXTNAME = GUIDE7_0T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1523,27 +1521,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU16
@@ -1551,7 +1549,7 @@ HDU16
 
 EXTNAME = GUIDE7_1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1660,7 +1658,7 @@ HDU17
 
 EXTNAME = GUIDE7_1T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1686,27 +1684,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU18
@@ -1714,7 +1712,7 @@ HDU18
 
 EXTNAME = GUIDE8_0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1823,7 +1821,7 @@ HDU19
 
 EXTNAME = GUIDE8_0T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1849,27 +1847,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU20
@@ -1877,7 +1875,7 @@ HDU20
 
 EXTNAME = GUIDE8_1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1986,7 +1984,7 @@ HDU21
 
 EXTNAME = GUIDE8_1T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2012,27 +2010,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU22
@@ -2040,7 +2038,7 @@ HDU22
 
 EXTNAME = GUIDE0_0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2149,7 +2147,7 @@ HDU23
 
 EXTNAME = GUIDE0_0T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2175,27 +2173,27 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================
 
 HDU24
@@ -2203,7 +2201,7 @@ HDU24
 
 EXTNAME = GUIDE0_1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2312,7 +2310,7 @@ HDU25
 
 EXTNAME = GUIDE0_1T
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2338,25 +2336,25 @@ Required Data Table Columns
 ======== ======== ===== ===================
 Name     Type     Units Description
 ======== ======== ===== ===================
-EXPTIME  float64        label for field   1
-NIGHT    int64          label for field   2
-DATE-OBS char[26]       label for field   3
-TIME-OBS char[15]       label for field   4
-MJD-OBS  float64        label for field   5
-OPENSHUT char[*]        label for field   6
-ST       char[*]        label for field   7
-HEXPOS   char[34]       label for field   8
-GAMBNTT  float64        label for field   9
-GFPGAT   float64        label for field  10
-GFILTERT float64        label for field  11
-GCOLDTEC float64        label for field  12
-GHOTTEC  float64        label for field  13
-GCCDTEMP float64        label for field  14
-GCAMTEMP float64        label for field  15
-GHUMID2  float64        label for field  16
-GHUMID3  float64        label for field  17
-CRPIX1   float64        label for field  18
-CRPIX2   float64        label for field  19
-CRVAL1   float64        label for field  20
-CRVAL2   float64        label for field  21
+EXPTIME  float64        TODO: description needed
+NIGHT    int64          TODO: description needed
+DATE-OBS char[26]       TODO: description needed
+TIME-OBS char[15]       TODO: description needed
+MJD-OBS  float64        TODO: description needed
+OPENSHUT char[*]        TODO: description needed
+ST       char[*]        TODO: description needed
+HEXPOS   char[34]       TODO: description needed
+GAMBNTT  float64        TODO: description needed
+GFPGAT   float64        TODO: description needed
+GFILTERT float64        TODO: description needed
+GCOLDTEC float64        TODO: description needed
+GHOTTEC  float64        TODO: description needed
+GCCDTEMP float64        TODO: description needed
+GCAMTEMP float64        TODO: description needed
+GHUMID2  float64        TODO: description needed
+GHUMID3  float64        TODO: description needed
+CRPIX1   float64        TODO: description needed
+CRPIX2   float64        TODO: description needed
+CRVAL1   float64        TODO: description needed
+CRVAL2   float64        TODO: description needed
 ======== ======== ===== ===================

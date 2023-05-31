@@ -124,22 +124,22 @@ Name         Type    Units Description
 ============ ======= ===== ======================================================================
 PETAL_LOC    int64         Petal index number
 DEVICE_LOC   int64         Index of fiber on petal
-POS_Q        float64       label for field   3
-POS_S        float64       label for field   4
-POS_FLAGS    float64       label for field   5
-POS_X        float64       label for field   6
-POS_Y        float64       label for field   7
+POS_Q        float64       TODO: description needed
+POS_S        float64       TODO: description needed
+POS_FLAGS    float64       TODO: description needed
+POS_X        float64       TODO: description needed
+POS_Y        float64       TODO: description needed
 TARGET_RA    float64 deg   Barycentric right ascension in ICRS
 TARGET_DEC   float64 deg   Barycentric declination in ICRS
-FA_X         float32       label for field  10
-FA_Y         float32       label for field  11
-FA_FIBER     float64       label for field  12
-FOR_DX_1     float64       label for field  13
-FOR_DY_1     float64       label for field  14
-FOR_X_1      float64       label for field  15
-FOR_Y_1      float64       label for field  16
-FLAGS_FOR_1  int64         label for field  17
-FOR_OFFSET_1 float64       label for field  18
+FA_X         float32       TODO: description needed
+FA_Y         float32       TODO: description needed
+FA_FIBER     float64       TODO: description needed
+FOR_DX_1     float64       TODO: description needed
+FOR_DY_1     float64       TODO: description needed
+FOR_X_1      float64       TODO: description needed
+FOR_Y_1      float64       TODO: description needed
+FLAGS_FOR_1  int64         TODO: description needed
+FOR_OFFSET_1 float64       TODO: description needed
 EXP_Q_1      float64       Expected focal plane Q position after correction move 1
 EXP_S_1      float64       Expected focal plane S position after correction move 1
 FLAGS_EXP_1  int64         Expected focal plane flags after correction move 1
@@ -186,16 +186,16 @@ Name        Type      Units Description
 =========== ========= ===== ===================
 PETAL_LOC   int64           Petal index number
 DEVICE_LOC  int64           Index of fiber on petal
-ZENITH_X    float64         label for field   3
-ZENITH_Y    float64         label for field   4
-MODEL_X     char[163]       label for field   5
-MODEL_Y     char[163]       label for field   6
-STATCOR_X_0 float64         label for field   7
-STATCOR_Y_0 float64         label for field   8
-STAT_X_0    float64         label for field   9
-STAT_Y_0    float64         label for field  10
-STATCOR_X_1 float64         label for field  11
-STATCOR_Y_1 float64         label for field  12
-STAT_X_1    float64         label for field  13
-STAT_Y_1    float64         label for field  14
+ZENITH_X    float64         TODO: description needed
+ZENITH_Y    float64         TODO: description needed
+MODEL_X     char[163]       TODO: description needed
+MODEL_Y     char[163]       TODO: description needed
+STATCOR_X_0 float64         TODO: description needed
+STATCOR_Y_0 float64         TODO: description needed
+STAT_X_0    float64         TODO: description needed
+STAT_Y_0    float64         TODO: description needed
+STATCOR_X_1 float64         TODO: description needed
+STATCOR_Y_1 float64         TODO: description needed
+STAT_X_1    float64         TODO: description needed
+STAT_Y_1    float64         TODO: description needed
 =========== ========= ===== ===================
