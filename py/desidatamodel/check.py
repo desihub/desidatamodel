@@ -51,7 +51,7 @@ class DataModel(DataModelUnit):
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
             'TILEID': '[0-9]+',  # Tile ID, e.g. 70005 or 123456
-            'TILEXX': '[0-9]{3}', # Tile ID grouping == TILEID // 100. Used by fiberassign.
+            'TILEXX': '[0-9]{3}',  # Tile ID grouping == TILEID // 100. Used by fiberassign.
             'UnivUNUM': 'Univ[0-9][0-9][0-9]',  # Realizations of MTL ledgers, in LSS catalog
             'VERSION': '[v0-9.]+',  # A version string, e.g. v2.0
             }

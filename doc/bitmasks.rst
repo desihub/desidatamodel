@@ -23,8 +23,6 @@ ZWARN                               `ZWARN`_
 Spectroscopic reduction masks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO: add link to paper that describes these bitmasks.
-
 =================================== ==================
 BIT_MASK                            URL
 =================================== ==================
