@@ -18,9 +18,26 @@ class TestUpdate(unittest.TestCase):
         coldef_file = resource_filename('desidatamodel', 'data/column_descriptions.csv')
         with open(coldef_file, newline='') as csv_columns:
             reader = csv.reader(csv_columns)
-            self.assertTrue(all([row[1] for row in reader]))
+            #
+            # Are all column names unique?
+            #
+            colset = set()
+            for row in reader:
+                self.assertNotIn(row[0], colset,
+                                 msg=f"Duplicate column name detected: {row[0]}!")
+                colset.add(row[0])
+            #
+            # Does every column have a type?
+            #
             foo = csv_columns.seek(0)
-            self.assertTrue(all([row[3] for row in reader]))
+            self.assertTrue(all([row[1] for row in reader]),
+                            msg=f"Missing type detected for column {row[0]}!")
+            #
+            # Does every column have a description?
+            #
+            foo = csv_columns.seek(0)
+            self.assertTrue(all([row[3] for row in reader]),
+                            msg=f"Missing description detected for column {row[0]}!")
 
     def test_update(self):
         input_lines = """

@@ -103,11 +103,8 @@ GAIA_PHOT_RP_MEAN_MAG,float32,mag,Gaia RP band magnitude
 GAIA_PHOT_RP_N_OBS,int32,,Gaia RP band number of observations
 GAIA_RA,float64,deg,Gaia ICRS right ascension
 GALDEPTH_G,float32,nanomaggy^-2,Galaxy model-based depth in LS g-band
-GALDEPTH_G,float32,nanomaggy^-2,Galaxy model-based depth in g-band
 GALDEPTH_R,float32,nanomaggy^-2,Galaxy model-based depth in LS r-band
-GALDEPTH_R,float32,nanomaggy^-2,Galaxy model-based depth in r-band
 GALDEPTH_Z,float32,nanomaggy^-2,Galaxy model-based depth in LS z-band
-GALDEPTH_Z,float32,nanomaggy^-2,Galaxy model-based depth in z-band
 GOODHARDLOC,bool,,True/False whether the fiber had good hardware
 GOODPRI,bool,,True/False whether the priority of what was assigned to the location was <= the base priority of the given target class
 GOODTSNR,bool,,True/False whether the TSNR_<class> value used was above the minimum threshold for the given target class
