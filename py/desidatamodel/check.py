@@ -50,6 +50,7 @@ class DataModel(DataModelUnit):
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
             'RANN': '[0-9]+',  # Realization number for LSS random catalogs
             'RELEASE': '[edr0-9]+',  # Data Release
+            'RESOLVE': '(resolve|noresolve|secondary)',  # resolve status used by desitarget
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
