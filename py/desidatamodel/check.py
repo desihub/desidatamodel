@@ -34,6 +34,7 @@ class DataModel(DataModelUnit):
     # A mapping of human-readable metavariables to regular expressions.
     _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
+            'DR': 'dr[89]',  # Imaging release, used by desitarget
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
             'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
             # 'GROUPID': '([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
@@ -131,6 +132,7 @@ class DataModel(DataModelUnit):
                         d = d.replace(k, self._d2r[k])
                     r = line.strip().split()[1].replace('``', '')
                     self.regexp = re.compile(os.path.join(d, r))
+                    log.debug("%s", repr(self.regexp))
                 if self._filetypeline.match(line) is not None:
                     self.filetype, self.filesize = self._type_size(line)
         if self.regexp is None and self.ref is not None:
@@ -149,6 +151,7 @@ class DataModel(DataModelUnit):
                             d = d.replace(k, self._d2r[k])
                         r = line.strip().split()[1].replace('``', '')
                         self.regexp = re.compile(os.path.join(d, r))
+                        log.debug("%s", repr(self.regexp))
                     if self._filetypeline.match(line) is not None:
                         self.filetype, self.filesize = self._type_size(line)
         if self.regexp is None:
