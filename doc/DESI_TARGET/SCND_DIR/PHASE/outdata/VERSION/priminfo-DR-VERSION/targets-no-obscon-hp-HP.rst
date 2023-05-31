@@ -69,7 +69,7 @@ DEC                               float64     deg                   Declination
 PMRA                              float32     mas / yr              Proper motion in the RA direction
 PMDEC                             float32     mas / yr              Proper motion in the Dec direction
 REF_EPOCH                         float32     yr                    Astrometric reference epoch. Typically 2015.5.
-OVERRIDE                          logial                            If ``True`` do not match to and accept an existing primary target. Instead, always generate a new ``TARGETID``
+OVERRIDE                          logical                           If ``True`` do not match to and accept an existing primary target. Instead, always generate a new ``TARGETID``
 FLUX_G                            float32     nanomaggy             `LS`_ flux from tractor input (g)
 FLUX_R                            float32     nanomaggy             `LS`_ flux from tractor input (r)
 FLUX_Z                            float32     nanomaggy             `LS`_ flux from tractor input (z)
