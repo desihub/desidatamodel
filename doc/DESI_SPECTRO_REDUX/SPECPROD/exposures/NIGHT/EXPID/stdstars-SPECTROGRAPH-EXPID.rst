@@ -21,7 +21,7 @@ HDU1_  WAVELENGTH   IMAGE    wavelength grid used, Angstroms
 HDU2_  FIBERS       IMAGE    1D array of which fibers these models correspond to
 HDU3_  METADATA     BINTABLE metadata from input standard star templates
 HDU4_  COEFF        IMAGE    Linear coefficients of stdstar model fit
-HDU5_  FIBERMAP     BINTABLE TODO: description needed
+HDU5_  FIBERMAP     BINTABLE Target photometry, metadata, and what fibers they are assigned to
 HDU6_  INPUT_FRAMES BINTABLE TODO: description needed
 ====== ============ ======== ===================
 
@@ -913,5 +913,5 @@ Name   Type    Units Description
 ====== ======= ===== ================================================================================
 NIGHT  int64         Night of observation (YYYYMMDD) starting at local noon before observations start
 EXPID  int64         DESI Exposure ID number
-CAMERA char[2]       TODO: description needed
+CAMERA char[2]       Camera identifier. Passband and SPECGRPH ([brz][0-9]).
 ====== ======= ===== ================================================================================

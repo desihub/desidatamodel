@@ -14,12 +14,12 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FIBERFLAT  IMAGE    TODO: description needed
-HDU1_  IVAR       IMAGE    TODO: description needed
-HDU2_  MASK       IMAGE    TODO: description needed
-HDU3_  MEANSPEC   IMAGE    TODO: description needed
-HDU4_  WAVELENGTH IMAGE    TODO: description needed
-HDU5_  FIBERMAP   BINTABLE TODO: description needed
+HDU0_  FIBERFLAT  IMAGE    fiberflat[nspec, nwave]
+HDU1_  IVAR       IMAGE    inverse variance of fiberflat
+HDU2_  MASK       IMAGE    bitmask of fiberflat (0=good)
+HDU3_  MEANSPEC   IMAGE    average spectrum[nwave]
+HDU4_  WAVELENGTH IMAGE    wavelength grid[nwave] in Angstroms
+HDU5_  FIBERMAP   BINTABLE Target photometry, metadata, and what fibers they are assigned to
 ====== ========== ======== ===================
 
 
@@ -650,9 +650,9 @@ EXPTIME [1]_               float64 s            Length of time shutter was open
 FIBERFLUX_W2 [1]_          float32              TODO: description needed
 NUMOBS_MORE [1]_           int32                Number of additional observations needed
 FIBER_DEC_IVAR [1]_        float32              TODO: description needed
-NUMTARGET [1]_             int16                TODO: description needed
+NUMTARGET [1]_             int16                Total number of targets that this positioner covered
 FIBERTOTFLUX_W1 [1]_       float32              TODO: description needed
-SPECTROID [1]_             int32                TODO: description needed
+SPECTROID [1]_             int32                Hardware ID of spectrograph (not used)
 SECONDARY_TARGET [1]_      int64                TODO: description needed
 HPXPIXEL [1]_              int64                HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 FIBERTOTFLUX_W2 [1]_       float32              TODO: description needed

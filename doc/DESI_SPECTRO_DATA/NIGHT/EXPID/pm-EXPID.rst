@@ -427,7 +427,7 @@ LOCATION        int32             Location on the focal plane PETAL_LOC*1000 + D
 FIBERSTATUS     int32             Fiber status mask. 0=good
 DEVICE_LOC      int32             Device location on focal plane [0-523]
 NUM_ITER        int32             Number of positioner iterations
-SPECTROID       int32             0 (not used)
+SPECTROID       int32             Hardware ID of spectrograph (not used)
 PETAL_LOC       int16             Petal location [0-9]
 =============== ======= ========= =======================================================
 

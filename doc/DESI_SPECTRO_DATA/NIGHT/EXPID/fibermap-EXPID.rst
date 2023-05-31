@@ -175,7 +175,7 @@ DELTA_Y          float32 mm           CS5 y difference between requested and act
 DELTA_X_IVAR     float32 mm^-2        Inverse variance of DELTA_X [not meaningful yet]
 DELTA_Y_IVAR     float32 mm^-2        Inverse variance of DELTA_Y [not meaningful yet]
 NUM_ITER         int16                Number of positioner iterations
-SPECTROID        int16                Hardware ID of spectrograph
+SPECTROID        int16                Hardware ID of spectrograph (not used)
 ================ ======= ============ ===========
 
 HDU2

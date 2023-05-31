@@ -494,7 +494,7 @@ FIBERASSIGN_X     float32 mm                  Fiberassign expected CS5 X locatio
 FIBERASSIGN_Y     float32 mm                  Fiberassign expected CS5 Y location on focal plane
 FA_TARGET         int64                       Targeting bit internally used by fiberassign (linked with FA_TYPE)
 FA_TYPE           byte                        Fiberassign internal target type (science, standard, sky, safe, suppsky)
-NUMTARGET         int16                       TODO: description needed
+NUMTARGET         int16                       Total number of targets that this positioner covered
 FIBER_RA          float64 deg                 RA of actual fiber position
 FIBER_DEC         float64 deg                 DEC of actual fiber position
 FIBER_RA_IVAR     float32 deg-2               TODO: description needed
@@ -504,7 +504,7 @@ PLATEMAKER_Y      float32 mm                  TODO: description needed
 PLATEMAKER_RA     float32 deg                 TODO: description needed
 PLATEMAKER_DEC    float32 deg                 TODO: description needed
 NUM_ITER          int32                       Number of positioner iterations
-SPECTROID         int32                       TODO: description needed
+SPECTROID         int32                       Hardware ID of spectrograph (not used)
 BRICKNAME         char[8]                     Brick name from tractor input
 LAMBDAREF         float64                     TODO: description needed
 DELTA_X           float64 mm                  CS5 X requested minus actual position

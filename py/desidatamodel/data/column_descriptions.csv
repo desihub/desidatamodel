@@ -16,6 +16,7 @@ BRICKID,int32,,Brick ID from tractor input
 BRICKNAME,char[8],,Brick name from tractor input
 BRICK_OBJID,int32,,Imaging Surveys OBJID on that brick
 B_MGII,float32,,Fitted parameter B (constant) by MgII fitter
+CAMERA,char[2],,Camera identifier. Passband and SPECGRPH ([brz][0-9]).
 CHECKER,char[5],,Initials of researcher who vetted the target
 CHI2,float64,,Best fit chi squared
 CMX_TARGET,int64,,Target selection bitmask for commissioning
@@ -236,6 +237,7 @@ NTILE,int64,,Number of tiles target was available on
 NUMOBS,int64,,"Number of spectroscopic observations (on this specific, single tile)"
 NUMOBS_INIT,int64,,Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_MORE,int64,,Number of additional observations needed
+NUMTARGET,int16,,Total number of targets that this positioner covered
 NUM_ITER,int64,,Number of positioner iterations
 NZ,float64,h^3 Mpc^-3,"The comoving number density of the tracer at the given redshift, assuming complete sample"
 O2C,float64,,The criteria for assessing strength of OII emission for ELG observations
@@ -330,6 +332,7 @@ SHAPE_E2_IVAR,float32,,Inverse variance of SHAPE_E2
 SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
+SPECTROID,int32,,Hardware ID of spectrograph (not used)
 SPECTYPE,char[6],,"Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
 SPGRPVAL,int32,,Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 STD_FIBER_DEC,float32,arcsec,Standard deviation (over exposures) of DEC of actual fiber position
