@@ -40,6 +40,7 @@ class DataModel(DataModelUnit):
             'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
+            'OBSCON': '(bright|dark)',  # observational condition used by desitarget
             'PHASE': '(main|main2|sv1|sv3)',  # DESI observational phase used by desitarget
             'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
             'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
