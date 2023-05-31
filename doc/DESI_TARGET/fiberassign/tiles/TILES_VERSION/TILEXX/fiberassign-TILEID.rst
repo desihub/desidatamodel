@@ -6,7 +6,7 @@ fiberassign-TILEID
     each exposure: what fiber is placed where, what target that is, etc.
 :Naming Convention: ``fiberassign-TILEID.fits.gz``, where TILEID is the zero-padded
     6-digit tile ID. Some early versions were not compressed.
-:Regex: ``fiberassign-[0-9]{6}\.fits(\.gz|)``
+:Regex: ``fiberassign-[0-9]{6}\.fits\.gz``
 :File Type: FITS, 5 MB
 
 Contents
