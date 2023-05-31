@@ -4,11 +4,12 @@ priminfo
 
 :Summary: priminfo files include a binary table containing matches between secondary
     targets and DESI primary targets in a (nested) HEALPixel.
-:Naming Convention: ``targets-no-obscon-hp-HP.fits``,
-    where ``HP`` is the HEALPixel covered
+:Naming Convention: ``PHASEtargets-no-obscon-hp-HP.fits``, where ``PHASE``
+    is ``sv1`` or ``sv3`` for the corresponding survey, but empty for ``main`` and
+    ``HP`` is the HEALPixel covered
     at the (nested) HEALPixel nside included in the file header as ``FILENSID``
     (*e.g.* 11).
-:Regex: ``targets-no-obscon-hp-?[0-9]+\.fits``
+:Regex: ``(sv1|sv3|)targets-no-obscon-hp-?[0-9]+\.fits``
 :File Type: FITS, 12 KB - 9.8 MB
 
 Contents
