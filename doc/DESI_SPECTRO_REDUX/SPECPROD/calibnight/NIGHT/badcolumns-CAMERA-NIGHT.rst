@@ -12,7 +12,9 @@ badcolumns-CAMERA-NIGHT
 Contents
 ========
 
-Note: in some cases the file may contain no data.
+A list of unmasked bad columns identified from a 300 sec calibration dark frame.
+
+Note: file may contain no data if all bad columns are already masked.
 
 The file should have these columns:
 
@@ -20,7 +22,7 @@ The file should have these columns:
 Name         Type    Description
 ============ ======= ================================================================================
 CAMERA       char[*] Camera identifier. Passband and SPECGRPH ([brz][0-9]).
-COLUMN       int     TODO: description needed
-ELEC_PER_SEC float   TODO: description needed
-SIGMA        float   TODO: description needed
+COLUMN       int     CCD column number
+ELEC_PER_SEC float   median electrons/sec in column
+SIGMA        float   statistical significance as non-zero
 ============ ======= ================================================================================
