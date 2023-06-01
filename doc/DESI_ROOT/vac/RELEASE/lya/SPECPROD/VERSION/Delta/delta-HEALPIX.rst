@@ -1,11 +1,12 @@
-=========================================
-delta-HEALPIX.fits.gz
-=========================================
+=============
+delta-HEALPIX
+=============
 
-:Summary: This file contains the main output from the picca delta extraction: the lyman alpha transmission fluctiations for all analysed quasars in a given healpix
+:Summary: This file contains the main output from the picca delta extraction:
+    the lyman alpha transmission fluctuations for all analysed quasars in a given healpix
 :Naming Convention: ``delta-HEALPIX.fits``, where
     ``HEALPIX`` is the healpix id.
-:Regex: ``delta-[0-9]*\.fits\.gz``
+:Regex: ``delta-[0-9]+\.fits\.gz``
 :File Type: FITS
 
 Contents
@@ -161,18 +162,18 @@ Required Header Keywords
     .. rst-class:: keywords
 
     ============= ============================== ===== ===========================
-    KEY           Example                        Value Type  Comment
+    KEY           Example Value                  Type  Comment
     ============= ============================== ===== ===========================
     NAXIS         2                              int   number of array dimensions
     NAXIS1        2716                           int   number of wavelength pixels
     NAXIS2        340                            int   number of forests
     BUNITS        10**-17 erg/(s cm2 Angstrom)   str   quasar continuum units
     ============= ============================== ===== ===========================
-    
+
 Notes and Examples
 ==================
 
-These files are generated with https://github.com/igmhub/picca/blob/master/bin/picca_delta_extraction.py 
+These files are generated with https://github.com/igmhub/picca/blob/master/bin/picca_delta_extraction.py
 The code was run twice:
 
 .. code-block:: bash

@@ -1,8 +1,9 @@
-=========================================
-rejection_log.fits.gz
-=========================================
+=============
+rejection_log
+=============
 
-:Summary: This file contains auxiliar output from the picca delta extraction: statistics on rejected forests
+:Summary: This file contains auxiliary output from the picca delta
+    extraction: statistics on rejected forests
 :Naming Convention: ``rejection_log.fits.gz``
 :Regex: ``rejection_log\.fits\.gz``
 :File Type: FITS
@@ -73,11 +74,11 @@ REJECTION_STATUS     char[12]       Rejection status of forest
 ==================== ======== ===== ===================
 
 
-    
+
 Notes and Examples
 ==================
 
-These files are generated with https://github.com/igmhub/picca/blob/master/bin/picca_delta_extraction.py 
+These files are generated with https://github.com/igmhub/picca/blob/master/bin/picca_delta_extraction.py
 The code was run twice:
 
 .. code-block:: bash
