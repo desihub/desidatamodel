@@ -647,27 +647,14 @@ DELTA_Y [1]_               float64 mm           CS5 Y requested minus actual pos
 FIBER_RA                   float64 deg          RA of actual fiber position
 FIBER_DEC                  float64 deg          DEC of actual fiber position
 EXPTIME [1]_               float64 s            Length of time shutter was open
-FIBERFLUX_W2 [1]_          float32              TODO: description needed
 NUMOBS_MORE [1]_           int32                Number of additional observations needed
-FIBER_DEC_IVAR [1]_        float32              TODO: description needed
 NUMTARGET [1]_             int16                Total number of targets that this positioner covered
-FIBERTOTFLUX_W1 [1]_       float32              TODO: description needed
 SPECTROID [1]_             int32                Hardware ID of spectrograph (not used)
-SECONDARY_TARGET [1]_      int64                TODO: description needed
 HPXPIXEL [1]_              int64                HEALPixel containing this location at NSIDE=64 in the NESTED scheme
-FIBERTOTFLUX_W2 [1]_       float32              TODO: description needed
-PLATEMAKER_X [1]_          float32              TODO: description needed
-PLATEMAKER_Y [1]_          float32              TODO: description needed
-FIBER_RA_IVAR [1]_         float32              TODO: description needed
-TARGET_RA_IVAR [1]_        float64              TODO: description needed
-TARGET_DEC_IVAR [1]_       float64              TODO: description needed
 PMDEC_IVAR [1]_            float32 yr^2 mas^-2  Inverse variance of PMDEC
 MW_TRANSMISSION_Z [1]_     float32              Milky Way dust transmission in LS z-band
 MW_TRANSMISSION_G [1]_     float32              Milky Way dust transmission in LS g-band
-FIBERFLUX_W1 [1]_          float32              TODO: description needed
 MW_TRANSMISSION_R [1]_     float32              Milky Way dust transmission in LS r-band
-PLATEMAKER_RA [1]_         float32              TODO: description needed
-PLATEMAKER_DEC [1]_        float32              TODO: description needed
 PMRA_IVAR [1]_             float32 yr^2 mas^-2  Inverse variance of PMRA
 ========================== ======= ============ =======================================================================================================================================
 
