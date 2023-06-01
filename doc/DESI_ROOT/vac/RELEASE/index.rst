@@ -13,3 +13,4 @@ Subdirectories:
    :maxdepth: 1
 
    lss/index
+   lya/index
