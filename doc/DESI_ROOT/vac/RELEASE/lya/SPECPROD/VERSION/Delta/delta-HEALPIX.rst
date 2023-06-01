@@ -18,7 +18,7 @@ Number EXTNAME     Type     Contents
 HDU0_  PRIMARY     PRIMARY  Empty
 HDU1_  LAMBDA      IMAGE    Wavelength grid
 HDU2_  METADATA    BINTABLE Per forest metadata
-HDU3_  DELTA_BLIND IMAGE    Flux transmission field
+HDU3_  DELTA       IMAGE    Flux transmission field
 HDU4_  WEIGHT      IMAGE    Weights
 HDU5_  CONT        IMAGE    Quasar continua
 ====== =========== ======== ========================
@@ -51,7 +51,6 @@ Required Header Keywords
     ============= ================ ===== ===========================
     KEY           Example Value    Type  Comment
     ============= ================ ===== ===========================
-    NAXIS         1                int   number of array dimensions
     NAXIS1        2716             int   number of wavelength pixels
     WAVE_SOLUTION lin              str   chosen wavelength solution
     DELTA_LAMBDA  0.8              float pixel step
@@ -60,7 +59,7 @@ Required Header Keywords
     DATASUM       1634060384       str   HDU data checksum
     ============= ================ ===== ===========================
 
-Data: FITS Image [float64, 2716]
+Data: FITS image [float64, 2716]
 
 HDU2
 ----
@@ -79,10 +78,9 @@ Required Header Keywords
     ============= ================ ======== ===========================
     KEY           Example Value    Type     Comment
     ============= ================ ======== ===========================
-    NAXIS         2                int      number of array dimensions
     NAXIS1        84               int      table width
     NAXIS2        340              int      number of forests
-    BLINDING      none             char[12] blinding scheme used
+    BLINDING      none             str      blinding scheme used
     CHECKSUM      UZ3aaZ2aVZ2aaZ2a str      HDU checksum
     DATASUM       1634060384       str      HDU data checksum
     ============= ================ ======== ===========================
@@ -110,7 +108,7 @@ TILE                 char[12]       Observation tile(s)
 HDU3
 ----
 
-EXTNAME = DELTA_BLIND
+EXTNAME = DELTA
 
 Flux transmission field in wavelength bins
 
@@ -124,7 +122,6 @@ Required Header Keywords
     ============= ================ ===== ===========================
     KEY           Example Value    Type  Comment
     ============= ================ ===== ===========================
-    NAXIS         2                int   number of array dimensions
     NAXIS1        2716             int   number of wavelength pixels
     NAXIS2        340              int   number of forests
     BUNIT                          str   delta units (unitless)
@@ -132,7 +129,7 @@ Required Header Keywords
     DATASUM       1634060384       str   HDU data checksum
     ============= ================ ===== ===========================
 
-Data: FITS Image [float64, 2716x340]
+Data: FITS image [float64, 2716x340]
 
 HDU4
 ----
@@ -151,7 +148,6 @@ Required Header Keywords
     ============= ================ ===== ===========================
     KEY           Example Value    Type  Comment
     ============= ================ ===== ===========================
-    NAXIS         2                int   number of array dimensions
     NAXIS1        2716             int   number of wavelength pixels
     NAXIS2        340              int   number of forests
     BUNIT                          str   weight units (unitless)
@@ -159,7 +155,7 @@ Required Header Keywords
     DATASUM       1634060384       str   HDU data checksum
     ============= ================ ===== ===========================
 
-Data: FITS Image [float64, 2716x340]
+Data: FITS image [float64, 2716x340]
 
 HDU5
 ----
@@ -178,7 +174,6 @@ Required Header Keywords
     ============= ============================== ===== ===========================
     KEY           Example Value                  Type  Comment
     ============= ============================== ===== ===========================
-    NAXIS         2                              int   number of array dimensions
     NAXIS1        2716                           int   number of wavelength pixels
     NAXIS2        340                            int   number of forests
     BUNIT         10**-17 erg/(s cm2 Angstrom)   str   quasar continuum units
@@ -186,7 +181,7 @@ Required Header Keywords
     DATASUM       1634060384                     str   HDU data checksum
     ============= ============================== ===== ===========================
 
-Data: FITS Image [float64, 2716x340]
+Data: FITS image [float64, 2716x340]
 
 Notes and Examples
 ==================

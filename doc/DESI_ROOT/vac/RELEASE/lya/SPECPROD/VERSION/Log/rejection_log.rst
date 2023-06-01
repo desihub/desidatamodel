@@ -43,13 +43,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
-    NAXIS1        104           int   table width
-    NAXIS2        24719         int   number of rejected forests
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS1        104              int   table width
+    NAXIS2        24719            int   number of rejected forests
+    CHECKSUM      D7nUD5lTD5lTD5lT str   HDU checksum updated 2023-05-20T00:44:44
+    DATASUM       231153411'       str   data unit checksum updated 2023-05-20T00:44:44
+    ============= ================ ===== ===========================
 
 
 Required Data Table Columns

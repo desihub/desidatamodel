@@ -51,7 +51,6 @@ Required Header Keywords
     ============= ============= ===== ===========================
     KEY           Example Value Type  Comment
     ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
     NAXIS1        24            int   table width
     NAXIS2        2716          int   number of wavelenght pixels
     ============= ============= ===== ===========================
@@ -87,7 +86,6 @@ Required Header Keywords
     ============= ============= ===== ===========================
     KEY           Example Value Type  Comment
     ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
     NAXIS1        48            int   table width
     NAXIS2        20            int   number of wavelenght pixels
     ============= ============= ===== ===========================
@@ -105,7 +103,7 @@ LOGLAM               float64  log(Angstrom) log(wavelength)
 ETA                  float64                Intrinsic variace of fluctuations
 VAR_LSS              float64                Mean weight
 NUM_PIXELS           int32                  Number of pixels in the fit
-VALID_FIT            bool                   Indicates valid fit
+VALID_FIT            logical                Indicates valid fit
 ==================== ======== ============= ===================
 
 HDU3
@@ -125,7 +123,6 @@ Required Header Keywords
     ============= ============= ===== ===========================
     KEY           Example Value Type  Comment
     ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
     NAXIS1        84            int   table width
     NAXIS2        206           int   number of rest-frame pixels
     ============= ============= ===== ===========================
@@ -161,7 +158,6 @@ Required Header Keywords
     ============= ============= ===== ===========================
     KEY           Example Value Type  Comment
     ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
     NAXIS1        43            int   table width
     NAXIS2        23168         int   number of forests
     ============= ============= ===== ===========================
@@ -180,7 +176,7 @@ ZERO_POINT           float64         Continuum zero-point paramter
 SLOPE                float64         Continuum slope parameter
 CHI2                 float64         Continuum fit chi2
 NUM_DATAPOINTS       int64           Number of wavelenth pixels
-ACCEPTED_FIT         bool            Fit acceptance
+ACCEPTED_FIT         logical         Fit acceptance
 ==================== ======== ====== ===================
 
 
