@@ -9,8 +9,8 @@ that topic.
 Redshift fitting (Redrock) masks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This mask is defined in more detail in section TODO of the Redrock paper
-(Bailey et al 2023 TODO: add link), as well as Section 5.3.1 of the
+This mask will be defined in more detail the Redrock paper
+(Bailey et al 2023 in prep), as well as Section 5.3.1 of the
 Survey Operations Paper (Schlafly et al 2023 TODO: add link).
 
 =================================== ==================
@@ -37,7 +37,7 @@ Target masks
 ~~~~~~~~~~~~
 
 These masks are described in more detail in Appendix A and B of the
-the DESI EDR paper (Alphabetical et al 2023 TODO: add link).
+the DESI EDR paper (DESI Collaboration et al 2023 TODO: add link).
 
 =================================== ==================
 BIT_MASK                            URL
