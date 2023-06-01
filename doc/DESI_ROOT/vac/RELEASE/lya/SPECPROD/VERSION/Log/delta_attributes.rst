@@ -48,12 +48,15 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS1        24            int   table width
-    NAXIS2        2716          int   number of wavelenght pixels
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS1        24               int   table width
+    NAXIS2        2716             int   number of wavelenght pixels
+    FITORDER      1                int   order of the fit
+    CHECKSUM      UaQGWRQDUXQDUXQD str   HDU checksum updated 2023-05-20T00:44:43
+    DATASUM       288651377        str   data unit checksum updated 2023-05-20T00:44:43
+    ============= ================ ===== ===========================
 
 
 Required Data Table Columns
@@ -83,12 +86,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS1        48            int   table width
-    NAXIS2        20            int   number of wavelenght pixels
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS1        48               int   table width
+    NAXIS2        20               int   number of wavelenght pixels
+    CHECKSUM      9l7aGj7V9j7ZGj7Z str   HDU checksum updated 2023-05-20T00:44:43
+    DATASUM       2321635470       str   data unit checksum updated 2023-05-20T00:44:43
+    ============= ================ ===== ===========================
 
 
 Required Data Table Columns
@@ -102,6 +107,7 @@ Name                 Type     Units         Description
 LOGLAM               float64  log(Angstrom) log(wavelength)
 ETA                  float64                Intrinsic variace of fluctuations
 VAR_LSS              float64                Mean weight
+FUDGE                float64                ad-hoc term correcting varianc of high SNR quas
 NUM_PIXELS           int32                  Number of pixels in the fit
 VALID_FIT            logical                Indicates valid fit
 ==================== ======== ============= ===================
@@ -120,12 +126,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS1        84            int   table width
-    NAXIS2        206           int   number of rest-frame pixels
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS1        84               int   table width
+    NAXIS2        206              int   number of rest-frame pixels
+    CHECKSUM      nadFnWaFnaaFnUaF str   HDU checksum updated 2023-05-20T00:44:43
+    DATASUM       2310375264       str   data unit checksum updated 2023-05-20T00:44:43
+    ============= ================ ===== ===========================
 
 
 Required Data Table Columns
@@ -133,13 +141,13 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-==================== ======== ============= ===================
-Name                 Type     Units         Description
-==================== ======== ============= ===================
-LOGLAM_REST          float64  log(Angstrom) Logarithm of the rest-frame wavelength
-MEAN_CONT            float64                Mean quasar continuum
-WEIGHT               float64                Mean quasar continuum
-==================== ======== ============= ===================
+==================== ======== ============================ ===================
+Name                 Type     Units                        Description
+==================== ======== ============================ ===================
+LOGLAM_REST          float64  log(Angstrom)                Logarithm of the rest-frame wavelength
+MEAN_CONT            float64  10**-17 erg/(s cm2 Angstrom) Mean quasar continuum
+WEIGHT               float64                               mean weight
+==================== ======== ============================ ===================
 
 HDU4
 ----
@@ -155,12 +163,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS1        43            int   table width
-    NAXIS2        23168         int   number of forests
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS1        43               int   table width
+    NAXIS2        23168            int   number of forests
+    CHECKSUM      WIaqZHaoWHaoWHao str   HDU checksum updated 2023-05-20T00:44:43
+    DATASUM       179646866        str   data unit checksum updated 2023-05-20T00:44:43
+    ============= ================ ===== ===========================
 
 
 Required Data Table Columns

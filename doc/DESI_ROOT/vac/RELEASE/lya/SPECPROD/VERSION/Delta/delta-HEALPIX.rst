@@ -150,7 +150,6 @@ Required Header Keywords
     ============= ================ ===== ===========================
     NAXIS1        2716             int   number of wavelength pixels
     NAXIS2        340              int   number of forests
-    BUNIT                          str   weight units (unitless)
     CHECKSUM      UZ3aaZ2aVZ2aaZ2a str   HDU checksum
     DATASUM       1634060384       str   HDU data checksum
     ============= ================ ===== ===========================
