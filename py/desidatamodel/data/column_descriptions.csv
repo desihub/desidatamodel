@@ -66,6 +66,8 @@ FIBERFLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of ``FIBERFLUX_Z``
 FIBERSTATUS,int32,,Fiber status mask. 0=good
 FIBERTOTFLUX_G,float32,nanomaggy,Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_R,float32,nanomaggy,Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_W1,float32,nanomaggy,Predicted WISE W1-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_W2,float32,nanomaggy,Predicted WISE W2-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_Z,float32,nanomaggy,Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBER_DEC,float64,deg,DEC of actual fiber position
 FIBER_RA,float64,deg,RA of actual fiber position

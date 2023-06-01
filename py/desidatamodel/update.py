@@ -175,7 +175,10 @@ def update(lines, force=False):
 
                     current_desc = rows[j]['Description']
                     if current_desc != description:
-                        if current_desc == '' or current_desc.startswith('label for field ') or force:
+                        if (current_desc == '' or force or
+                            current_desc.startswith('label for field ') or
+                            current_desc.startswith('TODO: description needed')
+                            ):
                             rows[j]['Description'] = description
 
                         if current_desc == '' or current_desc.startswith('label for field '):

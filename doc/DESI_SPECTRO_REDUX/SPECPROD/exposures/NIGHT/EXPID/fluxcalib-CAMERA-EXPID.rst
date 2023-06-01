@@ -19,8 +19,8 @@ HDU0_  FLUXCALIB        IMAGE    Flux calibration model
 HDU1_  IVAR             IMAGE    Inverse variance of flux
 HDU2_  MASK             IMAGE    Mask (0 = good)
 HDU3_  WAVELENGTH       IMAGE    wavelength in Angstrom
-HDU4_  FIBERCORR        BINTABLE TODO: description needed
-HDU5_  STDSTAR_FIBERMAP BINTABLE TODO: description needed
+HDU4_  FIBERCORR        BINTABLE Correction factors for fiber size input losses
+HDU5_  STDSTAR_FIBERMAP BINTABLE stdstar photometry and target:fiber mapping
 ====== ================ ======== ===================
 
 

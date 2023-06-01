@@ -22,7 +22,7 @@ HDU2_  FIBERS       IMAGE    1D array of which fibers these models correspond to
 HDU3_  METADATA     BINTABLE metadata from input standard star templates
 HDU4_  COEFF        IMAGE    Linear coefficients of stdstar model fit
 HDU5_  FIBERMAP     BINTABLE Target photometry, metadata, and what fibers they are assigned to
-HDU6_  INPUT_FRAMES BINTABLE TODO: description needed
+HDU6_  INPUT_FRAMES BINTABLE Table of input frames used for stdstar fitting
 ====== ============ ======== ===================
 
 
@@ -162,7 +162,7 @@ EXTNAME = COEFF
 
 Linear coefficients of stdstar model fit.
 
-TODO: add example of what that means.
+The model fit for stdstar `i` is ``model_i = Sum_j template_j * coeff[i,j]``
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -174,8 +174,8 @@ Required Header Keywords
     ======== ================ ==== ==============================================
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
-    NAXIS1   1491             int
-    NAXIS2   7                int
+    NAXIS1   1491             int  Number of input templates
+    NAXIS2   7                int  Number of standard stars
     CHECKSUM ZUOicSLgZSLgbSLg str  HDU checksum updated 2021-07-08T20:11:43
     DATASUM  3509807364       str  data unit checksum updated 2021-07-08T20:11:43
     ======== ================ ==== ==============================================
@@ -885,7 +885,7 @@ HDU6
 
 EXTNAME = INPUT_FRAMES
 
-TODO: description needed
+Table of input frames (NIGHT, EXPID, CAMERA) used for stdstar fitting.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
