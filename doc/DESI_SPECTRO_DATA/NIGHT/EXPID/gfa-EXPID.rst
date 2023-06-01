@@ -2,9 +2,7 @@
 gfa-EXPID
 =========
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: TODO: description needed
 :Naming Convention: ``gfa-EXPID.fits.fz``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``gfa-[0-9]{8}\.fits\.fz``
@@ -16,18 +14,18 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU00_         IMAGE    *Brief Description*
-HDU01_ GFA     BINTABLE *Brief Description*
-HDU02_ GUIDE0  BINTABLE *Brief Description*
-HDU03_ FOCUS9  BINTABLE *Brief Description*
-HDU04_ FOCUS1  BINTABLE *Brief Description*
-HDU05_ FOCUS4  BINTABLE *Brief Description*
-HDU06_ GUIDE3  BINTABLE *Brief Description*
-HDU07_ GUIDE7  BINTABLE *Brief Description*
-HDU08_ GUIDE5  BINTABLE *Brief Description*
-HDU09_ GUIDE2  BINTABLE *Brief Description*
-HDU10_ FOCUS6  BINTABLE *Brief Description*
-HDU11_ GUIDE8  BINTABLE *Brief Description*
+HDU00_         IMAGE    TODO: description needed
+HDU01_ GFA     BINTABLE TODO: description needed
+HDU02_ GUIDE0  BINTABLE TODO: description needed
+HDU03_ FOCUS9  BINTABLE TODO: description needed
+HDU04_ FOCUS1  BINTABLE TODO: description needed
+HDU05_ FOCUS4  BINTABLE TODO: description needed
+HDU06_ GUIDE3  BINTABLE TODO: description needed
+HDU07_ GUIDE7  BINTABLE TODO: description needed
+HDU08_ GUIDE5  BINTABLE TODO: description needed
+HDU09_ GUIDE2  BINTABLE TODO: description needed
+HDU10_ FOCUS6  BINTABLE TODO: description needed
+HDU11_ GUIDE8  BINTABLE TODO: description needed
 ====== ======= ======== ===================
 
 
@@ -36,8 +34,6 @@ FITS Header Units
 
 HDU00
 -----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -48,7 +44,7 @@ HDU01
 
 EXTNAME = GFA
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -305,7 +301,7 @@ HDU02
 
 EXTNAME = GUIDE0
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -394,7 +390,7 @@ HDU03
 
 EXTNAME = FOCUS9
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -483,7 +479,7 @@ HDU04
 
 EXTNAME = FOCUS1
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -572,7 +568,7 @@ HDU05
 
 EXTNAME = FOCUS4
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -661,7 +657,7 @@ HDU06
 
 EXTNAME = GUIDE3
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -750,7 +746,7 @@ HDU07
 
 EXTNAME = GUIDE7
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -839,7 +835,7 @@ HDU08
 
 EXTNAME = GUIDE5
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -928,7 +924,7 @@ HDU09
 
 EXTNAME = GUIDE2
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1017,7 +1013,7 @@ HDU10
 
 EXTNAME = FOCUS6
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1106,7 +1102,7 @@ HDU11
 
 EXTNAME = GUIDE8
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1189,9 +1185,3 @@ Required Header Keywords
     ======== ================================= ===== ===============================================
 
 Data: FITS image [int16 (compressed), 2248x1032]
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

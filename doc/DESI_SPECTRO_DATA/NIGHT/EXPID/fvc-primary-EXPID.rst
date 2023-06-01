@@ -2,9 +2,8 @@
 fvc-primary-EXPID
 =================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file type is found in early commissioning data, but should
+    be considered obsolete.
 :Naming Convention: ``fvc-primary-EXPID.fits``, where EXPID is the zero-padded
     8-digit exposure ID.
 :Regex: ``fvc-primary-[0-9]{8}\.fits``
@@ -16,7 +15,7 @@ Contents
 ====== ======= ===== ===================
 Number EXTNAME Type  Contents
 ====== ======= ===== ===================
-HDU0_  fvc     IMAGE *Brief Description*
+HDU0_  fvc     IMAGE TODO: description needed
 ====== ======= ===== ===================
 
 
@@ -28,7 +27,7 @@ HDU0
 
 EXTNAME = fvc
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -253,9 +252,3 @@ Required Header Keywords
     ======== ================================================ ======= =======
 
 Empty HDU.
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -24,8 +24,3 @@ Each section contains a list of keyword-value pairs::
     Max Spot Radius   :  4.77164316E+001 um
 
 There are no obvious units on the coordinate values.
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

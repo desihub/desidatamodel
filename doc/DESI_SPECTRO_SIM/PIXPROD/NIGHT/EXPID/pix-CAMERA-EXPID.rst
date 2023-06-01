@@ -35,15 +35,19 @@ Bias subtracted, pixel flat fielded, gain corrected CCD image in electrons.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ===== ==================================
-KEY      Example Value Type  Comment
-======== ============= ===== ==================================
-CAMERA   b0            str   Spectograph Camera
-VSPECTER 0.0.0         str   TODO: Specter version
-EXPTIME  1000.0        float Exposure time [sec]
-RDNOISE  3.0           float Read noise [electrons]
-FLAVOR   arc           str   Exposure type (arc, flat, science)
-======== ============= ===== ==================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ===== ==================================
+    KEY      Example Value Type  Comment
+    ======== ============= ===== ==================================
+    CAMERA   b0            str   Spectograph Camera
+    VSPECTER 0.0.0         str   TODO: Specter version
+    EXPTIME  1000.0        float Exposure time [sec]
+    RDNOISE  3.0           float Read noise [electrons]
+    FLAVOR   arc           str   Exposure type (arc, flat, science)
+    ======== ============= ===== ==================================
 
 Data: FITS image
 
@@ -59,12 +63,16 @@ Inverse variance image of the electron image in HDU 0
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ======== ===== ======================
-KEY     Value    Type  Comment
-======= ======== ===== ======================
-EXTNAME IVAR     str   extension name
-RDNOISE 3.0      float Read noise [electrons]
-======= ======== ===== ======================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======= ======== ===== ======================
+    KEY     Value    Type  Comment
+    ======= ======== ===== ======================
+    EXTNAME IVAR     str   extension name
+    RDNOISE 3.0      float Read noise [electrons]
+    ======= ======== ===== ======================
 
 Data: FITS image
 
@@ -78,16 +86,14 @@ Mask image, where 0=good, non-0=bad.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======= ======== ==== ==============
-KEY     Value    Type Comment
-======= ======== ==== ==============
-EXTNAME MASK     str  extension name
-======= ======== ==== ==============
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======= ======== ==== ==============
+    KEY     Value    Type Comment
+    ======= ======== ==== ==============
+    EXTNAME MASK     str  extension name
+    ======= ======== ==== ==============
 
 Data: FITS image
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

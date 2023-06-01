@@ -1426,9 +1426,3 @@ CRPIX2   float64        Reference pixel in axis2
 CRVAL1   float64        Physical value of the reference pixel
 CRVAL2   float64        Physical value of the reference pixel
 ======== ======== ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

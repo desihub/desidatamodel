@@ -2,11 +2,6 @@
 desidatamodel API
 =================
 
-The desidatamodel_ package on GitHub includes the data model input files
-and some Python utility code for generating and checking data model files.
-
-.. _desidatamodel: https://github.com/desihub/desidatamodel
-
 .. automodule:: desidatamodel
     :members:
 
@@ -20,4 +15,7 @@ and some Python utility code for generating and checking data model files.
     :members:
 
 .. automodule:: desidatamodel.unit
+    :members:
+
+.. automodule:: desidatamodel.update
     :members:

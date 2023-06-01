@@ -14,12 +14,12 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  FIBERFLAT  IMAGE    *Brief Description*
-HDU1_  IVAR       IMAGE    *Brief Description*
-HDU2_  MASK       IMAGE    *Brief Description*
-HDU3_  MEANSPEC   IMAGE    *Brief Description*
-HDU4_  WAVELENGTH IMAGE    *Brief Description*
-HDU5_  FIBERMAP   BINTABLE *Brief Description*
+HDU0_  FIBERFLAT  IMAGE    fiberflat[nspec, nwave]
+HDU1_  IVAR       IMAGE    inverse variance of fiberflat
+HDU2_  MASK       IMAGE    bitmask of fiberflat (0=good)
+HDU3_  MEANSPEC   IMAGE    average spectrum[nwave]
+HDU4_  WAVELENGTH IMAGE    wavelength grid[nwave] in Angstroms
+HDU5_  FIBERMAP   BINTABLE Target photometry, metadata, and what fibers they are assigned to
 ====== ========== ======== ===================
 
 
@@ -574,106 +574,88 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-========================== ======= ===== ===========
-Name                       Type    Units Description
-========================== ======= ===== ===========
-TARGETID                   int64
-PETAL_LOC                  int16
-DEVICE_LOC                 int32
-LOCATION                   int64
-FIBER                      int32
-FIBERSTATUS                int32
-TARGET_RA                  float64
-TARGET_DEC                 float64
-PMRA                       float32
-PMDEC                      float32
-REF_EPOCH                  float32
-LAMBDA_REF                 float32
-FA_TARGET                  int64
-FA_TYPE                    binary
-OBJTYPE                    char[3]
-FIBERASSIGN_X              float32
-FIBERASSIGN_Y              float32
-PRIORITY                   int32
-SUBPRIORITY                float64
-OBSCONDITIONS              int32
-RELEASE                    int16
-BRICKNAME [1]_             char[8]
-BRICKID                    int64
-BRICK_OBJID                int64
-MORPHTYPE                  char[4]
-EBV                        float32
-FLUX_G                     float32
-FLUX_R                     float32
-FLUX_Z                     float32
-FLUX_W1                    float32
-FLUX_W2                    float32
-FLUX_IVAR_G                float32
-FLUX_IVAR_R                float32
-FLUX_IVAR_Z                float32
-FLUX_IVAR_W1               float32
-FLUX_IVAR_W2               float32
-FIBERFLUX_G                float32
-FIBERFLUX_R                float32
-FIBERFLUX_Z                float32
-FIBERTOTFLUX_G             float32
-FIBERTOTFLUX_R             float32
-FIBERTOTFLUX_Z             float32
-MASKBITS [1]_              int16
-SERSIC [1]_                float32
-SHAPE_R [1]_               float32
-SHAPE_E1 [1]_              float32
-SHAPE_E2 [1]_              float32
-REF_ID                     int64
-REF_CAT [1]_               char[2]
-GAIA_PHOT_G_MEAN_MAG [1]_  float32
-GAIA_PHOT_BP_MEAN_MAG [1]_ float32
-GAIA_PHOT_RP_MEAN_MAG [1]_ float32
-PARALLAX [1]_              float32
-PHOTSYS                    char[1]
-PRIORITY_INIT              int64
-NUMOBS_INIT                int64
-DESI_TARGET                int64
-BGS_TARGET                 int64
-MWS_TARGET                 int64
-SCND_TARGET [1]_           int64
-PLATE_RA [1]_              float64
-PLATE_DEC [1]_             float64
-NUM_ITER                   int64
-FIBER_X [1]_               float64
-FIBER_Y [1]_               float64
-DELTA_X [1]_               float64
-DELTA_Y [1]_               float64
-FIBER_RA                   float64
-FIBER_DEC                  float64
-EXPTIME [1]_               float64
-FIBERFLUX_W2 [1]_          float32
-NUMOBS_MORE [1]_           int32
-FIBER_DEC_IVAR [1]_        float32
-NUMTARGET [1]_             int16
-FIBERTOTFLUX_W1 [1]_       float32
-SPECTROID [1]_             int32
-SECONDARY_TARGET [1]_      int64
-HPXPIXEL [1]_              int64
-FIBERTOTFLUX_W2 [1]_       float32
-PLATEMAKER_X [1]_          float32
-PLATEMAKER_Y [1]_          float32
-FIBER_RA_IVAR [1]_         float32
-TARGET_RA_IVAR [1]_        float64
-TARGET_DEC_IVAR [1]_       float64
-PMDEC_IVAR [1]_            float32
-MW_TRANSMISSION_Z [1]_     float32
-MW_TRANSMISSION_G [1]_     float32
-FIBERFLUX_W1 [1]_          float32
-MW_TRANSMISSION_R [1]_     float32
-PLATEMAKER_RA [1]_         float32
-PLATEMAKER_DEC [1]_        float32
-PMRA_IVAR [1]_             float32
-========================== ======= ===== ===========
+========================== ======= ============ =======================================================================================================================================
+Name                       Type    Units        Description
+========================== ======= ============ =======================================================================================================================================
+TARGETID                   int64                Unique DESI target ID
+PETAL_LOC                  int16                Petal location [0-9]
+DEVICE_LOC                 int32                Device location on focal plane [0-523]
+LOCATION                   int64                Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
+FIBER                      int32                Fiber ID on the CCDs [0-4999]
+FIBERSTATUS                int32                Fiber status mask. 0=good
+TARGET_RA                  float64 deg          Barycentric right ascension in ICRS
+TARGET_DEC                 float64 deg          Barycentric declination in ICRS
+PMRA                       float32 mas yr^-1    proper motion in the +RA direction (already including cos(dec))
+PMDEC                      float32 mas yr^-1    Proper motion in the +Dec direction
+REF_EPOCH                  float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+LAMBDA_REF                 float32 Angstrom     Requested wavelength at which targets should be centered on fibers
+FA_TARGET                  int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
+FA_TYPE                    binary               Fiberassign internal target type (science, standard, sky, safe, suppsky)
+OBJTYPE                    char[3]              Object type: TGT, SKY, NON, BAD
+FIBERASSIGN_X              float32 mm           Fiberassign expected CS5 X location on focal plane
+FIBERASSIGN_Y              float32 mm           Fiberassign expected CS5 Y location on focal plane
+PRIORITY                   int32                Target current priority
+SUBPRIORITY                float64              Random subpriority [0-1) to break assignment ties
+OBSCONDITIONS              int32                Bitmask of allowed observing conditions
+RELEASE                    int16                Imaging surveys release ID
+BRICKNAME [1]_             char[8]              Brick name from tractor input
+BRICKID                    int64                Brick ID from tractor input
+BRICK_OBJID                int64                Imaging Surveys OBJID on that brick
+MORPHTYPE                  char[4]              Imaging Surveys morphological type from Tractor
+EBV                        float32 mag          Galactic extinction E(B-V) reddening from SFD98
+FLUX_G                     float32 nanomaggy    Flux in the Legacy Survey g-band (AB)
+FLUX_R                     float32 nanomaggy    Flux in the Legacy Survey r-band (AB)
+FLUX_Z                     float32 nanomaggy    Flux in the Legacy Survey z-band (AB)
+FLUX_W1                    float32 nanomaggy    WISE flux in W1 (AB)
+FLUX_W2                    float32 nanomaggy    WISE flux in W2 (AB)
+FLUX_IVAR_G                float32 nanomaggy^-2 Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R                float32 nanomaggy^-2 Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z                float32 nanomaggy^-2 Inverse variance of FLUX_Z (AB)
+FLUX_IVAR_W1               float32 nanomaggy^-2 Inverse variance of FLUX_W1 (AB)
+FLUX_IVAR_W2               float32 nanomaggy^-2 Inverse variance of FLUX_W2 (AB)
+FIBERFLUX_G                float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_R                float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z                float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_G             float32 nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_R             float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+FIBERTOTFLUX_Z             float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
+MASKBITS [1]_              int16                Bitwise mask from the imaging indicating potential issue or blending
+SERSIC [1]_                float32              Power-law index for the Sersic profile model (MORPHTYPE=&#x27;SER&#x27;)
+SHAPE_R [1]_               float32 arcsec       Half-light radius of galaxy model (&gt;0)
+SHAPE_E1 [1]_              float32              Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
+SHAPE_E2 [1]_              float32              Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
+REF_ID                     int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2
+REF_CAT [1]_               char[2]              Reference catalog source for star: &#x27;T2&#x27; for Tycho-2, &#x27;G2&#x27; for Gaia DR2, &#x27;L2&#x27; for the SGA, empty otherwise
+GAIA_PHOT_G_MEAN_MAG [1]_  float32 mag          Gaia G band magnitude
+GAIA_PHOT_BP_MEAN_MAG [1]_ float32 mag          Gaia BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG [1]_ float32 mag          Gaia RP band magnitude
+PARALLAX [1]_              float32 mas          Reference catalog parallax
+PHOTSYS                    char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PRIORITY_INIT              int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT                int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+DESI_TARGET                int64                DESI (dark time program) target selection bitmask
+BGS_TARGET                 int64                BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET                 int64                Milky Way Survey targeting bits
+SCND_TARGET [1]_           int64                Target selection bitmask for secondary programs
+PLATE_RA [1]_              float64 deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC [1]_             float64 deg          Barycentric Declination in ICRS to be used by PlateMaker
+NUM_ITER                   int64                Number of positioner iterations
+FIBER_X [1]_               float64 mm           CS5 X location requested by PlateMaker
+FIBER_Y [1]_               float64 mm           CS5 Y location requested by PlateMaker
+DELTA_X [1]_               float64 mm           CS5 X requested minus actual position
+DELTA_Y [1]_               float64 mm           CS5 Y requested minus actual position
+FIBER_RA                   float64 deg          RA of actual fiber position
+FIBER_DEC                  float64 deg          DEC of actual fiber position
+EXPTIME [1]_               float64 s            Length of time shutter was open
+NUMOBS_MORE [1]_           int32                Number of additional observations needed
+NUMTARGET [1]_             int16                Total number of targets that this positioner covered
+SPECTROID [1]_             int32                Hardware ID of spectrograph (not used)
+HPXPIXEL [1]_              int64                HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+PMDEC_IVAR [1]_            float32 yr^2 mas^-2  Inverse variance of PMDEC
+MW_TRANSMISSION_Z [1]_     float32              Milky Way dust transmission in LS z-band
+MW_TRANSMISSION_G [1]_     float32              Milky Way dust transmission in LS g-band
+MW_TRANSMISSION_R [1]_     float32              Milky Way dust transmission in LS r-band
+PMRA_IVAR [1]_             float32 yr^2 mas^-2  Inverse variance of PMRA
+========================== ======= ============ =======================================================================================================================================
 
 .. [1] Optional
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

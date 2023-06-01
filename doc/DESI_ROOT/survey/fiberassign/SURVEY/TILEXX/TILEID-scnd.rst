@@ -2,9 +2,7 @@
 TILEID-scnd.fits
 ================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the secondary targets covered by the tile disk-footprint.
 :Naming Convention: ``{TILEID}-scnd.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-scnd\.fits``
@@ -13,12 +11,12 @@ TILEID-scnd.fits
 Contents
 ========
 
-====== ======= ======== ===================
+====== ======= ======== =====================================================
 Number EXTNAME Type     Contents
-====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  TARGETS BINTABLE *Brief Description*
-====== ======= ======== ===================
+====== ======= ======== =====================================================
+HDU0_          IMAGE    Empty HDU
+HDU1_  TARGETS BINTABLE Secondary targets covered by the tile disk-footprint.
+====== ======= ======== =====================================================
 
 
 FITS Header Units
@@ -26,8 +24,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -38,7 +34,9 @@ HDU1
 
 EXTNAME = TARGETS
 
-*Summarize the contents of this HDU.*
+Secondary targets covered by the tile disk-footprint:
+those are read from the MTL ledgers and desitarget catalogs and provided as
+input to fiberassign.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,49 +63,43 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======== ========= ===================
+===================== ======== ========= =======================================================================================================
 Name                  Type     Units     Description
-===================== ======== ========= ===================
-FLUX_G                float32  nanomaggy label for field   1
-FLUX_R                float32  nanomaggy label for field   2
-FLUX_Z                float32  nanomaggy label for field   3
-GAIA_PHOT_G_MEAN_MAG  float32  mag       label for field   4
-GAIA_PHOT_BP_MEAN_MAG float32  mag       label for field   5
-GAIA_PHOT_RP_MEAN_MAG float32  mag       label for field   6
-TARGETID              int64              label for field   7
-RA                    float64  deg       label for field   8
-DEC                   float64  deg       label for field   9
-PMRA                  float32  mas / yr  label for field  10
-PMDEC                 float32  mas / yr  label for field  11
-REF_EPOCH             float32  yr        label for field  12
-PARALLAX              float32  mas       label for field  13
-DESI_TARGET           int64              label for field  14
-SCND_TARGET           int64              label for field  15
-SUBPRIORITY           float64            label for field  16
-OBSCONDITIONS         int32              label for field  17
-PRIORITY_INIT         int64              label for field  18
-NUMOBS_INIT           int64              label for field  19
-BGS_TARGET            int64              label for field  20
-MWS_TARGET            int64              label for field  21
-NUMOBS_MORE           int64              label for field  22
-NUMOBS                int64              label for field  23
-Z                     float64            label for field  24
-ZWARN                 int64              label for field  25
-ZTILEID               int32              label for field  26
-Z_QN                  float64            label for field  27
-IS_QSO_QN             int16              label for field  28
-DELTACHI2             float64            label for field  29
-TARGET_STATE          char[30]           label for field  30
-TIMESTAMP             char[25] s         label for field  31
-VERSION               char[14]           label for field  32
-PRIORITY              int64              label for field  33
-PLATE_RA              float64            label for field  34
-PLATE_DEC             float64            label for field  35
-PLATE_REF_EPOCH       float32            label for field  36
-===================== ======== ========= ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*
+===================== ======== ========= =======================================================================================================
+FLUX_G                float32  nanomaggy Flux in the Legacy Survey g-band (AB)
+FLUX_R                float32  nanomaggy Flux in the Legacy Survey r-band (AB)
+FLUX_Z                float32  nanomaggy Flux in the Legacy Survey z-band (AB)
+GAIA_PHOT_G_MEAN_MAG  float32  mag       Gaia G band magnitude
+GAIA_PHOT_BP_MEAN_MAG float32  mag       Gaia BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG float32  mag       Gaia RP band magnitude
+TARGETID              int64              Unique DESI target ID
+RA                    float64  deg       Barycentric Right Ascension in ICRS
+DEC                   float64  deg       Barycentric declination in ICRS
+PMRA                  float32  mas / yr  proper motion in the +RA direction (already including cos(dec))
+PMDEC                 float32  mas / yr  Proper motion in the +Dec direction
+REF_EPOCH             float32  yr        Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+PARALLAX              float32  mas       Reference catalog parallax
+DESI_TARGET           int64              DESI (dark time program) target selection bitmask
+SCND_TARGET           int64              Target selection bitmask for secondary programs
+SUBPRIORITY           float64            Random subpriority [0-1) to break assignment ties
+OBSCONDITIONS         int32              Bitmask of allowed observing conditions
+PRIORITY_INIT         int64              Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT           int64              Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+BGS_TARGET            int64              BGS (Bright Galaxy Survey) target selection bitmask
+MWS_TARGET            int64              Milky Way Survey targeting bits
+NUMOBS_MORE           int64              Number of additional observations needed
+NUMOBS                int64              Number of spectroscopic observations (on this specific, single tile)
+Z                     float64            Redshift measured by Redrock
+ZWARN                 int64              Redshift warning bitmask from Redrock
+ZTILEID               int32              ID of tile that most recently updated target&#x27;s state
+Z_QN                  float64            Redshift measured by QuasarNET using line with highest confidence
+IS_QSO_QN             int16              Spectroscopic classification from QuasarNET (1 for a quasar)
+DELTACHI2             float64            chi2 difference between first- and second-best redrock template fits
+TARGET_STATE          char[30]           Combination of target class and its current observational state
+TIMESTAMP             char[25] s         UTC/ISO time at which the target state was updated
+VERSION               char[14]           Tag of desitarget used to create the target catalog
+PRIORITY              int64              Target current priority
+PLATE_RA              float64  deg       Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC             float64  deg       Barycentric Declination in ICRS to be used by PlateMaker
+PLATE_REF_EPOCH       float32  yr        Copy of REF_EPOCH to be used by PlateMaker
+===================== ======== ========= =======================================================================================================

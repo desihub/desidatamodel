@@ -97,7 +97,7 @@ Name                       Type        Units        Description
 TARGETID                   int64                    ID (unique to file? and the whole survey?)
 SURVEY [1]_                char[7]                  Survey name
 PROGRAM [1]_               char[6]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
-LASTNIGHT                  int32
+LASTNIGHT                  int32                    Final night of observation included in a series of coadds
 SPGRPVAL                   int32                    Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 Z                          float64                  Redshift measured by Redrock
 ZERR                       float64                  Redshift error from redrock
@@ -197,38 +197,38 @@ STD_FIBER_RA               float32     arcsec       Standard deviation (over exp
 MEAN_FIBER_DEC             float64     deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32     arcsec       Standard deviation (over exposures) of DEC of actual fiber position
 MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-MEAN_FIBER_X               float32                  label for field  90
-MEAN_FIBER_Y               float32                  label for field  91
-TSNR2_GPBDARK_B            float32                  label for field  92
+MEAN_FIBER_X               float32     mm           Mean (over exposures) fiber CS5 X location on focal plane
+MEAN_FIBER_Y               float32     mm           Mean (over exposures) fiber CS5 X location on focal plane
+TSNR2_GPBDARK_B            float32                  template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B                float32                  ELG B template (S/N)^2
-TSNR2_GPBBRIGHT_B          float32                  label for field  94
+TSNR2_GPBBRIGHT_B          float32                  template (S/N)^2 for bright targets in guider pass band on B
 TSNR2_LYA_B                float32                  LYA B template (S/N)^2
 TSNR2_BGS_B                float32                  BGS B template (S/N)^2
-TSNR2_GPBBACKUP_B          float32                  label for field  97
+TSNR2_GPBBACKUP_B          float32                  template (S/N)^2 for backup targets in guider pass band on B
 TSNR2_QSO_B                float32                  QSO B template (S/N)^2
 TSNR2_LRG_B                float32                  LRG B template (S/N)^2
-TSNR2_GPBDARK_R            float32                  label for field 100
+TSNR2_GPBDARK_R            float32                  template (S/N)^2 for dark targets in guider pass band on R
 TSNR2_ELG_R                float32                  ELG R template (S/N)^2
-TSNR2_GPBBRIGHT_R          float32                  label for field 102
+TSNR2_GPBBRIGHT_R          float32                  template (S/N)^2 for bright targets in guider pass band on R
 TSNR2_LYA_R                float32                  LYA R template (S/N)^2
 TSNR2_BGS_R                float32                  BGS R template (S/N)^2
-TSNR2_GPBBACKUP_R          float32                  label for field 105
+TSNR2_GPBBACKUP_R          float32                  template (S/N)^2 for backup targets in guider pass band on R
 TSNR2_QSO_R                float32                  QSO R template (S/N)^2
 TSNR2_LRG_R                float32                  LRG R template (S/N)^2
-TSNR2_GPBDARK_Z            float32                  label for field 108
+TSNR2_GPBDARK_Z            float32                  template (S/N)^2 for dark targets in guider pass band on Z
 TSNR2_ELG_Z                float32                  ELG Z template (S/N)^2
-TSNR2_GPBBRIGHT_Z          float32                  label for field 110
+TSNR2_GPBBRIGHT_Z          float32                  template (S/N)^2 for bright targets in guider pass band on Z
 TSNR2_LYA_Z                float32                  LYA Z template (S/N)^2
 TSNR2_BGS_Z                float32                  BGS Z template (S/N)^2
-TSNR2_GPBBACKUP_Z          float32                  label for field 113
+TSNR2_GPBBACKUP_Z          float32                  template (S/N)^2 for backup targets in guider pass band on Z
 TSNR2_QSO_Z                float32                  QSO Z template (S/N)^2
 TSNR2_LRG_Z                float32                  LRG Z template (S/N)^2
-TSNR2_GPBDARK              float32                  label for field 116
+TSNR2_GPBDARK              float32                  template (S/N)^2 for dark targets in guider pass band
 TSNR2_ELG                  float32                  ELG template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBRIGHT            float32                  label for field 118
+TSNR2_GPBBRIGHT            float32                  template (S/N)^2 for bright targets in guider pass band
 TSNR2_LYA                  float32                  LYA template (S/N)^2 summed over B,R,Z
 TSNR2_BGS                  float32                  BGS template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBACKUP            float32                  label for field 121
+TSNR2_GPBBACKUP            float32                  template (S/N)^2 for backup targets in guider pass band
 TSNR2_QSO                  float32                  QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG                  float32                  LRG template (S/N)^2 summed over B,R,Z
 SV_NSPEC [1]_              int32                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)
@@ -289,7 +289,7 @@ Name                  Type    Units    Description
 TARGETID              int64            Unique DESI target ID
 PRIORITY              int32            Target current priority
 SUBPRIORITY           float64          Random subpriority [0-1) to break assignment ties
-NIGHT                 int32
+NIGHT                 int32            Night of observation (YYYYMMDD) starting at local noon before observations start
 EXPID                 int32            DESI Exposure ID number
 MJD                   float64          Modified Julian Date when shutter was opened for this exposure
 TILEID                int32            Unique DESI tile ID

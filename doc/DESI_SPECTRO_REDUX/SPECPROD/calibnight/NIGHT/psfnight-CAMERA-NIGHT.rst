@@ -240,13 +240,12 @@ Required Data Table Columns
 ======= ============= ===== ===================
 Name    Type          Units Description
 ======= ============= ===== ===================
-PARAM   char[8]             label for field   1
-COEFF   float64[1000]       label for field   2
-LEGDEGX int32               label for field   3
-LEGDEGW int32               label for field   4
+PARAM   char[8]             Parameter name
+COEFF   float64[1000]       Legendre coefficients[nfiber,ncoeff]
+LEGDEGX int32               Legendre polynomial degree in the X (Fiber) direction
+LEGDEGW int32               Legendre polynomail degree in the Y (Wavelength) direction
 ======= ============= ===== ===================
 
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*
+The dimensionality of ``COEFF`` is ``[nfiber,ncoeff]`` where ``nfiber`` is the
+number of fibers (always 500 for standard production runs) and ``ncoeff`` is
+the maximum value of any row of ``LEGDEGX`` or ``LEGDEGY``.

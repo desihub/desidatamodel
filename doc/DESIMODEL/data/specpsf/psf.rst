@@ -250,9 +250,3 @@ EXTNAME SPOTWAVE      str
 ======= ============= ==== =====================
 
 Data: FITS image [float64, 11]
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

@@ -44,37 +44,37 @@ Fiber positions on focal plane
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ============= ==== =====================
-KEY      Example Value Type Comment
-======== ============= ==== =====================
-NAXIS1   87            int  length of dimension 1
-NAXIS2   5430          int  length of dimension 2
-======== ============= ==== =====================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ============= ==== =====================
+    KEY      Example Value Type Comment
+    ======== ============= ==== =====================
+    NAXIS1   87            int  length of dimension 1
+    NAXIS2   5430          int  length of dimension 2
+    ======== ============= ==== =====================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=========== ======= ===== ===========
+.. rst-class:: columns
+
+=========== ======= ===== ==========================
 Name        Type    Units Description
-=========== ======= ===== ===========
-PETAL       int32
-DEVICE      int32
-DEVICE_TYPE char[3]
-LOCATION    int64
-FIBER       int32
-X           float64 mm
-Y           float64 mm
-Z           float64 mm
-Q           float64 deg
-S           float64 mm
-SPECTRO     int32
-SLIT        int32
-SLITBLOCK   int64
-BLOCKFIBER  int64
-=========== ======= ===== ===========
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*
+=========== ======= ===== ==========================
+PETAL       int32         TODO: description needed
+DEVICE      int32         TODO: description needed
+DEVICE_TYPE char[3]       TODO: description needed
+LOCATION    int64         TODO: description needed
+FIBER       int32         fiber number [0-4999]
+X           float64 mm    positioner x center [mm]
+Y           float64 mm    positioner y center [mm]
+Z           float64 mm    positioner z location [mm]
+Q           float64 deg   TODO: description needed
+S           float64 mm    TODO: description needed
+SPECTRO     int32         spectrograph number [0-9]
+SLIT        int32         TODO: description needed
+SLITBLOCK   int64         TODO: description needed
+BLOCKFIBER  int64         TODO: description needed
+=========== ======= ===== ==========================

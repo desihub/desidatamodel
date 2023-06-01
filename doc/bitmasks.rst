@@ -3,10 +3,15 @@ Bit Masks in DESI
 =================
 
 This page links to the URLs defining the bitmasks found in DESI files.
+For details on working with these values, please see the tutorial_ on
+that topic.
 
 Redshift fitting (Redrock) masks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This mask will be defined in more detail the Redrock paper
+(Bailey et al 2023 in prep), as well as Section 5.3.1 of the
+Survey Operations Paper (Schlafly et al 2023 TODO: add link).
 
 =================================== ==================
 BIT_MASK                            URL
@@ -14,9 +19,9 @@ BIT_MASK                            URL
 ZWARN                               `ZWARN`_
 =================================== ==================
 
+
 Spectroscopic reduction masks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 =================================== ==================
 BIT_MASK                            URL
@@ -31,13 +36,16 @@ MASK                                `MASKBITS_L84`_
 Target masks
 ~~~~~~~~~~~~
 
+These masks are described in more detail in Appendix A and B of the
+the DESI EDR paper (DESI Collaboration et al 2023 TODO: add link).
+
 =================================== ==================
 BIT_MASK                            URL
 =================================== ==================
 CMX_TARGET                          `CMX`_
 SV1_DESI_TARGET                     `SV1`_
 SV1_BGS_TARGET                      `SV1`_
-SV1_MWS_TARGET                      `SV1`_	
+SV1_MWS_TARGET                      `SV1`_
 SV2_DESI_TARGET                     `SV2`_
 SV2_BGS_TARGET                      `SV2`_
 SV2_MWS_TARGET                      `SV2`_
@@ -56,6 +64,9 @@ OBSCONDITIONS                       `TARGET_L188`_
 
 Imaging masks
 ~~~~~~~~~~~~~
+
+These masks were defined or used by the `DESI Legacy Imaging Surveys`_. Please
+see their information on these masks at the links below.
 
 =================================== ==================
 BIT_MASK                            URL
@@ -76,3 +87,5 @@ MASKBITS                            `BITMASKS_LEGACY`_
 .. _`MASKBITS_L84`: https://github.com/desihub/desispec/blob/0.55.0/py/desispec/maskbits.py#L84
 .. _`ZWARN`: https://github.com/desihub/redrock/blob/0.16.0/py/redrock/zwarning.py#L14
 .. _`BITMASKS_LEGACY`: https://www.legacysurvey.org/dr9/bitmasks/
+.. _`DESI Legacy Imaging Surveys`: https://www.legacysurvey.org/
+.. _tutorial: https://github.com/desihub/desitarget/blob/master/doc/nb/target-selection-bits-and-bitmasks.ipynb

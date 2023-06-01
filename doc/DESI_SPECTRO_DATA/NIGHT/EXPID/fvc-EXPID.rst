@@ -14,9 +14,9 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_  FVC     IMAGE    *Brief Description*
-HDU1_  F0000   BINTABLE *Brief Description*
-HDU2_  C0000   BINTABLE *Brief Description*
+HDU0_  FVC     IMAGE    TODO: description needed
+HDU1_  F0000   BINTABLE TODO: description needed
+HDU2_  C0000   BINTABLE TODO: description needed
 ====== ======= ======== ===================
 
 
@@ -28,7 +28,7 @@ HDU0
 
 EXTNAME = FVC
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -407,7 +407,7 @@ HDU1
 
 EXTNAME = F0000
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -467,7 +467,7 @@ HDU2
 
 EXTNAME = C0000
 
-*Summarize the contents of this HDU.*
+TODO: description needed
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -495,16 +495,10 @@ Required Data Table Columns
 ========= ======= ===== ===================
 Name      Type    Units Description
 ========= ======= ===== ===================
-x         float64       label for field   1
-y         float64       label for field   2
-mag       float64       label for field   3
-fwhm      float64       label for field   4
-flags     int64         label for field   5
-device_id int64         label for field   6
+x         float64       TODO: description needed
+y         float64       TODO: description needed
+mag       float64       TODO: description needed
+fwhm      float64       TODO: description needed
+flags     int64         TODO: description needed
+device_id int64         TODO: description needed
 ========= ======= ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*

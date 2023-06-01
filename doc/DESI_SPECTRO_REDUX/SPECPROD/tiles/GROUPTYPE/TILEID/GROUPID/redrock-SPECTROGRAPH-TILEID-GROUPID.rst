@@ -229,8 +229,8 @@ STD_FIBER_RA               float32 arcsec       Standard deviation (over exposur
 MEAN_FIBER_DEC             float64 deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32 arcsec       Standard deviation (over exposures) of DEC of actual fiber position
 MEAN_PSF_TO_FIBER_SPECFLUX float32              Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-MEAN_FIBER_X               float32
-MEAN_FIBER_Y               float32
+MEAN_FIBER_X               float32 mm           Mean (over exposures) fiber CS5 X location on focal plane
+MEAN_FIBER_Y               float32 mm           Mean (over exposures) fiber CS5 Y location on focal plane
 ========================== ======= ============ ===============================================================================================================================
 
 .. [1] Optional

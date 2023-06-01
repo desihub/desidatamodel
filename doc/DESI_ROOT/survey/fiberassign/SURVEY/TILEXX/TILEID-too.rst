@@ -2,9 +2,7 @@
 TILEID-too.fits
 ===============
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the Target-of-Opportunity targets covered by the tile disk-footprint.
 :Naming Convention: ``{TILEID}-too.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-too\.fits``
@@ -16,8 +14,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  TARGETS BINTABLE *Brief Description*
+HDU0_          IMAGE    Empty HDU
+HDU1_  TARGETS BINTABLE Target-of-Opportunity targets covered by the tile disk-footprint.
 ====== ======= ======== ===================
 
 
@@ -26,8 +24,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -38,7 +34,9 @@ HDU1
 
 EXTNAME = TARGETS
 
-*Summarize the contents of this HDU.*
+Target-of-Opportunity targets covered by the tile disk-footprint:
+those are read from the MTL ledgers and desitarget catalogs and provided
+as input to fiberassign.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,42 +63,42 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============================= ======== ========= ===================
+============================= ======== ========= =======================================================================================================
 Name                          Type     Units     Description
-============================= ======== ========= ===================
-RA                            float64  deg       label for field   1
-DEC                           float64  deg       label for field   2
-PMRA                          float64  mas / yr  label for field   3
-PMDEC                         float64  mas / yr  label for field   4
-REF_EPOCH                     float64  yr        label for field   5
-FLUX_G                        float32  nanomaggy label for field   6
-FLUX_R                        float32  nanomaggy label for field   7
-FLUX_Z                        float32  nanomaggy label for field   8
-PARALLAX                      float32  mas       label for field   9
-GAIA_PHOT_G_MEAN_MAG          float32  mag       label for field  10
-GAIA_PHOT_BP_MEAN_MAG         float32  mag       label for field  11
-GAIA_PHOT_RP_MEAN_MAG         float32  mag       label for field  12
-GAIA_ASTROMETRIC_EXCESS_NOISE float32            label for field  13
-TARGETID                      int64              label for field  14
-DESI_TARGET                   int64              label for field  15
-SCND_TARGET                   int64              label for field  16
-SCND_ORDER                    int32              label for field  17
-PRIORITY_INIT                 int64              label for field  18
-SUBPRIORITY                   float64            label for field  19
-NUMOBS_INIT                   int64              label for field  20
-OBSCONDITIONS                 int64              label for field  21
-CHECKER                       char[5]            label for field  22
-TOO_TYPE                      char[5]            label for field  23
-TOO_PRIO                      char[2]            label for field  24
-OCLAYER                       char[6]            label for field  25
-MJD_BEGIN                     float64  d         label for field  26
-MJD_END                       float64  d         label for field  27
-TOOID                         int64              label for field  28
-TIMESTAMP                     char[25] s         label for field  29
-PLATE_RA                      float64            label for field  30
-PLATE_DEC                     float64            label for field  31
-PLATE_REF_EPOCH               float64            label for field  32
-============================= ======== ========= ===================
+============================= ======== ========= =======================================================================================================
+RA                            float64  deg       Barycentric Right Ascension in ICRS
+DEC                           float64  deg       Barycentric declination in ICRS
+PMRA                          float64  mas / yr  proper motion in the +RA direction (already including cos(dec))
+PMDEC                         float64  mas / yr  Proper motion in the +Dec direction
+REF_EPOCH                     float64  yr        Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+FLUX_G                        float32  nanomaggy Flux in the Legacy Survey g-band (AB)
+FLUX_R                        float32  nanomaggy Flux in the Legacy Survey r-band (AB)
+FLUX_Z                        float32  nanomaggy Flux in the Legacy Survey z-band (AB)
+PARALLAX                      float32  mas       Reference catalog parallax
+GAIA_PHOT_G_MEAN_MAG          float32  mag       Gaia G band magnitude
+GAIA_PHOT_BP_MEAN_MAG         float32  mag       Gaia BP band magnitude
+GAIA_PHOT_RP_MEAN_MAG         float32  mag       Gaia RP band magnitude
+GAIA_ASTROMETRIC_EXCESS_NOISE float32            Gaia astrometric excess noise
+TARGETID                      int64              Unique DESI target ID
+DESI_TARGET                   int64              DESI (dark time program) target selection bitmask
+SCND_TARGET                   int64              Target selection bitmask for secondary programs
+SCND_ORDER                    int32              Number of row for target entry in secondary file (placeholder; needed by fiberassign)
+PRIORITY_INIT                 int64              Target initial priority from target selection bitmasks and OBSCONDITIONS
+SUBPRIORITY                   float64            Random subpriority [0-1) to break assignment ties
+NUMOBS_INIT                   int64              Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+OBSCONDITIONS                 int64              Bitmask of allowed observing conditions
+CHECKER                       char[5]            Initials of researcher who vetted the target
+TOO_TYPE                      char[5]            Either "TILE" for a special tile or "FIBER" for a fiber-override ToO
+TOO_PRIO                      char[2]            Either "HI" for a very-high-priority target or "LO" for a very-low-priority target
+OCLAYER                       char[6]            Either "DARK" for dark-time or "BRIGHT" to observe in either bright- or dark-time
+MJD_BEGIN                     float64  d         Start of the allowed observing window for this target (Modified Julian Date)
+MJD_END                       float64  d         End of the allowed observing window for this target (Modified Julian Date)
+TOOID                         int64              ID for this target assigned by the ``CHECKER``
+TIMESTAMP                     char[25] s         UTC/ISO time at which the target state was updated
+PLATE_RA                      float64  deg       Barycentric Right Ascension in ICRS to be used by PlateMaker
+PLATE_DEC                     float64  deg       Barycentric Declination in ICRS to be used by PlateMaker
+PLATE_REF_EPOCH               float64  yr        Copy of REF_EPOCH to be used by PlateMaker
+============================= ======== ========= =======================================================================================================
 
 
 Notes and Examples

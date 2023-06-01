@@ -4,11 +4,12 @@ priminfo
 
 :Summary: priminfo files include a binary table containing matches between secondary
     targets and DESI primary targets in a (nested) HEALPixel.
-:Naming Convention: ``targets-no-obscon-hp-HP.fits``,
-    where ``HP`` is the HEALPixel covered
+:Naming Convention: ``PHASEtargets-no-obscon-hp-HP.fits``, where ``PHASE``
+    is ``sv1`` or ``sv3`` for the corresponding survey, but empty for ``main`` and
+    ``HP`` is the HEALPixel covered
     at the (nested) HEALPixel nside included in the file header as ``FILENSID``
     (*e.g.* 11).
-:Regex: ``targets-no-obscon-hp-?[0-9]+\.fits``
+:Regex: ``(sv1|sv3|)targets-no-obscon-hp-?[0-9]+\.fits``
 :File Type: FITS, 12 KB - 9.8 MB
 
 Contents
@@ -68,7 +69,7 @@ DEC                               float64     deg                   Declination
 PMRA                              float32     mas / yr              Proper motion in the RA direction
 PMDEC                             float32     mas / yr              Proper motion in the Dec direction
 REF_EPOCH                         float32     yr                    Astrometric reference epoch. Typically 2015.5.
-OVERRIDE                          bool                              If ``True`` do not match to and accept an existing primary target. Instead, always generate a new ``TARGETID``
+OVERRIDE                          logical                           If ``True`` do not match to and accept an existing primary target. Instead, always generate a new ``TARGETID``
 FLUX_G                            float32     nanomaggy             `LS`_ flux from tractor input (g)
 FLUX_R                            float32     nanomaggy             `LS`_ flux from tractor input (r)
 FLUX_Z                            float32     nanomaggy             `LS`_ flux from tractor input (z)
@@ -86,7 +87,7 @@ SUBPRIORITY                       float64                           Random subpr
 NUMOBS_INIT                       int64                             Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 OBSCONDITIONS                     int64                             Flag target to be observed in combinations of dark/bright observing layer
 SCND_TARGET_INIT                  int64                             Duplication of ``SCND_TARGET`` column (used for internal bookkeeping)
-PRIM_MATCH                        bool                              ``True`` if a secondary target matches a primary target
+PRIM_MATCH                        logical                           ``True`` if a secondary target matches a primary target
 ================================= =========== ===================== ===================
 
 .. _`LS`: https://www.legacysurvey.org/dr9/catalogs/

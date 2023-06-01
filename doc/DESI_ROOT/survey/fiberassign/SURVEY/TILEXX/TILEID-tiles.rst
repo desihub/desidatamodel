@@ -2,9 +2,7 @@
 TILEID-tiles.fits
 =================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
+:Summary: This file contains the designed properties of the observed tile.
 :Naming Convention: ``{TILEID}-tiles.fits``, where ``{TILEID}`` is the zero-padded,
     6-digit TILED.
 :Regex: ``[0-9]{6}-tiles\.fits``
@@ -16,8 +14,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  TILES   BINTABLE *Brief Description*
+HDU0_          IMAGE    Empty HDU
+HDU1_  TILES   BINTABLE Tile designed properties.
 ====== ======= ======== ===================
 
 
@@ -26,8 +24,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -38,7 +34,7 @@ HDU1
 
 EXTNAME = TILES
 
-*Summarize the contents of this HDU.*
+Tile designed properties.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,19 +55,13 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============= ======= ===== ===================
+============= ======= ===== ===============================================
 Name          Type    Units Description
-============= ======= ===== ===================
-TILEID        int32         label for field   1
-RA            float64       label for field   2
-DEC           float64       label for field   3
-OBSCONDITIONS int32         label for field   4
-IN_DESI       int16         label for field   5
-PROGRAM       char[6]       label for field   6
-============= ======= ===== ===================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*
+============= ======= ===== ===============================================
+TILEID        int32         Unique DESI tile ID
+RA            float64 deg   Barycentric Right Ascension in ICRS
+DEC           float64 deg   Barycentric declination in ICRS
+OBSCONDITIONS int32         Bitmask of allowed observing conditions
+IN_DESI       int16         Used by fiberassign to make a tile in the DESI footprint; always set to 1
+PROGRAM       char[6]       DESI program type - BRIGHT, DARK, BACKUP, OTHER
+============= ======= ===== ===============================================
