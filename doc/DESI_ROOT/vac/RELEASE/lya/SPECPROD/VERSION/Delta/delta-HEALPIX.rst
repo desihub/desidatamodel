@@ -48,15 +48,17 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS         1             int   number of array dimensions
-    NAXIS1        2716          int   number of wavelength pixels
-    WAVE_SOLUTION lin           str   chosen wavelength solution
-    DELTA_LAMBDA  0.8           float pixel step
-    BUNITS        Angstrom      str   wavelenght units
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS         1                int   number of array dimensions
+    NAXIS1        2716             int   number of wavelength pixels
+    WAVE_SOLUTION lin              str   chosen wavelength solution
+    DELTA_LAMBDA  0.8              float pixel step
+    BUNIT         Angstrom         str   wavelength units
+    CHECKSUM      UZ3aaZ2aVZ2aaZ2a str   HDU checksum
+    DATASUM       1634060384       str   HDU data checksum
+    ============= ================ ===== ===========================
 
 Data: FITS Image [float64, 2716]
 
@@ -74,14 +76,16 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ======== ===========================
-    KEY           Example Value Type     Comment
-    ============= ============= ======== ===========================
-    NAXIS         2             int      number of array dimensions
-    NAXIS1        84            int      table width
-    NAXIS2        340           int      number of forests
-    BLINDING      none          char[12] blinding scheme used
-    ============= ============= ======== ===========================
+    ============= ================ ======== ===========================
+    KEY           Example Value    Type     Comment
+    ============= ================ ======== ===========================
+    NAXIS         2                int      number of array dimensions
+    NAXIS1        84               int      table width
+    NAXIS2        340              int      number of forests
+    BLINDING      none             char[12] blinding scheme used
+    CHECKSUM      UZ3aaZ2aVZ2aaZ2a str      HDU checksum
+    DATASUM       1634060384       str      HDU data checksum
+    ============= ================ ======== ===========================
 
 
 Required Data Table Columns
@@ -117,14 +121,16 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
-    NAXIS1        2716          int   number of wavelength pixels
-    NAXIS2        340           int   number of forests
-    BUNITS                      str   delta units (unitless)
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS         2                int   number of array dimensions
+    NAXIS1        2716             int   number of wavelength pixels
+    NAXIS2        340              int   number of forests
+    BUNIT                          str   delta units (unitless)
+    CHECKSUM      UZ3aaZ2aVZ2aaZ2a str   HDU checksum
+    DATASUM       1634060384       str   HDU data checksum
+    ============= ================ ===== ===========================
 
 Data: FITS Image [float64, 2716x340]
 
@@ -142,14 +148,16 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============= ============= ===== ===========================
-    KEY           Example Value Type  Comment
-    ============= ============= ===== ===========================
-    NAXIS         2             int   number of array dimensions
-    NAXIS1        2716          int   number of wavelength pixels
-    NAXIS2        340           int   number of forests
-    BUNITS                      str   weight units (unitless)
-    ============= ============= ===== ===========================
+    ============= ================ ===== ===========================
+    KEY           Example Value    Type  Comment
+    ============= ================ ===== ===========================
+    NAXIS         2                int   number of array dimensions
+    NAXIS1        2716             int   number of wavelength pixels
+    NAXIS2        340              int   number of forests
+    BUNIT                          str   weight units (unitless)
+    CHECKSUM      UZ3aaZ2aVZ2aaZ2a str   HDU checksum
+    DATASUM       1634060384       str   HDU data checksum
+    ============= ================ ===== ===========================
 
 Data: FITS Image [float64, 2716x340]
 
@@ -173,7 +181,9 @@ Required Header Keywords
     NAXIS         2                              int   number of array dimensions
     NAXIS1        2716                           int   number of wavelength pixels
     NAXIS2        340                            int   number of forests
-    BUNITS        10**-17 erg/(s cm2 Angstrom)   str   quasar continuum units
+    BUNIT         10**-17 erg/(s cm2 Angstrom)   str   quasar continuum units
+    CHECKSUM      UZ3aaZ2aVZ2aaZ2a               str   HDU checksum
+    DATASUM       1634060384                     str   HDU data checksum
     ============= ============================== ===== ===========================
 
 Data: FITS Image [float64, 2716x340]
