@@ -58,6 +58,8 @@ Required Header Keywords
     BUNITS        Angstrom      str   wavelenght units
     ============= ============= ===== ===========================
 
+Data: FITS Image [float64, 2716]
+
 HDU2
 ----
 
@@ -124,6 +126,8 @@ Required Header Keywords
     BUNITS                      str   delta units (unitless)
     ============= ============= ===== ===========================
 
+Data: FITS Image [float64, 2716x340]
+
 HDU4
 ----
 
@@ -147,6 +151,8 @@ Required Header Keywords
     BUNITS                      str   weight units (unitless)
     ============= ============= ===== ===========================
 
+Data: FITS Image [float64, 2716x340]
+
 HDU5
 ----
 
@@ -169,6 +175,8 @@ Required Header Keywords
     NAXIS2        340                            int   number of forests
     BUNITS        10**-17 erg/(s cm2 Angstrom)   str   quasar continuum units
     ============= ============================== ===== ===========================
+
+Data: FITS Image [float64, 2716x340]
 
 Notes and Examples
 ==================
