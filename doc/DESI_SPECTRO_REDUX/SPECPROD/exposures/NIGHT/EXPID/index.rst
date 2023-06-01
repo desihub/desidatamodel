@@ -5,6 +5,7 @@ EXPID
 .. toctree::
     :maxdepth: 1
 
+    calibstars-EXPID
     cframe-CAMERA-EXPID
     exposure-qa-EXPID
     fiberflat-CAMERA-EXPID
