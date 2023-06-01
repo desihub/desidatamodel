@@ -7,7 +7,7 @@ hpixexp-SURVEY-PROGRAM-PIXNUM
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright`` or ``dark``
     and ``PIXNUM`` is the HEALPixel number.
 :Regex: ``hpixexp-(cmx|main|special|sv1|sv2|sv3)-(backup|bright|dark|other)-[0-9]+\.csv``
-:File Type: CSV, 50 KB
+:File Type: CSV, 1 KB
 
 Contents
 ========
