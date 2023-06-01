@@ -22,6 +22,6 @@ EXPID    int     DESI Exposure ID number
 TILEID   int     Unique DESI tile ID
 SURVEY   char[*] Survey name
 PROGRAM  char[*] DESI program type - BRIGHT, DARK, BACKUP, OTHER
-SPECTRO  int     TODO: description needed
+SPECTRO  int     Spectrograph number [0-9]
 HEALPIX  int     HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 ======== ======= ================================================================================

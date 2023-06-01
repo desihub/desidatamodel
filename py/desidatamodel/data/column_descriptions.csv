@@ -334,6 +334,7 @@ SHAPE_E2_IVAR,float32,,Inverse variance of SHAPE_E2
 SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
+SPECTRO,int16,,Spectrograph number [0-9]
 SPECTROID,int32,,Hardware ID of spectrograph (not used)
 SPECTYPE,char[6],,"Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
 SPGRPVAL,int32,,Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
