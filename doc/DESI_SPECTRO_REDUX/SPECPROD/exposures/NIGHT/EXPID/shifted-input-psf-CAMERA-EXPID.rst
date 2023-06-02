@@ -9,7 +9,7 @@ shifted-input-psf-CAMERA-EXPID.fits
 :Regex: ``shifted-input-psf-[brz][0-9]-[0-9]{8}\.fits``
 :File Type: FITS, 998 KB
 
-See the :doc:`psfnight-CAMERA-NIGHT documentation <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>` for a description of the PSF file content.
+See :doc:`psfnight-CAMERA-NIGHT documentation <../../../calibnight/NIGHT/psfnight-CAMERA-NIGHT>` for a description of the PSF file content.
 
 Four different PSF files are written per camera for each arc lamp exposure:
 
