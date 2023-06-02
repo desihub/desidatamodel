@@ -406,6 +406,18 @@ class TestCheck(DataModelTestCase):
         f._prototypes = None
         f.validate_prototype(error=True)
 
+    def test_validate_prototype_not_verifiable_prototype(self):
+        """Test the data model validation method with prototypes that are not
+        currently verifiable.
+        """
+        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        f = DataModel(modelfile, os.path.dirname(modelfile))
+        f.get_regexp(os.path.dirname(modelfile))
+        collect_files(os.path.dirname(modelfile), [f])
+        f._prototypes = ('a.txt', 'b.txt.gz', 'c.txt.fz', 'd.txt', 'e.txt')
+        f.validate_prototype(error=True)
+        self.assertLog(log, -1, "Prototypes for {0} cannot be validated with current software, skipping.".format(f.filename))
+
     def test_validate_prototype_oserror(self):
         """Test the data model validation method with a file that throws an error.
         """
@@ -417,14 +429,15 @@ class TestCheck(DataModelTestCase):
         f._prototypes = [os.path.join(os.path.dirname(modelfile), 'data_table.txt'),
                          os.path.join(os.path.dirname(modelfile), 'fits_file.fits')]
         f.validate_prototype(error=True)
-        self.assertLog(log, -3, "Error opening {0}, skipping to next candidate.".format(f._prototypes[0]))
+        self.assertLog(log, -4, "Error opening {0}, skipping to next candidate.".format(f._prototypes[0]))
         if self.astropyVersion < version.parse('4.1'):
             empty = 'Empty or corrupt FITS file'
         elif self.astropyVersion < version.parse('5.0'):
             empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file'
         else:
             empty = 'No SIMPLE card found, this file does not appear to be a valid FITS file. If this is really a FITS file, try with ignore_missing_simple=True'
-        self.assertLog(log, -2, "Message was: '{0}'.".format(empty))
+        self.assertLog(log, -3, "Message was: '{0}'.".format(empty))
+        self.assertLog(log, -2, "(s.nhdr = 2) == (len(modelmeta.keys()) = 2)")
         self.assertLog(log, -1, "Comparing {0} to {1}.".format(f._prototypes[1], modelfile))
 
     def test_validate_prototype_hdu_mismatch(self):

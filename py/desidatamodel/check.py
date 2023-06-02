@@ -9,6 +9,7 @@ Check actual files against the data model for validity.
 """
 import os
 import re
+import itertools
 from sys import argv
 from argparse import ArgumentParser
 
@@ -463,10 +464,18 @@ class DataModel(DataModelUnit):
         * Use set theory to compare the data headers to model headers.  This should
           automatically find missing headers, extraneous headers, etc.
         """
+        verifiable_extensions = ('.fits', '.fits.fz', '.fits.gz')
         if self._prototypes is None:
             #
             # A warning should have been issued already, so just skip silently.
             #
+            return
+        #
+        # Currently, Stub() only works with FITS files, so don't try
+        # to fully validate things that aren't FITS files.
+        #
+        if all([not p.endswith(ext) for p, ext in itertools.product(self._prototypes, verifiable_extensions)]):
+            log.info("Prototypes for %s cannot be validated with current software, skipping.", self.filename)
             return
         modelmeta = self.extract_metadata(error=error)
         if self._stub is None:
@@ -477,6 +486,8 @@ class DataModel(DataModelUnit):
                     log.warning("Error opening %s, skipping to next candidate.", p)
                     log.warning("Message was: '%s'.", err)
                 else:
+                    log.debug("(s.nhdr = %s) == (len(modelmeta.keys()) = %s)",
+                              s.nhdr, len(modelmeta.keys()))
                     if s.nhdr == len(modelmeta.keys()):
                         self.prototype = p
                         self._stub = s
@@ -684,8 +695,9 @@ def collect_files(root, files, n_prototypes=5):
     -----
     Files are analyzed using this algorithm:
 
-    * The first file that matches a regexp becomes the 'prototype' for that
-      data model file.
+    * The first `n_prototypes` files that matches a regexp become the
+      'prototype candidates' for that data model file. The first candidate
+      that can be opened cleanly is the 'prototype'.
     * If no files match a data model file, then files of that type are
       'missing'.
     * If a file does not match any regular expression, it is 'extraneous'.
