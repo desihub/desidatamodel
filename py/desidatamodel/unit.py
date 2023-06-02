@@ -15,7 +15,9 @@ from . import DataModelError
 class DataModelUnit(object):
     """Allow unit-handling code to be shared with several classes.
     """
-    _acceptable_units = ('maggie', 'maggy', 'mgy', 'electron/Angstrom')
+    _acceptable_units = ('maggie', 'maggy', 'mgy',
+                         'electron/Angstrom',
+                         'log(Angstrom)')
 
     def check_unit(self, unit, error=False):
         """Check units for consistency with FITS standard, while allowing
