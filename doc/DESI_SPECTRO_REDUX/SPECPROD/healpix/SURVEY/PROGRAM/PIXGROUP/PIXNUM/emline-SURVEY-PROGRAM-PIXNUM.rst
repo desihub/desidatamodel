@@ -12,5 +12,5 @@ emline-SURVEY-PROGRAM-PIXNUM.fits
 Contents
 ========
 
-See description in :doc:`emline-SPECTROGRAPH-TILEID-GROUPID <../../../../../tiles/GROUPTYPE/TILEID/GROUPID/emline-SPECTROGRAPH-TILEID-GROUPID>`
+See :doc:`emline-SPECTROGRAPH-TILEID-GROUPID <../../../../../tiles/GROUPTYPE/TILEID/GROUPID/emline-SPECTROGRAPH-TILEID-GROUPID>` for details.
 
