@@ -111,7 +111,7 @@ Required Header Keywords
     perexp          NIGHT, EXPID: only data from this YEARMMDD and exposure ID
     =============== ==============
 
-HDU 0 does not contain any data.
+Empty HDU.
 
 HDU01
 -----
