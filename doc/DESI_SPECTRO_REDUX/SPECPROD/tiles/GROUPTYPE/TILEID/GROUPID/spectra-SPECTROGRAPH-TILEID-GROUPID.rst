@@ -24,7 +24,7 @@ Healpix-based spectra are grouped by SURVEY and PROGRAM.
 Science analyses may release spectra in other groups, e.g. all the spectra
 selected for a particular analysis.
 
-See :doc:`coadd files <coadd-SPECTROGRAPH-TILEID-GROUPID>` for a coadded
+Please see :doc:`coadd files <coadd-SPECTROGRAPH-TILEID-GROUPID>` for a coadded
 version of the same spectra in a very similar format.
 
 The FIBERMAP table contains metadata about each target, with one row per
