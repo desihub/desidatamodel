@@ -71,7 +71,7 @@ Required Header Keywords
     DATE-OBS       2020-12-21T02:36:32.099838                                            str     [UTC] Observation data and start time
     TIME-OBS       02:39:11.845920                                                       str     [UTC] Observation start time
     MJD-OBS        59204.10870486                                                        float   Modified Julian Date of observation
-    OPENSHUT       2020-12-21T02:36:32.099838                                            Unknown Time shutter opened
+    OPENSHUT       2020-12-21T02:36:32.099838                                            str     Time shutter opened
     ST             01:10:39.210                                                          str     Local Sidereal time at observation start (HH:MM
     EXPTIME        300.007                                                               float   [s] Actual exposure time
     REQRA          356.0                                                                 float   [deg] Requested right ascension (observer input
@@ -259,7 +259,7 @@ Required Header Keywords
     OBJECT                                                                               str     Object name
     SEQNUM         1                                                                     int     Number of exposure in sequence
     CAMSHUT        open                                                                  str     Shutter status during observation
-    ACQTIME        15.0                                                                  int     [s] acqusition image exposure time
+    ACQTIME        15.0                                                                  float   [s] acqusition image exposure time
     GUIDTIME       5.0                                                                   float   [s] guider GFA exposure time
     FOCSTIME [1]_  60.0                                                                  float   [s] focus GFA exposure time
     SKYTIME [1]_   60.0                                                                  float   [s] sky camera exposure time (acquisition)
@@ -536,7 +536,7 @@ Required Header Keywords
     SEQID [1]_     2 requests                                                            str     Exposure sequence identifier
     SP2BLUP [1]_   8.297e-08                                                             float   [mb] SP2 blue pressure
     SP2BLUT [1]_   163.02                                                                float   [K] SP2 blue temperature
-    FRAMES [1]_    None                                                                  Unknown Number of Frames in Archive
+    FRAMES [1]_    47                                                                    int     Number of Frames in Archive
     SP2NIRP [1]_   4.884e-08                                                             float   [mb] SP2 NIR pressure
     SP9BLUP [1]_   1.237e-07                                                             float   [mb] SP9 blue pressure
     TCSGDEC [1]_   0.3                                                                   float   TCS simple gain (dec)
@@ -781,10 +781,10 @@ Required Header Keywords
     TIMESYS        UTC                                                                                                                                                                                                      str
     DATE-OBS       2020-12-21T02:36:32.099838                                                                                                                                                                               str
     MJD-OBS        59204.10870486                                                                                                                                                                                           float
-    OPENSHUT       2020-12-21T02:36:32.099838                                                                                                                                                                               Unknown
+    OPENSHUT       2020-12-21T02:36:32.099838                                                                                                                                                                               str
     CAMSHUT        open                                                                                                                                                                                                     str
     ST             01:10:39.210                                                                                                                                                                                             str
-    ACQTIME        15.0                                                                                                                                                                                                     int
+    ACQTIME        15.0                                                                                                                                                                                                     float
     GUIDTIME       5.0                                                                                                                                                                                                      float
     FOCSTIME       60.0                                                                                                                                                                                                     float
     SKYTIME        60.0                                                                                                                                                                                                     float
@@ -1019,7 +1019,7 @@ Required Header Keywords
     FGFRMNUM       46                                                                                                                                                                                                       int
     FFFRMNUM       6                                                                                                                                                                                                        int
     FSFRMNUM       5                                                                                                                                                                                                        int
-    FRAMES [1]_    47                                                                                                                                                                                                       Unknown
+    FRAMES [1]_    47                                                                                                                                                                                                       int
     DELTARA [1]_   None                                                                                                                                                                                                     Unknown
     DELTADEC [1]_  None                                                                                                                                                                                                     Unknown
     GSGUIDE0 [1]_  (980.05,685.98),(878.97,731.68)                                                                                                                                                                          str

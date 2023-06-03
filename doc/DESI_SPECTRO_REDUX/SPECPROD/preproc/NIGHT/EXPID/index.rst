@@ -7,3 +7,4 @@ EXPID
 
    fibermap-EXPID
    preproc-CAMERA-EXPID
+   tilepix-TILEID

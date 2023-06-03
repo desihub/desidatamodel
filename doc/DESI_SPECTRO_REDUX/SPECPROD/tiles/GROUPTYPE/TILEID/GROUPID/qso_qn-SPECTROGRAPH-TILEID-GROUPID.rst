@@ -72,7 +72,7 @@ COEFFS               float32[10]       Coefficient of the fit for the new run of
 SPECTYPE             char[10]          Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 Z_RR                 float32           Redshift collected from redrock file
 Z_QN                 float32           Redshift measured by QuasarNET using line with highest confidence
-IS_QSO_QN_NEW_RR     bool              QN identified as QSO at different redshift or classification than Redrock
+IS_QSO_QN_NEW_RR     logical           QN identified as QSO at different redshift or classification than Redrock
 C_LYA                float32           Confidence for LyA line, i.e. ~probability to be a QSO
 C_CIV                float32           Confidence for CIV line
 C_CIII               float32           Confidence for CIII line

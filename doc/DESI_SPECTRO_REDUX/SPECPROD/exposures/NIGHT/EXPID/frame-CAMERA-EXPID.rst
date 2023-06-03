@@ -1390,8 +1390,8 @@ PRIORITY              int32                Target current priority
 SUBPRIORITY           float64              Random subpriority [0-1) to break assignment ties
 OBSCONDITIONS         int32                Bitmask of allowed observing conditions
 RELEASE               int16                Imaging surveys release ID
-BRICKID               int32                Brick ID from tractor input
-BRICK_OBJID           int32                Imaging Surveys OBJID on that brick
+BRICKID               int64                Brick ID from tractor input
+BRICK_OBJID           int64                Imaging Surveys OBJID on that brick
 MORPHTYPE             char[4]              Imaging Surveys morphological type from Tractor
 FLUX_G                float32 nanomaggy    Flux in the Legacy Survey g-band (AB)
 FLUX_R                float32 nanomaggy    Flux in the Legacy Survey r-band (AB)

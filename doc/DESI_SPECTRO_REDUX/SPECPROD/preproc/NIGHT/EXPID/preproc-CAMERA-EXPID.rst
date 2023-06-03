@@ -1323,8 +1323,8 @@ SUBPRIORITY           float64                    Random subpriority [0-1) to bre
 OBSCONDITIONS         int32                      Bitmask of allowed observing conditions
 RELEASE               int16                      Imaging surveys release ID
 BRICKNAME             char[8]                    Brick name from tractor input
-BRICKID               int32                      Brick ID from tractor input
-BRICK_OBJID           int32                      Imaging Surveys OBJID on that brick
+BRICKID               int64                      Brick ID from tractor input
+BRICK_OBJID           int64                      Imaging Surveys OBJID on that brick
 MORPHTYPE             char[4]                    Imaging Surveys morphological type from Tractor
 EBV                   float32 mag                Galactic extinction E(B-V) reddening from SFD98
 FLUX_G                float32 nanomaggies        Flux in the Legacy Survey g-band (AB)

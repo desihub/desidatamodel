@@ -75,7 +75,7 @@ Required Header Keywords
     DATE-OBS       2020-12-21T02:36:32.099838                                            str     [UTC] Observation data and start time
     TIME-OBS       02:39:11.845920                                                       str     [UTC] Observation start time
     MJD-OBS        59204.10870486                                                        float   Modified Julian Date of observation
-    OPENSHUT       2020-12-21T02:36:32.099838                                            Unknown Time shutter opened
+    OPENSHUT       2020-12-21T02:36:32.099838                                            str     Time shutter opened
     ST             01:10:39.210                                                          str     Local Sidereal time at observation start (HH:MM
     EXPTIME        300.007                                                               float   [s] Actual exposure time
     REQRA          356.0                                                                 float   [deg] Requested right ascension (observer input
@@ -263,7 +263,7 @@ Required Header Keywords
     OBJECT                                                                               str     Object name
     SEQNUM         1                                                                     int     Number of exposure in sequence
     CAMSHUT        open                                                                  str     Shutter status during observation
-    ACQTIME        15.0                                                                  int     [s] acqusition image exposure time
+    ACQTIME        15.0                                                                  float   [s] acqusition image exposure time
     GUIDTIME       5.0                                                                   float   [s] guider GFA exposure time
     FOCSTIME [1]_  60.0                                                                  float   [s] focus GFA exposure time
     SKYTIME [1]_   60.0                                                                  float   [s] sky camera exposure time (acquisition)
@@ -791,10 +791,10 @@ Required Header Keywords
     TIMESYS        UTC                                                                                                                                                                                                                                                                                           str
     DATE-OBS       2020-12-21T02:36:32.099838                                                                                                                                                                                                                                                                    str
     MJD-OBS        59204.10870486                                                                                                                                                                                                                                                                                float
-    OPENSHUT       2020-12-21T02:36:32.099838                                                                                                                                                                                                                                                                    Unknown
+    OPENSHUT       2020-12-21T02:36:32.099838                                                                                                                                                                                                                                                                    str
     CAMSHUT        open                                                                                                                                                                                                                                                                                          str
     ST             01:10:39.210                                                                                                                                                                                                                                                                                  str
-    ACQTIME        15.0                                                                                                                                                                                                                                                                                          int
+    ACQTIME        15.0                                                                                                                                                                                                                                                                                          float
     GUIDTIME       5.0                                                                                                                                                                                                                                                                                           float
     FOCSTIME       60.0                                                                                                                                                                                                                                                                                          float
     SKYTIME        60.0                                                                                                                                                                                                                                                                                          float
