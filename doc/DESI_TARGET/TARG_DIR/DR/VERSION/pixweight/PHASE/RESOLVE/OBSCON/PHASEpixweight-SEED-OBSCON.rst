@@ -8,13 +8,13 @@ pixweight
     together with target densities, conveniently stored as HEALPixel maps. They are
     derived from corresponding DESI random catalogs and target files, which are
     listed in the README file in the parent `pixweight` directory.
-:Naming Convention: ``PHASEpixweight-SEED-obscon.fits``,
+:Naming Convention: ``PHASEpixweight-SEED-OBSCON.fits``,
           where ``PHASE`` is a specific DESI observational phase (*e.g.* svX with X=1,2,3
 	  for iterations of Survey Validation) ``OBSCON`` is the observing condition
 	  (or "layer") for the targets (*e.g.* dark), and ``SEED`` is the random seed used
 	  to generate the associated random catalog. ``PHASE`` is omitted for Main Survey
 	  catalogs.
-:Regex: ``.*?pixweight-[0-9]+-[a-zA-Z]+\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)pixweight-([0-9]+)?-(bright|dark)\.fits``
 :File Type: FITS, 100 MB
 
 Contents
@@ -23,7 +23,7 @@ Contents
 ====== ========== ======== ===================
 Number EXTNAME    Type     Contents
 ====== ========== ======== ===================
-HDU0_  PRIMARY    IMAGE    Empty
+HDU0_             IMAGE    Empty
 HDU1_  PIXWEIGHTS BINTABLE pixweight catalog table
 ====== ========== ======== ===================
 
@@ -33,8 +33,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

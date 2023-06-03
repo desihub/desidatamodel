@@ -10,7 +10,7 @@
     where ``PHASE`` is a specific DESI observational phase (*e.g.* svX with X=1,2,3
     for iterations of Survey Validation), and ``OBSCON`` is the
     observing condition or "layer") for the targets (*e.g.* dark).
-:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark)-secondary\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark)-secondary(-dr9photometry)?\.fits``
 :File Type: FITS, 200-900 MB
 
 Contents
@@ -19,7 +19,7 @@ Contents
 ====== ============ ======== ============
 Number EXTNAME      Type     Contents
 ====== ============ ======== ============
-HDU0_  PRIMARY      IMAGE    Empty
+HDU0_               IMAGE    Empty
 HDU1_  SCND_TARGETS BINTABLE Table of secondary targets
 ====== ============ ======== ============
 
@@ -28,8 +28,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

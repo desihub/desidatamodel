@@ -13,7 +13,7 @@ targets
     at the (nested) HEALPixel nside included in the file header as ``FILENSID``
     (*e.g.* 11). For targets that are part of the DESI Main Science Survey
     ``PHASE`` is omitted from the filename.
-:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark)-hp-[0-9]+\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark|no-obscon)-hp-[0-9]+\.fits``
 :File Type: FITS, 2 GB
 
 **Note**: this documents the target catalog format starting with DR9 /
@@ -32,7 +32,7 @@ Contents
 ====== ======= ======== ============
 Number EXTNAME Type     Contents
 ====== ======= ======== ============
-HDU0_  PRIMARY IMAGE    Empty
+HDU0_          IMAGE    Empty
 HDU1_  TARGETS BINTABLE Target table
 HDU2_  INFILES BINTABLE Files used to produce target table
 ====== ======= ======== ============
@@ -42,8 +42,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
