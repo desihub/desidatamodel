@@ -1,6 +1,6 @@
-==================
-fiberassign-TILEID
-==================
+==========================
+fiberassign-TILEID.fits.gz
+==========================
 
 :Summary: The fiberassign file contains the fiber positioner configuration information for
     each exposure: what fiber is placed where, what target that is, etc.
