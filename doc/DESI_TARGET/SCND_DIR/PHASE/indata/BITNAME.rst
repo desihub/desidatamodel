@@ -18,7 +18,7 @@ Contents (FITS version; see notes, below, for text version)
 ====== ======= ======== ============
 Number EXTNAME Type     Contents
 ====== ======= ======== ============
-HDU0_  PRIMARY IMAGE    Empty
+HDU0_          IMAGE    Empty
 HDU1_  NONE    BINTABLE Input secondary targets
 ====== ======= ======== ============
 
@@ -27,8 +27,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

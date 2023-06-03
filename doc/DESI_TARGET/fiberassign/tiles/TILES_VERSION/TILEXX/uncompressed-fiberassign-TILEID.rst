@@ -4,7 +4,7 @@ fiberassign-TILEID.fits
 
 :Summary: The fiberassign file contains the fiber positioner configuration information for
     each exposure: what fiber is placed where, what target that is, etc.
-    The uncompressed version contains extra HDUs relative to the compressed version.
+    The uncompressed version may contain extra HDUs relative to the compressed version.
 :Naming Convention: ``fiberassign-TILEID.fits``, where TILEID is the zero-padded
     6-digit tile ID.
 :Regex: ``fiberassign-[0-9]{6}\.fits``
