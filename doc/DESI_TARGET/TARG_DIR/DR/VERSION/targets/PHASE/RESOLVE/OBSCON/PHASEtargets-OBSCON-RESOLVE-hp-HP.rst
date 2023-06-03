@@ -13,7 +13,7 @@ targets
     at the (nested) HEALPixel nside included in the file header as ``FILENSID``
     (*e.g.* 11). For targets that are part of the DESI Main Science Survey
     ``PHASE`` is omitted from the filename.
-:Regex: ``.*?targets-.*?-hp-?[0-9]+\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark)-hp-[0-9]+\.fits``
 :File Type: FITS, 2 GB
 
 **Note**: this documents the target catalog format starting with DR9 /

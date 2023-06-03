@@ -6,9 +6,11 @@
     tables. Here, "standalone" refers to the fact that either the proposer of the particular secondary
     target class requested that their targets should `not` be merged with matching primary targets, or
     that no match was found to a primary target.
-:Naming Convention: ``targets-OBSCON-secondary.fits``, where ``OBSCON`` is the
-		    observing condition or "layer") for the targets (*e.g.* dark).
-:Regex: ``targets-.*?-secondary+\.fits``
+:Naming Convention: ``PHASEtargets-OBSCON-secondary.fits``,
+    where ``PHASE`` is a specific DESI observational phase (*e.g.* svX with X=1,2,3
+    for iterations of Survey Validation), and ``OBSCON`` is the
+    observing condition or "layer") for the targets (*e.g.* dark).
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark)-secondary\.fits``
 :File Type: FITS, 200-900 MB
 
 Contents
