@@ -7,7 +7,7 @@ fiberassign-TILEID.fits
     The uncompressed version contains extra HDUs relative to the compressed version.
 :Naming Convention: ``fiberassign-TILEID.fits``, where TILEID is the zero-padded
     6-digit tile ID.
-:Regex: ``fiberassign-[0-9]{6}\.fits\.gz``
+:Regex: ``fiberassign-[0-9]{6}\.fits``
 :File Type: FITS, 42 MB
 
 Contents
