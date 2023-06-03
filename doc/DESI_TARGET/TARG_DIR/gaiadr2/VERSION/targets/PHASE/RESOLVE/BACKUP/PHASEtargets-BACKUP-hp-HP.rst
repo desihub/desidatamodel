@@ -15,7 +15,7 @@ backup targets
     is the HEALPixel covered by the targets at the (nested) HEALPixel nside included
     in the file header as ``FILENSID`` (*e.g.* 11). For targets that are part of the
     DESI Main Science Survey ``PHASE`` is omitted from the filename.
-:Regex: ``.*?targets-.*?-hp-?[0-9]+\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(backup|sup)-hp-[0-9]+\.fits``
 :File Type: FITS, 26 MB - 1.2 GB
 
 Examples

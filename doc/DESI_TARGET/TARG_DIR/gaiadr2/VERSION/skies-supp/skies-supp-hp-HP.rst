@@ -21,7 +21,7 @@ Contents
 ====== =========== ======== ===================
 Number EXTNAME     Type     Contents
 ====== =========== ======== ===================
-HDU0_  PRIMARY     IMAGE    Empty
+HDU0_              IMAGE    Empty
 HDU1_  SKY_TARGETS BINTABLE Table of sky locations
 ====== =========== ======== ===================
 
@@ -31,8 +31,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

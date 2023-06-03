@@ -16,7 +16,7 @@ Contents
 ====== =========== ======== ===================
 Number EXTNAME     Type     Contents
 ====== =========== ======== ===================
-HDU0_  PRIMARY     IMAGE    Empty
+HDU0_              IMAGE    Empty
 HDU1_  SUBPRIORITY BINTABLE Per-target SUBPRIORITY values
 ====== =========== ======== ===================
 
@@ -26,8 +26,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
