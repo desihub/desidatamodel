@@ -33,7 +33,8 @@ class DataModel(DataModelUnit):
     # Marker for optional keywords and columns.
     _o = '[1]_'
     # A mapping of human-readable metavariables to regular expressions.
-    _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
+    _d2r = {'BACKUP': '(backup|supp)',  # used in desitarget with gaiadr2
+            'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
             'DR': 'dr[89]',  # Imaging release, used by desitarget
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
