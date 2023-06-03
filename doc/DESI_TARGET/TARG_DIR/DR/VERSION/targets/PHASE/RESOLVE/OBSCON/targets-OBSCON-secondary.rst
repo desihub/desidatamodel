@@ -72,10 +72,10 @@ Name                            Type        Units            Description
 =============================== =========== ================ ===================
 RA                              float64     deg              Right ascension
 DEC                             float64     deg              Declination
-PMRA                            float32     mas/yr           Reference catalog proper motion in the RA direction
-PMDEC                           float32     mas/yr           Reference catalog proper motion in the Dec direction
+PMRA                            float32     mas / yr         Reference catalog proper motion in the RA direction
+PMDEC                           float32     mas / yr         Reference catalog proper motion in the Dec direction
 REF_EPOCH                       float32     yr               Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia.
-OVERRIDE                        bool                         ``True`` if the secondary target class was not matched to primary targets
+OVERRIDE                        logical                      ``True`` if the secondary target class was not matched to primary targets
 FLUX_G                          float32     nanomaggy        `LS`_ flux from tractor input (g)
 FLUX_R                          float32     nanomaggy        `LS`_ flux from tractor input (r)
 FLUX_Z                          float32     nanomaggy        `LS`_ flux from tractor input (z)

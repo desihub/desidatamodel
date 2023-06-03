@@ -19,7 +19,7 @@ Contents
 ====== =========== ======== ============
 Number EXTNAME     Type     Contents
 ====== =========== ======== ============
-HDU0_  PRIMARY     IMAGE    Empty
+HDU0_              IMAGE    Empty
 HDU1_  GFA_TARGETS BINTABLE Target table
 ====== =========== ======== ============
 
@@ -28,8 +28,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
@@ -75,7 +73,7 @@ Required Data Table Columns
 ================================= =========== ================== ===================
 Name                              Type        Units              Description
 ================================= =========== ================== ===================
-RELEASE                           int16                          Legacy Surveys (`LS`_) `Release`_
+RELEASE                           int32                          Legacy Surveys (`LS`_) `Release`_
 TARGETID                          int64                          Unique targeting ID
 BRICKID                           int32                          Brick ID from tractor input
 BRICK_OBJID                       int32                          OBJID (unique to brick, but not to file)
@@ -96,10 +94,10 @@ REF_CAT                           char[2]                        Reference catal
 REF_EPOCH                         float32     yr                 Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia.
 PARALLAX                          float32     mas                Reference catalog parallax
 PARALLAX_IVAR                     float32     mas**-2            Inverse variance of parallax
-PMRA                              float32     mas/yr             Reference catalog proper motion in the RA direction
-PMDEC                             float32     mas/yr             Reference catalog proper motion in the Dec direction
-PMRA_IVAR                         float32     mas/yr**-2         Inverse variance of PMRA
-PMDEC_IVAR                        float32     mas/yr**-2         Inverse variance of PMDEC
+PMRA                              float32     mas / yr           Reference catalog proper motion in the RA direction
+PMDEC                             float32     mas / yr           Reference catalog proper motion in the Dec direction
+PMRA_IVAR                         float32     yr^2 / mas^2       Inverse variance of PMRA
+PMDEC_IVAR                        float32     yr^2 / mas^2       Inverse variance of PMDEC
 GAIA_PHOT_G_MEAN_MAG              float32     mag                `Gaia`_ G band magnitude
 GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32                        `Gaia`_ G band signal-to-noise
 GAIA_PHOT_BP_MEAN_MAG             float32     mag                `Gaia`_ BP band magnitude

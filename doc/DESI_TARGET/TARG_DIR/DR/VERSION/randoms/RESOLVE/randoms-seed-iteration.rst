@@ -104,8 +104,8 @@ APFLUX_IVAR_G float32  nanomaggy^-2   Inverse variance of APFLUX_G
 APFLUX_IVAR_R float32  nanomaggy^-2   Inverse variance of APFLUX_R
 APFLUX_IVAR_Z float32  nanomaggy^-2   Inverse variance of APFLUX_Z
 MASKBITS      int16                   Bit mask of possible problems with pixel (see the LS `DR9 bitmasks page`_)
-WISEMASK_W1   uint8                   Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
-WISEMASK_W2   uint8                   Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W1   binary                  Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W2   binary                  Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
 EBV           float32                 Galactic extinction E(B-V) reddening at pixel from `SFD98`_
 PHOTSYS       char[1]                 'N' for an MzLS/BASS location, 'S' for a DECaLS location
 HPXPIXEL      int64                   HEALPixel containing this location at NSIDE=64 in the NESTED scheme
@@ -113,7 +113,7 @@ TARGETID      int64                   See the `desitarget data model`_ (added to
 DESI_TARGET   int64                   See the `desitarget data model`_; set to 4, appropriate to a QSO, the highest-priority DESI dark-time target (added to facilitate running randoms through the `DESI fiberassign code`_)
 BGS_TARGET    int64                   See the `desitarget data model`_; set to 0 (added to facilitate running randoms through the `DESI fiberassign code`_)
 MWS_TARGET    int64                   See the `desitarget data model`_; set to 0 (added to facilitate running randoms through the `DESI fiberassign code`_)
-SUBPRIORITY   int64                   See the `desitarget data model`_ (added to facilitate running randoms through the `DESI fiberassign code`_)
+SUBPRIORITY   float64                 See the `desitarget data model`_ (added to facilitate running randoms through the `DESI fiberassign code`_)
 OBSCONDITIONS int32                   See the `desitarget data model`_; set to 511, which corresponds to all possible observing conditions (added to facilitate running randoms through the `DESI fiberassign code`_)
 PRIORITY_INIT int64                   See the `desitarget data model`_; set to 3400, appropriate to a QSO, the highest-priority DESI dark-time target (added to facilitate running randoms through the `DESI fiberassign code`_)
 NUMOBS_INIT   int64                   See the `desitarget data model`_; set to 4, appropriate to a QSO, the highest-priority DESI dark-time target (added to facilitate running randoms through the `DESI fiberassign code`_)
