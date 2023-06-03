@@ -13,7 +13,7 @@ randoms-allsky
     the random seed used to generate the catalog and ``iteration`` lists the iteration
     number of the catalog (several iterations are typically conducted
     during a given run to generate random catalogs).
-:Regex: ``randoms-allsky-[0-9]+-[0-9]+\.fits``
+:Regex: ``randoms-allsky(-[0-9]+)?-[0-9]+\.fits``
 :File Type: FITS, 12 GB
 
 Contents
@@ -22,7 +22,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_  PRIMARY IMAGE    Empty
+HDU0_          IMAGE    Empty
 HDU1_  RANDOMS BINTABLE Random catalog table
 ====== ======= ======== ===================
 
@@ -32,8 +32,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 

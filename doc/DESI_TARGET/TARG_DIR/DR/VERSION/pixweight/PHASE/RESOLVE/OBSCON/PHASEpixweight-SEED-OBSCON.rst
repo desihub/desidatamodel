@@ -14,7 +14,7 @@ pixweight
 	  (or "layer") for the targets (*e.g.* dark), and ``SEED`` is the random seed used
 	  to generate the associated random catalog. ``PHASE`` is omitted for Main Survey
 	  catalogs.
-:Regex: ``(cmx|sv1|sv2|sv3|main2|)pixweight-([0-9]+)?-(bright|dark)\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)pixweight(-[0-9]+)?-(bright|dark)\.fits``
 :File Type: FITS, 100 MB
 
 Contents
