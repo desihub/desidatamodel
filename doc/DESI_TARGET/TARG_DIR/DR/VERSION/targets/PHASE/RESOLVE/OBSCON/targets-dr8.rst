@@ -15,7 +15,7 @@ targets-dr8
     (*e.g.* 11). For targets that are *not* resolved ``RESOLVE`` is omitted from
     the filename. For targets that are part of the DESI Main Science Survey
     ``PHASE`` is omitted from the filename.
-:Regex: ``.*?targets-.*?-hp-?[0-9]+\.fits``
+:Regex: ``.*?target-.*?-hp-?[0-9]+\.fits``
 :File Type: FITS, 2 GB
 
 **Note**: this documents the target catalog format starting with DR8 /

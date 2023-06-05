@@ -83,9 +83,9 @@ GOALTIME               float64  s      Goal for total effective exposure time fo
 GOALTYPE               char[6]         The intended observing conditions for the tile
 MINTFRAC               float64         Minimum fraction of GOALTIME acceptable for considering a tile complete
 AIRMASS                float32         Average airmass during this exposure.
-EBV                    float32         Galactic extinction E(B-V) reddening from SFD98_
+EBV                    float64         Galactic extinction E(B-V) reddening from SFD98_
 SEEING_ETC             float64  arcsec Average FWHM atmospheric seeing during this exposure as measured by ETC.
-EFFTIME_ETC            float64  s      Effective exposure time for nominal conditions inferred from ETC data
+EFFTIME_ETC            float32  s      Effective exposure time for nominal conditions inferred from ETC data
 TSNR2_ELG              float32         ELG template (S/N)^2 summed over B,R,Z
 TSNR2_QSO              float32         QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG              float32         LRG template (S/N)^2 summed over B,R,Z
@@ -163,9 +163,9 @@ TILEDEC         float64  deg    DEC of tile given in fiberassign file
 MJD             float64         Modified Julian Date when shutter was opened for this exposure.
 EXPTIME         float32  s      Length of time shutter was open.
 AIRMASS         float32         Average airmass during this exposure.
-EBV             float32         Galactic extinction E(B-V) reddening from SFD98_
+EBV             float64         Galactic extinction E(B-V) reddening from SFD98_
 SEEING_ETC      float64  arcsec Average FWHM atmospheric seeing during this exposure as measured by ETC.
-EFFTIME_ETC     float64  s      Effective exposure time for nominal conditions derived from exposure ETC data
+EFFTIME_ETC     float32  s      Effective exposure time for nominal conditions derived from exposure ETC data
 CAMERA          char[2]         Camera identifier. Passband and SPECGRPH ([brz][0-9]).
 TSNR2_GPBDARK   float32         GPBDARK template (S/N)^2 summed over B,R,Z
 TSNR2_ELG       float32         ELG template (S/N)^2 summed over B,R,Z

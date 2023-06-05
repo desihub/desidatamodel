@@ -15,7 +15,7 @@ backup targets
     is the HEALPixel covered by the targets at the (nested) HEALPixel nside included
     in the file header as ``FILENSID`` (*e.g.* 11). For targets that are part of the
     DESI Main Science Survey ``PHASE`` is omitted from the filename.
-:Regex: ``.*?targets-.*?-hp-?[0-9]+\.fits``
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(backup|supp)-hp-[0-9]+\.fits``
 :File Type: FITS, 26 MB - 1.2 GB
 
 Examples
@@ -31,7 +31,7 @@ Contents
 ====== ======= ======== ============
 Number EXTNAME Type     Contents
 ====== ======= ======== ============
-HDU0_  PRIMARY IMAGE    Empty
+HDU0_          IMAGE    Empty
 HDU1_  TARGETS BINTABLE Target table
 HDU2_  INFILES BINTABLE Files used to produce target table
 ====== ======= ======== ============
@@ -41,8 +41,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
@@ -153,8 +151,8 @@ FIBERTOTFLUX_G                    float32     nanomaggy             like FIBERFL
 FIBERTOTFLUX_R                    float32     nanomaggy             like FIBERFLUX_R but including all objects overlapping this location
 FIBERTOTFLUX_Z                    float32     nanomaggy             like FIBERFLUX_Z but including all objects overlapping this location
 REF_EPOCH                         float32     yr                    reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia.
-WISEMASK_W1                       byte                              W1 bitmask as cataloged on the `LS DR9 bitmasks page`_
-WISEMASK_W2                       byte                              W2 bitmask as cataloged on the `LS DR9 bitmasks page`_
+WISEMASK_W1                       binary                            W1 bitmask as cataloged on the `LS DR9 bitmasks page`_
+WISEMASK_W2                       binary                            W2 bitmask as cataloged on the `LS DR9 bitmasks page`_
 MASKBITS                          int16                             bitmask for ``coadd/*/*/*maskbits*`` maps, as on the `LS DR9 bitmasks page`_
 LC_FLUX_W1                        float32[15] nanomaggy             FLUX_W1 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
 LC_FLUX_W2                        float32[15] nanomaggy             FLUX_W2 in each of up to fifteen unWISE coadd epochs (AB system; defaults to zero for unused entries)
@@ -182,9 +180,9 @@ GAIA_PHOT_RP_MEAN_MAG             float32     mag                   `Gaia`_ RP b
 GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32                           `Gaia`_ RP band signal-to-noise
 GAIA_PHOT_BP_RP_EXCESS_FACTOR     float32                           `Gaia`_ BP/RP excess factor
 GAIA_ASTROMETRIC_EXCESS_NOISE     float32                           `Gaia`_ astrometric excess noise
-GAIA_DUPLICATED_SOURCE            bool                              `Gaia`_ duplicated source flag
+GAIA_DUPLICATED_SOURCE            logical                           `Gaia`_ duplicated source flag
 GAIA_ASTROMETRIC_SIGMA5D_MAX      float32     mas                   `Gaia`_ longest semi-major axis of the 5-d error ellipsoid
-GAIA_ASTROMETRIC_PARAMS_SOLVED    int8                              which astrometric parameters were estimated for a `Gaia`_ source
+GAIA_ASTROMETRIC_PARAMS_SOLVED    binary                            which astrometric parameters were estimated for a `Gaia`_ source
 PARALLAX                          float32     mas                   Reference catalog parallax
 PARALLAX_IVAR                     float32     mas^-2                Inverse variance of parallax
 PMRA                              float32     mas / yr              Reference catalog proper motion in the RA direction
@@ -234,7 +232,7 @@ Required Data Table Columns
 Name          Type        Units        Description
 ============= =========== ============ ===================
 FILENAME      char[88]                 `LS`_ sweep files associated with this HEALPixel
-SHASUM        char[64]                 Checksum for each `LS`_ sweep file
+SHA256        char[64]                 Checksum for each `LS`_ sweep file
 ============= =========== ============ ===================
 
 .. _`Legacy Surveys`: https://www.legacysurvey.org/

@@ -10,7 +10,7 @@ randoms
     the random seed used to generate the catalog and ``iteration`` lists the iteration
     number of the catalog (several iterations are typically conducted
     during a given run to generate random catalogs).
-:Regex: ``randoms-[0-9]+-[0-9]+\.fits``
+:Regex: ``randoms(-[0-9]+)?-[0-9]+\.fits``
 :File Type: FITS, 14 GB
 
 Contents
@@ -19,7 +19,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_  PRIMARY IMAGE    Empty
+HDU0_          IMAGE    Empty
 HDU1_  RANDOMS BINTABLE Random catalog table
 ====== ======= ======== ===================
 
@@ -29,8 +29,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
@@ -50,26 +48,30 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ===== ========================================
-    KEY      Example Value Type  Comment
-    ======== ============= ===== ========================================
-    NAXIS1   281           int   Width of table in bytes
-    NAXIS2   1124357626    int   Number of rows in table
-    FILENSID 2             int   HEALPix nside covered by file
-    FILENEST T             bool  HEALPix nested (not ring) ordering
-    FILEHPX  11,5,4        str   HEALPix pixel(s) covered by file
-    DR       9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
-    DENSITY  45000         int   Number of random points generated per sq. deg.
-    APRAD    0.75          float Aperture radius used to calculate flux-related quantities (arcsec)
-    SEED     1             int   Seed used to generate random catalog
-    ADDMTL   F             bool  ``True`` if MTL-related columns were added to the parent catalog used to build this catalog
-    HPXNSIDE 64            int   HEALPix nside
-    HPXNEST  T             bool  HEALPix nested (not ring) ordering
-    SUPP     F             bool  ``True`` if randoms were generated without using `LS`_ pixels
-    RESOLVE  T             bool  ``True`` if from unique imaging
-    RESEED   626           int   Seed used to re-shuffle combined random catalogs to ensure randomness
-    MTLSPLIT T             bool  ``True`` if MTL-related columns were added to this random catalog
-    ======== ============= ===== ========================================
+    =========== ================= ===== =============================================================================================
+    KEY         Example Value     Type  Comment
+    =========== ================= ===== =============================================================================================
+    NAXIS1      281               int   Width of table in bytes
+    NAXIS2      1124357626        int   Number of rows in table
+    FILENSID    2                 int   HEALPix nside covered by file
+    FILENEST    T                 bool  HEALPix nested (not ring) ordering
+    FILEHPX     11,5,4            str   HEALPix pixel(s) covered by file
+    DR          9                 int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
+    DENSITY     45000             int   Number of random points generated per sq. deg.
+    APRAD       0.75              float Aperture radius used to calculate flux-related quantities (arcsec)
+    SEED        1                 int   Seed used to generate random catalog
+    ADDMTL      F                 bool  ``True`` if MTL-related columns were added to the parent catalog used to build this catalog
+    HPXNSIDE    64                int   HEALPix nside
+    HPXNEST     T                 bool  HEALPix nested (not ring) ordering
+    SUPP        F                 bool  ``True`` if randoms were generated without using `LS`_ pixels
+    RESOLVE     T                 bool  ``True`` if from unique imaging
+    RESEED      626               int   Seed used to re-shuffle combined random catalogs to ensure randomness
+    MTLSPLIT    T                 bool  ``True`` if MTL-related columns were added to this random catalog
+    REGION [1]_ north             str   "noresolve" randoms may have this keyword set.  Values are 'north' or 'south'.
+    INFILE [1]_ randoms-1-15.fits str   HEALPixel-split randoms may have this keyword set. Value is the original source randoms file.
+    =========== ================= ===== =============================================================================================
+
+.. [1] Optional
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,8 +108,8 @@ APFLUX_IVAR_G float32  nanomaggy^-2   Inverse variance of APFLUX_G
 APFLUX_IVAR_R float32  nanomaggy^-2   Inverse variance of APFLUX_R
 APFLUX_IVAR_Z float32  nanomaggy^-2   Inverse variance of APFLUX_Z
 MASKBITS      int16                   Bit mask of possible problems with pixel (see the LS `DR9 bitmasks page`_)
-WISEMASK_W1   uint8                   Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
-WISEMASK_W2   uint8                   Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W1   binary                  Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W2   binary                  Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
 EBV           float32                 Galactic extinction E(B-V) reddening at pixel from `SFD98`_
 PHOTSYS       char[1]                 'N' for an MzLS/BASS location, 'S' for a DECaLS location
 HPXPIXEL      int64                   HEALPixel containing this location at NSIDE=64 in the NESTED scheme
@@ -115,7 +117,7 @@ TARGETID      int64                   See the `desitarget data model`_ (added to
 DESI_TARGET   int64                   See the `desitarget data model`_; set to 4, appropriate to a QSO, the highest-priority DESI dark-time target (added to facilitate running randoms through the `DESI fiberassign code`_)
 BGS_TARGET    int64                   See the `desitarget data model`_; set to 0 (added to facilitate running randoms through the `DESI fiberassign code`_)
 MWS_TARGET    int64                   See the `desitarget data model`_; set to 0 (added to facilitate running randoms through the `DESI fiberassign code`_)
-SUBPRIORITY   int64                   See the `desitarget data model`_ (added to facilitate running randoms through the `DESI fiberassign code`_)
+SUBPRIORITY   float64                 See the `desitarget data model`_ (added to facilitate running randoms through the `DESI fiberassign code`_)
 OBSCONDITIONS int32                   See the `desitarget data model`_; set to 511, which corresponds to all possible observing conditions (added to facilitate running randoms through the `DESI fiberassign code`_)
 PRIORITY_INIT int64                   See the `desitarget data model`_; set to 3400, appropriate to a QSO, the highest-priority DESI dark-time target (added to facilitate running randoms through the `DESI fiberassign code`_)
 NUMOBS_INIT   int64                   See the `desitarget data model`_; set to 4, appropriate to a QSO, the highest-priority DESI dark-time target (added to facilitate running randoms through the `DESI fiberassign code`_)

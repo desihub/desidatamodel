@@ -13,7 +13,7 @@ randoms-allsky
     the random seed used to generate the catalog and ``iteration`` lists the iteration
     number of the catalog (several iterations are typically conducted
     during a given run to generate random catalogs).
-:Regex: ``randoms-allsky-[0-9]+-[0-9]+\.fits``
+:Regex: ``randoms-allsky(-[0-9]+)?-[0-9]+\.fits``
 :File Type: FITS, 12 GB
 
 Contents
@@ -22,7 +22,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_  PRIMARY IMAGE    Empty
+HDU0_          IMAGE    Empty
 HDU1_  RANDOMS BINTABLE Random catalog table
 ====== ======= ======== ===================
 
@@ -32,8 +32,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
@@ -107,8 +105,8 @@ APFLUX_IVAR_G float32  nanomaggy^-2   Inverse variance of APFLUX_G
 APFLUX_IVAR_R float32  nanomaggy^-2   Inverse variance of APFLUX_R
 APFLUX_IVAR_Z float32  nanomaggy^-2   Inverse variance of APFLUX_Z
 MASKBITS      int16                   Bit mask of possible problems with pixel (see the LS `DR9 bitmasks page`_)
-WISEMASK_W1   uint8                   Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
-WISEMASK_W2   uint8                   Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W1   binary                  Bitwise mask for WISE W1 data (see the LS `DR9 bitmasks page`_)
+WISEMASK_W2   binary                  Bitwise mask for WISE W2 data (see the LS `DR9 bitmasks page`_)
 EBV           float32                 Galactic extinction E(B-V) reddening at pixel from `SFD98`_
 PHOTSYS       char[1]                 'N' for an MzLS/BASS location, 'S' for a DECaLS location
 HPXPIXEL      int64                   HEALPixel containing this location at NSIDE=64 in the NESTED scheme

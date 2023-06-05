@@ -8,3 +8,4 @@ TILEXX
    :maxdepth: 1
 
    fiberassign-{tileid}.fits.gz : Table of which fibers were assigned to which targets <fiberassign-TILEID>
+   fiberassign-{tileid}.fits : Table of which fibers were assigned to which targets (uncompressed version) <uncompressed-fiberassign-TILEID>

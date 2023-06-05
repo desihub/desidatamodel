@@ -33,25 +33,29 @@ class DataModel(DataModelUnit):
     # Marker for optional keywords and columns.
     _o = '[1]_'
     # A mapping of human-readable metavariables to regular expressions.
-    _d2r = {'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
+    _d2r = {'BACKUP': '(backup|supp)',  # used in desitarget with gaiadr2
+            'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
             'DR': 'dr[89]',  # Imaging release, used by desitarget
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
             'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
             # 'GROUPID': '([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
             'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
+            'ITERATION': '[0-9]+',  # Iteration number when generating randoms by desitarget
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
-            'OBSCON': '(bright|dark)',  # observational condition used by desitarget
-            'PHASE': '(main|main2|sv1|sv3)',  # DESI observational phase used by desitarget
+            'OBSCON': '(bright|dark|no-obscon)',  # observational condition used by desitarget
+            'PHASE': '(cmx|sv1|sv2|sv3|main|main2)',  # DESI observational phase used by desitarget
             'PIXGROUP': '[0-9]+',  # Healpix group, e.g. 53
             'PIXPROD': '[a-z0-9_-]+',  # e.g. alpha-3
             'PIXNUM': '[0-9]+',  # Healpix pixel, e.g. 5302
             'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
             'RANN': '[0-9]+',  # Realization number for LSS random catalogs
+            'REGION': '(north|south)',  # Imaging region from Legacy Survey and desitarget
             'RELEASE': '[edr0-9]+',  # Data Release
             'RESOLVE': '(resolve|noresolve|secondary)',  # resolve status used by desitarget
+            'SEED': '[0-9]+',  # Seed number used when generating randoms by desitarget
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name

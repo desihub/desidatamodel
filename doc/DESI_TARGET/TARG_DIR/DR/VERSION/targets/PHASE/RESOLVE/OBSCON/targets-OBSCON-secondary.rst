@@ -6,9 +6,11 @@
     tables. Here, "standalone" refers to the fact that either the proposer of the particular secondary
     target class requested that their targets should `not` be merged with matching primary targets, or
     that no match was found to a primary target.
-:Naming Convention: ``targets-OBSCON-secondary.fits``, where ``OBSCON`` is the
-		    observing condition or "layer") for the targets (*e.g.* dark).
-:Regex: ``targets-.*?-secondary+\.fits``
+:Naming Convention: ``PHASEtargets-OBSCON-secondary.fits``,
+    where ``PHASE`` is a specific DESI observational phase (*e.g.* svX with X=1,2,3
+    for iterations of Survey Validation), and ``OBSCON`` is the
+    observing condition or "layer") for the targets (*e.g.* dark).
+:Regex: ``(cmx|sv1|sv2|sv3|main2|)targets-(bright|dark)-secondary(-dr9photometry)?\.fits``
 :File Type: FITS, 200-900 MB
 
 Contents
@@ -17,7 +19,7 @@ Contents
 ====== ============ ======== ============
 Number EXTNAME      Type     Contents
 ====== ============ ======== ============
-HDU0_  PRIMARY      IMAGE    Empty
+HDU0_               IMAGE    Empty
 HDU1_  SCND_TARGETS BINTABLE Table of secondary targets
 ====== ============ ======== ============
 
@@ -26,8 +28,6 @@ FITS Header Units
 
 HDU0
 ----
-
-EXTNAME = PRIMARY
 
 This HDU has no non-standard required keywords.
 
@@ -72,10 +72,10 @@ Name                            Type        Units            Description
 =============================== =========== ================ ===================
 RA                              float64     deg              Right ascension
 DEC                             float64     deg              Declination
-PMRA                            float32     mas/yr           Reference catalog proper motion in the RA direction
-PMDEC                           float32     mas/yr           Reference catalog proper motion in the Dec direction
+PMRA                            float32     mas / yr         Reference catalog proper motion in the RA direction
+PMDEC                           float32     mas / yr         Reference catalog proper motion in the Dec direction
 REF_EPOCH                       float32     yr               Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia.
-OVERRIDE                        bool                         ``True`` if the secondary target class was not matched to primary targets
+OVERRIDE                        logical                      ``True`` if the secondary target class was not matched to primary targets
 FLUX_G                          float32     nanomaggy        `LS`_ flux from tractor input (g)
 FLUX_R                          float32     nanomaggy        `LS`_ flux from tractor input (r)
 FLUX_Z                          float32     nanomaggy        `LS`_ flux from tractor input (z)

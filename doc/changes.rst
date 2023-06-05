@@ -2,9 +2,11 @@
 desidatamodel Change Log
 ========================
 
-23.1 (unreleased)
+23.5 (unreleased)
 -----------------
 
+* Clean up ``DESI_SPECTRO_REDUX`` and ``DESI_TARGET`` after verification of EDR (PR `#171`_).
+* Add Lyman-alpha VAC data model (PR `#169`_).
 * Final clean up for DESI EDR (PR `#167`_).
 * Add LSS catalog to data model (PR `#166`_).
 * Updates to redshift catalog files and other spectroscopic reduction files
@@ -61,7 +63,8 @@ desidatamodel Change Log
 .. _`#164`: https://github.com/desihub/desidatamodel/pull/164
 .. _`#166`: https://github.com/desihub/desidatamodel/pull/166
 .. _`#167`: https://github.com/desihub/desidatamodel/pull/167
-
+.. _`#169`: https://github.com/desihub/desidatamodel/pull/169
+.. _`#171`: https://github.com/desihub/desidatamodel/pull/171
 
 22.2 (2022-05-31)
 -----------------
