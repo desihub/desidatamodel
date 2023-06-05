@@ -15,6 +15,7 @@ different forms.
 .. toctree::
    :maxdepth: 1
 
+    REGION/index
     randoms-{seed}-{iteration}.fits: Random catalog in the LS footprint <randoms-seed-iteration>
     randoms-outside-{seed}-{iteration}.fits: Random catalog outside of the LS footprint <randoms-outside-seed-iteration>
     randoms-allsky-{seed}-{iteration}.fits: Random catalog combined across the entire sky <randoms-allsky-seed-iteration>

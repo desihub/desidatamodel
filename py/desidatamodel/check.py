@@ -51,6 +51,7 @@ class DataModel(DataModelUnit):
             'PRODNAME': '[a-z0-9_-]+',  # e.g. dc3c
             'PROGRAM': '(backup|bright|dark|other)',  # observation program
             'RANN': '[0-9]+',  # Realization number for LSS random catalogs
+            'REGION': '(north|south)',  # Imaging region from Legacy Survey and desitarget
             'RELEASE': '[edr0-9]+',  # Data Release
             'RESOLVE': '(resolve|noresolve|secondary)',  # resolve status used by desitarget
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
