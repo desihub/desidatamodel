@@ -8,4 +8,4 @@ but have been split up by HEALPixel.
 .. toctree::
     :maxdepth: 1
 
-    randoms-{seed}-{iteration}-hp-{pixnum}.fits: Random catalog seed-iteration in HEALPixel PIXNUM <randoms-seed-iteration-pixnum>
+    randoms-{seed}-hp-{pixnum}.fits: Random catalog seed-iteration in HEALPixel PIXNUM <randoms-seed-pixnum>
