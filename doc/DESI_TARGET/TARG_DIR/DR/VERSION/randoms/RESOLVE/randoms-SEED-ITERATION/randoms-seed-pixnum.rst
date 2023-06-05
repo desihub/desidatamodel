@@ -19,4 +19,10 @@ HEALPixel, using the ``NSIDE=8``, ``NESTED`` scheme.  For example, given a
 standard randoms file, ``randoms-1-15.fits``, ``randoms-1-15/randoms-1-hp-123.fits``
 would contain the portion of the data that is in pixel number 123.
 
+These files have an additional header keyword in HDU1, *e.g.* ::
+
+    INFILE  = '/global/cfs/cdirs/desi/target/catalogs/dr9/0.49.0/randoms/resolve/randoms-1-17.fits'
+
+which is the original randoms file prior to splitting by HEALPixel.
+
 See :doc:`the standard randoms file description <../randoms-seed-iteration>`.
