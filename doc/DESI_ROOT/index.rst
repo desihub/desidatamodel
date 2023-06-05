@@ -11,5 +11,7 @@ Subdirectories:
 .. toctree::
    :maxdepth: 1
 
+   spectro <../DESI_SPECTRO_REDUX/index>
    survey/index
+   target <../DESI_TARGET/index>
    vac/index
