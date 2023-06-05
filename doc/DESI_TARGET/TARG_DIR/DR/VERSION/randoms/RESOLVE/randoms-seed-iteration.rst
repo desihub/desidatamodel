@@ -48,26 +48,29 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ===== ========================================
-    KEY      Example Value Type  Comment
-    ======== ============= ===== ========================================
-    NAXIS1   281           int   Width of table in bytes
-    NAXIS2   1124357626    int   Number of rows in table
-    FILENSID 2             int   HEALPix nside covered by file
-    FILENEST T             bool  HEALPix nested (not ring) ordering
-    FILEHPX  11,5,4        str   HEALPix pixel(s) covered by file
-    DR       9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
-    DENSITY  45000         int   Number of random points generated per sq. deg.
-    APRAD    0.75          float Aperture radius used to calculate flux-related quantities (arcsec)
-    SEED     1             int   Seed used to generate random catalog
-    ADDMTL   F             bool  ``True`` if MTL-related columns were added to the parent catalog used to build this catalog
-    HPXNSIDE 64            int   HEALPix nside
-    HPXNEST  T             bool  HEALPix nested (not ring) ordering
-    SUPP     F             bool  ``True`` if randoms were generated without using `LS`_ pixels
-    RESOLVE  T             bool  ``True`` if from unique imaging
-    RESEED   626           int   Seed used to re-shuffle combined random catalogs to ensure randomness
-    MTLSPLIT T             bool  ``True`` if MTL-related columns were added to this random catalog
-    ======== ============= ===== ========================================
+    =========== ============= ===== ========================================
+    KEY         Example Value Type  Comment
+    =========== ============= ===== ========================================
+    NAXIS1      281           int   Width of table in bytes
+    NAXIS2      1124357626    int   Number of rows in table
+    FILENSID    2             int   HEALPix nside covered by file
+    FILENEST    T             bool  HEALPix nested (not ring) ordering
+    FILEHPX     11,5,4        str   HEALPix pixel(s) covered by file
+    DR          9             int   `Legacy Surveys`_ (LS) Data Release used to generate randoms
+    DENSITY     45000         int   Number of random points generated per sq. deg.
+    APRAD       0.75          float Aperture radius used to calculate flux-related quantities (arcsec)
+    SEED        1             int   Seed used to generate random catalog
+    ADDMTL      F             bool  ``True`` if MTL-related columns were added to the parent catalog used to build this catalog
+    HPXNSIDE    64            int   HEALPix nside
+    HPXNEST     T             bool  HEALPix nested (not ring) ordering
+    SUPP        F             bool  ``True`` if randoms were generated without using `LS`_ pixels
+    RESOLVE     T             bool  ``True`` if from unique imaging
+    RESEED      626           int   Seed used to re-shuffle combined random catalogs to ensure randomness
+    MTLSPLIT    T             bool  ``True`` if MTL-related columns were added to this random catalog
+    REGION [1]_ north         str   "noresolve" randoms may have this keyword set.  Values are 'north' or 'south'.
+    =========== ============= ===== ========================================
+
+.. [1] Optional
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

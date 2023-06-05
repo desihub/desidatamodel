@@ -41,6 +41,7 @@ class DataModel(DataModelUnit):
             'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
             # 'GROUPID': '([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
             'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp
+            'ITERATION': '[0-9]+',  # Iteration number when generating randoms by desitarget
             'NIGHT': '[0-9]{8}',  # YYYYMMDD
             'NSIDE': '[0-9]+',  # Healpix sides, e.g. 64
             'OBSCON': '(bright|dark|no-obscon)',  # observational condition used by desitarget
@@ -54,6 +55,7 @@ class DataModel(DataModelUnit):
             'REGION': '(north|south)',  # Imaging region from Legacy Survey and desitarget
             'RELEASE': '[edr0-9]+',  # Data Release
             'RESOLVE': '(resolve|noresolve|secondary)',  # resolve status used by desitarget
+            'SEED': '[0-9]+',  # Seed number used when generating randoms by desitarget
             'SPECPROD': '[a-z0-9_-]+',  # replacement for PRODNAME
             'SPECTROGRAPH': '[0-9]',  # spectrograph number 0-9
             'SURVEY': '(cmx|main|special|sv1|sv2|sv3)',  # Survey name
