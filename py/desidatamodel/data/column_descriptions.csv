@@ -383,7 +383,7 @@ TILES,char[*],,"TILEIDs of those tile, in string form separated by '-'"
 TIMESTAMP,str,s,UTC/ISO time at which the target state was updated
 TOOID,int64,,ID for this target assigned by the ``CHECKER``
 TOO_PRIO,char[2],,"Either 'HI' for a very-high-priority target or 'LO' for a very-low-priority target"
-TOO_TYPE,char[5],,Either "TILE" for a special tile or "FIBER" for a fiber-override ToO
+TOO_TYPE,char[5],,"Either 'TILE' for a special tile or 'FIBER' for a fiber-override ToO"
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z"
 TSNR2_BGS_B,float32,,BGS B template (S/N)^2
 TSNR2_BGS_R,float32,,BGS R template (S/N)^2
