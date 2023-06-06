@@ -5,15 +5,42 @@ Welcome to the DESI Data Model!
 The DESI Data Tree
 ------------------
 
-DESI data are grouped broadly by category, using environment variables to
-define the base directory under which files of that category are kept.
-These variables have a standard location relative to :envvar:`DESI_ROOT`, but code
-uses these variables so that one can swap out different input/output locations
-for testing.
+These pages define the directory structure and file formats for DESI
+data products relative to a root directory :envvar:`DESI_ROOT`.
+Each data release has its own :envvar:`DESI_ROOT`, e.g. the
+`Early Data Release <https://data.desi.lbl.gov/doc/releases/edr/>`_
+at https://data.desi.lbl.gov/public/edr.
+
+Data Directories
+================
+
+Directories under :envvar:`DESI_ROOT`:
+
+   * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data 
+   * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts 
+   * :doc:`target/ <DESI_TARGET/index>`: Target selection and fiber assignment catalogs
+   * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs
+
+The following directories are more expert-level (e.g. pipeline calibration inputs)
+and are documented for DESI collaboration internal use and may not be included
+in data releases:
+
+   * :doc:`survey/ops/surveyops/ <DESI_SURVEYOPS/index>`: Data files used for day-to-day survey operations
+   * :doc:`spectro/desi_spectro_calib/ <DESI_SPECTRO_CALIB/index>`: Spectrograph calibration data
+   * :doc:`protodesi/ <PROTODESI/index>`: Data and logs from the ProtoDESI campaign (no spectra)
+   * :doc:`$DESISURVEY_OUTPUT <DESISURVEY_OUTPUT/index>`: Outputs from desisurvey and surveysim
+   * :doc:`$DESI_SPECTRO_SIM <DESI_SPECTRO_SIM/index>`: Simulated spectro data
+   * :doc:`$DESIMODEL <DESIMODEL/index>`: Data used for simulating DESI
+
+
+.. comment: the following toctree items exist to keep sphinx happy, but
+   are purposefully hidden (e.g. because the text above links
+   a level deeper)
 
 .. toctree::
-   :maxdepth: 1
-
+   :hidden:
+   
+   vac/ : Value Added Catalogs <DESI_ROOT/vac/index>
    $DESI_ROOT : represents the top level of the DESI directory tree. <DESI_ROOT/index>
    $DESI_SPECTRO_DATA : raw data <DESI_SPECTRO_DATA/index>
    $DESI_SPECTRO_REDUX : processed spectro data <DESI_SPECTRO_REDUX/index>
@@ -24,28 +51,46 @@ for testing.
    $DESIMODEL : data used for simulating DESI <DESIMODEL/index>
    $DESISURVEY_OUTPUT : outputs from desisurvey and surveysim <DESISURVEY_OUTPUT/index>
    $PROTODESI : data and logs from the ProtoDESI campaign <PROTODESI/index>
+
+
+Other information
+=================
+
+Bitmask definitions and environment variables used by the DESI data pipelines:
+
+.. toctree::
+   :maxdepth: 1
+
    bitmasks
-   datamodel
-   api
-   changes
+   Environment variables <envvar>
 
 Imaging data and their catalogs are documented separately by the
 `Legacy Survey <https://www.legacysurvey.org/>`_.
 
 The desidatamodel_ package on GitHub includes the data model input files
 and some Python utility code for generating and checking data model files.
+These links will be useful for developers:
+
+.. toctree::
+   :maxdepth: 1
+
+   datamodel
+   api
+   changes
+
 
 .. _desidatamodel: https://github.com/desihub/desidatamodel
 
 References
 ----------
 
-`Myers, A. D., et al., AJ 165, 50, 2023 <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
+  * Target Selection: `Myers, A. D., et al. 2023, AJ 165, 50 <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
+  * Spectroscopic Pipeline: `Guy, J., et al. 2023, AJ 165, 4, 144 <https://ui.adsabs.harvard.edu/abs/2023AJ....165..144G/abstract>`_
+  * Early Data Release: **TODO: arxiv link**
 
-Indices and Tables
-------------------
+Index and Search Pages
+----------------------
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 

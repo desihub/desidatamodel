@@ -2,6 +2,8 @@
 DESI_SPECTRO_REDUX
 ==================
 
+Default $DESI_ROOT/spectro/redux
+
 This directory contains production runs of the spectroscopic data reduction
 pipeline.  Each different run is contained in different SPECPROD subdirectory.
 
