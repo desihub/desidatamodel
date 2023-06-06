@@ -246,7 +246,7 @@ O2C,float64,,The criteria for assessing strength of OII emission for ELG observa
 OBJID,int32,,Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD"
 OBSCONDITIONS,int32,,Bitmask of allowed observing conditions
-OCLAYER,char[6],,Either "DARK" for dark-time or "BRIGHT" to observe in either bright- or dark-time
+OCLAYER,char[6],,"Either 'DARK' for dark-time or 'BRIGHT' to observe in either bright- or dark-time"
 OIII_CHI2,float32,,Reduced chi2 of the fit for the [OIII] doublet
 OIII_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum used for the fitting (fixed value) for the [OIII] doublet
 OIII_CONT_IVAR,float32,10**+34 (s2 cm4 Angstrom2) / erg2,Inverse variance of the continuum for the [OIII] doublet
