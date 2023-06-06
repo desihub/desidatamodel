@@ -2,57 +2,31 @@
 SPECPROD
 ========
 
-Input files for spectroscopic reduction::
+Default $DESI_ROOT/spectro/redux/SPECPROD
 
-    $DESI_SPECTRO_DATA/{night}/
-        desi-{expid}.fits.fz
-        fibermap-{expid}.fits
+DESI spectroscopic data processing productions are grouped by spectroscopic
+production names (SPECPROD), named after mountains for data releases,
+e.g. "fuji" for the `Early Data Release <https://data.desi.lbl.gov/doc/releases/edr>`_.
 
-    $DESI_SPECTRO_SIM/{night}/
-        desi-{expid}.fits.fz
-        fibermap-{expid}.fits
-        pix-{camera}-{expid}.fits
-        simpix-{camera}-{expid}.fits
-        simspec-{expid}.fits
+Files in the top-level production directory:
 
-Output files::
+  * :doc:`exposures-SPECPROD.fits <exposures-SPECPROD>`: summary of exposures
+  * :doc:`tiles-SPECPROD.fits <tiles-SPECPROD>`: summary of tiles
+  
+Subdirectories under a spectroscopic production:
 
-    $DESI_SPECTRO_REDUX/$SPECPROD/
-        calibnight/{night}/
-            fiberflatnight-{camera}-{night}.fits
-            psfnight-{camera}-{night}.fits
-        exposures/{night}/{expid}/
-            cframe-{camera}-{expid}.fits
-            exposure-qa-{expid}.fits
-            fiberflat-{camera}-{expid}.fits
-            fit-psf-*-{camera}-{expid}.fits
-            fluxcalib-{camera}-{expid}.fits
-            frame-{camera}-{expid}.fits
-            psf-{camera}-{expid}.fits
-            sframe-{camera}-{expid}.fits
-            shifted-input-psf-{camera}-{expid}.fits
-            sky-{camera}-{expid}.fits
-            stdstars-{spectrograph}-{expid}.fits
-        healpix/
-            tilepix.fits
-        healpix/{survey}/{program}/{group}/{pixnum}/
-            coadd-{survey}-{program}-{pixnum}.fits
-            qso_mgii-{survey}-{program}-{pixnum}.fits
-            qso_qn-{survey}-{program}-{pixnum}.fits
-            redrock-{survey}-{program}-{pixnum}.fits
-            spectra-{survey}-{program}-{pixnum}.fits
-        preproc/{night}/{expid}/
-            fibermap-{expid}.fits
-            preproc-{camera}-{expid}.fits
-        tiles/
-            TBD
-        zcatalog/
-            zpix-{survey}-{program}.fits
-            ztile-{survey}-{program}-{tiletype}.fits
-
+  * :doc:`zcatalog/ <zcatalog/index>`: summary redshift catalogs
+  * :doc:`healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM <healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/index>`:
+    spectra, classifications, and redshifts coadded across tiles, grouped by survey, program, and healpixel.
+  * :doc:`tiles/GROUPTYPE/TILEID/GROUPID/index <tiles/GROUPTYPE/TILEID/GROUPID/index>`:
+    spectra, classifications, and redshifts coadded per tile.
+  * :doc:`calibnight/NIGHT/ <calibnight/NIGHT/index>`: nightly calibrations
+  * :doc:`preproc/NIGHT/EXPID <preproc/NIGHT/EXPID/index>`: preprocessed spectrograph CCD images
+  * :doc:`exposures/NIGHT/EXPID <exposures/NIGHT/EXPID/index>`: per-exposure intermediate files
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    calibnight/index
    exposures/index

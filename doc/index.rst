@@ -14,23 +14,23 @@ at https://data.desi.lbl.gov/public/edr.
 Data Directories
 ================
 
-Directories under DESI_ROOT
+Directories under :envvar:`DESI_ROOT`:
 
-   * `spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index.html>`_: Raw data 
-   * `spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index.html>`_: Processed spectra, classifications, and redshifts 
-   * `target/ <DESI_TARGET/index.html>`_: Target selection and fiber assignment catalogs
-   * `vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index.html>`_: Value Added Catalogs
+   * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data 
+   * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts 
+   * :doc:`target/ <DESI_TARGET/index>`: Target selection and fiber assignment catalogs
+   * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs
 
 The following directories are more expert-level (e.g. pipeline calibration inputs)
 and are documented for DESI collaboration internal use and may not be included
 in data releases:
 
-   * `survey/ops/surveyops/ <DESI_SURVEYOPS/index.html>`_: Data files used for day-to-day survey operations
-   * `spectro/desi_spectro_calib/ <DESI_SPECTRO_CALIB/index.html>`_: Spectrograph calibration data
-   * `protodesi/ <PROTODESI/index.html>`_: Data and logs from the ProtoDESI campaign (no spectra)
-   * `$DESISURVEY_OUTPUT <DESISURVEY_OUTPUT/index.html>`_: Outputs from desisurvey and surveysim
-   * `$DESI_SPECTRO_SIM <DESI_SPECTRO_SIM/index.html>`_: Simulated spectro data
-   * `$DESIMODEL <DESIMODEL/index.html>`_: Data used for simulating DESI
+   * :doc:`survey/ops/surveyops/ <DESI_SURVEYOPS/index>`: Data files used for day-to-day survey operations
+   * :doc:`spectro/desi_spectro_calib/ <DESI_SPECTRO_CALIB/index>`: Spectrograph calibration data
+   * :doc:`protodesi/ <PROTODESI/index>`: Data and logs from the ProtoDESI campaign (no spectra)
+   * :doc:`$DESISURVEY_OUTPUT <DESISURVEY_OUTPUT/index>`: Outputs from desisurvey and surveysim
+   * :doc:`$DESI_SPECTRO_SIM <DESI_SPECTRO_SIM/index>`: Simulated spectro data
+   * :doc:`$DESIMODEL <DESIMODEL/index>`: Data used for simulating DESI
 
 
 .. comment: the following toctree items exist to keep sphinx happy, but
@@ -56,6 +56,8 @@ in data releases:
 Other information
 =================
 
+Bitmask definitions and environment variables used by the DESI data pipelines:
+
 .. toctree::
    :maxdepth: 1
 
@@ -67,6 +69,7 @@ Imaging data and their catalogs are documented separately by the
 
 The desidatamodel_ package on GitHub includes the data model input files
 and some Python utility code for generating and checking data model files.
+These links will be useful for developers:
 
 .. toctree::
    :maxdepth: 1

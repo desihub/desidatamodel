@@ -7,7 +7,9 @@ particular data release. The value of ``RELEASE`` will typically be ``edr``, ``d
 
 Within this directory, each VAC will have a unique name.
 
-Subdirectories:
+Only some VACs include data model descriptions here;
+see https://data.desi.lbl.gov/doc/releases/edr/#value-added-catalogs
+for a full list of DESI Early Data Release VACs and their data models.
 
 .. toctree::
    :maxdepth: 1
