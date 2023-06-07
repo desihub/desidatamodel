@@ -2,9 +2,11 @@
 desidatamodel Change Log
 ========================
 
-23.5 (unreleased)
+23.1 (2023-06-12)
 -----------------
 
+* Automate generation of ``bitmasks.rst`` (PR `#176`_).
+* Reorganize front pages for DESI non-experts (PR `#172`_).
 * Clean up ``DESI_SPECTRO_REDUX`` and ``DESI_TARGET`` after verification of EDR (PR `#171`_).
 * Add Lyman-alpha VAC data model (PR `#169`_).
 * Final clean up for DESI EDR (PR `#167`_).
@@ -65,6 +67,8 @@ desidatamodel Change Log
 .. _`#167`: https://github.com/desihub/desidatamodel/pull/167
 .. _`#169`: https://github.com/desihub/desidatamodel/pull/169
 .. _`#171`: https://github.com/desihub/desidatamodel/pull/171
+.. _`#172`: https://github.com/desihub/desidatamodel/pull/172
+.. _`#176`: https://github.com/desihub/desidatamodel/pull/176
 
 22.2 (2022-05-31)
 -----------------
