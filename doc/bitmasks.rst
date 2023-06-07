@@ -14,6 +14,9 @@ that topic.
 Redshift Fitting (Redrock) Masks
 --------------------------------
 
+ZWARN
+~~~~~
+
 The **ZWARN** bitmask in redshift catalogs indicates known problems with a
 particular redshift fit or associated QA.
 ZWARN==0 is good; any non-zero value indicates a potential problem.
@@ -26,7 +29,8 @@ The canonical code location defining these bits is
 Bits 0-15 are set by Redrock itself (the redshift fitter),
 while bits 16-19 are set by DESI-specific post-processing.
 
-**ZWARN Mask Locations**
+ZWARN Mask Locations
+^^^^^^^^^^^^^^^^^^^^
 
 ================ ============= ===========
 File             Table HDU     Column
@@ -50,7 +54,8 @@ File             Table HDU     Column
 .. _`zall`: DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zall-pix-SPECPROD.html
 .. _`lss`: DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/full/fullVETO_dat.html
 
-**ZWARN Bit Definitions**
+ZWARN Bit Definitions
+^^^^^^^^^^^^^^^^^^^^^
 
 
 ==================== ========== ===========
@@ -95,7 +100,8 @@ a petal (e.g. because sky model noise makes all spectra questionable).
 The canonical code location defining FIBERSTATUS bits is
 `desispec.maskbits L55 <https://github.com/desihub/desispec/blob/0.55.0/py/desispec/maskbits.py#L55>`_.
 
-**FIBERSTATUS Mask Locations**
+FIBERSTATUS Mask Locations
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ================ ============= ===========
 File             Table HDU     Column
@@ -118,7 +124,8 @@ File             Table HDU     Column
 .. _`exposure-qa`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/exposure-qa-EXPID.html
 .. _`tile-qa`: DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/tile-qa-TILEID-GROUPID.html
 
-**FIBERSTATUS Bit Definitions**
+FIBERSTATUS Bit Definitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Bit 3 (RESTRICTED) is informative and doesn't necessarily mean that the spectrum is bad,
 i.e. a FIBERSTATUS value of 0 or 8=2**3 is good.
@@ -166,7 +173,8 @@ i.e. non-zero values mean that the corresponding flux should not be used.
 The canonical code location defining SPECMASK bits is
 `desispec.maskbits L84 <https://github.com/desihub/desispec/blob/0.55.0/py/desispec/maskbits.py#L84>`_.
 
-**SPECMASK Mask Locations**
+SPECMASK Mask Locations
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Note: the FITS file HDU EXTNAME=MASK or MASK_B/R/Z, not "SPECMASK".
 
@@ -180,7 +188,8 @@ File             Image HDU
 `coadd`_         MASK_B/R/Z 
 ================ =============
 
-**SPECMASK Bit Definitions**
+SPECMASK Bit Definitions
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ==================== ========== ===========
@@ -210,7 +219,8 @@ prior to extracting the spectra.  It is stored in the MASK HDU of
 The canonical code location defining CCDMASK bits is
 `desispec.maskbits L42 <https://github.com/desihub/desispec/blob/0.55.0/py/desispec/maskbits.py#L42>`_.
 
-**CCDMASK Bit Definitions**
+CCDMASK Bit Definitions
+^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ==================== ========== ===========
