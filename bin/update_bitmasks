@@ -1,4 +1,10 @@
+#!/usr/bin/env python
 
+"""
+Update doc/bitmasks.rst based upon code descriptions
+"""
+
+bitmask_template = """
 =================
 Bit Masks in DESI
 =================
@@ -57,28 +63,7 @@ File             Table HDU     Column
 ZWARN Bit Definitions
 ^^^^^^^^^^^^^^^^^^^^^
 
-
-==================== ========== ===========
-Bit Name             Bit Number Description
-==================== ========== ===========
-SKY                           0 sky fiber
-LITTLE_COVERAGE               1 too little wavelength coverage
-SMALL_DELTA_CHI2              2 chi-squared of best fit is too close to that of second best
-NEGATIVE_MODEL                3 synthetic spectrum is negative
-MANY_OUTLIERS                 4 fraction of points more than 5 sigma away from best model is too large (>0.05)
-Z_FITLIMIT                    5 chi-squared minimum at edge of the redshift fitting range
-NEGATIVE_EMISSION             6 a QSO line exhibits negative emission, triggered only in QSO spectra, if  C_IV, C_III, Mg_II, H_beta, or H_alpha has LINEAREA + 3 * LINEAREA_ERR < 0
-UNPLUGGED                     7 the fiber was unplugged/broken, so no spectrum obtained
-BAD_TARGET                    8 catastrophically bad targeting data
-NODATA                        9 No data for this fiber, e.g. because spectrograph was broken during this exposure (ivar=0 for all pixels)
-BAD_MINFIT                   10 Bad parabola fit to the chi2 minimum
-POORDATA                     11 Poor input data quality but try fitting anyway
-LOW_DEL_CHI2                 16 DELTACHI2 is lower than 25 for a DESI SV3 target
-LOW_DEL_CHI2_BGS             17 DELTACHI2 is lower than 40 for a DESI SV3 BGS target in bright time
-BAD_SPECQA                   18 QA rejected due to spectrum-level problems
-BAD_PETALQA                  19 QA rejected due to petal-level problems
-==================== ========== ===========
-
+{ZWARN}
 
 Spectroscopic Reduction Masks
 -----------------------------
@@ -130,37 +115,7 @@ FIBERSTATUS Bit Definitions
 Bit 3 (RESTRICTED) is informative and doesn't necessarily mean that the spectrum is bad,
 i.e. a FIBERSTATUS value of 0 or 8=2**3 is good.
 
-
-==================== ========== ===========
-Bit Name             Bit Number Description
-==================== ========== ===========
-UNASSIGNED                    0 Fiber is not assigned to a known target or sky location
-STUCKPOSITIONER               1 INFO: Stuck positioner (but could still be on a good sky location)
-BROKENFIBER                   2 Broken fiber
-RESTRICTED                    3 INFO: Positioner has restricted reach (but might still be on valid target)
-MISSINGPOSITION               8 Fiber location information is missing
-BADPOSITION                   9 Fiber >100 microns from target location
-POORPOSITION                 10 Fiber >30 microns from target location
-LOWTRANSMISSION              12 Low fiber transmission. Cannot use for sky.
-LOWEFFTIME                   15 Effective time for this fiber is too low
-BADFIBER                     16 Unusable fiber
-BADTRACE                     17 Bad trace solution
-BADFLAT                      18 Bad fiber flat
-BADARC                       19 Bad arc solution
-MANYBADCOL                   20 >10% of pixels are bad columns
-MANYREJECTED                 21 >10% of pixels rejected in extraction
-BADAMPB                      22 Issues in the amplifier readouts of camera B make this unusable
-BADAMPR                      23 Issues in the amplifier readouts of camera R make this unusable
-BADAMPZ                      24 Issues in the amplifier readouts of camera Z make this unusable
-BADPETALPOS                  25 Too many fibers with bad positioning in petal
-BADPETALSKY                  26 Bad sky model across petal
-BADPETALSTDSTAR              27 To few standard stars or rms between stars too large in the petal
-BADPETALFLUXCAL              28 Unphysical flux calibration for the petal (calib vector too high or too low)
-BADPETALSNR                  29 TSNR is too low for this petal compared to the others
-BADREADNOISE                 30 Bad read noise in one of the 3 cameras
-RESERVED31                   31 Reserved sign bit; do not use
-==================== ========== ===========
-
+{FIBERSTATUS}
 
 SPECMASK
 ~~~~~~~~
@@ -191,23 +146,7 @@ File             Image HDU
 SPECMASK Bit Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-==================== ========== ===========
-Bit Name             Bit Number Description
-==================== ========== ===========
-SOMEBADPIX                    0 Some input pixels were masked or ivar=0
-ALLBADPIX                     1 All input pixels were masked or ivar=0
-COSMIC                        2 Input pixels included a masked cosmic
-LOWFLAT                       3 Fiber flat < 0.5
-BADFIBERFLAT                  4 Bad fiber flat solution
-BRIGHTSKY                     5 Bright sky level (details TBD)
-BADSKY                        6 Bad sky model
-BAD2DFIT                      7 Bad fit of extraction 2D model to pixel data
-NODATA                        8 No data exists
-BADFIBER                      9 fibermask has a non-zero bit
-BADCOLUMN                    10 Bad CCD column biases the flux
-==================== ========== ===========
-
+{SPECMASK}
 
 CCDMASK
 ~~~~~~~
@@ -222,21 +161,7 @@ The canonical code location defining CCDMASK bits is
 CCDMASK Bit Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-
-==================== ========== ===========
-Bit Name             Bit Number Description
-==================== ========== ===========
-BAD                           0 Pre-determined bad pixel (any reason)
-HOT                           1 Hot pixel
-DEAD                          2 Dead pixel
-SATURATED                     3 Saturated pixel from object
-COSMIC                        4 Cosmic ray
-PIXFLATZERO                   5 pixflat is 0
-PIXFLATLOW                    6 pixflat < 0.1
-HIGHVAR                       7 High variability in pixel value
-BADREADNOISE                  8 Very high CCD amplifier read noise
-==================== ========== ===========
-
+{CCDMASK}
 
 Target masks
 ------------
@@ -321,4 +246,91 @@ MASKBITS                            `BITMASKS_LEGACY`_
 .. _`BITMASKS_LEGACY`: https://www.legacysurvey.org/dr9/bitmasks/
 .. _`DESI Legacy Imaging Surveys`: https://www.legacysurvey.org/
 .. _tutorial: https://github.com/desihub/desitarget/blob/master/doc/nb/target-selection-bits-and-bitmasks.ipynb
+"""
 
+#-------------------------------------------------------------------------
+#- ZWARN mask from desitarget is a superset of the bits defined in Redrock
+from desitarget.targetmask import zwarn_mask
+
+ZWARN_rows = list()
+for name in zwarn_mask.names():
+    bitnum = zwarn_mask.bitnum(name)
+    comment = zwarn_mask.comment(name)
+    ZWARN_rows.append(f'{name:20s} {bitnum:10d} {comment}')
+
+ZWARN_rows = '\n'.join(ZWARN_rows)
+ZWARN = f"""
+==================== ========== ===========
+Bit Name             Bit Number Description
+==================== ========== ===========
+{ZWARN_rows}
+==================== ========== ===========
+"""
+
+#-------------------------------------------------------------------------
+#- FIBERSTATUS
+from desispec.maskbits import fibermask
+
+FIBERSTATUS_rows = list()
+for name in fibermask.names():
+    bitnum = fibermask.bitnum(name)
+    comment = fibermask.comment(name)
+    FIBERSTATUS_rows.append(f'{name:20s} {bitnum:10d} {comment}')
+
+FIBERSTATUS_rows = '\n'.join(FIBERSTATUS_rows)
+FIBERSTATUS = f"""
+==================== ========== ===========
+Bit Name             Bit Number Description
+==================== ========== ===========
+{FIBERSTATUS_rows}
+==================== ========== ===========
+"""
+
+#-------------------------------------------------------------------------
+#- SPECMASK
+from desispec.maskbits import specmask
+
+SPECMASK_rows = list()
+for name in specmask.names():
+    bitnum = specmask.bitnum(name)
+    comment = specmask.comment(name)
+    SPECMASK_rows.append(f'{name:20s} {bitnum:10d} {comment}')
+
+SPECMASK_rows = '\n'.join(SPECMASK_rows)
+SPECMASK = f"""
+==================== ========== ===========
+Bit Name             Bit Number Description
+==================== ========== ===========
+{SPECMASK_rows}
+==================== ========== ===========
+"""
+
+#-------------------------------------------------------------------------
+#- CCDMASK
+from desispec.maskbits import ccdmask
+
+CCDMASK_rows = list()
+for name in ccdmask.names():
+    bitnum = ccdmask.bitnum(name)
+    comment = ccdmask.comment(name)
+    CCDMASK_rows.append(f'{name:20s} {bitnum:10d} {comment}')
+
+CCDMASK_rows = '\n'.join(CCDMASK_rows)
+CCDMASK = f"""
+==================== ========== ===========
+Bit Name             Bit Number Description
+==================== ========== ===========
+{CCDMASK_rows}
+==================== ========== ===========
+"""
+
+
+#-------------------------------------------------------------------------
+#- Print rst
+
+print(bitmask_template.format(
+        ZWARN=ZWARN,
+        FIBERSTATUS=FIBERSTATUS,
+        SPECMASK=SPECMASK,
+        CCDMASK=CCDMASK,
+        ))
