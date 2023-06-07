@@ -20,7 +20,7 @@ Survey Operations Paper (Schlafly et al 2023 TODO: add link).
 Bits 0-15 are set by Redrock itself (the redshift fitter),
 while bits 16-19 are set by DESI-specific post-processing.
 
-**ZWARN BitMask**
+**ZWARN Bit Definitions**
 
 ==================== ========== ===========
 Bit Name             Bit Number Description
@@ -56,7 +56,32 @@ COADD_FIBERSTATUS                   `MASKBITS_L55`_
 MASK                                `MASKBITS_L84`_
 =================================== ==================
 
-**FIBERSTATUS BitMask**
+The **FIBERSTATUS** bit mask is used to track the state of individual
+fibers for issues that impact the entire spectrum, e.g. a broken fiber.
+It is used in 
+
+================ ============= ===========
+File             HDU           Column
+================ ============= ===========
+`frame`_         FIBERMAP      FIBERSTATUS
+`sframe`_        FIBERMAP      FIBERSTATUS
+`cframe`_        FIBERMAP      FIBERSTATUS
+`spectra`_       FIBERMAP      FIBERSTATUS
+`coadd`_         EXP_FIBERMAP  FIBERSTATUS
+`coadd`_         FIBERMAP      COADD_FIBERSTATUS
+`exposure-qa`_   FIBERQA       QAFIBERSTATUS
+`tile-qa`_       FIBERQA       QAFIBERSTATUS
+================ ============= ===========
+
+.. _`frame`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID.html
+.. _`sframe`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/sframe-CAMERA-EXPID.html
+.. _`cframe`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID.html
+.. _`spectra`: DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/spectra-SURVEY-PROGRAM-PIXNUM.html
+.. _`coadd`: DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/coadd-SURVEY-PROGRAM-PIXNUM.html
+.. _`exposure-qa`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/exposure-qa-EXPID.html
+.. _`tile-qa`: DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/tile-qa-TILEID-GROUPID.html
+
+**FIBERSTATUS Bit Definitions**
 
 ==================== ========== ===========
 Bit Name             Bit Number Description
