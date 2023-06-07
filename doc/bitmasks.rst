@@ -31,24 +31,24 @@ while bits 16-19 are set by DESI-specific post-processing.
 ================ ============= ===========
 File             Table HDU     Column
 ================ ============= ===========
-`redrock`_       REDSHIFTS     ZWARN
-`emline`_        EMLINEFIT     ZWARN
-`zmtl`_          ZMTL          ZWARN
-`mtl`_           MTL           ZWARN
-`zpix`_          ZCATALOG      ZWARN
-`ztile`_         ZCATALOG      ZWARN
-`zall`_          ZCATALOG      ZWARN
-`lss`_           LSS           ZWARN
+|redrock|        REDSHIFTS     ZWARN
+|emline|         EMLINEFIT     ZWARN
+|zmtl|           ZMTL          ZWARN
+|mtl|            MTL           ZWARN
+|zpix|           ZCATALOG      ZWARN
+|ztile|          ZCATALOG      ZWARN
+|zall|           ZCATALOG      ZWARN
+|lss|            LSS           ZWARN
 ================ ============= ===========
 
-.. _`redrock`: DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID.html
-.. _`emline`: DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/emline-SPECTROGRAPH-TILEID-GROUPID.html
-.. _`zmtl`: DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/zmtl-SPECTROGRAPH-TILEID-GROUPID.html
-.. _`mtl`: DESI_SURVEYOPS/mtl/main/dark/mtl-dark-hp-HPX.html
-.. _`zpix`: DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zpix-SURVEY-PROGRAM.html
-.. _`ztile`: DESI_SPECTRO_REDUX/SPECPROD/zcatalog/ztile-SURVEY-PROGRAM-GROUPTYPE.html
-.. _`zall`: DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zall-pix-SPECPROD.html
-.. _`lss`: DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/full/fullVETO_dat.html
+.. |redrock| replace:: :doc:`redrock <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>`
+.. |emline| replace:: :doc:`emline <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/emline-SPECTROGRAPH-TILEID-GROUPID>`
+.. |zmtl| replace:: :doc:`zmtl <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/zmtl-SPECTROGRAPH-TILEID-GROUPID>`
+.. |mtl| replace:: :doc:`mtl <DESI_SURVEYOPS/mtl/main/dark/mtl-dark-hp-HPX>`
+.. |zpix| replace:: :doc:`zpix <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zpix-SURVEY-PROGRAM>`
+.. |ztile| replace:: :doc:`ztile <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/ztile-SURVEY-PROGRAM-GROUPTYPE>`
+.. |zall| replace:: :doc:`zall <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zall-pix-SPECPROD>`
+.. |lss| replace:: :doc:`lss <DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/full/fullVETO_dat>`
 
 **ZWARN Bit Definitions**
 
@@ -100,23 +100,23 @@ The canonical code location defining FIBERSTATUS bits is
 ================ ============= ===========
 File             Table HDU     Column
 ================ ============= ===========
-`frame`_         FIBERMAP      FIBERSTATUS
-`sframe`_        FIBERMAP      FIBERSTATUS
-`cframe`_        FIBERMAP      FIBERSTATUS
-`spectra`_       FIBERMAP      FIBERSTATUS
-`coadd`_         EXP_FIBERMAP  FIBERSTATUS
-`coadd`_         FIBERMAP      COADD_FIBERSTATUS
-`exposure-qa`_   FIBERQA       QAFIBERSTATUS
-`tile-qa`_       FIBERQA       QAFIBERSTATUS
+|frame|          FIBERMAP      FIBERSTATUS
+|sframe|         FIBERMAP      FIBERSTATUS
+|cframe|         FIBERMAP      FIBERSTATUS
+|spectra|        FIBERMAP      FIBERSTATUS
+|coadd|          EXP_FIBERMAP  FIBERSTATUS
+|coadd|          FIBERMAP      COADD_FIBERSTATUS
+|exposure-qa|    FIBERQA       QAFIBERSTATUS
+|tile-qa|        FIBERQA       QAFIBERSTATUS
 ================ ============= ===========
 
-.. _`frame`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID.html
-.. _`sframe`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/sframe-CAMERA-EXPID.html
-.. _`cframe`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID.html
-.. _`spectra`: DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/spectra-SURVEY-PROGRAM-PIXNUM.html
-.. _`coadd`: DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/coadd-SURVEY-PROGRAM-PIXNUM.html
-.. _`exposure-qa`: DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/exposure-qa-EXPID.html
-.. _`tile-qa`: DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/tile-qa-TILEID-GROUPID.html
+.. |frame| replace:: :doc:`frame <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`
+.. |sframe| replace:: :doc:`sframe <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/sframe-CAMERA-EXPID>`
+.. |cframe| replace:: :doc:`cframe <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/cframe-CAMERA-EXPID>`
+.. |spectra| replace:: :doc:`spectra <DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/spectra-SURVEY-PROGRAM-PIXNUM>`
+.. |coadd| replace:: :doc:`coadd <DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/coadd-SURVEY-PROGRAM-PIXNUM>`
+.. |exposure-qa| replace:: :doc:`exposure-qa <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/exposure-qa-EXPID>`
+.. |tile-qa| replace:: :doc:`tile-qa <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/tile-qa-TILEID-GROUPID>`
 
 **FIBERSTATUS Bit Definitions**
 
@@ -171,13 +171,13 @@ The canonical code location defining SPECMASK bits is
 Note: the FITS file HDU EXTNAME=MASK or MASK_B/R/Z, not "SPECMASK".
 
 ================ =============
-File             Image HDU    
+File             Image HDU
 ================ =============
-`frame`_         MASK         
-`sframe`_        MASK     
-`cframe`_        MASK     
-`spectra`_       MASK_B/R/Z   
-`coadd`_         MASK_B/R/Z 
+|frame|          MASK
+|sframe|         MASK
+|cframe|         MASK
+|spectra|        MASK_B/R/Z
+|coadd|          MASK_B/R/Z
 ================ =============
 
 **SPECMASK Bit Definitions**
@@ -232,7 +232,7 @@ Target masks
 ------------
 
 Target masks record the reasons why each target was selected for DESI
-observations.  These are stored in the ``*_TARGET`` columns of the 
+observations.  These are stored in the ``*_TARGET`` columns of the
 TARGETS, FIBERASSIGN, and FIBERMAP tables in data files.
 
 These masks are described in more detail in Section 2 of
