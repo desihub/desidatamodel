@@ -466,6 +466,8 @@ LOCATION int32       Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 Notes and Examples
 ==================
 
+For the SURVEY=cmx m33 tile (TILEID=80615) tile and all the SURVEY=sv1 tiles (except TILEID=80971-80976, the dc3r2 ones), proper-motion correction was applied at the :doc:`fiberassign </DESI_TARGET/fiberassign/tiles/TILES_VERSION/TILEXX/fiberassign-TILEID>` design step; thus the following columns can have different values than in the :doc:`desitarget products </DESI_TARGET/TARG_DIR/DR/VERSION/targets/PHASE/RESOLVE/OBSCON/PHASEtargets-OBSCON-RESOLVE-hp-HP>`: ``TARGET_RA``, ``TARGET_DEC``, ``REF_EPOCH``, ``PLATE_RA``, ``PLATE_DEC``, and ``PLATE_REF_EPOCH``.
+
 * HDU0: early tiles may have some missing keywords from the listed ones.
 * HDU1: this table defines the *requested* fiber assignments; see :doc:`fibermap-EXPID <../../../../../DESI_SPECTRO_DATA/NIGHT/EXPID/fibermap-EXPID>` for the actual observed assignments.
 * HDU1: ``LAMBDA_REF`` : 5400 so far, not used for fiber positioning.

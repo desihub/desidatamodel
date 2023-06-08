@@ -60,21 +60,21 @@ Name                       Type        Units     Description
 ========================== =========== ========= ===============================================================================================================================
 RA                         float64     deg       Target Right Ascension
 DEC                        float64     deg       Target declination
-REF_EPOCH                  float32     yr        Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
-PARALLAX                   float32     mas       Reference catalog parallax
-PMRA                       float32     mas yr^-1 proper motion in the +RA direction (already including cos(dec))
-PMDEC                      float32     mas yr^-1 Proper motion in the +Dec direction
+REF_EPOCH [1]_             float32     yr        Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
+PARALLAX [1]_              float32     mas       Reference catalog parallax
+PMRA [1]_                  float32     mas yr^-1 proper motion in the +RA direction (already including cos(dec))
+PMDEC [1]_                 float32     mas yr^-1 Proper motion in the +Dec direction
 TARGETID                   int64                 Unique DESI target ID
-OBSCONDITIONS              int32                 Bitmask of allowed observing conditions
+OBSCONDITIONS [1]_         int32                 Bitmask of allowed observing conditions
 PRIORITY_INIT              int64                 Target initial priority from target selection bitmasks and OBSCONDITIONS
-NUMOBS_INIT                int64                 Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
-NUMOBS_MORE                int64                 Number of additional observations needed
-NUMOBS                     int64                 Number of spectroscopic observations (on this specific, single tile)
+NUMOBS_INIT [1]_           int64                 Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+NUMOBS_MORE [1]_           int64                 Number of additional observations needed
+NUMOBS [1]_                int64                 Number of spectroscopic observations (on this specific, single tile)
 ZWARN_MTL                  int64                 The ZWARN from the zmtl file (contains extra bits)
-ZTILEID                    int32                 ID of tile that most recently updated target&#x27;s state
+ZTILEID [1]_               int32                 ID of tile that most recently updated target&#x27;s state
 TARGET_STATE               char[30]              Combination of target class and its current observational state
 TIMESTAMP                  char[25]    s         UTC/ISO time at which the target state was updated
-VERSION                    char[14]              Tag of desitarget used to create the target catalog
+VERSION [1]_               char[14]              Tag of desitarget used to create the target catalog
 PRIORITY                   int64                 Target current priority
 LOCATION                   int64                 Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 TILEID                     int64                 Unique DESI tile ID
@@ -126,4 +126,4 @@ SV3_BGS_TARGET             int64                 BGS (bright time program) targe
 SV3_MWS_TARGET             int64                 MWS (bright time program) target selection bitmask for SV3
 ========================== =========== ========= ===============================================================================================================================
 
-
+.. [1] Optional

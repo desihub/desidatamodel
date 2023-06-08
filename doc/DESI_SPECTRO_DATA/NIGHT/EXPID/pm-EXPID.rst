@@ -440,3 +440,5 @@ at high dec: the proper motions are applied after target positions have
 been converted to tangent plane coordinates centered on the field center,
 but are not corrected to account for the fact that lines of constant
 RA and DEC are not Cartesian coordinates in the tangent plane.
+
+For targets with a non-zero proper motion, ``FIBER_RA`` and ``FIBER_DEC`` refer to the position at the reference epoch (but note that the proper-motion correction has been applied at the time of the observation, it is just not recorded in ``FIBER_RA`` and ``FIBER_DEC``).
