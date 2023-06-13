@@ -2,6 +2,11 @@
 desidatamodel Change Log
 ========================
 
+23.6 (unreleased)
+-----------------
+
+* No changes yet.
+
 23.1 (2023-06-12)
 -----------------
 
