@@ -5,6 +5,7 @@ desidatamodel Change Log
 23.1 (2023-06-12)
 -----------------
 
+* Warnings about ``TARGET_RA``, etc. (PR `#177`_).
 * Automate generation of ``bitmasks.rst`` (PR `#176`_).
 * Reorganize front pages for DESI non-experts (PR `#172`_).
 * Clean up ``DESI_SPECTRO_REDUX`` and ``DESI_TARGET`` after verification of EDR (PR `#171`_).
@@ -69,6 +70,7 @@ desidatamodel Change Log
 .. _`#171`: https://github.com/desihub/desidatamodel/pull/171
 .. _`#172`: https://github.com/desihub/desidatamodel/pull/172
 .. _`#176`: https://github.com/desihub/desidatamodel/pull/176
+.. _`#177`: https://github.com/desihub/desidatamodel/pull/177
 
 22.2 (2022-05-31)
 -----------------
