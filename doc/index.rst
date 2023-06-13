@@ -63,6 +63,7 @@ Bitmask definitions and environment variables used by the DESI data pipelines:
 
    bitmasks
    Environment variables <envvar>
+   Units in data files <units>
 
 Imaging data and their catalogs are documented separately by the
 `Legacy Survey <https://www.legacysurvey.org/>`_.
