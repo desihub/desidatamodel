@@ -27,8 +27,8 @@ The **ZWARN** bitmask in redshift catalogs indicates known problems with a
 particular redshift fit or associated QA.
 ZWARN==0 is good; any non-zero value indicates a potential problem.
 This mask will be described in more detail in the Redrock paper
-(Bailey et al 2023 in prep), as well as Section 5.3.1 of the
-Survey Operations Paper (Schlafly et al 2023 TODO: add link).
+(Bailey et al. 2023 in prep), as well as Section 5.3.1 of the
+Survey Operations Paper (`Schlafly et al. 2023 <https://arxiv.org/abs/2306.06309>`_).
 
 The canonical code location defining these bits is
 `desitarget targetmask.yaml <https://github.com/desihub/desitarget/blob/main/py/desitarget/data/targetmask.yaml#L230>`_.
@@ -173,7 +173,7 @@ TARGETS, FIBERASSIGN, and FIBERMAP tables in data files.
 These masks are described in more detail in Section 2 of
 `Myers et al. (2023) <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
 and Appendices A and B of the the DESI EDR Overview paper
-(DESI Collaboration et al 2023 TODO: add link).
+(`DESI Collaboration et al. 2023 <https://arxiv.org/abs/2306.06308>`_).
 
 The following table lists a subset of the most commonly used bits that maintained
 the same definition throughout different phases of DESI observations.  For the
