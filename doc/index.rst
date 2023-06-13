@@ -16,8 +16,8 @@ Data Directories
 
 Directories under :envvar:`DESI_ROOT`:
 
-   * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data 
-   * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts 
+   * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data
+   * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts
    * :doc:`target/ <DESI_TARGET/index>`: Target selection and fiber assignment catalogs
    * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs
 
@@ -39,7 +39,7 @@ in data releases:
 
 .. toctree::
    :hidden:
-   
+
    vac/ : Value Added Catalogs <DESI_ROOT/vac/index>
    $DESI_ROOT : represents the top level of the DESI directory tree. <DESI_ROOT/index>
    $DESI_SPECTRO_DATA : raw data <DESI_SPECTRO_DATA/index>
@@ -86,7 +86,7 @@ References
 
   * Target Selection: `Myers, A. D., et al. 2023, AJ 165, 50 <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
   * Spectroscopic Pipeline: `Guy, J., et al. 2023, AJ 165, 4, 144 <https://ui.adsabs.harvard.edu/abs/2023AJ....165..144G/abstract>`_
-  * Early Data Release: **TODO: arxiv link**
+  * Early Data Release: `DESI Collaboration et al. 2023 <https://arxiv.org/abs/2306.06308>`_
 
 Index and Search Pages
 ----------------------
