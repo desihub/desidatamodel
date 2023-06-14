@@ -5,7 +5,9 @@ desidatamodel Change Log
 23.6 (unreleased)
 -----------------
 
-* No changes yet.
+* Add note about units in FITS files (PR `#178`_).
+
+.. _`#178`: https://github.com/desihub/desidatamodel/pull/178
 
 23.1 (2023-06-12)
 -----------------
