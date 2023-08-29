@@ -98,7 +98,10 @@ jobs:
                 python -m pip install --upgrade pip wheel
                 python -m pip install Sphinx sphinx-toolbox
             - name: Test the documentation
+              env:
+                PYTHONPATH: ${{ github.workspace }}/py
               run: |
+                python -m desidatamodel.render > doc/column_descriptions.rst
                 sphinx-build -W --keep-going -b html doc doc/_build/html
 
     api:
