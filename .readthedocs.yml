@@ -10,8 +10,8 @@ build:
     tools:
         python: "3.10"
     jobs:
-        post_install:
-            - python -m desidatamodel.render > doc/column_descriptions.rst
+        pre_build:
+            - env PYTHONPATH=${PWD}/py python -m desidatamodel.render > doc/column_descriptions.rst
 
 # Build documentation in the doc/ directory with Sphinx
 sphinx:
