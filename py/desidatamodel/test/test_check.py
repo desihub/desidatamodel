@@ -7,7 +7,6 @@ import sys
 from packaging import version
 import unittest
 from unittest.mock import patch
-from pkg_resources import resource_filename
 
 from .datamodeltestcase import DataModelTestCase, DM
 
@@ -17,6 +16,23 @@ from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
 
 
 class TestCheck(DataModelTestCase):
+
+    def test_DataModel_init(self):
+        """Test initialization of the DataModel object.
+        """
+        modelfile = self.test_files / 'fits_file.rst'
+        model = DataModel(modelfile, self.test_files)
+        self.assertEqual(model.filename, str(modelfile))
+        self.assertEqual(model.section, str(self.test_files))
+
+    def test_DataModel_init_bad_type(self):
+        """Test initialization of the DataModel object.
+        """
+        modelfile = self.test_files / 'fits_file.rst'
+        with self.assertRaises(ValueError):
+            model = DataModel(None, self.test_files)
+        with self.assertRaises(ValueError):
+            model = DataModel(modelfile, None)
 
     def test_scan_model(self):
         """Test identification of data model files.
@@ -112,7 +128,7 @@ class TestCheck(DataModelTestCase):
     def test_get_regexp_filesize(self):
         """Test extraction of file size from data model documents.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         foo = model.get_regexp('/desi/spectro/data')
         self.assertEqual(model.filetype, 'fits')
@@ -121,7 +137,7 @@ class TestCheck(DataModelTestCase):
     def test_get_regexp_missing_filesize(self):
         """Test extraction of file size from data model documents, missing size.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_no_size.rst')
+        modelfile = self.test_files / 'fits_file_no_size.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         foo = model.get_regexp('/desi/spectro/data')
         self.assertEqual(model.filetype, 'fits')
@@ -200,7 +216,7 @@ class TestCheck(DataModelTestCase):
                                   'length of dimension 1'),
                                  ('NAXIS2', '3', 'int',
                                   'length of dimension 2')]}}
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         self.assertEqual(self.title, 'fits_file')
@@ -245,7 +261,7 @@ class TestCheck(DataModelTestCase):
                                   'length of dimension 1'),
                                  ('NAXIS2', '3', 'int',
                                   'length of dimension 2')]}}
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_collapse.rst')
+        modelfile = self.test_files / 'fits_file_collapse.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         self.assertEqual(len(meta.keys()), len(ex_meta.keys()))
@@ -265,7 +281,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_missing_extname(self):
         """Test reading metadata with missing EXTNAME.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
@@ -283,7 +299,7 @@ class TestCheck(DataModelTestCase):
         """Test reading metadata with bad FITS BUNIT values.
         """
         erg_msg = self.badUnitMessage('ergs')
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
@@ -301,7 +317,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_missing_keyword_unit(self):
         """Test reading metadata with missing units for header keywords.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
@@ -320,7 +336,7 @@ class TestCheck(DataModelTestCase):
         """Test reading metadata with bad FITS column units.
         """
         erg_msg = self.badUnitMessage('ergs')
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
@@ -337,7 +353,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_missing_column_type(self):
         """Test reading metadata with missing FITS column types.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         lines = model._metafile_data.split('\n')
@@ -354,7 +370,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_with_hdu_span(self):
         """Test reading metadata with a HDU span.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_hduspan.rst')
+        modelfile = self.test_files / 'fits_file_hduspan.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         self.assertEqual(meta['TWO']['number'], 2)
@@ -362,7 +378,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_with_hdu_span_no_spanext(self):
         """Test reading metadata with a HDU span, but with no reference HDU.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_hduspan_no_spanext.rst')
+        modelfile = self.test_files / 'fits_file_hduspan_no_spanext.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         with self.assertRaises(DataModelError) as e:
             meta = model.extract_metadata()
@@ -372,7 +388,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_with_hdu_span_bad_extname(self):
         """Test reading metadata with a HDU span, but with bad EXTNAME specification.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_hduspan_bad_extname.rst')
+        modelfile = self.test_files / 'fits_file_hduspan_bad_extname.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         meta = model.extract_metadata()
         self.assertLog(log, -1, "Range specification from HDU 2 to HDU 5 does not have a matching EXTNAME specification!")
@@ -380,7 +396,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_metadata_bad_format(self):
         """Test reading metadata with a bad HDU format specification.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_bad_format.rst')
+        modelfile = self.test_files / 'fits_file_bad_format.rst'
         model = DataModel(modelfile, os.path.dirname(modelfile))
         with self.assertRaises(DataModelError) as e:
             meta = model.extract_metadata()
@@ -390,7 +406,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototypes(self):
         """Test the data model validation function.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -399,7 +415,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_no_prototype(self):
         """Test the data model validation method with no prototype.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -410,7 +426,7 @@ class TestCheck(DataModelTestCase):
         """Test the data model validation method with prototypes that are not
         currently verifiable.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -421,7 +437,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_oserror(self):
         """Test the data model validation method with a file that throws an error.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -443,32 +459,32 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_mismatch(self):
         """Test the data model validation method with wrong number of HDUs.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
         foo = f.extract_metadata()
         f.hdumeta['foobar'] = 'baz'
         f.validate_prototype(error=True)
-        self.assertLog(log, -2, "{0} has the wrong number of sections (HDUs) according to {1}, skipping to next candidate.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -2, "{0} has the wrong number of sections (HDUs) according to {1}, skipping to next candidate.".format(str(modelfile).replace('.rst', '.fits'), modelfile))
         self.assertLog(log, -1, "No useful prototype files found for {0}!".format(modelfile))
 
     def test_validate_prototype_hdu_keyword_mismatch(self):
         """Test the data model validation method with wrong number of HDU keywords.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
         f.validate_prototype()
         f._stub_meta[0]['keywords'].append(('BUNIT', 'erg', 'str', 'This is a test.'))
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits')))
+        self.assertLog(log, -1, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(str(modelfile).replace('.rst', '.fits')))
 
     def test_validate_prototype_hdu_keyword_type_mismatch(self):
         """Test the data model validation method with a keyword type mismatch.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -480,51 +496,51 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_wrong_keyword(self):
         """Test the data model validation method with wrong HDU keyword names.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
         f.validate_prototype()
         f._stub_meta[0]['keywords'][-1] = ('BUNIT', 'erg', 'str', 'This is a test.')
         f.validate_prototype(error=True)
-        self.assertLog(log, -2, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(modelfile.replace('.rst', '.fits')))
+        self.assertLog(log, -2, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(str(modelfile).replace('.rst', '.fits')))
         self.assertLog(log, -1, "Model file {0} has these keywords in HDU0 missing from data: {{'BZERO'}}".format(modelfile))
 
     def test_validate_prototype_hdu_extension_type(self):
         """Test the data model validation method with wrong HDU extension type.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
         f.validate_prototype()
         f._stub_meta[1]['extension'] = 'IMAGE'
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has an extension type mismatch in HDU1 (IMAGE != BINTABLE) according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "Prototype file {0} has an extension type mismatch in HDU1 (IMAGE != BINTABLE) according to {1}.".format(str(modelfile).replace('.rst', '.fits'), modelfile))
         # f._stub_meta[1]['extname'] = ''
         # f.validate_prototype(error=True)
-        # self.assertLog(log, -1, "Prototype file {0} has no EXTNAME in HDU1.".format(modelfile.replace('.rst', '.fits')))
+        # self.assertLog(log, -1, "Prototype file {0} has no EXTNAME in HDU1.".format(str(modelfile).replace('.rst', '.fits')))
 
     def test_validate_prototype_hdu_extension_name(self):
         """Test the data model validation method with wrong HDU extension name.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
         f.validate_prototype()
         f._stub_meta[1]['extname'] = 'GALAXY'
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has an EXTNAME mismatch in HDU1 (GALAXY != Galaxies) according to {1}.".format(modelfile.replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, "Prototype file {0} has an EXTNAME mismatch in HDU1 (GALAXY != Galaxies) according to {1}.".format(str(modelfile).replace('.rst', '.fits'), modelfile))
         f._stub_meta[1]['extname'] = ''
         f.validate_prototype(error=True)
-        self.assertLog(log, -2, "Prototype file {0} has no EXTNAME in HDU1.".format(modelfile.replace('.rst', '.fits')))
+        self.assertLog(log, -2, "Prototype file {0} has no EXTNAME in HDU1.".format(str(modelfile).replace('.rst', '.fits')))
         self.assertLog(log, -1, "Could not find EXTNAME = '' in {0}; trying by HDU number.".format(modelfile))
 
     def test_validate_prototype_hdu_bad_format(self):
         """Test the data model validation method with a bad HDU format in the model.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -538,7 +554,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_alternate_format(self):
         """Test the data model validation method with an alternate HDU format in the model.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -552,7 +568,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_bad_extension(self):
         """Test the data model validation method with a bad HDU extension in the model.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -566,7 +582,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_missing_column(self):
         """Test the data model validation method with missing column in the model.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -578,7 +594,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_missing_data_column(self):
         """Test the data model validation method with missing column in the data.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -590,7 +606,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_bad_column_type(self):
         """Test the data model validation method with a bad column type.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -602,7 +618,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_hdu_bad_column_unit(self):
         """Test the data model validation method with a bad column unit.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -614,7 +630,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_optional_keywords(self):
         """Test the data model validation method with optional keywords.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst')
+        modelfile = self.test_files / 'fits_file_optional_columns.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -627,7 +643,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_optional_columns(self):
         """Test the data model validation method with optional columns.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst')
+        modelfile = self.test_files / 'fits_file_optional_columns.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -639,7 +655,7 @@ class TestCheck(DataModelTestCase):
     def test_validate_prototype_variable_columns(self):
         """Test the data model validation method with variable-size columns.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file_variable_columns.rst')
+        modelfile = self.test_files / 'fits_file_variable_columns.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         f.get_regexp(os.path.dirname(modelfile))
         collect_files(os.path.dirname(modelfile), [f])
@@ -651,7 +667,7 @@ class TestCheck(DataModelTestCase):
     def test_extract_columns(self):
         """Test extraction of columns from a row of data.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         foo = '======= ============= ==== ============'
         columns = list(map(len, foo.split()))
@@ -663,12 +679,11 @@ class TestCheck(DataModelTestCase):
     def test_cross_reference(self):
         """Test parsing of cross-references.
         """
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        modelfile = self.test_files / 'fits_file.rst'
         f = DataModel(modelfile, os.path.dirname(modelfile))
         line = "See :doc:`Other file <fits_file>`"
         ref = f._cross_reference(line)
-        self.assertEqual(ref, resource_filename('desidatamodel.test',
-                                                't/fits_file.rst'))
+        self.assertEqual(ref, str(modelfile))
 
     @patch('sys.argv', ['check_model', '--verbose', '--compare-files', 'DESI_SPECTRO_DATA', '/desi/spectro/data/desi-00000000.fits.fz'])
     def test_options(self):

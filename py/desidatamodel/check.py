@@ -10,6 +10,7 @@ Check actual files against the data model for validity.
 import os
 import re
 import itertools
+from pathlib import Path
 from sys import argv
 from argparse import ArgumentParser
 
@@ -25,10 +26,15 @@ class DataModel(DataModelUnit):
 
     Parameters
     ----------
-    filename : :class:`str`
+    filename : :class:`str` or :class:`pathlib.Path`
         The full path of the data model file.
-    section : :class:`str`
+    section : :class:`str` or :class:`pathlib.Path`
         The full path to the section of the data model containing the file.
+
+    Raises
+    ------
+    ValueError
+        If `filename` or `section` have an unexpected type.
     """
     # Marker for optional keywords and columns.
     _o = '[1]_'
@@ -82,10 +88,23 @@ class DataModel(DataModelUnit):
     _expectedtypes = ('ascii', 'csv', 'ecsv', 'fits', 'json', 'yaml')
 
     def __init__(self, filename, section):
-        shortname = filename.replace(f'{section}/', '')
+        if isinstance(filename, str):
+            self.filename = filename
+            self.section = section
+            shortname = filename.replace(f'{section}/', '')
+        elif isinstance(filename, Path):
+            self.filename = str(filename)
+            self.section = str(section)
+            shortname = str(filename).replace(f'{section}/', '')
+        else:
+            raise ValueError('Unexpected type for filename!')
+        if isinstance(section, str):
+            self.section = section
+        elif isinstance(section, Path):
+            self.section = str(section)
+        else:
+            raise ValueError('Unexpected type for section!')
         log.debug('Creating DataModel for %s.', shortname)
-        self.filename = filename
-        self.section = section
         self.title = None
         self.ref = None
         self.regexp = None

@@ -8,6 +8,9 @@ desidatamodel API
 .. automodule:: desidatamodel.check
     :members:
 
+.. automodule:: desidatamodel.render
+    :members:
+
 .. automodule:: desidatamodel.scan
     :members:
 

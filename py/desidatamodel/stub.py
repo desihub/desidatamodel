@@ -10,7 +10,9 @@ Generate data model files from FITS files.
 import os
 import re
 from html import escape
-from pkg_resources import resource_filename
+from pathlib import Path
+import importlib.resources as ir
+# from pkg_resources import resource_filename
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
 from astropy.table import Table
@@ -102,6 +104,8 @@ class Stub(DataModelUnit):
                     self.headers.append(fx[k].header)
             if isinstance(filename, (str,)):
                 self.filename = filename
+            elif isinstance(filename, (Path,)):
+                self.filename = str(filename)
         self._basef = None
         self._modelname = None
         self._filesize = None
@@ -752,7 +756,7 @@ def main():
     parser.add_argument("--column_descriptions",
                         help="CSV file with column info Name,Type,Units,Description; "
                              "default=%(default)s",
-                        default=resource_filename('desidatamodel', 'data/column_descriptions.csv'))
+                        default=(ir.files('desidatamodel') / 'data' / 'column_descriptions.csv'))
 
     options = parser.parse_args()
     if options.verbose:
