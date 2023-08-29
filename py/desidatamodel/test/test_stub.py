@@ -685,11 +685,3 @@ class TestStub(DataModelTestCase):
         with self.assertRaises(ValueError):
             stub = Stub(filename, description_file=baddescfile)
             lines = str(stub)
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

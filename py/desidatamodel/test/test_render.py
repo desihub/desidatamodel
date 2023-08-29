@@ -2,14 +2,19 @@
 # -*- coding: utf-8 -*-
 """Test desidatamodel.render functions
 """
-import os
-import sys
-from packaging import version
 import unittest
-from unittest.mock import patch
 
+from ..render import format_columns
 
 class TestRender(unittest.TestCase):
 
-    def test_render(self):
-        pass
+    def test_format_columns(self):
+        """Test
+        """
+        data = [('one', 'two', 'three'),
+                ('four', 'five', 'six'),
+                ('seven', 'eight', 'nine'),
+                ('ten', 'eleven', 'twelve')]
+        format_string, separator = format_columns(data)
+        self.assertEqual(format_string, "{0:5} {1:6} {2:6}")
+        self.assertEqual(separator, '===== ====== ======')

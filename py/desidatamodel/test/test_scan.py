@@ -149,11 +149,3 @@ class TestScan(DataModelTestCase):
         self.assertEqual(options.number, 1000)
         self.assertEqual(options.model, 'DESI_SPECTRO_DATA/NIGHT/EXPID/desi-EXPID.rst')
         self.assertListEqual(options.directory, ['/desi/spectro/data'])
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

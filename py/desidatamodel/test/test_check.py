@@ -694,11 +694,3 @@ class TestCheck(DataModelTestCase):
         self.assertTrue(options.files)
         self.assertEqual(options.section, 'DESI_SPECTRO_DATA')
         self.assertEqual(options.directory, '/desi/spectro/data/desi-00000000.fits.fz')
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
