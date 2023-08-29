@@ -29,9 +29,9 @@ class TestCheck(DataModelTestCase):
         """Test initialization of the DataModel object.
         """
         modelfile = self.test_files / 'fits_file.rst'
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             model = DataModel(None, self.test_files)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             model = DataModel(modelfile, None)
 
     def test_scan_model(self):

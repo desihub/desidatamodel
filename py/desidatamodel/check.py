@@ -33,7 +33,7 @@ class DataModel(DataModelUnit):
 
     Raises
     ------
-    ValueError
+    TypeError
         If `filename` or `section` have an unexpected type.
     """
     # Marker for optional keywords and columns.
@@ -97,13 +97,13 @@ class DataModel(DataModelUnit):
             self.section = str(section)
             shortname = str(filename).replace(f'{section}/', '')
         else:
-            raise ValueError('Unexpected type for filename!')
+            raise TypeError('Unexpected type for filename!')
         if isinstance(section, str):
             self.section = section
         elif isinstance(section, Path):
             self.section = str(section)
         else:
-            raise ValueError('Unexpected type for section!')
+            raise TypeError('Unexpected type for section!')
         log.debug('Creating DataModel for %s.', shortname)
         self.title = None
         self.ref = None

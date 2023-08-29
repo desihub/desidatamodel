@@ -6,10 +6,11 @@ import unittest
 
 from ..render import format_columns
 
+
 class TestRender(unittest.TestCase):
 
     def test_format_columns(self):
-        """Test
+        """Test column formatting operations.
         """
         data = [('one', 'two', 'three'),
                 ('four', 'five', 'six'),
