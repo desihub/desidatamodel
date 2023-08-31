@@ -1,11 +1,11 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
 """
-====================
-desidatamodel.render
-====================
+=====================
+desidatamodel.columns
+=====================
 
-Render the column descriptions file.
+Render the standard column descriptions file.
 """
 import csv
 import sys

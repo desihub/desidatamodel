@@ -54,7 +54,7 @@ clean:
 	rm -rf $(BUILDDIR)/*
 
 column_descriptions.rst:
-	env PYTHONPATH=$(abspath ../py) $(PYTHON) -m desidatamodel.render > column_descriptions.rst
+	env PYTHONPATH=$(abspath ../py) $(PYTHON) -m desidatamodel.columns > column_descriptions.rst
 
 html: column_descriptions.rst
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html

@@ -8,7 +8,7 @@ desidatamodel API
 .. automodule:: desidatamodel.check
     :members:
 
-.. automodule:: desidatamodel.render
+.. automodule:: desidatamodel.columns
     :members:
 
 .. automodule:: desidatamodel.scan

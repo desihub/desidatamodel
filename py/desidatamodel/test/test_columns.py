@@ -1,13 +1,13 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
-"""Test desidatamodel.render functions
+"""Test desidatamodel.columns functions
 """
 import unittest
 
-from ..render import format_columns
+from ..columns import format_columns
 
 
-class TestRender(unittest.TestCase):
+class TestColumns(unittest.TestCase):
 
     def test_format_columns(self):
         """Test column formatting operations.
