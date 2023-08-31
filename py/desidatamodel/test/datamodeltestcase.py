@@ -7,6 +7,7 @@ import tempfile
 import unittest
 import logging
 import shutil
+import importlib.resources as ir
 from packaging import version
 
 from astropy import __version__ as astropyVersion
@@ -24,6 +25,7 @@ class DataModelTestCase(unittest.TestCase):
         cls.astropyVersion = version.parse(astropyVersion)
         cls.maxDiff = None
         cls.data_dir = tempfile.mkdtemp()
+        cls.test_files = ir.files('desidatamodel.test') / 't'
         if DM in os.environ:
             cls.old_env = os.environ[DM]
         else:

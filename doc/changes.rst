@@ -5,9 +5,11 @@ desidatamodel Change Log
 23.6 (unreleased)
 -----------------
 
+* Add note about equivalent width values in ``fuji`` and ``guadalupe`` (PR `#181`_).
 * Add note about units in FITS files (PR `#178`_).
 
 .. _`#178`: https://github.com/desihub/desidatamodel/pull/178
+.. _`#181`: https://github.com/desihub/desidatamodel/pull/181
 
 23.1 (2023-06-12)
 -----------------

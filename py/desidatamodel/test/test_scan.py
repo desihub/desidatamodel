@@ -23,7 +23,7 @@ class TestScan(DataModelTestCase):
         """Test initialization of UnionStub.
         """
 
-        model = DataModel(resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst'),
+        model = DataModel(self.test_files / 'fits_file_optional_columns.rst',
                           os.path.join(os.environ[DM], 'doc', 'examples'))
         foo = model.get_regexp('/desi/spectro/data')
         union = UnionStub(model, 10, error=False)
@@ -36,7 +36,7 @@ class TestScan(DataModelTestCase):
     def test_UnionStub_mark_optional(self):
         """Test final output of UnionStub.
         """
-        model = DataModel(resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst'),
+        model = DataModel(self.test_files / 'fits_file_optional_columns.rst',
                           os.path.join(os.environ[DM], 'doc', 'examples'))
         foo = model.get_regexp('/desi/spectro/data')
         union = UnionStub(model, 10, error=False)
@@ -60,9 +60,9 @@ class TestScan(DataModelTestCase):
     def test_UnionStub_update(self):
         """Test updates to the union model.
         """
-        stubs = [Stub(resource_filename('desidatamodel.test', 't/fits_file.fits')),
-                 Stub(resource_filename('desidatamodel.test', 't/fits_file.fits')),
-                 Stub(resource_filename('desidatamodel.test', 't/fits_file.fits'))]
+        stubs = [Stub(self.test_files / 'fits_file.fits'),
+                 Stub(self.test_files / 'fits_file.fits'),
+                 Stub(self.test_files / 'fits_file.fits')]
         stubs[0].hdumeta[0]['keywords'][2] = ('BSCALE', '1', 'int', 'No scaling.')
         stubs[0].hdumeta[1]['format'].append(('OPT1', 'int32', '', 'Comment'))
         stubs[0].hdumeta[1]['format'].append(('OPT2', 'float64', 'yr', 'Comment'))
@@ -71,7 +71,7 @@ class TestScan(DataModelTestCase):
         stubs[1].hdumeta[0]['keywords'][2] = ('BSCALE', '1', 'int', 'No scaling.')
         stubs[1].hdumeta[1]['format'].append(('OPT2', 'float64', 'yr', 'Comment'))
         stubs[2].hdumeta[0]['keywords'].append(('KEYTEST', 'example', 'str', 'Comment'))
-        model = DataModel(resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst'),
+        model = DataModel(self.test_files / 'fits_file_optional_columns.rst',
                           os.path.join(os.environ[DM], 'doc', 'examples'))
         foo = model.get_regexp('/desi/spectro/data')
         modelmeta = model.extract_metadata()
@@ -121,13 +121,13 @@ class TestScan(DataModelTestCase):
     def test_union_metadata(self, mock_update, mock_mark):
         """Test collection of stub data.
         """
-        stubs = [Stub(resource_filename('desidatamodel.test', 't/fits_file.fits')),
-                 Stub(resource_filename('desidatamodel.test', 't/fits_file.fits')),
-                 Stub(resource_filename('desidatamodel.test', 't/fits_file.fits'))]
+        stubs = [Stub(self.test_files / 'fits_file.fits'),
+                 Stub(self.test_files / 'fits_file.fits'),
+                 Stub(self.test_files / 'fits_file.fits')]
         stubs[0].hdumeta[0]['extname'] = 'primary'
         stubs[1].hdumeta[1]['extname'] = ''
         stubs[2].nhdr = 1
-        model = DataModel(resource_filename('desidatamodel.test', 't/fits_file_optional_columns.rst'),
+        model = DataModel(self.test_files / 'fits_file_optional_columns.rst',
                           os.path.join(os.environ[DM], 'doc', 'examples'))
         foo = model.get_regexp('/desi/spectro/data')
         union_metadata(model, stubs)
@@ -149,11 +149,3 @@ class TestScan(DataModelTestCase):
         self.assertEqual(options.number, 1000)
         self.assertEqual(options.model, 'DESI_SPECTRO_DATA/NIGHT/EXPID/desi-EXPID.rst')
         self.assertListEqual(options.directory, ['/desi/spectro/data'])
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

@@ -4,7 +4,7 @@
 """
 import unittest
 import csv
-from pkg_resources import resource_filename
+import importlib.resources as ir
 
 from ..update import update
 
@@ -15,7 +15,7 @@ class TestUpdate(unittest.TestCase):
         """Ensure that every column described in the CSV file at least
         has a non-empty type and description.
         """
-        coldef_file = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+        coldef_file = ir.files('desidatamodel') / 'data' / 'column_descriptions.csv'
         with open(coldef_file, newline='') as csv_columns:
             reader = csv.reader(csv_columns)
             #

@@ -9,13 +9,13 @@ Tools to update column units and descriptions in a pre-existing datamodel file.
 """
 
 import re
-import sys
+import importlib.resources as ir
 from html import escape
-from pkg_resources import resource_filename
+# from pkg_resources import resource_filename
 import argparse
 import numpy as np
 from astropy.table import Table
-from astropy.io.ascii import RST
+# from astropy.io.ascii import RST
 
 from desiutil.log import get_logger
 
@@ -128,7 +128,8 @@ def update(lines, force=False):
     """
     log = get_logger()
 
-    coldef_file = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+    # coldef_file = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+    coldef_file = ir.files('desidatamodel') / 'data' / 'column_descriptions.csv'
     coldefs = read_column_descriptions(coldef_file)
 
     output_lines = list()
@@ -216,8 +217,6 @@ def main():
     :class:`int`
         An integer suitable for passing to :func:`sys.exit`.
     """
-
-    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--infile', required=True,
                         help='Input model filename')

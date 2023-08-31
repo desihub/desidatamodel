@@ -62,6 +62,7 @@ Bitmask definitions and environment variables used by the DESI data pipelines:
    :maxdepth: 1
 
    bitmasks
+   column_descriptions
    Environment variables <envvar>
    Units in data files <units>
 

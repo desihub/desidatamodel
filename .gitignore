@@ -38,3 +38,6 @@ MANIFEST
 
 # Mac OSX
 .DS_Store
+
+# Generated files
+doc/column_descriptions.rst

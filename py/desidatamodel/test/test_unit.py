@@ -4,8 +4,6 @@
 """
 # import os
 import unittest
-# from pkg_resources import resource_filename
-# from .. import DataModelError
 from .datamodeltestcase import DataModelTestCase
 from ..unit import DataModelUnit, log
 
@@ -30,11 +28,3 @@ class TestUnit(DataModelTestCase):
             c = u.check_unit('ergs', error=True)
         self.assertEqual(str(e.exception), erg_msg)
         self.assertLog(log, -1, erg_msg)
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

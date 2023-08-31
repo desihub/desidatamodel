@@ -3,9 +3,9 @@
 """Test desidatamodel.stub functions
 """
 import os
+import importlib.resources as ir
 import unittest
 from unittest.mock import patch, call
-from pkg_resources import resource_filename
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
 from collections import OrderedDict
@@ -45,8 +45,7 @@ class TestStub(DataModelTestCase):
         #
         # Use a real file, and make sure no exceptions are raised.
         #
-        with fits.open(resource_filename('desidatamodel.test',
-                                         't/fits_file.fits')) as hdulist:
+        with fits.open(self.test_files / 'fits_file.fits') as hdulist:
             stub = Stub(hdulist)
             self.assertEqual(stub.nhdr, 2)
         #
@@ -626,8 +625,8 @@ class TestStub(DataModelTestCase):
     def test_process_file(self):
         """Full test of parsing a FITS file.
         """
-        filename = resource_filename('desidatamodel.test', 't/fits_file.fits')
-        modelfile = resource_filename('desidatamodel.test', 't/fits_file.rst')
+        filename = self.test_files / 'fits_file.fits'
+        modelfile = self.test_files / 'fits_file.rst'
         with open(modelfile) as m:
             modeldata = m.read()
         stub = Stub(filename)
@@ -643,7 +642,7 @@ class TestStub(DataModelTestCase):
         # this test mainly verifies that future edits of
         # data/column_descriptions.csv didn't break the format,
         # e.g. descriptions with spaces and commas are properly quoted
-        filename = resource_filename('desidatamodel', 'data/column_descriptions.csv')
+        filename = ir.files('desidatamodel') / 'data' / 'column_descriptions.csv'
         coldesc = read_column_descriptions(filename)
         colname = 'FLUX_R'
         self.assertIn(colname, coldesc.keys())
@@ -653,9 +652,9 @@ class TestStub(DataModelTestCase):
 
     @patch('desidatamodel.stub.log')
     def test_Stub_with_descriptions(self, mock_log):
-        descfile = resource_filename('desidatamodel.test', 't/column_descriptions.csv')
-        filename = resource_filename('desidatamodel.test', 't/fits_file.fits')
-        filename_desc = resource_filename('desidatamodel.test', 't/fits_file_desc.fits')
+        descfile = self.test_files / 'column_descriptions.csv'
+        filename = self.test_files / 'fits_file.fits'
+        filename_desc = self.test_files / 'fits_file_desc.fits'
 
         # no descriptions
         stub = Stub(filename)
@@ -682,15 +681,7 @@ class TestStub(DataModelTestCase):
                                            ])
 
         # incorrect format column description file
-        baddescfile = resource_filename('desidatamodel.test', 't/bad_column_descriptions.csv')
+        baddescfile = self.test_files / 'bad_column_descriptions.csv'
         with self.assertRaises(ValueError):
             stub = Stub(filename, description_file=baddescfile)
             lines = str(stub)
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
