@@ -9,7 +9,7 @@ Shared code for dealing with units in files and data models.
 """
 from astropy.units import Unit
 from desiutil.log import log
-from . import DataModelError
+
 
 def _validate_unit(unit, error=False):
     """Check units for consistency with FITS standard, while allowing
