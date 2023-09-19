@@ -1332,11 +1332,11 @@ FLUX_R                float32 nanomaggies        Flux in the Legacy Survey r-ban
 FLUX_Z                float32 nanomaggies        Flux in the Legacy Survey z-band (AB)
 FLUX_W1               float32 nanomaggies        WISE flux in W1 (AB)
 FLUX_W2               float32 nanomaggies        WISE flux in W2 (AB)
-FLUX_IVAR_G           float32 1/nanomaggies**2   Inverse variance of FLUX_G (AB)
-FLUX_IVAR_R           float32 1/nanomaggies**2   Inverse variance of FLUX_R (AB)
-FLUX_IVAR_Z           float32 1/nanomaggies**2   Inverse variance of FLUX_Z (AB)
-FLUX_IVAR_W1          float32 1/nanomaggies**2   Inverse variance of FLUX_W1 (AB)
-FLUX_IVAR_W2          float32 1/nanomaggies**2   Inverse variance of FLUX_W2 (AB)
+FLUX_IVAR_G           float32 nanomaggies**-2    Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R           float32 nanomaggies**-2    Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z           float32 nanomaggies**-2    Inverse variance of FLUX_Z (AB)
+FLUX_IVAR_W1          float32 nanomaggies**-2    Inverse variance of FLUX_W1 (AB)
+FLUX_IVAR_W2          float32 nanomaggies**-2    Inverse variance of FLUX_W2 (AB)
 FIBERFLUX_G           float32 nanomaggies        Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_R           float32 nanomaggies        Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_Z           float32 nanomaggies        Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
