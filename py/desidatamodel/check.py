@@ -507,7 +507,7 @@ class DataModel(object):
                     s = Stub(p, error=error)
                 except OSError as err:
                     log.warning("Error opening %s, skipping to next candidate.", p)
-                    log.warning("Message was: '%s'.", err)
+                    log.warning("Message was: '%s'.", err.args[0])
                 else:
                     log.debug("(s.nhdr = %s) == (len(modelmeta.keys()) = %s)",
                               s.nhdr, len(modelmeta.keys()))
