@@ -2,9 +2,9 @@
 Alltiles_tilelocs
 ========================
 
-:Summary: Information on the tiles and locations each target appears on. 
+:Summary: Information on the tiles and locations each target appears on.
 :Naming Convention: ``Alltiles_{PROGRAM}_tilelocs.dat.fits``, where ``{PROGRAM}`` denotes the observing program, either ``dark`` or ``bright``.
-:Regex: ``Alltiles_[a-z]{4,6}_tilelocs.dat.fits`` 
+:Regex: ``Alltiles_[a-z]{4,6}_tilelocs.dat.fits``
 :File Type: FITS, 544 MB
 
 Contents
@@ -35,7 +35,7 @@ HDU1
 
 EXTNAME = TLINFO
 
-Information on the tiles and locations each target appears on 
+Information on the tiles and locations each target appears on
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,8 +62,8 @@ Name       Type      Units Description
 ========== ========= ===== ========================================================================
 TARGETID   int64           Unique DESI target ID
 NTILE      int64           Number of tiles target was available on
-TILES      char[*]         TILEIDs of those tile, in string form separated by &#x27;-&#x27;
-TILELOCIDS char[*]         TILELOCIDs that the target was available for, separated by &#x27;-&#x27;
+TILES      char[*]         TILEIDs of those tile, in string form separated by '-'
+TILELOCIDS char[*]         TILELOCIDs that the target was available for, separated by '-'
 ========== ========= ===== ========================================================================
 
 

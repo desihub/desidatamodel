@@ -477,7 +477,7 @@ MW_TRANSMISSION_G float32                     Milky Way dust transmission in LS 
 MW_TRANSMISSION_R float32                     Milky Way dust transmission in LS r-band
 MW_TRANSMISSION_Z float32                     Milky Way dust transmission in LS z-band
 EBV               float32 mag                 Galactic extinction E(B-V) reddening from SFD98
-PHOTSYS           char[1]                     &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS           char[1]                     'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 OBSCONDITIONS     int32                       Bitmask of allowed observing conditions
 NUMOBS_INIT       int64                       Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 PRIORITY_INIT     int64                       Target initial priority from target selection bitmasks and OBSCONDITIONS

@@ -202,7 +202,7 @@ GAIA_PHOT_G_MEAN_MAG       float32 mag          Gaia G band magnitude
 GAIA_PHOT_BP_MEAN_MAG      float32 mag          Gaia BP band magnitude
 GAIA_PHOT_RP_MEAN_MAG      float32 mag          Gaia RP band magnitude
 PARALLAX                   float32 mas          Reference catalog parallax
-PHOTSYS                    char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS                    char[1]              'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT              int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT                int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 SV1_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV1

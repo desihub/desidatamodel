@@ -64,7 +64,7 @@ RA                 float64  deg        Target Right Ascension
 DEC                float64  deg        Target declination
 TARGETID           int64               Unique DESI target ID
 NTILE              int64               Number of tiles target was available on
-TILES              char[*]             TILEIDs of those tile, in string form separated by &#x27;-&#x27;
+TILES              char[*]             TILEIDs of those tile, in string form separated by '-'
 Z                  float64             Redshift measured by Redrock
 COMP_TILE          float64             Assignment completeness for all targets of this type with the same value for TILES
 ROSETTE_NUMBER     int32               Rosette number ID [0-19]

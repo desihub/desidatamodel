@@ -5,7 +5,7 @@ Clustering LSS catalogs for randoms
 :Summary: For each target type, LSS catalogs for the randoms, ready to be used for clustering measurements, are provided.
 :Naming Convention: ``{TARGET}_{PHOTSYS}_{RANN}_clustering.ran.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG``, ``ELGnotqso``, ``ELG_HIP``, ``ELG_HIPnotqso``, ``LRG``, ``LRG_main``,
                     for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{PHOTSYS}`` is the photometric region ``N`` or ``S`` and ``{RANN}`` is the number for the random file (18 total, numbered 0 through 17). Each are random with respect to each other.
-:Regex: ``[a-zA-Z_]+\_[NS]_[0-9]+\_clustering.ran.fits`` 
+:Regex: ``[a-zA-Z_]+\_[NS]_[0-9]+\_clustering.ran.fits``
 :File Type: FITS, 193 MB
 
 Contents
@@ -63,7 +63,7 @@ RA                 float64  deg        Target Right Ascension
 DEC                float64  deg        Target declination
 TARGETID           int64               Unique DESI target ID
 NTILE              int64               Number of tiles target was available on
-TILES              char[*]             TILEIDs of those tile, in string form separated by &#x27;-&#x27;
+TILES              char[*]             TILEIDs of those tile, in string form separated by '-'
 Z                  float64             Redshift measured by Redrock
 COMP_TILE          float64             Assignment completeness for all targets of this type with the same value for TILES
 ROSETTE_NUMBER     int32               Rosette number ID [0-19]

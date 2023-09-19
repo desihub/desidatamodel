@@ -4,7 +4,7 @@ datcomb_tarspecwdup_Alltiles
 
 :Summary: Match of targets (with duplicates after FA) with spectroscopic data from the specprod (fuji/guadalupe for SV3/DA02).
 :Naming Convention: ``datcomb_{PROGRAM}_tarspecwdup_Alltiles.fits``, where ``{PROGRAM}`` denotes the observing program, either ``dark`` or ``bright``.
-:Regex: ``datcomb_[a-z]{4,6}_tarspecwdup_Alltiles.fits`` 
+:Regex: ``datcomb_[a-z]{4,6}_tarspecwdup_Alltiles.fits``
 :File Type: FITS, 2 GB
 
 Contents
@@ -71,7 +71,7 @@ NUMOBS_INIT [1]_           int64                 Initial number of observations 
 NUMOBS_MORE [1]_           int64                 Number of additional observations needed
 NUMOBS [1]_                int64                 Number of spectroscopic observations (on this specific, single tile)
 ZWARN_MTL                  int64                 The ZWARN from the zmtl file (contains extra bits)
-ZTILEID [1]_               int32                 ID of tile that most recently updated target&#x27;s state
+ZTILEID [1]_               int32                 ID of tile that most recently updated target's state
 TARGET_STATE               char[30]              Combination of target class and its current observational state
 TIMESTAMP                  char[25]    s         UTC/ISO time at which the target state was updated
 VERSION [1]_               char[14]              Tag of desitarget used to create the target catalog

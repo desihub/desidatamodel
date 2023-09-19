@@ -142,7 +142,7 @@ Required Header Keywords
     PSFVER        3                                                           str
     MJD           0                                                           int   MJD of arc lamp exposure
     PLATEID       0                                                           int   plate ID of arc lamp exposure
-    CAMERA        &#x27;r9      &#x27;                                        str   camera ID
+    CAMERA        r9                                                          str   camera ID
     ARCEXP        0                                                           int   ID of arc lamp exposure used to fit PSF
     NPIX_X        4114                                                        int   number of columns in input CCD image
     NPIX_Y        4128                                                        int   number of rows in input CCD image
