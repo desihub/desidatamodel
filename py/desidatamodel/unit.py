@@ -56,13 +56,3 @@ try:
     from desiutil.annotate import validate_unit
 except ImportError:
     validate_unit = _validate_unit
-
-
-class DataModelUnit(object):
-    """Allow unit-handling code to be shared with several classes.
-    """
-
-    def check_unit(self, unit, error=False):
-        return validate_unit(unit, error=error)
-
-    check_unit.__doc__ = validate_unit.__doc__

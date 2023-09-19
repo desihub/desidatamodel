@@ -1,4 +1,4 @@
 astropy
 sphinx-toolbox
 jinja2
-git+https://github.com/desihub/desiutil.git@3.3.0#egg=desiutil
+git+https://github.com/desihub/desiutil.git@3.3.1#egg=desiutil

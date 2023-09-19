@@ -5,7 +5,7 @@
 # import os
 import unittest
 from .datamodeltestcase import DataModelTestCase
-from ..unit import DataModelUnit, log
+from ..unit import validate_unit, log
 
 
 class TestUnit(DataModelTestCase):
@@ -16,15 +16,14 @@ class TestUnit(DataModelTestCase):
         """Test method to validate units.
         """
         erg_msg = self.badUnitMessage('ergs')
-        u = DataModelUnit()
-        c = u.check_unit('erg')
+        c = validate_unit('erg')
         self.assertIsNone(c)
-        c = u.check_unit('ergs', error=False)
+        c = validate_unit('ergs', error=False)
         self.assertIsNone(c)
-        c = u.check_unit('nanomaggies', error=True)
+        c = validate_unit('nanomaggies', error=True)
         self.assertEqual(c, "'nanomaggies'")
         self.assertLog(log, -1, erg_msg)
         with self.assertRaises(ValueError) as e:
-            c = u.check_unit('ergs', error=True)
+            c = validate_unit('ergs', error=True)
         self.assertEqual(str(e.exception), erg_msg)
         self.assertLog(log, -1, erg_msg)
