@@ -3,7 +3,6 @@
 """Test data model files for validity.
 """
 import os
-import unittest
 
 from .datamodeltestcase import DataModelTestCase
 
