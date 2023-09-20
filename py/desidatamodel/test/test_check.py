@@ -5,15 +5,11 @@
 import os
 from packaging import version
 from unittest.mock import patch
-
-skip_unit_warning = False
 try:
     from desiutil.annotate import FITSUnitWarning
 except ImportError:
-    skip_unit_warning = True
-
+    from ..unit import FITSUnitWarning
 from .datamodeltestcase import DataModelTestCase, DM
-
 from .. import DataModelError
 from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
                      validate_prototypes, log, _options)

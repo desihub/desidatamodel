@@ -7,12 +7,10 @@ from unittest.mock import patch, call
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
 from collections import OrderedDict
-
-skip_unit_warning = False
 try:
     from desiutil.annotate import FITSUnitWarning
 except ImportError:
-    skip_unit_warning = True
+    from ..unit import FITSUnitWarning
 from .datamodeltestcase import DataModelTestCase
 from .. import DataModelError
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
@@ -326,8 +324,9 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist, error=False)
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
-        self.assertEqual(stub.hdumeta[1]['format'][2], ('luminosity', 'float32', 'ergs', 'This is a TCOMM comment on luminosity.'))
-        # self.assertLog(log, 1, erg_msg)
+        with self.assertWarns(FITSUnitWarning) as w:
+            self.assertEqual(stub.hdumeta[1]['format'][2], ('luminosity', 'float32', 'ergs', 'This is a TCOMM comment on luminosity.'))
+        self.assertEqual(str(w.warning), erg_msg)
         stub = Stub(hdulist, error=True)
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'

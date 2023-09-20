@@ -3,15 +3,12 @@
 """Test desidatamodel.scan functions
 """
 import os
-import unittest
 from unittest.mock import patch, call
-from pkg_resources import resource_filename
-from astropy.io import fits
-from astropy.io.fits.card import Undefined
-from collections import OrderedDict
+# from astropy.io import fits
+# from astropy.io.fits.card import Undefined
+# from collections import OrderedDict
 
 from .datamodeltestcase import DataModelTestCase, DM
-from .. import DataModelError
 from ..check import DataModel
 from ..stub import Stub
 from ..scan import _options, collect_files, union_metadata, UnionStub, log

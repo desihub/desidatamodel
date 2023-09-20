@@ -7,8 +7,14 @@ desidatamodel.unit
 
 Shared code for dealing with units in files and data models.
 """
+from warnings import warn
 from astropy.units import Unit
-from desiutil.log import log
+
+
+class _FITSUnitWarning(UserWarning):
+    """Warnings related to invalid FITS units.
+    """
+    pass
 
 
 def _validate_unit(unit, error=False):
@@ -45,14 +51,14 @@ def _validate_unit(unit, error=False):
             return bad_unit
         else:
             if error:
-                log.critical(str(e))
                 raise
             else:
-                log.warning(str(e))
+                warn(str(e), FITSUnitWarning)
     return None
 
 
 try:
-    from desiutil.annotate import validate_unit
+    from desiutil.annotate import validate_unit, FITSUnitWarning
 except ImportError:
     validate_unit = _validate_unit
+    FITSUnitWarning = _FITSUnitWarning
