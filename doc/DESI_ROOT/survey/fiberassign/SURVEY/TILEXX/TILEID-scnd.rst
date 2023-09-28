@@ -91,7 +91,7 @@ NUMOBS_MORE           int64              Number of additional observations neede
 NUMOBS                int64              Number of spectroscopic observations (on this specific, single tile)
 Z                     float64            Redshift measured by Redrock
 ZWARN                 int64              Redshift warning bitmask from Redrock
-ZTILEID               int32              ID of tile that most recently updated target&#x27;s state
+ZTILEID               int32              ID of tile that most recently updated target's state
 Z_QN                  float64            Redshift measured by QuasarNET using line with highest confidence
 IS_QSO_QN             int16              Spectroscopic classification from QuasarNET (1 for a quasar)
 DELTACHI2             float64            chi2 difference between first- and second-best redrock template fits

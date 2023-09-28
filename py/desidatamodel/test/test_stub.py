@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 """Test desidatamodel.stub functions
 """
-import os
 import importlib.resources as ir
-import unittest
 from unittest.mock import patch, call
 from astropy.io import fits
 from astropy.io.fits.card import Undefined
 from collections import OrderedDict
-
+try:
+    from desiutil.annotate import FITSUnitWarning
+except ImportError:
+    from ..unit import FITSUnitWarning
 from .datamodeltestcase import DataModelTestCase
 from .. import DataModelError
 from ..stub import (Stub, extrakey, file_size, fits_column_format,
@@ -323,8 +324,9 @@ class TestStub(DataModelTestCase):
         stub = Stub(hdulist, error=False)
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
-        self.assertEqual(stub.hdumeta[1]['format'][2], ('luminosity', 'float32', 'ergs', 'This is a TCOMM comment on luminosity.'))
-        # self.assertLog(log, 1, erg_msg)
+        with self.assertWarns(FITSUnitWarning) as w:
+            self.assertEqual(stub.hdumeta[1]['format'][2], ('luminosity', 'float32', 'ergs', 'This is a TCOMM comment on luminosity.'))
+        self.assertEqual(str(w.warning), erg_msg)
         stub = Stub(hdulist, error=True)
         stub.filename = 'fits_file.fits'
         stub._filesize = '10 MB'
@@ -381,9 +383,10 @@ class TestStub(DataModelTestCase):
         with self.assertRaises(ValueError) as e:
             i = stub.image_format(hdr)
         self.assertEqual(str(e.exception), erg_msg)
-        stub = Stub([sim_hdu(hdr)], error=False)
-        i = stub.image_format(hdr)
-        self.assertLog(log, 1, erg_msg)
+        with self.assertWarns(FITSUnitWarning) as w:
+            stub = Stub([sim_hdu(hdr)], error=False)
+            i = stub.image_format(hdr)
+        self.assertEqual(str(w.warning), erg_msg)
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
         hdr = sim_header()
         hdr['SIMPLE'] = True
@@ -394,7 +397,7 @@ class TestStub(DataModelTestCase):
         hdr['BUNIT'] = '10**-17 erg/(cm**2*s*Angstrom)'
         stub = Stub([sim_hdu(hdr)], error=False)
         i = stub.image_format(hdr)
-        self.assertLog(log, 4, "BUNIT   = '10**-17 erg/(cm**2*s*Angstrom)'")
+        self.assertLog(log, 2, "BUNIT   = '10**-17 erg/(cm**2*s*Angstrom)'")
         self.assertEqual(i, 'Data: FITS image [BITPIX=128, 1000x1000]')
         #
         # Check compressed HDU

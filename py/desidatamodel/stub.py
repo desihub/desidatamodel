@@ -20,7 +20,7 @@ from astropy.table import Table
 from desiutil.log import log, DEBUG
 
 from . import DataModelError
-from .unit import DataModelUnit
+from .unit import validate_unit
 #
 # This is a template.
 #
@@ -56,7 +56,7 @@ Notes and Examples
 """
 
 
-class Stub(DataModelUnit):
+class Stub(object):
     """This object contains metadata about a file and methods to print that
     metadata.
 
@@ -280,7 +280,7 @@ class Stub(DataModelUnit):
             tunit = 'TUNIT'+jj
             if tunit in hdr:
                 units = hdr[tunit].strip()
-                bad_unit = self.check_unit(units, error=error)
+                bad_unit = validate_unit(units, error=error)
                 if bad_unit:
                     log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                               bad_unit, j, hdu, self.filename)
@@ -305,7 +305,7 @@ class Stub(DataModelUnit):
                     log.warning('Overriding header units "%s" with units "%s" from %s',
                                 units, desc_units, self.description_file)
 
-                    bad_unit = self.check_unit(desc_units, error=error)
+                    bad_unit = validate_unit(desc_units, error=error)
                     if bad_unit:
                         log.debug('Non-standard (but acceptable) units "%s" detected for column %s in %s',
                                   bad_unit, name, self.description_file)
@@ -525,7 +525,7 @@ class Stub(DataModelUnit):
                 datatype = 'BITPIX={}'.format(hdr['BITPIX'])
         if 'BUNIT' in hdr:
             log.debug("BUNIT   = '%s'", hdr['BUNIT'])
-            bad_unit = self.check_unit(hdr['BUNIT'], error=self.error)
+            bad_unit = validate_unit(hdr['BUNIT'], error=self.error)
             if bad_unit:
                 log.debug("Non-standard (but acceptable) unit %s detected in %s.",
                           bad_unit, self.filename)

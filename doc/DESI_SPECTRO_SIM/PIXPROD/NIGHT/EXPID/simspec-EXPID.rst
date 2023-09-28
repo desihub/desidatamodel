@@ -458,11 +458,11 @@ FLUX_R            float32 nanomaggy           Flux in the Legacy Survey r-band (
 FLUX_Z            float32 nanomaggy           Flux in the Legacy Survey z-band (AB)
 FLUX_W1           float32 nanomaggy           WISE flux in W1 (AB)
 FLUX_W2           float32 nanomaggy           WISE flux in W2 (AB)
-FLUX_IVAR_G       float32 1/nanomaggies**2    Inverse variance of FLUX_G (AB)
-FLUX_IVAR_R       float32 1/nanomaggies**2    Inverse variance of FLUX_R (AB)
-FLUX_IVAR_Z       float32 1/nanomaggies**2    Inverse variance of FLUX_Z (AB)
-FLUX_IVAR_W1      float32 1/nanomaggies**2    Inverse variance of FLUX_W1 (AB)
-FLUX_IVAR_W2      float32 1/nanomaggies**2    Inverse variance of FLUX_W2 (AB)
+FLUX_IVAR_G       float32 nanomaggies**-2     Inverse variance of FLUX_G (AB)
+FLUX_IVAR_R       float32 nanomaggies**-2     Inverse variance of FLUX_R (AB)
+FLUX_IVAR_Z       float32 nanomaggies**-2     Inverse variance of FLUX_Z (AB)
+FLUX_IVAR_W1      float32 nanomaggies**-2     Inverse variance of FLUX_W1 (AB)
+FLUX_IVAR_W2      float32 nanomaggies**-2     Inverse variance of FLUX_W2 (AB)
 FIBERFLUX_G       float32 nanomaggies         Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_R       float32 nanomaggies         Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_Z       float32 nanomaggies         Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
@@ -477,7 +477,7 @@ MW_TRANSMISSION_G float32                     Milky Way dust transmission in LS 
 MW_TRANSMISSION_R float32                     Milky Way dust transmission in LS r-band
 MW_TRANSMISSION_Z float32                     Milky Way dust transmission in LS z-band
 EBV               float32 mag                 Galactic extinction E(B-V) reddening from SFD98
-PHOTSYS           char[1]                     &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS           char[1]                     'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 OBSCONDITIONS     int32                       Bitmask of allowed observing conditions
 NUMOBS_INIT       int64                       Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 PRIORITY_INIT     int64                       Target initial priority from target selection bitmasks and OBSCONDITIONS

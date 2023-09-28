@@ -18,10 +18,10 @@ from desiutil.log import log, DEBUG
 
 from . import DataModelError
 from .stub import Stub
-from .unit import DataModelUnit
+from .unit import validate_unit
 
 
-class DataModel(DataModelUnit):
+class DataModel(object):
     """Simple object to store data model data and metadata.
 
     Parameters
@@ -397,7 +397,7 @@ class DataModel(DataModelUnit):
                         else:
                             log.warning(m, mk[0], k, metafile)
                     if mk[2]:
-                        bad_unit = self.check_unit(mk[2], error=error)
+                        bad_unit = validate_unit(mk[2], error=error)
                         if bad_unit:
                             log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                                       bad_unit, mk[0], k, metafile)
@@ -421,7 +421,7 @@ class DataModel(DataModelUnit):
                         else:
                             log.warning(m, mk[0], k, metafile)
                     if mk[0] == 'BUNIT':
-                        bad_unit = self.check_unit(mk[1], error=error)
+                        bad_unit = validate_unit(mk[1], error=error)
                         if bad_unit:
                             log.debug("Non-standard (but acceptable) unit %s detected for column %s in HDU %d of %s.",
                                       bad_unit, mk[0], k, metafile)
@@ -507,7 +507,7 @@ class DataModel(DataModelUnit):
                     s = Stub(p, error=error)
                 except OSError as err:
                     log.warning("Error opening %s, skipping to next candidate.", p)
-                    log.warning("Message was: '%s'.", err)
+                    log.warning("Message was: '%s'.", err.args[0])
                 else:
                     log.debug("(s.nhdr = %s) == (len(modelmeta.keys()) = %s)",
                               s.nhdr, len(modelmeta.keys()))

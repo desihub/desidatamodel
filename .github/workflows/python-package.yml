@@ -19,15 +19,15 @@ jobs:
                 os: [ubuntu-latest]
                 python-version: ['3.9', '3.10']  #, '3.11'] possible conflicts between numpy & astropy on 3.11.
                 astropy-version: ['<5.1', '<5.3', '<6.0']
-                desiutil-version: ['3.3.0']
+                desiutil-version: ['3.3.1', 'main']
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                 fetch-depth: 0
             - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v4
               with:
                 python-version: ${{ matrix.python-version }}
             - name: Install Python dependencies
@@ -52,11 +52,11 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                 fetch-depth: 0
             - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v4
               with:
                 python-version: ${{ matrix.python-version }}
             - name: Install Python dependencies
@@ -86,11 +86,11 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                 fetch-depth: 0
             - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v4
               with:
                 python-version: ${{ matrix.python-version }}
             - name: Install Python dependencies
@@ -116,11 +116,11 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                 fetch-depth: 0
             - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v4
               with:
                 python-version: ${{ matrix.python-version }}
             - name: Install Python dependencies
@@ -144,11 +144,11 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
               with:
                 fetch-depth: 0
             - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v2
+              uses: actions/setup-python@v4
               with:
                 python-version: ${{ matrix.python-version }}
             - name: Install Python dependencies

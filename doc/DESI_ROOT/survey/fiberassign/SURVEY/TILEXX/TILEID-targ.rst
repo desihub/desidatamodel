@@ -91,13 +91,13 @@ MASKBITS              int16                 Bitwise mask from the imaging indica
 SHAPE_R               float32  arcsec       Half-light radius of galaxy model (&gt;0)
 SHAPE_E1              float32               Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2              float32               Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
-SERSIC                float32               Power-law index for the Sersic profile model (MORPHTYPE=&#x27;SER&#x27;)
+SERSIC                float32               Power-law index for the Sersic profile model (MORPHTYPE='SER')
 REF_ID                int64                 Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2
-REF_CAT               char[2]               Reference catalog source for star: &#x27;T2&#x27; for Tycho-2, &#x27;G2&#x27; for Gaia DR2, &#x27;L2&#x27; for the SGA, empty otherwise
+REF_CAT               char[2]               Reference catalog source for star: 'T2' for Tycho-2, 'G2' for Gaia DR2, 'L2' for the SGA, empty otherwise
 GAIA_PHOT_G_MEAN_MAG  float32  mag          Gaia G band magnitude
 GAIA_PHOT_BP_MEAN_MAG float32  mag          Gaia BP band magnitude
 GAIA_PHOT_RP_MEAN_MAG float32  mag          Gaia RP band magnitude
-PHOTSYS               char[1]               &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS               char[1]               'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 TARGETID              int64                 Unique DESI target ID
 RA                    float64  deg          Barycentric Right Ascension in ICRS
 DEC                   float64  deg          Barycentric declination in ICRS
@@ -117,7 +117,7 @@ NUMOBS_MORE           int64                 Number of additional observations ne
 NUMOBS                int64                 Number of spectroscopic observations (on this specific, single tile)
 Z                     float64               Redshift measured by Redrock
 ZWARN                 int64                 Redshift warning bitmask from Redrock
-ZTILEID               int32                 ID of tile that most recently updated target&#x27;s state
+ZTILEID               int32                 ID of tile that most recently updated target's state
 Z_QN                  float64               Redshift measured by QuasarNET using line with highest confidence
 IS_QSO_QN             int16                 Spectroscopic classification from QuasarNET (1 for a quasar)
 DELTACHI2             float64               chi2 difference between first- and second-best redrock template fits

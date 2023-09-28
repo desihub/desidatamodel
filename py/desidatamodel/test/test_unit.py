@@ -2,29 +2,42 @@
 # -*- coding: utf-8 -*-
 """Test desidatamodel.unit functions
 """
-# import os
-import unittest
 from .datamodeltestcase import DataModelTestCase
-from ..unit import DataModelUnit, log
+from ..unit import validate_unit, _validate_unit, FITSUnitWarning
 
 
 class TestUnit(DataModelTestCase):
     """Test desidatamodel.unit functions
     """
 
-    def test_check_model(self):
+    def test_validate_unit(self):
         """Test method to validate units.
         """
         erg_msg = self.badUnitMessage('ergs')
-        u = DataModelUnit()
-        c = u.check_unit('erg')
+        c = validate_unit('erg')
         self.assertIsNone(c)
-        c = u.check_unit('ergs', error=False)
+        with self.assertWarns(FITSUnitWarning) as w:
+            c = validate_unit('ergs', error=False)
+        self.assertEqual(str(w.warning), erg_msg)
         self.assertIsNone(c)
-        c = u.check_unit('nanomaggies', error=True)
+        c = validate_unit('nanomaggies', error=True)
         self.assertEqual(c, "'nanomaggies'")
-        self.assertLog(log, -1, erg_msg)
         with self.assertRaises(ValueError) as e:
-            c = u.check_unit('ergs', error=True)
+            c = validate_unit('ergs', error=True)
         self.assertEqual(str(e.exception), erg_msg)
-        self.assertLog(log, -1, erg_msg)
+
+    def test_legacy_validate_unit(self):
+        """Test old method to validate units.
+        """
+        erg_msg = self.badUnitMessage('ergs')
+        c = _validate_unit('erg')
+        self.assertIsNone(c)
+        with self.assertWarns(FITSUnitWarning) as w:
+            c = _validate_unit('ergs', error=False)
+        self.assertEqual(str(w.warning), erg_msg)
+        self.assertIsNone(c)
+        c = _validate_unit('nanomaggies', error=True)
+        self.assertEqual(c, "'nanomaggies'")
+        with self.assertRaises(ValueError) as e:
+            c = _validate_unit('ergs', error=True)
+        self.assertEqual(str(e.exception), erg_msg)

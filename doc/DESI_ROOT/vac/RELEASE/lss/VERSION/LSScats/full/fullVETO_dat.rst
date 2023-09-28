@@ -158,10 +158,10 @@ WISEMASK_W1                binary                   Bitwise mask for WISE W1 dat
 WISEMASK_W2                binary                   Bitwise mask for WISE W2 data
 MASKBITS                   int16                    Bitwise mask from the imaging indicating potential issue or blending
 SHAPE_R                    float32     arcsec       Half-light radius of galaxy model (&gt;0)
-PHOTSYS                    char[1]                  &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS                    char[1]                  'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 NTILE                      int64                    Number of tiles target was available on
-TILES                      char[51]                 TILEIDs of those tile, in string form separated by &#x27;-&#x27;
-TILELOCIDS                 char[151]                TILELOCIDs that the target was available for, separated by &#x27;-&#x27;
+TILES                      char[51]                 TILEIDs of those tile, in string form separated by '-'
+TILELOCIDS                 char[151]                TILELOCIDs that the target was available for, separated by '-'
 LOCATION_ASSIGNED          logical                  True/False for assigned/unassigned for the target in question
 TILELOCID_ASSIGNED         int64                    0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 GOODTSNR                   logical                  True/False whether the TSNR_&lt;class&gt; value used was above the minimum threshold for the given target class

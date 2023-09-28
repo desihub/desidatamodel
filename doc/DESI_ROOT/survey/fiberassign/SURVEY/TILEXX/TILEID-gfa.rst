@@ -82,7 +82,7 @@ FLUX_IVAR_G                       float32 nanomaggy^-2 Inverse variance of FLUX_
 FLUX_IVAR_R                       float32 nanomaggy^-2 Inverse variance of FLUX_R (AB)
 FLUX_IVAR_Z                       float32 nanomaggy^-2 Inverse variance of FLUX_Z (AB)
 REF_ID                            int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2
-REF_CAT                           char[2]              Reference catalog source for star: &#x27;T2&#x27; for Tycho-2, &#x27;G2&#x27; for Gaia DR2, &#x27;L2&#x27; for the SGA, empty otherwise
+REF_CAT                           char[2]              Reference catalog source for star: 'T2' for Tycho-2, 'G2' for Gaia DR2, 'L2' for the SGA, empty otherwise
 REF_EPOCH                         float32 yr           Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
 PARALLAX                          float32 mas          Reference catalog parallax
 PARALLAX_IVAR                     float32 mas^-2       Inverse variance of PARALLAX

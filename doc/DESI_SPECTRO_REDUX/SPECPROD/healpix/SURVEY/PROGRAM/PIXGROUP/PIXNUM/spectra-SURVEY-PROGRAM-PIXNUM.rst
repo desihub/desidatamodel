@@ -188,7 +188,7 @@ SERSIC                float32              Power-law index for the Sersic profil
 SHAPE_R               float32 arcsec       Half-light radius of galaxy model (&gt;0)
 SHAPE_E1              float32              Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2              float32              Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
-PHOTSYS               char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS               char[1]              'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT         int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT           int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 SV1_DESI_TARGET [1]_  int64                DESI (dark time program) target selection bitmask for SV1

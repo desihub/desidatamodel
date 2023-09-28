@@ -994,17 +994,17 @@ FIBERTOTFLUX_G        float32 nanomaggy    Predicted g-band flux within a fiber 
 FIBERTOTFLUX_R        float32 nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_Z        float32 nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 MASKBITS              int16                Bitwise mask from the imaging indicating potential issue or blending
-SERSIC                float32              Power-law index for the Sersic profile model (MORPHTYPE=&#x27;SER&#x27;)
+SERSIC                float32              Power-law index for the Sersic profile model (MORPHTYPE='SER')
 SHAPE_R               float32 arcsec       Half-light radius of galaxy model (&gt;0)
 SHAPE_E1              float32              Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2              float32              Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
 REF_ID                int64                Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2
-REF_CAT               char[2]              Reference catalog source for star: &#x27;T2&#x27; for Tycho-2, &#x27;G2&#x27; for Gaia DR2, &#x27;L2&#x27; for the SGA, empty otherwise
+REF_CAT               char[2]              Reference catalog source for star: 'T2' for Tycho-2, 'G2' for Gaia DR2, 'L2' for the SGA, empty otherwise
 GAIA_PHOT_G_MEAN_MAG  float32 mag          Gaia G band magnitude
 GAIA_PHOT_BP_MEAN_MAG float32 mag          Gaia BP band magnitude
 GAIA_PHOT_RP_MEAN_MAG float32 mag          Gaia RP band magnitude
 PARALLAX              float32 mas          Reference catalog parallax
-PHOTSYS               char[1]              &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS               char[1]              'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT         int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT           int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 DESI_TARGET           int64                DESI (dark time program) target selection bitmask

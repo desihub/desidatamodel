@@ -3,13 +3,13 @@
 """Test desidatamodel.check functions
 """
 import os
-import sys
 from packaging import version
-import unittest
 from unittest.mock import patch
-
+try:
+    from desiutil.annotate import FITSUnitWarning
+except ImportError:
+    from ..unit import FITSUnitWarning
 from .datamodeltestcase import DataModelTestCase, DM
-
 from .. import DataModelError
 from ..check import (DataModel, collect_files, files_to_regexp, scan_model,
                      validate_prototypes, log, _options)
@@ -310,9 +310,10 @@ class TestCheck(DataModelTestCase):
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), erg_msg)
         model.hdumeta = None
-        meta = model.extract_metadata(error=False)
+        with self.assertWarns(FITSUnitWarning) as w:
+            meta = model.extract_metadata(error=False)
+        self.assertEqual(str(w.warning), erg_msg)
         self.assertLog(log, -1, "HDU 0 in {0} should have a more meaningful EXTNAME than 'PRIMARY'.".format(modelfile))
-        self.assertLog(log, -2, erg_msg)
 
     def test_extract_metadata_missing_keyword_unit(self):
         """Test reading metadata with missing units for header keywords.
@@ -347,8 +348,9 @@ class TestCheck(DataModelTestCase):
             meta = model.extract_metadata(error=True)
         self.assertEqual(str(e.exception), erg_msg)
         model.hdumeta = None
-        meta = model.extract_metadata(error=False)
-        self.assertLog(log, -1, erg_msg)
+        with self.assertWarns(FITSUnitWarning) as w:
+            meta = model.extract_metadata(error=False)
+        self.assertEqual(str(w.warning), erg_msg)
 
     def test_extract_metadata_missing_column_type(self):
         """Test reading metadata with missing FITS column types.
