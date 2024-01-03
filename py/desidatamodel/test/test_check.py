@@ -123,7 +123,7 @@ class TestCheck(DataModelTestCase):
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         foo = files[0].get_regexp(root)
-        self.assertLog(log, -1, "Unusual file type, fits, detected for {0}!".format(files[0].filename))
+        self.assertLog(log, -1, "Unusual file type, json, detected for {0}!".format(files[0].filename))
 
     def test_get_regexp_filesize(self):
         """Test extraction of file size from data model documents.

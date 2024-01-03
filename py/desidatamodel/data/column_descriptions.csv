@@ -432,7 +432,7 @@ WEIGHT_ZFAIL,float64,,Should be all 1 at this point for main survey
 WISEMASK_W1,byte,,Bitwise mask for WISE W1 data
 WISEMASK_W2,byte,,Bitwise mask for WISE W2 data
 Z,float64,,Redshift measured by Redrock
-ZCAT_NSPEC,int32,,Number of coadded spectra for this TARGETID in this zcatalog
+ZCAT_NSPEC,int32,,Number of times this TARGETID appears in this catalog
 ZCAT_PRIMARY,bool,,Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
 ZERR,float64,,Redshift error from redrock
 ZPOSSLOC,bool,,True/False whether the location could have been assigned to the given target class

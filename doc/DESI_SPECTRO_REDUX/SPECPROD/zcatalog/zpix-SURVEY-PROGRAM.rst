@@ -225,7 +225,7 @@ SV_NSPEC [1]_              int32                    Number of coadded spectra fo
 SV_PRIMARY [1]_            logical                  Boolean flag (True/False) for the primary coadded spectrum in SV (SV1+2+3)
 MAIN_NSPEC [1]_            int32                    Number of coadded spectra for this TARGETID in Main survey
 MAIN_PRIMARY [1]_          logical                  Boolean flag (True/False) for the primary coadded spectrum in Main survey
-ZCAT_NSPEC                 int16                    Number of coadded spectra for this TARGETID in this zcatalog
+ZCAT_NSPEC                 int16                    Number of times this TARGETID appears in this catalog
 ZCAT_PRIMARY               logical                  Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
 ========================== =========== ============ =====================================================================================================================================
 
