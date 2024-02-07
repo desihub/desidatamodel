@@ -41,6 +41,7 @@ DELTA_CHI2,float32,,Difference of chi2 between redrock fit and MgII fitter over 
 DELTA_X,float64,mm,CS5 X requested minus actual position
 DELTA_Y,float64,mm,CS5 Y requested minus actual position
 DESI_TARGET,int64,,DESI (dark time program) target selection bitmask
+DESINAME,char[22],,Human readable identifier of a sky location precise to ~0.36 arcseconds. Note multiple objects can map to a single DESINAME if very close on the sky.
 DEVICE_LOC,int32,,Device location on focal plane [0-523]
 DEVICE_TYPE,char[3],,Device type
 EBV,float32,mag,Galactic extinction E(B-V) reddening from SFD98
