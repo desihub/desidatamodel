@@ -5,6 +5,7 @@ desidatamodel Change Log
 23.6 (unreleased)
 -----------------
 
+* Add ``DESINAME`` description (PR #199).
 * Update definition of ``ZCAT_NSPEC`` (PR `#187`_).
 * Add note about equivalent width values in ``fuji`` and ``guadalupe`` (PR `#181`_).
 * Add note about units in FITS files (PR `#178`_).
