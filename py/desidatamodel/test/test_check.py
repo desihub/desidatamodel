@@ -119,11 +119,14 @@ class TestCheck(DataModelTestCase):
     @patch.object(DataModel, '_expectedtypes', ('foo', 'bar'))
     def test_files_to_regexp_with_bad_filetype(self):
         """Test compilation of regular expressions; log unusual file type.
+
+        Note that depending on the order in which the directory below is read,
+        the unexpected file type may be fits or json.
         """
         root = os.path.join(os.environ[DM], 'doc', 'DESI_SPECTRO_DATA')
         files = scan_model(root)
         foo = files[0].get_regexp(root)
-        self.assertLog(log, -1, "Unusual file type, json, detected for {0}!".format(files[0].filename))
+        self.assertLog(log, -1, "Unusual file type, %s, detected for %s!" % (files[0].filetype, files[0].filename))
 
     def test_get_regexp_filesize(self):
         """Test extraction of file size from data model documents.
