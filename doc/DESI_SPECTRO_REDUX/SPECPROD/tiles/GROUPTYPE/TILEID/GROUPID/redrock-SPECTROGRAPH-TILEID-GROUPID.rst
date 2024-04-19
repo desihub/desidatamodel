@@ -224,13 +224,18 @@ MEAN_DELTA_X               float32 mm           Mean (over exposures) fiber diff
 RMS_DELTA_X                float32 mm           RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
 MEAN_DELTA_Y               float32 mm           Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 RMS_DELTA_Y                float32 mm           RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_PSF_TO_FIBER_SPECFLUX float32              Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+MEAN_MJD                   float64 d            Mean MJD across fibers contributing to coadd
+MEAN_FIBER_X               float32 mm           Mean (over exposures) fiber CS5 X location on focal plane
+MEAN_FIBER_Y               float32 mm           Mean (over exposures) fiber CS5 Y location on focal plane
 MEAN_FIBER_RA              float64 deg          Mean (over exposures) RA of actual fiber position
 STD_FIBER_RA               float32 arcsec       Standard deviation (over exposures) of RA of actual fiber position
 MEAN_FIBER_DEC             float64 deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32 arcsec       Standard deviation (over exposures) of DEC of actual fiber position
-MEAN_PSF_TO_FIBER_SPECFLUX float32              Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-MEAN_FIBER_X               float32 mm           Mean (over exposures) fiber CS5 X location on focal plane
-MEAN_FIBER_Y               float32 mm           Mean (over exposures) fiber CS5 Y location on focal plane
+MIN_MJD                    float64 d            Minimum MJD contributing to fiber coadd
+MAX_MJD                    float64 d            Maximum MJD contributing to fiber coadd
+FIRSTNIGHT                 int32                First night tile was observed (YYYYMMDD)
+LASTNIGHT                  int32                Last night tile was observed (YYYYMMDD)
 ========================== ======= ============ ===============================================================================================================================
 
 .. [1] Optional
