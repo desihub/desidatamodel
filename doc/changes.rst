@@ -5,6 +5,7 @@ desidatamodel Change Log
 23.6 (unreleased)
 -----------------
 
+* Fix column name in ``fluxcalib`` description (PR `#193`_).
 * Add 5 coadd-related columns to the fibermap of the Redrock files (PR `#192`_).
 * Add ``DESINAME`` description (PR `#189`_).
 * Update definition of ``ZCAT_NSPEC`` (PR `#187`_).
@@ -16,6 +17,7 @@ desidatamodel Change Log
 .. _`#187`: https://github.com/desihub/desidatamodel/pull/187
 .. _`#189`: https://github.com/desihub/desidatamodel/pull/189
 .. _`#192`: https://github.com/desihub/desidatamodel/pull/192
+.. _`#193`: https://github.com/desihub/desidatamodel/pull/193
 
 23.1 (2023-06-12)
 -----------------
