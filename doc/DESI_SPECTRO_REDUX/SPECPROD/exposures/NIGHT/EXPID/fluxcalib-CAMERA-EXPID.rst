@@ -38,7 +38,7 @@ The flux calibration of all fibers share the same wavelength grid (given in HDU 
 The units are electrons / (10^{-17} ergs/s/cm2), such that the calibrated flux has units of 10^{-17} ergs/s/cm2/Angstrom.
 The flux calibration is obtained by comparing the sky subtracted and flat-fielded flux from standard stars in the :doc:`sframe file <sframe-CAMERA-EXPID>` with stellar models from the :doc:`stdstars file <stdstars-SPECTROGRAPH-EXPID>`.
 This calibration of the total flux is valid for point sources only.
-For extended sources, one may consider using a 'fiber flux', which is the flux one would collect in a 1.5 arcsec diameter aperture centered on the object when observed with a 1 arcsec FWHM Gaussian seeing. The 'fiber flux' can be obtained by multiplying the calibrated flux array of each fiber by the corresponding entry in the FIBERCORR_ table column 'PSF_TO_FIBER_SPECFLUX'.
+For extended sources, one may consider using a 'fiber flux', which is the flux one would collect in a 1.5 arcsec diameter aperture centered on the object when observed with a 1 arcsec FWHM Gaussian seeing. The 'fiber flux' can be obtained by multiplying the calibrated flux array of each fiber by the corresponding entry in the FIBERCORR_ table column 'PSF_TO_FIBER_FLUX'.
 
 
 Required Header Keywords
