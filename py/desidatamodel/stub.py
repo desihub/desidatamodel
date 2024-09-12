@@ -701,7 +701,7 @@ def read_column_descriptions(filename):
     """Read column descriptions csv file and return dictionary
 
     Args:
-        filename (str): csv filename with columns NAME,TYPE,UNITS,DESCRIPTION
+        filename (str): csv filename with columns NAME,TYPE,UNITS,DESCRIPTION,FULLDESCRIPTION
 
     Returns:
         coldesc_dict[NAME] = dict with keys TYPE, UNITS, DESCRIPTION
@@ -713,15 +713,15 @@ def read_column_descriptions(filename):
 
     with open(filename) as fp:
         header = fp.readline().strip()
-        correct_header = 'Name,Type,Units,FullDescription,Description'
+        correct_header = 'Name,Type,Units,Description,FullDescription'
         if header != correct_header:
             raise ValueError(f'{filename} header {header} should be {correct_header}.')
 
         coldesc = dict()
         csvreader = csv.reader(fp)
         for row in csvreader:
-            name, dtype, units, dm_desc, fits_desc = row
-            coldesc[name] = dict(Type=dtype, Units=units, Description=dm_desc)
+            name, dtype, units, short_desc, full_desc = row
+            coldesc[name] = dict(Type=dtype, Units=units, Description=full_desc)
 
     return coldesc
 
@@ -754,7 +754,7 @@ def main():
     parser.add_argument('filename', help='A FITS file.', metavar='FILE',
                         nargs='+')
     parser.add_argument("--column_descriptions",
-                        help="CSV file with column info Name,Type,Units,Description; "
+                        help="CSV file with column info Name,Type,Units,Description,FullDescription; "
                              "default=%(default)s",
                         default=(ir.files('desidatamodel') / 'data' / 'column_descriptions.csv'))
 
