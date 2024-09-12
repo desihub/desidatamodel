@@ -11,6 +11,8 @@ desidatamodel Change Log
 * Update definition of ``ZCAT_NSPEC`` (PR `#187`_).
 * Add note about equivalent width values in ``fuji`` and ``guadalupe`` (PR `#181`_).
 * Add note about units in FITS files (PR `#178`_).
+* Update ``column_descriptions.csv`` for short Description (for FITS headers)
+  and FullDescription (longer, for data model) (PR `#196`_).
 
 .. _`#178`: https://github.com/desihub/desidatamodel/pull/178
 .. _`#181`: https://github.com/desihub/desidatamodel/pull/181
@@ -18,6 +20,7 @@ desidatamodel Change Log
 .. _`#189`: https://github.com/desihub/desidatamodel/pull/189
 .. _`#192`: https://github.com/desihub/desidatamodel/pull/192
 .. _`#193`: https://github.com/desihub/desidatamodel/pull/193
+.. _`#196`: https://github.com/desihub/desidatamodel/pull/196
 
 23.1 (2023-06-12)
 -----------------
