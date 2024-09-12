@@ -95,7 +95,7 @@ Required Data Table Columns
 ========================== =========== ============ =====================================================================================================================================
 Name                       Type        Units        Description
 ========================== =========== ============ =====================================================================================================================================
-TARGETID                   int64                    ID (unique to file? and the whole survey?)
+TARGETID                   int64                    Unique DESI target ID
 SURVEY [1]_                char[7]                  Survey name
 PROGRAM [1]_               char[6]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
 HEALPIX                    int32                    HEALPixel containing this location at NSIDE=64 in the NESTED scheme
