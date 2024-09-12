@@ -2,7 +2,12 @@
 desidatamodel Change Log
 ========================
 
-23.6 (unreleased)
+24.10 (unreleased)
+------------------
+
+* No changes yet.
+
+24.9 (2024-09-12)
 -----------------
 
 * Fix column name in ``fluxcalib`` description (PR `#193`_).
