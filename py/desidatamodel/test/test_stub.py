@@ -685,6 +685,10 @@ class TestStub(DataModelTestCase):
 
         # incorrect format column description file
         baddescfile = self.test_files / 'bad_column_descriptions.csv'
-        with self.assertRaises(ValueError):
+        header = 'Name,dtype,Units,Description'
+        correct_header = 'Name,Type,Units,FullDescription,Description'
+        with self.assertRaises(ValueError) as exc:
             stub = Stub(filename, description_file=baddescfile)
             lines = str(stub)
+        self.assertEqual(exc.exception.args[0],
+                         f'{str(baddescfile)} header {header} should be {correct_header}.')

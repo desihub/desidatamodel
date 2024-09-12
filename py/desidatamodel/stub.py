@@ -713,15 +713,15 @@ def read_column_descriptions(filename):
 
     with open(filename) as fp:
         header = fp.readline().strip()
-        correct_header = 'Name,Type,Units,Description'
+        correct_header = 'Name,Type,Units,FullDescription,Description'
         if header != correct_header:
-            raise ValueError(f'{filename} header {header} should be {correct_header}')
+            raise ValueError(f'{filename} header {header} should be {correct_header}.')
 
         coldesc = dict()
         csvreader = csv.reader(fp)
         for row in csvreader:
-            name, dtype, units, desc = row
-            coldesc[name] = dict(Type=dtype, Units=units, Description=desc)
+            name, dtype, units, dm_desc, fits_desc = row
+            coldesc[name] = dict(Type=dtype, Units=units, Description=dm_desc)
 
     return coldesc
 

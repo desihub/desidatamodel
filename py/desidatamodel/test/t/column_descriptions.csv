@@ -1,4 +1,4 @@
-Name,Type,Units,Description
-target,char[20],,Target Name
-V_mag,float32,nanomaggy,V-band nanomaggy to test units
-vdisp,float64,m/s,Velocity dispersion
+Name,Type,Units,FullDescription,Description
+target,char[20],,Target Name,Target Name
+V_mag,float32,nanomaggy,V-band nanomaggy to test units,V-band flux
+vdisp,float64,m/s,Velocity dispersion,Vel Disp
