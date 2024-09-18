@@ -5,9 +5,9 @@ desidatamodel Change Log
 24.10 (unreleased)
 ------------------
 
-* Update package infrastructure, ... (PR `#200`_).
+* Update package infrastructure, fix search function, add missing columns (PR `#199`_).
 
-.. _`#200`: https://github.com/desihub/desidatamodel/pull/200
+.. _`#199`: https://github.com/desihub/desidatamodel/pull/199
 
 24.9 (2024-09-12)
 -----------------
