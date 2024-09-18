@@ -5,7 +5,9 @@ desidatamodel Change Log
 24.10 (unreleased)
 ------------------
 
-* No changes yet.
+* Update package infrastructure, ... (PR `#200`_).
+
+.. _`#200`: https://github.com/desihub/desidatamodel/pull/200
 
 24.9 (2024-09-12)
 -----------------
