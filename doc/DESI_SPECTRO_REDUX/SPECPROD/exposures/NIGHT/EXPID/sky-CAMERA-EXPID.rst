@@ -559,7 +559,7 @@ Required Header Keywords
     SP2BLUP [1]_           6.432e-08                                                             float   [mb] SP2 blue pressure
     SUNDEC [1]_            6.890581                                                              float   [deg] Sun declination at start of exposure
     SP1BLUP [1]_           8.039e-08                                                             float   [mb] SP1 blue pressure
-    SKYLEVEL [1]_          1.398                                                                 float   counts?] ETC sky level
+    SKYLEVEL [1]_          1.398                                                                 float   [counts?] ETC sky level
     TCSMFRA [1]_           1                                                                     int     TCS moving filter length (RA)
     SP3BLUP [1]_           8.133e-08                                                             float   [mb] SP3 blue pressure
     SP5REDT [1]_           139.99                                                                float   [K] SP5 red temperature

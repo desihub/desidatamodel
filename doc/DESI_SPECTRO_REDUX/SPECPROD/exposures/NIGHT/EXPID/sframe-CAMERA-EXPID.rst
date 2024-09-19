@@ -554,7 +554,7 @@ Required Header Keywords
     SP0REDP [1]_   4.265e-08                                                             float   [mb] SP0 red pressure
     SUNRA [1]_     45.595565                                                             float   [deg] Sun RA at start of exposure
     SP5BLUP [1]_   1.153e-07                                                             float   [mb] SP5 blue pressure
-    SKYLEVEL [1]_  0.83                                                                  float   counts?] ETC sky level
+    SKYLEVEL [1]_  0.83                                                                  float   [counts?] ETC sky level
     SP2NIRT [1]_   139.99                                                                float   [K] SP2 NIR temperature
     SP6REDP [1]_   6.491e-08                                                             float   [mb] SP6 red pressure
     TCSPIRA [1]_   1.0,0.0,0.0,0.0                                                       str     TCS PI settings (P, I (gain, error window, satu
