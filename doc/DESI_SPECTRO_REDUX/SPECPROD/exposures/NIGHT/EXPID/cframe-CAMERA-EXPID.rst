@@ -510,7 +510,7 @@ Required Header Keywords
     SP3BLUT [1]_   163.02                                                                float   [K] SP3 blue temperature
     SP8NIRP [1]_   4.831e-08                                                             float   [mb] SP8 NIR pressure
     SP9BLUP [1]_   1.208e-07                                                             float   [mb] SP9 blue pressure
-    SKYLEVEL [1]_  1.133                                                                 float   counts?] ETC sky level
+    SKYLEVEL [1]_  1.133                                                                 float   [counts?] ETC sky level
     TCSKRA [1]_    0.3 0.003 0.00003                                                     str     TCS Kalman (RA)
     SP4BLUP [1]_   6.109e-08                                                             float   [mb] SP4 blue pressure
     SP2NIRT [1]_   139.96                                                                float   [K] SP2 NIR temperature

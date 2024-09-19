@@ -328,7 +328,7 @@ class DataModel(object):
                 spanend = int(g[1])
                 log.debug('Detected range specification from HDU %d to HDU %d',
                           spanstart, spanend)
-                spanref = [l for l in section if l.startswith('Data:')][0]
+                spanref = [ln for ln in section if ln.startswith('Data:')][0]
                 spanext = spanref[spanref.lower().index('see') + 4:].replace('.', '')
                 try:
                     spanmeta = self.hdumeta[spanext]
@@ -336,8 +336,8 @@ class DataModel(object):
                     m = "Cannot find EXTNAME = '%s' which is supposed to define HDU %d to HDU %d!"
                     log.critical(m, spanext, spanstart, spanend)
                     raise DataModelError(m % (spanext, spanstart, spanend))
-                spanname = [l.split('=')[1].strip() for l in section
-                            if l.startswith('EXTNAME = ')][0]
+                spanname = [ln.split('=')[1].strip() for ln in section
+                            if ln.startswith('EXTNAME = ')][0]
                 extnames = [p.strip() for p in spanname.split(',')]
                 if len(range(spanstart, spanend+1)) == len(extnames):
                     for i, l in enumerate(range(spanstart, spanend+1)):
@@ -357,7 +357,7 @@ class DataModel(object):
             meta = dict()
             meta['number'] = k
             meta['title'] = section[0]
-            hdu_cross_ref = [l for l in section if l.startswith('See `')]
+            hdu_cross_ref = [ln for ln in section if ln.startswith('See `')]
             if hdu_cross_ref:
                 log.debug("Found HDU cross-reference: %s", hdu_cross_ref[0])
                 hcr = self._cross_reference(hdu_cross_ref[0]).split('#')
@@ -372,7 +372,7 @@ class DataModel(object):
             if 'Empty HDU.' in section:
                 meta['extension'] = 'IMAGE'
                 meta['format'] = 'Empty HDU.'
-            image_data = [l for l in section if l.startswith('Data:')]
+            image_data = [ln for ln in section if ln.startswith('Data:')]
             if image_data:
                 meta['extension'] = 'IMAGE'
                 meta['format'] = image_data[0]
@@ -439,8 +439,8 @@ class DataModel(object):
             # the detailed policy on EXTNAME.
             #
             try:
-                meta['extname'] = [l.split()[2] for l in section
-                                   if l.startswith('EXTNAME = ')][0]
+                meta['extname'] = [ln.split()[2] for ln in section
+                                   if ln.startswith('EXTNAME = ')][0]
             except IndexError:
                 meta['extname'] = 'HDU{0:02d}'.format(k)
                 if (k > 0 or (k == 0 and meta['format'] != 'Empty HDU.')):

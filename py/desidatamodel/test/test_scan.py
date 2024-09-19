@@ -129,13 +129,30 @@ class TestScan(DataModelTestCase):
         foo = model.get_regexp('/desi/spectro/data')
         union_metadata(model, stubs)
         mock_mark.assert_called_once()
-        mock_update.assert_has_calls([call(0, [('NAXIS1', '100', 'int', ''), ('NAXIS2', '100', 'int', ''), ('BSCALE', '1', 'int', ''), ('BZERO', '32768', 'int', 'Data are really unsigned 16-bit int.')]),
-                                      call(1, [('NAXIS1', '32', 'int', 'length of dimension 1'), ('NAXIS2', '3', 'int', 'length of dimension 2')]),
-                                      call(1, [('Name', 'Type', 'Units', 'Description'), ('target', 'char[20]', '', ''), ('V_mag', 'float32', 'mag', ''), ('vdisp', 'float64', 'km/s', '')], columns=True),
-                                      call(0, [('NAXIS1', '100', 'int', ''), ('NAXIS2', '100', 'int', ''), ('BSCALE', '1', 'int', ''), ('BZERO', '32768', 'int', 'Data are really unsigned 16-bit int.')]),
-                                      call(1, [('NAXIS1', '32', 'int', 'length of dimension 1'), ('NAXIS2', '3', 'int', 'length of dimension 2')]),
-                                      call(1, [('Name', 'Type', 'Units', 'Description'), ('target', 'char[20]', '', ''), ('V_mag', 'float32', 'mag', ''), ('vdisp', 'float64', 'km/s', '')], columns=True),
-                                      call(0, [('NAXIS1', '100', 'int', ''), ('NAXIS2', '100', 'int', ''), ('BSCALE', '1', 'int', ''), ('BZERO', '32768', 'int', 'Data are really unsigned 16-bit int.')])])
+        mock_update.assert_has_calls([call(0, [('NAXIS1', '100', 'int', ''),
+                                               ('NAXIS2', '100', 'int', ''),
+                                               ('BSCALE', '1', 'int', ''),
+                                               ('BZERO', '32768', 'int', 'Data are really unsigned 16-bit int.')]),
+                                      call(1, [('NAXIS1', '32', 'int', 'length of dimension 1'),
+                                               ('NAXIS2', '3', 'int', 'length of dimension 2')]),
+                                      call(1, [('Name', 'Type', 'Units', 'Description'),
+                                               ('target', 'char[20]', '', ''),
+                                               ('V_mag', 'float32', 'mag', ''),
+                                               ('vdisp', 'float64', 'km/s', '')], columns=True),
+                                      call(0, [('NAXIS1', '100', 'int', ''),
+                                               ('NAXIS2', '100', 'int', ''),
+                                               ('BSCALE', '1', 'int', ''),
+                                               ('BZERO', '32768', 'int', 'Data are really unsigned 16-bit int.')]),
+                                      call(1, [('NAXIS1', '32', 'int', 'length of dimension 1'),
+                                               ('NAXIS2', '3', 'int', 'length of dimension 2')]),
+                                      call(1, [('Name', 'Type', 'Units', 'Description'),
+                                               ('target', 'char[20]', '', ''),
+                                               ('V_mag', 'float32', 'mag', ''),
+                                               ('vdisp', 'float64', 'km/s', '')], columns=True),
+                                      call(0, [('NAXIS1', '100', 'int', ''),
+                                               ('NAXIS2', '100', 'int', ''),
+                                               ('BSCALE', '1', 'int', ''),
+                                               ('BZERO', '32768', 'int', 'Data are really unsigned 16-bit int.')])])
 
     @patch('sys.argv', ['deep_scan_metadata', '--verbose', '--number', '1000', 'DESI_SPECTRO_DATA/NIGHT/EXPID/desi-EXPID.rst', '/desi/spectro/data'])
     def test_options(self):

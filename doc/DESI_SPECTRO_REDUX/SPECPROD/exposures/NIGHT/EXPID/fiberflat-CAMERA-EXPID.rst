@@ -435,7 +435,7 @@ Header keywords are inherited from the input Frame file.
     TCSPIRA [1]_  1.0,0.0,0.0,0.0                                              str     TCS PI settings (P, I (gain, error window, satu
     TRANSPAR [1]_ None                                                         Unknown ETC/PM transparency
     SEEING [1]_   None                                                         Unknown [arcsec] ETC/PM seeing
-    SKYLEVEL [1]_ 8.153                                                        float   counts?] ETC sky level
+    SKYLEVEL [1]_ 8.153                                                        float   [counts?] ETC sky level
     ============= ============================================================ ======= ====================================================
 
 Data: FITS image [float32, 2881x500]

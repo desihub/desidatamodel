@@ -7,7 +7,7 @@ desidatamodel
 
 This package provides support for the DESI_ Data Model.
 
-.. _DESI: http://desi.lbl.gov
+.. _DESI: https://www.desi.lbl.gov
 """
 #
 # Set version string.

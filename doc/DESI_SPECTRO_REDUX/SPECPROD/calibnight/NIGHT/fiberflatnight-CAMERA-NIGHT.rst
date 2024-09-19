@@ -434,7 +434,7 @@ Required Header Keywords
     TPR2TEMP [1]_ 0.0                                                         float   [deg] Telescope probe2 temperature
     TPMAVERT [1]_ 4.781                                                       float   [deg] Telescope mirror averagetemperature
     DOMEBLOW [1]_ 11.8                                                        float   [deg C] temperature at dome back, lower
-    SKYLEVEL [1]_ 8.153                                                       float   counts?] ETC sky level
+    SKYLEVEL [1]_ 8.153                                                       float   [counts?] ETC sky level
     ============= =========================================================== ======= ====================================================
 
 Data: FITS image [float32, 2751x500]

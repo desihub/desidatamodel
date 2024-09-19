@@ -559,7 +559,7 @@ Required Header Keywords
     SP3BLUP [1]_   9.345e-08                                                             float   [mb] SP3 blue pressure
     PMTRANS [1]_   93.76                                                                 float   [%] PlateMaker GFAPROC transparency
     SP1REDT [1]_   139.89                                                                float   [K] SP1 red temperature
-    SKYLEVEL [1]_  0.933                                                                 float   counts?] ETC sky level
+    SKYLEVEL [1]_  0.933                                                                 float   [counts?] ETC sky level
     SP4NIRP [1]_   6.915e-08                                                             float   [mb] SP4 NIR pressure
     REQTEFF [1]_   1000.0                                                                float   [s] Requested effective exposure time
     SP7BLUT [1]_   163.02                                                                float   [K] SP7 blue temperature
