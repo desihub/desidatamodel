@@ -244,12 +244,10 @@ NOBS_R,int16,,Number of images for central pixel in r-band,Number of images for 
 NOBS_Z,int16,,Number of images for central pixel in z-band,Number of images for central pixel in z-band
 NPIXELS,int64,,Number of unmasked pixels used in Redrock fit,Number of unmasked pixels contributing to the Redrock fit
 NTILE,int64,,Number of tiles target was available on,Number of tiles target was available on
-NUMEXP,int32,,DEFINITION NEEDED,DEFINITION NEEDED
 NUMOBS,int64,,Nb of spectro observations of this given tile,"Number of spectroscopic observations (on this specific, single tile)"
 NUMOBS_INIT,int64,,Initial number of observations for target,Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 NUMOBS_MORE,int64,,Number of additional observations needed,Number of additional observations needed
 NUMTARGET,int16,,Total number of targets covered by positioner,Total number of targets that this positioner covered
-NUMTILE,int32,,DEFINITION NEEDED,DEFINITION NEEDED
 NUM_ITER,int64,,Number of positioner iterations,Number of positioner iterations
 NZ,float64,h^3 Mpc^-3,Comoving number density of tracer at given z,"The comoving number density of the tracer at the given redshift, assuming complete sample"
 O2C,float64,,Criterion for strength of OII emission for ELG,The criteria for assessing strength of OII emission for ELG observations
