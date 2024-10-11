@@ -6,9 +6,11 @@ desidatamodel Change Log
 ------------------
 
 * Update package infrastructure, fix search function, add missing columns (PR `#199`_).
-* Update the units for ``SKY_MAG_*`` quantities in the ``SPECPROD/exposures-SPECPROD.rst`` description.
+* Update the units for ``SKY_MAG_*`` quantities in the ``SPECPROD/exposures-SPECPROD.rst``
+  description (PR `#200`_).
 
 .. _`#199`: https://github.com/desihub/desidatamodel/pull/199
+.. _`#200`: https://github.com/desihub/desidatamodel/pull/200
 
 24.9 (2024-09-12)
 -----------------
