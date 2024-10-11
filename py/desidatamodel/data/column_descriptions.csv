@@ -74,6 +74,7 @@ FIBER_DEC,float64,deg,DEC of actual fiber position,DEC of actual fiber position
 FIBER_RA,float64,deg,RA of actual fiber position,RA of actual fiber position
 FIBER_X,float64,mm,CS5 X location requested by PlateMaker,CS5 X location requested by PlateMaker
 FIBER_Y,float64,mm,CS5 Y location requested by PlateMaker,CS5 Y location requested by PlateMaker
+FIRSTNIGHT,int32,,Calendar Date of the first exposure,KPNO Calendar Date when the first exposure was obtained (regardless of data quality)
 FLUX_G,float32,nanomaggy,Flux in the Legacy Survey g-band (AB),Flux in the Legacy Survey g-band (AB)
 FLUX_G_DERED,float32,nanomaggy,FLUX_G corrected for Galactic extinction (AB),Flux in the g-band after correcting for Galactic extinction (AB system)
 FLUX_IVAR_G,float32,nanomaggy^-2,Inverse variance of FLUX_G (AB),Inverse variance of FLUX_G (AB)
@@ -162,6 +163,9 @@ HGAMMA_SHARE_IVAR,float32,,NaN (SHARE not relevant for HGAMMA line),NaN (SHARE n
 HGAMMA_SIGMA,float32,Angstrom,Fitted HGAMMA line width in the observed frame,Fitted line width (in the observed frame) for the HGAMMA line
 HGAMMA_SIGMA_IVAR,float32,Angstrom^-2,Inverse variance of HGAMMA_SIGMA (obs frame),Inverse variance of the fitted line width (in the observed frame) for the HGAMMA line
 HPXPIXEL,int64,,HEALPixel at this location (NSIDE=64; NESTED),HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+IN_COADD_B,bool,,Fiber/exp used in coadd of camera B,If True this fiber in this exposure was used in the coadd of camera B
+IN_COADD_R,bool,,Fiber/exp used in coadd of camera R,If True this fiber in this exposure was used in the coadd of camera R
+IN_COADD_Z,bool,,Fiber/exp used in coadd of camera Z,If True this fiber in this exposure was used in the coadd of camera Z
 IN_DESI,int16,,Used by fiberassign to create tile; set to 1,Used by fiberassign to make a tile in the DESI footprint; always set to 1
 IN_RADIUS,float32,arcsec,Radius used to set the IN_BRIGHT_OBJECT bit,Radius used to set the ``IN_BRIGHT_OBJECT`` bit in the ``DESI_TARGET`` bitmask.
 IS_QSO_MGII,bool,,True if the object passes the MgII selection,Boolean: True if the object passes the MgII selection
@@ -186,12 +190,14 @@ LRG_MASK,binary,,Imaging mask bits relevant to LRG targets,Imaging mask bits rel
 MAIN_NSPEC,int32,,Nb of coadded spectra in Main survey for TID,Number of coadded spectra for this TARGETID in Main survey
 MAIN_PRIMARY,bool,,True if primary coadd spectrum in Main survey,Boolean flag (True/False) for the primary coadded spectrum in Main survey
 MASKBITS,int16,,Bitwise mask from imaging for potential issues,Bitwise mask from the imaging indicating potential issue or blending
+MAX_MJD,float64,d,MJD of the last exposure in coadded spectrum,Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
 MEAN_DELTA_X,float32,mm,Mean fiber diff (requested - actual CS5 X loc),Mean (over exposures) fiber difference requested - actual CS5 X location on focal plane
 MEAN_DELTA_Y,float32,mm,Mean fiber diff (requested - actual CS5 Y loc),Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 MEAN_FIBER_DEC,float64,deg,Mean (over exposures) DEC of fiber position,Mean (over exposures) DEC of actual fiber position
 MEAN_FIBER_RA,float64,deg,Mean (over exposures) RA of fiber position,Mean (over exposures) RA of actual fiber position
 MEAN_FIBER_X,float32,mm,Mean (over exposures) fiber CS5 X loc on FP,Mean (over exposures) fiber CS5 X location on focal plane
 MEAN_FIBER_Y,float32,mm,Mean (over exposures) fiber CS5 Y loc on FP,Mean (over exposures) fiber CS5 Y location on focal plane
+MEAN_MJD,float64,d,Mean of MJD of exposures in a coadded spectrum,Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 MEAN_PSF_TO_FIBER_SPECFLUX,float32,,Mean PSF light fraction within 1.5arcsec fiber,Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 MEDIAN_CALIB_COUNT_B,float64,,Median of calibrated flux in B camera,Median of calibrated flux in B camera
 MEDIAN_CALIB_COUNT_R,float64,,Median of calibrated flux in R camera,Median of calibrated flux in R camera
@@ -217,6 +223,7 @@ MEDIAN_SKYSUB_COUNT_Z,float64,,Median of sky-subtracted counts in Z camera,Media
 MEDIAN_SKYSUB_SNR_B,float64,,Median(S/N) of sky-subtracted counts in B cam,Median(S/N) of sky-subtracted counts in B camera
 MEDIAN_SKYSUB_SNR_R,float64,,Median(S/N) of sky-subtracted counts in R cam,Median(S/N) of sky-subtracted counts in R camera
 MEDIAN_SKYSUB_SNR_Z,float64,,Median(S/N) of sky-subtracted counts in Z cam,Median(S/N) of sky-subtracted counts in Z camera
+MIN_MJD,float64,d,MJD of the first exposure in coadded spectrum,Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
 MJD,float64,d,Modified Julian Date when shutter open for exp,Modified Julian Date when shutter was opened for this exposure
 MJD_BEGIN,float64,d,Start of the allowed observing window (MJD),Start of the allowed observing window for this target (Modified Julian Date)
 MJD_END,float64,d,End of the allowed observing window (MJD),End of the allowed observing window for this target (Modified Julian Date)

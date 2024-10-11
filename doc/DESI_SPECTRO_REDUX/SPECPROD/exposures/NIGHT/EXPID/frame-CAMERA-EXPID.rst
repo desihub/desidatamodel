@@ -454,7 +454,7 @@ Required Header Keywords
     SP5NIRT [1]_           139.94                                                                float   [K] SP5 NIR temperature
     TGFAPROC [1]_          9.0024                                                                float   [s] PlateMaker GFAPROC processing time
     SP7BLUP [1]_           9.947e-08                                                             float   [mb] SP7 blue pressure
-    SKYLEVEL [1]_          1.364                                                                 float   counts?] ETC sky level
+    SKYLEVEL [1]_          1.364                                                                 float   [counts?] ETC sky level
     SP0REDT [1]_           139.96                                                                float   [K] SP0 red temperature
     USEOPENL [1]_          T                                                                     bool    DOS Control: use open loop move
     SP0BLUT [1]_           163.02                                                                float   [K] SP0 blue temperature

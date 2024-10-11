@@ -519,7 +519,7 @@ Required Header Keywords
     SP1NIRT [1]_   139.99                                                                float   [K] SP1 NIR temperature
     USEOPENL [1]_  T                                                                     bool    DOS Control: use open loop move
     SP4BLUT [1]_   162.99                                                                float   [K] SP4 blue temperature
-    SKYLEVEL [1]_  1.359                                                                 float   counts?] ETC sky level
+    SKYLEVEL [1]_  1.359                                                                 float   [counts?] ETC sky level
     USEGUIDR [1]_  T                                                                     bool    DOS Control: use guider
     VISITIDS [1]_  91269                                                                 str     List of expids for a visit (same tile)
     SP4BLUP [1]_   6.4e-08                                                               float   [mb] SP4 blue pressure

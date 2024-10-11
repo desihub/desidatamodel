@@ -434,7 +434,7 @@ Required Header Keywords
     CALFHUM [1]_  14.32350765258646                                            float   dome flat humidity from flat fit
     EXPTHUM [1]_  16.63                                                        float   exposure humidity from telemetry
     EPOCH [1]_    2000.0                                                       float   Epoch of observation
-    SKYLEVEL [1]_ 6.268                                                        float   counts?] ETC sky level
+    SKYLEVEL [1]_ 6.268                                                        float   [counts?] ETC sky level
     TRANSPAR [1]_ None                                                         Unknown ETC/PM transparency
     SEEING [1]_   None                                                         Unknown [arcsec] ETC/PM seeing
     ============= ============================================================ ======= ====================================================

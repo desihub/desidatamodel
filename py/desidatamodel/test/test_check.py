@@ -471,7 +471,9 @@ class TestCheck(DataModelTestCase):
         foo = f.extract_metadata()
         f.hdumeta['foobar'] = 'baz'
         f.validate_prototype(error=True)
-        self.assertLog(log, -2, "{0} has the wrong number of sections (HDUs) according to {1}, skipping to next candidate.".format(str(modelfile).replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -2, ("{0} has the wrong number of sections (HDUs) " +
+                                 "according to {1}, skipping to next " +
+                                 "candidate.").format(str(modelfile).replace('.rst', '.fits'), modelfile))
         self.assertLog(log, -1, "No useful prototype files found for {0}!".format(modelfile))
 
     def test_validate_prototype_hdu_keyword_mismatch(self):
@@ -484,7 +486,8 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[0]['keywords'].append(('BUNIT', 'erg', 'str', 'This is a test.'))
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has these keywords in HDU0 missing from model: {{'BUNIT'}}".format(str(modelfile).replace('.rst', '.fits')))
+        self.assertLog(log, -1, ("Prototype file {0} has these keywords " +
+                                 "in HDU0 missing from model: {{'BUNIT'}}").format(str(modelfile).replace('.rst', '.fits')))
 
     def test_validate_prototype_hdu_keyword_type_mismatch(self):
         """Test the data model validation method with a keyword type mismatch.
@@ -496,7 +499,9 @@ class TestCheck(DataModelTestCase):
         f.extract_metadata()
         f.hdumeta['PRIMARY']['keywords'][2] = ('BSCALE', '1.2', 'float', '')
         f.validate_prototype()
-        self.assertLog(log, -1, "File %s HDU%d keyword %s has different keyword type according to %s (%s != %s)." % (f.prototype, 0, 'BSCALE', modelfile, 'int', 'float'))
+        self.assertLog(log, -1, ("File %s HDU%d keyword %s has different keyword " +
+                                 "type according to %s (%s != %s).") %
+                                (f.prototype, 0, 'BSCALE', modelfile, 'int', 'float'))
 
     def test_validate_prototype_hdu_wrong_keyword(self):
         """Test the data model validation method with wrong HDU keyword names.
@@ -521,7 +526,9 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[1]['extension'] = 'IMAGE'
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has an extension type mismatch in HDU1 (IMAGE != BINTABLE) according to {1}.".format(str(modelfile).replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, ("Prototype file {0} has an extension type " +
+                                 "mismatch in HDU1 (IMAGE != BINTABLE) according " +
+                                 "to {1}.").format(str(modelfile).replace('.rst', '.fits'), modelfile))
         # f._stub_meta[1]['extname'] = ''
         # f.validate_prototype(error=True)
         # self.assertLog(log, -1, "Prototype file {0} has no EXTNAME in HDU1.".format(str(modelfile).replace('.rst', '.fits')))
@@ -536,7 +543,9 @@ class TestCheck(DataModelTestCase):
         f.validate_prototype()
         f._stub_meta[1]['extname'] = 'GALAXY'
         f.validate_prototype(error=True)
-        self.assertLog(log, -1, "Prototype file {0} has an EXTNAME mismatch in HDU1 (GALAXY != Galaxies) according to {1}.".format(str(modelfile).replace('.rst', '.fits'), modelfile))
+        self.assertLog(log, -1, ("Prototype file {0} has an EXTNAME mismatch in " +
+                                 "HDU1 (GALAXY != Galaxies) according to " +
+                                 "{1}.").format(str(modelfile).replace('.rst', '.fits'), modelfile))
         f._stub_meta[1]['extname'] = ''
         f.validate_prototype(error=True)
         self.assertLog(log, -2, "Prototype file {0} has no EXTNAME in HDU1.".format(str(modelfile).replace('.rst', '.fits')))
