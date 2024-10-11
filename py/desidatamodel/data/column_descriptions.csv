@@ -163,9 +163,9 @@ HGAMMA_SHARE_IVAR,float32,,NaN (SHARE not relevant for HGAMMA line),NaN (SHARE n
 HGAMMA_SIGMA,float32,Angstrom,Fitted HGAMMA line width in the observed frame,Fitted line width (in the observed frame) for the HGAMMA line
 HGAMMA_SIGMA_IVAR,float32,Angstrom^-2,Inverse variance of HGAMMA_SIGMA (obs frame),Inverse variance of the fitted line width (in the observed frame) for the HGAMMA line
 HPXPIXEL,int64,,HEALPixel at this location (NSIDE=64; NESTED),HEALPixel containing this location at NSIDE=64 in the NESTED scheme
-IN_COADD_B,bool,,DEFINITION NEEDED,DEFINITION NEEDED
-IN_COADD_R,bool,,DEFINITION NEEDED,DEFINITION NEEDED
-IN_COADD_Z,bool,,DEFINITION NEEDED,DEFINITION NEEDED
+IN_COADD_B,bool,,Fiber/exp used in coadd of camera B,If True this fiber in this exposure was used in the coadd of camera B
+IN_COADD_R,bool,,Fiber/exp used in coadd of camera R,If True this fiber in this exposure was used in the coadd of camera R
+IN_COADD_Z,bool,,Fiber/exp used in coadd of camera Z,If True this fiber in this exposure was used in the coadd of camera Z
 IN_DESI,int16,,Used by fiberassign to create tile; set to 1,Used by fiberassign to make a tile in the DESI footprint; always set to 1
 IN_RADIUS,float32,arcsec,Radius used to set the IN_BRIGHT_OBJECT bit,Radius used to set the ``IN_BRIGHT_OBJECT`` bit in the ``DESI_TARGET`` bitmask.
 IS_QSO_MGII,bool,,True if the object passes the MgII selection,Boolean: True if the object passes the MgII selection
