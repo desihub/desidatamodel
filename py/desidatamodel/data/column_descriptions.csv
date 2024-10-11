@@ -342,6 +342,10 @@ SHAPE_E2_IVAR,float32,,Inverse variance of SHAPE_E2,Inverse variance of SHAPE_E2
 SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0),Half-light radius of galaxy model (>0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted param SIGMA (linewidth) by MgII fitter,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
+SKY_MAG_AB_GFA,float64,mag arcsec^-2,Sky background in GFA passband,"Sky background in the GFA passband, measured from the GFA backgrounds."
+SKY_MAG_G_GFA,float64,mag arcsec^-2,Sky background in g passband,"Sky background measured in the spectroscopy integrated over the DECam g passband, AB mags."
+SKY_MAG_R_GFA,float64,mag arcsec^-2,Sky background in r passband,"Sky background measured in the spectroscopy integrated over the DECam r passband, AB mags."
+SKY_MAG_Z_GFA,float64,mag arcsec^-2,Sky background in z passband,"Sky background measured in the spectroscopy integrated over the DECam z passband, AB mags."
 SPECTRO,int16,,Spectrograph number [0-9],Spectrograph number [0-9]
 SPECTROID,int32,,Hardware ID of spectrograph (not used),Hardware ID of spectrograph (not used)
 SPECTYPE,char[6],,"Best-fit spectral type: GALAXY, QSO, STAR","Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
