@@ -1,17 +1,14 @@
-===============================
-offline_matched_coadd_ccds_main
-===============================
+=================================
+offline_matched_coadd_ccds_SURVEY
+=================================
 
 :Summary: *This section should be filled in with a high-level description of
     this file. In general, you should remove or replace the emphasized text
     (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``offline_matched_coadd_ccds_main-thru_20241117.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``offline_matched_coadd_ccds_main-thru_20241117.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 250 MB  *This section gives the type of the file
-    and its approximate size.*
+:Naming Convention: ``offline_matched_coadd_ccds_{SURVEY}-thru_{NIGHT}.fits``, where
+    ``{SURVEY}`` is *e.g.* 'main' and ``{NIGHT}`` is the observation night in YYYYMMDD format.
+:Regex: ``offline_matched_coadd_ccds_(main|SV1|SV2|SV3)-thru_[0-9]{8}\.fits``
+:File Type: FITS, 250 MB
 
 Contents
 ========
@@ -20,9 +17,9 @@ Contents
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
 HDU0_          IMAGE    *Brief Description*
-HDU1_          BINTABLE *Brief Description*
-HDU2_          BINTABLE *Brief Description*
-HDU3_          BINTABLE *Brief Description*
+HDU1_  EXTHDU1 BINTABLE *Brief Description*
+HDU2_  EXTHDU2 BINTABLE *Brief Description*
+HDU3_  EXTHDU3 BINTABLE *Brief Description*
 ====== ======= ======== ===================
 
 
@@ -32,14 +29,14 @@ FITS Header Units
 HDU0
 ----
 
-*Summarize the contents of this HDU.*
-
 This HDU has no non-standard required keywords.
 
 Empty HDU.
 
 HDU1
 ----
+
+EXTNAME = EXTHDU1
 
 *Summarize the contents of this HDU.*
 
@@ -216,6 +213,8 @@ SPECTRO_EXPID                int64
 HDU2
 ----
 
+EXTNAME = EXTHDU2
+
 *Summarize the contents of this HDU.*
 
 Required Header Keywords
@@ -273,6 +272,8 @@ MAXCONTRAST                  float64
 
 HDU3
 ----
+
+EXTNAME = EXTHDU3
 
 *Summarize the contents of this HDU.*
 
