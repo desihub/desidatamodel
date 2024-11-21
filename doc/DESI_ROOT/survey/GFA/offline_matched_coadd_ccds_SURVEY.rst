@@ -110,7 +110,7 @@ SKY_MAG_AB_PER_AMP           float32[4]        *Description needed.*
 PETAL_LOC                    binary            Petal location [0-9]
 EXPID                        int64             DESI Exposure ID number
 MJD                          float64     d     Modified Julian Date when shutter was opened for this exposure
-LST_DEG                      float64           *Description needed.*
+LST_DEG                      float64     deg   Local Sidereal Time in degrees
 MOON_ILLUMINATION            float64           *Description needed.*
 PROGRAM                      char[88]          DESI program type - BRIGHT, DARK, BACKUP, OTHER
 SKYRA                        float64           *Description needed.*
