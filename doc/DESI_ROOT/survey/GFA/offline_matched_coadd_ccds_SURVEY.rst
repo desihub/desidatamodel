@@ -2,10 +2,10 @@
 offline_matched_coadd_ccds_SURVEY
 =================================
 
-:Summary: Summary of ``gfa_reduce`` pipeline. Used to obtain independent measurements
+:Summary: The ``gfa_reduce`` pipeline performs an "offline" analysis of full-frame DESI Guide-Focus-Alignment (GFA) images which does not influence observing operations in real time but nevertheless may provide useful metrics related to observing conditions and GFA detector behavior. For instance, ``gfa_reduce`` provides independent measurements
     of observing conditions such as seeing and transparency.
 :Naming Convention: ``offline_matched_coadd_ccds_{SURVEY}-thru_{NIGHT}.fits``, where
-    ``{SURVEY}`` is *e.g.* 'main' and ``{NIGHT}`` is the observation night in YYYYMMDD format.
+    ``{SURVEY}`` is *e.g.,* 'main' and ``{NIGHT}`` is the observation night in YYYYMMDD format.
 :Regex: ``offline_matched_coadd_ccds_(main|SV1|SV2|SV3)-thru_[0-9]{8}\.fits``
 :File Type: FITS, 250 MB
 
