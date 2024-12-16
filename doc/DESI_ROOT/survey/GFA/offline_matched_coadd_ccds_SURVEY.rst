@@ -73,9 +73,9 @@ MAX                          float64     adu   Max pixel value of raw CCD image.
 MIN                          float64     adu   Min pixel value of raw CCD image.
 SIG_ROBUST                   float64     adu   Robust standard deviation of raw CCD image.
 SIG                          float64     adu   Standard deviation of raw CCD image.
-MEDIAN_Q1                    float64     adu   *Description needed.*
-MEAN_Q1                      float64     adu   *Description needed.*
-N_NON_FINITE_Q1              int64       adu   *Description needed.*
+MEDIAN_Q1                    float64     adu   Median of quadrant 1 (amp G)
+MEAN_Q1                      float64     adu   Mean of quadrant 1 (amp G)
+N_NON_FINITE_Q1              int64       adu   Number of non-finite pixel values in quadrant 1 (amp G)
 MAX_Q1                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 1 (amp G)
 MIN_Q1                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 1 (amp G)
 SIG_ROBUST_Q1                float64     adu   Robust standard deviation of quadrant 1 (amp G)
@@ -84,15 +84,15 @@ MEDIAN_Q2                    float64     adu   Median of quadrant 2 (amp H)
 MEAN_Q2                      float64     adu   Mean of quadrant 2 (amp H)
 N_NON_FINITE_Q2              int64       adu   Number of non-finite pixel values in quadrant 2 (amp H)
 MAX_Q2                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 2 (amp H)
-MIN_Q2                       float64     adu   *Description needed.*
-SIG_ROBUST_Q2                float64     adu   *Description needed.*
-SIG_Q2                       float64     adu   *Description needed.*
-MEDIAN_Q3                    float64     adu   *Description needed.*
-MEAN_Q3                      float64     adu   *Description needed.*
-N_NON_FINITE_Q3              int64       adu   *Description needed.*
+MIN_Q2                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 2 (amp H)
+SIG_ROBUST_Q2                float64     adu   Robust standard deviation of quadrant 2 (amp H)
+SIG_Q2                       float64     adu   Standard deviation of quadrant 2 (amp H)
+MEDIAN_Q3                    float64     adu   Median of quadrant 3 (amp E)
+MEAN_Q3                      float64     adu   Mean of quadrant 3 (amp E)
+N_NON_FINITE_Q3              int64       adu   Number of non-finite pixel values in quadrant 3 (amp E)
 MAX_Q3                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 3 (amp E)
-MIN_Q3                       float64     adu   *Description needed.*
-SIG_ROBUST_Q3                float64     adu   *Description needed.*
+MIN_Q3                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 3 (amp E)
+SIG_ROBUST_Q3                float64     adu   Robust standard deviation of quadrant 3 (amp G)
 SIG_Q3                       float64     adu   *Description needed.*
 MEDIAN_Q4                    float64     adu   *Description needed.*
 MEAN_Q4                      float64     adu   *Description needed.*
