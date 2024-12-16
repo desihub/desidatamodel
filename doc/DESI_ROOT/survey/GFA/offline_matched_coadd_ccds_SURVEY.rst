@@ -72,17 +72,17 @@ N_NON_FINITE                 int64       adu   Number of non-finite pixel values
 MAX                          float64     adu   Max pixel value of raw CCD image.
 MIN                          float64     adu   Min pixel value of raw CCD image.
 SIG_ROBUST                   float64     adu   Robust standard deviation of raw CCD image.
-SIG                          float64     adu   *Description needed.*
+SIG                          float64     adu   Standard deviation of raw CCD image.
 MEDIAN_Q1                    float64     adu   *Description needed.*
 MEAN_Q1                      float64     adu   *Description needed.*
 N_NON_FINITE_Q1              int64       adu   *Description needed.*
 MAX_Q1                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 1 (amp G)
-MIN_Q1                       float64           *Description needed.*
-SIG_ROBUST_Q1                float64           *Description needed.*
-SIG_Q1                       float64           *Description needed.*
-MEDIAN_Q2                    float64           *Description needed.*
-MEAN_Q2                      float64           *Description needed.*
-N_NON_FINITE_Q2              int64             *Description needed.*
+MIN_Q1                       float64           Minimum raw GFA image pixel value in ADU in quadrant 1 (amp G)
+SIG_ROBUST_Q1                float64           Robust standard deviation of quadrant 1 (amp G)
+SIG_Q1                       float64           Standard deviation of quadrant 1 (amp G)
+MEDIAN_Q2                    float64           Median of quadrant 2 (amp H)
+MEAN_Q2                      float64           Mean of quadrant 2 (amp H)
+N_NON_FINITE_Q2              int64             Number of non-finite pixel values in quadrant 2 (amp H)
 MAX_Q2                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 2 (amp H)
 MIN_Q2                       float64           *Description needed.*
 SIG_ROBUST_Q2                float64           *Description needed.*
