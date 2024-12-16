@@ -98,9 +98,9 @@ MEDIAN_Q4                    float64     adu   Median of quadrant 4 (amp F)
 MEAN_Q4                      float64     adu   Mean of quadrant 4 (amp F)
 N_NON_FINITE_Q4              int64       adu   Number of non-finite pixel values in quadrant 4 (amp F)
 MAX_Q4                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 4 (amp F)
-MIN_Q4                       float64     adu   *Description needed.*
-SIG_ROBUST_Q4                float64     adu   *Description needed.*
-SIG_Q4                       float64     adu   *Description needed.*
+MIN_Q4                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 4 (amp F)
+SIG_ROBUST_Q4                float64     adu   Robust standard deviation of quadrant 4 (amp F)
+SIG_Q4                       float64     adu   Standard deviation of quadrant 4 (amp F)
 CAMERA                       char[6]           Camera identifier. Passband and SPECGRPH ([brz][0-9]).
 EXTNAME                      char[6]           String guide camera name; one of GUIDE0, GUIDE2, GUIDE3, GUIDE5, GUIDE7, GUIDE8
 CONTRAST                     float64           Pattern-matching contrast for ``gfa_reduce`` astrometry; larger CONTRAST indicates a more robust astrometric solution
