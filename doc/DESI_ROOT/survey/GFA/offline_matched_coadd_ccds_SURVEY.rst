@@ -104,24 +104,24 @@ SIG_Q4                       float64     adu   Standard deviation of quadrant 4 
 CAMERA                       char[6]           Camera identifier. Passband and SPECGRPH ([brz][0-9]).
 EXTNAME                      char[6]           String guide camera name; one of GUIDE0, GUIDE2, GUIDE3, GUIDE5, GUIDE7, GUIDE8
 CONTRAST                     float64           Pattern-matching contrast for ``gfa_reduce`` astrometry; larger CONTRAST indicates a more robust astrometric solution
-SKY_MAG_AB                   float64           *Description needed.*
-SKY_MAG_AB_SUBREGION         float64           *Description needed.*
-SKY_MAG_AB_PER_AMP           float32[4]        *Description needed.*
+SKY_MAG_AB                   float64     mag arcsec^-2      GFA-measured sky brightness.
+SKY_MAG_AB_SUBREGION         float64     mag arcsec^-2      Sky brightness in a subregion of the GFA image.
+SKY_MAG_AB_PER_AMP           float32[4]  mag arcsec^-2      Per-amp GFA-measured sky brightness.
 PETAL_LOC                    binary            Petal location [0-9]
 EXPID                        int64             DESI Exposure ID number
 MJD                          float64     d     Modified Julian Date when shutter was opened for this exposure
 LST_DEG                      float64     deg   Local Sidereal Time in degrees
-MOON_ILLUMINATION            float64           *Description needed.*
+MOON_ILLUMINATION            float64           Moon illumination fraction.
 PROGRAM                      char[88]          DESI program type - BRIGHT, DARK, BACKUP, OTHER
-SKYRA                        float64           *Description needed.*
-SKYDEC                       float64           *Description needed.*
-ZENITH_DIST_DEG              float64           *Description needed.*
-DOMSHUTL                     char[8]           *Description needed.*
-DOMSHUTU                     char[8]           *Description needed.*
-PMCOVER                      char[8]           *Description needed.*
-MOONRA                       float64           *Description needed.*
-MOONDEC                      float64           *Description needed.*
-MOON_ZD_DEG                  float64           *Description needed.*
+SKYRA                        float64     deg   Boresight RA from TCS.
+SKYDEC                       float64     deg   Boresight DEC from TCS.
+ZENITH_DIST_DEG              float64     deg   Boresight zenith distance.
+DOMSHUTL                     char[8]           Dome lower shutter status inherited from TCS.
+DOMSHUTU                     char[8]           Dome upper shutter status inherited from TCS.
+PMCOVER                      char[8]           Primary mirror cover status inherited from TCS.
+MOONRA                       float64     deg   RA of the Moon at the relevant epoch.
+MOONDEC                      float64     deg   Dec of the Moon at the relevant epoch.
+MOON_ZD_DEG                  float64     deg   Moon angular distance from zenith.
 T_C_FOR_DARK                 float64           *Description needed.*
 T_C_FOR_DARK_IS_GUESS        int64             *Description needed.*
 TIME_S_FOR_DARK              float64           *Description needed.*
