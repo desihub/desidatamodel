@@ -66,16 +66,16 @@ Required Data Table Columns
 ============================ =========== ===== ================================================================================
 Name                         Type        Units Description
 ============================ =========== ===== ================================================================================
-MEDIAN                       float64           *Description needed.*
-MEAN                         float64           *Description needed.*
-N_NON_FINITE                 int64             *Description needed.*
-MAX                          float64           *Description needed.*
-MIN                          float64           *Description needed.*
-SIG_ROBUST                   float64           *Description needed.*
-SIG                          float64           *Description needed.*
-MEDIAN_Q1                    float64           *Description needed.*
-MEAN_Q1                      float64           *Description needed.*
-N_NON_FINITE_Q1              int64             *Description needed.*
+MEDIAN                       float64     adu   Median of raw CCD image.
+MEAN                         float64     adu   Mean of raw CCD image.
+N_NON_FINITE                 int64       adu   Number of non-finite pixel values in raw CCD image.
+MAX                          float64     adu   Max pixel value of raw CCD image.
+MIN                          float64     adu   Min pixel value of raw CCD image.
+SIG_ROBUST                   float64     adu   Robust standard deviation of raw CCD image.
+SIG                          float64     adu   *Description needed.*
+MEDIAN_Q1                    float64     adu   *Description needed.*
+MEAN_Q1                      float64     adu   *Description needed.*
+N_NON_FINITE_Q1              int64       adu   *Description needed.*
 MAX_Q1                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 1 (amp G)
 MIN_Q1                       float64           *Description needed.*
 SIG_ROBUST_Q1                float64           *Description needed.*
