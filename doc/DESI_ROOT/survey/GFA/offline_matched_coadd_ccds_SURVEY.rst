@@ -131,10 +131,10 @@ EXPTIME                      float64     s     Length of time shutter was open
 CUBE_INDEX                   int64             Integer frame counter within the guide cube; ``CUBE_INDEX`` increases with time within each guide cube; 0 for acquisition images; -1 for matched coadds
 COADD_INDEX_START            int64             *Description needed.*
 COADD_INDEX_END              int64             *Description needed.*
-COADD_MJDOBS_MIN             float64           *Description needed.*
-COADD_MJDOBS_MAX             float64           *Description needed.*
-RACEN                        float64           *Description needed.*
-DECCEN                       float64           *Description needed.*
+COADD_MJDOBS_MIN             float64     day   *Description needed.*
+COADD_MJDOBS_MAX             float64     day   *Description needed.*
+RACEN                        float64     deg   *Description needed.*
+DECCEN                       float64     deg   *Description needed.*
 FNAME_RAW                    char[76]          *Description needed.*
 GITREV                       char[7]           *Description needed.*
 FIBER_FRACFLUX               float64           *Description needed.*
