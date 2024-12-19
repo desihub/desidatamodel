@@ -122,11 +122,11 @@ PMCOVER                      char[8]           Primary mirror cover status inher
 MOONRA                       float64     deg   RA of the Moon at the relevant epoch.
 MOONDEC                      float64     deg   Dec of the Moon at the relevant epoch.
 MOON_ZD_DEG                  float64     deg   Moon angular distance from zenith.
-T_C_FOR_DARK                 float64           *Description needed.*
-T_C_FOR_DARK_IS_GUESS        int64             *Description needed.*
-TIME_S_FOR_DARK              float64           *Description needed.*
+T_C_FOR_DARK                 float64     deg   Temperature used for dark current calculation (degrees Celsius).
+T_C_FOR_DARK_IS_GUESS        int64             Flag for whether temperature for dark current was a guess due to lack of metadata.
+TIME_S_FOR_DARK              float64           Exposure time used for dark current calculation.
 NIGHT                        int64             Night of observation (YYYYMMDD) starting at local noon before observations start
-FOCUS                        char[39]          *Description needed.*
+FOCUS                        char[39]          Hexapod focus settings inherited from TCS.
 EXPTIME                      float64     s     Length of time shutter was open
 CUBE_INDEX                   int64             Integer frame counter within the guide cube; ``CUBE_INDEX`` increases with time within each guide cube; 0 for acquisition images; -1 for matched coadds
 COADD_INDEX_START            int64             *Description needed.*
@@ -192,7 +192,7 @@ CTYPE                        char[16]          *Description needed.*
 LONGPOLE                     float64           *Description needed.*
 LATPOLE                      float64           *Description needed.*
 PV2                          float64[2]        *Description needed.*
-FNAME_MASTER_DARK            char[112]         *Description needed.*
+FNAME_MASTER_DARK            char[112]         File name of master dark used for dark current correction.
 DO_FIT_DARK_SCALING          binary            *Description needed.*
 MASTER_DARK_EXPTIME          float64           *Description needed.*
 MASTER_DARK_GCCDTEMP         float64           *Description needed.*
