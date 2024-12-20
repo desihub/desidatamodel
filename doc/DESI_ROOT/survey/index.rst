@@ -2,7 +2,7 @@
 survey
 ======
 
-``${DESI_ROOT}/survey`` contains data related to daily operations, fiberassignment, etc.
+``${DESI_ROOT}/survey`` contains data related to daily operations, fiberassignment and LSS catalogs.
 
 Subdirectories:
 
@@ -10,3 +10,4 @@ Subdirectories:
    :maxdepth: 1
 
    fiberassign/index
+   catalogs/index
