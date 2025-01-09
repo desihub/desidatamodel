@@ -63,156 +63,156 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-============================ =========== ===== ================================================================================
-Name                         Type        Units Description
-============================ =========== ===== ================================================================================
-MEDIAN                       float64     adu   Median of raw CCD image.
-MEAN                         float64     adu   Mean of raw CCD image.
-N_NON_FINITE                 int64       adu   Number of non-finite pixel values in raw CCD image.
-MAX                          float64     adu   Max pixel value of raw CCD image.
-MIN                          float64     adu   Min pixel value of raw CCD image.
-SIG_ROBUST                   float64     adu   Robust standard deviation of raw CCD image.
-SIG                          float64     adu   Standard deviation of raw CCD image.
-MEDIAN_Q1                    float64     adu   Median of quadrant 1 (amp G)
-MEAN_Q1                      float64     adu   Mean of quadrant 1 (amp G)
-N_NON_FINITE_Q1              int64       adu   Number of non-finite pixel values in quadrant 1 (amp G)
-MAX_Q1                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 1 (amp G)
-MIN_Q1                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 1 (amp G)
-SIG_ROBUST_Q1                float64     adu   Robust standard deviation of quadrant 1 (amp G)
-SIG_Q1                       float64     adu   Standard deviation of quadrant 1 (amp G)
-MEDIAN_Q2                    float64     adu   Median of quadrant 2 (amp H)
-MEAN_Q2                      float64     adu   Mean of quadrant 2 (amp H)
-N_NON_FINITE_Q2              int64       adu   Number of non-finite pixel values in quadrant 2 (amp H)
-MAX_Q2                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 2 (amp H)
-MIN_Q2                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 2 (amp H)
-SIG_ROBUST_Q2                float64     adu   Robust standard deviation of quadrant 2 (amp H)
-SIG_Q2                       float64     adu   Standard deviation of quadrant 2 (amp H)
-MEDIAN_Q3                    float64     adu   Median of quadrant 3 (amp E)
-MEAN_Q3                      float64     adu   Mean of quadrant 3 (amp E)
-N_NON_FINITE_Q3              int64       adu   Number of non-finite pixel values in quadrant 3 (amp E)
-MAX_Q3                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 3 (amp E)
-MIN_Q3                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 3 (amp E)
-SIG_ROBUST_Q3                float64     adu   Robust standard deviation of quadrant 3 (amp E)
-SIG_Q3                       float64     adu   Standard deviation of quadrant 3 (amp E)
-MEDIAN_Q4                    float64     adu   Median of quadrant 4 (amp F)
-MEAN_Q4                      float64     adu   Mean of quadrant 4 (amp F)
-N_NON_FINITE_Q4              int64       adu   Number of non-finite pixel values in quadrant 4 (amp F)
-MAX_Q4                       float64     adu   Maximum raw GFA image pixel value in ADU in quadrant 4 (amp F)
-MIN_Q4                       float64     adu   Minimum raw GFA image pixel value in ADU in quadrant 4 (amp F)
-SIG_ROBUST_Q4                float64     adu   Robust standard deviation of quadrant 4 (amp F)
-SIG_Q4                       float64     adu   Standard deviation of quadrant 4 (amp F)
-CAMERA                       char[6]           Camera identifier. Passband and SPECGRPH ([brz][0-9]).
-EXTNAME                      char[6]           String guide camera name; one of GUIDE0, GUIDE2, GUIDE3, GUIDE5, GUIDE7, GUIDE8
-CONTRAST                     float64           Pattern-matching contrast for ``gfa_reduce`` astrometry; larger CONTRAST indicates a more robust astrometric solution
-SKY_MAG_AB                   float64     mag arcsec^-2      GFA-measured sky brightness.
-SKY_MAG_AB_SUBREGION         float64     mag arcsec^-2      Sky brightness in a subregion of the GFA image.
-SKY_MAG_AB_PER_AMP           float32[4]  mag arcsec^-2      Per-amp GFA-measured sky brightness.
-PETAL_LOC                    binary            Petal location [0-9]
-EXPID                        int64             DESI Exposure ID number
-MJD                          float64     d     Modified Julian Date when shutter was opened for this exposure
-LST_DEG                      float64     deg   Local Sidereal Time in degrees
-MOON_ILLUMINATION            float64           Moon illumination fraction.
-PROGRAM                      char[88]          DESI program type - BRIGHT, DARK, BACKUP, OTHER
-SKYRA                        float64     deg   Boresight RA from TCS.
-SKYDEC                       float64     deg   Boresight DEC from TCS.
-ZENITH_DIST_DEG              float64     deg   Boresight zenith distance.
-DOMSHUTL                     char[8]           Dome lower shutter status inherited from TCS.
-DOMSHUTU                     char[8]           Dome upper shutter status inherited from TCS.
-PMCOVER                      char[8]           Primary mirror cover status inherited from TCS.
-MOONRA                       float64     deg   RA of the Moon at the relevant epoch.
-MOONDEC                      float64     deg   Dec of the Moon at the relevant epoch.
-MOON_ZD_DEG                  float64     deg   Moon angular distance from zenith.
-T_C_FOR_DARK                 float64     deg   Temperature used for dark current calculation (degrees Celsius).
-T_C_FOR_DARK_IS_GUESS        int64             Flag for whether temperature for dark current was a guess due to lack of metadata.
-TIME_S_FOR_DARK              float64           Exposure time used for dark current calculation.
-NIGHT                        int64             Night of observation (YYYYMMDD) starting at local noon before observations start
-FOCUS                        char[39]          Hexapod focus settings inherited from TCS.
-EXPTIME                      float64     s     Length of time shutter was open
-CUBE_INDEX                   int64             Integer frame counter within the guide cube; ``CUBE_INDEX`` increases with time within each guide cube; 0 for acquisition images; -1 for matched coadds
-COADD_INDEX_START            int64             *Description needed.*
-COADD_INDEX_END              int64             *Description needed.*
-COADD_MJDOBS_MIN             float64     day   *Description needed.*
-COADD_MJDOBS_MAX             float64     day   *Description needed.*
-RACEN                        float64     deg   *Description needed.*
-DECCEN                       float64     deg   *Description needed.*
-FNAME_RAW                    char[76]          *Description needed.*
-GITREV                       char[7]           *Description needed.*
-FIBER_FRACFLUX               float64           *Description needed.*
-FIBER_FRACFLUX_ELG           float64           *Description needed.*
-FIBER_FRACFLUX_BGS           float64           *Description needed.*
-N_SOURCES_FOR_PSF            int64             Number of sources used for PSF model ; key observing conditions quantities rely on the PSF model, so at least 3 sources for PSF-making is desirable
-APER_CORR_FAC                float64           *Description needed.*
-XCENTROID_PSF                float64           *Description needed.*
-YCENTROID_PSF                float64           *Description needed.*
-PSF_FWHM_PIX                 float64           *Description needed.*
-PSF_FWHM_ASEC                float64           *Description needed.*
-PSF_CENTROID_CBOX            float64           *Description needed.*
-PSF_CENTROID_FAILED          int64             *Description needed.*
-RADPROF_FWHM_ASEC            float64           *Description needed.*
-PSF_CENTROIDING_FLAG         int64             *Description needed.*
-PSF_ASYMMETRY_RATIO          float32           *Description needed.*
-PSF_ASYMMETRY_NUMERATOR      float32           *Description needed.*
-PSF_ASYMMETRY_DENOMINATOR    float32           *Description needed.*
-PSF_TOTAL_FLUX               float32           *Description needed.*
-PROFILE_RADIUS_PIX           float32[26]       *Description needed.*
-PSF_RADIAL_PROFILE           float32[26]       *Description needed.*
-MOUNTHA_HEADER               float64           *Description needed.*
-MOUNTDEC_HEADER              float64           *Description needed.*
-HA_DEG                       float64           *Description needed.*
-HA_DEG_PER_GFA               float64           *Description needed.*
-MOON_SEP_DEG                 float64           *Description needed.*
-ZD_DEG_PER_GFA               float64           *Description needed.*
-HEADER_AIRMASS               float64           *Description needed.*
-AIRMASS                      float64           Average airmass during this exposure
-AIRMASS_PER_GFA              float64           *Description needed.*
-ZP_ADU_PER_S                 float64           *Description needed.*
-N_STARS_FOR_ZP               int64             *Description needed.*
-TRANSPARENCY                 float64           *Description needed.*
-KTERM                        float32           *Description needed.*
-FRACFLUX_NOMINAL_POINTSOURCE float32           *Description needed.*
-FRACFLUX_NOMINAL_ELG         float32           *Description needed.*
-FRACFLUX_NOMINAL_BGS         float32           *Description needed.*
-DET_SN_THRESH                float64           *Description needed.*
-NPIX_BAD_TOTAL               int64             Number of bad pixels in overscan/prescan ; NPIX_BAD_TOTAL of 10 or larger may indicate insufficient GFA "denoising" (bad A/D conversion)
-NPIX_BAD_PER_AMP             int64[4]          *Description needed.*
-OVERSCAN_MEDIANS_ADU         float32[4]        *Description needed.*
-PRESCAN_MEDIANS_ADU          float32[4]        *Description needed.*
-FWHM_MAJOR_PIX               float64           *Description needed.*
-FWHM_MINOR_PIX               float64           *Description needed.*
-FWHM_PIX                     float64           *Description needed.*
-FWHM_ASEC                    float64           *Description needed.*
-N_SOURCES                    int64             *Description needed.*
-N_SOURCES_FOR_SHAPE          int64             *Description needed.*
-NAXIS                        int64[2]          *Description needed.*
-CD                           float64[4]        *Description needed.*
-CDELT                        float64[2]        *Description needed.*
-CRPIX                        float64[2]        *Description needed.*
-CRVAL                        float64[2]        *Description needed.*
-CTYPE                        char[16]          *Description needed.*
-LONGPOLE                     float64           *Description needed.*
-LATPOLE                      float64           *Description needed.*
-PV2                          float64[2]        *Description needed.*
-FNAME_MASTER_DARK            char[112]         File name of master dark used for dark current correction.
-DO_FIT_DARK_SCALING          binary            *Description needed.*
-MASTER_DARK_EXPTIME          float64           *Description needed.*
-MASTER_DARK_GCCDTEMP         float64           *Description needed.*
-DARK_TEMP_SCALING_FACTOR     float64           *Description needed.*
-TOTAL_DARK_SCALING_FACTOR    float64           *Description needed.*
-DARK_RESCALE_FACTORS_PER_AMP float64[4]        *Description needed.*
-DARK_RESCALE_FACTOR_BESTFIT  float64           *Description needed.*
-DARK_RESCALE_FACTOR_ADOPTED  float64           *Description needed.*
-APPLY_DARK_RESCALE_FACTOR    binary            *Description needed.*
-DARK_RESCALE_NCALLS          int64[4]          *Description needed.*
-DARK_RESCALE_CONVERGED       binary[4]         *Description needed.*
-REQ_MJD_MIN                  float64           *Description needed.*
-REQ_MJD_MAX                  float64           *Description needed.*
-N_PMGSTARS_ALL               int64             *Description needed.*
-N_PMGSTARS_RETAINED          int64             *Description needed.*
-FIBERFAC                     float64           *Description needed.*
-FIBERFAC_ELG                 float64           *Description needed.*
-FIBERFAC_BGS                 float64           *Description needed.*
-SPECTRO_EXPID                int64             *Description needed.*
-============================ =========== ===== ================================================================================
+============================ =========== ============= ================================================================================
+Name                         Type        Units         Description
+============================ =========== ============= ================================================================================
+MEDIAN                       float64     adu           Median of raw CCD image.
+MEAN                         float64     adu           Mean of raw CCD image.
+N_NON_FINITE                 int64       adu           Number of non-finite pixel values in raw CCD image.
+MAX                          float64     adu           Max pixel value of raw CCD image.
+MIN                          float64     adu           Min pixel value of raw CCD image.
+SIG_ROBUST                   float64     adu           Robust standard deviation of raw CCD image.
+SIG                          float64     adu           Standard deviation of raw CCD image.
+MEDIAN_Q1                    float64     adu           Median of quadrant 1 (amp G)
+MEAN_Q1                      float64     adu           Mean of quadrant 1 (amp G)
+N_NON_FINITE_Q1              int64       adu           Number of non-finite pixel values in quadrant 1 (amp G)
+MAX_Q1                       float64     adu           Maximum raw GFA image pixel value in ADU in quadrant 1 (amp G)
+MIN_Q1                       float64     adu           Minimum raw GFA image pixel value in ADU in quadrant 1 (amp G)
+SIG_ROBUST_Q1                float64     adu           Robust standard deviation of quadrant 1 (amp G)
+SIG_Q1                       float64     adu           Standard deviation of quadrant 1 (amp G)
+MEDIAN_Q2                    float64     adu           Median of quadrant 2 (amp H)
+MEAN_Q2                      float64     adu           Mean of quadrant 2 (amp H)
+N_NON_FINITE_Q2              int64       adu           Number of non-finite pixel values in quadrant 2 (amp H)
+MAX_Q2                       float64     adu           Maximum raw GFA image pixel value in ADU in quadrant 2 (amp H)
+MIN_Q2                       float64     adu           Minimum raw GFA image pixel value in ADU in quadrant 2 (amp H)
+SIG_ROBUST_Q2                float64     adu           Robust standard deviation of quadrant 2 (amp H)
+SIG_Q2                       float64     adu           Standard deviation of quadrant 2 (amp H)
+MEDIAN_Q3                    float64     adu           Median of quadrant 3 (amp E)
+MEAN_Q3                      float64     adu           Mean of quadrant 3 (amp E)
+N_NON_FINITE_Q3              int64       adu           Number of non-finite pixel values in quadrant 3 (amp E)
+MAX_Q3                       float64     adu           Maximum raw GFA image pixel value in ADU in quadrant 3 (amp E)
+MIN_Q3                       float64     adu           Minimum raw GFA image pixel value in ADU in quadrant 3 (amp E)
+SIG_ROBUST_Q3                float64     adu           Robust standard deviation of quadrant 3 (amp E)
+SIG_Q3                       float64     adu           Standard deviation of quadrant 3 (amp E)
+MEDIAN_Q4                    float64     adu           Median of quadrant 4 (amp F)
+MEAN_Q4                      float64     adu           Mean of quadrant 4 (amp F)
+N_NON_FINITE_Q4              int64       adu           Number of non-finite pixel values in quadrant 4 (amp F)
+MAX_Q4                       float64     adu           Maximum raw GFA image pixel value in ADU in quadrant 4 (amp F)
+MIN_Q4                       float64     adu           Minimum raw GFA image pixel value in ADU in quadrant 4 (amp F)
+SIG_ROBUST_Q4                float64     adu           Robust standard deviation of quadrant 4 (amp F)
+SIG_Q4                       float64     adu           Standard deviation of quadrant 4 (amp F)
+CAMERA                       char[6]                   Camera identifier. Passband and SPECGRPH ([brz][0-9]).
+EXTNAME                      char[6]                   String guide camera name; one of GUIDE0, GUIDE2, GUIDE3, GUIDE5, GUIDE7, GUIDE8
+CONTRAST                     float64                   Pattern-matching contrast for ``gfa_reduce`` astrometry; larger CONTRAST indicates a more robust astrometric solution
+SKY_MAG_AB                   float64     mag arcsec^-2 GFA-measured sky brightness.
+SKY_MAG_AB_SUBREGION         float64     mag arcsec^-2 Sky brightness in a subregion of the GFA image.
+SKY_MAG_AB_PER_AMP           float32[4]  mag arcsec^-2 Per-amp GFA-measured sky brightness.
+PETAL_LOC                    binary                    Petal location [0-9]
+EXPID                        int64                     DESI Exposure ID number
+MJD                          float64     d             Modified Julian Date when shutter was opened for this exposure
+LST_DEG                      float64     deg           Local Sidereal Time in degrees
+MOON_ILLUMINATION            float64                   Moon illumination fraction.
+PROGRAM                      char[88]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
+SKYRA                        float64     deg           Boresight RA from TCS.
+SKYDEC                       float64     deg           Boresight DEC from TCS.
+ZENITH_DIST_DEG              float64     deg           Boresight zenith distance.
+DOMSHUTL                     char[8]                   Dome lower shutter status inherited from TCS.
+DOMSHUTU                     char[8]                   Dome upper shutter status inherited from TCS.
+PMCOVER                      char[8]                   Primary mirror cover status inherited from TCS.
+MOONRA                       float64     deg           RA of the Moon at the relevant epoch.
+MOONDEC                      float64     deg           Dec of the Moon at the relevant epoch.
+MOON_ZD_DEG                  float64     deg           Moon angular distance from zenith.
+T_C_FOR_DARK                 float64     deg           Temperature used for dark current calculation (degrees Celsius).
+T_C_FOR_DARK_IS_GUESS        int64                     Flag for whether temperature for dark current was a guess due to lack of metadata.
+TIME_S_FOR_DARK              float64                   Exposure time used for dark current calculation.
+NIGHT                        int64                     Night of observation (YYYYMMDD) starting at local noon before observations start
+FOCUS                        char[39]                  Hexapod focus settings inherited from TCS.
+EXPTIME                      float64     s             Length of time shutter was open
+CUBE_INDEX                   int64                     Integer frame counter within the guide cube; ``CUBE_INDEX`` increases with time within each guide cube; 0 for acquisition images; -1 for matched coadds
+COADD_INDEX_START            int64                     *Description needed.*
+COADD_INDEX_END              int64                     *Description needed.*
+COADD_MJDOBS_MIN             float64     d             *Description needed.*
+COADD_MJDOBS_MAX             float64     d             *Description needed.*
+RACEN                        float64     deg           *Description needed.*
+DECCEN                       float64     deg           *Description needed.*
+FNAME_RAW                    char[76]                  *Description needed.*
+GITREV                       char[7]                   *Description needed.*
+FIBER_FRACFLUX               float64                   *Description needed.*
+FIBER_FRACFLUX_ELG           float64                   *Description needed.*
+FIBER_FRACFLUX_BGS           float64                   *Description needed.*
+N_SOURCES_FOR_PSF            int64                     Number of sources used for PSF model ; key observing conditions quantities rely on the PSF model, so at least 3 sources for PSF-making is desirable
+APER_CORR_FAC                float64                   *Description needed.*
+XCENTROID_PSF                float64                   *Description needed.*
+YCENTROID_PSF                float64                   *Description needed.*
+PSF_FWHM_PIX                 float64                   *Description needed.*
+PSF_FWHM_ASEC                float64                   *Description needed.*
+PSF_CENTROID_CBOX            float64                   *Description needed.*
+PSF_CENTROID_FAILED          int64                     *Description needed.*
+RADPROF_FWHM_ASEC            float64                   *Description needed.*
+PSF_CENTROIDING_FLAG         int64                     *Description needed.*
+PSF_ASYMMETRY_RATIO          float32                   *Description needed.*
+PSF_ASYMMETRY_NUMERATOR      float32                   *Description needed.*
+PSF_ASYMMETRY_DENOMINATOR    float32                   *Description needed.*
+PSF_TOTAL_FLUX               float32                   *Description needed.*
+PROFILE_RADIUS_PIX           float32[26]               *Description needed.*
+PSF_RADIAL_PROFILE           float32[26]               *Description needed.*
+MOUNTHA_HEADER               float64                   *Description needed.*
+MOUNTDEC_HEADER              float64                   *Description needed.*
+HA_DEG                       float64                   *Description needed.*
+HA_DEG_PER_GFA               float64                   *Description needed.*
+MOON_SEP_DEG                 float64                   *Description needed.*
+ZD_DEG_PER_GFA               float64                   *Description needed.*
+HEADER_AIRMASS               float64                   *Description needed.*
+AIRMASS                      float64                   Average airmass during this exposure
+AIRMASS_PER_GFA              float64                   *Description needed.*
+ZP_ADU_PER_S                 float64                   *Description needed.*
+N_STARS_FOR_ZP               int64                     *Description needed.*
+TRANSPARENCY                 float64                   *Description needed.*
+KTERM                        float32                   *Description needed.*
+FRACFLUX_NOMINAL_POINTSOURCE float32                   *Description needed.*
+FRACFLUX_NOMINAL_ELG         float32                   *Description needed.*
+FRACFLUX_NOMINAL_BGS         float32                   *Description needed.*
+DET_SN_THRESH                float64                   *Description needed.*
+NPIX_BAD_TOTAL               int64                     Number of bad pixels in overscan/prescan ; NPIX_BAD_TOTAL of 10 or larger may indicate insufficient GFA "denoising" (bad A/D conversion)
+NPIX_BAD_PER_AMP             int64[4]                  *Description needed.*
+OVERSCAN_MEDIANS_ADU         float32[4]                *Description needed.*
+PRESCAN_MEDIANS_ADU          float32[4]                *Description needed.*
+FWHM_MAJOR_PIX               float64                   *Description needed.*
+FWHM_MINOR_PIX               float64                   *Description needed.*
+FWHM_PIX                     float64                   *Description needed.*
+FWHM_ASEC                    float64                   *Description needed.*
+N_SOURCES                    int64                     *Description needed.*
+N_SOURCES_FOR_SHAPE          int64                     *Description needed.*
+NAXIS                        int64[2]                  *Description needed.*
+CD                           float64[4]                *Description needed.*
+CDELT                        float64[2]                *Description needed.*
+CRPIX                        float64[2]                *Description needed.*
+CRVAL                        float64[2]                *Description needed.*
+CTYPE                        char[16]                  *Description needed.*
+LONGPOLE                     float64                   *Description needed.*
+LATPOLE                      float64                   *Description needed.*
+PV2                          float64[2]                *Description needed.*
+FNAME_MASTER_DARK            char[112]                 File name of master dark used for dark current correction.
+DO_FIT_DARK_SCALING          binary                    *Description needed.*
+MASTER_DARK_EXPTIME          float64                   *Description needed.*
+MASTER_DARK_GCCDTEMP         float64                   *Description needed.*
+DARK_TEMP_SCALING_FACTOR     float64                   *Description needed.*
+TOTAL_DARK_SCALING_FACTOR    float64                   *Description needed.*
+DARK_RESCALE_FACTORS_PER_AMP float64[4]                *Description needed.*
+DARK_RESCALE_FACTOR_BESTFIT  float64                   *Description needed.*
+DARK_RESCALE_FACTOR_ADOPTED  float64                   *Description needed.*
+APPLY_DARK_RESCALE_FACTOR    binary                    *Description needed.*
+DARK_RESCALE_NCALLS          int64[4]                  *Description needed.*
+DARK_RESCALE_CONVERGED       binary[4]                 *Description needed.*
+REQ_MJD_MIN                  float64                   *Description needed.*
+REQ_MJD_MAX                  float64                   *Description needed.*
+N_PMGSTARS_ALL               int64                     *Description needed.*
+N_PMGSTARS_RETAINED          int64                     *Description needed.*
+FIBERFAC                     float64                   *Description needed.*
+FIBERFAC_ELG                 float64                   *Description needed.*
+FIBERFAC_BGS                 float64                   *Description needed.*
+SPECTRO_EXPID                int64                     *Description needed.*
+============================ =========== ============= ================================================================================
 
 HDU2
 ----
