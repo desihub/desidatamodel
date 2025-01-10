@@ -8,3 +8,5 @@ LSS
    :maxdepth: 1
 
    SPECPROD/index
+   randomRANN/index
+   altmtl/index
