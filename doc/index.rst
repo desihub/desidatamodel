@@ -8,8 +8,8 @@ The DESI Data Tree
 These pages define the directory structure and file formats for DESI
 data products relative to a root directory :envvar:`DESI_ROOT`.
 Each data release has its own :envvar:`DESI_ROOT`, e.g. the
-`Early Data Release <https://data.desi.lbl.gov/doc/releases/edr/>`_
-at https://data.desi.lbl.gov/public/edr.
+`Data Release 1 <https://data.desi.lbl.gov/doc/releases/dr1/>`_
+at https://data.desi.lbl.gov/public/dr1.
 
 Data Directories
 ================
