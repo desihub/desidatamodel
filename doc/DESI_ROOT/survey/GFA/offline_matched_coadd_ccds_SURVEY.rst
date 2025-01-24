@@ -137,9 +137,9 @@ RACEN                        float64     deg           Central RA of the guider 
 DECCEN                       float64     deg           Central Dec of the guider image.
 FNAME_RAW                    char[76]                  Raw file name for guider image cube.
 GITREV                       char[7]                   Git version for gfa_reduce software.
-FIBER_FRACFLUX               float64                   *Description needed.*
-FIBER_FRACFLUX_ELG           float64                   *Description needed.*
-FIBER_FRACFLUX_BGS           float64                   *Description needed.*
+FIBER_FRACFLUX               float64                   Fraction of flux in a DESI fiber for a point source.
+FIBER_FRACFLUX_ELG           float64                   Fraction of flux in a DESI fiber for a fiducial ELG morphology.
+FIBER_FRACFLUX_BGS           float64                   Fraction of flux in a DESI fiber for a fiducial BGS morphology.
 N_SOURCES_FOR_PSF            int64                     Number of sources used for PSF model ; key observing conditions quantities rely on the PSF model, so at least 3 sources for PSF-making is desirable
 APER_CORR_FAC                float64                   *Description needed.*
 XCENTROID_PSF                float64                   *Description needed.*
