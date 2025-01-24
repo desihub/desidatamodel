@@ -168,7 +168,7 @@ AIRMASS_PER_GFA              float64                   Airmass in degrees for th
 ZP_ADU_PER_S                 float64        mag        GFA camera zeropoint (r-band mag corresponding to total flux of 1 ADU/second).
 N_STARS_FOR_ZP               int64                     Number of stars used in computing the zeropoint.
 TRANSPARENCY                 float64                   r-band transparency value for this GFA camera.
-KTERM                        float32                   *Description needed.*
+KTERM                        float32        mag        K-term in zeropoint calculation corresponding to this GFA camera's zenith distance.
 FRACFLUX_NOMINAL_POINTSOURCE float32                   *Description needed.*
 FRACFLUX_NOMINAL_ELG         float32                   *Description needed.*
 FRACFLUX_NOMINAL_BGS         float32                   *Description needed.*
