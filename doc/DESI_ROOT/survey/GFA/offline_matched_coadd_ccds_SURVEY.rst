@@ -168,7 +168,7 @@ AIRMASS_PER_GFA              float64                   Airmass in degrees for th
 ZP_ADU_PER_S                 float64        mag        GFA camera zeropoint (r-band mag corresponding to total flux of 1 ADU/second).
 N_STARS_FOR_ZP               int64                     Number of stars used in computing the zeropoint.
 TRANSPARENCY                 float64                   r-band transparency value for this GFA camera.
-KTERM                        float32        mag        K-term in zeropoint calculation corresponding to this GFA camera's zenith distance.
+KTERM                        float32        mag        k-term in zeropoint calculation corresponding to this GFA camera's zenith distance.
 FRACFLUX_NOMINAL_POINTSOURCE float32                   Point source fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
 FRACFLUX_NOMINAL_ELG         float32                   Fiducial ELG morphology fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
 FRACFLUX_NOMINAL_BGS         float32                   Fiducial BGS morphology fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
@@ -196,22 +196,22 @@ FNAME_MASTER_DARK            char[112]                 File name of master dark 
 DO_FIT_DARK_SCALING          binary                    Whether or not the master dark scaling was fit based on the GFA image itself.
 MASTER_DARK_EXPTIME          float64                   Integration time of the dark exposures used to make the relevant master dark.
 MASTER_DARK_GCCDTEMP         float64                   Average CCD temperature of the dark exposures used to make the relevant master dark.
-DARK_TEMP_SCALING_FACTOR     float64                   *Description needed.*
-TOTAL_DARK_SCALING_FACTOR    float64                   *Description needed.*
-DARK_RESCALE_FACTORS_PER_AMP float64[4]                *Description needed.*
-DARK_RESCALE_FACTOR_BESTFIT  float64                   *Description needed.*
-DARK_RESCALE_FACTOR_ADOPTED  float64                   *Description needed.*
-APPLY_DARK_RESCALE_FACTOR    binary                    *Description needed.*
-DARK_RESCALE_NCALLS          int64[4]                  *Description needed.*
-DARK_RESCALE_CONVERGED       binary[4]                 *Description needed.*
+DARK_TEMP_SCALING_FACTOR     float64                   Factor by which the master dark was scaled based on CCD temperature.
+TOTAL_DARK_SCALING_FACTOR    float64                   Total factor by which the master dark was scaled accounting for both exposure time and CCD temperature.
+DARK_RESCALE_FACTORS_PER_AMP float64[4]                Per-amp factor by which the master dark was scaled accounting for both exposure time and CCD temperature.
+DARK_RESCALE_FACTOR_BESTFIT  float64                   Master dark rescaling factor fit from the GFA image data itself.
+DARK_RESCALE_FACTOR_ADOPTED  float64                   Adopted master dark rescaling from either CCD temperature-based scaling or else from empirical fit to the GFA image iself.
+APPLY_DARK_RESCALE_FACTOR    binary                    Whether or not the adopted dark rescaling factor was applied.
+DARK_RESCALE_NCALLS          int64[4]                  Per-amp number of dark current rescaling fit iterations.
+DARK_RESCALE_CONVERGED       binary[4]                 Per-amp indication of whether the dark current rescaling fit converged.
 REQ_MJD_MIN                  float64                   *Description needed.*
 REQ_MJD_MAX                  float64                   *Description needed.*
-N_PMGSTARS_ALL               int64                     *Description needed.*
-N_PMGSTARS_RETAINED          int64                     *Description needed.*
+N_PMGSTARS_ALL               int64                     Number of platemaker stars.
+N_PMGSTARS_RETAINED          int64                     Number of platemaker stars retained by platemaker.
 FIBERFAC                     float64                   *Description needed.*
 FIBERFAC_ELG                 float64                   *Description needed.*
 FIBERFAC_BGS                 float64                   *Description needed.*
-SPECTRO_EXPID                int64                     *Description needed.*
+SPECTRO_EXPID                int64                     DESI spectroscopic exposure number.
 ============================ =========== ============= ================================================================================
 
 HDU2
