@@ -67,8 +67,8 @@ NTILE              int64               Number of tiles target was available on
 TILES              char[*]             TILEIDs of those tile, in string form separated by '-'
 Z                  float64             Redshift measured by Redrock
 COMP_TILE          float64             Assignment completeness for all targets of this type with the same value for TILES
-ROSETTE_NUMBER     int32               Rosette number ID [0-19]
-ROSETTE_R          float64  deg        Radius from the center of the rosette to the target
+ROSETTE_NUMBER     int32               Rosette number ID [0-19] (Only present in EDR)
+ROSETTE_R          float64  deg        Radius from the center of the rosette to the target (Only present in EDR)
 FRACZ_TILELOCID    float64             The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 BITWEIGHTS         int64[2]            A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 PROB_OBS           float64             The number alternative assignment histories that the target was assigned in divided by 128

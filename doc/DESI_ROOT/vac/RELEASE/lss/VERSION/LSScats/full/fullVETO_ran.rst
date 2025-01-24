@@ -138,8 +138,8 @@ PHOTSYS                    char[1]                'N' for the MzLS/BASS photomet
 HPXPIXEL                   int64                  HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 GOODPRI                    logical                True/False whether the priority of what was assigned to the location was &lt;= the base priority of the given target class
 GOODTSNR                   logical                True/False whether the TSNR_&lt;class&gt; value used was above the minimum threshold for the given target class
-ROSETTE_NUMBER             int32                  Rosette number ID [0-19]
-ROSETTE_R                  float64   deg          Radius from the center of the rosette to the target
+ROSETTE_NUMBER             int32                  Rosette number ID [0-19] (only present in EDR)
+ROSETTE_R                  float64   deg          Radius from the center of the rosette to the target (only present in EDR)
 COMP_TILE                  float64                Assignment completeness for all targets of this type with the same value for TILES
 LRG_MASK [1]_              binary                 Imaging mask bits relevant to LRG targets
 ========================== ========= ============ ===============================================================================================================================

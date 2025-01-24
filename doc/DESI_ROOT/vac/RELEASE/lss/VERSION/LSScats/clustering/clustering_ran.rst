@@ -66,8 +66,8 @@ NTILE              int64               Number of tiles target was available on
 TILES              char[*]             TILEIDs of those tile, in string form separated by '-'
 Z                  float64             Redshift measured by Redrock
 COMP_TILE          float64             Assignment completeness for all targets of this type with the same value for TILES
-ROSETTE_NUMBER     int32               Rosette number ID [0-19]
-ROSETTE_R          float64  deg        Radius from the center of the rosette to the target
+ROSETTE_NUMBER     int32               Rosette number ID [0-19] (Only present in EDR)
+ROSETTE_R          float64  deg        Radius from the center of the rosette to the target (Only present in EDR)
 WEIGHT             float64             The combination of all weights to use
 FLUX_G_DERED [1]_  float32  nanomaggy  Flux in the g-band after correcting for Galactic extinction (AB system)
 FLUX_R_DERED [1]_  float32  nanomaggy  Flux in the r-band after correcting for Galactic extinction (AB system)
