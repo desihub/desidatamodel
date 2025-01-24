@@ -169,14 +169,14 @@ ZP_ADU_PER_S                 float64        mag        GFA camera zeropoint (r-b
 N_STARS_FOR_ZP               int64                     Number of stars used in computing the zeropoint.
 TRANSPARENCY                 float64                   r-band transparency value for this GFA camera.
 KTERM                        float32        mag        K-term in zeropoint calculation corresponding to this GFA camera's zenith distance.
-FRACFLUX_NOMINAL_POINTSOURCE float32                   *Description needed.*
-FRACFLUX_NOMINAL_ELG         float32                   *Description needed.*
-FRACFLUX_NOMINAL_BGS         float32                   *Description needed.*
-DET_SN_THRESH                float64                   *Description needed.*
+FRACFLUX_NOMINAL_POINTSOURCE float32                   Point source fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
+FRACFLUX_NOMINAL_ELG         float32                   Fiducial ELG morphology fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
+FRACFLUX_NOMINAL_BGS         float32                   Fiducial BGS morphology fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
+DET_SN_THRESH                float64                   Detection signal-to-noise threshold used.
 NPIX_BAD_TOTAL               int64                     Number of bad pixels in overscan/prescan ; NPIX_BAD_TOTAL of 10 or larger may indicate insufficient GFA "denoising" (bad A/D conversion)
-NPIX_BAD_PER_AMP             int64[4]                  *Description needed.*
-OVERSCAN_MEDIANS_ADU         float32[4]                *Description needed.*
-PRESCAN_MEDIANS_ADU          float32[4]                *Description needed.*
+NPIX_BAD_PER_AMP             int64[4]                  Number of bad pixels for each amplifier in this GFA camera.
+OVERSCAN_MEDIANS_ADU         float32[4]       adu      Overscan median pixel value per amp.
+PRESCAN_MEDIANS_ADU          float32[4]       adu      Prescan median pixel value per amp.
 FWHM_MAJOR_PIX               float64                   *Description needed.*
 FWHM_MINOR_PIX               float64                   *Description needed.*
 FWHM_PIX                     float64                   *Description needed.*
