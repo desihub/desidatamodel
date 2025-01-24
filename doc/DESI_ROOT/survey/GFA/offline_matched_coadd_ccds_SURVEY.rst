@@ -208,9 +208,9 @@ REQ_MJD_MIN                  float64                   *Description needed.*
 REQ_MJD_MAX                  float64                   *Description needed.*
 N_PMGSTARS_ALL               int64                     Number of platemaker stars.
 N_PMGSTARS_RETAINED          int64                     Number of platemaker stars retained by platemaker.
-FIBERFAC                     float64                   *Description needed.*
-FIBERFAC_ELG                 float64                   *Description needed.*
-FIBERFAC_BGS                 float64                   *Description needed.*
+FIBERFAC                     float64                   PMGSTARS forced photometry amount of light in 1.52 arcsec diameter aperture normalized to nominal, assuming a point source profile.
+FIBERFAC_ELG                 float64                   PMGSTARS forced photometry amount of light in 1.52 arcsec diameter aperture normalized to nominal, assuming an ELG-like profile (r_half = 0.45 arcsec exponential)
+FIBERFAC_BGS                 float64                   PMGSTARS forced photometry amount of light in 1.52 arcsec diameter aperture normalized to nominal, assuming a BGS-like profile (r_half = 1.5 arcsec de Vaucouleurs)
 SPECTRO_EXPID                int64                     DESI spectroscopic exposure number.
 ============================ =========== ============= ================================================================================
 
