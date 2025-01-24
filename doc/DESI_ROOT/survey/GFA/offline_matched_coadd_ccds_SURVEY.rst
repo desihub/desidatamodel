@@ -177,25 +177,25 @@ NPIX_BAD_TOTAL               int64                     Number of bad pixels in o
 NPIX_BAD_PER_AMP             int64[4]                  Number of bad pixels for each amplifier in this GFA camera.
 OVERSCAN_MEDIANS_ADU         float32[4]       adu      Overscan median pixel value per amp.
 PRESCAN_MEDIANS_ADU          float32[4]       adu      Prescan median pixel value per amp.
-FWHM_MAJOR_PIX               float64                   *Description needed.*
-FWHM_MINOR_PIX               float64                   *Description needed.*
-FWHM_PIX                     float64                   *Description needed.*
-FWHM_ASEC                    float64                   *Description needed.*
-N_SOURCES                    int64                     *Description needed.*
-N_SOURCES_FOR_SHAPE          int64                     *Description needed.*
-NAXIS                        int64[2]                  *Description needed.*
-CD                           float64[4]                *Description needed.*
-CDELT                        float64[2]                *Description needed.*
-CRPIX                        float64[2]                *Description needed.*
-CRVAL                        float64[2]                *Description needed.*
-CTYPE                        char[16]                  *Description needed.*
-LONGPOLE                     float64                   *Description needed.*
-LATPOLE                      float64                   *Description needed.*
-PV2                          float64[2]                *Description needed.*
+FWHM_MAJOR_PIX               float64          pix      FWHM along major axis of PSF.
+FWHM_MINOR_PIX               float64          pix      FWHM along minor axis of PSF.
+FWHM_PIX                     float64          pix      PSF FWHM in pixels.
+FWHM_ASEC                    float64          asec     PSF FWHM in arcseconds.
+N_SOURCES                    int64                     Number of sources used for PSF determination.
+N_SOURCES_FOR_SHAPE          int64                     Number of sources whose shapes were individually measured.
+NAXIS                        int64[2]         pix      WCS solution parameter for GFA astrometry registered to Gaia.
+CD                           float64[4]                WCS solution parameter for GFA astrometry registered to Gaia.
+CDELT                        float64[2]                WCS solution parameter for GFA astrometry registered to Gaia.
+CRPIX                        float64[2]       pix      WCS solution parameter for GFA astrometry registered to Gaia.
+CRVAL                        float64[2]       deg      WCS solution parameter for GFA astrometry registered to Gaia.
+CTYPE                        char[16]                  WCS solution parameter for GFA astrometry registered to Gaia.
+LONGPOLE                     float64          deg      WCS solution parameter for GFA astrometry registered to Gaia.
+LATPOLE                      float64          deg      WCS solution parameter for GFA astrometry registered to Gaia.
+PV2                          float64[2]                WCS solution parameter for GFA astrometry registered to Gaia.
 FNAME_MASTER_DARK            char[112]                 File name of master dark used for dark current correction.
-DO_FIT_DARK_SCALING          binary                    *Description needed.*
-MASTER_DARK_EXPTIME          float64                   *Description needed.*
-MASTER_DARK_GCCDTEMP         float64                   *Description needed.*
+DO_FIT_DARK_SCALING          binary                    Whether or not the master dark scaling was fit based on the GFA image itself.
+MASTER_DARK_EXPTIME          float64                   Integration time of the dark exposures used to make the relevant master dark.
+MASTER_DARK_GCCDTEMP         float64                   Average CCD temperature of the dark exposures used to make the relevant master dark.
 DARK_TEMP_SCALING_FACTOR     float64                   *Description needed.*
 TOTAL_DARK_SCALING_FACTOR    float64                   *Description needed.*
 DARK_RESCALE_FACTORS_PER_AMP float64[4]                *Description needed.*
