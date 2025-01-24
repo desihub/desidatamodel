@@ -195,7 +195,7 @@ PV2                          float64[2]                WCS solution parameter fo
 FNAME_MASTER_DARK            char[112]                 File name of master dark used for dark current correction.
 DO_FIT_DARK_SCALING          binary                    Whether or not the master dark scaling was fit based on the GFA image itself.
 MASTER_DARK_EXPTIME          float64                   Integration time of the dark exposures used to make the relevant master dark.
-MASTER_DARK_GCCDTEMP         float64                   Average CCD temperature of the dark exposures used to make the relevant master dark.
+MASTER_DARK_GCCDTEMP         float64          s        Average CCD temperature of the dark exposures used to make the relevant master dark.
 DARK_TEMP_SCALING_FACTOR     float64                   Factor by which the master dark was scaled based on CCD temperature.
 TOTAL_DARK_SCALING_FACTOR    float64                   Total factor by which the master dark was scaled accounting for both exposure time and CCD temperature.
 DARK_RESCALE_FACTORS_PER_AMP float64[4]                Per-amp factor by which the master dark was scaled accounting for both exposure time and CCD temperature.
