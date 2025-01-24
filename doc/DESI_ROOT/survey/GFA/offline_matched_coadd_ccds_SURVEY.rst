@@ -129,14 +129,14 @@ NIGHT                        int64                     Night of observation (YYY
 FOCUS                        char[39]                  Hexapod focus settings inherited from TCS.
 EXPTIME                      float64     s             Length of time shutter was open
 CUBE_INDEX                   int64                     Integer frame counter within the guide cube; ``CUBE_INDEX`` increases with time within each guide cube; 0 for acquisition images; -1 for matched coadds
-COADD_INDEX_START            int64                     *Description needed.*
-COADD_INDEX_END              int64                     *Description needed.*
-COADD_MJDOBS_MIN             float64     d             *Description needed.*
-COADD_MJDOBS_MAX             float64     d             *Description needed.*
-RACEN                        float64     deg           *Description needed.*
-DECCEN                       float64     deg           *Description needed.*
-FNAME_RAW                    char[76]                  *Description needed.*
-GITREV                       char[7]                   *Description needed.*
+COADD_INDEX_START            int64                     Starting index of the coadd within the guider image cube sequence.
+COADD_INDEX_END              int64                     Ending index (inclusive) of the coadd within the guider image cube sequence.
+COADD_MJDOBS_MIN             float64     d             Minimum MJD of guider frames contributing to the coadd.
+COADD_MJDOBS_MAX             float64     d             Maximum MJD of guider frames contributing to the coadd.
+RACEN                        float64     deg           Central RA of the guider image.
+DECCEN                       float64     deg           Central Dec of the guider image.
+FNAME_RAW                    char[76]                  Raw file name for guider image cube.
+GITREV                       char[7]                   Git version for gfa_reduce software.
 FIBER_FRACFLUX               float64                   *Description needed.*
 FIBER_FRACFLUX_ELG           float64                   *Description needed.*
 FIBER_FRACFLUX_BGS           float64                   *Description needed.*
