@@ -124,7 +124,7 @@ MOONDEC                      float64     deg           Dec of the Moon at the re
 MOON_ZD_DEG                  float64     deg           Moon angular distance from zenith.
 T_C_FOR_DARK                 float64     deg           Temperature used for dark current calculation (degrees Celsius).
 T_C_FOR_DARK_IS_GUESS        int64                     Flag for whether temperature for dark current was a guess due to lack of metadata.
-TIME_S_FOR_DARK              float64                   Exposure time used for dark current calculation.
+TIME_S_FOR_DARK              float64     seconds       Exposure time used for dark current calculation.
 NIGHT                        int64                     Night of observation (YYYYMMDD) starting at local noon before observations start
 FOCUS                        char[39]                  Hexapod focus settings inherited from TCS.
 EXPTIME                      float64     s             Length of time shutter was open
