@@ -141,14 +141,14 @@ FIBER_FRACFLUX               float64                   Fraction of flux in a DES
 FIBER_FRACFLUX_ELG           float64                   Fraction of flux in a DESI fiber for a fiducial ELG morphology.
 FIBER_FRACFLUX_BGS           float64                   Fraction of flux in a DESI fiber for a fiducial BGS morphology.
 N_SOURCES_FOR_PSF            int64                     Number of sources used for PSF model ; key observing conditions quantities rely on the PSF model, so at least 3 sources for PSF-making is desirable
-APER_CORR_FAC                float64                   *Description needed.*
-XCENTROID_PSF                float64                   *Description needed.*
-YCENTROID_PSF                float64                   *Description needed.*
-PSF_FWHM_PIX                 float64                   *Description needed.*
-PSF_FWHM_ASEC                float64                   *Description needed.*
-PSF_CENTROID_CBOX            float64                   *Description needed.*
-PSF_CENTROID_FAILED          int64                     *Description needed.*
-RADPROF_FWHM_ASEC            float64                   *Description needed.*
+APER_CORR_FAC                float64                   Correction factor to go from aperture to total light used for zeropoint determination.
+XCENTROID_PSF                float64       pix         Diagnostic giving PSF postage stamp's x-axis centroid location to potentially flag ill-determined PSF models.
+YCENTROID_PSF                float64       pix         Diagnostic giving PSF postage stamp's y-axis centroid location to potentially flag ill-determined PSF models.
+PSF_FWHM_PIX                 float64       pix         PSF FWHM in pixels.
+PSF_FWHM_ASEC                float64       asec        PSF FWHM in arcseconds.
+PSF_CENTROID_CBOX            float64       pix         Centering box sidelength used for PSF centroid determination.
+PSF_CENTROID_FAILED          int64                     Flag indicating whether PSF centroiding failed.
+RADPROF_FWHM_ASEC            float64       asec        PSF FWHM in arcseconds determined from a fit to a 1-dimensional radial profile of the PSF.
 PSF_CENTROIDING_FLAG         int64                     *Description needed.*
 PSF_ASYMMETRY_RATIO          float32                   *Description needed.*
 PSF_ASYMMETRY_NUMERATOR      float32                   *Description needed.*
