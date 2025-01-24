@@ -204,8 +204,8 @@ DARK_RESCALE_FACTOR_ADOPTED  float64                   Adopted master dark resca
 APPLY_DARK_RESCALE_FACTOR    binary                    Whether or not the adopted dark rescaling factor was applied.
 DARK_RESCALE_NCALLS          int64[4]                  Per-amp number of dark current rescaling fit iterations.
 DARK_RESCALE_CONVERGED       binary[4]                 Per-amp indication of whether the dark current rescaling fit converged.
-REQ_MJD_MIN                  float64                   *Description needed.*
-REQ_MJD_MAX                  float64                   *Description needed.*
+REQ_MJD_MIN                  float64         d         Input MJD lower bound for creating GFA image coadd.
+REQ_MJD_MAX                  float64         d         Input MJD upper bound for creating GFA image coadd.
 N_PMGSTARS_ALL               int64                     Number of platemaker stars.
 N_PMGSTARS_RETAINED          int64                     Number of platemaker stars retained by platemaker.
 FIBERFAC                     float64                   PMGSTARS forced photometry amount of light in 1.52 arcsec diameter aperture normalized to nominal, assuming a point source profile.
