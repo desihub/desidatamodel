@@ -159,15 +159,15 @@ PSF_RADIAL_PROFILE           float32[26]               List of PSF amplitude val
 MOUNTHA_HEADER               float64        deg        MOUNTHA hour angle inherited from TCS.
 MOUNTDEC_HEADER              float64        deg        MOUNTDEC declination inherited from TCS.
 HA_DEG                       float64        deg        Boresight hour angle in degrees calculated independently of MOUNTHA reported by TCS.
-HA_DEG_PER_GFA               float64        deg        Hour angle in degrees calculated for the relevant GFA camera.
+HA_DEG_PER_GFA               float64        deg        Hour angle in degrees for the relevant GFA camera.
 MOON_SEP_DEG                 float64        deg        Boresight angular distance to the Moon.
-ZD_DEG_PER_GFA               float64                   *Description needed.*
-HEADER_AIRMASS               float64                   *Description needed.*
-AIRMASS                      float64                   Average airmass during this exposure
-AIRMASS_PER_GFA              float64                   *Description needed.*
-ZP_ADU_PER_S                 float64                   *Description needed.*
-N_STARS_FOR_ZP               int64                     *Description needed.*
-TRANSPARENCY                 float64                   *Description needed.*
+ZD_DEG_PER_GFA               float64        deg        Zenith distance in degrees calculated for the relevant GFA camera.
+HEADER_AIRMASS               float64                   AIRMASS inherited from TCS.
+AIRMASS                      float64                   Boresight airmass calculated independently of TCS value.
+AIRMASS_PER_GFA              float64                   Airmass in degrees for the relevant GFA camera.
+ZP_ADU_PER_S                 float64        mag        GFA camera zeropoint (r-band mag corresponding to total flux of 1 ADU/second).
+N_STARS_FOR_ZP               int64                     Number of stars used in computing the zeropoint.
+TRANSPARENCY                 float64                   r-band transparency value for this GFA camera.
 KTERM                        float32                   *Description needed.*
 FRACFLUX_NOMINAL_POINTSOURCE float32                   *Description needed.*
 FRACFLUX_NOMINAL_ELG         float32                   *Description needed.*
