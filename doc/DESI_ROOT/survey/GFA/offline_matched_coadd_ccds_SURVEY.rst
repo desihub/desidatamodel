@@ -145,10 +145,10 @@ APER_CORR_FAC                float64                   Correction factor to go f
 XCENTROID_PSF                float64     pix           Diagnostic giving PSF postage stamp's x-axis centroid location to potentially flag ill-determined PSF models.
 YCENTROID_PSF                float64     pix           Diagnostic giving PSF postage stamp's y-axis centroid location to potentially flag ill-determined PSF models.
 PSF_FWHM_PIX                 float64     pix           PSF FWHM in pixels.
-PSF_FWHM_ASEC                float64     asec          PSF FWHM in arcseconds.
+PSF_FWHM_ASEC                float64     arcsec        PSF FWHM in arcseconds.
 PSF_CENTROID_CBOX            float64     pix           Centering box sidelength used for PSF centroid determination.
 PSF_CENTROID_FAILED          int64                     Flag indicating whether PSF centroiding failed.
-RADPROF_FWHM_ASEC            float64     asec           PSF FWHM in arcseconds determined from a fit to a 1-dimensional radial profile of the PSF.
+RADPROF_FWHM_ASEC            float64     arcsec        PSF FWHM in arcseconds determined from a fit to a 1-dimensional radial profile of the PSF.
 PSF_CENTROIDING_FLAG         int64                     Flag indicating potential issues with PSF centroiding.
 PSF_ASYMMETRY_RATIO          float32                   Dimensionless metric characterizing the level of PSF asymmetry.
 PSF_ASYMMETRY_NUMERATOR      float32                   Numerator of the PSF_ASYMMETRY_RATIO metric.
@@ -180,7 +180,7 @@ PRESCAN_MEDIANS_ADU          float32[4]  adu           Prescan median pixel valu
 FWHM_MAJOR_PIX               float64     pix           FWHM along major axis of PSF.
 FWHM_MINOR_PIX               float64     pix           FWHM along minor axis of PSF.
 FWHM_PIX                     float64     pix           PSF FWHM in pixels.
-FWHM_ASEC                    float64     asec          PSF FWHM in arcseconds.
+FWHM_ASEC                    float64     arcsec        PSF FWHM in arcseconds.
 N_SOURCES                    int64                     Number of sources used for PSF determination.
 N_SOURCES_FOR_SHAPE          int64                     Number of sources whose shapes were individually measured.
 NAXIS                        int64[2]    pix           WCS solution parameter for GFA astrometry registered to Gaia.
