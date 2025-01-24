@@ -149,18 +149,18 @@ PSF_FWHM_ASEC                float64       asec        PSF FWHM in arcseconds.
 PSF_CENTROID_CBOX            float64       pix         Centering box sidelength used for PSF centroid determination.
 PSF_CENTROID_FAILED          int64                     Flag indicating whether PSF centroiding failed.
 RADPROF_FWHM_ASEC            float64       asec        PSF FWHM in arcseconds determined from a fit to a 1-dimensional radial profile of the PSF.
-PSF_CENTROIDING_FLAG         int64                     *Description needed.*
-PSF_ASYMMETRY_RATIO          float32                   *Description needed.*
-PSF_ASYMMETRY_NUMERATOR      float32                   *Description needed.*
-PSF_ASYMMETRY_DENOMINATOR    float32                   *Description needed.*
-PSF_TOTAL_FLUX               float32                   *Description needed.*
-PROFILE_RADIUS_PIX           float32[26]               *Description needed.*
-PSF_RADIAL_PROFILE           float32[26]               *Description needed.*
-MOUNTHA_HEADER               float64                   *Description needed.*
-MOUNTDEC_HEADER              float64                   *Description needed.*
-HA_DEG                       float64                   *Description needed.*
-HA_DEG_PER_GFA               float64                   *Description needed.*
-MOON_SEP_DEG                 float64                   *Description needed.*
+PSF_CENTROIDING_FLAG         int64                     Flag indicating potential issues with PSF centroiding.
+PSF_ASYMMETRY_RATIO          float32                   Dimensionless metric characterizing the level of PSF asymmetry.
+PSF_ASYMMETRY_NUMERATOR      float32                   Numerator of the PSF_ASYMMETRY_RATIO metric.
+PSF_ASYMMETRY_DENOMINATOR    float32                   Denominator of the PSF_ASYMMETRY_RATIO metric.
+PSF_TOTAL_FLUX               float32        adu        Total PSF flux.
+PROFILE_RADIUS_PIX           float32[26]    pix        List of radius values in pixels for the PSF radial profile.
+PSF_RADIAL_PROFILE           float32[26]               List of PSF amplitude values for the PSF radial profile.
+MOUNTHA_HEADER               float64        deg        MOUNTHA hour angle inherited from TCS.
+MOUNTDEC_HEADER              float64        deg        MOUNTDEC declination inherited from TCS.
+HA_DEG                       float64        deg        Boresight hour angle in degrees calculated independently of MOUNTHA reported by TCS.
+HA_DEG_PER_GFA               float64        deg        Hour angle in degrees calculated for the relevant GFA camera.
+MOON_SEP_DEG                 float64        deg        Boresight angular distance to the Moon.
 ZD_DEG_PER_GFA               float64                   *Description needed.*
 HEADER_AIRMASS               float64                   *Description needed.*
 AIRMASS                      float64                   Average airmass during this exposure
