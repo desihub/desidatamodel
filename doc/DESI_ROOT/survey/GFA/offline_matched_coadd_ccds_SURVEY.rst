@@ -142,60 +142,60 @@ FIBER_FRACFLUX_ELG           float64                   Fraction of flux in a DES
 FIBER_FRACFLUX_BGS           float64                   Fraction of flux in a DESI fiber for a fiducial BGS morphology.
 N_SOURCES_FOR_PSF            int64                     Number of sources used for PSF model ; key observing conditions quantities rely on the PSF model, so at least 3 sources for PSF-making is desirable
 APER_CORR_FAC                float64                   Correction factor to go from aperture to total light used for zeropoint determination.
-XCENTROID_PSF                float64       pix         Diagnostic giving PSF postage stamp's x-axis centroid location to potentially flag ill-determined PSF models.
-YCENTROID_PSF                float64       pix         Diagnostic giving PSF postage stamp's y-axis centroid location to potentially flag ill-determined PSF models.
-PSF_FWHM_PIX                 float64       pix         PSF FWHM in pixels.
-PSF_FWHM_ASEC                float64       asec        PSF FWHM in arcseconds.
-PSF_CENTROID_CBOX            float64       pix         Centering box sidelength used for PSF centroid determination.
+XCENTROID_PSF                float64     pix           Diagnostic giving PSF postage stamp's x-axis centroid location to potentially flag ill-determined PSF models.
+YCENTROID_PSF                float64     pix           Diagnostic giving PSF postage stamp's y-axis centroid location to potentially flag ill-determined PSF models.
+PSF_FWHM_PIX                 float64     pix           PSF FWHM in pixels.
+PSF_FWHM_ASEC                float64     asec          PSF FWHM in arcseconds.
+PSF_CENTROID_CBOX            float64     pix           Centering box sidelength used for PSF centroid determination.
 PSF_CENTROID_FAILED          int64                     Flag indicating whether PSF centroiding failed.
-RADPROF_FWHM_ASEC            float64       asec        PSF FWHM in arcseconds determined from a fit to a 1-dimensional radial profile of the PSF.
+RADPROF_FWHM_ASEC            float64     asec           PSF FWHM in arcseconds determined from a fit to a 1-dimensional radial profile of the PSF.
 PSF_CENTROIDING_FLAG         int64                     Flag indicating potential issues with PSF centroiding.
 PSF_ASYMMETRY_RATIO          float32                   Dimensionless metric characterizing the level of PSF asymmetry.
 PSF_ASYMMETRY_NUMERATOR      float32                   Numerator of the PSF_ASYMMETRY_RATIO metric.
 PSF_ASYMMETRY_DENOMINATOR    float32                   Denominator of the PSF_ASYMMETRY_RATIO metric.
-PSF_TOTAL_FLUX               float32        adu        Total PSF flux.
-PROFILE_RADIUS_PIX           float32[26]    pix        List of radius values in pixels for the PSF radial profile.
+PSF_TOTAL_FLUX               float32     adu           Total PSF flux.
+PROFILE_RADIUS_PIX           float32[26] pix           List of radius values in pixels for the PSF radial profile.
 PSF_RADIAL_PROFILE           float32[26]               List of PSF amplitude values for the PSF radial profile.
-MOUNTHA_HEADER               float64        deg        MOUNTHA hour angle inherited from TCS.
-MOUNTDEC_HEADER              float64        deg        MOUNTDEC declination inherited from TCS.
-HA_DEG                       float64        deg        Boresight hour angle in degrees calculated independently of MOUNTHA reported by TCS.
-HA_DEG_PER_GFA               float64        deg        Hour angle in degrees for the relevant GFA camera.
-MOON_SEP_DEG                 float64        deg        Boresight angular distance to the Moon.
-ZD_DEG_PER_GFA               float64        deg        Zenith distance in degrees calculated for the relevant GFA camera.
+MOUNTHA_HEADER               float64     deg           MOUNTHA hour angle inherited from TCS.
+MOUNTDEC_HEADER              float64     deg           MOUNTDEC declination inherited from TCS.
+HA_DEG                       float64     deg           Boresight hour angle in degrees calculated independently of MOUNTHA reported by TCS.
+HA_DEG_PER_GFA               float64     deg           Hour angle in degrees for the relevant GFA camera.
+MOON_SEP_DEG                 float64     deg           Boresight angular distance to the Moon.
+ZD_DEG_PER_GFA               float64     deg           Zenith distance in degrees calculated for the relevant GFA camera.
 HEADER_AIRMASS               float64                   AIRMASS inherited from TCS.
 AIRMASS                      float64                   Boresight airmass calculated independently of TCS value.
 AIRMASS_PER_GFA              float64                   Airmass in degrees for the relevant GFA camera.
-ZP_ADU_PER_S                 float64        mag        GFA camera zeropoint (r-band mag corresponding to total flux of 1 ADU/second).
+ZP_ADU_PER_S                 float64     mag           GFA camera zeropoint (r-band mag corresponding to total flux of 1 ADU/second).
 N_STARS_FOR_ZP               int64                     Number of stars used in computing the zeropoint.
 TRANSPARENCY                 float64                   r-band transparency value for this GFA camera.
-KTERM                        float32        mag        k-term in zeropoint calculation corresponding to this GFA camera's zenith distance.
+KTERM                        float32     mag           k-term in zeropoint calculation corresponding to this GFA camera's zenith distance.
 FRACFLUX_NOMINAL_POINTSOURCE float32                   Point source fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
 FRACFLUX_NOMINAL_ELG         float32                   Fiducial ELG morphology fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
 FRACFLUX_NOMINAL_BGS         float32                   Fiducial BGS morphology fraction of flux for a circular aperture roughly approximating the size of a DESI fiber.
 DET_SN_THRESH                float64                   Detection signal-to-noise threshold used.
 NPIX_BAD_TOTAL               int64                     Number of bad pixels in overscan/prescan ; NPIX_BAD_TOTAL of 10 or larger may indicate insufficient GFA "denoising" (bad A/D conversion)
 NPIX_BAD_PER_AMP             int64[4]                  Number of bad pixels for each amplifier in this GFA camera.
-OVERSCAN_MEDIANS_ADU         float32[4]       adu      Overscan median pixel value per amp.
-PRESCAN_MEDIANS_ADU          float32[4]       adu      Prescan median pixel value per amp.
-FWHM_MAJOR_PIX               float64          pix      FWHM along major axis of PSF.
-FWHM_MINOR_PIX               float64          pix      FWHM along minor axis of PSF.
-FWHM_PIX                     float64          pix      PSF FWHM in pixels.
-FWHM_ASEC                    float64          asec     PSF FWHM in arcseconds.
+OVERSCAN_MEDIANS_ADU         float32[4]  adu           Overscan median pixel value per amp.
+PRESCAN_MEDIANS_ADU          float32[4]  adu           Prescan median pixel value per amp.
+FWHM_MAJOR_PIX               float64     pix           FWHM along major axis of PSF.
+FWHM_MINOR_PIX               float64     pix           FWHM along minor axis of PSF.
+FWHM_PIX                     float64     pix           PSF FWHM in pixels.
+FWHM_ASEC                    float64     asec          PSF FWHM in arcseconds.
 N_SOURCES                    int64                     Number of sources used for PSF determination.
 N_SOURCES_FOR_SHAPE          int64                     Number of sources whose shapes were individually measured.
-NAXIS                        int64[2]         pix      WCS solution parameter for GFA astrometry registered to Gaia.
+NAXIS                        int64[2]    pix           WCS solution parameter for GFA astrometry registered to Gaia.
 CD                           float64[4]                WCS solution parameter for GFA astrometry registered to Gaia.
 CDELT                        float64[2]                WCS solution parameter for GFA astrometry registered to Gaia.
-CRPIX                        float64[2]       pix      WCS solution parameter for GFA astrometry registered to Gaia.
-CRVAL                        float64[2]       deg      WCS solution parameter for GFA astrometry registered to Gaia.
+CRPIX                        float64[2]  pix           WCS solution parameter for GFA astrometry registered to Gaia.
+CRVAL                        float64[2]  deg           WCS solution parameter for GFA astrometry registered to Gaia.
 CTYPE                        char[16]                  WCS solution parameter for GFA astrometry registered to Gaia.
-LONGPOLE                     float64          deg      WCS solution parameter for GFA astrometry registered to Gaia.
-LATPOLE                      float64          deg      WCS solution parameter for GFA astrometry registered to Gaia.
+LONGPOLE                     float64     deg           WCS solution parameter for GFA astrometry registered to Gaia.
+LATPOLE                      float64     deg           WCS solution parameter for GFA astrometry registered to Gaia.
 PV2                          float64[2]                WCS solution parameter for GFA astrometry registered to Gaia.
 FNAME_MASTER_DARK            char[112]                 File name of master dark used for dark current correction.
 DO_FIT_DARK_SCALING          binary                    Whether or not the master dark scaling was fit based on the GFA image itself.
-MASTER_DARK_EXPTIME          float64          s        Integration time of the dark exposures used to make the relevant master dark.
-MASTER_DARK_GCCDTEMP         float64          deg      Average CCD temperature of the dark exposures used to make the relevant master dark (Celsius).
+MASTER_DARK_EXPTIME          float64     s             Integration time of the dark exposures used to make the relevant master dark.
+MASTER_DARK_GCCDTEMP         float64     deg           Average CCD temperature of the dark exposures used to make the relevant master dark (Celsius).
 DARK_TEMP_SCALING_FACTOR     float64                   Factor by which the master dark was scaled based on CCD temperature.
 TOTAL_DARK_SCALING_FACTOR    float64                   Total factor by which the master dark was scaled accounting for both exposure time and CCD temperature.
 DARK_RESCALE_FACTORS_PER_AMP float64[4]                Per-amp factor by which the master dark was scaled accounting for both exposure time and CCD temperature.
@@ -204,8 +204,8 @@ DARK_RESCALE_FACTOR_ADOPTED  float64                   Adopted master dark resca
 APPLY_DARK_RESCALE_FACTOR    binary                    Whether or not the adopted dark rescaling factor was applied.
 DARK_RESCALE_NCALLS          int64[4]                  Per-amp number of dark current rescaling fit iterations.
 DARK_RESCALE_CONVERGED       binary[4]                 Per-amp indication of whether the dark current rescaling fit converged.
-REQ_MJD_MIN                  float64         d         Input MJD lower bound for creating GFA image coadd.
-REQ_MJD_MAX                  float64         d         Input MJD upper bound for creating GFA image coadd.
+REQ_MJD_MIN                  float64     d             Input MJD lower bound for creating GFA image coadd.
+REQ_MJD_MAX                  float64     d             Input MJD upper bound for creating GFA image coadd.
 N_PMGSTARS_ALL               int64                     Number of platemaker stars.
 N_PMGSTARS_RETAINED          int64                     Number of platemaker stars retained by platemaker.
 FIBERFAC                     float64                   PMGSTARS forced photometry amount of light in 1.52 arcsec diameter aperture normalized to nominal, assuming a point source profile.
@@ -362,9 +362,3 @@ FIBERFAC_BGS                 float64                PMGSTARS forced photometry a
 MINCONTRAST                  float64                Minimum ``gfa_reduce`` astrometric pattern matching contrast parameter among retained cameras
 MAXCONTRAST                  float64                Maximum ``gfa_reduce`` astrometric pattern matching contrast parameter among retained cameras
 ============================ ======== ============= ================================================================================
-
-
-Notes and Examples
-==================
-
-*Add notes and examples here.  You can also create links to example files.*
