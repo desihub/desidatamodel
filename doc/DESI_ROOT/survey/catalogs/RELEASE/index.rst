@@ -8,4 +8,4 @@ RELEASE
    :maxdepth: 1
 
    LSS/index
-   QSO/index
+   QSO/SPECPROD/index

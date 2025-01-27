@@ -1,10 +1,10 @@
 ==================
-mtl-PHOTSYS-hp-HPX
+mtl-OBSCON-hp-HPX
 ==================
 
 :Summary: MTL ledgers for the DESI bright-time program.
-:Naming Convention: ``mtl-PHOTSYS-hp-HPX.ecsv``, where 
-    HPX is the nside=32 (NESTED) HEALPixel integer and PHOTSYS can be either dark or bright.
+:Naming Convention: ``mtl-OBSCON-hp-HPX.ecsv``, where 
+    HPX is the nside=32 (NESTED) HEALPixel integer and OBSCON can be either dark or bright.
 :Regex: ``mtl-[a-z]+-hp-[0-9]+.ecsv``
 :File Type: ecsv, 0-10 MB
 

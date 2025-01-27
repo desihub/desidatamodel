@@ -2,7 +2,7 @@
 DDATE
 =====
 
-This directory contains the individual fiber assigment for each realization.  
+This directory contains the individual fiber assigment for each realization, given the DDATE observed.  
 
 
 .. toctree::

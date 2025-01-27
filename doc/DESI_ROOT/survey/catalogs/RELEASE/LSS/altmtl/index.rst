@@ -2,9 +2,9 @@
 altmtl
 ======
 
-``${DESI_ROOT}/survey/catalogs/RELEASE/LSS/altmtl`` contains the Merged Target List (MTL) ledgers ( :ref:`see, e.g., <mtl_ledger>`) with subpriorities re-seeded, but following the fiber-specific observational information on whether the target assigned to a particular positioner was successful. There are 128 realizations, each in a separate ``Univ{UNUM}`` directory, each of which is split into ``dark`` and ``bright`` programs.
+``${DESI_ROOT}/survey/catalogs/RELEASE/LSS/altmtl`` contains the Merged Target List (MTL) ledgers ( :ref:`see, e.g., <mtl_ledger>`) with subpriorities re-seeded, but following the fiber-specific observational information on whether the target assigned to a particular positioner was successful. For each OBSCON ``DARK`` and ``BRIGHT``, there are 128 realizations, each in a separate ``Univ{UNUM}`` directory.
 
 .. toctree::
    :maxdepth: 1
 
-   PHOTSYS/index
+   OBSCON/index
