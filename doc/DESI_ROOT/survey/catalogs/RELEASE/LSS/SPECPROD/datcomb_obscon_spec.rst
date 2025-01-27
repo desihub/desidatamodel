@@ -1,6 +1,6 @@
-=======================
+===========================
 datcomb_{OBSCON}_spec_zdone
-=======================
+===========================
 
 :Summary: Compilation of spectroscopic reduction
 :Naming Convention: ``datcomb_{obscon}_spec_zdone.fits``, where obscon can be either dark or bright

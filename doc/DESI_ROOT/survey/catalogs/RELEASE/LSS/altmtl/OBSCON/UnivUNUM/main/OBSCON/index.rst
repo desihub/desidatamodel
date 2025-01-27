@@ -9,7 +9,7 @@ The filename for each ledger resembles mtl-OBSCON-hp-HPX.ecsv is the healpixel n
 .. toctree::
    :maxdepth: 1
 
-   mtl-OBSCON-hp-HPX.ecsv : MTL ledgers for the DESI bright or dark program for the given altmtl realization <mtl-PHOTSYS-hp-HPX>
+   mtl-OBSCON-hp-HPX.ecsv : MTL ledgers for the DESI bright or dark program for the given altmtl realization <mtl-OBSCON-hp-HPX>
 
 
 
