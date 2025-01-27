@@ -17,8 +17,8 @@ jobs:
             fail-fast: true
             matrix:
                 os: [ubuntu-latest]
-                python-version: ['3.9', '3.10']  #, '3.11'] possible conflicts between numpy & astropy on 3.11.
-                astropy-version: ['<6.0', '<6.1', '<7.0']
+                python-version: ['3.10', '3.11']
+                astropy-version: ['<6.1', '<7.0']
                 desiutil-version: ['3.4.3', 'main']
 
         steps:

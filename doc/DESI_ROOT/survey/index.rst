@@ -10,3 +10,4 @@ Subdirectories:
    :maxdepth: 1
 
    fiberassign/index
+   GFA/index
