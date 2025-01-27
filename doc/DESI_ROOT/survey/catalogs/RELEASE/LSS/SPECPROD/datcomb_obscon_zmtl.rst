@@ -14,7 +14,7 @@ Contents
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
 HDU0_           IMAGE    Empty
-HDU1_  ZCATALOG BINTABLE Catalog data
+HDU1_  LSS      BINTABLE Catalog data
 ====== ======== ======== ===================
 
 
