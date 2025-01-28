@@ -31,7 +31,7 @@ Empty HDU.
 HDU1
 ----
 
-*Summarize the contents of this HDU.*
+The zmtl (CROSS-REF) information for the given OBSCON, concatenated across all relevant tiles.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
