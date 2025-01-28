@@ -10,4 +10,4 @@ unique_badfibers
 Contents
 ========
 
-These ASCII files contain 1 column as the list of bad fibers, defined as the column ``FIBER`` in the datamodel.
+These ASCII files contain 1 column as the list of bad fibers, defined as the column ``FIBER`` in the datamodel. These fibers were identified as problematic by Krowelski et al. (2024) and data associated with these fibers gets masked.
