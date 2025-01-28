@@ -2,7 +2,7 @@
 RANDCOMB FILE ZDONE
 ===================
 
-:Summary: Match of potential assignments from randoms with information from the observed spectroscopic sample given the tile and the location
+:Summary: Match of potential assignments from randoms with information from the observed spectroscopic sample given the TILEID and the LOCATION
 :Naming Convention: ``rancomb_{RANN}{OBSCON}wdupspec_zdone.fits``, , where ``{RANN}`` is the number of the random file (0 through 17) and ``{OBSCON}`` is the observing program, either ``dark`` or ``bright``.
 :Regex: ``rancomb_[0-9]+(dark|bright)wdupspec_zdone.fits`` 
 :File Type: FITS, 3 GB  
@@ -64,7 +64,7 @@ TARGETID  int64         Unique DESI target ID
 RA        float64 deg   Barycentric Right Ascension in ICRS
 DEC       float64 deg   Barycentric declination in ICRS
 TILEID    int64         Unique DESI tile ID
-PRIORITY  int32         Target current priority
+PRIORITY  int32         Priority of the DESI target that was assigned to the given TILEID and LOCATION
 TSNR2_ELG float32       ELG template (S/N)^2 summed over B,R,Z
 TSNR2_LYA float32       LYA template (S/N)^2 summed over B,R,Z
 TSNR2_BGS float32       BGS template (S/N)^2 summed over B,R,Z
