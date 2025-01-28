@@ -33,7 +33,7 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-*Summarize the contents of this HDU.*
+Selected columns from the cumulative tiles-based redshift catalogs (CROSS-REF) for the dark/bright program, selecting the data from fiber positioners available to science targets, and joining with the zmtl information (CROSS-REF) for each tile, which is used downstream to select observations that used "good hardware".
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
