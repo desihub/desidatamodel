@@ -2,16 +2,10 @@
 QSO_cat_cumulative
 ==================
 
-:Summary: *This section should be filled in with a high-level description of
-    this file. In general, you should remove or replace the emphasized text
-    (\*this text is emphasized\*) in this document.*
-:Naming Convention: ``QSO_cat_iron_cumulative_v0.fits``, where ... *Give a human readable
-    description of the filename, e.g. ``blat-{EXPID}`` where ``{EXPID}``
-    is the 8-digit exposure ID.*
-:Regex: ``QSO_cat_iron_cumulative_v0.fits`` *Give a regular expression for this filename.
-    For example, a six-digit number would correspond to ``[0-9]{6}``.*
-:File Type: FITS, 828 MB  *This section gives the type of the file
-    and its approximate size.*
+:Summary: This contains the information on quasar automatically identified from DESI spectra coadded for all observations of the relevant tiles. Data appearing here is considered a successful quasar redshift by the LSS pipeline. 
+:Naming Convention: ``QSO_cat_{SPECPROD}_cumulative_{VERSION}.fits``.
+:Regex: ``QSO_cat_iron_cumulative_v[0-9]{1}.fits`` 
+:File Type: FITS, 828 MB  
 
 Contents
 ========
