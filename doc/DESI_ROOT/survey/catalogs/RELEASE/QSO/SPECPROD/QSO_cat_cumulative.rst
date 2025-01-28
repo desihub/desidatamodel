@@ -13,8 +13,8 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    *Brief Description*
-HDU1_  QSO_CAT BINTABLE *Brief Description*
+HDU0_          IMAGE    Empty
+HDU1_  QSO_CAT BINTABLE Quasar Catalog
 ====== ======= ======== ===================
 
 
@@ -23,8 +23,6 @@ FITS Header Units
 
 HDU0
 ----
-
-*Summarize the contents of this HDU.*
 
 This HDU has no non-standard required keywords.
 
@@ -35,7 +33,7 @@ HDU1
 
 EXTNAME = QSO_CAT
 
-*Summarize the contents of this HDU.*
+This HDU contains all of the information on the identified quasars. Further information could be obtained via a match to other files that contain the columns TARGETID and TILEID.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,4 +132,4 @@ PROGRAM            char stream              DESI program type - BRIGHT, DARK, BA
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+As of DR1, the selection criteria are the same as described in Chaussidon et al. (2023)
