@@ -33,7 +33,7 @@ HDU1
 
 EXTNAME = LSS
 
-Concatenation of all of the dark time emission line healpix file outputs
+Concatenation of all of the dark time tile-based emission line file outputs (CROSS-REF)
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
