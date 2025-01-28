@@ -33,7 +33,7 @@ HDU1
 
 EXTNAME = PIXWEIGHT
 
-*Summarize the contents of this HDU.*
+Healpix maps of quantities that are potentially useful for systematic tests/regressions, matched to the footprint of the DESI data and created as described in Appendix A of arXiv:2411.12020
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,8 +77,8 @@ EBV_SGF14                  float32              EBV dust reddening from Schlafly
 BETA_ML                    float32              Maximum value of the dust emissivity index posterior from Planck (Planck Collaboration - A&amp;A 594 â 2016 - A10)
 BETA_MEAN                  float32              Mean value of the dust emissivity index posterior from Planck (Planck Collaboration - A&amp;A 594 â 2016 - A10)
 BETA_RMS                   float32              Root mean square value of the dust emissivity index posterior from Planck (Planck Collaboration - A&amp;A 594 â 2016 - A10)
-HI                         float32              HI column density assembled by combining the Effelsberg-Bonn HI Survey and the third revision of the Galactic All-Sky Survey (from HI4PI Collaboration - A&amp;A 594 â 2016 - A116)
-KAPPA_PLANCK               float32              Map of lensing convergence from Planck where values are the mean-field-subtracted minimum-variance estimate from temperature and polarization (from Planck Collaboration -A&amp;A 641 â 2020 - A8)
+HI                         float32              HI column density assembled by combining the Effelsberg-Bonn HI Survey and the third revision of the Galactic All-Sky Survey (from HI4PI Collaboration - A&A 594 016 - A116)
+KAPPA_PLANCK               float32              Map of lensing convergence from Planck where values are the mean-field-subtracted minimum-variance estimate from temperature and polarization (from Planck Collaboration -A&A 6412020 - A8)
 EBV                        float32 mag          Galactic extinction E(B-V) reddening from SFD98
 PSFDEPTH_G                 float32 nanomaggy^-2 PSF-based depth in g-band
 PSFDEPTH_R                 float32 nanomaggy^-2 PSF-based depth in r-band
@@ -97,4 +97,4 @@ PSFSIZE_Z                  float32 arcsec       Median PSF size evaluated at the
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+
