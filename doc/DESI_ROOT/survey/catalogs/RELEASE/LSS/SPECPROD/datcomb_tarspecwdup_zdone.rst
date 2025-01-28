@@ -2,7 +2,7 @@
 datcomb TARGET zdone wdup
 ====================================
 
-:Summary: Match of targets (with duplicates after FA) with spectroscopic data from the specprod.
+:Summary: Match of targets (with duplicate TARGETID corresponding to each potential assignment) with spectroscopic data compiled with datcomb_obscon_spec.
 :Naming Convention: ``datcomb_{TARGET}_tarspecwdup_zdone.fits``, where {TARGET} is the target type, like BGS_ANY or BGS_BRIGHT in bright program and like ELG_LOPnotqso, LRG or QSO in dark program
 :Regex: ``datcomb_[a-z]_tarspecwdup_zdone.fits`` 
 :File Type: FITS, 6 GB 
@@ -33,7 +33,7 @@ HDU1
 
 EXTNAME = ZCATALOG
 
-Match catalog between spectroscopic information and duplicate targets after running fiber assigments
+Match of targets (with duplicate TARGETID corresponding to each potential assignment) with spectroscopic data compiled with datcomb_obscon_spec. Unobserved potential assignments have the corresponding spectroscopic information set to null values.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
