@@ -31,7 +31,7 @@ Empty HDU.
 HDU1
 ----
 
-*Summarize the contents of this HDU.*
+The sky coordinates for each TILEID consider for the corresponding LSS catalogs
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,4 +65,4 @@ DEC    float64 deg   Barycentric declination in ICRS
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
+These can be used to, e.g., define the greater footprint, which can be useful, e.g., for producing mock samples.
