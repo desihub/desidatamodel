@@ -20,6 +20,7 @@ Directories under :envvar:`DESI_ROOT`:
    * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts
    * :doc:`target/ <DESI_TARGET/index>`: Target selection and fiber assignment catalogs
    * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs
+   * :doc:`survey/catalogs/RELEASE <DESI_ROOT/survey/catalogs/RELEASE/index>` : LSS Catalogs
 
 The following directories are more expert-level (e.g. pipeline calibration inputs)
 and are documented for DESI collaboration internal use and may not be included
@@ -88,7 +89,7 @@ References
 
   * Target Selection: `Myers, A. D., et al. 2023, AJ 165, 50 <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
   * Spectroscopic Pipeline: `Guy, J., et al. 2023, AJ 165, 4, 144 <https://ui.adsabs.harvard.edu/abs/2023AJ....165..144G/abstract>`_
-  * Early Data Release: `DESI Collaboration et al. 2023 <https://arxiv.org/abs/2306.06308>`_
+  * Early Data Release: `DESI Collaboration et al. 2023 <https://ui.adsabs.harvard.edu/abs/2024AJ....168...58D/abstract>`_
 
 Index and Search Pages
 ----------------------
