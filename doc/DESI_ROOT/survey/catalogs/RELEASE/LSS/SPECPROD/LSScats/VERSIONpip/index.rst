@@ -9,7 +9,6 @@ VERSIONpip contains same catalogs as VERSION, but with PIP weights. Healpix maps
 .. toctree::
    :maxdepth: 1
 
-   hpmaps/index
    TARGET_frac_tlobs.fits : For list of tileids, FRAC_TLOBS <frac_tlobs_pip>
    TARGET_fullVETO.dat.fits : Information on all observed targets identified as reachable <data_full_pip>
    TARGET_RANN_fullVETO.ran.fits : Information on all random targets identified as reachable <random_full_pip>

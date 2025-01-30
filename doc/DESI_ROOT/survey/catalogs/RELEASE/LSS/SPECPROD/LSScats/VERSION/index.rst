@@ -1,10 +1,10 @@
-.. _clustering:
+.. _clustering_dr:
 
 =======
 VERSION
 =======
 
-VERSION contains the final LSS catalogs, separated by target types (:ref:`see here for references<dr_lsscats>`), that have been prepared to be used directly to obtain clustering statistics. It includes both data for randoms (separated into 18 files given ``{RANN}``).
+VERSION contains the final LSS catalogs, separated by target types (:ref:`see here for references<lsscats>`)??? To check lsscats., that have been prepared to be used directly to obtain clustering statistics. It includes both data for randoms (separated into 18 files given ``{RANN}``).
 
 We can also found healpix maps representing several quantities under hpmaps directory for each target separately.
 

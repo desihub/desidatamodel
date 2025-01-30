@@ -174,8 +174,8 @@ WEIGHT_ZFAIL               float64                  Should be all 1 at this poin
 mod_success_rate           float64                  Expected spectroscopic success rate given the target and observation properties
 ========================== =========== ============ =======================================================================================================================================
 
+.. [1] Optional. lrg_mask only available for LRG samples. 
 
 Notes and Examples
 ==================
 
-*Add notes and examples here.  You can also create links to example files.*
