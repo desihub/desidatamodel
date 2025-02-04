@@ -11,8 +11,8 @@ APFLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of APFLUX_Z,Inverse variance
 APFLUX_R,float32,nanomaggy,Total r-band flux within a 0.75 arcsec radius,Total flux in nanomaggies extracted in a 0.75 arcsec radius in the r band at this location
 APFLUX_Z,float32,nanomaggy,Total z-band flux within a 0.75 arcsec radius,Total flux in nanomaggies extracted in a 0.75 arcsec radius in the z band at this location
 A_MGII,float32,,Fitted parameter A (amplitude) by MgII fitter,Fitted parameter A (amplitude) by MgII fitter
-BETA_MEAN,float32,,Mean value of the dust emissivity index posterior from Planck,Mean value of the dust emissivity index posterior from Planck (Planck Collaboration - A&A 594 â 2016 - A10)
-BETA_ML,float32,,Maximum value of the dust emissivity index posterior from Planck,Maximum value of the dust emissivity index posterior from Planck (Planck Collaboration - A&A 594 â 2016 - A10)
+BETA_MEAN,float32,,Mean value of the dust emissivity index posterior from Planck,Mean value of the dust emissivity index posterior from Planck (Planck Collaboration - A&ampA 594 2016 - A10)
+BETA_ML,float32,,Maximum value of the dust emissivity index posterior from Planck,Maximum value of the dust emissivity index posterior from Planck (Planck Collaboration - A\&A 594 2016 - A10)
 BETA_RMS,float32,,Root mean square value of the dust emissivity index posterior from Planck,Root mean square value of the dust emissivity index posterior from Planck (Planck Collaboration - A&A 594 â 2016 - A10)
 BGS_TARGET,int64,,BGS (Bright Galaxy Survey) target sel bitmask,BGS (Bright Galaxy Survey) target selection bitmask
 BITWEIGHTS,int64[2],,Bitmask pair for alternative target assignment,A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
@@ -135,7 +135,7 @@ GALDEPTH_Z,float32,nanomaggy^-2,Galaxy model-based depth in LS z-band,Galaxy mod
 GOODHARDLOC,bool,,True/False whether the fiber had good hardware,True/False whether the fiber had good hardware
 GOODPRI,bool,,True if assigned priority <= base priority,True/False whether the priority of what was assigned to the location was <= the base priority of the given target class
 GOODTSNR,bool,,True if TSNR_<class> above minimum threshold,True/False whether the TSNR_<class> value used was above the minimum threshold for the given target class
-HALPHA,float32,,Intensity of Halpha emission at FWHM of 6â,Intensity of Halpha emission at FWHM of 6â (from Finkbeiner - ApJS 146 â 2003 - 407)
+HALPHA,float32,,Intensity of Halpha emission at FWHM of 6 minutes, Intensity of Halpha emission at FWHM of 6 minutes (from Finkbeiner - ApJS 146 2003 - 407)
 HALPHA_CHI2,float32,,Reduced chi2 of the fit for the HALPHA line,Reduced chi2 of the fit for the HALPHA line
 HALPHA_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum for HALPHA line fitting (constant),Continuum used for the fitting (fixed value) for the HALPHA line
 HALPHA_CONT_IVAR,float32,10**+34 (s2 cm4 Angstrom2) / erg2,Inverse variance of HALPHA line continuum,Inverse variance of the continuum for the HALPHA line
