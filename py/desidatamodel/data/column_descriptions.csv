@@ -97,20 +97,20 @@ FIBER_X,float64,mm,CS5 X location requested by PlateMaker,CS5 X location request
 FIBER_Y,float64,mm,CS5 Y location requested by PlateMaker,CS5 Y location requested by PlateMaker
 FIRSTNIGHT,int32,,Calendar Date of the first exposure,KPNO Calendar Date when the first exposure was obtained (regardless of data quality)
 FLUX_G,float32,nanomaggy,Flux in the Legacy Survey g-band (AB),Flux in the Legacy Survey g-band (AB)
-FLUX_G_DERED,float32,nanomaggy,FLUX_G corrected for Galactic extinction (AB),Flux in the g-band after correcting for Galactic extinction (AB system)
+FLUX_G_DERED,float32,nanomaggy,(lower or uppercase) FLUX_G corrected for Galactic extinction (AB),(lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
 FLUX_IVAR_G,float32,nanomaggy^-2,Inverse variance of FLUX_G (AB),Inverse variance of FLUX_G (AB)
 FLUX_IVAR_R,float32,nanomaggy^-2,Inverse variance of FLUX_R (AB),Inverse variance of FLUX_R (AB)
 FLUX_IVAR_W1,float32,nanomaggy^-2,Inverse variance of FLUX_W1 (AB),Inverse variance of FLUX_W1 (AB)
 FLUX_IVAR_W2,float32,nanomaggy^-2,Inverse variance of FLUX_W2 (AB),Inverse variance of FLUX_W2 (AB)
 FLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of FLUX_Z (AB),Inverse variance of FLUX_Z (AB)
 FLUX_R,float32,nanomaggy,Flux in the Legacy Survey r-band (AB),Flux in the Legacy Survey r-band (AB)
-FLUX_R_DERED,float32,nanomaggy,FLUX_R corrected for Galactic extinction (AB),Flux in the r-band after correcting for Galactic extinction (AB system)
+FLUX_R_DERED,float32,nanomaggy,(lower or uppercase) FLUX_R corrected for Galactic extinction (AB),(lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
 FLUX_W1,float32,nanomaggy,WISE flux in W1 (AB),WISE flux in W1 (AB)
-FLUX_W1_DERED,float32,nanomaggy,FLUX_W1 corrected for Galactic extinction (AB),Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
+FLUX_W1_DERED,float32,nanomaggy,(lower or uppercase) FLUX_W1 corrected for Galactic extinction (AB),(lower or uppercase) Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
 FLUX_W2,float32,nanomaggy,WISE flux in W2 (AB),WISE flux in W2 (AB)
-FLUX_W2_DERED,float32,nanomaggy,FLUX_W2 corrected for Galactic extinction (AB),Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
+FLUX_W2_DERED,float32,nanomaggy,(lower or uppercase) FLUX_W2 corrected for Galactic extinction (AB),(lower or uppercase) Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
 FLUX_Z,float32,nanomaggy,Flux in the Legacy Survey z-band (AB),Flux in the Legacy Survey z-band (AB)
-FLUX_Z_DERED,float32,nanomaggy,FLUX_Z corrected for Galactic extinction (AB),Flux in the z-band after correcting for Galactic extinction (AB system)
+FLUX_Z_DERED,float32,nanomaggy,(lower or uppercase) FLUX_Z corrected for Galactic extinction (AB),(lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
 FRACZ_TILELOCID,float64,,Frac of targets obs at TILELOCID given class,The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 FRAC_TLOBS_TILES,float64,,Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID,Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 GAIA_ASTROMETRIC_EXCESS_NOISE,float32,,Gaia astrometric excess noise,Gaia astrometric excess noise
@@ -212,7 +212,7 @@ LC_NOBS_W1,int16[15],,NOBS_W1 in up to 15 unWISE coadd epochs,NOBS_W1 in each of
 LC_NOBS_W2,int16[15],,NOBS_W2 in up to 15 unWISE coadd epochs,NOBS_W2 in each of up to fifteen unWISE coadd epochs
 LOCATION,int64,,Loc on focal plane PETAL_LOC*1000 + DEVICE_LOC,Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 LOCATION_ASSIGNED,bool,,True if assigned for the target in question,True/False for assigned/unassigned for the target in question
-LRG_MASK,binary,,Imaging mask bits relevant to LRG targets,Imaging mask bits relevant to LRG targets
+LRG_MASK,binary,,(lower or uppercase) Imaging mask bits relevant to LRG targets, (lower or upper case) Imaging mask bits relevant to LRG targets
 MAIN_NSPEC,int32,,Nb of coadded spectra in Main survey for TID,Number of coadded spectra for this TARGETID in Main survey
 MAIN_PRIMARY,bool,,True if primary coadd spectrum in Main survey,Boolean flag (True/False) for the primary coadded spectrum in Main survey
 MASKBITS,int16,,Bitwise mask from imaging for potential issues,Bitwise mask from the imaging indicating potential issue or blending
@@ -253,6 +253,7 @@ MIN_MJD,float64,d,MJD of the first exposure in coadded spectrum,Minimum value of
 MJD,float64,d,Modified Julian Date when shutter open for exp,Modified Julian Date when shutter was opened for this exposure
 MJD_BEGIN,float64,d,Start of the allowed observing window (MJD),Start of the allowed observing window for this target (Modified Julian Date)
 MJD_END,float64,d,End of the allowed observing window (MJD),End of the allowed observing window for this target (Modified Julian Date)
+mod_success_rate,float64,,Expected spectroscopic success rate given the target and observation properties,Expected spectroscopic success rate given the target and observation properties
 MORPHTYPE,char[4],,Imaging Survey morphological type from Tractor,Imaging Surveys morphological type from Tractor
 MWS_TARGET,int64,,Milky Way Survey targeting bits,Milky Way Survey targeting bits
 MW_TRANSMISSION_G,float32,,Milky Way dust transmission in LS g-band,Milky Way dust transmission in LS g-band
@@ -277,7 +278,7 @@ NUMTARGET,int16,,Total number of targets covered by positioner,Total number of t
 NUM_ITER,int64,,Number of positioner iterations,Number of positioner iterations
 NX,float64,,Estimated mean number density given the redshift and number of overlapping tiles (NTILE),Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 NZ,float64,h^3 Mpc^-3,Comoving number density of tracer at given z,"The comoving number density of the tracer at the given redshift, assuming complete sample"
-O2C,float64,,Criterion for strength of OII emission for ELG,The criteria for assessing strength of OII emission for ELG observations
+O2C,float64,,(lower or uppercase) Criterion for strength of OII emission for ELG,(lower or uppercase) The criteria for assessing strength of OII emission for ELG observations
 OBJID,int32,,Imaging Surveys OBJID on brick (BRICK_OBJID),Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD","Object type: TGT, SKY, NON, BAD"
 OBSCONDITIONS,int32,,Bitmask of allowed observing conditions,Bitmask of allowed observing conditions
@@ -422,7 +423,7 @@ TILELOCID,int64,,Is 10000*TILEID+LOCATION,Is 10000*TILEID+LOCATION
 TILELOCIDS,char[*],,Available TILELOCIDs for a target joint by -,TILELOCIDs that the target was available for separated by -
 TILELOCID_ASSIGNED,int64,,1 if the TILELOCID is assigned (0=unassigned),0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 TILERA,float64,deg,Barycentric R.A. of tile center in ICRS,Barycentric Right Ascension of tile center in ICRS
-TILES,char[*],,Available TILEIDs for a target joined by -,TILEIDs of those tile, in string form separated by -
+TILES,char[*],,Available TILEIDs for a target joined by -,"TILEIDs of those tile, in string form separated by -"
 TIMESTAMP,str,s,UTC/ISO time when the target state was updated,UTC/ISO time at which the target state was updated
 TOOID,int64,,ID for this target assigned by the CHECKER,ID for this target assigned by the ``CHECKER``
 TOO_PRIO,char[2],,High-priority (HI) or low-priority (LO) target,Either HI for a very-high-priority target or LO for a very-low-priority target
@@ -498,4 +499,3 @@ Z_QN,float64,,Redshift by QuasarNET; highest confidence line,Redshift measured b
 Z_QN_CONF,float64,,Redshift confidence from QuasarNET,Redshift confidence from QuasarNET
 Z_RR,float64,,Redshift collected from redrock file,Redshift collected from redrock file
 Z_not4clus,float64,,Redshift that eventually gets propagated as Z to the clustering catalogs (the not4clus aids in the blinding process),Redshift that eventually gets propagated as Z to the clustering catalogs (the not4clus aids in the blinding process)
-mod_success_rate,float64,,Expected spectroscopic success rate given the target and observation properties,Expected spectroscopic success rate given the target and observation properties
