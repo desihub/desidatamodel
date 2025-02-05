@@ -31,6 +31,8 @@ Empty HDU.
 HDU1
 ----
 
+EXTNAME = TILES
+
 The sky coordinates for each TILEID consider for the corresponding LSS catalogs
 
 Required Header Keywords

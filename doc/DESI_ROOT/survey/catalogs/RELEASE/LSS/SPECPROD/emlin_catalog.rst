@@ -31,7 +31,7 @@ Empty HDU.
 HDU1
 ----
 
-EXTNAME = LSS
+EXTNAME = EMLIN
 
 Concatenation of all of the dark time tile-based emission line file outputs (CROSS-REF)
 

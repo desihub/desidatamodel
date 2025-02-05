@@ -74,9 +74,9 @@ EBV_MPF_Mean_ZptCorr_FW6P1 float32              Zero point correction in EBV dus
 EBV_MPF_Var_FW6P1          float32              Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1â (more details in Mudur Park &amp; Finkbeiner - ApJ 949 - 2023)
 EBV_MPF_VarCorr_FW6P1      float32              Uncertainty corrections in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1â (more details in Mudur Park &amp; Finkbeiner - ApJ 949 - 2023)
 EBV_SGF14                  float32              EBV dust reddening from Schlafly Green &amp; Finkbeiner map from PanSTARRS1 (details in Appendix A from DESI 2024 II paper)
-BETA_ML                    float32              Maximum value of the dust emissivity index posterior from Planck (Planck Collaboration - A&amp;A 594 â 2016 - A10)
-BETA_MEAN                  float32              Mean value of the dust emissivity index posterior from Planck (Planck Collaboration - A&amp;A 594 â 2016 - A10)
-BETA_RMS                   float32              Root mean square value of the dust emissivity index posterior from Planck (Planck Collaboration - A&amp;A 594 â 2016 - A10)
+BETA_ML                    float32              Maximum value of the dust emissivity index posterior from Planck (Planck Collaboration - A\&A 594 2016 - A10)
+BETA_MEAN                  float32              Mean value of the dust emissivity index posterior from Planck (Planck Collaboration - A\&A 594 2016 - A10)
+BETA_RMS                   float32              Root mean square value of the dust emissivity index posterior from Planck (Planck Collaboration - A\&A 594 2016 - A10)
 HI                         float32              HI column density assembled by combining the Effelsberg-Bonn HI Survey and the third revision of the Galactic All-Sky Survey (from HI4PI Collaboration - A&A 594 016 - A116)
 KAPPA_PLANCK               float32              Map of lensing convergence from Planck where values are the mean-field-subtracted minimum-variance estimate from temperature and polarization (from Planck Collaboration -A&A 6412020 - A8)
 EBV                        float32 mag          Galactic extinction E(B-V) reddening from SFD98
