@@ -133,8 +133,8 @@ GALDEPTH_G,float32,nanomaggy^-2,Galaxy model-based depth in LS g-band,Galaxy mod
 GALDEPTH_R,float32,nanomaggy^-2,Galaxy model-based depth in LS r-band,Galaxy model-based depth in LS r-band
 GALDEPTH_Z,float32,nanomaggy^-2,Galaxy model-based depth in LS z-band,Galaxy model-based depth in LS z-band
 GOODHARDLOC,bool,,True/False whether the fiber had good hardware,True/False whether the fiber had good hardware
-GOODPRI,bool,,True if assigned priority <= base priority,True/False whether the priority of what was assigned to the location was <= the base priority of the given target class
-GOODTSNR,bool,,True if TSNR_<class> above minimum threshold,True/False whether the TSNR_<class> value used was above the minimum threshold for the given target class
+GOODPRI,bool,,True if assigned priority less or equals to base priority,True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
+GOODTSNR,bool,,True if TSNR (class) above minimum threshold,True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 HALPHA,float32,,Intensity of Halpha emission at FWHM of 6 minutes, Intensity of Halpha emission at FWHM of 6 minutes (from Finkbeiner - ApJS 146 2003 - 407)
 HALPHA_CHI2,float32,,Reduced chi2 of the fit for the HALPHA line,Reduced chi2 of the fit for the HALPHA line
 HALPHA_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum for HALPHA line fitting (constant),Continuum used for the fitting (fixed value) for the HALPHA line
@@ -369,7 +369,7 @@ SHAPE_E1,float32,,Ellipticity param e1 of galaxy model MORPHTYPE,Ellipticity com
 SHAPE_E1_IVAR,float32,,Inverse variance of SHAPE_E1,Inverse variance of SHAPE_E1
 SHAPE_E2,float32,,Ellipticity param e2 of galaxy model MORPHTYPE,Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2_IVAR,float32,,Inverse variance of SHAPE_E2,Inverse variance of SHAPE_E2
-SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0),Half-light radius of galaxy model (>0)
+SHAPE_R,float32,arcsec,Half-light radius of galaxy model (greater than 0),Half-light radius of galaxy model (greater than 0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted param SIGMA (linewidth) by MgII fitter,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
 SKY_MAG_AB_GFA,float64,mag arcsec^-2,Sky background in GFA passband,"Sky background in the GFA passband, measured from the GFA backgrounds."

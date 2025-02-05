@@ -116,13 +116,13 @@ Z_QN                       float64                  Redshift measured by QuasarN
 Z_QN_CONF                  float64                  Redshift confidence from QuasarNET
 IS_QSO_QN                  int16                    Spectroscopic classification from QuasarNET (1 for a quasar)
 PRIORITY_ASSIGNED          int32                    (only for data) PRIORITY of the target that was assigned to the given FIBER and TILEID (redundant with PRIORITY in the random catalogs)
-GOODPRI                    logical                  True/False whether the priority of what was assigned to the location was &lt;= the base priority of the given target class
+GOODPRI                    logical                  True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
 GOODHARDLOC                logical                  True/False whether the fiber had good hardware
 LOCATION_ASSIGNED          logical                  True/False for assigned/unassigned for the target in question
 TILELOCID_ASSIGNED         logical                  0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 NTILE                      int64                    Number of tiles target was available on
-TILES                      char[36]                 TILEIDs of those tile, in string form separated by &#x27;-&#x27;
-TILELOCIDS                 char[111]                TILELOCIDs that the target was available for, separated by &#x27;-&#x27;
+TILES                      char[36]                 TILEIDs of those tile, in string form separated by -
+TILELOCIDS                 char[111]                TILELOCIDs that the target was available for, separated by -
 BRICKID                    int32                    Brick ID from tractor input
 BRICKNAME                  char[8]                  Brick name from tractor input
 MORPHTYPE                  char[4]                  Imaging Surveys morphological type from Tractor
@@ -163,13 +163,13 @@ FIBERTOTFLUX_Z             float32     nanomaggy    Predicted z-band flux within
 WISEMASK_W1                binary                   Bitwise mask for WISE W1 data
 WISEMASK_W2                binary                   Bitwise mask for WISE W2 data
 MASKBITS                   int16                    Bitwise mask from the imaging indicating potential issue or blending
-SHAPE_R                    float32     arcsec       Half-light radius of galaxy model (&gt;0)
-PHOTSYS                    char[1]                  &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+SHAPE_R                    float32     arcsec       Half-light radius of galaxy model (greater than 0)
+PHOTSYS                    char[1]                  N for the MzLS/BASS photometric system, S for DECaLS
 DESI_TARGET                int64                    DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64                    BGS (Bright Galaxy Survey) target selection bitmask
 COMP_TILE                  float64                  Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID            float64                  The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
-lrg_mask [1]_              binary                   Imaging mask bits relevant to LRG targets
+lrg_mask [1]_              binary                   (lower or uppercase) Imaging mask bits relevant to LRG targets
 WEIGHT_ZFAIL               float64                  Should be all 1 at this point for main survey
 mod_success_rate           float64                  Expected spectroscopic success rate given the target and observation properties
 ========================== =========== ============ =======================================================================================================================================

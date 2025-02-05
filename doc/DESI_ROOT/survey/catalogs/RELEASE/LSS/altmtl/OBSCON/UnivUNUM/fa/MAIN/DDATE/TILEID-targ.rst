@@ -88,7 +88,7 @@ FIBERTOTFLUX_G        float32  nanomaggy    Predicted g-band flux within a fiber
 FIBERTOTFLUX_R        float32  nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_Z        float32  nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 MASKBITS              int16                 Bitwise mask from the imaging indicating potential issue or blending
-SHAPE_R               float32  arcsec       Half-light radius of galaxy model (&gt;0)
+SHAPE_R               float32  arcsec       Half-light radius of galaxy model (greater than 0)
 SHAPE_E1              float32               Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2              float32               Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
 SERSIC                float32               Power-law index for the Sersic profile model (MORPHTYPE='SER')

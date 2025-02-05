@@ -63,19 +63,19 @@ TARGETID         int64             Unique DESI target ID
 RA               float64 deg       Barycentric Right Ascension in ICRS
 DEC              float64 deg       Barycentric declination in ICRS
 NTILE            int64             Number of tiles target was available on
-PHOTSYS          char[1]           &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS          char[1]           N for the MzLS/BASS photometric system, S for DECaLS
 FRAC_TLOBS_TILES float64           Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 Z                float64           Redshift measured by Redrock
 WEIGHT           float64           The combination of all weights to use
 WEIGHT_SYS       float64           Correction for fluctuations in projected density with imaging conditions, from random forrest method
-WEIGHT_COMP      float64           1/FRACZ_TILELOCID
+WEIGHT_COMP      float64           Completeness weight accounting for the local chance of being assigned a fiber
 WEIGHT_ZFAIL     float64           Should be all 1 at this point for main survey
 TARGETID_DATA    int64             For randoms and mocks: Unique DESI target ID of associated TILELOCID
-flux_g_dered     float32 nanomaggy Flux in the g-band after correcting for Galactic extinction (AB system)
-flux_r_dered     float32 nanomaggy Flux in the r-band after correcting for Galactic extinction (AB system)
-flux_z_dered     float32 nanomaggy Flux in the z-band after correcting for Galactic extinction (AB system)
-flux_w1_dered    float32 nanomaggy Flux in the W1-band after correcting for Galactic extinction (AB system)
-flux_w2_dered    float32 nanomaggy Flux in the W2-band after correcting for Galactic extinction (AB system)
+flux_g_dered     float32 nanomaggy (lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
+flux_r_dered     float32 nanomaggy (lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
+flux_z_dered     float32 nanomaggy (lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
+flux_w1_dered    float32 nanomaggy (lower or uppercase) Flux in the W1-band after correcting for Galactic extinction (AB system)
+flux_w2_dered    float32 nanomaggy (lower or uppercase) Flux in the W2-band after correcting for Galactic extinction (AB system)
 ================ ======= ========= ====================================================================================================
 
 

@@ -73,7 +73,7 @@ PROB_OBS         float64        The number alternative assignment histories that
 WEIGHT_RF        float64        Imaging systematics weights derived with the regressis random forest regression method
 WEIGHT_SYS       float64        Correction for fluctuations in projected density with imaging conditions, from random forrest method
 WEIGHT           float64        The combination of all weights to use
-WEIGHT_COMP      float64        1/FRACZ_TILELOCID
+WEIGHT_COMP      float64        Completeness weight accounting for the local chance of being assigned a fiber
 NX               float64        Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 WEIGHT_FKP       float64        1/(1+NX*P0), with P0 different for each tracer
 ================ ======== ===== =====================================================================================================================

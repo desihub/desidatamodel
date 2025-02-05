@@ -157,24 +157,24 @@ FIBERTOTFLUX_Z             float32     nanomaggy    Predicted z-band flux within
 WISEMASK_W1                binary                   Bitwise mask for WISE W1 data
 WISEMASK_W2                binary                   Bitwise mask for WISE W2 data
 MASKBITS                   int16                    Bitwise mask from the imaging indicating potential issue or blending
-SHAPE_R                    float32     arcsec       Half-light radius of galaxy model (&gt;0)
-PHOTSYS                    char[1]                  'N' for the MzLS/BASS photometric system, 'S' for DECaLS
+SHAPE_R                    float32     arcsec       Half-light radius of galaxy model (greater than 0)
+PHOTSYS                    char[1]                  N for the MzLS/BASS photometric system, S for DECaLS
 NTILE                      int64                    Number of tiles target was available on
-TILES                      char[51]                 TILEIDs of those tile, in string form separated by '-'
-TILELOCIDS                 char[151]                TILELOCIDs that the target was available for, separated by '-'
+TILES                      char[51]                 TILEIDs of those tile, in string form separated by -
+TILELOCIDS                 char[151]                TILELOCIDs that the target was available for, separated by -
 LOCATION_ASSIGNED          logical                  True/False for assigned/unassigned for the target in question
 TILELOCID_ASSIGNED         int64                    0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
-GOODTSNR                   logical                  True/False whether the TSNR_&lt;class&gt; value used was above the minimum threshold for the given target class
+GOODTSNR                   logical                  True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 COMP_TILE                  float64                  Assignment completeness for all targets of this type with the same value for TILES
 ROSETTE_NUMBER             int32                    Rosette number ID [0-19] (Only present in EDR)
 ROSETTE_R                  float64     deg          Radius from the center of the rosette to the target (Only present in EDR)
 FRACZ_TILELOCID            float64                  The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 BITWEIGHTS                 int64[2]                 A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 PROB_OBS                   float64                  The number alternative assignment histories that the target was assigned in divided by 128
-LRG_MASK [1]_              binary                   Imaging mask bits relevant to LRG targets
+LRG_MASK [1]_              binary                   (lower or uppercase) Imaging mask bits relevant to LRG targets
 OII_FLUX [1]_              float32                  Fitted flux for the [OII] doublet
 OII_FLUX_IVAR [1]_         float32                  Inverse variance of the fitted flux for the [OII] doublet
-O2C [1]_                   float64                  The criteria for assessing strength of OII emission for ELG observations
+O2C [1]_                   float64                  (lower or uppercase) The criteria for assessing strength of OII emission for ELG observations
 Z_RR [1]_                  float64                  Redshift collected from redrock file
 ========================== =========== ============ =====================================================================================================================================
 

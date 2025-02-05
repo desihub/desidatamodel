@@ -63,17 +63,17 @@ RA                 float64  deg        Target Right Ascension
 DEC                float64  deg        Target declination
 TARGETID           int64               Unique DESI target ID
 NTILE              int64               Number of tiles target was available on
-TILES              char[*]             TILEIDs of those tile, in string form separated by '-'
+TILES              char[*]             TILEIDs of those tile, in string form separated by -
 Z                  float64             Redshift measured by Redrock
 COMP_TILE          float64             Assignment completeness for all targets of this type with the same value for TILES
 ROSETTE_NUMBER     int32               Rosette number ID [0-19] (Only present in EDR)
 ROSETTE_R          float64  deg        Radius from the center of the rosette to the target (Only present in EDR)
 WEIGHT             float64             The combination of all weights to use
-FLUX_G_DERED [1]_  float32  nanomaggy  Flux in the g-band after correcting for Galactic extinction (AB system)
-FLUX_R_DERED [1]_  float32  nanomaggy  Flux in the r-band after correcting for Galactic extinction (AB system)
-FLUX_Z_DERED [1]_  float32  nanomaggy  Flux in the z-band after correcting for Galactic extinction (AB system)
-FLUX_W1_DERED [1]_ float32  nanomaggy  Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
-FLUX_W2_DERED [1]_ float32  nanomaggy  Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
+FLUX_G_DERED [1]_  float32  nanomaggy  (lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
+FLUX_R_DERED [1]_  float32  nanomaggy  (lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
+FLUX_Z_DERED [1]_  float32  nanomaggy  (lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
+FLUX_W1_DERED [1]_ float32  nanomaggy  (lower or uppercase) Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
+FLUX_W2_DERED [1]_ float32  nanomaggy  (lower or uppercase) Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
 REST_GMR_0P1 [1]_  float64             Rest-frame g-r colour at redshift=0.1
 KCORR_R0P1 [1]_    float64             r-band k-correction at redshift=0.1
 KCORR_G0P1 [1]_    float64             g-band k-correction at redshift=0.1

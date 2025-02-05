@@ -64,7 +64,7 @@ Z                float64        Redshift measured by Redrock
 NTILE            int64          Number of tiles target was available on
 RA               float64  deg   Barycentric Right Ascension in ICRS
 DEC              float64  deg   Barycentric declination in ICRS
-PHOTSYS          char[1]        &#x27;N&#x27; for the MzLS/BASS photometric system, &#x27;S&#x27; for DECaLS
+PHOTSYS          char[1]        N for the MzLS/BASS photometric system, S for DECaLS
 FRAC_TLOBS_TILES float64        Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 WEIGHT_ZFAIL     float64        Should be all 1 at this point for main survey
 WEIGHT_SN        float64        Imaging systematics weights derived with the sysnet NN regression method
@@ -73,7 +73,7 @@ PROB_OBS         float64        The number alternative assignment histories that
 WEIGHT_RF        float64        Imaging systematics weights derived with the regressis random forest regression method
 WEIGHT_SYS       float64        Correction for fluctuations in projected density with imaging conditions, from random forrest method
 WEIGHT           float64        The combination of all weights to use
-WEIGHT_COMP      float64        1/FRACZ_TILELOCID
+WEIGHT_COMP      float64        Completeness weight accounting for the local chance of being assigned a fiber
 NX               float64        Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 WEIGHT_FKP       float64        1/(1+NZ*P0), with P0 different for each tracer
 ================ ======== ===== =====================================================================================================================

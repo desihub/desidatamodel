@@ -104,8 +104,8 @@ TILELOCID                  int64                  Is 10000*TILEID+LOCATION
 GOODHARDLOC                logical                True/False whether the fiber had good hardware
 ZPOSSLOC                   logical                True/False whether the location could have been assigned to the given target class
 NTILE                      int64                  Number of tiles target was available on
-TILES                      char[51]               TILEIDs of those tile, in string form separated by '-'
-TILELOCIDS                 char[159]              TILELOCIDs that the target was available for, separated by '-'
+TILES                      char[51]               TILEIDs of those tile, in string form separated by -
+TILELOCIDS                 char[159]              TILELOCIDs that the target was available for, separated by -
 RELEASE                    int16                  Imaging surveys release ID
 BRICKID                    int32                  Brick ID from tractor input
 BRICKNAME                  char[8]                Brick name from tractor input
@@ -134,14 +134,14 @@ MASKBITS                   int16                  Bitwise mask from the imaging 
 WISEMASK_W1                binary                 Bitwise mask for WISE W1 data
 WISEMASK_W2                binary                 Bitwise mask for WISE W2 data
 EBV                        float32   mag          Galactic extinction E(B-V) reddening from SFD98
-PHOTSYS                    char[1]                'N' for the MzLS/BASS photometric system, 'S' for DECaLS
+PHOTSYS                    char[1]                N for the MzLS/BASS photometric system, S for DECaLS
 HPXPIXEL                   int64                  HEALPixel containing this location at NSIDE=64 in the NESTED scheme
-GOODPRI                    logical                True/False whether the priority of what was assigned to the location was &lt;= the base priority of the given target class
-GOODTSNR                   logical                True/False whether the TSNR_&lt;class&gt; value used was above the minimum threshold for the given target class
+GOODPRI                    logical                True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
+GOODTSNR                   logical                True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 ROSETTE_NUMBER             int32                  Rosette number ID [0-19] (only present in EDR)
 ROSETTE_R                  float64   deg          Radius from the center of the rosette to the target (only present in EDR)
 COMP_TILE                  float64                Assignment completeness for all targets of this type with the same value for TILES
-LRG_MASK [1]_              binary                 Imaging mask bits relevant to LRG targets
+LRG_MASK [1]_              binary                 (lower or uppercase)  Imaging mask bits relevant to LRG targets
 ========================== ========= ============ ===============================================================================================================================
 
 .. [1] Only present in LRG samples
