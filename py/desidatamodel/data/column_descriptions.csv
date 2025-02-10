@@ -65,7 +65,7 @@ EBV_MPF_VarCorr_FW6P1,float32,,Uncertainty corrections in EBV dust reddening gen
 EBV_MPF_Var_FW15,float32,,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
 EBV_MPF_Var_FW6P1,float32,,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
 EBV_SGF14,float32,,EBV dust reddening from Schlafly Green and Finkbeiner map from PanSTARRS1,EBV dust reddening from Schlafly Green and Finkbeiner map from PanSTARRS1 (details in Appendix A from DESI 2024 II paper)
-EFFECTIVE_BIAS,float64,,Effective bias used to weight the galaxy,Effective bias used to weight the galaxy
+EFFECTIVE_BIAS,float64,,Effective bias used to weight the galaxy when unifying several tracers,Effective bias used to weight the galaxy when unifying several tracers
 EFFTIME_ETC,float64,s,Effective exp time (nominal conditions; ETC),Effective exposure time for nominal conditions inferred from ETC data
 EFFTIME_SPEC,float64,s,Effective exp time (nominal conditions; TSNR2),Effective exposure time for nominal conditions derived from the TSNR2 fits to the spectroscopy
 EQ_ALL_0P0,float64,,e-correction at redshift=0.0,e-correction at redshift=0.0
@@ -473,6 +473,7 @@ WEIGHT_FKP,float64,,"1/(1+NZ*P0), with P0 different for each tracer","1/(1+NZ*P0
 WEIGHT_FKP_NTILE,float64,,Mean FKP weights as a function of the number of overlapping tiles in the PIP version LSS catalogs,Mean FKP weights as a function of the number of overlapping tiles in the PIP version LSS catalogs (to be used in the angular pair-counts used for angular up-weighting)
 WEIGHT_IMLIN,float64,,Imaging systematics weights derived with the eBOSS linear regression method,Imaging systematics weights derived with the eBOSS linear regression method
 WEIGHT_NTILE,float64,,Effective weight as a function of the number of overlapping tiles in the PIP version LSS catalogs,Effective weight as a function of the number of overlapping tiles in the PIP version LSS catalogs (to be used in the angular pair-counts used for angular up-weighting)
+WEIGHT_RESCALED,float64,,Rescaled weight when unifying different targets into a single frame,Rescaled weight when unifying different targets into a single frame
 WEIGHT_RF,float64,,Imaging systematics weights derived with the regressis random forest regression method,Imaging systematics weights derived with the regressis random forest regression method
 WEIGHT_SN,float64,,Imaging systematics weights derived with the sysnet NN regression method,Imaging systematics weights derived with the sysnet NN regression method
 WEIGHT_SYS,float64,,Correction for imaging conditions; RF method,"Correction for fluctuations in projected density with imaging conditions, from random forrest method"

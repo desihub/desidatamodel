@@ -47,7 +47,7 @@ Required Header Keywords
     ====== ============= ==== =====================
     NAXIS1 24            int  length of dimension 1
     NAXIS2 2275          int  length of dimension 2
-    DESIDR dr1           str
+    DESIDR dr1           str  DESI Data Release
     ====== ============= ==== =====================
 
 Required Data Table Columns

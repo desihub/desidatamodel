@@ -33,7 +33,7 @@ HDU1
 
 EXTNAME = PIXWEIGHT
 
-Healpix maps of quantities that are potentially useful for systematic tests/regressions, matched to the footprint of the DESI data and created as described in Appendix A of arXiv:2411.12020
+Healpix maps of quantities that are potentially useful for systematic tests/regressions, matched to the footprint of the DESI data and created as described in Appendix A of `DESI Collaboration (2025)`_
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,7 +47,7 @@ Required Header Keywords
     ====== ============= ==== =======================
     NAXIS1 132           int  width of table in bytes
     NAXIS2 786432        int  number of rows in table
-    DESIDR dr1           str
+    DESIDR dr1           str  DESI Data Release
     ====== ============= ==== =======================
 
 Required Data Table Columns
@@ -97,4 +97,4 @@ PSFSIZE_Z                  float32 arcsec       Median PSF size evaluated at the
 Notes and Examples
 ==================
 
-
+.. _DESI Collaboration (2025): https://ui.adsabs.harvard.edu/abs/2024arXiv241112020D/abstract

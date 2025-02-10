@@ -52,7 +52,7 @@ Required Header Keywords
     SURVEY   main          str
     PROGRAM  dark          str
     ZCATVER  v0            str
-    DESIDR   dr1           str
+    DESIDR   dr1           str  DESI Data Release
     ======== ============= ==== =====================
 
 Required Data Table Columns

@@ -54,7 +54,7 @@ Required Header Keywords
     MASKBITS T             bool
     BACKUP   F             bool
     NOSEC    F             bool
-    DR       None          Unknown
+    DESIDR   dr1           str     DESI Data Release
     ======== ============= ======= =======================
 
 Required Data Table Columns
