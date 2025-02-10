@@ -31,6 +31,8 @@ Empty HDU.
 HDU1
 ----
 
+EXTNAME = LSS
+
 The zmtl (CROSS-REF) information for the given OBSCON, concatenated across all relevant tiles.
 
 Required Header Keywords
