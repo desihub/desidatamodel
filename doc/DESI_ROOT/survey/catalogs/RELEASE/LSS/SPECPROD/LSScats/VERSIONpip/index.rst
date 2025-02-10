@@ -2,9 +2,8 @@
 VERSIONpip
 ==========
 
-VERSIONpip contains same catalogs as VERSION, completeness weights that are built from the record of alternative fiber assignment histories. These assignment histories also allow pairwise-inverse-probability (PIP) weights to be calculated for 2-point clustering measurements. Healpix maps are the same and are found in the same VERSION directory
+VERSIONpip contains same catalogs as VERSION, completeness weights that are built from the record of alternative fiber assignment histories. These assignment histories also allow pairwise-inverse-probability (PIP) weights to be calculated for 2-point clustering measurements. Healpix maps are the same and are found in the same VERSION directory. 
 
-.. _Ross et al. (2024): https://arxiv.org/abs/2405.16593
 
 .. toctree::
    :maxdepth: 1
