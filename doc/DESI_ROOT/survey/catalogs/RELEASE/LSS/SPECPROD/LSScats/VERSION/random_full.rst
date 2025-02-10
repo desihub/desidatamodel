@@ -31,6 +31,8 @@ Empty HDU.
 HDU1
 ----
 
+EXTNAME = LSS
+
 Catalog of randoms
 
 Required Header Keywords
