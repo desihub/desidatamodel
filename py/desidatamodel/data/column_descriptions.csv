@@ -224,7 +224,7 @@ MEAN_FIBER_RA,float64,deg,Mean (over exposures) RA of fiber position,Mean (over 
 MEAN_FIBER_X,float32,mm,Mean (over exposures) fiber CS5 X loc on FP,Mean (over exposures) fiber CS5 X location on focal plane
 MEAN_FIBER_Y,float32,mm,Mean (over exposures) fiber CS5 Y loc on FP,Mean (over exposures) fiber CS5 Y location on focal plane
 MEAN_MJD,float64,d,Mean of MJD of exposures in a coadded spectrum,Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
-MEAN_PSF_TO_FIBER_SPECFLUX,float32,,Mean PSF light fraction within 1.5arcsec fiber,Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+MEAN_PSF_TO_FIBER_SPECFLUX,float32,,Mean over exp PSF light frac in fiber,Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 MEDIAN_CALIB_COUNT_B,float64,,Median of calibrated flux in B camera,Median of calibrated flux in B camera
 MEDIAN_CALIB_COUNT_R,float64,,Median of calibrated flux in R camera,Median of calibrated flux in R camera
 MEDIAN_CALIB_COUNT_Z,float64,,Median of calibrated flux in Z camera,Median of calibrated flux in Z camera
@@ -332,7 +332,7 @@ PSFDEPTH_Z,float32,nanomaggy^-2,PSF-based depth in z-band,PSF-based depth in z-b
 PSFSIZE_G,float32,arcsec,Median g-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in g-band
 PSFSIZE_R,float32,arcsec,Median r-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z,float32,arcsec,Median z-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
-PSF_TO_FIBER_SPECFLUX,float64,,PSF light fraction within fiber (given seeing),fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+PSF_TO_FIBER_SPECFLUX,float64,,PSF light fraction in fiber (given seeing),Fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 QSO_MASKBITS,int32,,QSO Bitwise mask from imaging for potential issues, QSO Bitwise mask from the imaging indicating potential issue or blending
 RA,float64,deg,Barycentric Right Ascension in ICRS,Barycentric Right Ascension in ICRS
 RA_IVAR,float32,deg^-2,Inv variance of RA; w/o cos(dec) or astrom err,"Inverse variance of RA (no cosine term!), excluding astrometric calibration errors"

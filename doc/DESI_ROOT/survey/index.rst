@@ -11,3 +11,4 @@ Subdirectories:
 
    fiberassign/index
    catalogs/index
+   GFA/index

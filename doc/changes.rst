@@ -2,15 +2,17 @@
 desidatamodel Change Log
 ========================
 
-24.10 (unreleased)
+24.12 (unreleased)
 ------------------
 
 * Update package infrastructure, fix search function, add missing columns (PR `#199`_).
 * Update the units for ``SKY_MAG_*`` quantities in the ``SPECPROD/exposures-SPECPROD.rst``
   description (PR `#200`_).
+* Add description of GFA summary files (PR `#202`_).
 
 .. _`#199`: https://github.com/desihub/desidatamodel/pull/199
 .. _`#200`: https://github.com/desihub/desidatamodel/pull/200
+.. _`#202`: https://github.com/desihub/desidatamodel/pull/202
 
 24.9 (2024-09-12)
 -----------------
