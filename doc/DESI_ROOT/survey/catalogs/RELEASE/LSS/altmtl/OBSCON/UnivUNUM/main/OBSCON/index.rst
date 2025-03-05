@@ -1,6 +1,6 @@
-==================
-mtl ledgers altmtl
-==================
+==============
+altmtl ledgers
+==============
 
 ``${DESI_ROOT}/survey/catalogs/{RELEASE}/LSS/altmtl/{OBSCON}/Univ{UNUM}/main/{OBSCON}`` contains the Merged Target List (MTL) ledgers for the given UNUM realization. 
 
