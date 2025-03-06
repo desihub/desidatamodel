@@ -2,12 +2,10 @@
 zcatalog
 ========
 
-Redshift catalogs.
+Starting from Data Release 1, multiple zcatalog versions may be released with
+each SPECPROD.
 
 .. toctree::
    :maxdepth: 1
 
-   zall-pix-SPECPROD
-   zall-tilecumulative-SPECPROD
-   zpix-SURVEY-PROGRAM
-   ztile-SURVEY-PROGRAM-GROUPTYPE
+   VERSION/index
