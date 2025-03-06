@@ -3,8 +3,8 @@ DATA clustering catalogs with PIP weights
 =========================================
 
 :Summary: For each target type, LSS catalogs for the data, ready to be used for clustering measurements, are provided with PIP weights.
-:Naming Convention: ``{TARGET}_{PHOTSYS}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG``, ``ELG_LOPnotqso``, ``LRG``, ``LRG+ELG_LOPnotqso``,
-                    for dark or ``BGS_ANY``, ``BGS_BRIGHT``, ``BGS_BRIGHT-21.5`` for bright. ``{PHOTSYS}`` is the photometric region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown.
+:Naming Convention: ``{TARGET}_{GALCAP}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG``, ``ELG_LOPnotqso``, ``LRG``, ``LRG+ELG_LOPnotqso``,
+                    for dark or ``BGS_ANY``, ``BGS_BRIGHT``, ``BGS_BRIGHT-21.5`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown.
 :Regex: ``[a-zA-Z_+]+[A-Z_]{0,4}_clustering.dat.fits`` 
 :File Type: FITS, 237 MB 
 

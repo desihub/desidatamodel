@@ -3,7 +3,7 @@ nz
 ==
 
 :Summary: Contains target densities, as a function of redshift.
-:Naming Convention: ``{TARGET}_{PHOTSYS}_nz.txt``, where ``{TARGET}`` is ``QSO``, ``ELG_LOPnotqso``, ``LRG``, for dark or ``BGS_ANY``, ``BGS_BRIGHT``, ``BGS_BRIGHT-21.5``, for bright. ``{PHOTSYS}`` is the photometric region NGC or SGC.
+:Naming Convention: ``{TARGET}_{GALCAP}_nz.txt``, where ``{TARGET}`` is ``QSO``, ``ELG_LOPnotqso``, ``LRG``, for dark or ``BGS_ANY``, ``BGS_BRIGHT``, ``BGS_BRIGHT-21.5``, for bright. ``{GALCAP}`` is the Galactic hemisphere region NGC or SGC.
 :Regex: ``[a-zA-Z_]+_[NS]GC_nz\.txt``
 :File Type: ASCII
 

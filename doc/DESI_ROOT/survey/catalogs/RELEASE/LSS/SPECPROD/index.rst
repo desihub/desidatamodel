@@ -8,7 +8,7 @@ SPECPROD
    :maxdepth: 1
 
    LSScats/index
-   rancomb_{RANN}{PHOTSYS}wdupspec_zdone.fits : Initial randoms associated with a given PHOTSYS with RANN from 0 to 17 (both included) <rancomb_wdupspec_zdone>
+   rancomb_{RANN}{OBSCON}wdupspec_zdone.fits : Initial randoms associated with a given OBSCON with RANN from 0 to 17 (both included) <rancomb_wdupspec_zdone>
    unique_badfibers.txt : List of bad fibers for the given release <unique_badfibers>
    emlin_catalog.fits : Emission lines catalogs used in the spectroscopic reduction, given the version (SPECPROD) <emlin_catalog>
    datcomb_{OBSCON}_spec_zdone.fits : Compacted catalog file of all fiber assigments <datcomb_obscon_spec>

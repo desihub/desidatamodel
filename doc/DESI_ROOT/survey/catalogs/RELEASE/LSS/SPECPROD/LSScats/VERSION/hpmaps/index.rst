@@ -1,8 +1,11 @@
+.. _hpmaps_lsscats:
+
+
 ======
 hpmaps
 ======
 
-Healpix maps with observing conditions averaged over healpix pixels for the given target type, separated in equatorial regions North (``N``) and South (``S``) imaging areas.
+Healpix maps with observing conditions averaged over healpix pixels for the given target type, separated in ``PHOTSYS``, equatorial regions North (``N``) and South (``S``) imaging areas.
 
 .. toctree::
    :maxdepth: 1
