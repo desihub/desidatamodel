@@ -42,6 +42,7 @@ class DataModel(object):
     _d2r = {'BACKUP': '(backup|supp)',  # used in desitarget with gaiadr2
             'BRICKNAME': '[0-9]+[pm][0-9]+',  # e.g. 3319p140
             'CAMERA': '[brz][0-9]',  # e.g. b0, r7
+            'DDATE': '[0-9]{8}',  # Date directory used in LSS altmtl simulations
             'DR': 'dr[89]',  # Imaging release, used by desitarget
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
             'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
@@ -69,6 +70,7 @@ class DataModel(object):
             'TILEXX': '[0-9]{3}',  # Tile ID grouping == TILEID // 100. Used by fiberassign.
             'UnivUNUM': 'Univ[0-9][0-9][0-9]',  # Realizations of MTL ledgers, in LSS catalog
             'VERSION': '[v0-9.]+',  # A version string, e.g. v2.0
+            # 'VERSIONpip': '[v0-9.]+pip',  # A version string used in the LSS catalogs
             }
     # Matches titles.
     _titleline = re.compile(r'=+\n([^=]+)\n=+\n', re.M)
