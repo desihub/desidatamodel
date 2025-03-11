@@ -16,7 +16,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    Empty
+HDU0_  PRIMARY      IMAGE    Empty
 HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
 HDU2_  EXP_FIBERMAP BINTABLE Per-exposure entries from input fibermaps
 ====== ============ ======== ===================
@@ -28,7 +28,18 @@ FITS Header Units
 HDU0
 ----
 
-This HDU has no non-standard required keywords.
+EXTNAME = PRIMARY
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ============ ============= ==== =======================
+    KEY          Example Value Type Comment
+    ============ ============= ==== =======================
+    ZCATVER      v1            str  Version of zcatalog files
+    ============ ============= ==== =======================
+
 
 Empty HDU.
 
@@ -62,29 +73,32 @@ Required Header Keywords
     RRVER        0.15.0        str  Redrock version
     TEMNAM00     GALAXY        str  Redrock template 00 name
     TEMVER00     2.6           str  Redrock template 00 version
-    TEMNAM01     QSO           str
+    TEMNAM01     QSO:::HIZ     str
     TEMVER01     0.1           str
-    TEMNAM02     STAR:::A      str
-    TEMVER02     0.1           str
-    TEMNAM03     STAR:::B      str
+    TEMNAM02     QSO:::LOZ     str
+    TEMVER02     1.0           str
+    TEMNAM03     STAR:::A      str
     TEMVER03     0.1           str
-    TEMNAM04     STAR:::CV     str
+    TEMNAM04     STAR:::B      str
     TEMVER04     0.1           str
-    TEMNAM05     STAR:::F      str
+    TEMNAM05     STAR:::CV     str
     TEMVER05     0.1           str
-    TEMNAM06     STAR:::G      str
+    TEMNAM06     STAR:::F      str
     TEMVER06     0.1           str
-    TEMNAM07     STAR:::K      str
+    TEMNAM07     STAR:::G      str
     TEMVER07     0.1           str
-    TEMNAM08     STAR:::M      str
+    TEMNAM08     STAR:::K      str
     TEMVER08     0.1           str
-    TEMNAM09     STAR:::WD     str
+    TEMNAM09     STAR:::M      str
     TEMVER09     0.1           str
+    TEMNAM10     STAR:::WD     str
+    TEMVER10     0.1           str
     SPGRP        healpix       str  Spectral grouping method
     HPXNSIDE     64            int  Healpix nside
-    HPXNEST      True          str  Nested healpix (not ring)
-    SURVEY [1]_  sv2           str  DESI sub-survey (e.g. sv1, sv3, main)
+    HPXNEST      T             bool Nested healpix (not ring)
+    SURVEY [1]_  main          str  DESI sub-survey (e.g. sv1, sv3, main)
     PROGRAM [1]_ dark          str  DESI program (e.g. dark, bright)
+    ZCATVER      v1            str  Version of zcatalog files
     ============ ============= ==== =======================
 
 Required Data Table Columns
@@ -184,11 +198,14 @@ MEAN_DELTA_X               float32     mm           Mean (over exposures) fiber 
 RMS_DELTA_X                float32     mm           RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
 MEAN_DELTA_Y               float32     mm           Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 RMS_DELTA_Y                float32     mm           RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 MEAN_FIBER_RA              float64     deg          Mean (over exposures) RA of actual fiber position
 STD_FIBER_RA               float32     arcsec       Standard deviation (over exposures) of RA of actual fiber position
 MEAN_FIBER_DEC             float64     deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32     arcsec       Standard deviation (over exposures) of DEC of actual fiber position
-MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+MIN_MJD                    float64     d            Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
+MAX_MJD                    float64     d            Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
+MEAN_MJD                   float64     d            Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 TSNR2_GPBDARK_B            float32                  template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B                float32                  ELG B template (S/N)^2
 TSNR2_GPBBRIGHT_B          float32                  template (S/N)^2 for bright targets in guider pass band on B
@@ -221,12 +238,13 @@ TSNR2_BGS                  float32                  BGS template (S/N)^2 summed 
 TSNR2_GPBBACKUP            float32                  template (S/N)^2 for backup targets in guider pass band
 TSNR2_QSO                  float32                  QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG                  float32                  LRG template (S/N)^2 summed over B,R,Z
-SV_NSPEC [1]_              int32                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)
+SV_NSPEC [1]_              int16                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)
 SV_PRIMARY [1]_            logical                  Boolean flag (True/False) for the primary coadded spectrum in SV (SV1+2+3)
-MAIN_NSPEC [1]_            int32                    Number of coadded spectra for this TARGETID in Main survey
+MAIN_NSPEC [1]_            int16                    Number of coadded spectra for this TARGETID in Main survey
 MAIN_PRIMARY [1]_          logical                  Boolean flag (True/False) for the primary coadded spectrum in Main survey
 ZCAT_NSPEC                 int16                    Number of times this TARGETID appears in this catalog
 ZCAT_PRIMARY               logical                  Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
+DESINAME                   char[22]                 Human readable identifier of a sky location DESI JXXX.XXXX[+/-]YY.YYYY, where X,Y=truncated decimal TARGET_RA, TARGET_DEC, precise to 0.36 arcsec. Multiple objects can map to a single DESINAME if very close on the sky.
 ========================== =========== ============ =====================================================================================================================================
 
 .. [1] Optional
@@ -307,6 +325,9 @@ DELTA_Y               float64 mm       CS5 Y requested minus actual position
 FIBER_RA              float64 deg      RA of actual fiber position
 FIBER_DEC             float64 deg      DEC of actual fiber position
 PSF_TO_FIBER_SPECFLUX float64          fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+IN_COADD_B            logical          If True this fiber in this exposure was used in the coadd of camera B
+IN_COADD_R            logical          If True this fiber in this exposure was used in the coadd of camera R
+IN_COADD_Z            logical          If True this fiber in this exposure was used in the coadd of camera Z
 ===================== ======= ======== =======================================================================================================
 
 
