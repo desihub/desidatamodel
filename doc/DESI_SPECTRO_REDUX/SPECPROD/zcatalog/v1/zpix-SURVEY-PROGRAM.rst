@@ -34,11 +34,13 @@ EXTNAME = PRIMARY
 
     .. rst-class:: keywords
 
-    ============ ============= ==== =======================
-    KEY          Example Value Type Comment
-    ============ ============= ==== =======================
-    ZCATVER      v1            str  Version of zcatalog files
-    ============ ============= ==== =======================
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    CHECKSUM     9aaGCVYE9aaECUYE str  HDU checksum
+    DATASUM      0                str  data unit checksum
+    ZCATVER      v1               str  Version of zcatalog files
+    ============ ================ ==== =======================
 
 
 Empty HDU.
@@ -64,42 +66,44 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============ ============= ==== =======================
-    KEY          Example Value Type Comment
-    ============ ============= ==== =======================
-    NAXIS1       631           int  width of table in bytes
-    NAXIS2       139728        int  number of rows in table
-    LONGSTRN     OGIP 1.0      str
-    RRVER        0.15.0        str  Redrock version
-    TEMNAM00     GALAXY        str  Redrock template 00 name
-    TEMVER00     2.6           str  Redrock template 00 version
-    TEMNAM01     QSO:::HIZ     str
-    TEMVER01     0.1           str
-    TEMNAM02     QSO:::LOZ     str
-    TEMVER02     1.0           str
-    TEMNAM03     STAR:::A      str
-    TEMVER03     0.1           str
-    TEMNAM04     STAR:::B      str
-    TEMVER04     0.1           str
-    TEMNAM05     STAR:::CV     str
-    TEMVER05     0.1           str
-    TEMNAM06     STAR:::F      str
-    TEMVER06     0.1           str
-    TEMNAM07     STAR:::G      str
-    TEMVER07     0.1           str
-    TEMNAM08     STAR:::K      str
-    TEMVER08     0.1           str
-    TEMNAM09     STAR:::M      str
-    TEMVER09     0.1           str
-    TEMNAM10     STAR:::WD     str
-    TEMVER10     0.1           str
-    SPGRP        healpix       str  Spectral grouping method
-    HPXNSIDE     64            int  Healpix nside
-    HPXNEST      T             bool Nested healpix (not ring)
-    SURVEY [1]_  main          str  DESI sub-survey (e.g. sv1, sv3, main)
-    PROGRAM [1]_ dark          str  DESI program (e.g. dark, bright)
-    ZCATVER      v1            str  Version of zcatalog files
-    ============ ============= ==== =======================
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    NAXIS1       631              int  width of table in bytes
+    NAXIS2       139728           int  number of rows in table
+    LONGSTRN     OGIP 1.0         str
+    RRVER        0.15.0           str  Redrock version
+    TEMNAM00     GALAXY           str  Redrock template 00 name
+    TEMVER00     2.6              str  Redrock template 00 version
+    TEMNAM01     QSO:::HIZ        str
+    TEMVER01     0.1              str
+    TEMNAM02     QSO:::LOZ        str
+    TEMVER02     1.0              str
+    TEMNAM03     STAR:::A         str
+    TEMVER03     0.1              str
+    TEMNAM04     STAR:::B         str
+    TEMVER04     0.1              str
+    TEMNAM05     STAR:::CV        str
+    TEMVER05     0.1              str
+    TEMNAM06     STAR:::F         str
+    TEMVER06     0.1              str
+    TEMNAM07     STAR:::G         str
+    TEMVER07     0.1              str
+    TEMNAM08     STAR:::K         str
+    TEMVER08     0.1              str
+    TEMNAM09     STAR:::M         str
+    TEMVER09     0.1              str
+    TEMNAM10     STAR:::WD        str
+    TEMVER10     0.1              str
+    SPGRP        healpix          str  Spectral grouping method
+    HPXNSIDE     64               int  Healpix nside
+    HPXNEST      T                bool Nested healpix (not ring)
+    SURVEY [1]_  main             str  DESI sub-survey (e.g. sv1, sv3, main)
+    PROGRAM [1]_ dark             str  DESI program (e.g. dark, bright)
+    CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
+    DATASUM      4284326946       str  data unit checksum
+    ZCATVER      v1               str  Version of zcatalog files
+    ============ ================ ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -284,12 +288,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ====== ============= ==== =======================
-    KEY    Example Value Type Comment
-    ====== ============= ==== =======================
-    NAXIS1 162           int  width of table in bytes
-    NAXIS2 1374500       int  number of rows in table
-    ====== ============= ==== =======================
+    ======== ================ ==== =======================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== =======================
+    NAXIS1   162              int  width of table in bytes
+    NAXIS2   1374500          int  number of rows in table
+    CHECKSUM diandZUmdfamdZUm str  HDU checksum
+    DATASUM  2531100066       str  data unit checksum
+    ======== ================ ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
