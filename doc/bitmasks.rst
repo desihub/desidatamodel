@@ -49,9 +49,9 @@ File             Table HDU     Column
 .. |emline| replace:: :doc:`emline <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/emline-SPECTROGRAPH-TILEID-GROUPID>`
 .. |zmtl| replace:: :doc:`zmtl <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/zmtl-SPECTROGRAPH-TILEID-GROUPID>`
 .. |mtl| replace:: :doc:`mtl <DESI_SURVEYOPS/mtl/main/dark/mtl-dark-hp-HPX>`
-.. |zpix| replace:: :doc:`zpix <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/VERSION/zpix-SURVEY-PROGRAM>`
-.. |ztile| replace:: :doc:`ztile <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/VERSION/ztile-SURVEY-PROGRAM-GROUPTYPE>`
-.. |zall| replace:: :doc:`zall <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/VERSION/zall-pix-SPECPROD>`
+.. |zpix| replace:: :doc:`zpix <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v1/zpix-SURVEY-PROGRAM>`
+.. |ztile| replace:: :doc:`ztile <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v1/ztile-SURVEY-PROGRAM-GROUPTYPE>`
+.. |zall| replace:: :doc:`zall <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v1/zall-pix-SPECPROD>`
 .. |lss| replace:: :doc:`lss <DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/full/fullVETO_dat>`
 
 ZWARN Bit Definitions
