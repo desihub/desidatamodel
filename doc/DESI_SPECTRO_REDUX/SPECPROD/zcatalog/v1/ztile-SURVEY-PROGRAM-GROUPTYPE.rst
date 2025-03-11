@@ -117,6 +117,7 @@ Name                       Type        Units        Description
 TARGETID                   int64                    Unique DESI target ID
 SURVEY [1]_                char[7]                  Survey name
 PROGRAM [1]_               char[6]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
+FIRSTNIGHT                 int32                    KPNO Calendar Date when the first exposure was obtained (regardless of data quality)
 LASTNIGHT                  int32                    Final night of observation included in a series of coadds
 SPGRPVAL                   int32                    Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 Z                          float64                  Redshift measured by Redrock
@@ -301,12 +302,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ====== ============= ==== =======================
-    KEY    Example Value Type Comment
-    ====== ============= ==== =======================
-    NAXIS1 162           int  width of table in bytes
-    NAXIS2 5000          int  number of rows in table
-    ====== ============= ==== =======================
+    ======== ================ ==== =======================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== =======================
+    NAXIS1   162              int  width of table in bytes
+    NAXIS2   5000             int  number of rows in table
+    CHECKSUM diandZUmdfamdZUm str  HDU checksum
+    DATASUM  2531100066       str  data unit checksum
+    ======== ================ ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -26,7 +26,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    Empty
+HDU0_  PRIMARY      IMAGE    Empty
 HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
 ====== ============ ======== ===================
 
@@ -37,7 +37,22 @@ FITS Header Units
 HDU0
 ----
 
-This HDU has no non-standard required keywords.
+EXTNAME = PRIMARY
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    CHECKSUM     9aaGCVYE9aaECUYE str  HDU checksum
+    DATASUM      0                str  data unit checksum
+    ZCATVER      v1               str  Version of zcatalog files
+    ============ ================ ==== =======================
 
 Empty HDU.
 
