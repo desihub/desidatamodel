@@ -16,9 +16,9 @@ Contents
 Number EXTNAME     Type     Contents
 ====== =========== ======== ===================
 HDU0_  PRIMARY     IMAGE    Empty HDU.
-HDU1_  FASSIGN     BINTABLE *Brief Description*
-HDU2_  FTARGETS    BINTABLE *Brief Description*
-HDU3_  FAVAIL      BINTABLE *Brief Description*
+HDU1_  FASSIGN     BINTABLE Short version of FIBERASSIGN HDU
+HDU2_  FTARGETS    BINTABLE Short version of TARGETS HDU
+HDU3_  FAVAIL      BINTABLE Equivalent to POTENTIAL_ASSIGNMENTS
 HDU4_  GFA_TARGETS BINTABLE Selected star for the ETC / GUIDE / FOCUS
 ====== =========== ======== ===================
 
@@ -69,7 +69,7 @@ HDU1
 
 EXTNAME = FASSIGN
 
-*Summarize the contents of this HDU.*
+Short version of FIBERASSIGN HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,7 +131,7 @@ HDU2
 
 EXTNAME = FTARGETS
 
-*Summarize the contents of this HDU.*
+Short version of TARGETS.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,7 +187,7 @@ HDU3
 
 EXTNAME = FAVAIL
 
-*Summarize the contents of this HDU.*
+Equivalent to POTENTIAL_ASSIGNMENTS HDU.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
