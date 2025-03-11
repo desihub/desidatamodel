@@ -30,6 +30,9 @@ HDU0
 
 EXTNAME = PRIMARY
 
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. collapse:: Required Header Keywords Table
 
     .. rst-class:: keywords
