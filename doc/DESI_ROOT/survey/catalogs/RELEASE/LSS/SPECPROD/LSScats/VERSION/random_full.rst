@@ -74,6 +74,7 @@ TILELOCID                  int64                  Is 10000*TILEID+LOCATION
 ZPOSSLOC                   logical                True/False whether the location could have been assigned to the given target class
 GOODHARDLOC                logical                True/False whether the fiber had good hardware
 GOODPRI                    logical                True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
+GOODTSNR [1]_              logical                True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 NTILE                      int64                  Number of tiles target was available on
 TILES                      char[*]                TILEIDs of those tile, in string form separated by -
 TILELOCIDS                 char[*]                TILELOCIDs that the target was available for, separated by -

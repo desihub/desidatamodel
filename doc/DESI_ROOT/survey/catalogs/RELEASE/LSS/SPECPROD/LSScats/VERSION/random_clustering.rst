@@ -70,12 +70,13 @@ WEIGHT           float64           The combination of all weights to use
 WEIGHT_SYS       float64           Correction for fluctuations in projected density with imaging conditions, from random forrest method
 WEIGHT_COMP      float64           Completeness weight accounting for the local chance of being assigned a fiber
 WEIGHT_ZFAIL     float64           Should be all 1 at this point for main survey
+WEIGHT_RF [1]_   float64           Imaging systematics weights derived with the regressis random forest regression method
 TARGETID_DATA    int64             For randoms and mocks: Unique DESI target ID of associated TILELOCID
-flux_g_dered     float32 nanomaggy (lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
-flux_r_dered     float32 nanomaggy (lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
-flux_z_dered     float32 nanomaggy (lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
-flux_w1_dered    float32 nanomaggy (lower or uppercase) Flux in the W1-band after correcting for Galactic extinction (AB system)
-flux_w2_dered    float32 nanomaggy (lower or uppercase) Flux in the W2-band after correcting for Galactic extinction (AB system)
+flux_g_dered     float64 nanomaggy (lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
+flux_r_dered     float64 nanomaggy (lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
+flux_z_dered     float64 nanomaggy (lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
+flux_w1_dered    float64 nanomaggy (lower or uppercase) Flux in the W1-band after correcting for Galactic extinction (AB system)
+flux_w2_dered    float64 nanomaggy (lower or uppercase) Flux in the W2-band after correcting for Galactic extinction (AB system)
 NX [1]_          float64           Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 WEIGHT_FKP [1]_  float64           1/(1+NX*P0), with P0 different for each tracer
 ================ ======= ========= ====================================================================================================
