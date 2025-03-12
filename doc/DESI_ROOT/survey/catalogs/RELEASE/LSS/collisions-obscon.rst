@@ -4,8 +4,8 @@ collisions-OBSCON
 
 :Summary: Compilation of all potential assignments with collisions with fiber assignment keep out zones given FIBER and LOCATION for the given TILEID
 :Naming Convention: ``collisions-{OBSCON}.fits``, where ``{OBSCON}`` can be BRIGHT or DARK
-:Regex: ``collisions-[a-z]{4,6}\.fits`` 
-:File Type: FITS, 40 MB  
+:Regex: ``collisions-(BRIGHT|DARK)\.fits``
+:File Type: FITS, 40 MB
 
 Contents
 ========
@@ -33,7 +33,7 @@ HDU1
 
 EXTNAME = LSS
 
-Main collision catalog for the given program bright or dark 
+Main collision catalog for the given program bright or dark
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
