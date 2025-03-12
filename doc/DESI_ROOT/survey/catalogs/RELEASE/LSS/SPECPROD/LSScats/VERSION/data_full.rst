@@ -69,7 +69,7 @@ TILEID                     int64                               Unique DESI tile 
 TILELOCID                  int64                               Is 10000*TILEID+LOCATION
 LASTNIGHT                  int32                               Final night of observation included in a series of coadds
 Z [1]_                     float64                             Redshift measured by Redrock
-Z_not4clus [1]_            float64                             Redshift measured by Redrock *TODO*
+Z_not4clus [1]_            float64                             *Description needed.*
 ZERR                       float64                             Redshift error from redrock
 ZWARN                      int64                               Redshift warning bitmask from Redrock
 CHI2                       float64                             Best fit chi squared
@@ -185,8 +185,8 @@ FRAC_TLOBS_TILES           float64                             *Description need
 WEIGHT_ZFAIL               float64                             Should be all 1 at this point for main survey
 mod_success_rate           float64                             Expected spectroscopic success rate given the target and observation properties
 WEIGHT_IMLIN [1]_          float64                             Imaging systematics weights derived with the eBOSS linear regression method
-WEIGHT_NTILE               float64                             *Description needed.*
-WEIGHT_FKP_NTILE           float64                             *Description needed.*
+WEIGHT_NTILE [1]_          float64                             *Description needed.*
+WEIGHT_FKP_NTILE [1]_      float64                             *Description needed.*
 ========================== =========== ======================= =======================================================================================================================================
 
 .. [1] Optional
