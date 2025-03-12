@@ -190,8 +190,10 @@ mod_success_rate           float64                             Expected spectros
 Notes and Examples
 ==================
 
-.. columns: OII_FLUX, OII_FLUX_IVAR, o2c only present in ELG samples.
-..                    Z_RR only present in QSO samples.
-..                         lrg_mask only present in LRG samples.
-..                         ABSMAG01_SDSS_G,R only present in BGS samples.
-..                         WEIGHT_IMLIN, WEIGHT_FKP, WEIGHT_RF, WEIGHT_SN are optionals
+Optional columns:
+
+* ``OII_FLUX``, ``OII_FLUX_IVAR``, o2c only present in ELG samples.
+* ``Z_RR`` only present in QSO samples.
+* ``lrg_mask`` only present in LRG samples.
+* ``ABSMAG01_SDSS_G``, ``R`` only present in BGS samples.
+* ``WEIGHT_IMLIN``, ``WEIGHT_FKP``, ``WEIGHT_RF``, ``WEIGHT_SN`` are optionals

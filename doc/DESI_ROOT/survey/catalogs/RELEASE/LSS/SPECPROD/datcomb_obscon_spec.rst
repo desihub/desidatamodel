@@ -121,9 +121,3 @@ Z_QN                       float64           Redshift measured by QuasarNET usin
 Z_QN_CONF                  float64           Redshift confidence from QuasarNET
 IS_QSO_QN                  int16             Spectroscopic classification from QuasarNET (1 for a quasar)
 ========================== =========== ===== ===============================================================================================================================
-
-
-Notes and Examples
-==================
-
-

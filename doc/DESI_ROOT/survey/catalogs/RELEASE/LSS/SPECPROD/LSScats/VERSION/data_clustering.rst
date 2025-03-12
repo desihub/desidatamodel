@@ -67,7 +67,6 @@ DEC                  float64  deg       Barycentric declination in ICRS
 PHOTSYS              char[1]            N for the MzLS/BASS photometric system, S for DECaLS
 FRAC_TLOBS_TILES     float64            Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 WEIGHT_ZFAIL         float64            Should be all 1 at this point for main survey
-WEIGHT_SN            float64            Imaging systematics weights derived with the sysnet NN regression method
 WEIGHT_RF [1]_       float64            Imaging systematics weights derived with the regressis random forest regression method
 WEIGHT_SN [1]_       float64            Imaging systematics weights derived with the sysnet NN regression method
 WEIGHT_SYS           float64            Correction for fluctuations in projected density with imaging conditions, from random forrest method
@@ -89,5 +88,7 @@ flux_w2_dered [1]_   float32  nanomaggy (lower or uppercase) Flux in the WISE W2
 Notes and Examples
 ==================
 
-..  columns. WEIGHT_RESCALED and EFFECTIVE_BIAS only when unifying targets into a single frame (e.g.: LRG+ELG_LOPnotqso)
-..                         flux_g_dered, flux_r_dered, flux_z_dered, flux_w1_dered, flux_w2_dered only present in BGS samples
+Optional columns:
+
+* ``WEIGHT_RESCALED`` and ``EFFECTIVE_BIAS`` only when unifying targets into a single frame (*e.g.*: LRG+ELG_LOPnotqso)
+* ``flux_g_dered``, ``flux_r_dered``, ``flux_z_dered``, ``flux_w1_dered``, ``flux_w2_dered`` only present in BGS samples
