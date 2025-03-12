@@ -4,8 +4,8 @@ pota-OBSCON.fits
 
 :Summary: This file includes all reachable, as determined by the DESI fiberassign software, sky coordinates of randoms matching the footprint of DESI target samples as well as information about collisions
 :Naming Convention: ``pota-{OBSCON}.fits``, where {OBSCON} can be DARK or BRIGHT
-:Regex: ``pota-[a-z].fits{4,6}``
-:File Type: FITS, 2 GB  
+:Regex: ``pota-(BRIGHT|DARK)\.fits``
+:File Type: FITS, 2 GB
 
 Contents
 ========
