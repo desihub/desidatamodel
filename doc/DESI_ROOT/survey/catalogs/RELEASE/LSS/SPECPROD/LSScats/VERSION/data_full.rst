@@ -68,7 +68,7 @@ LOCATION                   int64                               Location on the f
 TILEID                     int64                               Unique DESI tile ID
 TILELOCID                  int64                               Is 10000*TILEID+LOCATION
 LASTNIGHT                  int32                               Final night of observation included in a series of coadds
-Z                          float64                             Redshift measured by Redrock
+Z [1]_                     float64                             Redshift measured by Redrock
 Z_not4clus [1]_            float64                             Redshift measured by Redrock *TODO*
 ZERR                       float64                             Redshift error from redrock
 ZWARN                      int64                               Redshift warning bitmask from Redrock
