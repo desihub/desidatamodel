@@ -69,6 +69,7 @@ TILEID                     int64                               Unique DESI tile 
 TILELOCID                  int64                               Is 10000*TILEID+LOCATION
 LASTNIGHT                  int32                               Final night of observation included in a series of coadds
 Z                          float64                             Redshift measured by Redrock
+Z_not4clus [1]_            float64                             Redshift measured by Redrock *TODO*
 ZERR                       float64                             Redshift error from redrock
 ZWARN                      int64                               Redshift warning bitmask from Redrock
 CHI2                       float64                             Best fit chi squared
@@ -172,17 +173,20 @@ OII_FLUX [1]_              float32     10**-17 erg/(s cm2)     Fitted flux for t
 OII_FLUX_IVAR [1]_         float32     10**+34 (s2 cm4) / erg2 Inverse variance of the fitted flux for the [OII] doublet
 o2c [1]_                   float64     10**+34 (s2 cm4) / erg2 (lower or uppercase) The criteria for assessing strength of OII emission for ELG observations
 Z_RR [1]_                  float64                             Redshift collected from redrock file
-lrg_mask [1]_              binary                              (lower or upper case) Imaging mask bits relevant to LRG targets
 ABSMAG01_SDSS_G [1]_       float32     mag                     g-corrected (to z=0.1) absolute magnitude in the SDSS g band from fastspecfit
 ABSMAG01_SDSS_R [1]_       float32     mag                     r-corrected (to z=0.1) absolute magnitude in the SDSS r band from fastspecfit
-WEIGHT_IMLIN [1]_          float64                             Imaging systematics weights derived with the eBOSS linear regression method
 WEIGHT_FKP [1]_            float64                             1/(1+NZ*P0), with P0 different for each tracer
 WEIGHT_RF [1]_             float64                             Imaging systematics weights derived with the regressis random forest regression method
 WEIGHT_SN [1]_             float64                             Imaging systematics weights derived with the sysnet NN regression method
 COMP_TILE                  float64                             Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID            float64                             The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
+lrg_mask [1]_              binary                              (lower or upper case) Imaging mask bits relevant to LRG targets
+FRAC_TLOBS_TILES           float64                             *Description needed.*
 WEIGHT_ZFAIL               float64                             Should be all 1 at this point for main survey
 mod_success_rate           float64                             Expected spectroscopic success rate given the target and observation properties
+WEIGHT_IMLIN [1]_          float64                             Imaging systematics weights derived with the eBOSS linear regression method
+WEIGHT_NTILE               float64                             *Description needed.*
+WEIGHT_FKP_NTILE           float64                             *Description needed.*
 ========================== =========== ======================= =======================================================================================================================================
 
 .. [1] Optional
