@@ -120,7 +120,7 @@ GOODPRI                    logical                             True/False whethe
 GOODHARDLOC                logical                             True/False whether the fiber had good hardware
 LOCATION_ASSIGNED          logical                             True/False for assigned/unassigned for the target in question
 TILELOCID_ASSIGNED         logical                             0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
-GOODTSNR                   logical                             True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
+GOODTSNR [1]_              logical                             True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 NTILE                      int64                               Number of tiles target was available on
 TILES                      char[36]                            TILEIDs of those tile, in string form separated by -
 TILELOCIDS                 char[111]                           TILELOCIDs that the target was available for, separated by -
@@ -192,8 +192,9 @@ Notes and Examples
 
 Optional columns:
 
-* ``OII_FLUX``, ``OII_FLUX_IVAR``, o2c only present in ELG samples.
+* ``OII_FLUX``, ``OII_FLUX_IVAR``, ``o2c`` only present in ELG samples.
 * ``Z_RR`` only present in QSO samples.
 * ``lrg_mask`` only present in LRG samples.
 * ``ABSMAG01_SDSS_G``, ``R`` only present in BGS samples.
 * ``WEIGHT_IMLIN``, ``WEIGHT_FKP``, ``WEIGHT_RF``, ``WEIGHT_SN`` are optionals
+* ``GOODTSNR`` dropped after v1.2 of the catalogs.
