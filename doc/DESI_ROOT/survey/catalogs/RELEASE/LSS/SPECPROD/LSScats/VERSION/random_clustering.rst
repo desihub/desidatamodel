@@ -76,8 +76,11 @@ flux_r_dered     float32 nanomaggy (lower or uppercase) Flux in the r-band after
 flux_z_dered     float32 nanomaggy (lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
 flux_w1_dered    float32 nanomaggy (lower or uppercase) Flux in the W1-band after correcting for Galactic extinction (AB system)
 flux_w2_dered    float32 nanomaggy (lower or uppercase) Flux in the W2-band after correcting for Galactic extinction (AB system)
+NX [1]_          float64           Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
+WEIGHT_FKP [1]_  float64           1/(1+NX*P0), with P0 different for each tracer
 ================ ======= ========= ====================================================================================================
 
+.. [1] Optional
 
 Notes and Examples
 ==================
