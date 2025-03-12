@@ -1,11 +1,11 @@
-====================================
-datcomb TARGET zdone wdup
-====================================
+=====================================
+datcomb_TARGET_tarspecwdup_zdone.fits
+=====================================
 
 :Summary: Match of targets (with duplicate TARGETID corresponding to each potential assignment) with spectroscopic data compiled with datcomb_obscon_spec.
 :Naming Convention: ``datcomb_{TARGET}_tarspecwdup_zdone.fits``, where {TARGET} is the target type, like BGS_ANY or BGS_BRIGHT in bright program and like ELG_LOPnotqso, LRG or QSO in dark program
-:Regex: ``datcomb_[a-z]_tarspecwdup_zdone.fits`` 
-:File Type: FITS, 6 GB 
+:Regex: ``datcomb_[A-Za-z_]+_tarspecwdup_zdone.fits``
+:File Type: FITS, 6 GB
 
 Contents
 ========

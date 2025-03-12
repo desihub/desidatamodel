@@ -4,7 +4,7 @@ emlin_catalog
 
 :Summary: Concatenation of all of the dark time emission line file outputs
 :Naming Convention: ``emlin_catalog.fits``
-:Regex: ``emlin_catalog.fits`` 
+:Regex: ``emlin_catalog\.fits``
 :File Type: FITS, 3 GB
 
 Contents

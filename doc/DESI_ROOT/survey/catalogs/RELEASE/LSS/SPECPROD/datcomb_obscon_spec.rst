@@ -1,11 +1,11 @@
-===========================
-datcomb_{OBSCON}_spec_zdone
-===========================
+==============================
+datcomb_obscon_spec_zdone.fits
+==============================
 
 :Summary: Compilation of spectroscopic reduction
 :Naming Convention: ``datcomb_{obscon}_spec_zdone.fits``, where obscon can be either dark or bright
-:Regex: ``datcomb_[a-z]{4,6}_spec_zdone.fits`` 
-:File Type: FITS, 4 GB  
+:Regex: ``datcomb_(bright|dark)_spec_zdone\.fits``
+:File Type: FITS, 4 GB
 
 Contents
 ========
