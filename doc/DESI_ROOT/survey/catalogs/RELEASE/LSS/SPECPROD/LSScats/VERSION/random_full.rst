@@ -4,8 +4,8 @@ RANDOM full catalogs
 
 :Summary: LSS catalogs containing information on all of the random targets identified as reachable by DESI fiberassign, for one of the input randoms. The files are split by target type, random file number, and whether of not vetos for angular positions and healpix map cuts have been applied
 :Naming Convention: ``{TARGET}_{RANN}_full{VETO}.ran.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG``, ``ELG_LOPnotqso``, ``LRG``, for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{RANN}`` is the number between 0 and 17 designating the given random file, and ``{VETO}`` is _noveto if vetos have not been applied, blank if vetos have been applied and _HPmapcut if both vetos and healpix map cuts have been applied.
-:Regex: ``[a-zA-Z_]+\_[0-9]+\_full[a-z_]{0,7,9}.ran.fits``
-:File Type: FITS, 5 GB 
+:Regex: ``[A-Za-z0-9._+-]+_[0-9]+_full(|_HPmapcut|_noveto)\.ran\.fits``
+:File Type: FITS, 5 GB
 
 Contents
 ========

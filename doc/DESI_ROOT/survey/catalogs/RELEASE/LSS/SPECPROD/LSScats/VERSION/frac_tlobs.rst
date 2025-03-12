@@ -4,8 +4,8 @@ frac_tlobs
 
 :Summary: For a given target type, the fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID, as a function of TILES
 :Naming Convention: ``{TARGET}_frac_tlobs.fits``, where ``{TARGET}`` is the target type, QSO, ELG, LRG for dark and BGS for bright
-:Regex: ``[a-z]_frac_tlobs.fits`` 
-:File Type: FITS, 3 MB  
+:Regex: ``[A-Za-z_]+_frac_tlobs\.fits``
+:File Type: FITS, 3 MB
 
 Contents
 ========

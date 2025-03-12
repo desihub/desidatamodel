@@ -4,8 +4,8 @@ DATA full catalogs
 
 :Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign, with one entry for each. The files are split by target type and whether of not vetos for angular positions and healpix maps have been applied
 :Naming Convention: ``{TARGET}_full{VETO}.dat.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG_LOPnotqso``, ``LRG``, for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{VETO}`` is ``_noveto`` if vetos have not been applied, blank if vetos have been applied and ``_HPmapcut`` if both vetos and healpix map cuts have been applied.
-:Regex: ``[a-zA-Z_]+\_full[a-z_]{0,7,9}.dat.fits``
-:File Type: FITS, 11 GB 
+:Regex: ``[A-Za-z0-9._+-]+_full(|_HPmapcut|_noveto)\.dat\.fits``
+:File Type: FITS, 11 GB
 
 Contents
 ========
@@ -185,9 +185,9 @@ WEIGHT_ZFAIL               float64                             Should be all 1 a
 mod_success_rate           float64                             Expected spectroscopic success rate given the target and observation properties
 ========================== =========== ======================= =======================================================================================================================================
 
-.. [1] Optional columns: OII_FLUX, OII_FLUX_IVAR, o2c only present in ELG samples. 
-                         Z_RR only present in QSO samples. 
-                         lrg_mask only present in LRG samples. 
+.. [1] Optional columns: OII_FLUX, OII_FLUX_IVAR, o2c only present in ELG samples.
+                         Z_RR only present in QSO samples.
+                         lrg_mask only present in LRG samples.
                          ABSMAG01_SDSS_G,R only present in BGS samples.
                          WEIGHT_IMLIN, WEIGHT_FKP, WEIGHT_RF, WEIGHT_SN are optionals
 

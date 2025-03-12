@@ -5,8 +5,8 @@ RANDOM clustering catalogs
 :Summary: For each target type, LSS catalogs for the randoms, ready to be used for clustering measurements, are provided.
 :Naming Convention: ``{TARGET}_{GALCAP}_{RANN}_clustering.ran.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG``, ``ELG_LOPnotqso``, ``LRG``, ``LRG+ELG_LOPnotqso``,
                     for dark or ``BGS_ANY``, ``BGS_BRIGHT``, ``BGS_BRIGHT-21.5`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown. And ``{RANN}`` is the number for the random file (18 total, numbered 0 through 17). Each are random with respect to each other.
-:Regex: ``[a-zA-Z_]+[A-Z_]{0,4}_[0-9]+\_clustering.ran.fits``
-:File Type: FITS, 1 GB  
+:Regex: ``[A-Za-z0-9._+-]+_(NGC|SGC)_[0-9]+_clustering\.ran\.fits``
+:File Type: FITS, 1 GB
 
 Contents
 ========

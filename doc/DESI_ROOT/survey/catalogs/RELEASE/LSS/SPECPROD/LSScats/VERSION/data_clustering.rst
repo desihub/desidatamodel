@@ -5,8 +5,8 @@ DATA clustering catalogs
 :Summary: For each target type, LSS catalogs for the data, ready to be used for clustering measurements, are provided.
 :Naming Convention: ``{TARGET}_{GALCAP}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG``, ``ELG_LOPnotqso``, ``LRG``, ``LRG+ELG_LOPnotqso``,
                     for dark or ``BGS_ANY``, ``BGS_BRIGHT``, ``BGS_BRIGHT-21.5`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown.
-:Regex: ``[a-zA-Z_+]+[A-Z_]{0,4}_clustering.dat.fits`` 
-:File Type: FITS, 237 MB 
+:Regex: ``[A-Za-z0-9._+-]+_(NGC|SGC)_clustering\.dat\.fits``
+:File Type: FITS, 237 MB
 
 Contents
 ========
@@ -75,9 +75,9 @@ WEIGHT               float64            The combination of all weights to use
 WEIGHT_COMP          float64            Completeness weight accounting for the local chance of being assigned a fiber
 NX                   float64            Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 WEIGHT_FKP           float64            1/(1+NX*P0), with P0 different for each tracer
-WEIGHT_RESCALED [1]_ float64            Rescaled weight when unifying different targets into a single frame              
+WEIGHT_RESCALED [1]_ float64            Rescaled weight when unifying different targets into a single frame
 EFFECTIVE_BIAS [1]_  float64            Effective bias used to weight the galaxy when unifying several tracers
-flux_g_dered [1]_    float32  nanomaggy (lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system) 
+flux_g_dered [1]_    float32  nanomaggy (lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
 flux_r_dered [1]_    float32  nanomaggy (lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
 flux_z_dered [1]_    float32  nanomaggy (lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
 flux_w1_dered [1]_   float32  nanomaggy (lower or uppercase) Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
