@@ -75,8 +75,8 @@ ZPOSSLOC                   logical                True/False whether the locatio
 GOODHARDLOC                logical                True/False whether the fiber had good hardware
 GOODPRI                    logical                True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
 NTILE                      int64                  Number of tiles target was available on
-TILES                      char[36]               TILEIDs of those tile, in string form separated by -
-TILELOCIDS                 char[111]              TILELOCIDs that the target was available for, separated by -
+TILES                      char[*]                TILEIDs of those tile, in string form separated by -
+TILELOCIDS                 char[*]                TILELOCIDs that the target was available for, separated by -
 NOBS_G                     int16                  Number of images for central pixel in g-band
 NOBS_R                     int16                  Number of images for central pixel in r-band
 NOBS_Z                     int16                  Number of images for central pixel in z-band
@@ -115,9 +115,10 @@ PSFSIZE_G                  float32   arcsec       Median PSF size evaluated at t
 PSFSIZE_R                  float32   arcsec       Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z                  float32   arcsec       Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 EBV                        float32   mag          Galactic extinction E(B-V) reddening from SFD98
-FRAC_TLOBS_TILES           float64                Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
+FRAC_TLOBS_TILES [1]_      float64                Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 ========================== ========= ============ ===================================================================================================================================================================================================================================================
 
+.. [1] Optional
 
 Notes and Examples
 ==================

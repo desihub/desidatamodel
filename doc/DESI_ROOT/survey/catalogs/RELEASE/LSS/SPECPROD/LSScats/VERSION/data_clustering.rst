@@ -84,9 +84,10 @@ flux_w1_dered [1]_   float32  nanomaggy (lower or uppercase) Flux in the WISE W1
 flux_w2_dered [1]_   float32  nanomaggy (lower or uppercase) Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
 ==================== ======== ========= =====================================================================================================================
 
-.. [1] Optional columns. WEIGHT_RESCALED and EFFECTIVE_BIAS only when unifying targets into a single frame (e.g.: LRG+ELG_LOPnotqso)
-                         flux_g_dered, flux_r_dered, flux_z_dered, flux_w1_dered, flux_w2_dered only present in BGS samples
+.. [1] Optional
 
 Notes and Examples
 ==================
 
+..  columns. WEIGHT_RESCALED and EFFECTIVE_BIAS only when unifying targets into a single frame (e.g.: LRG+ELG_LOPnotqso)
+..                         flux_g_dered, flux_r_dered, flux_z_dered, flux_w1_dered, flux_w2_dered only present in BGS samples

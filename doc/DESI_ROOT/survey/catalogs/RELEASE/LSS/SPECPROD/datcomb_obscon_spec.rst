@@ -42,18 +42,20 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ==== =====================
-    KEY      Example Value Type Comment
-    ======== ============= ==== =====================
-    NAXIS1   372           int  length of dimension 1
-    NAXIS2   11632889      int  length of dimension 2
-    LONGSTRN OGIP 1.0      str
-    SPGRP    cumulative    str
-    SURVEY   main          str
-    PROGRAM  dark          str
-    ZCATVER  v0            str
-    DESIDR   dr1           str  DESI Data Release
-    ======== ============= ==== =====================
+    ============= ============= ==== =====================
+    KEY           Example Value Type Comment
+    ============= ============= ==== =====================
+    NAXIS1        372           int  length of dimension 1
+    NAXIS2        11632889      int  length of dimension 2
+    LONGSTRN [1]_ OGIP 1.0      str
+    SPGRP [1]_    cumulative    str
+    SURVEY [1]_   main          str
+    PROGRAM [1]_  dark          str
+    ZCATVER [1]_  v0            str
+    DESIDR        dr1           str  DESI Data Release
+    ============= ============= ==== =====================
+
+.. [1] Optional
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

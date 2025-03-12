@@ -185,12 +185,13 @@ WEIGHT_ZFAIL               float64                             Should be all 1 a
 mod_success_rate           float64                             Expected spectroscopic success rate given the target and observation properties
 ========================== =========== ======================= =======================================================================================================================================
 
-.. [1] Optional columns: OII_FLUX, OII_FLUX_IVAR, o2c only present in ELG samples.
-                         Z_RR only present in QSO samples.
-                         lrg_mask only present in LRG samples.
-                         ABSMAG01_SDSS_G,R only present in BGS samples.
-                         WEIGHT_IMLIN, WEIGHT_FKP, WEIGHT_RF, WEIGHT_SN are optionals
+.. [1] Optional
 
 Notes and Examples
 ==================
 
+.. columns: OII_FLUX, OII_FLUX_IVAR, o2c only present in ELG samples.
+..                    Z_RR only present in QSO samples.
+..                         lrg_mask only present in LRG samples.
+..                         ABSMAG01_SDSS_G,R only present in BGS samples.
+..                         WEIGHT_IMLIN, WEIGHT_FKP, WEIGHT_RF, WEIGHT_SN are optionals
