@@ -83,24 +83,24 @@ GOALTIME               float64  s             Goal for total effective exposure 
 GOALTYPE               char[6]                The intended observing conditions for the tile
 MINTFRAC               float64                Minimum fraction of GOALTIME acceptable for considering a tile complete
 AIRMASS                float32                Average airmass during this exposure.
-EBV                    float64                Galactic extinction E(B-V) reddening from SFD98_
+EBV                    float32                Galactic extinction E(B-V) reddening from SFD98_
 SEEING_ETC             float64  arcsec        Average FWHM atmospheric seeing during this exposure as measured by ETC.
-EFFTIME_ETC            float32  s             Effective exposure time for nominal conditions inferred from ETC data
-TSNR2_ELG              float32                ELG template (S/N)^2 summed over B,R,Z
-TSNR2_QSO              float32                QSO template (S/N)^2 summed over B,R,Z
-TSNR2_LRG              float32                LRG template (S/N)^2 summed over B,R,Z
+EFFTIME_ETC            float64  s             Effective exposure time for nominal conditions inferred from ETC data
+TSNR2_ELG              float64                ELG template (S/N)^2 summed over B,R,Z
+TSNR2_QSO              float64                QSO template (S/N)^2 summed over B,R,Z
+TSNR2_LRG              float64                LRG template (S/N)^2 summed over B,R,Z
 TSNR2_LYA              float64                LYA template (S/N)^2 summed over B,R,Z
-TSNR2_BGS              float32                BGS template (S/N)^2 summed over B,R,Z
-TSNR2_GPBDARK          float32                GPBDARK template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBRIGHT        float32                GPBBRIGHT template (S/N)^2 summed over B,R,Z
-TSNR2_GPBBACKUP        float32                GPBBACKUP template (S/N)^2 summed over B,R,Z
-LRG_EFFTIME_DARK       float32  s             Effective exposure time for nominal dark conditions inferred for LRG targets
-ELG_EFFTIME_DARK       float32  s             Effective exposure time for nominal dark conditions inferred for ELG targets
-BGS_EFFTIME_BRIGHT     float32  s             Effective exposure time for nominal bright conditions inferred for BGS targets
+TSNR2_BGS              float64                BGS template (S/N)^2 summed over B,R,Z
+TSNR2_GPBDARK          float64                GPBDARK template (S/N)^2 summed over B,R,Z
+TSNR2_GPBBRIGHT        float64                GPBBRIGHT template (S/N)^2 summed over B,R,Z
+TSNR2_GPBBACKUP        float64                GPBBACKUP template (S/N)^2 summed over B,R,Z
+LRG_EFFTIME_DARK       float64  s             Effective exposure time for nominal dark conditions inferred for LRG targets
+ELG_EFFTIME_DARK       float64  s             Effective exposure time for nominal dark conditions inferred for ELG targets
+BGS_EFFTIME_BRIGHT     float64  s             Effective exposure time for nominal bright conditions inferred for BGS targets
 LYA_EFFTIME_DARK       float64  s             Effective exposure time for nominal dark conditions inferred for LYA targets
-GPB_EFFTIME_DARK       float32  s             Effective exposure time for nominal dark conditions inferred for GPB targets
-GPB_EFFTIME_BRIGHT     float32  s             Effective exposure time for nominal bright conditions inferred for GPB targets
-GPB_EFFTIME_BACKUP     float32  s             Effective exposure time for nominal backup conditions inferred for GPB targets
+GPB_EFFTIME_DARK       float64  s             Effective exposure time for nominal dark conditions inferred for GPB targets
+GPB_EFFTIME_BRIGHT     float64  s             Effective exposure time for nominal bright conditions inferred for GPB targets
+GPB_EFFTIME_BACKUP     float64  s             Effective exposure time for nominal backup conditions inferred for GPB targets
 TRANSPARENCY_GFA       float64                Average airmass during this exposure as measured by GFA.
 SEEING_GFA             float64  arcsec        Average FWHM atmospheric seeing during this exposure as measured by GFA.
 FIBER_FRACFLUX_GFA     float64                Fraction of the flux entering the fiber relative to nominal 1.1" seeing using the PSF inferred from the GFAs
