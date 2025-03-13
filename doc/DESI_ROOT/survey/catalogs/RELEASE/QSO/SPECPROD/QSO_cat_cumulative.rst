@@ -2,10 +2,10 @@
 QSO_cat_cumulative
 ==================
 
-:Summary: This contains the information on quasar automatically identified from DESI spectra coadded for all observations of the relevant tiles. Data appearing here is considered a successful quasar redshift by the LSS pipeline. 
+:Summary: This contains the information on quasar automatically identified from DESI spectra coadded for all observations of the relevant tiles. Data appearing here is considered a successful quasar redshift by the LSS pipeline.
 :Naming Convention: ``QSO_cat_{SPECPROD}_cumulative_{VERSION}.fits``.
-:Regex: ``QSO_cat_[a-z]_cumulative_v[0-9]{1}.fits`` 
-:File Type: FITS, 778 MB  
+:Regex: ``QSO_cat_[a-z]+_cumulative_v[0-9]\.fits``
+:File Type: FITS, 778 MB
 
 Contents
 ========
