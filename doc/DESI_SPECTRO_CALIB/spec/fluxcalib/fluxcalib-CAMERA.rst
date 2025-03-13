@@ -1,12 +1,12 @@
-=====================
-fluxcalib-CAMERA.fits
-=====================
+===============================
+fluxcalibaverage-ARM-NIGHT.fits
+===============================
 
 :Summary: Flux calibration file contains an average calibration model for a
     given camera including airmass and seeing dependencies.
-:Naming Convention: ``fluxcalib-{CAMERA}.fits``, where where ``{CAMERA}`` is
-    one of the spectrograph cameras (*e.g.* ``z1``).
-:Regex: ``fluxcalib-[brz][0-9].fits``
+:Naming Convention: ``fluxcalibaverage-{ARM}-{NIGHT}.fits``, where where ``{ARM}`` is
+    one of the spectrograph arms (*e.g.* ``b``) and ``{NIGHT}`` is a date in YYYYMMDD format.
+:Regex: ``fluxcalibaverage-[brz]-[0-9]{8}\.fits``
 :File Type: FITS, 84 KB
 
 The model is parameterized as
