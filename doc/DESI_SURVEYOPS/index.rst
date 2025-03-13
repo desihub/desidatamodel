@@ -3,8 +3,8 @@ DESI_SURVEYOPS
 ==============
 
 :envvar:`DESI_SURVEYOPS` contains data files used for day-to-day survey operations,
-with the canonical location of ``$DESI_ROOT/survey/ops/surveyops/trunk/``,
-though data releases will use a tagged version.
+with the canonical location of ``$DESI_ROOT/survey/ops/surveyops/trunk``,
+though data releases will use a tagged version, *e.g.* ``surveyops/tags/1.0`` in DR1.
 The main directory is an SVN trunk that is updated as the DESI survey proceeds.
 
 Subdirectories:

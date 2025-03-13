@@ -853,7 +853,7 @@ def main():
         log.info("Skipping regular expression processing.")
         # files[0].get_regexp(options.directory, error=options.error)
         log.info("Setting prototype file for %s to %s.", filename, options.directory)
-        files[0].prototype = options.directory
+        files[0]._prototypes = [options.directory]
     else:
         section = os.path.join(data_model_root, 'doc', options.section)
         log.info("Loading data model file in %s.", section)
