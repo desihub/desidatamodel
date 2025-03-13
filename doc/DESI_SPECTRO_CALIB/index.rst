@@ -14,4 +14,4 @@ Files / subdirectories:
 .. toctree::
    :maxdepth: 1
 
-   fluxcalib-CAMERA.rst
+   spec/index
