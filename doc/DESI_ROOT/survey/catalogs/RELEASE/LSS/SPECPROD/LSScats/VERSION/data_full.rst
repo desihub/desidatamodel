@@ -68,8 +68,8 @@ LOCATION                   int64                               Location on the f
 TILEID                     int64                               Unique DESI tile ID
 TILELOCID                  int64                               Is 10000*TILEID+LOCATION
 LASTNIGHT                  int32                               Final night of observation included in a series of coadds
-Z [1]_                     float64                             Redshift measured by Redrock
-Z_not4clus [1]_            float64                             *Description needed.*
+Z [1]_                     float64                             Redshift measured by Redrock in "full_noveto" files
+Z_not4clus [1]_            float64                             Redshift measured by Redrock in "full" and "full_HPmapcut" files
 ZERR                       float64                             Redshift error from redrock
 ZWARN                      int64                               Redshift warning bitmask from Redrock
 CHI2                       float64                             Best fit chi squared
@@ -181,12 +181,12 @@ WEIGHT_SN [1]_             float64                             Imaging systemati
 COMP_TILE                  float64                             Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID            float64                             The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 lrg_mask [1]_              binary                              (lower or upper case) Imaging mask bits relevant to LRG targets
-FRAC_TLOBS_TILES           float64                             *Description needed.*
+FRAC_TLOBS_TILES           float64                             The completeness-like quantity determined within the given TILES group, obtained when weighting each observed target by 1/FRACZ_TILELOCID and dividing by the total number of targets in the region
 WEIGHT_ZFAIL               float64                             Should be all 1 at this point for main survey
 mod_success_rate           float64                             Expected spectroscopic success rate given the target and observation properties
 WEIGHT_IMLIN [1]_          float64                             Imaging systematics weights derived with the eBOSS linear regression method
-WEIGHT_NTILE [1]_          float64                             *Description needed.*
-WEIGHT_FKP_NTILE [1]_      float64                             *Description needed.*
+WEIGHT_NTILE [1]_          float64                             A weight to be used when calculating the angular paircounts used to correct assignment incompleteness via angular upweighting (necessary to match the weighted angular distribution of the "clustering" catalogs)
+WEIGHT_FKP_NTILE [1]_      float64                             An additional weight to be used when calculating the angular paircounts used to correct assignment incompleteness via angular upweighting (necessary to match the weighted angular distribution of the "clustering" catalogs), if WEIGHT_FKP is used for the overall clustering measurement.
 ========================== =========== ======================= =======================================================================================================================================
 
 .. [1] Optional
