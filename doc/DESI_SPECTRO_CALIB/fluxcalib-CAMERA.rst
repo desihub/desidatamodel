@@ -6,7 +6,7 @@ fluxcalib-CAMERA.fits
     given camera including airmass and seeing dependencies.
 :Naming Convention: ``fluxcalib-{CAMERA}.fits``, where where ``{CAMERA}`` is
     one of the spectrograph cameras (*e.g.* ``z1``).
-:Regex: ``fluxcalib-{brz][0-9].fits``
+:Regex: ``fluxcalib-[brz][0-9].fits``
 :File Type: FITS, 84 KB
 
 The model is parameterized as
@@ -27,6 +27,7 @@ HDU2_  STERM                              IMAGE Seeing dependent term
 HDU3_  WAVELENGTH                         IMAGE Wavelength grid
 HDU4_  ATERM_ERR                          IMAGE Uncertainty on airmass dependent term
 HDU5_  STERM_ERR                          IMAGE Uncertainty on seeing dependent term
+HDU6_  FFRACFLUX_WAVE                     IMAGE *Description needed.*
 ====== ================================== ===== ===================
 
 
@@ -44,14 +45,18 @@ Average flux calibration model such that calibrated flux = uncalibrated photons 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ========================= ==== ==============================================
-KEY      Example Value             Type Comment
-======== ========================= ==== ==============================================
-NAXIS1   2380                      int
-BUNIT    10**+17 cm2 count s / erg str  i.e. (elec/A) / (1e-17 erg/s/cm2/A)
-CHECKSUM 2pfC2ofA2ofA2ofA          str  HDU checksum updated 2018-11-27T11:46:41
-DATASUM  3135063907                str  data unit checksum updated 2018-11-27T11:46:41
-======== ========================= ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ========================= ==== ==============================================
+    KEY      Example Value             Type Comment
+    ======== ========================= ==== ==============================================
+    NAXIS1   2380                      int
+    BUNIT    10**+17 cm2 count s / erg str  i.e. (elec/A) / (1e-17 erg/s/cm2/A)
+    CHECKSUM 2pfC2ofA2ofA2ofA          str  HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  3135063907                str  data unit checksum updated 2018-11-27T11:46:41
+    ======== ========================= ==== ==============================================
 
 Data: FITS image [float32, 2380]
 
@@ -65,14 +70,18 @@ Atmospheric extinction term
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================= ===== ==============================================
-KEY      Example Value     Type  Comment
-======== ================= ===== ==============================================
-NAXIS1   2380              int
-PAIRMASS 1.132032318244172 float pivot airmass (airmass of average calib.)
-CHECKSUM Xd3dYd0bXd0bXd0b  str   HDU checksum updated 2018-11-27T11:46:41
-DATASUM  1519080666        str   data unit checksum updated 2018-11-27T11:46:41
-======== ================= ===== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================= ===== ==============================================
+    KEY      Example Value     Type  Comment
+    ======== ================= ===== ==============================================
+    NAXIS1   2380              int
+    PAIRMASS 1.132032318244172 float pivot airmass (airmass of average calib.)
+    CHECKSUM Xd3dYd0bXd0bXd0b  str   HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  1519080666        str   data unit checksum updated 2018-11-27T11:46:41
+    ======== ================= ===== ==============================================
 
 Data: FITS image [float32, 2380]
 
@@ -86,14 +95,18 @@ Seeing term
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================= ===== ==============================================
-KEY      Example Value     Type  Comment
-======== ================= ===== ==============================================
-NAXIS1   2380              int
-PSEEING  1.075342118740081 float pivot seeing (seeing of average calib.), FWHM arcsec
-CHECKSUM IOTaKNRTINRZINRZ  str   HDU checksum updated 2018-11-27T11:46:41
-DATASUM  1211437529        str   data unit checksum updated 2018-11-27T11:46:41
-======== ================= ===== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================= ===== ==============================================
+    KEY      Example Value     Type  Comment
+    ======== ================= ===== ==============================================
+    NAXIS1   2380              int
+    PSEEING  1.075342118740081 float pivot seeing (seeing of average calib.), FWHM arcsec
+    CHECKSUM IOTaKNRTINRZINRZ  str   HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  1211437529        str   data unit checksum updated 2018-11-27T11:46:41
+    ======== ================= ===== ==============================================
 
 Data: FITS image [float32, 2380]
 
@@ -107,14 +120,18 @@ Wavelengths at which the flux calibration model is evaluated.
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2380             int
-BUNIT    Angstrom         str
-CHECKSUM CbCQFZ9OCaAOCY9O str  HDU checksum updated 2018-11-27T11:46:41
-DATASUM  3517056679       str  data unit checksum updated 2018-11-27T11:46:41
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2380             int
+    BUNIT    Angstrom         str
+    CHECKSUM CbCQFZ9OCaAOCY9O str  HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  3517056679       str  data unit checksum updated 2018-11-27T11:46:41
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2380]
 
@@ -128,13 +145,17 @@ Uncertainty on atmospheric extinction term
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2380             int
-CHECKSUM fCmKhBkHfBkHfBkH str  HDU checksum updated 2018-11-27T11:46:41
-DATASUM  984665518        str  data unit checksum updated 2018-11-27T11:46:41
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2380             int
+    CHECKSUM fCmKhBkHfBkHfBkH str  HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  984665518        str  data unit checksum updated 2018-11-27T11:46:41
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2380]
 
@@ -148,16 +169,47 @@ Uncertainty on seeing dependent term
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-======== ================ ==== ==============================================
-KEY      Example Value    Type Comment
-======== ================ ==== ==============================================
-NAXIS1   2380             int
-CHECKSUM LaNJNZNJLaNJLYNJ str  HDU checksum updated 2018-11-27T11:46:41
-DATASUM  803867299        str  data unit checksum updated 2018-11-27T11:46:41
-======== ================ ==== ==============================================
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   2380             int
+    CHECKSUM LaNJNZNJLaNJLYNJ str  HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  803867299        str  data unit checksum updated 2018-11-27T11:46:41
+    ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 2380]
 
+HDU6
+----
+
+EXTNAME = FFRACFLUX_WAVE
+
+*Description needed.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ===== ==============================================
+    KEY      Example Value    Type  Comment
+    ======== ================ ===== ==============================================
+    NAXIS1   2751             int
+    MDSEEING 0.8553508780470  float *Description needed.*
+    MDFFRACF 0.7200142212446  float *Description needed.*
+    FACWPOW  -0.25            float *Description needed.*
+    FSTNIGHT 20201214         int   *Description needed.*
+    CHECKSUM LaNJNZNJLaNJLYNJ str   HDU checksum updated 2018-11-27T11:46:41
+    DATASUM  803867299        str   data unit checksum updated 2018-11-27T11:46:41
+    ======== ================ ===== ==============================================
+
+Data: FITS image [float32, 2751]
 
 Notes and Examples
 ==================
