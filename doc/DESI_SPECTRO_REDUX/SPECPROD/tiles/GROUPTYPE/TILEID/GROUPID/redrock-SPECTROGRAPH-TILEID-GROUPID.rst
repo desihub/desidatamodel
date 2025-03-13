@@ -205,10 +205,19 @@ PARALLAX                   float32 mas          Reference catalog parallax
 PHOTSYS                    char[1]              'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 PRIORITY_INIT              int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT                int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
+CMX_TARGET [1]_            int64                Target selection bitmask for commissioning
 SV1_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV1
 SV1_BGS_TARGET [1]_        int64                BGS (bright time program) target selection bitmask for SV1
 SV1_MWS_TARGET [1]_        int64                MWS (bright time program) target selection bitmask for SV1
 SV1_SCND_TARGET [1]_       int64                Secondary target selection bitmask for SV1
+SV2_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV2
+SV2_BGS_TARGET [1]_        int64                BGS (bright time program) target selection bitmask for SV2
+SV2_MWS_TARGET [1]_        int64                MWS (bright time program) target selection bitmask for SV2
+SV2_SCND_TARGET [1]_       int64                Secondary target selection bitmask for SV2
+SV3_DESI_TARGET [1]_       int64                DESI (dark time program) target selection bitmask for SV3
+SV3_BGS_TARGET [1]_        int64                BGS (bright time program) target selection bitmask for SV3
+SV3_MWS_TARGET [1]_        int64                MWS (bright time program) target selection bitmask for SV3
+SV3_SCND_TARGET [1]_       int64                Secondary target selection bitmask for SV3
 DESI_TARGET                int64                DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64                BGS (Bright Galaxy Survey) target selection bitmask
 MWS_TARGET                 int64                Milky Way Survey targeting bits
@@ -225,17 +234,17 @@ RMS_DELTA_X                float32 mm           RMS (over exposures) of the fibe
 MEAN_DELTA_Y               float32 mm           Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 RMS_DELTA_Y                float32 mm           RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
 MEAN_PSF_TO_FIBER_SPECFLUX float32              Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-MEAN_MJD                   float64 d            Mean MJD across fibers contributing to coadd
+MEAN_MJD [1]_              float64 d            Mean MJD across fibers contributing to coadd
 MEAN_FIBER_X               float32 mm           Mean (over exposures) fiber CS5 X location on focal plane
 MEAN_FIBER_Y               float32 mm           Mean (over exposures) fiber CS5 Y location on focal plane
 MEAN_FIBER_RA              float64 deg          Mean (over exposures) RA of actual fiber position
 STD_FIBER_RA               float32 arcsec       Standard deviation (over exposures) of RA of actual fiber position
 MEAN_FIBER_DEC             float64 deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32 arcsec       Standard deviation (over exposures) of DEC of actual fiber position
-MIN_MJD                    float64 d            Minimum MJD contributing to fiber coadd
-MAX_MJD                    float64 d            Maximum MJD contributing to fiber coadd
-FIRSTNIGHT                 int32                First night tile was observed (YYYYMMDD)
-LASTNIGHT                  int32                Last night tile was observed (YYYYMMDD)
+MIN_MJD [1]_               float64 d            Minimum MJD contributing to fiber coadd
+MAX_MJD [1]_               float64 d            Maximum MJD contributing to fiber coadd
+FIRSTNIGHT [1]_            int32                First night tile was observed (YYYYMMDD)
+LASTNIGHT [1]_             int32                Last night tile was observed (YYYYMMDD)
 ========================== ======= ============ ===============================================================================================================================
 
 .. [1] Optional
