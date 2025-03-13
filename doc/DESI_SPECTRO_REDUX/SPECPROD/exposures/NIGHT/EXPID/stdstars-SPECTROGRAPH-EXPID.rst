@@ -148,7 +148,7 @@ TEFF                  float64 K     Effective temperature
 FEH                   float64       log10( iron abundance / solar value)
 CHI2DOF               float64       reduced chi2
 REDSHIFT              float64       redshift (can be negative)
-DATA_G-R  [1]_        float64       g-r color of the data (from photometry)
+DATA_G-R  [1]_        float32       g-r color of the data (from photometry)
 MODEL_G-R [1]_        float64       g-r color of the model
 BLUE_SNR              float64       median signal to noise in blue camera
 RED_SNR               float64       median signal to noise in red camera
