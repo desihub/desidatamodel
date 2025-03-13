@@ -141,6 +141,8 @@ Required Data Table Columns
 ===================== ======= ===== =======================================
 Name                  Type    Units Description
 ===================== ======= ===== =======================================
+TARGETID              int64         Unique DESI target ID
+FIBER                 int32         Fiber ID on the CCDs [0-4999]
 LOGG                  float64       log10( surface gravity / solar value)
 TEFF                  float64 K     Effective temperature
 FEH                   float64       log10( iron abundance / solar value)

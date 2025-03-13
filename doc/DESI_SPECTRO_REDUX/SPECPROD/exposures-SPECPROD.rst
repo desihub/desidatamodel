@@ -175,7 +175,7 @@ TSNR2_BGS       float64         BGS template (S/N)^2 summed over B,R,Z
 TSNR2_GPBBACKUP float64         GPBBACKUP template (S/N)^2 summed over B,R,Z
 TSNR2_QSO       float64         QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG       float64         LRG template (S/N)^2 summed over B,R,Z
-TSNR2_ALPHA     float32         *Description needed.*
+TSNR2_ALPHA     float32         Scaling factor on the CCD readnoise component to the TSNR2
 SURVEY          char[7]         Survey name
 GOALTYPE        char[6]         The intended observing conditions for the tile
 FAPRGRM         char[*]         PROGRAM in fiberassign file
