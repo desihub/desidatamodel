@@ -12,16 +12,20 @@ sky-CAMERA-EXPID.fits
 Contents
 ========
 
-====== ========== ===== ===================
-Number EXTNAME    Type  Contents
-====== ========== ===== ===================
-HDU0_  SKY        IMAGE sky model in electrons per Angstrom
-HDU1_  IVAR       IMAGE inverse variance of sky model
-HDU2_  MASK       IMAGE sky mask (0 = good)
-HDU3_  WAVELENGTH IMAGE wavelength in Angstrom
-HDU4_  STATIVAR   IMAGE statistical-only inverse variance of sky model
-HDU5_  THRPUTCORR IMAGE achromatic throughput correction per fiber
-====== ========== ===== ===================
+====== =============== ===== ===================
+Number EXTNAME         Type  Contents
+====== =============== ===== ===================
+HDU0_  SKY             IMAGE sky model in electrons per Angstrom
+HDU1_  IVAR            IMAGE inverse variance of sky model
+HDU2_  MASK            IMAGE sky mask (0 = good)
+HDU3_  WAVELENGTH      IMAGE wavelength in Angstrom
+HDU4_  STATIVAR        IMAGE statistical-only inverse variance of sky model
+HDU5_  THRPUTCORR      IMAGE achromatic throughput correction per fiber
+HDU6_  THRPUTCORR_MOD  IMAGE *Description needed.*
+HDU6_  DWAVECOEFF      IMAGE *Description needed.*
+HDU7_  DLSFCOEFF       IMAGE *Description needed.*
+HDU8_  SKYGRADPCACOEFF IMAGE *Description needed.*
+====== =============== ===== ===================
 
 The SKY HDU is the sky model per-fiber accounting for different fiber
 resolutions, but it does *not* include the empirical per-fiber throughput
@@ -685,6 +689,7 @@ Required Header Keywords
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
     NAXIS1   2326             int
+    BUNIT    Angstrom         str  Wavelength units
     CHECKSUM 7BAoAA3l7A9lAA9l str  HDU checksum updated 2021-07-08T02:23:26
     DATASUM  1502044794       str  data unit checksum updated 2021-07-08T02:23:26
     ======== ================ ==== ==============================================
@@ -735,9 +740,104 @@ Required Header Keywords
     KEY      Example Value    Type Comment
     ======== ================ ==== ==============================================
     NAXIS1   500              int
-    BUNIT    Angstrom         str
     CHECKSUM VPA5WO62VOA2VO52 str  HDU checksum updated 2021-07-08T02:23:27
     DATASUM  63793519         str  data unit checksum updated 2021-07-08T02:23:27
     ======== ================ ==== ==============================================
 
 Data: FITS image [float32, 500]
+
+HDU6
+----
+
+EXTNAME = THRPUTCORR_MOD
+
+*Description needed.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   500              int
+    CHECKSUM VPA5WO62VOA2VO52 str  HDU checksum updated 2021-07-08T02:23:27
+    DATASUM  63793519         str  data unit checksum updated 2021-07-08T02:23:27
+    ======== ================ ==== ==============================================
+
+Data: FITS image [float32, 500]
+
+HDU7
+----
+
+EXTNAME = DWAVECOEFF
+
+*Description needed.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   4                int
+    CHECKSUM VPA5WO62VOA2VO52 str  HDU checksum updated 2021-07-08T02:23:27
+    DATASUM  63793519         str  data unit checksum updated 2021-07-08T02:23:27
+    ======== ================ ==== ==============================================
+
+Data: FITS image [float32, 4]
+
+HDU8
+----
+
+EXTNAME = DLSFCOEFF
+
+*Description needed.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   4                int
+    CHECKSUM VPA5WO62VOA2VO52 str  HDU checksum updated 2021-07-08T02:23:27
+    DATASUM  63793519         str  data unit checksum updated 2021-07-08T02:23:27
+    ======== ================ ==== ==============================================
+
+Data: FITS image [float32, 4]
+
+HDU9
+----
+
+EXTNAME = SKYGRADPCACOEFF
+
+*Description needed.*
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ======== ================ ==== ==============================================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== ==============================================
+    NAXIS1   4                int
+    CHECKSUM VPA5WO62VOA2VO52 str  HDU checksum updated 2021-07-08T02:23:27
+    DATASUM  63793519         str  data unit checksum updated 2021-07-08T02:23:27
+    ======== ================ ==== ==============================================
+
+Data: FITS image [float32, 4]
