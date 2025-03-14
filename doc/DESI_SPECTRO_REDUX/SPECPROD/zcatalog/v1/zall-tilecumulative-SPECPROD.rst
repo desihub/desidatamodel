@@ -16,7 +16,7 @@ a column ``SV_PRIMARY`` to indicate the best recommended redshift if the same
 ``TARGETID`` appears multiple times, and ``SV_NSPEC`` for how many times each
 target appears.
 
-e.g. if the same Survey Validation ``TARGETID`` was observed on two different tiles, 
+e.g. if the same Survey Validation ``TARGETID`` was observed on two different tiles,
 it will appear as separate redshifts in separate ztile files, and will
 appear twice in this file with one of the entries having ``SV_PRIMARY==True``.
 Any target that appears only once will also have ``SV_PRIMARY==True``.
@@ -27,7 +27,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    Empty
+HDU0_  PRIMARY      IMAGE    Empty
 HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
 ====== ============ ======== ===================
 
@@ -38,7 +38,22 @@ FITS Header Units
 HDU0
 ----
 
-This HDU has no non-standard required keywords.
+EXTNAME = PRIMARY
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    CHECKSUM     9aaGCVYE9aaECUYE str  HDU checksum
+    DATASUM      0                str  data unit checksum
+    ZCATVER      v1               str  Version of zcatalog files
+    ============ ================ ==== =======================
 
 Empty HDU.
 

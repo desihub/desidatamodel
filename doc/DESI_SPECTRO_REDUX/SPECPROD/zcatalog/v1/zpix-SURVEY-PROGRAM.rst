@@ -1,15 +1,14 @@
-===================================
-ztile-SURVEY-PROGRAM-GROUPTYPE.fits
-===================================
+========================
+zpix-SURVEY-PROGRAM.fits
+========================
 
 :Summary: This file contatenates the individual
-          :doc:`tile-based Redrock redshift catalogs </DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>`
-          into a single file per SURVEY, PROGRAM, and spectral GROUPTYPE.
-:Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
-    *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright or ``dark``,
-    and ``GROUPTYPE`` is ``cumulative`` or ``pernight``.
-:Regex: ``ztile-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-(cumulative|perexp|pernight|1x_depth|4x_depth|lowspeed)\.fits``
-:File Type: FITS, 4 MB
+          :doc:`healpix-based Redrock redshift catalogs </DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/redrock-SURVEY-PROGRAM-PIXNUM>`
+          into a single file per SURVEY and PROGRAM.
+:Naming Convention: ``ztile-SURVEY-PROGRAM.fits``, where ``SURVEY`` is
+    *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright or ``dark``.
+:Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)\.fits``
+:File Type: FITS, 296 MB
 
 Contents
 ========
@@ -17,7 +16,7 @@ Contents
 ====== ============ ======== ===================
 Number EXTNAME      Type     Contents
 ====== ============ ======== ===================
-HDU0_               IMAGE    Empty
+HDU0_  PRIMARY      IMAGE    Empty
 HDU1_  ZCATALOG     BINTABLE Redshift catalog joined with target catalog
 HDU2_  EXP_FIBERMAP BINTABLE Per-exposure entries from input fibermaps
 ====== ============ ======== ===================
@@ -29,11 +28,27 @@ FITS Header Units
 HDU0
 ----
 
-This HDU has no non-standard required keywords.
+EXTNAME = PRIMARY
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    CHECKSUM     9aaGCVYE9aaECUYE str  HDU checksum
+    DATASUM      0                str  data unit checksum
+    ZCATVER      v1               str  Version of zcatalog files
+    ============ ================ ==== =======================
+
 
 Empty HDU.
 
-.. _zcatalog-ztile-hdu1:
+.. _zcatalog-zpix-hdu1:
 
 HDU1
 ----
@@ -42,7 +57,7 @@ EXTNAME = ZCATALOG
 
 Redshift catalog joined with the targeting metadata from the REDSHIFTS
 and FIBERMAP HDUs of the
-:doc:`input redrock files </DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/redrock-SPECTROGRAPH-TILEID-GROUPID>`.
+:doc:`input redrock files </DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/redrock-SURVEY-PROGRAM-PIXNUM>`
 
 ``TEMNAMnn`` and ``TEMVERnn`` record the redrock template names and versions
 used for the redshift fits.
@@ -54,37 +69,44 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ============ ============= ==== =======================
-    KEY          Example Value Type Comment
-    ============ ============= ==== =======================
-    NAXIS1       677           int  width of table in bytes
-    NAXIS2       5000          int  number of rows in table
-    LONGSTRN     OGIP 1.0      str
-    RRVER        0.15.0        str  Redrock version
-    TEMNAM00     GALAXY        str  Redrock template 00 name
-    TEMVER00     2.6           str  Redrock template 00 version
-    TEMNAM01     QSO           str
-    TEMVER01     0.1           str
-    TEMNAM02     STAR:::A      str
-    TEMVER02     0.1           str
-    TEMNAM03     STAR:::B      str
-    TEMVER03     0.1           str
-    TEMNAM04     STAR:::CV     str
-    TEMVER04     0.1           str
-    TEMNAM05     STAR:::F      str
-    TEMVER05     0.1           str
-    TEMNAM06     STAR:::G      str
-    TEMVER06     0.1           str
-    TEMNAM07     STAR:::K      str
-    TEMVER07     0.1           str
-    TEMNAM08     STAR:::M      str
-    TEMVER08     0.1           str
-    TEMNAM09     STAR:::WD     str
-    TEMVER09     0.1           str
-    SPGRP        cumulative    str  Spectral grouping method
-    SURVEY [1]_  sv3           str  DESI sub-survey (e.g. sv1, sv3, main)
-    PROGRAM [1]_ dark          str  DESI program (e.g. dark, bright)
-    ============ ============= ==== =======================
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    NAXIS1       631              int  width of table in bytes
+    NAXIS2       139728           int  number of rows in table
+    LONGSTRN     OGIP 1.0         str
+    RRVER        0.15.0           str  Redrock version
+    TEMNAM00     GALAXY           str  Redrock template 00 name
+    TEMVER00     2.6              str  Redrock template 00 version
+    TEMNAM01     QSO:::HIZ        str
+    TEMVER01     0.1              str
+    TEMNAM02     QSO:::LOZ        str
+    TEMVER02     1.0              str
+    TEMNAM03     STAR:::A         str
+    TEMVER03     0.1              str
+    TEMNAM04     STAR:::B         str
+    TEMVER04     0.1              str
+    TEMNAM05     STAR:::CV        str
+    TEMVER05     0.1              str
+    TEMNAM06     STAR:::F         str
+    TEMVER06     0.1              str
+    TEMNAM07     STAR:::G         str
+    TEMVER07     0.1              str
+    TEMNAM08     STAR:::K         str
+    TEMVER08     0.1              str
+    TEMNAM09     STAR:::M         str
+    TEMVER09     0.1              str
+    TEMNAM10     STAR:::WD        str
+    TEMVER10     0.1              str
+    SPGRP        healpix          str  Spectral grouping method
+    HPXNSIDE     64               int  Healpix nside
+    HPXNEST      T                bool Nested healpix (not ring)
+    SURVEY [1]_  main             str  DESI sub-survey (e.g. sv1, sv3, main)
+    PROGRAM [1]_ dark             str  DESI program (e.g. dark, bright)
+    CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
+    DATASUM      4284326946       str  data unit checksum
+    ZCATVER      v1               str  Version of zcatalog files
+    ============ ================ ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,7 +119,7 @@ Name                       Type        Units        Description
 TARGETID                   int64                    Unique DESI target ID
 SURVEY [1]_                char[7]                  Survey name
 PROGRAM [1]_               char[6]                  DESI program type - BRIGHT, DARK, BACKUP, OTHER
-LASTNIGHT                  int32                    Final night of observation included in a series of coadds
+HEALPIX                    int32                    HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 SPGRPVAL                   int32                    Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 Z                          float64                  Redshift measured by Redrock
 ZERR                       float64                  Redshift error from redrock
@@ -109,23 +131,15 @@ SPECTYPE                   char[6]                  Spectral type of Redrock bes
 SUBTYPE                    char[20]                 Spectral subtype
 NCOEFF                     int64                    Number of Redrock template coefficients
 DELTACHI2                  float64                  chi2 difference between first- and second-best redrock template fits
-PETAL_LOC                  int16                    Petal location [0-9]
-DEVICE_LOC                 int32                    Device location on focal plane [0-523]
-LOCATION                   int64                    Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
-FIBER                      int32                    Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32                    bitwise-AND of input FIBERSTATUS
 TARGET_RA                  float64     deg          Barycentric Right Ascension in ICRS
 TARGET_DEC                 float64     deg          Barycentric Declination in ICRS
 PMRA                       float32     mas yr^-1    Reference catalog proper motion in the RA direction
 PMDEC                      float32     mas yr^-1    Reference catalog proper motion in the Dec direction
 REF_EPOCH                  float32     yr           Reference catalog reference epoch (*e.g.*, 2015.5 for Gaia_ DR2)
-LAMBDA_REF                 float32     Angstrom     Requested wavelength at which targets should be centered on fibers
 FA_TARGET                  int64                    Targeting bit internally used by fiberassign (linked with FA_TYPE)
 FA_TYPE                    binary                   Fiberassign internal target type (science, standard, sky, safe, suppsky)
 OBJTYPE                    char[3]                  Object type: TGT, SKY, NON, BAD
-FIBERASSIGN_X              float32     mm           Fiberassign expected CS5 X location on focal plane
-FIBERASSIGN_Y              float32     mm           Fiberassign expected CS5 Y location on focal plane
-PRIORITY                   int32                    Target current priority
 SUBPRIORITY                float64                  Random subpriority [0-1] to break assignment ties
 OBSCONDITIONS              int32                    Flag the target to be observed in graytime.
 RELEASE                    int16                    Legacy Surveys (`LS`_) `Release`_
@@ -180,10 +194,9 @@ SV3_SCND_TARGET [1]_       int64                    Secondary target selection b
 DESI_TARGET                int64                    DESI (dark time program) target selection bitmask
 BGS_TARGET                 int64                    BGS (bright time program) target selection bitmask
 MWS_TARGET                 int64                    MWS (bright time program) target selection bitmask
-SCND_TARGET                int64                    Secondary target selection bitmask
+SCND_TARGET [1]_           int64                    Secondary target selection bitmask
 PLATE_RA                   float64     deg          Barycentric Right Ascension in ICRS to be used by PlateMaker
 PLATE_DEC                  float64     deg          Barycentric Declination in ICRS to be used by PlateMaker
-TILEID                     int32                    Unique DESI tile ID
 COADD_NUMEXP               int16                    Number of exposures in coadd
 COADD_EXPTIME              float32     s            Summed exposure time for coadd
 COADD_NUMNIGHT             int16                    Number of nights in coadd
@@ -192,13 +205,14 @@ MEAN_DELTA_X               float32     mm           Mean (over exposures) fiber 
 RMS_DELTA_X                float32     mm           RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
 MEAN_DELTA_Y               float32     mm           Mean (over exposures) fiber difference requested - actual CS5 Y location on focal plane
 RMS_DELTA_Y                float32     mm           RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
+MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 MEAN_FIBER_RA              float64     deg          Mean (over exposures) RA of actual fiber position
 STD_FIBER_RA               float32     arcsec       Standard deviation (over exposures) of RA of actual fiber position
 MEAN_FIBER_DEC             float64     deg          Mean (over exposures) DEC of actual fiber position
 STD_FIBER_DEC              float32     arcsec       Standard deviation (over exposures) of DEC of actual fiber position
-MEAN_PSF_TO_FIBER_SPECFLUX float32                  Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-MEAN_FIBER_X               float32     mm           Mean (over exposures) fiber CS5 X location on focal plane
-MEAN_FIBER_Y               float32     mm           Mean (over exposures) fiber CS5 X location on focal plane
+MIN_MJD                    float64     d            Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
+MAX_MJD                    float64     d            Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
+MEAN_MJD                   float64     d            Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 TSNR2_GPBDARK_B            float32                  template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B                float32                  ELG B template (S/N)^2
 TSNR2_GPBBRIGHT_B          float32                  template (S/N)^2 for bright targets in guider pass band on B
@@ -231,12 +245,13 @@ TSNR2_BGS                  float32                  BGS template (S/N)^2 summed 
 TSNR2_GPBBACKUP            float32                  template (S/N)^2 for backup targets in guider pass band
 TSNR2_QSO                  float32                  QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG                  float32                  LRG template (S/N)^2 summed over B,R,Z
-SV_NSPEC [1]_              int32                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)
+SV_NSPEC [1]_              int16                    Number of coadded spectra for this TARGETID in SV (SV1+2+3)
 SV_PRIMARY [1]_            logical                  Boolean flag (True/False) for the primary coadded spectrum in SV (SV1+2+3)
-MAIN_NSPEC [1]_            int32                    Number of coadded spectra for this TARGETID in Main survey
+MAIN_NSPEC [1]_            int16                    Number of coadded spectra for this TARGETID in Main survey
 MAIN_PRIMARY [1]_          logical                  Boolean flag (True/False) for the primary coadded spectrum in Main survey
 ZCAT_NSPEC                 int16                    Number of times this TARGETID appears in this catalog
 ZCAT_PRIMARY               logical                  Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
+DESINAME                   char[22]                 Human readable identifier of a sky location DESI JXXX.XXXX[+/-]YY.YYYY, where X,Y=truncated decimal TARGET_RA, TARGET_DEC, precise to 0.36 arcsec. Multiple objects can map to a single DESINAME if very close on the sky.
 ========================== =========== ============ =====================================================================================================================================
 
 .. [1] Optional
@@ -250,11 +265,16 @@ ZCAT_PRIMARY               logical                  Boolean flag (True/False) fo
 .. _SFD98: https://ui.adsabs.harvard.edu/abs/1998ApJ...500..525S/abstract
 .. _SGA: https://www.legacysurvey.org/sga/sga2020
 
-Note: ztile files do not have ``SV_NSPEC`` or ``SV_PRIMARY`` columns;
-these are added when the ztile files are combined into
-:doc:`zall-tilecumulative <./zall-tilecumulative-SPECPROD>` files.
-``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are reserved for future data releases
-for the DESI Main Survey.
+Notes:
+
+  * zpix files do not have ``SV_NSPEC`` or ``SV_PRIMARY`` columns;
+    these are added when the zpix files are combined into :doc:`zall-pix <./zall-pix-SPECPROD>` files.
+  * ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` were introduced with DR1 for the DESI Main Survey.
+  * The targeting bitmasks ``DESI_TARGET``, ``BGS_TARGET``, ``MWS_TARGET``, and ``SCND_TARGET``
+    only apply to ``SURVEY="main"`` targets; they are `not` set for targets in other surveys.
+  * Similarly, the ``SV1_DESI_TARGET`` etc target masks are only set for the corresponding
+    survey; there is no propagation of targeting bits across surveys.
+
 
 HDU2
 ----
@@ -271,12 +291,14 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ====== ============= ==== =======================
-    KEY    Example Value Type Comment
-    ====== ============= ==== =======================
-    NAXIS1 162           int  width of table in bytes
-    NAXIS2 5000          int  number of rows in table
-    ====== ============= ==== =======================
+    ======== ================ ==== =======================
+    KEY      Example Value    Type Comment
+    ======== ================ ==== =======================
+    NAXIS1   162              int  width of table in bytes
+    NAXIS2   1374500          int  number of rows in table
+    CHECKSUM diandZUmdfamdZUm str  HDU checksum
+    DATASUM  2531100066       str  data unit checksum
+    ======== ================ ==== =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -312,6 +334,9 @@ DELTA_Y               float64 mm       CS5 Y requested minus actual position
 FIBER_RA              float64 deg      RA of actual fiber position
 FIBER_DEC             float64 deg      DEC of actual fiber position
 PSF_TO_FIBER_SPECFLUX float64          fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+IN_COADD_B            logical          If True this fiber in this exposure was used in the coadd of camera B
+IN_COADD_R            logical          If True this fiber in this exposure was used in the coadd of camera R
+IN_COADD_Z            logical          If True this fiber in this exposure was used in the coadd of camera Z
 ===================== ======= ======== =======================================================================================================
 
 

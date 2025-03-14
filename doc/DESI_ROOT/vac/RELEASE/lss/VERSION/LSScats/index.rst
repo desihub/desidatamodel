@@ -5,7 +5,7 @@
 LSScats
 =======
 
-``$DESI_ROOT/vac/RELEASE/lss/SPECPROD/SURVEY/VERSION/LSScats`` contains the directories for ``full`` (including information on all targets) and ``clustering`` (only information needed for clustering measurements and weights/cuts to optimize those clustering measurements). Files detailing the estimated n(z) in units of (h/Mpc)^3 are also here.
+``$DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats`` contains the directories for ``full`` (including information on all targets) and ``clustering`` (only information needed for clustering measurements and weights/cuts to optimize those clustering measurements). Files detailing the estimated n(z) in units of (h/Mpc)^3 are also here.
 
 Catalogs were created for the four extra-galactic DESI target types: LRG, ELG, QSO, and BGS. For all except QSO, catalogs are produced for additional sub-type definitions. In the cases where the sub-type corresponds to a bitname from `SV3 targeting`_, we use that name:
 

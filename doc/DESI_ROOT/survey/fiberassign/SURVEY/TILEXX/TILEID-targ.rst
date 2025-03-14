@@ -44,18 +44,18 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ======= =======================
-    KEY      Example Value Type    Comment
-    ======== ============= ======= =======================
-    NAXIS1   382           int     width of table in bytes
-    NAXIS2   30866         int     number of rows in table
-    SURVEY   main          str
-    RESOLVE  T             bool
-    MASKBITS T             bool
-    BACKUP   F             bool
-    NOSEC    F             bool
-    DR       None          Unknown
-    ======== ============= ======= =======================
+    ========== ============= ======= =======================
+    KEY        Example Value Type    Comment
+    ========== ============= ======= =======================
+    NAXIS1     382           int     width of table in bytes
+    NAXIS2     30866         int     number of rows in table
+    SURVEY     main          str
+    RESOLVE    T             bool
+    MASKBITS   T             bool
+    BACKUP     F             bool
+    NOSEC [1]_ F             bool
+    DR         None          Unknown
+    ========== ============= ======= =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,7 +88,7 @@ FIBERTOTFLUX_G        float32  nanomaggy    Predicted g-band flux within a fiber
 FIBERTOTFLUX_R        float32  nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_Z        float32  nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 MASKBITS              int16                 Bitwise mask from the imaging indicating potential issue or blending
-SHAPE_R               float32  arcsec       Half-light radius of galaxy model (&gt;0)
+SHAPE_R               float32  arcsec       Half-light radius of galaxy model (greater than 0)
 SHAPE_E1              float32               Ellipticity component 1 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2              float32               Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
 SERSIC                float32               Power-law index for the Sersic profile model (MORPHTYPE='SER')
@@ -130,6 +130,7 @@ PLATE_DEC             float64  deg          Barycentric Declination in ICRS to b
 PLATE_REF_EPOCH       float32  yr           Copy of REF_EPOCH to be used by PlateMaker
 ===================== ======== ============ =======================================================================================================================================
 
+.. [1] Optional
 
 Notes and Examples
 ==================

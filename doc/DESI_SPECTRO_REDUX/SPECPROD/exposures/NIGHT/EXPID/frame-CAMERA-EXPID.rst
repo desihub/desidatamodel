@@ -23,6 +23,7 @@ HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction (Angstrom)
 HDU4_  RESOLUTION IMAGE    Resolution matrix
 HDU5_  FIBERMAP   BINTABLE Fibermap
 HDU6_  CHI2PIX    IMAGE    chi2 of PSF fit to CCD pixels
+HDU7_  SCORES     BINTABLE Quality Assurance scores
 ====== ========== ======== ===================
 
 
@@ -1481,6 +1482,10 @@ Required Header Keywords
 
 Data: FITS image [float32, 2751x500]
 
+HDU7
+----
+
+See `SCORES HDU7 of cframe-CAMERA-EXPID.fits <cframe-CAMERA-EXPID.html#hdu7>`_.
 
 Notes and Examples
 ==================

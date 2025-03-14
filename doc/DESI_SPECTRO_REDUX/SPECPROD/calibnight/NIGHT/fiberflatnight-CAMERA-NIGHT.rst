@@ -83,6 +83,7 @@ Required Header Keywords
     FEEBOX        lbnl081                                                     str     CCD Controller serial number
     VESSEL        15                                                          int     Cryostat serial number
     FEEVER        v20160312                                                   str     CCD Controller version
+    DETFLVER [1]_ FAILED: invalid argument for get command                    str     CCD Controller detector f
     FEEPOWER      ON                                                          str     FEE power status
     FEEDMASK      2134851391                                                  int     FEE dac mask
     FEECMASK      1048575                                                     int     FEE clk mask
@@ -278,6 +279,8 @@ Required Header Keywords
     TCSMJD [1]_   59372.026394                                                float   MJD reported by TCS
     SEEING [1]_   None                                                        Unknown [arcsec] ETC/PM seeing
     TRANSPAR [1]_ None                                                        Unknown ETC/PM transparency
+    PMSEEING [1]_ None                                                        Unknown [arcsec] PlateMaker GFAPROC seeing
+    PMTRANSP [1]_ None                                                        Unknown [%] PlateMaker GFAPROC transparency
     ADCCORR       F                                                           bool    Correct pointing for ADC setting if True
     ADC1PHI [1]_  123.200072                                                  float   [deg] ADC 1 angle
     ADC2PHI [1]_  151.330141                                                  float   [deg] ADC 2 angle

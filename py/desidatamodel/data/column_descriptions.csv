@@ -1,5 +1,7 @@
 Name,Type,Units,Description,FullDescription
-ABSMAG_R,float64,,Absolute r-band magnitude after k-correction,Absolute magnitude in the r-band after k-correction
+ABSMAG01_SDSS_G,float32,mag,g-corrected (to z=0.1) absolute magnitude in the SDSS g band from fastspecfit,g-corrected (to z=0.1) absolute magnitude in the SDSS g band from fastspecfit
+ABSMAG01_SDSS_R,float32,mag,r-corrected (to z=0.1) absolute magnitude in the SDSS r band from fastspecfit,r-corrected (to z=0.1) absolute magnitude in the SDSS r band from fastspecfit
+ABSMAG_R,float64,mag,Absolute r-band magnitude after k-correction,Absolute magnitude in the r-band after k-correction
 AIRMASS,float32,,Average airmass during this exposure,Average airmass during this exposure
 AIRMASS_GFA,float64,,Average airmass during this exposure from GFA,Average airmass during this exposure as measured by GFA
 APFLUX_G,float32,nanomaggy,Total g-band flux within a 0.75 arcsec radius,Total flux in nanomaggies extracted in a 0.75 arcsec radius in the g band at this location
@@ -9,6 +11,9 @@ APFLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of APFLUX_Z,Inverse variance
 APFLUX_R,float32,nanomaggy,Total r-band flux within a 0.75 arcsec radius,Total flux in nanomaggies extracted in a 0.75 arcsec radius in the r band at this location
 APFLUX_Z,float32,nanomaggy,Total z-band flux within a 0.75 arcsec radius,Total flux in nanomaggies extracted in a 0.75 arcsec radius in the z band at this location
 A_MGII,float32,,Fitted parameter A (amplitude) by MgII fitter,Fitted parameter A (amplitude) by MgII fitter
+BETA_MEAN,float32,,Mean value of the dust emissivity index posterior from Planck,Mean value of the dust emissivity index posterior from Planck (Planck Collaboration - A and A 594 2016 - A10)
+BETA_ML,float32,,Maximum value of the dust emissivity index posterior from Planck,Maximum value of the dust emissivity index posterior from Planck (Planck Collaboration - A and A 594 2016 - A10)
+BETA_RMS,float32,,Root mean square value of the dust emissivity index posterior from Planck,Root mean square value of the dust emissivity index posterior from Planck (Planck Collaboration - A and A 594 2016 - A10)
 BGS_TARGET,int64,,BGS (Bright Galaxy Survey) target sel bitmask,BGS (Bright Galaxy Survey) target selection bitmask
 BITWEIGHTS,int64[2],,Bitmask pair for alternative target assignment,A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 BLOBDIST,float32,pix,Max distance from a detected LS source,Maximum distance from a detected Legacy Surveys source
@@ -16,6 +21,9 @@ BRICKID,int32,,Brick ID from tractor input,Brick ID from tractor input
 BRICKNAME,char[8],,Brick name from tractor input,Brick name from tractor input
 BRICK_OBJID,int32,,Imaging Surveys OBJID on that brick,Imaging Surveys OBJID on that brick
 B_MGII,float32,,Fitted parameter B (constant) by MgII fitter,Fitted parameter B (constant) by MgII fitter
+CALIB_G,float32,,g-band systematic magnitude calibration residuals constructed by comparing LS stars to stars from Pan-STARRS1,g-band systematic magnitude calibration residuals constructed by comparing LS stars to stars from Pan-STARRS1 (details in Appendix A from DESI 2024 II paper)
+CALIB_R,float32,,r-band systematic magnitude calibration residuals constructed by comparing LS stars to stars from Pan-STARRS1,r-band systematic magnitude calibration residuals constructed by comparing LS stars to stars from Pan-STARRS1 (details in Appendix A from DESI 2024 II paper)
+CALIB_Z,float32,,z-band systematic magnitude calibration residuals constructed by comparing LS stars to stars from Pan-STARRS1,z-band systematic magnitude calibration residuals constructed by comparing LS stars to stars from Pan-STARRS1 (details in Appendix A from DESI 2024 II paper)
 CAMERA,char[2],,Camera identifier [brz][0-9],Camera identifier. Passband and SPECGRPH ([brz][0-9]).
 CHECKER,char[5],,Initials of researcher who vetted the target,Initials of researcher who vetted the target
 CHI2,float64,,Best fit chi squared,Best fit chi squared
@@ -26,6 +34,7 @@ COADD_NUMEXP,int16,,Number of exposures in coadd,Number of exposures in coadd
 COADD_NUMNIGHT,int16,,Number of nights in coadd,Number of nights in coadd
 COADD_NUMTILE,int16,,Number of tiles in coadd,Number of tiles in coadd
 COEFF,float64[10],,Redrock template coefficients,Redrock template coefficients
+COLLISION,bool,,Boolean for whether given potential assignment had a fiber collision with any keep-out zone,Boolean for whether given potential assignment had a fiber collision with any keep-out zone
 COMP_TILE,float64,,Assignment completeness given the target class,Assignment completeness for all targets of this type with the same value for TILES
 C_CIII,float32,,Confidence for CIII line,Confidence for CIII line
 C_CIV,float32,,Confidence for CIV line,Confidence for CIV line
@@ -38,13 +47,25 @@ DEC,float64,deg,Barycentric declination in ICRS,Barycentric declination in ICRS
 DEC_IVAR,float32,deg^-2,"Inverse variance of DEC, excl astrom calib err","Inverse variance of DEC, excluding astrometric calibration errors"
 DELTACHI2,float64,,chi2 diff b/w 1st and 2nd-best Redrock fits,chi2 difference between first- and second-best redrock template fits
 DELTA_CHI2,float32,,chi2 diff b/w Redrock fit and MgII fitter,Difference of chi2 between redrock fit and MgII fitter over the lambda interval considered during the fit
+DELTA_CHI2_MGII,float32,,chi2 diff b/w Redrock fit and MgII fitter,Difference of chi2 between redrock fit and MgII fitter over the lambda interval considered during the fit
 DELTA_X,float64,mm,CS5 X requested minus actual position,CS5 X requested minus actual position
 DELTA_Y,float64,mm,CS5 Y requested minus actual position,CS5 Y requested minus actual position
-DESI_TARGET,int64,,DESI (dark program) target selection bitmask,DESI (dark time program) target selection bitmask
 DESINAME,char[22],,"Name with truncated decimal TARGET_{RA,DEC}","Human readable identifier of a sky location DESI JXXX.XXXX[+/-]YY.YYYY, where X,Y=truncated decimal TARGET_RA, TARGET_DEC, precise to 0.36 arcsec. Multiple objects can map to a single DESINAME if very close on the sky."
+DESI_TARGET,int64,,DESI (dark program) target selection bitmask,DESI (dark time program) target selection bitmask
 DEVICE_LOC,int32,,Device location on focal plane [0-523],Device location on focal plane [0-523]
 DEVICE_TYPE,char[3],,Device type,Device type
 EBV,float32,mag,Galactic extinction E(B-V) from SFD98,Galactic extinction E(B-V) reddening from SFD98
+EBV_CHIANG_SFDcorr,float32,,EBV dust reddening SFD correction,EBV dust reddening SFD correction (from Chiang - ApJ 958 2023 - 118)
+EBV_MPF_Mean_FW15,float32,,Mean EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes,Mean EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_Mean_FW6P1,float32,,Mean EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes,Mean EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_Mean_ZptCorr_FW15,float32,,Zero point correction in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes,Zero point correction in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_Mean_ZptCorr_FW6P1,float32,,Zero point correction in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes,Zero point correction in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_VarCorr_FW15,float32,,Uncertainty corrections in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes,Uncertainty corrections in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_VarCorr_FW6P1,float32,,Uncertainty corrections in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes,Uncertainty corrections in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_Var_FW15,float32,,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 15 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_MPF_Var_FW6P1,float32,,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes,Variance in EBV dust reddening generated from a combination of stellar reddening derived from PS1 and 2MASS photometry and Gaia EDR3 parallaxes with a FWHM of 6.1 minutes (more details in Mudur Park and Finkbeiner - ApJ 949 2023)
+EBV_SGF14,float32,,EBV dust reddening from Schlafly Green and Finkbeiner map from PanSTARRS1,EBV dust reddening from Schlafly Green and Finkbeiner map from PanSTARRS1 (details in Appendix A from DESI 2024 II paper)
+EFFECTIVE_BIAS,float64,,Effective bias used to weight the galaxy when unifying several tracers,Effective bias used to weight the galaxy when unifying several tracers
 EFFTIME_ETC,float64,s,Effective exp time (nominal conditions; ETC),Effective exposure time for nominal conditions inferred from ETC data
 EFFTIME_SPEC,float64,s,Effective exp time (nominal conditions; TSNR2),Effective exposure time for nominal conditions derived from the TSNR2 fits to the spectroscopy
 EQ_ALL_0P0,float64,,e-correction at redshift=0.0,e-correction at redshift=0.0
@@ -59,11 +80,11 @@ FIBER,int32,,Fiber ID on the CCDs [0-4999],Fiber ID on the CCDs [0-4999]
 FIBERASSIGN_X,float32,mm,Fiberassign expected CS5 X loc on focal plane,Fiberassign expected CS5 X location on focal plane
 FIBERASSIGN_Y,float32,mm,Fiberassign expected CS5 Y loc on focal plane,Fiberassign expected CS5 Y location on focal plane
 FIBERFLUX_G,float32,nanomaggy,Predicted object g flux within diam 1.5 arcsec,Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_R,float32,nanomaggy,Predicted object r flux within diam 1.5 arcsec,Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
-FIBERFLUX_Z,float32,nanomaggy,Predicted object z flux within diam 1.5 arcsec,Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_IVAR_G,float32,nanomaggy^-2,Inverse variance of FIBERFLUX_G,Inverse variance of ``FIBERFLUX_G``
 FIBERFLUX_IVAR_R,float32,nanomaggy^-2,Inverse variance of FIBERFLUX_R,Inverse variance of ``FIBERFLUX_R``
 FIBERFLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of FIBERFLUX_Z,Inverse variance of ``FIBERFLUX_Z``
+FIBERFLUX_R,float32,nanomaggy,Predicted object r flux within diam 1.5 arcsec,Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
+FIBERFLUX_Z,float32,nanomaggy,Predicted object z flux within diam 1.5 arcsec,Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERSTATUS,int32,,Fiber status mask. 0=good,Fiber status mask. 0=good
 FIBERTOTFLUX_G,float32,nanomaggy,Predicted total g flux within diam 1.5 arcsec,Predicted g-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
 FIBERTOTFLUX_R,float32,nanomaggy,Predicted total r flux within diam 1.5 arcsec,Predicted r-band flux within a fiber of diameter 1.5 arcsec from all sources at this location in 1 arcsec Gaussian seeing
@@ -76,21 +97,22 @@ FIBER_X,float64,mm,CS5 X location requested by PlateMaker,CS5 X location request
 FIBER_Y,float64,mm,CS5 Y location requested by PlateMaker,CS5 Y location requested by PlateMaker
 FIRSTNIGHT,int32,,Calendar Date of the first exposure,KPNO Calendar Date when the first exposure was obtained (regardless of data quality)
 FLUX_G,float32,nanomaggy,Flux in the Legacy Survey g-band (AB),Flux in the Legacy Survey g-band (AB)
-FLUX_G_DERED,float32,nanomaggy,FLUX_G corrected for Galactic extinction (AB),Flux in the g-band after correcting for Galactic extinction (AB system)
+FLUX_G_DERED,float32,nanomaggy,(lower or uppercase) FLUX_G corrected for Galactic extinction (AB),(lower or uppercase) Flux in the g-band after correcting for Galactic extinction (AB system)
 FLUX_IVAR_G,float32,nanomaggy^-2,Inverse variance of FLUX_G (AB),Inverse variance of FLUX_G (AB)
 FLUX_IVAR_R,float32,nanomaggy^-2,Inverse variance of FLUX_R (AB),Inverse variance of FLUX_R (AB)
 FLUX_IVAR_W1,float32,nanomaggy^-2,Inverse variance of FLUX_W1 (AB),Inverse variance of FLUX_W1 (AB)
 FLUX_IVAR_W2,float32,nanomaggy^-2,Inverse variance of FLUX_W2 (AB),Inverse variance of FLUX_W2 (AB)
 FLUX_IVAR_Z,float32,nanomaggy^-2,Inverse variance of FLUX_Z (AB),Inverse variance of FLUX_Z (AB)
 FLUX_R,float32,nanomaggy,Flux in the Legacy Survey r-band (AB),Flux in the Legacy Survey r-band (AB)
-FLUX_R_DERED,float32,nanomaggy,FLUX_R corrected for Galactic extinction (AB),Flux in the r-band after correcting for Galactic extinction (AB system)
+FLUX_R_DERED,float32,nanomaggy,(lower or uppercase) FLUX_R corrected for Galactic extinction (AB),(lower or uppercase) Flux in the r-band after correcting for Galactic extinction (AB system)
 FLUX_W1,float32,nanomaggy,WISE flux in W1 (AB),WISE flux in W1 (AB)
-FLUX_W1_DERED,float32,nanomaggy,FLUX_W1 corrected for Galactic extinction (AB),Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
+FLUX_W1_DERED,float32,nanomaggy,(lower or uppercase) FLUX_W1 corrected for Galactic extinction (AB),(lower or uppercase) Flux in the WISE W1-band after correcting for Galactic extinction (AB system)
 FLUX_W2,float32,nanomaggy,WISE flux in W2 (AB),WISE flux in W2 (AB)
-FLUX_W2_DERED,float32,nanomaggy,FLUX_W2 corrected for Galactic extinction (AB),Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
+FLUX_W2_DERED,float32,nanomaggy,(lower or uppercase) FLUX_W2 corrected for Galactic extinction (AB),(lower or uppercase) Flux in the WISE W2-band after correcting for Galactic extinction (AB system)
 FLUX_Z,float32,nanomaggy,Flux in the Legacy Survey z-band (AB),Flux in the Legacy Survey z-band (AB)
-FLUX_Z_DERED,float32,nanomaggy,FLUX_Z corrected for Galactic extinction (AB),Flux in the z-band after correcting for Galactic extinction (AB system)
+FLUX_Z_DERED,float32,nanomaggy,(lower or uppercase) FLUX_Z corrected for Galactic extinction (AB),(lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
 FRACZ_TILELOCID,float64,,Frac of targets obs at TILELOCID given class,The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
+FRAC_TLOBS_TILES,float64,,Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID,Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 GAIA_ASTROMETRIC_EXCESS_NOISE,float32,,Gaia astrometric excess noise,Gaia astrometric excess noise
 GAIA_ASTROMETRIC_PARAMS_SOLVED,int64,,Astrometric params estimated for a Gaia source,which astrometric parameters were estimated for a Gaia source
 GAIA_ASTROMETRIC_SIGMA5D_MAX,float32,mas,Gaia semi-major axis of 5-d error ellipsoid,Gaia longest semi-major axis of the 5-d error ellipsoid
@@ -111,11 +133,13 @@ GALDEPTH_G,float32,nanomaggy^-2,Galaxy model-based depth in LS g-band,Galaxy mod
 GALDEPTH_R,float32,nanomaggy^-2,Galaxy model-based depth in LS r-band,Galaxy model-based depth in LS r-band
 GALDEPTH_Z,float32,nanomaggy^-2,Galaxy model-based depth in LS z-band,Galaxy model-based depth in LS z-band
 GOODHARDLOC,bool,,True/False whether the fiber had good hardware,True/False whether the fiber had good hardware
-GOODPRI,bool,,True if assigned priority <= base priority,True/False whether the priority of what was assigned to the location was <= the base priority of the given target class
-GOODTSNR,bool,,True if TSNR_<class> above minimum threshold,True/False whether the TSNR_<class> value used was above the minimum threshold for the given target class
+GOODPRI,bool,,True if assigned priority less or equals to base priority,True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
+GOODTSNR,bool,,True if TSNR (class) above minimum threshold,True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
+HALPHA,float32,,Intensity of Halpha emission at FWHM of 6 minutes, Intensity of Halpha emission at FWHM of 6 minutes (from Finkbeiner - ApJS 146 2003 - 407)
 HALPHA_CHI2,float32,,Reduced chi2 of the fit for the HALPHA line,Reduced chi2 of the fit for the HALPHA line
 HALPHA_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum for HALPHA line fitting (constant),Continuum used for the fitting (fixed value) for the HALPHA line
 HALPHA_CONT_IVAR,float32,10**+34 (s2 cm4 Angstrom2) / erg2,Inverse variance of HALPHA line continuum,Inverse variance of the continuum for the HALPHA line
+HALPHA_ERROR,float32,,Intensity error of Halpha emission at FWHM of 6 minutes,Intensity error of Halpha emission at FWHM of 6 minutes (from Finkbeiner - ApJS 146 2003 - 407)
 HALPHA_EW,float32,Angstrom,Fitted HALPHA line rest-frame equivalent width,Fitted rest-frame equivalent width for the HALPHA line
 HALPHA_EW_IVAR,float32,Angstrom^-2,Inverse variance of fitted HALPHA_EW,Inverse variance of the fitted rest-frame equivalent width for the HALPHA line
 HALPHA_FLUX,float32,10**-17 erg/(s cm2),Fitted flux for the HALPHA line,Fitted flux for the HALPHA line
@@ -162,6 +186,7 @@ HGAMMA_SHARE,float32,,NaN (SHARE not relevant for HGAMMA line),NaN (SHARE not re
 HGAMMA_SHARE_IVAR,float32,,NaN (SHARE not relevant for HGAMMA line),NaN (SHARE not relevant for HGAMMA line)
 HGAMMA_SIGMA,float32,Angstrom,Fitted HGAMMA line width in the observed frame,Fitted line width (in the observed frame) for the HGAMMA line
 HGAMMA_SIGMA_IVAR,float32,Angstrom^-2,Inverse variance of HGAMMA_SIGMA (obs frame),Inverse variance of the fitted line width (in the observed frame) for the HGAMMA line
+HI,float32,,HI column density assembled by combining the Effelsberg-Bonn HI Survey and the third revision of the Galactic All-Sky Survey,HI column density assembled by combining the Effelsberg-Bonn HI Survey and the third revision of the Galactic All-Sky Survey (from HI4PI Collaboration - A and A 594 2016 - A116)
 HPXPIXEL,int64,,HEALPixel at this location (NSIDE=64; NESTED),HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 IN_COADD_B,bool,,Fiber/exp used in coadd of camera B,If True this fiber in this exposure was used in the coadd of camera B
 IN_COADD_R,bool,,Fiber/exp used in coadd of camera R,If True this fiber in this exposure was used in the coadd of camera R
@@ -170,6 +195,7 @@ IN_DESI,int16,,Used by fiberassign to create tile; set to 1,Used by fiberassign 
 IN_RADIUS,float32,arcsec,Radius used to set the IN_BRIGHT_OBJECT bit,Radius used to set the ``IN_BRIGHT_OBJECT`` bit in the ``DESI_TARGET`` bitmask.
 IS_QSO_MGII,bool,,True if the object passes the MgII selection,Boolean: True if the object passes the MgII selection
 IS_QSO_QN,int16,,True if the object passes QuasarNET selection,Spectroscopic classification from QuasarNET (1 for a quasar)
+KAPPA_PLANCK,float64,,Map of lensing convergence from Planck where values are the mean-field-subtracted minimum-variance estimate from temperature and polarization,Map of lensing convergence from Planck where values are the mean-field-subtracted minimum-variance estimate from temperature and polarization (from Planck Collaboration - A and A 641 2020 - A8)
 KCORR_G0P0,float64,,g-band k-correction at redshift=0.0,g-band k-correction at redshift=0.0
 KCORR_G0P1,float64,,g-band k-correction at redshift=0.1,g-band k-correction at redshift=0.1
 KCORR_R0P0,float64,,r-band k-correction at redshift=0.0,r-band k-correction at redshift=0.0
@@ -186,7 +212,7 @@ LC_NOBS_W1,int16[15],,NOBS_W1 in up to 15 unWISE coadd epochs,NOBS_W1 in each of
 LC_NOBS_W2,int16[15],,NOBS_W2 in up to 15 unWISE coadd epochs,NOBS_W2 in each of up to fifteen unWISE coadd epochs
 LOCATION,int64,,Loc on focal plane PETAL_LOC*1000 + DEVICE_LOC,Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 LOCATION_ASSIGNED,bool,,True if assigned for the target in question,True/False for assigned/unassigned for the target in question
-LRG_MASK,binary,,Imaging mask bits relevant to LRG targets,Imaging mask bits relevant to LRG targets
+LRG_MASK,binary,,(lower or uppercase) Imaging mask bits relevant to LRG targets, (lower or upper case) Imaging mask bits relevant to LRG targets
 MAIN_NSPEC,int32,,Nb of coadded spectra in Main survey for TID,Number of coadded spectra for this TARGETID in Main survey
 MAIN_PRIMARY,bool,,True if primary coadd spectrum in Main survey,Boolean flag (True/False) for the primary coadded spectrum in Main survey
 MASKBITS,int16,,Bitwise mask from imaging for potential issues,Bitwise mask from the imaging indicating potential issue or blending
@@ -198,7 +224,7 @@ MEAN_FIBER_RA,float64,deg,Mean (over exposures) RA of fiber position,Mean (over 
 MEAN_FIBER_X,float32,mm,Mean (over exposures) fiber CS5 X loc on FP,Mean (over exposures) fiber CS5 X location on focal plane
 MEAN_FIBER_Y,float32,mm,Mean (over exposures) fiber CS5 Y loc on FP,Mean (over exposures) fiber CS5 Y location on focal plane
 MEAN_MJD,float64,d,Mean of MJD of exposures in a coadded spectrum,Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
-MEAN_PSF_TO_FIBER_SPECFLUX,float32,,Mean PSF light fraction within 1.5arcsec fiber,Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+MEAN_PSF_TO_FIBER_SPECFLUX,float32,,Mean over exp PSF light frac in fiber,Mean of input exposures fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 MEDIAN_CALIB_COUNT_B,float64,,Median of calibrated flux in B camera,Median of calibrated flux in B camera
 MEDIAN_CALIB_COUNT_R,float64,,Median of calibrated flux in R camera,Median of calibrated flux in R camera
 MEDIAN_CALIB_COUNT_Z,float64,,Median of calibrated flux in Z camera,Median of calibrated flux in Z camera
@@ -227,6 +253,7 @@ MIN_MJD,float64,d,MJD of the first exposure in coadded spectrum,Minimum value of
 MJD,float64,d,Modified Julian Date when shutter open for exp,Modified Julian Date when shutter was opened for this exposure
 MJD_BEGIN,float64,d,Start of the allowed observing window (MJD),Start of the allowed observing window for this target (Modified Julian Date)
 MJD_END,float64,d,End of the allowed observing window (MJD),End of the allowed observing window for this target (Modified Julian Date)
+mod_success_rate,float64,,Expected spectroscopic success rate given the target and observation properties,Expected spectroscopic success rate given the target and observation properties
 MORPHTYPE,char[4],,Imaging Survey morphological type from Tractor,Imaging Surveys morphological type from Tractor
 MWS_TARGET,int64,,Milky Way Survey targeting bits,Milky Way Survey targeting bits
 MW_TRANSMISSION_G,float32,,Milky Way dust transmission in LS g-band,Milky Way dust transmission in LS g-band
@@ -249,12 +276,13 @@ NUMOBS_INIT,int64,,Initial number of observations for target,Initial number of o
 NUMOBS_MORE,int64,,Number of additional observations needed,Number of additional observations needed
 NUMTARGET,int16,,Total number of targets covered by positioner,Total number of targets that this positioner covered
 NUM_ITER,int64,,Number of positioner iterations,Number of positioner iterations
+NX,float64,,Estimated mean number density given the redshift and number of overlapping tiles (NTILE),Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 NZ,float64,h^3 Mpc^-3,Comoving number density of tracer at given z,"The comoving number density of the tracer at the given redshift, assuming complete sample"
-O2C,float64,,Criterion for strength of OII emission for ELG,The criteria for assessing strength of OII emission for ELG observations
+O2C,float64,,(lower or uppercase) Criterion for strength of OII emission for ELG,(lower or uppercase) The criteria for assessing strength of OII emission for ELG observations
 OBJID,int32,,Imaging Surveys OBJID on brick (BRICK_OBJID),Imaging Surveys OBJID on that brick (renamed BRICK_OBJID)
 OBJTYPE,char[3],,"Object type: TGT, SKY, NON, BAD","Object type: TGT, SKY, NON, BAD"
 OBSCONDITIONS,int32,,Bitmask of allowed observing conditions,Bitmask of allowed observing conditions
-OCLAYER,char[6],,DARK for dark time or BRIGHT for any time,Either 'DARK' for dark-time or 'BRIGHT' to observe in either bright- or dark-time
+OCLAYER,char[6],,DARK for dark time or BRIGHT for any time,Either DARK for dark-time or BRIGHT to observe in either bright- or dark-time
 OIII_CHI2,float32,,Reduced chi2 of the fit for the [OIII] doublet,Reduced chi2 of the fit for the [OIII] doublet
 OIII_CONT,float32,10**-17 erg/(s cm2 Angstrom),Continuum for [OIII] doublet fit (constant),Continuum used for the fitting (fixed value) for the [OIII] doublet
 OIII_CONT_IVAR,float32,10**+34 (s2 cm4 Angstrom2) / erg2,Inverse variance of [OIII] doublet continuum,Inverse variance of the continuum for the [OIII] doublet
@@ -282,7 +310,7 @@ OII_SIGMA_IVAR,float32,Angstrom^-2,Inverse variance of OII_SIGMA (obs frame),Inv
 PARALLAX,float32,mas,Reference catalog parallax,Reference catalog parallax
 PARALLAX_IVAR,float32,mas^-2,Inverse variance of PARALLAX,Inverse variance of PARALLAX
 PETAL_LOC,int16,,Petal location [0-9],Petal location [0-9]
-PHOTSYS,char[1],,Photom system: N for MzLS/BASS; S for DECaLS,"'N' for the MzLS/BASS photometric system, 'S' for DECaLS"
+PHOTSYS,char[1],,Photom system: N for MzLS/BASS; S for DECaLS,"N for the MzLS/BASS photometric system, S for DECaLS"
 PLATE_DEC,float64,deg,Barycentric Declination for PlateMaker (ICRS),Barycentric Declination in ICRS to be used by PlateMaker
 PLATE_RA,float64,deg,Barycentric RA for PlateMaker (ICRS),Barycentric Right Ascension in ICRS to be used by PlateMaker
 PLATE_REF_EPOCH,float64,yr,Copy of REF_EPOCH for PlateMaker,Copy of REF_EPOCH to be used by PlateMaker
@@ -291,6 +319,7 @@ PMDEC_IVAR,float32,yr^2 mas^-2,Inverse variance of PMDEC,Inverse variance of PMD
 PMRA,float32,mas yr^-1,"Proper motion in +RA direction, incl. cos(dec)",proper motion in the +RA direction (already including cos(dec))
 PMRA_IVAR,float32,yr^2 mas^-2,Inverse variance of PMRA,Inverse variance of PMRA
 PRIORITY,int32,,Target current priority,Target current priority
+PRIORITY_ASSIGNED,int32,,(only for data) PRIORITY of the target that was assigned to the given FIBER and TILEID (redundant with PRIORITY in the random catalogs),(only for data) PRIORITY of the target that was assigned to the given FIBER and TILEID (redundant with PRIORITY in the random catalogs)
 PRIORITY_INIT,int64,,Target initial priority from target selection,Target initial priority from target selection bitmasks and OBSCONDITIONS
 PROBA_RF,float32,,Probability of being a QSO from Random Forest,Probability of being a quasar generated by the quasar Random Forest targeting algorithm.
 PROB_OBS,float64,,Probability of assignment in alt histories,The number alternative assignment histories that the target was assigned in divided by 128
@@ -303,10 +332,11 @@ PSFDEPTH_Z,float32,nanomaggy^-2,PSF-based depth in z-band,PSF-based depth in z-b
 PSFSIZE_G,float32,arcsec,Median g-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in g-band
 PSFSIZE_R,float32,arcsec,Median r-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z,float32,arcsec,Median z-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
-PSF_TO_FIBER_SPECFLUX,float64,,PSF light fraction within fiber (given seeing),fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+PSF_TO_FIBER_SPECFLUX,float64,,PSF light fraction in fiber (given seeing),Fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+QSO_MASKBITS,int32,,QSO Bitwise mask from imaging for potential issues, QSO Bitwise mask from the imaging indicating potential issue or blending
 RA,float64,deg,Barycentric Right Ascension in ICRS,Barycentric Right Ascension in ICRS
 RA_IVAR,float32,deg^-2,Inv variance of RA; w/o cos(dec) or astrom err,"Inverse variance of RA (no cosine term!), excluding astrometric calibration errors"
-REF_CAT,char[2],,"Ref catalog (T2=Tycho-2, G2=Gaia DR2, L2=SGA)","Reference catalog source for star: 'T2' for Tycho-2, 'G2' for Gaia DR2, 'L2' for the SGA, empty otherwise"
+REF_CAT,char[2],,"Ref catalog (T2=Tycho-2, G2=Gaia DR2, L2=SGA)","Reference catalog source for star: T2 for Tycho-2, G2 for Gaia DR2, L2 for the SGA, empty otherwise"
 REF_EPOCH,float32,yr,Reference epoch for Gaia/Tycho astrometry,Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
 REF_ID,int64,,Tyc1*1e6+Tyc2*10+Tyc3 (Tycho); sourceid (Gaia),"Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2"
 REF_MAG,float32,mag,"Mag for IN_RADIUS: G (Gaia); VT,HP,BT (Tycho)","Magnitude used to calculate ``IN_RADIUS``; typically, in order of preference, G-band for Gaia or VT then HP then BT for Tycho."
@@ -317,11 +347,11 @@ RMS_DELTA_X,float32,mm,RMS (over exposures) fiber CS5 X loc on FP,RMS (over expo
 RMS_DELTA_Y,float32,mm,RMS (over exposures) fiber CS5 Y loc on FP,RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
 ROSETTE_NUMBER,int32,,Rosette number ID [0-19],Rosette number ID [0-19]
 ROSETTE_R,float64,deg,Radius from the rosette center to the target,Radius from the center of the rosette to the target
-SCND_TARGET,int64,,Target select. bitmask for secondary programs,Target selection bitmask for secondary programs
 SCND_ORDER,int32,,Nb of row for target entry in secondary file,Number of row for target entry in secondary file (placeholder; needed by fiberassign)
+SCND_TARGET,int64,,Target select. bitmask for secondary programs,Target selection bitmask for secondary programs
 SEEING_ETC,float64,arcsec,Average FWHM atm seeing during exposure (ETC),Average FWHM atmospheric seeing during this exposure as measured by ETC
 SEEING_GFA,float64,arcsec,Average FWHM atm seeing during exposure (GFA),Average FWHM atmospheric seeing during this exposure as measured by GFA
-SERSIC,float32,,Sersic profile power-law index (MORPHTYPE=SER),Power-law index for the Sersic profile model (MORPHTYPE='SER')
+SERSIC,float32,,Sersic profile power-law index (MORPHTYPE=SER),Power-law index for the Sersic profile model (MORPHTYPE=SER)
 SERSIC_IVAR,float32,,Inverse variance of SERSIC,Inverse variance of SERSIC
 SHAPEDEV_E1,float32,,deVaucouleurs shape fit ellipticity param e1,deVaucouleurs shape fit ellipticity parameter e1
 SHAPEDEV_E1_IVAR,float32,,Inverse variance of SHAPEDEV_E1,Inverse variance of SHAPEDEV_E1
@@ -339,7 +369,7 @@ SHAPE_E1,float32,,Ellipticity param e1 of galaxy model MORPHTYPE,Ellipticity com
 SHAPE_E1_IVAR,float32,,Inverse variance of SHAPE_E1,Inverse variance of SHAPE_E1
 SHAPE_E2,float32,,Ellipticity param e2 of galaxy model MORPHTYPE,Ellipticity component 2 of galaxy model for galaxy type MORPHTYPE
 SHAPE_E2_IVAR,float32,,Inverse variance of SHAPE_E2,Inverse variance of SHAPE_E2
-SHAPE_R,float32,arcsec,Half-light radius of galaxy model (>0),Half-light radius of galaxy model (>0)
+SHAPE_R,float32,arcsec,Half-light radius of galaxy model (greater than 0),Half-light radius of galaxy model (greater than 0)
 SHAPE_R_IVAR,float32,arcsec^-2,Inverse variance of SHAPE_R,Inverse variance of SHAPE_R
 SIGMA_MGII,float32,Angstrom,Fitted param SIGMA (linewidth) by MgII fitter,Fitted parameter SIGMA (linewidth) by MgII fitter (in angstrom?)
 SKY_MAG_AB_GFA,float64,mag arcsec^-2,Sky background in GFA passband,"Sky background in the GFA passband, measured from the GFA backgrounds."
@@ -350,6 +380,7 @@ SPECTRO,int16,,Spectrograph number [0-9],Spectrograph number [0-9]
 SPECTROID,int32,,Hardware ID of spectrograph (not used),Hardware ID of spectrograph (not used)
 SPECTYPE,char[6],,"Best-fit spectral type: GALAXY, QSO, STAR","Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
 SPGRPVAL,int32,,Value by which spectra are grouped for a coadd,Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
+STARDENS,float32,,Density (deg-2) of stars in the position from Gaia limited to point-like sources in the range 12 < G < 17,Density (deg-2) of stars in the position from Gaia limited to point-like sources in the range 12 < G < 17 calculated using the desitarget randoms.stellar_density function
 STD_FIBER_DEC,float32,arcsec,Std deviation (over exposures) of fiber DEC,Standard deviation (over exposures) of DEC of actual fiber position
 STD_FIBER_RA,float32,arcsec,Std deviation (over exposures) of fiber RA,Standard deviation (over exposures) of RA of actual fiber position
 SUBPRIORITY,float64,,Random subpriority [0-1) to break assign ties,Random subpriority [0-1) to break assignment ties
@@ -382,20 +413,21 @@ SV3_SCND_TARGET,int64,,Secondary target selection bitmask for SV3,Secondary targ
 SV_NSPEC,int32,,Number of coadded spectra in SV (SV1+2+3),Number of coadded spectra for this TARGETID in SV (SV1+2+3)
 SV_PRIMARY,bool,,True if primary coadded spectrum in SV(1+2+3),Boolean flag (True/False) for the primary coadded spectrum in SV (SV1+2+3)
 TARGETID,int64,,Unique DESI target ID,Unique DESI target ID
+TARGETID_DATA,int64,,For randoms and mocks: Unique DESI target ID of associated TILELOCID,For randoms and mocks: Unique DESI target ID of associated TILELOCID
 TARGET_DEC,float64,deg,Barycentric declination in ICRS,Barycentric declination in ICRS
 TARGET_RA,float64,deg,Barycentric right ascension in ICRS,Barycentric right ascension in ICRS
 TARGET_STATE,char[*],,Combination of target class+current obs state,Combination of target class and its current observational state
 TILEDEC,float64,deg,Barycentric declination of tile center in ICRS,Barycentric declination of tile center in ICRS
 TILEID,int32,,Unique DESI tile ID,Unique DESI tile ID
 TILELOCID,int64,,Is 10000*TILEID+LOCATION,Is 10000*TILEID+LOCATION
-TILELOCIDS,char[*],,Available TILELOCIDs for a target joint by '-',"TILELOCIDs that the target was available for, separated by '-'"
+TILELOCIDS,char[*],,Available TILELOCIDs for a target joint by -,TILELOCIDs that the target was available for separated by -
 TILELOCID_ASSIGNED,int64,,1 if the TILELOCID is assigned (0=unassigned),0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 TILERA,float64,deg,Barycentric R.A. of tile center in ICRS,Barycentric Right Ascension of tile center in ICRS
-TILES,char[*],,Available TILEIDs for a target joined by '-',"TILEIDs of those tile, in string form separated by '-'"
+TILES,char[*],,Available TILEIDs for a target joined by -,"TILEIDs of those tile, in string form separated by -"
 TIMESTAMP,str,s,UTC/ISO time when the target state was updated,UTC/ISO time at which the target state was updated
 TOOID,int64,,ID for this target assigned by the CHECKER,ID for this target assigned by the ``CHECKER``
-TOO_PRIO,char[2],,High-priority (HI) or low-priority (LO) target,Either 'HI' for a very-high-priority target or 'LO' for a very-low-priority target
-TOO_TYPE,char[5],,Type: TILE=special tile; FIBER=fiber-override,Either 'TILE' for a special tile or 'FIBER' for a fiber-override ToO
+TOO_PRIO,char[2],,High-priority (HI) or low-priority (LO) target,Either HI for a very-high-priority target or LO for a very-low-priority target
+TOO_TYPE,char[5],,Type: TILE=special tile; FIBER=fiber-override,Either TILE for a special tile or FIBER for a fiber-override ToO
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z","BGS template (S/N)^2 summed over B,R,Z"
 TSNR2_BGS_B,float32,,BGS B template (S/N)^2,BGS B template (S/N)^2
 TSNR2_BGS_R,float32,,BGS R template (S/N)^2,BGS R template (S/N)^2
@@ -436,8 +468,14 @@ VAR_B_MGII,float32,,Variance of MgII fit offset parameter B,Variance of MgII fit
 VAR_SIGMA_MGII,float32,,Variance of MgII fit width parameter sigma,Variance of MgII fit width parameter sigma
 VERSION,char[14],,Tag of desitarget used to make target catalog,Tag of desitarget used to create the target catalog
 WEIGHT,float64,,The combination of all weights to use,The combination of all weights to use
-WEIGHT_COMP,float64,,1/FRACZ_TILELOCID,1/FRACZ_TILELOCID
+WEIGHT_COMP,float64,,Completeness weight accounting for the local chance of being assigned a fiber,Completeness weight accounting for the local chance of being assigned a fiber
 WEIGHT_FKP,float64,,"1/(1+NZ*P0), with P0 different for each tracer","1/(1+NZ*P0), with P0 different for each tracer"
+WEIGHT_FKP_NTILE,float64,,Mean FKP weights as a function of the number of overlapping tiles in the PIP version LSS catalogs,Mean FKP weights as a function of the number of overlapping tiles in the PIP version LSS catalogs (to be used in the angular pair-counts used for angular up-weighting)
+WEIGHT_IMLIN,float64,,Imaging systematics weights derived with the eBOSS linear regression method,Imaging systematics weights derived with the eBOSS linear regression method
+WEIGHT_NTILE,float64,,Effective weight as a function of the number of overlapping tiles in the PIP version LSS catalogs,Effective weight as a function of the number of overlapping tiles in the PIP version LSS catalogs (to be used in the angular pair-counts used for angular up-weighting)
+WEIGHT_RESCALED,float64,,Rescaled weight when unifying different targets into a single frame,Rescaled weight when unifying different targets into a single frame
+WEIGHT_RF,float64,,Imaging systematics weights derived with the regressis random forest regression method,Imaging systematics weights derived with the regressis random forest regression method
+WEIGHT_SN,float64,,Imaging systematics weights derived with the sysnet NN regression method,Imaging systematics weights derived with the sysnet NN regression method
 WEIGHT_SYS,float64,,Correction for imaging conditions; RF method,"Correction for fluctuations in projected density with imaging conditions, from random forrest method"
 WEIGHT_SYSEB,float64,,Corr for imaging conditions; eBOSS lin regress,"Correction for fluctuations in projected density with imaging conditions, from linear regression method applied to eBOSS"
 WEIGHT_ZFAIL,float64,,Should be all 1 at this point for main survey,Should be all 1 at this point for main survey
@@ -448,16 +486,17 @@ ZCAT_NSPEC,int32,,Nb of coadded spectra for TARGETID in catalog,Number of times 
 ZCAT_PRIMARY,bool,,True if primary coadded spectrum in catalog,Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
 ZERR,float64,,Redshift error from redrock,Redshift error from redrock
 ZPOSSLOC,bool,,Whether location is possible for target class,True/False whether the location could have been assigned to the given target class
-ZTILEID,int32,,ID of latest tile that updated target state,ID of tile that most recently updated target's state
+ZTILEID,int32,,ID of latest tile that updated target state,ID of tile that most recently updated targets state
 ZWARN,int64,,Redshift warning bitmask from Redrock,Redshift warning bitmask from Redrock
 ZWARN_MTL,int64,,ZWARN from the zmtl file (contains extra bits),The ZWARN from the zmtl file (contains extra bits)
 Z_CIII,float64,,Redshift estimated by QuasarNET with CIII line,Redshift estimated by QuasarNET with CIII line
 Z_CIV,float64,,Redshift estimated by QuasarNET with CIV line,Redshift estimated by QuasarNET with CIV line
+Z_HP,float64,,Redshift from Healpix coadd,Redshift from Healpix coadd
 Z_Halpha,float64,,Redshift estimated by QuasarNET w\ Halpha line,Redshift estimated by QuasarNET with Halpha line
 Z_Hbeta,float64,,Redshift estimated by QuasarNET w\ Hbeta line,Redshift estimated by QuasarNET with Hbeta line
-Z_HP,float64,,Redshift from Healpix coadd,Redshift from Healpix coadd
 Z_LYA,float64,,Redshift estimated by QuasarNET with LyA line,Redshift estimated by QuasarNET with LyA line
 Z_MgII,float64,,Redshift estimated by QuasarNET with MgII line,Redshift estimated by QuasarNET with MgII line
 Z_QN,float64,,Redshift by QuasarNET; highest confidence line,Redshift measured by QuasarNET using line with highest confidence
 Z_QN_CONF,float64,,Redshift confidence from QuasarNET,Redshift confidence from QuasarNET
 Z_RR,float64,,Redshift collected from redrock file,Redshift collected from redrock file
+Z_not4clus,float64,,Redshift that eventually gets propagated as Z to the clustering catalogs (the not4clus aids in the blinding process),Redshift that eventually gets propagated as Z to the clustering catalogs (the not4clus aids in the blinding process)

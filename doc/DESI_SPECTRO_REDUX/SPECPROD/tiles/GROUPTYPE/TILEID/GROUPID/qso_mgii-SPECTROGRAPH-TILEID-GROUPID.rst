@@ -67,6 +67,8 @@ Z_RR                 float64        Redshift collected from redrock file
 ZERR                 float32        Redshift error from redrock
 IS_QSO_MGII          logical        Boolean: True if the object passes the MgII selection
 SV1_DESI_TARGET [1]_ int64          DESI (dark time program) target selection bitmask for SV1
+SV2_DESI_TARGET [1]_ int64          DESI (dark time program) target selection bitmask for SV2
+SV3_DESI_TARGET [1]_ int64          DESI (dark time program) target selection bitmask for SV3
 DESI_TARGET [1]_     int64          DESI (dark time program) target selection bitmask
 SPECTYPE             char[10]       Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)
 DELTA_CHI2           float32        Difference of chi2 between redrock fit and MgII fitter over the lambda interval considered during the fit [2]_
