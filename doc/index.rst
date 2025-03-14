@@ -8,17 +8,19 @@ The DESI Data Tree
 These pages define the directory structure and file formats for DESI
 data products relative to a root directory :envvar:`DESI_ROOT`.
 Each data release has its own :envvar:`DESI_ROOT`, e.g. the
-`Early Data Release <https://data.desi.lbl.gov/doc/releases/edr/>`_
-at https://data.desi.lbl.gov/public/edr.
+`Data Release 1 <https://data.desi.lbl.gov/doc/releases/dr1/>`_
+at https://data.desi.lbl.gov/public/dr1.
 
 Data Directories
 ================
 
 Directories under :envvar:`DESI_ROOT`:
 
-   * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data
    * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts
+   * :doc:`survey/catalogs/RELEASE/LSS <DESI_ROOT/survey/catalogs/RELEASE/LSS>`: The Large Scale Structure catalog.
+   * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs. 
    * :doc:`target/ <DESI_TARGET/index>`: Target selection and fiber assignment catalogs
+   * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data
    * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs
    * :doc:`survey/catalogs/RELEASE <DESI_ROOT/survey/catalogs/RELEASE/index>` : LSS Catalogs
 
