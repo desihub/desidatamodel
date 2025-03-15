@@ -27,7 +27,7 @@ HDU2_  STERM                              IMAGE Seeing dependent term
 HDU3_  WAVELENGTH                         IMAGE Wavelength grid
 HDU4_  ATERM_ERR                          IMAGE Uncertainty on airmass dependent term
 HDU5_  STERM_ERR                          IMAGE Uncertainty on seeing dependent term
-HDU6_  FFRACFLUX_WAVE                     IMAGE *Description needed.*
+HDU6_  FFRACFLUX_WAVE                     IMAGE TODO: *Description needed.*
 ====== ================================== ===== ===================
 
 
@@ -188,7 +188,7 @@ HDU6
 
 EXTNAME = FFRACFLUX_WAVE
 
-*Description needed.*
+TODO: *Description needed.*
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,10 +201,10 @@ Required Header Keywords
     KEY      Example Value    Type  Comment
     ======== ================ ===== ==============================================
     NAXIS1   2751             int
-    MDSEEING 0.8553508780470  float *Description needed.*
-    MDFFRACF 0.7200142212446  float *Description needed.*
-    FACWPOW  -0.25            float *Description needed.*
-    FSTNIGHT 20201214         int   *Description needed.*
+    MDSEEING 0.8553508780470  float TODO: *Description needed.*
+    MDFFRACF 0.7200142212446  float TODO: *Description needed.*
+    FACWPOW  -0.25            float TODO: *Description needed.*
+    FSTNIGHT 20201214         int   TODO: *Description needed.*
     CHECKSUM LaNJNZNJLaNJLYNJ str   HDU checksum updated 2018-11-27T11:46:41
     DATASUM  803867299        str   data unit checksum updated 2018-11-27T11:46:41
     ======== ================ ===== ==============================================
