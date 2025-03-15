@@ -629,7 +629,7 @@ class DataModel(object):
                 #                 self.prototype, i, self.filename)
                 if len(data_columns - (model_columns | optional_columns)) > 0:
                     log.warning('Prototype file %s has these columns in HDU%d missing from model: %s',
-                                self.prototype, i, str(data_columns - model_columns))
+                                self.prototype, i, str(data_columns - (model_columns | optional_columns)))
                 if len(model_columns - data_columns) > 0:
                     log.warning('Model file %s has these columns in HDU%d missing from data: %s',
                                 self.filename, i, str(model_columns - data_columns))
