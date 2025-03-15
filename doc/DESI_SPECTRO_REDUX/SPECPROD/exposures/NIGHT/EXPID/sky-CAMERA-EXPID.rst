@@ -15,16 +15,16 @@ Contents
 ====== =============== ===== ===================
 Number EXTNAME         Type  Contents
 ====== =============== ===== ===================
-HDU0_  SKY             IMAGE sky model in electrons per Angstrom
-HDU1_  IVAR            IMAGE inverse variance of sky model
-HDU2_  MASK            IMAGE sky mask (0 = good)
-HDU3_  WAVELENGTH      IMAGE wavelength in Angstrom
-HDU4_  STATIVAR        IMAGE statistical-only inverse variance of sky model
-HDU5_  THRPUTCORR      IMAGE achromatic throughput correction per fiber
-HDU6_  THRPUTCORR_MOD  IMAGE *Description needed.*
-HDU6_  DWAVECOEFF      IMAGE *Description needed.*
-HDU7_  DLSFCOEFF       IMAGE *Description needed.*
-HDU8_  SKYGRADPCACOEFF IMAGE *Description needed.*
+HDU0_  SKY             IMAGE Sky model in electrons per Angstrom
+HDU1_  IVAR            IMAGE Inverse variance of sky model
+HDU2_  MASK            IMAGE Sky mask (0 = good)
+HDU3_  WAVELENGTH      IMAGE Wavelength in Angstrom
+HDU4_  STATIVAR        IMAGE Statistical-only inverse variance of sky model
+HDU5_  THRPUTCORR      IMAGE Achromatic throughput correction per fiber
+HDU6_  THRPUTCORR_MOD  IMAGE Model multiplicative throughput corrections for each fiber
+HDU6_  DWAVECOEFF      IMAGE Vector of PCA coefficients for wavelength offsets
+HDU7_  DLSFCOEFF       IMAGE Vector of PCA coefficients for LSF size changes
+HDU8_  SKYGRADPCACOEFF IMAGE Vector of gradient amplitudes for sky gradient spectra
 ====== =============== ===== ===================
 
 The SKY HDU is the sky model per-fiber accounting for different fiber
@@ -751,7 +751,7 @@ HDU6
 
 EXTNAME = THRPUTCORR_MOD
 
-*Description needed.*
+Model multiplicative throughput corrections for each fiber.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -775,7 +775,7 @@ HDU7
 
 EXTNAME = DWAVECOEFF
 
-*Description needed.*
+Vector of PCA coefficients for wavelength offsets.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -799,7 +799,7 @@ HDU8
 
 EXTNAME = DLSFCOEFF
 
-*Description needed.*
+Vector of PCA coefficients for LSF size changes.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -823,7 +823,7 @@ HDU9
 
 EXTNAME = SKYGRADPCACOEFF
 
-*Description needed.*
+Vector of gradient amplitudes for sky gradient spectra.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
