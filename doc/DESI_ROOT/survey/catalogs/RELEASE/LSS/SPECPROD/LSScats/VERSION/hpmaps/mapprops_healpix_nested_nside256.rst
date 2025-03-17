@@ -4,8 +4,8 @@ mapprops_healpix_nested_nside256
 
 :Summary: Observing conditions and other quantities used to correct for systematics in healpix format.
 :Naming Convention: ``{TARGET}_mapprops_healpix_nested_nside256_{PHOTSYS}.fits``, where ``{TARGET}`` is the target type (LRG, ELG_LOPnotqso, QSO, BGS_ANY, BGS_BRIGHT...) and ``PHOTSYS`` is north or south (N or S)
-:Regex: ``[a-z]_mapprops_healpix_nested_nside256_[a-z]{1}.fits``
-:File Type: FITS, 99 MB  
+:Regex: ``[A-Za-z_]+_mapprops_healpix_nested_nside256_[NS].fits``
+:File Type: FITS, 99 MB
 
 Contents
 ========

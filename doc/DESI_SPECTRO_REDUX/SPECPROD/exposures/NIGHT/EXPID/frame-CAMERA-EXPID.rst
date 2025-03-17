@@ -23,6 +23,7 @@ HDU3_  WAVELENGTH IMAGE    Wavelength grid of the extraction (Angstrom)
 HDU4_  RESOLUTION IMAGE    Resolution matrix
 HDU5_  FIBERMAP   BINTABLE Fibermap
 HDU6_  CHI2PIX    IMAGE    chi2 of PSF fit to CCD pixels
+HDU7_  SCORES     BINTABLE Quality Assurance scores
 ====== ========== ======== ===================
 
 
@@ -84,6 +85,7 @@ Required Header Keywords
     FEEBOX                 lbnl057                                                               str     CCD Controller serial number
     VESSEL                 26                                                                    int     Cryostat serial number
     FEEVER                 v20160312                                                             str     CCD Controller version
+    DETFLVER [1]_          FAILED: invalid argument for get command                              str     CCD Controller detector f
     FEEPOWER               ON                                                                    str     FEE power status
     FEEDMASK               2134851391                                                            int     FEE dac mask
     FEECMASK               1048575                                                               int     FEE clk mask
@@ -795,6 +797,7 @@ Required Header Keywords
     FEEBOX                 lbnl057                                                                                                                                                                                              str
     VESSEL                 26                                                                                                                                                                                                   int
     FEEVER                 v20160312                                                                                                                                                                                            str
+    DETFLVER [1]_          FAILED: invalid argument for get command                                                                                                                                                             str
     FEEPOWER               ON                                                                                                                                                                                                   str
     FEEDMASK               2134851391                                                                                                                                                                                           int
     FEECMASK               1048575                                                                                                                                                                                              int
@@ -1481,6 +1484,10 @@ Required Header Keywords
 
 Data: FITS image [float32, 2751x500]
 
+HDU7
+----
+
+See `SCORES HDU7 of cframe-CAMERA-EXPID.fits <cframe-CAMERA-EXPID.html#hdu7>`_.
 
 Notes and Examples
 ==================

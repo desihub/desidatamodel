@@ -116,14 +116,14 @@ FRACFLUX_Z                        float32            Fraction of flux from other
 FRACMASKED_G                      float32            Fraction of pixels masked for this source in `LS`_ g
 FRACMASKED_R                      float32            Fraction of pixels masked for this source in `LS`_ r
 FRACMASKED_Z                      float32            Fraction of pixels masked for this source in `LS`_ z
-FRACIN_G                          float32            *Description needed*
-FRACIN_R                          float32            *Description needed*
-FRACIN_Z                          float32            *Description needed*
+FRACIN_G                          float32            TODO: *Description needed*
+FRACIN_R                          float32            TODO: *Description needed*
+FRACIN_Z                          float32            TODO: *Description needed*
 ALLMASK_G                         int16              Bitwise mask for central pixel in `LS`_ g
 ALLMASK_R                         int16              Bitwise mask for central pixel in `LS`_ r
 ALLMASK_Z                         int16              Bitwise mask for central pixel in `LS`_ z
-WISEMASK_W1                       byte               *Description needed*
-WISEMASK_W2                       byte               *Description needed*
+WISEMASK_W1                       byte               Bitwise mask for WISE W1 data
+WISEMASK_W2                       byte               Bitwise mask for WISE W2 data
 PSFDEPTH_G                        float32            PSF-based depth in `LS`_ g
 PSFDEPTH_R                        float32            PSF-based depth in `LS`_ r
 PSFDEPTH_Z                        float32            PSF-based depth in `LS`_ z
@@ -150,7 +150,7 @@ FIBERFLUX_Z                       float32            z-band object model flux fo
 FIBERTOTFLUX_G                    float32            like FIBERFLUX_G but including all objects overlapping this location
 FIBERTOTFLUX_R                    float32            like FIBERFLUX_R but including all objects overlapping this location
 FIBERTOTFLUX_Z                    float32            like FIBERFLUX_Z but including all objects overlapping this location
-REF_CAT                           char[2]            *Description needed*
+REF_CAT                           char[2]            Reference catalog source for star: T2 for Tycho-2, G2 for Gaia DR2, L2 for the SGA, empty otherwise
 REF_ID                            int64              Tyc1*1,000,000+Tyc2*10+Tyc3 for `Tycho-2`_; "sourceid" for `Gaia`_ DR2
 GAIA_PHOT_G_MEAN_MAG              float32            `Gaia`_ G band magnitude
 GAIA_PHOT_G_MEAN_FLUX_OVER_ERROR  float32            `Gaia`_ G band signal-to-noise
@@ -158,9 +158,9 @@ GAIA_PHOT_BP_MEAN_MAG             float32            `Gaia`_ BP band magnitude
 GAIA_PHOT_BP_MEAN_FLUX_OVER_ERROR float32            `Gaia`_ BP band signal-to-noise
 GAIA_PHOT_RP_MEAN_MAG             float32            `Gaia`_ RP band magnitude
 GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR float32            `Gaia`_ RP band signal-to-noise
-GAIA_PHOT_BP_RP_EXCESS_FACTOR     float32            *Description needed*
-GAIA_ASTROMETRIC_SIGMA5D_MAX      float32            *Description needed*
-GAIA_ASTROMETRIC_PARAMS_SOLVED    int64              *Description needed*
+GAIA_PHOT_BP_RP_EXCESS_FACTOR     float32            `Gaia`_ BP/RP excess factor
+GAIA_ASTROMETRIC_SIGMA5D_MAX      float32            `Gaia`_ longest semi-major axis of the 5-d error ellipsoid
+GAIA_ASTROMETRIC_PARAMS_SOLVED    int64              Which astrometric parameters were estimated for a `Gaia`_ source
 GAIA_ASTROMETRIC_EXCESS_NOISE     float32            `Gaia`_ astrometric excess noise
 GAIA_DUPLICATED_SOURCE            bool               `Gaia`_ duplicated source flag
 PARALLAX                          float32            Reference catalog parallax
@@ -169,7 +169,7 @@ PMRA                              float32            Reference catalog proper mo
 PMRA_IVAR                         float32            Inverse variance of PMRA
 PMDEC                             float32            Reference catalog proper motion in the Dec direction
 PMDEC_IVAR                        float32            Inverse variance of PMDEC
-MASKBITS                          int16              *Description needed*
+MASKBITS                          int16              Bitwise mask from the imaging indicating potential issue or blending
 EBV                               float32            Median (average?) Milky Way dust E(B-V) extinction
 PHOTSYS                           char[1]            'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 TARGETID                          int64              Unique targeting ID
@@ -178,8 +178,8 @@ BGS_TARGET                        int64              BGS (bright time program) t
 MWS_TARGET                        int64              MWS (bright time program) target selection bitmask
 SUBPRIORITY                       float64            Random subpriority [0-1] to break assignment ties
 OBSCONDITIONS                     int64              Flag the target to be observed in graytime.
-PRIORITY_INIT                     int64              *Description needed*
-NUMOBS_INIT                       int64              *Description needed*
+PRIORITY_INIT                     int64              Target initial priority from target selection bitmasks and OBSCONDITIONS
+NUMOBS_INIT                       int64              Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 HPXPIXEL                          int64              HEALPixel containing target
 ================================= ========== ======= ===================
 

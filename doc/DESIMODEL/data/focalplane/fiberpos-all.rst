@@ -63,10 +63,10 @@ Required Data Table Columns
 =========== ======= ===== ==========================
 Name        Type    Units Description
 =========== ======= ===== ==========================
-PETAL       int32         TODO: description needed
-DEVICE      int32         TODO: description needed
-DEVICE_TYPE char[3]       TODO: description needed
-LOCATION    int64         TODO: description needed
+PETAL       int32         Petal location [0-9]
+DEVICE      int32         Device location on focal plane [0-523]
+DEVICE_TYPE char[3]       Device type
+LOCATION    int64         Location on the focal plane PETAL*1000 + DEVICE
 FIBER       int32         fiber number [0-4999]
 X           float64 mm    positioner x center [mm]
 Y           float64 mm    positioner y center [mm]

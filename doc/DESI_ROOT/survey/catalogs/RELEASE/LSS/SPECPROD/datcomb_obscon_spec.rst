@@ -1,11 +1,11 @@
-===========================
-datcomb_{OBSCON}_spec_zdone
-===========================
+==============================
+datcomb_obscon_spec_zdone.fits
+==============================
 
 :Summary: Compilation of spectroscopic reduction
 :Naming Convention: ``datcomb_{obscon}_spec_zdone.fits``, where obscon can be either dark or bright
-:Regex: ``datcomb_[a-z]{4,6}_spec_zdone.fits`` 
-:File Type: FITS, 4 GB  
+:Regex: ``datcomb_(bright|dark)_spec_zdone\.fits``
+:File Type: FITS, 4 GB
 
 Contents
 ========
@@ -42,18 +42,20 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ==== =====================
-    KEY      Example Value Type Comment
-    ======== ============= ==== =====================
-    NAXIS1   372           int  length of dimension 1
-    NAXIS2   11632889      int  length of dimension 2
-    LONGSTRN OGIP 1.0      str
-    SPGRP    cumulative    str
-    SURVEY   main          str
-    PROGRAM  dark          str
-    ZCATVER  v0            str
-    DESIDR   dr1           str  DESI Data Release
-    ======== ============= ==== =====================
+    ============= ============= ==== =====================
+    KEY           Example Value Type Comment
+    ============= ============= ==== =====================
+    NAXIS1        372           int  length of dimension 1
+    NAXIS2        11632889      int  length of dimension 2
+    LONGSTRN [1]_ OGIP 1.0      str
+    SPGRP [1]_    cumulative    str
+    SURVEY [1]_   main          str
+    PROGRAM [1]_  dark          str
+    ZCATVER [1]_  v0            str
+    DESIDR        dr1           str  DESI Data Release
+    ============= ============= ==== =====================
+
+.. [1] Optional
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -119,9 +121,3 @@ Z_QN                       float64           Redshift measured by QuasarNET usin
 Z_QN_CONF                  float64           Redshift confidence from QuasarNET
 IS_QSO_QN                  int16             Spectroscopic classification from QuasarNET (1 for a quasar)
 ========================== =========== ===== ===============================================================================================================================
-
-
-Notes and Examples
-==================
-
-

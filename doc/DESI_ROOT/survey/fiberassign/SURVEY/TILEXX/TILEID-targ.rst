@@ -44,18 +44,18 @@ Required Header Keywords
 
     .. rst-class:: keywords
 
-    ======== ============= ======= =======================
-    KEY      Example Value Type    Comment
-    ======== ============= ======= =======================
-    NAXIS1   382           int     width of table in bytes
-    NAXIS2   30866         int     number of rows in table
-    SURVEY   main          str
-    RESOLVE  T             bool
-    MASKBITS T             bool
-    BACKUP   F             bool
-    NOSEC    F             bool
-    DR       None          Unknown
-    ======== ============= ======= =======================
+    ========== ============= ======= =======================
+    KEY        Example Value Type    Comment
+    ========== ============= ======= =======================
+    NAXIS1     382           int     width of table in bytes
+    NAXIS2     30866         int     number of rows in table
+    SURVEY     main          str
+    RESOLVE    T             bool
+    MASKBITS   T             bool
+    BACKUP     F             bool
+    NOSEC [1]_ F             bool
+    DR         None          Unknown
+    ========== ============= ======= =======================
 
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,6 +130,7 @@ PLATE_DEC             float64  deg          Barycentric Declination in ICRS to b
 PLATE_REF_EPOCH       float32  yr           Copy of REF_EPOCH to be used by PlateMaker
 ===================== ======== ============ =======================================================================================================================================
 
+.. [1] Optional
 
 Notes and Examples
 ==================

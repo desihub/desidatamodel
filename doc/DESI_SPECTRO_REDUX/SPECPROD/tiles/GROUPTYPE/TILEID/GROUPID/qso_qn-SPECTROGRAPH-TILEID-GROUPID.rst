@@ -67,6 +67,8 @@ DEC                  float64     deg   Target declination
 Z_NEW                float64           New redshift computed with redrock with QN prior and only qso templates
 ZERR_NEW             float32           Redshift error from the new run of redrock
 SV1_DESI_TARGET [1]_ int64             DESI (dark time program) target selection bitmask for SV1
+SV2_DESI_TARGET [1]_ int64             DESI (dark time program) target selection bitmask for SV2
+SV3_DESI_TARGET [1]_ int64             DESI (dark time program) target selection bitmask for SV3
 DESI_TARGET [1]_     int64             DESI (dark time program) target selection bitmask
 COEFFS               float32[10]       Coefficient of the fit for the new run of redrock
 SPECTYPE             char[10]          Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)

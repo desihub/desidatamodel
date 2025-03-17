@@ -22,7 +22,7 @@ particular redshift fit or associated QA.
 ZWARN==0 is good; any non-zero value indicates a potential problem.
 This mask will be described in more detail in the Redrock paper
 (Bailey et al. 2023 in prep), as well as Section 5.3.1 of the
-Survey Operations Paper (`Schlafly et al. 2023 <https://arxiv.org/abs/2306.06309>`_).
+Survey Operations Paper (`Schlafly et al. 2023 <https://ui.adsabs.harvard.edu/abs/2023AJ....166..259S/abstract>`_).
 
 The canonical code location defining these bits is
 `desitarget targetmask.yaml <https://github.com/desihub/desitarget/blob/main/py/desitarget/data/targetmask.yaml#L230>`_.
@@ -49,9 +49,9 @@ File             Table HDU     Column
 .. |emline| replace:: :doc:`emline <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/emline-SPECTROGRAPH-TILEID-GROUPID>`
 .. |zmtl| replace:: :doc:`zmtl <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/zmtl-SPECTROGRAPH-TILEID-GROUPID>`
 .. |mtl| replace:: :doc:`mtl <DESI_SURVEYOPS/mtl/main/dark/mtl-dark-hp-HPX>`
-.. |zpix| replace:: :doc:`zpix <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zpix-SURVEY-PROGRAM>`
-.. |ztile| replace:: :doc:`ztile <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/ztile-SURVEY-PROGRAM-GROUPTYPE>`
-.. |zall| replace:: :doc:`zall <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/zall-pix-SPECPROD>`
+.. |zpix| replace:: :doc:`zpix <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v1/zpix-SURVEY-PROGRAM>`
+.. |ztile| replace:: :doc:`ztile <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v1/ztile-SURVEY-PROGRAM-GROUPTYPE>`
+.. |zall| replace:: :doc:`zall <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v1/zall-pix-SPECPROD>`
 .. |lss| replace:: :doc:`lss <DESI_ROOT/vac/RELEASE/lss/VERSION/LSScats/full/fullVETO_dat>`
 
 ZWARN Bit Definitions
@@ -248,7 +248,7 @@ TARGETS, FIBERASSIGN, and FIBERMAP tables in data files.
 These masks are described in more detail in Section 2 of
 `Myers et al. (2023) <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
 and Appendices A and B of the the DESI EDR Overview paper
-(`DESI Collaboration et al. 2023 <https://arxiv.org/abs/2306.06308>`_).
+(`DESI Collaboration et al. 2024 <https://ui.adsabs.harvard.edu/abs/2024AJ....168...58D/abstract>`_).
 
 The following table lists a subset of the most commonly used bits that maintained
 the same definition throughout different phases of DESI observations.  For the
@@ -320,5 +320,5 @@ MASKBITS                            `BITMASKS_LEGACY`_
 .. _`ZWARN`: https://github.com/desihub/redrock/blob/0.16.0/py/redrock/zwarning.py#L14
 .. _`BITMASKS_LEGACY`: https://www.legacysurvey.org/dr9/bitmasks/
 .. _`DESI Legacy Imaging Surveys`: https://www.legacysurvey.org/
-.. _tutorial: https://github.com/desihub/desitarget/blob/master/doc/nb/target-selection-bits-and-bitmasks.ipynb
+.. _tutorial: https://github.com/desihub/desitarget/blob/main/doc/nb/target-selection-bits-and-bitmasks.ipynb
 

@@ -4,8 +4,8 @@ RANDOM full catalogs
 
 :Summary: LSS catalogs containing information on all of the random targets identified as reachable by DESI fiberassign, for one of the input randoms. The files are split by target type, random file number, and whether of not vetos for angular positions and healpix map cuts have been applied
 :Naming Convention: ``{TARGET}_{RANN}_full{VETO}.ran.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG``, ``ELG_LOPnotqso``, ``LRG``, for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{RANN}`` is the number between 0 and 17 designating the given random file, and ``{VETO}`` is _noveto if vetos have not been applied, blank if vetos have been applied and _HPmapcut if both vetos and healpix map cuts have been applied.
-:Regex: ``[a-zA-Z_]+\_[0-9]+\_full[a-z_]{0,7,9}.ran.fits``
-:File Type: FITS, 5 GB 
+:Regex: ``[A-Za-z0-9._+-]+_[0-9]+_full(|_HPmapcut|_noveto)\.ran\.fits``
+:File Type: FITS, 5 GB
 
 Contents
 ========
@@ -74,9 +74,10 @@ TILELOCID                  int64                  Is 10000*TILEID+LOCATION
 ZPOSSLOC                   logical                True/False whether the location could have been assigned to the given target class
 GOODHARDLOC                logical                True/False whether the fiber had good hardware
 GOODPRI                    logical                True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
+GOODTSNR [1]_              logical                True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 NTILE                      int64                  Number of tiles target was available on
-TILES                      char[36]               TILEIDs of those tile, in string form separated by -
-TILELOCIDS                 char[111]              TILELOCIDs that the target was available for, separated by -
+TILES                      char[*]                TILEIDs of those tile, in string form separated by -
+TILELOCIDS                 char[*]                TILELOCIDs that the target was available for, separated by -
 NOBS_G                     int16                  Number of images for central pixel in g-band
 NOBS_R                     int16                  Number of images for central pixel in r-band
 NOBS_Z                     int16                  Number of images for central pixel in z-band
@@ -115,10 +116,7 @@ PSFSIZE_G                  float32   arcsec       Median PSF size evaluated at t
 PSFSIZE_R                  float32   arcsec       Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z                  float32   arcsec       Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 EBV                        float32   mag          Galactic extinction E(B-V) reddening from SFD98
-FRAC_TLOBS_TILES           float64                Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
+FRAC_TLOBS_TILES [1]_      float64                Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
 ========================== ========= ============ ===================================================================================================================================================================================================================================================
 
-
-Notes and Examples
-==================
-
+.. [1] Optional

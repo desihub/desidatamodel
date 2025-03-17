@@ -1,11 +1,11 @@
-=========================
-datcomb_obscon_zmtl_zdone
-=========================
+==============================
+datcomb_obscon_zmtl_zdone.fits
+==============================
 
 :Summary: To summarize
 :Naming Convention: ``datcomb_{OBSCON}_zmtl_zdone.fits``, where {OBSCON} is dark or bright
-:Regex: ``datcomb_[a,z]{4,6}_zmtl_zdone.fits`` 
-:File Type: FITS, 349 MB  
+:Regex: ``datcomb_(bright|dark)_zmtl_zdone\.fits``
+:File Type: FITS, 349 MB
 
 Contents
 ========

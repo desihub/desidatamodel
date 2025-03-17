@@ -83,6 +83,7 @@ Header keywords are inherited from the input Frame file.
     FEEBOX        lbnl050                                                      str     CCD Controller serial number
     VESSEL        8                                                            int     Cryostat serial number
     FEEVER        v20160312                                                    str     CCD Controller version
+    DETFLVER [1]_ FAILED: invalid argument for get command                     str     CCD Controller detector f
     FEEPOWER      ON                                                           str     FEE power status
     FEEDMASK      2134851391                                                   int     FEE dac mask
     FEECMASK      1048575                                                      int     FEE clk mask
@@ -434,6 +435,8 @@ Header keywords are inherited from the input Frame file.
     TCSPIDEC [1]_ 1.0,0.0,0.0,0.0                                              str     TCS PI settings (P, I (gain, error window, satu
     TCSPIRA [1]_  1.0,0.0,0.0,0.0                                              str     TCS PI settings (P, I (gain, error window, satu
     TRANSPAR [1]_ None                                                         Unknown ETC/PM transparency
+    PMSEEING [1]_ None                                                         Unknown [arcsec] PlateMaker GFAPROC seeing
+    PMTRANSP [1]_ None                                                         Unknown [%] PlateMaker GFAPROC transparency
     SEEING [1]_   None                                                         Unknown [arcsec] ETC/PM seeing
     SKYLEVEL [1]_ 8.153                                                        float   [counts?] ETC sky level
     ============= ============================================================ ======= ====================================================
@@ -597,6 +600,7 @@ Required Header Keywords
     FEEBOX        lbnl050                                                      str
     VESSEL        8                                                            int
     FEEVER        v20160312                                                    str
+    DETFLVER [1]_ FAILED: invalid argument for get command                     str
     FEEPOWER      ON                                                           str
     FEEDMASK      2134851391                                                   int
     FEECMASK      1048575                                                      int
@@ -939,6 +943,8 @@ Required Header Keywords
     TCSPIDEC [1]_ 1.0,0.0,0.0,0.0                                              str
     TCSPIRA [1]_  1.0,0.0,0.0,0.0                                              str
     TRANSPAR [1]_ None                                                         Unknown
+    PMSEEING [1]_ None                                                         Unknown
+    PMTRANSP [1]_ None                                                         Unknown
     SEEING [1]_   None                                                         Unknown
     SKYLEVEL [1]_ 8.153                                                        float
     ============= ============================================================ ======= ==============================================

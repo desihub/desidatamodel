@@ -4,8 +4,8 @@ DATA full catalogs
 
 :Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign, with one entry for each. The files are split by target type and whether of not vetos for angular positions and healpix maps have been applied
 :Naming Convention: ``{TARGET}_full{VETO}.dat.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG_LOPnotqso``, ``LRG``, for dark or ``BGS_ANY``, ``BGS_BRIGHT`` for bright. ``{VETO}`` is ``_noveto`` if vetos have not been applied, blank if vetos have been applied and ``_HPmapcut`` if both vetos and healpix map cuts have been applied.
-:Regex: ``[a-zA-Z_]+\_full[a-z_]{0,7,9}.dat.fits``
-:File Type: FITS, 11 GB 
+:Regex: ``[A-Za-z0-9._+-]+_full(|_HPmapcut|_noveto)\.dat\.fits``
+:File Type: FITS, 11 GB
 
 Contents
 ========
@@ -68,7 +68,8 @@ LOCATION                   int64                               Location on the f
 TILEID                     int64                               Unique DESI tile ID
 TILELOCID                  int64                               Is 10000*TILEID+LOCATION
 LASTNIGHT                  int32                               Final night of observation included in a series of coadds
-Z                          float64                             Redshift measured by Redrock
+Z [1]_                     float64                             Redshift measured by Redrock in "full_noveto" files
+Z_not4clus [1]_            float64                             Redshift measured by Redrock in "full" and "full_HPmapcut" files
 ZERR                       float64                             Redshift error from redrock
 ZWARN                      int64                               Redshift warning bitmask from Redrock
 CHI2                       float64                             Best fit chi squared
@@ -120,7 +121,7 @@ GOODPRI                    logical                             True/False whethe
 GOODHARDLOC                logical                             True/False whether the fiber had good hardware
 LOCATION_ASSIGNED          logical                             True/False for assigned/unassigned for the target in question
 TILELOCID_ASSIGNED         logical                             0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
-GOODTSNR                   logical                             True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
+GOODTSNR [1]_              logical                             True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 NTILE                      int64                               Number of tiles target was available on
 TILES                      char[36]                            TILEIDs of those tile, in string form separated by -
 TILELOCIDS                 char[111]                           TILELOCIDs that the target was available for, separated by -
@@ -172,25 +173,32 @@ OII_FLUX [1]_              float32     10**-17 erg/(s cm2)     Fitted flux for t
 OII_FLUX_IVAR [1]_         float32     10**+34 (s2 cm4) / erg2 Inverse variance of the fitted flux for the [OII] doublet
 o2c [1]_                   float64     10**+34 (s2 cm4) / erg2 (lower or uppercase) The criteria for assessing strength of OII emission for ELG observations
 Z_RR [1]_                  float64                             Redshift collected from redrock file
-lrg_mask [1]_              binary                              (lower or upper case) Imaging mask bits relevant to LRG targets
 ABSMAG01_SDSS_G [1]_       float32     mag                     g-corrected (to z=0.1) absolute magnitude in the SDSS g band from fastspecfit
 ABSMAG01_SDSS_R [1]_       float32     mag                     r-corrected (to z=0.1) absolute magnitude in the SDSS r band from fastspecfit
-WEIGHT_IMLIN [1]_          float64                             Imaging systematics weights derived with the eBOSS linear regression method
 WEIGHT_FKP [1]_            float64                             1/(1+NZ*P0), with P0 different for each tracer
 WEIGHT_RF [1]_             float64                             Imaging systematics weights derived with the regressis random forest regression method
 WEIGHT_SN [1]_             float64                             Imaging systematics weights derived with the sysnet NN regression method
 COMP_TILE                  float64                             Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID            float64                             The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
+lrg_mask [1]_              binary                              (lower or upper case) Imaging mask bits relevant to LRG targets
+FRAC_TLOBS_TILES           float64                             The completeness-like quantity determined within the given TILES group, obtained when weighting each observed target by 1/FRACZ_TILELOCID and dividing by the total number of targets in the region
 WEIGHT_ZFAIL               float64                             Should be all 1 at this point for main survey
 mod_success_rate           float64                             Expected spectroscopic success rate given the target and observation properties
+WEIGHT_IMLIN [1]_          float64                             Imaging systematics weights derived with the eBOSS linear regression method
+WEIGHT_NTILE [1]_          float64                             A weight to be used when calculating the angular paircounts used to correct assignment incompleteness via angular upweighting (necessary to match the weighted angular distribution of the "clustering" catalogs)
+WEIGHT_FKP_NTILE [1]_      float64                             An additional weight to be used when calculating the angular paircounts used to correct assignment incompleteness via angular upweighting (necessary to match the weighted angular distribution of the "clustering" catalogs), if WEIGHT_FKP is used for the overall clustering measurement.
 ========================== =========== ======================= =======================================================================================================================================
 
-.. [1] Optional columns: OII_FLUX, OII_FLUX_IVAR, o2c only present in ELG samples. 
-                         Z_RR only present in QSO samples. 
-                         lrg_mask only present in LRG samples. 
-                         ABSMAG01_SDSS_G,R only present in BGS samples.
-                         WEIGHT_IMLIN, WEIGHT_FKP, WEIGHT_RF, WEIGHT_SN are optionals
+.. [1] Optional
 
 Notes and Examples
 ==================
 
+Optional columns:
+
+* ``OII_FLUX``, ``OII_FLUX_IVAR``, ``o2c`` only present in ELG samples.
+* ``Z_RR`` only present in QSO samples.
+* ``lrg_mask`` only present in LRG samples.
+* ``ABSMAG01_SDSS_G``, ``R`` only present in BGS samples.
+* ``WEIGHT_IMLIN``, ``WEIGHT_FKP``, ``WEIGHT_RF``, ``WEIGHT_SN`` are optionals
+* ``GOODTSNR`` dropped after v1.2 of the catalogs.

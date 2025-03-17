@@ -17,12 +17,12 @@ Each file contains a dictionary with the following top-level keys:
 ================ ============================================
 Key              Description
 ================ ============================================
-``MANIFEST``     *Description needed*
-``PURPOSE``      *Description needed*
-``PROGRAM``      *Description needed*
+``MANIFEST``     TODO: *Description needed.*
+``PURPOSE``      TODO: *Description needed.*
+``PROGRAM``      TODO: *Description needed.*
 ``EXPID``        Exposure ID.
 ``NIGHT``        Observation night.
 ``DATE-OBS``     Timestamp of observation.
 ``MJD-OBS``      MJD of observation.
-``LAST``         *Description needed*
+``LAST``         TODO: *Description needed.*
 ================ ============================================

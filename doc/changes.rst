@@ -2,17 +2,21 @@
 desidatamodel Change Log
 ========================
 
-24.12 (unreleased)
-------------------
+25.3 (2025-03-17)
+-----------------
 
 * Update package infrastructure, fix search function, add missing columns (PR `#199`_).
 * Update the units for ``SKY_MAG_*`` quantities in the ``SPECPROD/exposures-SPECPROD.rst``
   description (PR `#200`_).
 * Add description of GFA summary files (PR `#202`_).
+* Add data model for full DR1 LSS catalogs (PR `#205`_).
+* Update data model based on final DR1 files (PR `#207`_).
 
 .. _`#199`: https://github.com/desihub/desidatamodel/pull/199
 .. _`#200`: https://github.com/desihub/desidatamodel/pull/200
 .. _`#202`: https://github.com/desihub/desidatamodel/pull/202
+.. _`#205`: https://github.com/desihub/desidatamodel/pull/205
+.. _`#207`: https://github.com/desihub/desidatamodel/pull/207
 
 24.9 (2024-09-12)
 -----------------

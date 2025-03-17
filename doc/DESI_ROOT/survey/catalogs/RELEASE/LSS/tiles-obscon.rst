@@ -4,8 +4,8 @@ tiles-OBSCON
 
 :Summary: List of tiles making the release for the given program dark or bright (OBSCON)
 :Naming Convention: ``tiles-{OBSCON}.fits``, where ``{OBSCON}`` is DARK or BRIGHT
-:Regex: ``tiles-[a-z]{4,6}.fits`` 
-:File Type: FITS, 59 KB  
+:Regex: ``tiles-(BRIGHT|DARK)\.fits``
+:File Type: FITS, 59 KB
 
 Contents
 ========
