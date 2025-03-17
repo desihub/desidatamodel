@@ -2,6 +2,11 @@
 desidatamodel Change Log
 ========================
 
+25.4 (unreleased)
+-----------------
+
+* No changes yet.
+
 25.3 (2025-03-17)
 -----------------
 
