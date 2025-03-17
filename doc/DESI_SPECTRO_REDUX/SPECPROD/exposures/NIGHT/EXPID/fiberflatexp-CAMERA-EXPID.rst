@@ -79,6 +79,7 @@ Required Header Keywords
     FEEBOX        lbnl078                                                      str     CCD Controller serial number
     VESSEL        14                                                           int     Cryostat serial number
     FEEVER        v20160312                                                    str     CCD Controller version
+    DETFLVER [1]_ FAILED: invalid argument for get command                     str     CCD Controller detector f
     FEEPOWER      ON                                                           str     FEE power status
     FEEDMASK      2134851391                                                   int     FEE dac mask
     FEECMASK      1048575                                                      int     FEE clk mask
@@ -435,8 +436,10 @@ Required Header Keywords
     EXPTHUM [1]_  16.63                                                        float   exposure humidity from telemetry
     EPOCH [1]_    2000.0                                                       float   Epoch of observation
     SKYLEVEL [1]_ 6.268                                                        float   [counts?] ETC sky level
-    TRANSPAR [1]_ None                                                         Unknown ETC/PM transparency
     SEEING [1]_   None                                                         Unknown [arcsec] ETC/PM seeing
+    TRANSPAR [1]_ None                                                         Unknown ETC/PM transparency
+    PMSEEING [1]_ None                                                         Unknown [arcsec] PlateMaker GFAPROC seeing
+    PMTRANSP [1]_ None                                                         Unknown [%] PlateMaker GFAPROC transparency
     ============= ============================================================ ======= ====================================================
 
 Data: FITS image [float32, 2751x500]
