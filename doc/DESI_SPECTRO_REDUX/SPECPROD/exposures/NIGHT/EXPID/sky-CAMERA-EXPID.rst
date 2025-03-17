@@ -114,6 +114,7 @@ Required Header Keywords
     FEEBOX                 lbnl075                                                               str     CCD Controller serial number
     VESSEL                 22                                                                    int     Cryostat serial number
     FEEVER                 v20160312                                                             str     CCD Controller version
+    DETFLVER [1]_          FAILED: invalid argument for get command                              str     CCD Controller detector f
     FEEPOWER               ON                                                                    str     FEE power status
     FEEDMASK               2134851391                                                            int     FEE dac mask
     FEECMASK               1048575                                                               int     FEE clk mask
@@ -313,6 +314,7 @@ Required Header Keywords
     TILEDEC                29.0                                                                  float   DEC of tile given in fiberassign file
     TCSST                  01:13:18.668                                                          str     Local Sidereal time reported by TCS (HH:MM:SS)
     TCSMJD                 59204.110981                                                          float   MJD reported by TCS
+    USETURB [1]_           T                                                                     bool    Turbulence corrections are applied if true
     ACQCAM                 GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8                             str     Acquisition cameras used
     GUIDECAM               GUIDE0,GUIDE2,GUIDE3,GUIDE5,GUIDE7,GUIDE8                             str     Guide cameras used for t
     FOCUSCAM [1]_          FOCUS1,FOCUS4,FOCUS6,FOCUS9                                           str     Focus cameras used for this exposure
@@ -333,10 +335,12 @@ Required Header Keywords
     PETALS                 PETAL0,PETAL1,PETAL2,PETAL3,PETAL4,PETAL5,PETAL6,PETAL7,PETAL8,PETAL9 str     Participating petals
     POSCYCLE               1                                                                     int     Number of current iteration
     POSONTGT               3626                                                                  int     Number of positioners on target
+    POSNOTON [1]_          6                                                                     int     Number of enabled positioners not on target
     POSONFRC               0.8613                                                                float   Fraction of positioners on target
     POSDISAB               37                                                                    int     Number of disabled positioners
     POSENABL               4210                                                                  int     Number of enabled positioners
-    POSRMS                 0.0171                                                                float   [micron] RMS of positioner accuracy
+    POSRMS                 0.0171                                                                float   [mm] RMS of positioner accuracy
+    TURBRMS [1]_           0.0071                                                                float   [mm] RMS of turbulence correction
     POSITER                1                                                                     int     Positioning Control: max. number of pos. cycles
     POSFRACT               0.95                                                                  float
     POSTOLER               0.01                                                                  float   Positioning Control: in_position tolerance (mm)
@@ -462,6 +466,7 @@ Required Header Keywords
     USEILLUM               T                                                                     bool    DOS Control: use illuminator
     USEXSRVR               T                                                                     bool    DOS Control: use exposure server
     USEOPENL               T                                                                     bool    DOS Control: use open loop move
+    USEMIDPT [1]_          T                                                                     bool    Use exposure midpoint if true
     STOPGUDR               T                                                                     bool    DOS Control: stop guider
     STOPFOCS               T                                                                     bool    DOS Control: stop focus
     STOPSKY                T                                                                     bool    DOS Control: stop sky monitor
@@ -470,6 +475,7 @@ Required Header Keywords
     KEEPSKY                F                                                                     bool    DOS Control: keep sky mon. running
     REACQUIR               F                                                                     bool    DOS Control: reacquire same files
     EXCLUDED                                                                                     str     Components excluded from this exposure
+    PMVER [1]_             desi-138368                                                           str     PlateMaker/Dervish version
     FVCTIME [1]_           2.0                                                                   float   [s] FVC exposure time
     SIMGFACQ               F                                                                     bool
     POSCNVGD [1]_          F                                                                     bool    Number of positioners converged
@@ -477,11 +483,13 @@ Required Header Keywords
     IGFRMNUM               12                                                                    int     Guider frame number at start of spectro exp.
     FOCEXPID               69022                                                                 int     Focus exposure id at start of spectro exp.
     IFFRMNUM               1                                                                     int     Focus frame number at start of spectro exp.
+    TMEBTEXP [1]_          1219.825                                                              float   [s] Time between (DESI) exposures
     SKYEXPID               69022                                                                 int     Sky exposure id at start of spectro exp.
     ISFRMNUM               1                                                                     int     Sky frame number at start of spectro exp.
     FGFRMNUM               46                                                                    int     Guider frame number at end of spectro exp.
     FFFRMNUM               6                                                                     int     Focus frame number at end of spectro exp.
     FSFRMNUM               5                                                                     int     Sky frame number at end of spectro exp.
+    ETCSKYLV [1]_          15.1381                                                               float   [unit?] ETC skylevel
     HELIOCOR               0.9999115198216216                                                    float
     NSPEC                  500                                                                   int     Number of spectra
     WAVEMIN                3600.0                                                                float   First wavelength [Angstroms]
@@ -529,6 +537,7 @@ Required Header Keywords
     SP8NIRP [1]_           4.945e-08                                                             float   [mb] SP8 NIR pressure
     SPLITEXP [1]_          F                                                                     bool    Split exposure part of a visit
     SEQSTART [1]_          2021-04-07T03:54:14.413292                                            str     Start time of sequence processing
+    STARTADJ [1]_          2022-03-18T03:57:35.888348                                            str     Time sequence starts adjusting the inst
     SP8NIRT [1]_           139.99                                                                float   [K] SP8 NIR temperature
     SP7BLUT [1]_           163.02                                                                float   [K] SP7 blue temperature
     SP5REDP [1]_           4.693e-08                                                             float   [mb] SP5 red pressure
@@ -577,6 +586,7 @@ Required Header Keywords
     SEQID [1]_             6 requests                                                            str     Exposure sequence identifier
     SEQTOT [1]_            6                                                                     int     Total number of exposures in sequence
     MINTIME [1]_           120.0                                                                 float   [s] Minimum exposure time (from NTS, used by ET
+    MIDTIME [1]_           840.2095                                                              float   [s] Exposure midpoint time used by PlateMaker
     SEEING [1]_            None                                                                  float   [arcsec] ETC/PM seeing
     ETCTEFF [1]_           226.882385                                                            float   [s] ETC effective exposure time
     ETCPREV [1]_           0.0                                                                   float   [s] ETC cummulative t_eff for visit
@@ -587,6 +597,7 @@ Required Header Keywords
     POSCVFRC [1]_          0.4956                                                                float   Fraction of converged positioners
     ETCTRANS [1]_          0.915827                                                              float   ETC averaged TRANSP normalized to 1
     SLEWANGL [1]_          16.255                                                                float   [deg] Slew Angle
+    SLEWTIME [1]_          123.315                                                               float   [s] Slew Time
     SBPROF [1]_            BGS                                                                   str     Profile used by ETC
     ETCREAL [1]_           392.495819                                                            float   [s] ETC real open shutter time
     ETCTHRUB [1]_          0.964227                                                              float   ETC averaged thruput (BGS profile)
