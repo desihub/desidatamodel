@@ -90,7 +90,7 @@ References
 * Target Selection: `Myers, A. D., et al. 2023, AJ 165, 50 <https://ui.adsabs.harvard.edu/abs/2023AJ....165...50M/abstract>`_
 * Spectroscopic Pipeline: `Guy, J., et al. 2023, AJ 165, 144 <https://ui.adsabs.harvard.edu/abs/2023AJ....165..144G/abstract>`_
 * Early Data Release: `DESI Collaboration et al. 2024, AJ 168, 58 <https://ui.adsabs.harvard.edu/abs/2024AJ....168...58D/abstract>`_
-* Data Release 1: `DESI Collaboration et al. 2025, in prep <https://arxiv.org>`_
+* Data Release 1: `DESI Collaboration et al. 2025, submitted <https://arxiv.org/abs/2503.14745>`_
 
 Index and Search Pages
 ----------------------
