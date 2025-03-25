@@ -7,12 +7,41 @@ Bit Masks in DESI
 ..   cd desidatamodel/doc
 ..   python ../bin/update_bitmasks > bitmasks.rst && make html
 
+DESI uses bitmasks for both target selection (each bit representing a different
+reason why a target is selected for observation) and quality flags (each bit
+representing a different problem).
 This page describes the bitmasks found in DESI files.
 For details on working with these values, please see the tutorial_ on
 that topic.
 
+Summary of Bit Masks
+--------------------
+
+========================================== ===========
+**Spectroscopic Pipeline**
+:ref:`ZWARN <zwarn-bitmask>`               Redshift fitting quality flags
+:ref:`FIBERSTATUS <fiberstatus-bitmask>`   Hardware-related quality flags per fiber
+:ref:`SPECMASK <specmask-bitmask>`         Spectral quality flag per spectrum per wavelength
+:ref:`CCDMASK <ccdmask-bitmask>`           Spectrograph 2D CCD image quality flags
+**Target Selection**
+:ref:`DESI_TARGET <target-bitmasks>`       Target selection for dark time targets and calibrators
+:ref:`BGS_TARGET <target-bitmasks>`        Target selection for the Bright Galaxy Survey
+:ref:`MWS_TARGET <target-bitmasks>`        Target selection for the Milky Way Survey
+:ref:`SCND_TARGET <target-bitmasks>`       Target selection for secondary targets
+:ref:`OBSCONDITIONS <target-bitmasks>`     Observing conditions for target classes
+**Imaging for Target Selection Input**
+:ref:`WISEMASK_W1 <imaging-bitmasks>`      WISE W1 quality mask
+:ref:`WISEMASK_W2 <imaging-bitmasks>`      WISE W2 quality mask
+:ref:`MASKBITS <imaging-bitmasks>`         Tractor input imaging quality mask
+========================================== ===========
+
+In addition to the above target selection bitmasks, there are also equivalent
+Survey Validation masks SV1, SV2, and SV3; see :ref:`Target Selection Bitmasks <target-bitmasks>`.
+
 Redshift Fitting (Redrock) Masks
 --------------------------------
+
+.. _zwarn-bitmask:
 
 ZWARN
 ~~~~~
@@ -88,6 +117,8 @@ fibers for issues that impact the entire spectrum, e.g. a broken fiber.
 The **SPECMASK** bit mask tracks wavelength dependent isses per spectrum,
 e.g. masks for cosmic rays.
 
+.. _fiberstatus-bitmask:
+
 FIBERSTATUS
 ~~~~~~~~~~~
 
@@ -96,6 +127,11 @@ Bits 0-7 are set by fiber assignment from focal plane information known
 before observations; bits 8-24 are set by the spectroscopic pipeline;
 bits 25-30 are set by the final QA step to set bits for all fibers in
 a petal (e.g. because sky model noise makes all spectra questionable).
+
+Unlike the other quality masks
+(:ref:`ZWARN <zwarn-bitmask>`, :ref:`SPECMASK <specmask-bitmask>`, :ref:`CCDMASK <ccdmask-bitmask>`),
+FIBERSTATUS contains informative bits that aren't necessarily bad.
+See details in the "FIBERSTATUS Bit Definitions" section below.
 
 The canonical code location defining FIBERSTATUS bits is
 `desispec.maskbits L55 <https://github.com/desihub/desispec/blob/0.55.0/py/desispec/maskbits.py#L55>`_.
@@ -112,6 +148,7 @@ File             Table HDU     Column
 |spectra|        FIBERMAP      FIBERSTATUS
 |coadd|          EXP_FIBERMAP  FIBERSTATUS
 |coadd|          FIBERMAP      COADD_FIBERSTATUS
+|redrock|        FIBERMAP      COADD_FIBERSTATUS
 |exposure-qa|    FIBERQA       QAFIBERSTATUS
 |tile-qa|        FIBERQA       QAFIBERSTATUS
 ================ ============= ===========
@@ -127,21 +164,19 @@ File             Table HDU     Column
 FIBERSTATUS Bit Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bit 3 (RESTRICTED) is informative and doesn't necessarily mean that the spectrum is bad,
-i.e. a FIBERSTATUS value of 0 or 8=2**3 is good.
-
-
 ==================== ========== ===========
 Bit Name             Bit Number Description
 ==================== ========== ===========
 UNASSIGNED                    0 Fiber is not assigned to a known target or sky location
-STUCKPOSITIONER               1 INFO: Stuck positioner (but could still be on a good sky location)
+STUCKPOSITIONER               1 INFO: Stuck positioner (but could still be on a valid sky location, though not a science target)
 BROKENFIBER                   2 Broken fiber
 RESTRICTED                    3 INFO: Positioner has restricted reach (but might still be on valid target)
 MISSINGPOSITION               8 Fiber location information is missing
 BADPOSITION                   9 Fiber >100 microns from target location
 POORPOSITION                 10 Fiber >30 microns from target location
 LOWTRANSMISSION              12 Low fiber transmission. Cannot use for sky.
+NEARCHARGETRAP               13 INFO: Fiber trace near charge trap in one of the CCDs
+VARIABLETHRU                 14 INFO: Fiber has throughput variations we cannot model well
 LOWEFFTIME                   15 Effective time for this fiber is too low
 BADFIBER                     16 Unusable fiber
 BADTRACE                     17 Bad trace solution
@@ -161,6 +196,16 @@ BADREADNOISE                 30 Bad read noise in one of the 3 cameras
 RESERVED31                   31 Reserved sign bit; do not use
 ==================== ========== ===========
 
+**Notes**:
+
+  * Bit 3 (RESTRICTED) is informative and doesn't necessarily mean that the spectrum is bad,
+    i.e. a FIBERSTATUS value of 0 or 8=2**3 is good.
+  * Bit 13 (NEARCHARGETRAP) is fine for most targets but indicates a potential problem for analyses
+    that need consistent purity/completeness, especially for faint targets.
+  * Bit 14 (VARIABLETHRU) have questionable flux calibration, but typically the redshifts are ok.
+  * Bits 13 and 14 were added for DR2/Loa, but were not set at the time of DR1/Iron.
+
+.. _specmask-bitmask:
 
 SPECMASK
 ~~~~~~~~
@@ -208,6 +253,7 @@ BADFIBER                      9 fibermask has a non-zero bit
 BADCOLUMN                    10 Bad CCD column biases the flux
 ==================== ========== ===========
 
+.. _ccdmask-bitmask:
 
 CCDMASK
 ~~~~~~~
@@ -237,6 +283,8 @@ HIGHVAR                       7 High variability in pixel value
 BADREADNOISE                  8 Very high CCD amplifier read noise
 ==================== ========== ===========
 
+
+.. _target-bitmasks:
 
 Target masks
 ------------
@@ -293,6 +341,7 @@ SCND_TARGET                         `TARGET`_
 OBSCONDITIONS                       `TARGET_L188`_
 =================================== ==================
 
+.. _imaging-bitmasks:
 
 Imaging masks
 -------------
