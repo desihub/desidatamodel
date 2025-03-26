@@ -198,12 +198,12 @@ RESERVED31                   31 Reserved sign bit; do not use
 
 **Notes**:
 
-  * Bit 3 (RESTRICTED) is informative and doesn't necessarily mean that the spectrum is bad,
-    i.e. a FIBERSTATUS value of 0 or 8=2**3 is good.
-  * Bit 13 (NEARCHARGETRAP) is fine for most targets but indicates a potential problem for analyses
-    that need consistent purity/completeness, especially for faint targets.
-  * Bit 14 (VARIABLETHRU) have questionable flux calibration, but typically the redshifts are ok.
-  * Bits 13 and 14 were added for DR2/Loa, but were not set at the time of DR1/Iron.
+* Bit 3 (RESTRICTED) is informative and doesn't necessarily mean that the spectrum is bad,
+  i.e. a FIBERSTATUS value of 0 or 8=2**3 is good.
+* Bit 13 (NEARCHARGETRAP) is fine for most targets but indicates a potential problem for analyses
+  that need consistent purity/completeness, especially for faint targets.
+* Bit 14 (VARIABLETHRU) have questionable flux calibration, but typically the redshifts are ok.
+* Bits 13 and 14 were added for DR2/Loa, but were not set at the time of DR1/Iron.
 
 .. _specmask-bitmask:
 
