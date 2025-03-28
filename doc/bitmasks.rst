@@ -221,7 +221,7 @@ The canonical code location defining SPECMASK bits is
 SPECMASK Mask Locations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Note: the FITS file HDU EXTNAME=MASK or MASK_B/R/Z, not "SPECMASK".
+Note: the FITS file HDU EXTNAME=MASK or B/R/Z_MASK, not "SPECMASK".
 
 ================ =============
 File             Image HDU
@@ -229,8 +229,8 @@ File             Image HDU
 |frame|          MASK
 |sframe|         MASK
 |cframe|         MASK
-|spectra|        MASK_B/R/Z
-|coadd|          MASK_B/R/Z
+|spectra|        B/R/Z_MASK
+|coadd|          B/R/Z_MASK
 ================ =============
 
 SPECMASK Bit Definitions
