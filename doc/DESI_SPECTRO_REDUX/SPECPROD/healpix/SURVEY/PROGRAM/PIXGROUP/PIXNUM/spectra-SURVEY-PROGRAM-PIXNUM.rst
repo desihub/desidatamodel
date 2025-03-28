@@ -398,7 +398,7 @@ HDU06
 EXTNAME = B_MASK
 
 Mask of spectral data; 0=good.
-See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
+See SPECMASK section of the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -544,7 +544,7 @@ HDU11
 EXTNAME = R_MASK
 
 Mask of spectral data; 0=good.
-See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
+See SPECMASK section of the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -677,7 +677,7 @@ HDU16
 EXTNAME = Z_MASK
 
 Mask of spectral data; 0=good.
-See the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
+See SPECMASK section of the :doc:`bitmask documentation </bitmasks>` page for the definition of the bits.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~

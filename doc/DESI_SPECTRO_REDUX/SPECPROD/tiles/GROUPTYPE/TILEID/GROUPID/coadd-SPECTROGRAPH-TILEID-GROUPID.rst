@@ -363,7 +363,7 @@ HDU06
 EXTNAME = B_MASK
 
 Mask for B-camera flux values.  0=good.
-See the :doc:`bitmask documentation </bitmasks>` for definitions of
+See SPECMASK section of :doc:`bitmask documentation </bitmasks>` for definitions of
 individual bits.
 
 Required Header Keywords
@@ -510,7 +510,7 @@ HDU11
 EXTNAME = R_MASK
 
 Mask for R-camera flux values.  0=good.
-See the :doc:`bitmask documentation </bitmasks>` for definitions of
+See SPECMASK section of :doc:`bitmask documentation </bitmasks>` for definitions of
 individual bits.
 
 Required Header Keywords
@@ -644,7 +644,7 @@ HDU16
 EXTNAME = Z_MASK
 
 Mask for Z-camera flux values.  0=good.
-See the :doc:`bitmask documentation </bitmasks>` for definitions of
+See SPECMASK section of :doc:`bitmask documentation </bitmasks>` for definitions of
 individual bits.
 
 Required Header Keywords
