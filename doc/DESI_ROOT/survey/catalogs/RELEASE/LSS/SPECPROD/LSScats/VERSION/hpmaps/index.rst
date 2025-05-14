@@ -5,7 +5,7 @@
 hpmaps
 ======
 
-Healpix maps with observing conditions averaged over healpix pixels for the given target type, separated in ``PHOTSYS``, imaging regions North (``N``) and South (``S``).
+Healpix maps with observing conditions averaged over healpix pixels for the given target type, separated in ``PHOTSYS``, imaging regions North (``N``) and South (``S``). (Note, these are not Galactic hemispheres, but instead indicate the telescope(s) used to collect the imaging data.)
 
 .. toctree::
    :maxdepth: 1
