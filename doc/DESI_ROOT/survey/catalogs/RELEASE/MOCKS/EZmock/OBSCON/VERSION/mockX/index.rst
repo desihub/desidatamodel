@@ -2,22 +2,20 @@
 mock{MOCKREA}
 =============
 
-For each mock realization here you will find 3 classes of file. The FFA or complete flavour is controled by the parameter ``FLAVOUR`` (``complete`` or ``ffa``)
+For each EZmock realization here you will find  the FFA flavour (``ffa``)
 
-  * Potential assigment files (for all tracers or under some configurations, for each tracer separately)
-
-  * FFA clustering files (only present for ``OBSCON`` = DARK)
-
-  * Complete clustering files
+  * FFA clustering files
 
 For the FFA clustering catalogs, we also share the ``full`` catalogs.
 
-This directory also includes 18 randoms associated for each realization, for each flavour.
+This directory also includes 18 randoms associated for each realization.
 
-  * CAVEAT: for mock realization = 13, the combined NGC+SGC clustering ffa randoms are missing, althought not needed.
+We add another sample unique to EZmock (not present for Abacus) defined as the combination of LRGs and ELGs, called ``LRG+ELG_LOP``. More information about this can be found in: `Valcin et al. (2025)`_
 
 
 Large-scale clustering measurements can be accurately obtained via the columns :py:attr:`RA`, :py:attr:`DEC`, :py:attr:`Z`, :py:attr:`WEIGHT`. Samples are split by Galactic hemisphere, defined by GALCAP ``NGC`` and ``SGC`` or combined without distinction.
+
+.. _Valcin et al. (2025): https://arxiv.org/abs/2508.05467v2
 
 .. toctree::
    :maxdepth: 1

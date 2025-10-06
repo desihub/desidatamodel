@@ -1,10 +1,10 @@
-=====================================
-nz for FFA and COMPLETE mock flavours
-=====================================
+================
+nz for FFA mocks
+================
 
 :Summary: Contains target densities, as a function of redshift.
-:Naming Convention: ``{TARGET}_{FLAVOUR}_nz.txt``, where ``{TARGET}`` is ``QSO``, ``ELG_LOP``, ``LRG``, for dark or ``BGS_BRIGHT-21.5``, for bright. ``{FLAVOUR}`` is either complete or ffa.
-:Regex: ``[A-Za-z0-9._+-]+_(complete|ffa)_nz\.txt``
+:Naming Convention: ``{TARGET}_ffa_nz.txt``, where ``{TARGET}`` is ``QSO``, ``ELG_LOP``, ``LRG``, ``LRG+ELG_LOP`` for dark or ``BGS``, for bright. 
+:Regex: ``[A-Za-z0-9._+-]+_ffa_nz\.txt``
 :File Type: ASCII
 
 Contents

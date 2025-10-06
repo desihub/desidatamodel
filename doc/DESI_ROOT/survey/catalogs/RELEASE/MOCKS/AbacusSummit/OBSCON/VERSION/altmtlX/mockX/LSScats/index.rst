@@ -4,11 +4,11 @@
 LSScats AbacusSummit
 ====================
 
-LSScats contains the final LSS catalogs, separated by target types, that have been prepared to be used directly to obtain clustering statistics. It includes both data for randoms (separated into 18 files given RANN).
+LSScats contains the most realistic LSS catalogs, separated by target types, that have been prepared to be used directly to obtain clustering statistics. It includes both data for randoms (separated into 18 files given RANN).
 
 We can also found a plots directory with the files that made the KP3 paper. 
 
-Any number of the random catalogs, RANN can be used (with the impact only on statistical precision).  
+Any number of the random catalogs, ``RANN`` can be used (with the impact only on statistical precision).  
 
 ``full`` contains information on all targets identified as reachable by DESI fiberassign, split by target types (LRG, ELG, QSO and BGS), including many columns of photometrically and spectroscopically derived information. These files are available before (``{VETO}`` = ``_noveto`` in the file name), after vetos related to angular coordinates are applied (blank) and after an extra healpix map cut is applied (``{VETO}`` = ``_HPmapcut`` in the file name).
 

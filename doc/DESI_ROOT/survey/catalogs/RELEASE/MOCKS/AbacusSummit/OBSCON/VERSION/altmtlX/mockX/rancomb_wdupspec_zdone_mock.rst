@@ -2,10 +2,10 @@
 RANDCOMB FILE ZDONE
 ===================
 
-:Summary: Match of potential assignments from randoms with information from the observed spectroscopic sample given the TILEID and the LOCATION
-:Naming Convention: ``rancomb_{RANN}{OBSCON}wdupspec_zdone.fits``, , where ``{RANN}`` is the number of the random file (0 through 17) and ``{OBSCON}`` is the observing program, either ``dark`` or ``bright``.
+:Summary: Match of potential assignments from randoms with information from the observed mock sample given the TILEID and the LOCATION
+:Naming Convention: ``rancomb_{RANN}{OBSCON}wdupspec_zdone.fits``, where ``{RANN}`` is the number of the random file (0 through 17) and ``{OBSCON}`` is the observing program, either ``dark`` or ``bright``.
 :Regex: ``rancomb_[0-9]+(dark|bright)wdupspec_zdone.fits`` 
-:File Type: FITS, 3 GB  
+:File Type: FITS, 2 GB  
 
 Contents
 ========
@@ -14,7 +14,7 @@ Contents
 Number EXTNAME  Type     Contents
 ====== ======== ======== ===================
 HDU0_           IMAGE    Empty
-HDU1_  ZCATALOG BINTABLE Catalog data
+HDU1_  LSS      BINTABLE Catalog data
 ====== ======== ======== ===================
 
 
@@ -24,14 +24,12 @@ FITS Header Units
 HDU0
 ----
 
-This HDU has no non-standard required keywords.
-
 Empty HDU.
 
 HDU1
 ----
 
-EXTNAME = ZCATALOG
+EXTNAME = LSS
 
 Main data HDU. Merger of randoms to target info in given fibers
 
@@ -70,7 +68,6 @@ TSNR2_LYA float32       LYA template (S/N)^2 summed over B,R,Z
 TSNR2_BGS float32       BGS template (S/N)^2 summed over B,R,Z
 TSNR2_QSO float32       QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG float32       LRG template (S/N)^2 summed over B,R,Z
-TILELOCID int64         Is 10000*TILEID+LOCATION
 ========= ======= ===== =======================================================
 
 

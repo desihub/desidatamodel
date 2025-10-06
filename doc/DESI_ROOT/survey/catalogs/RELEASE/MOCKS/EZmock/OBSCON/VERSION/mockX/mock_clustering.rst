@@ -1,10 +1,10 @@
-=========================================
-mock FFA and COMPLETE clustering catalogs
-=========================================
+============================
+mock FFA clustering catalogs
+============================
 
 :Summary: For each target type, LSS catalogs for the data, ready to be used for clustering measurements, are provided.
-:Naming Convention: ``{TARGET}_{GALCAP}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG_LOP``, ``LRG``, 
-                    for dark or ``BGS_BRIGHT-21.5`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown.
+:Naming Convention: ``{TARGET}_{GALCAP}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG_LOP``, ``LRG``, ``LRG+ELG_LOP``
+                    for dark or ``BGS`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown.
 :Regex: ``[A-Za-z0-9._+-]+_(NGC|SGC)_clustering\.dat\.fits``
 :File Type: FITS, 237 MB
 

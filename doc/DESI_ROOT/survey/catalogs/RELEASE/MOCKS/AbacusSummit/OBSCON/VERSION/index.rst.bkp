@@ -15,10 +15,12 @@ Here you can find 3 distinct mock flavours depending on the level of realism:
   * *altmtl*: Estimated using the same fba algorithm, passes and hardware configuration as the data (found under ``altmtl{MOCKREA}``). To replicate the fiber assigment processing, follow the instructions in `LSS repo`_. 
 
 
+For one realization in OBSCON = ``DARK``, we have also estimated PIP weights based on 128 fba repetitions (see the AltMTL method; `Lasker et al. (2025)`_)
 
 Details about the content and production of the LSS catalogs that we follow for the mocks are found in `Ross et al. (2025)`_
 Details comparing the three mock flavous can be found in `Bianchi et al. (2025)`_
 
+.. _Lasker et al. (2025): https://iopscience.iop.org/article/10.1088/1475-7516/2025/01/127
 .. _Ross et al. (2025): https://iopscience.iop.org/article/10.1088/1475-7516/2025/01/125
 .. _Bianchi et al. (2025): https://iopscience.iop.org/article/10.1088/1475-7516/2025/04/074
 .. _LSS repo: https://github.com/desihub/LSS/

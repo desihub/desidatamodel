@@ -3,7 +3,7 @@ Potential assigment files
 =========================
 
 :Summary: This file includes all reachable, as determined by the DESI fiberassign software, sky coordinates of randoms matching the footprint of DESI target samples as well as information about collisions
-:Naming Convention: ``pota-{OBSCON}.fits`` or ``pota-{OBSCON}_{TAG}_{TRACER}.fits``, where ``{OBSCON}`` can be DARK or BRIGHT and ``{TAG}`` can be joined_unreduced or withntile and ``{TRACER}`` can be ``LRG``, ``QSO``, ``ELG_LOP`` for DARK or ``BGS`` fro BRIGHT
+:Naming Convention: ``pota-{OBSCON}.fits`` or ``pota-{OBSCON}_{TAG}_{TRACER}.fits``, where ``{OBSCON}`` can be DARK or BRIGHT and ``{TAG}`` can be joined_unreduced or withntile and ``{TRACER}`` can be ``LRG``, ``QSO``, ``ELG_LOP``, ``LRG+ELG_LOP`` for DARK or ``BGS`` for BRIGHT
 :Regex: ``pota-(BRIGHT|DARK)_(joined_unreduced|withntile)_(LRG|BGS|QSO|ELG)\.fits``
 :File Type: FITS, 2 GB
 
