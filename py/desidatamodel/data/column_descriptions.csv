@@ -113,8 +113,8 @@ FLUX_Z,float32,nanomaggy,Flux in the Legacy Survey z-band (AB),Flux in the Legac
 FLUX_Z_DERED,float32,nanomaggy,(lower or uppercase) FLUX_Z corrected for Galactic extinction (AB),(lower or uppercase) Flux in the z-band after correcting for Galactic extinction (AB system)
 FRACZ_TILELOCID,float64,,Frac of targets obs at TILELOCID given class,The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 FRAC_TLOBS_TILES,float64,,Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID,Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
-G_R_REST,float32,,color G-R in mocks at restframe,color G-R in mocks at restframe
-G_R_OBS,float32,,color G-R in mocks,color G-R in mocks
+G_R_REST,float32,,Color g-r in mocks at restframe,Color g-r in mocks at restframe
+G_R_OBS,float32,,Color g-r in mocks,Color g-r in mocks
 GAIA_ASTROMETRIC_EXCESS_NOISE,float32,,Gaia astrometric excess noise,Gaia astrometric excess noise
 GAIA_ASTROMETRIC_PARAMS_SOLVED,int64,,Astrometric params estimated for a Gaia source,which astrometric parameters were estimated for a Gaia source
 GAIA_ASTROMETRIC_SIGMA5D_MAX,float32,mas,Gaia semi-major axis of 5-d error ellipsoid,Gaia longest semi-major axis of the 5-d error ellipsoid
@@ -131,7 +131,7 @@ GAIA_PHOT_RP_MEAN_FLUX_OVER_ERROR,float32,,Gaia RP band signal-to-noise,Gaia RP 
 GAIA_PHOT_RP_MEAN_MAG,float32,mag,Gaia RP band magnitude,Gaia RP band magnitude
 GAIA_PHOT_RP_N_OBS,int32,,Gaia RP band number of observations,Gaia RP band number of observations
 GAIA_RA,float64,deg,Gaia ICRS right ascension,Gaia ICRS right ascension
-GALCAP,char[1],,Galactic cap N or S, Galactic cap N or S
+GALCAP,char[1],,Galactic cap N or S,Galactic cap N or S
 GALDEPTH_G,float32,nanomaggy^-2,Galaxy model-based depth in LS g-band,Galaxy model-based depth in LS g-band
 GALDEPTH_R,float32,nanomaggy^-2,Galaxy model-based depth in LS r-band,Galaxy model-based depth in LS r-band
 GALDEPTH_Z,float32,nanomaggy^-2,Galaxy model-based depth in LS z-band,Galaxy model-based depth in LS z-band
