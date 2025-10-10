@@ -338,11 +338,11 @@ PSFSIZE_R,float32,arcsec,Median r-band PSF size of BRICK_PRIMARY objs,Median PSF
 PSFSIZE_Z,float32,arcsec,Median z-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 PSF_TO_FIBER_SPECFLUX,float64,,PSF light fraction in fiber (given seeing),Fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
 QSO_MASKBITS,int32,,QSO Bitwise mask from imaging for potential issues, QSO Bitwise mask from the imaging indicating potential issue or blending
-R_MAG_ABS,float32,,Absolute magnitude in R band in mocks,Absolute magnitude in R band in mocks
-R_MAG_APP,float32,,Apparent magnitude in R band in mocks,Apparent magnitude in R band in mocks
+R_MAG_ABS,float32,,Absolute magnitude in r band in mocks,Absolute magnitude in r band in mocks
+R_MAG_APP,float32,,Apparent magnitude in r band in mocks,Apparent magnitude in r band in mocks
 RA,float64,deg,Barycentric Right Ascension in ICRS,Barycentric Right Ascension in ICRS
 RA_IVAR,float32,deg^-2,Inv variance of RA; w/o cos(dec) or astrom err,"Inverse variance of RA (no cosine term!), excluding astrometric calibration errors"
-RAN_NUM_0_1,float32,,Random number between 0 and 1, Random number between 0 and 1
+RAN_NUM_0_1,float32,,Random number between 0 and 1,Random number between 0 and 1
 REF_CAT,char[2],,"Ref catalog (T2=Tycho-2, G2=Gaia DR2, L2=SGA)","Reference catalog source for star: T2 for Tycho-2, G2 for Gaia DR2, L2 for the SGA, empty otherwise"
 REF_EPOCH,float32,yr,Reference epoch for Gaia/Tycho astrometry,Reference epoch for Gaia/Tycho astrometry. Typically 2015.5 for Gaia
 REF_ID,int64,,Tyc1*1e6+Tyc2*10+Tyc3 (Tycho); sourceid (Gaia),"Tyc1*1,000,000+Tyc2*10+Tyc3 for Tycho-2; ``sourceid`` for Gaia DR2"
@@ -352,7 +352,7 @@ REST_GMR_0P0,float64,,Rest-frame g-r colour at redshift=0.0,Rest-frame g-r colou
 REST_GMR_0P1,float64,,Rest-frame g-r colour at redshift=0.1,Rest-frame g-r colour at redshift=0.1
 RMS_DELTA_X,float32,mm,RMS (over exposures) fiber CS5 X loc on FP,RMS (over exposures) of the fiber difference between measured and requested CS5 X location on focal plane
 RMS_DELTA_Y,float32,mm,RMS (over exposures) fiber CS5 Y loc on FP,RMS (over exposures) of the fiber difference between measured and requested CS5 Y location on focal plane
-RSDZ,float32,,"Redshift in mocks that includes RSD effects",Redshift in mocks that includes RSD effects
+RSDZ,float32,,Redshift in mocks that includes RSD effects,Redshift in mocks that includes RSD effects
 ROSETTE_NUMBER,int32,,Rosette number ID [0-19],Rosette number ID [0-19]
 ROSETTE_R,float64,deg,Radius from the rosette center to the target,Radius from the center of the rosette to the target
 SCND_ORDER,int32,,Nb of row for target entry in secondary file,Number of row for target entry in secondary file (placeholder; needed by fiberassign)
@@ -389,7 +389,7 @@ SPECTROID,int32,,Hardware ID of spectrograph (not used),Hardware ID of spectrogr
 SPECTYPE,char[6],,"Best-fit spectral type: GALAXY, QSO, STAR","Spectral type of Redrock best fit template (e.g. GALAXY, QSO, STAR)"
 SPGRPVAL,int32,,Value by which spectra are grouped for a coadd,Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 STARDENS,float32,,Density (deg-2) of stars in the position from Gaia limited to point-like sources in the range 12 < G < 17,Density (deg-2) of stars in the position from Gaia limited to point-like sources in the range 12 < G < 17 calculated using the desitarget randoms.stellar_density function
-STATUS,int32,,Bit column present in Mocks to select according to nz or footprint,Bit column present in Mocks to select according to nz or footprint
+STATUS,int32,,Bit column present in mocks to select according to nz or footprint,Bit column present in mocks to select according to nz or footprint
 STD_FIBER_DEC,float32,arcsec,Std deviation (over exposures) of fiber DEC,Standard deviation (over exposures) of DEC of actual fiber position
 STD_FIBER_RA,float32,arcsec,Std deviation (over exposures) of fiber RA,Standard deviation (over exposures) of RA of actual fiber position
 SUBPRIORITY,float64,,Random subpriority [0-1) to break assign ties,Random subpriority [0-1) to break assignment ties
