@@ -502,7 +502,7 @@ ZWARN,int64,,Redshift warning bitmask from Redrock,Redshift warning bitmask from
 ZWARN_MTL,int64,,ZWARN from the zmtl file (contains extra bits),The ZWARN from the zmtl file (contains extra bits)
 Z_CIII,float64,,Redshift estimated by QuasarNET with CIII line,Redshift estimated by QuasarNET with CIII line
 Z_CIV,float64,,Redshift estimated by QuasarNET with CIV line,Redshift estimated by QuasarNET with CIV line
-Z_COSMO,float32,,In mocks true cosmological redshift without RSD effects, In mocks true cosmological redshift without RSD effects
+Z_COSMO,float32,,Cosmological redshift without RSD effects in mocks,Cosmological redshift without RSD effects in mocks
 Z_HP,float64,,Redshift from Healpix coadd,Redshift from Healpix coadd
 Z_Halpha,float64,,Redshift estimated by QuasarNET w\ Halpha line,Redshift estimated by QuasarNET with Halpha line
 Z_Hbeta,float64,,Redshift estimated by QuasarNET w\ Hbeta line,Redshift estimated by QuasarNET with Hbeta line
