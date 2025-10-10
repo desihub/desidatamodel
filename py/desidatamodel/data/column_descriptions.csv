@@ -437,7 +437,7 @@ TIMESTAMP,str,s,UTC/ISO time when the target state was updated,UTC/ISO time at w
 TOOID,int64,,ID for this target assigned by the CHECKER,ID for this target assigned by the ``CHECKER``
 TOO_PRIO,char[2],,High-priority (HI) or low-priority (LO) target,Either HI for a very-high-priority target or LO for a very-low-priority target
 TOO_TYPE,char[5],,Type: TILE=special tile; FIBER=fiber-override,Either TILE for a special tile or FIBER for a fiber-override ToO
-TRUEZ,float32,,"True redshift in a galaxy mock catalog","True redshift in a galaxy mock catalog"
+TRUEZ,float32,,True redshift in a galaxy mock catalog,True redshift in a galaxy mock catalog
 TSNR2_BGS,float32,,"BGS template (S/N)^2 summed over B,R,Z","BGS template (S/N)^2 summed over B,R,Z"
 TSNR2_BGS_B,float32,,BGS B template (S/N)^2,BGS B template (S/N)^2
 TSNR2_BGS_R,float32,,BGS R template (S/N)^2,BGS R template (S/N)^2
@@ -481,7 +481,7 @@ WEIGHT,float64,,The combination of all weights to use,The combination of all wei
 WEIGHT_COMP,float64,,Completeness weight accounting for the local chance of being assigned a fiber,Completeness weight accounting for the local chance of being assigned a fiber
 WEIGHT_FKP,float64,,"1/(1+NZ*P0), with P0 different for each tracer","1/(1+NZ*P0), with P0 different for each tracer"
 WEIGHT_FKP_NTILE,float64,,Mean FKP weights as a function of the number of overlapping tiles in the PIP version LSS catalogs,Mean FKP weights as a function of the number of overlapping tiles in the PIP version LSS catalogs (to be used in the angular pair-counts used for angular up-weighting)
-WEIGHT_IIP,float64,,Weight coming from the Probability of assignment in alt histories,Weight coming from the Probability of assignment in alt histories
+WEIGHT_IIP,float64,,Weight coming from the probability of assignment in alt histories,Weight coming from the probability of assignment in alt histories
 WEIGHT_IMLIN,float64,,Imaging systematics weights derived with the eBOSS linear regression method,Imaging systematics weights derived with the eBOSS linear regression method
 WEIGHT_NTILE,float64,,Effective weight as a function of the number of overlapping tiles in the PIP version LSS catalogs,Effective weight as a function of the number of overlapping tiles in the PIP version LSS catalogs (to be used in the angular pair-counts used for angular up-weighting)
 WEIGHT_RESCALED,float64,,Rescaled weight when unifying different targets into a single frame,Rescaled weight when unifying different targets into a single frame
