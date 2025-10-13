@@ -1,8 +1,8 @@
-=======
-VERSION
-=======
+============
+AbacusSummit
+============
 
-``${DESI_ROOT}/survey/catalogs/{RELEASE}/mocks/AbacusSummit/{OBSCON}/{VERSION}`` host 25 Abacus LSS catalogs (and associated randoms) separated by OBSCON: ``DARK`` or ``BRIGHT`` and followed by internal version, where for ``DARK`` (LRG, ELG and QSO) is ``v4.2`` and for ``BRIGHT`` (BGS) is ``v1``. 
+``${DESI_ROOT}/survey/catalogs/{RELEASE}/mocks/AbacusSummit`` host 25 Abacus LSS catalogs (and associated randoms) separated by OBSCON: ``DARK`` or ``BRIGHT`` and followed by internal version, where for ``DARK`` (LRG, ELG and QSO) is ``v4.2`` and for ``BRIGHT`` (BGS) is ``v1``. 
 
 From the landing page, you will find the initial catalog in the Y1 footprint (called forFA files), the lrg_mask file (used only to mask LRGs, present only on the ``DARK`` obscon) and 2 directories called ``altmtl{MOCKREA}`` and ``mock{MOCKREA}`` where ``{MOCKREA}`` is the mock realization from [0,25). 
 
@@ -27,7 +27,5 @@ Details comparing the three mock flavous can be found in `Bianchi et al. (2025)`
 .. toctree::
    :maxdepth: 1
 
-   mock{MOCKREA} : it contains both the FFA and Complete mock flavours, depending on the lñeven of realism <mockX/index>
-   altmtl{MOCKREA} : it contains the AltMTL mock flavour, with the highest level of realism <altmtlX/index>
-   forFA{MOCKREA}.fits : Initial file with tracers from the Abacus CutSky with appropiate columns and selected on the DR1 footprint <forfa-x>
-   forFA{MOCKREA}_matched_input_full_lrg_imask.fits : Optional, only present for OBSCON = DARK. Used to remove LRGs affected by bright stars <lrgmask-x>
+   
+   OBSCON : <OBSCON/index>

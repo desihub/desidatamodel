@@ -11,6 +11,6 @@ More details can be found in `DESI 2024 II (2025)`_
 .. toctree::
    :maxdepth: 1
 
-   EZmock : 1000 realizations at low resolution to estimate covariance matrices <EZmock/OBSCON/VERSION/index>
-   AbacusSummit : 25 realizations of n-body simulations at high resolution for validation, separated by dark and bright programmes, followed by the internal version <AbacusSummit/OBSCON/VERSION/index>
+   EZmock : 1000 realizations at low resolution to estimate covariance matrices <EZmock/index>
+   AbacusSummit : 25 realizations of n-body simulations at high resolution for validation, separated by dark and bright programmes, followed by the internal version <AbacusSummit/index>
 

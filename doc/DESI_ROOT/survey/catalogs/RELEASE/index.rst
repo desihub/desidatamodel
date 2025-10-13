@@ -8,5 +8,5 @@ RELEASE
    :maxdepth: 1
 
    LSS/index
-   QSO/SPECPROD/index
+   QSO/index
    mocks/index
