@@ -17,4 +17,4 @@ Details about the content and production of the LSS catalogs that we follow for 
 .. toctree::
    :maxdepth: 1
 
-   OBSCON : <OBSCON/index>
+   OBSCON : dark or bright <OBSCON/index>

@@ -28,4 +28,4 @@ Details comparing the three mock flavous can be found in `Bianchi et al. (2025)`
    :maxdepth: 1
 
    
-   OBSCON : <OBSCON/index>
+   OBSCON : dark or bright <OBSCON/index>

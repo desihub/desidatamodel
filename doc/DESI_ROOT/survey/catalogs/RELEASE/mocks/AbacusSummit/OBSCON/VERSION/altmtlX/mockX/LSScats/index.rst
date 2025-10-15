@@ -1,8 +1,8 @@
 .. _clustering_altmtl_mock:
 
-====================
-LSScats AbacusSummit
-====================
+=======
+LSScats
+=======
 
 LSScats contains the most realistic LSS catalogs, separated by target types, that have been prepared to be used directly to obtain clustering statistics. It includes both data for randoms (separated into 18 files given RANN).
 

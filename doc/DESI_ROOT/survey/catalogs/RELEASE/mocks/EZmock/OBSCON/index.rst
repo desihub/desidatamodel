@@ -7,4 +7,5 @@ OBSCON
 .. toctree::
    :maxdepth: 1
 
-   VERSION : <VERSION/index>
+   VERSION : Internal version <VERSION/index>
+   

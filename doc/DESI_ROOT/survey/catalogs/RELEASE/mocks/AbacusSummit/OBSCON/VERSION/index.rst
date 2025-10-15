@@ -27,7 +27,7 @@ Details comparing the three mock flavous can be found in `Bianchi et al. (2025)`
 .. toctree::
    :maxdepth: 1
 
-   mock{MOCKREA} : it contains both the FFA and Complete mock flavours, depending on the lñeven of realism <mockX/index>
-   altmtl{MOCKREA} : it contains the AltMTL mock flavour, with the highest level of realism <altmtlX/index>
+   mock{MOCKREA} : It contains both the FFA and Complete mock flavours, depending on the lñeven of realism <mockX/index>
+   altmtl{MOCKREA} : It contains the AltMTL mock flavour, with the highest level of realism <altmtlX/index>
    forFA{MOCKREA}.fits : Initial file with tracers from the Abacus CutSky with appropiate columns and selected on the DR1 footprint <forfa-x>
    forFA{MOCKREA}_matched_input_full_lrg_imask.fits : Optional, only present for OBSCON = DARK. Used to remove LRGs affected by bright stars <lrgmask-x>
