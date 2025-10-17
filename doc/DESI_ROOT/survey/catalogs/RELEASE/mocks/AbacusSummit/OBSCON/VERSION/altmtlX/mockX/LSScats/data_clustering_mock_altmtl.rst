@@ -4,7 +4,7 @@ AltMTL MOCK clustering catalogs
 
 :Summary: For each target type, LSS catalogs for the data, ready to be used for clustering measurements.
 :Naming Convention: ``{TARGET}_{GALCAP}_clustering.dat.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG_LOPnotqso`` or ``LRG`` for dark or ``BGS_BRIGHT-21.5`` or ``BGS_BRIGHT`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown.
-:Regex: ``[A-Za-z0-9._+-]_(NGC|SGC)_clustering\.dat\.fits``
+:Regex: ``[A-Za-z0-9._+-]+_(NGC|SGC)_clustering\.dat\.fits``
 :File Type: FITS, 237 MB
 
 Contents
