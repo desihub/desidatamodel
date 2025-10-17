@@ -4,7 +4,7 @@ collisions OBSCON
 
 :Summary: Compilation of all potential assignments with collisions with fiber assignment keep out zones given FIBER and LOCATION for the given TILEID
 :Naming Convention: ``collisions-{OBSCON}_mock{MOCKREA}.fits``, where ``{OBSCON}`` can be bright or dark and ``{MOCKREA}`` is the mock realization (25 of them)
-:Regex: ``collisions-(bright|dark)\_mock[0-24]\.fits``
+:Regex: ``collision_(bright|dark)_mock[0-9]+\.fits``
 :File Type: FITS, 334 MB
 
 Contents

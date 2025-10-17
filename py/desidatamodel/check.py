@@ -46,6 +46,7 @@ class DataModel(object):
             'DDATE': '[0-9]{8}',  # Date directory used in LSS altmtl simulations
             'DR': 'dr[89]',  # Imaging release, used by desitarget
             'EXPID': '[0-9]{8}',  # zero-padded eight digit number.
+            'fbaX': 'fba[0-9]+',  # used in LSS mock catalogs
             'GROUPID': '[0-9]+',  # Group id *directory* depending on type of GROUPTYPE
             # 'GROUPID': '([14]xsubset[1-6]|lowspeedsubset[1-6]|exp[0-9]{8}|thru[0-9]{8}|[0-9]{8})',  # Group id depending on type of GROUPTYPE
             'GROUPTYPE': '(1x_depth|4x_depth|lowspeed|cumulative|perexp|pernight)',  # Tile grouping, e.g. pernight, perexp

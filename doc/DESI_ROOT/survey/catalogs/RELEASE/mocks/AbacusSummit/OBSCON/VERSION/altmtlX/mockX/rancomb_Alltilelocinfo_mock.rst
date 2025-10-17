@@ -4,7 +4,7 @@ Tile locations in MOCK Randoms
 
 :Summary: For each random given in the directory, the list of unique TARGETIDs with number of appearances as reachable according to fiber assigment and details on those appearances.
 :Naming Convention: ``rancomb_{RANN}{OBSCON}_Alltilelocinfo.fits``, where ``{OBSCON}`` denotes the observing program, either ``dark`` or ``bright`` and ``{RANN}`` is the random number (18 of them).
-:Regex: ``rancomb_[0-9]{1,2}{dark|bright}_Alltilelocinfo.fits``
+:Regex: ``rancomb_[0-9]{1,2}(dark|bright)_Alltilelocinfo\.fits``
 :File Type: FITS, 3 GB
 
 Contents
