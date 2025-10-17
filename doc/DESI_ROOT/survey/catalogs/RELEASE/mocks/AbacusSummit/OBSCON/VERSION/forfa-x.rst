@@ -4,8 +4,8 @@ forFA
 
 :Summary: This is the parent tracer catalog before entering any DESI processing. It has the basic imaging mask applied and tracers have been selected in the DR1 footprint already.
 :Naming Convention: ``forFA{MOCKREA}.fits``, where ``{MOCKREA}`` is the mock realization (25 of them)
-:Regex: ``forFA[0-9]{2}.fits`` 
-:File Type: FITS, 2 GB  
+:Regex: ``forFA[0-9]+\.fits``
+:File Type: FITS, 2 GB
 
 Contents
 ========
@@ -13,7 +13,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    
+HDU0_          IMAGE
 HDU1_  TARGETS BINTABLE Main Table
 ====== ======= ======== ===================
 

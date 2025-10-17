@@ -4,8 +4,8 @@ lrg imaging mask
 
 :Summary: Extra masking layer for the LRG tracers, associated with bright stars in the foreground. one row per LRG with masking information. Only present in DARK OBSCON
 :Naming Convention: ``forFA{MOCKREA}_matched_input_full_lrg_imask.fits``, where  ``{MOCKREA}`` is the mock realization (25 of them).
-:Regex: ``forFA[0-9]{2}_matched_input_full_lrg_imask.fits`` 
-:File Type: FITS, 262 MB 
+:Regex: ``forFA[0-9]+_matched_input_full_lrg_imask\.fits``
+:File Type: FITS, 262 MB
 
 Contents
 ========
@@ -13,7 +13,7 @@ Contents
 ====== ======= ======== ===================
 Number EXTNAME Type     Contents
 ====== ======= ======== ===================
-HDU0_          IMAGE    
+HDU0_          IMAGE
 HDU1_  MASK    BINTABLE Catalog of LRGs
 ====== ======= ======== ===================
 
