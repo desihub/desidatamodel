@@ -3,8 +3,8 @@ mock FFA full
 =============
 
 :Summary: LSS catalogs containing information on all targets identified as reachable by DESI fiberassign for the FFA flavour, with one entry for each. The files are split by target type
-:Naming Convention: ``ffa_full_{TARGET}.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG_LOP``, ``LRG`` or ``LRG+ELG_LOP`` for dark or ``BGS`` for bright. 
-:Regex: ``ffa_full_[A-Za-z].fits``
+:Naming Convention: ``ffa_full_{TARGET}.fits``, where ``{TARGET}`` is the target type: ``QSO``, ``ELG_LOP``, ``LRG`` or ``LRG+ELG_LOP`` for dark or ``BGS`` for bright.
+:Regex: ``ffa_full_[A-Za-z_]+\.fits``
 :File Type: FITS, 11 GB
 
 Contents
