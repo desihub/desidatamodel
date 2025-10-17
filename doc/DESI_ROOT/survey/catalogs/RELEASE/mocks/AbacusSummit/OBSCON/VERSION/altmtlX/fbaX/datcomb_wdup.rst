@@ -2,9 +2,9 @@
 datcomb OBSCON wdup files
 =========================
 
-:Summary: Match of targets (with duplicate TARGETID corresponding to each potential assignment) with mock data. Both for potential assigments and actual assigments. 
-:Naming Convention: ``datcomb_{OBSCON}{assign}wdup.fits``, where ``{OBSCON}`` is either dark or bright and ``{assign}`` is optional, depending if it is potential assigments or actual observed assigments. 
-:Regex: ``datcomb_{dark|bright}{|assign}wdup.fits``
+:Summary: Match of targets (with duplicate TARGETID corresponding to each potential assignment) with mock data. Both for potential assigments and actual assigments.
+:Naming Convention: ``datcomb_{OBSCON}{assign}wdup.fits``, where ``{OBSCON}`` is either dark or bright and ``{assign}`` is optional, depending if it is potential assigments or actual observed assigments.
+:Regex: ``datcomb_(dark|bright)(assign|)wdup\.fits``
 :File Type: FITS, 2 GB
 
 

@@ -4,7 +4,7 @@ COMBINED MOCK DATA AFTER REDSHIFT
 
 :Summary: Match of targets (with duplicate TARGETID corresponding to each potential assignment) with mock redshift data.
 :Naming Convention: ``datcomb_{OBSCON}_tarspecwdup_zdone.fits``, where ``{OBSCON}`` is dark or bright
-:Regex: ``datcomb_{dark|bright}_tarspecwdup_zdone.fits``
+:Regex: ``datcomb_(dark|bright)_tarspecwdup_zdone\.fits``
 :File Type: FITS, 6 GB
 
 Contents
