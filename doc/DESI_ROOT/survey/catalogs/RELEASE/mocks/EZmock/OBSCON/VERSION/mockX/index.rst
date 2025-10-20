@@ -2,7 +2,7 @@
 mock{MOCKREA}
 =============
 
-For each EZmock realization here you will find  the FFA flavour (``ffa``)
+For each EZmock realization here you will find  the FFA flavour (``ffa``). ``{OBSCON}`` can be either ``dark`` or ``bright``.
 
   * FFA clustering files
 
@@ -25,3 +25,4 @@ Large-scale clustering measurements can be accurately obtained via the columns :
    {TRACER}_{FLAVOUR}_{GALCAP}_{RANN}_clustering.ran.fits : Use for clustering measurements (randoms) <mock_ran_clustering>
    {TRACER}_{FLAVOUR}_{GALCAP}_clustering.dat.fits : Use for clustering measurements (data) <mock_clustering>
    ffa_full_{TRACER}.fits : full sample for the ffa flavour, separated by tracer <full_ffa_mock>
+   comb{OBSCON}_wdupspec_zdone.fits : Match of potential assigments with parent mock catalog <comb_wdupspec_zdone> 
