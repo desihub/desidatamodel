@@ -4,7 +4,7 @@ VERSION
 
 ``${DESI_ROOT}/survey/catalogs/{RELEASE}/mocks/EZmock/{OBSCON}/{VERSION}`` host 1000 EZmock LSS catalogs (and associated randoms) separated by OBSCON: ``DARK`` or ``BRIGHT`` and followed by internal version (both ``v1`` for ``DARK`` and ``BRIGHT``).  
 
-From the landing page, you will find the initial catalogs in the Y1 footprint (called forFA files) in the ``forFA`` directory, including the imaging lrg_mask files (used only to mask LRGs, present only on the ``DARK`` obscon) plus 1 directory called ``mock{MOCKREA}`` where ``{MOCKREA}`` is the mock realization from [1,1000]. 
+From the landing page, you will find one directory per realization called ``mock{MOCKREA}`` where ``{MOCKREA}`` is the mock realization from [1,1000]. 
 
 Here you can find 1 mock flavour:
 
@@ -18,4 +18,3 @@ Details about the content and production of the LSS catalogs that we follow for 
    :maxdepth: 1
 
    mock{MOCKREA} : it contains both the FFA and Complete mock flavours, depending on the level of realism <mockX/index>
-   forFA : it contains the initial EZmock catalogs in the DR1 footprint and the LRG imaging mask (for OBSCON = DARK only). <forFA/index>

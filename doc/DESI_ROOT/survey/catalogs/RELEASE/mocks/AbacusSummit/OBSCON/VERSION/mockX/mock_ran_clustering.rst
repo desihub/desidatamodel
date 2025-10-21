@@ -4,7 +4,7 @@ mock FFA and COMPLETE RANDOM clustering catalogs
 
 :Summary: For each target type, LSS catalogs for the randoms, ready to be used for clustering measurements, are provided.
 :Naming Convention: ``{TARGET}_{GALCAP}_{RANN}_clustering.ran.fits``, where ``{TARGET}`` is the target: ``QSO``, ``ELG_LOP`` or ``LRG``
-                    for dark or ``BGS_BRIGHT-21.5`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC`` or the combination of both if not explicitly shown. And ``{RANN}`` is the number for the random file (18 total, numbered 0 through 17). Each are random with respect to each other.
+                    for dark or ``BGS_BRIGHT-21.5`` for bright. ``{GALCAP}`` is the Galactic hemisphere region ``NGC`` or ``SGC``. And ``{RANN}`` is the number for the random file (18 total, numbered 0 through 17). Each are random with respect to each other.
 :Regex: ``[A-Za-z0-9._+-]+_(NGC|SGC)_[0-9]+_clustering\.ran\.fits``
 :File Type: FITS, 1 GB
 
