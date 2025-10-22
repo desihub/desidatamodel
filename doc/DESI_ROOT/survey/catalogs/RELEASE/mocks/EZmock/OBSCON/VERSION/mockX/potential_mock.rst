@@ -2,9 +2,9 @@
 Potential assigment files
 =========================
 
-:Summary: This file includes all reachable sky coordinates, as determined by the DESI fiberassign software, matching the footprint of DESI target samples as well as information about collisions
+:Summary: This file includes all reachable sky coordinates, as determined by the DESI fiberassign software, matching the footprint of DESI target samples as well as information about collisions.
 :Naming Convention: ``pota-{OBSCON}.fits`` where ``{OBSCON}`` can be ``DARK`` or ``BRIGHT``.
-:Regex: ``pota-(BRIGHT|DARK).fits``
+:Regex: ``pota-(BRIGHT|DARK)(_joined_unreduced_BGS|)\.fits``
 :File Type: FITS, 2 GB
 
 Contents
