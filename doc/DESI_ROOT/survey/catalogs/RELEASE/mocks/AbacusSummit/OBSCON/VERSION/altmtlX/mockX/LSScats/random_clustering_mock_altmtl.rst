@@ -54,23 +54,35 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-================ ======= ===== ====================================================================================================
-Name             Type    Units Description
-================ ======= ===== ====================================================================================================
-TARGETID         int64         Unique DESI target ID
-RA               float64 deg   Barycentric Right Ascension in ICRS
-DEC              float64 deg   Barycentric declination in ICRS
-NTILE            int64         Number of tiles target was available on
-PHOTSYS          char[1]       N for the MzLS/BASS photometric system, S for DECaLS
-FRAC_TLOBS_TILES float64       Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
-Z                float64       Redshift measured by Redrock
-WEIGHT           float64       The combination of all weights to use
-WEIGHT_SYS       float64       Correction for fluctuations in projected density with imaging conditions, from random forrest method
-WEIGHT_COMP      float64       Completeness weight accounting for the local chance of being assigned a fiber
-WEIGHT_ZFAIL     float64       Should be all 1 at this point for main survey
-TARGETID_DATA    float64       For randoms and mocks: Unique DESI target ID of associated TILELOCID
-NX               float64       Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
-WEIGHT_FKP       float64       1/(1+NZ*P0), with P0 different for each tracer
-================ ======= ===== ====================================================================================================
+================= ======= ===== ====================================================================================================
+Name              Type    Units Description
+================= ======= ===== ====================================================================================================
+TARGETID          int64         Unique DESI target ID
+RA                float64 deg   Barycentric Right Ascension in ICRS
+DEC               float64 deg   Barycentric declination in ICRS
+NTILE             int64         Number of tiles target was available on
+PHOTSYS           char[1]       N for the MzLS/BASS photometric system, S for DECaLS
+FRAC_TLOBS_TILES  float64       Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
+Z                 float64       Redshift measured by Redrock
+WEIGHT            float64       The combination of all weights to use
+WEIGHT_SYS        float64       Correction for fluctuations in projected density with imaging conditions, from random forrest method
+WEIGHT_COMP       float64       Completeness weight accounting for the local chance of being assigned a fiber
+WEIGHT_ZFAIL      float64       Should be all 1 at this point for main survey
+TARGETID_DATA     float64       For randoms and mocks: Unique DESI target ID of associated TILELOCID
+NX                float64       Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
+WEIGHT_FKP        float64       1/(1+NZ*P0), with P0 different for each tracer
+WEIGHT_RF [1]_    float64       Imaging systematics weights derived with the regressis random forest regression method
+WEIGHT_SN [1]_    float64       Imaging systematics weights derived with the sysnet NN regression method
+WEIGHT_IMLIN [1]_ float64       Imaging systematics weights derived with the eBOSS linear regression method
+================= ======= ===== ====================================================================================================
 
+.. [1] Optional
 
+Notes and Examples
+==================
+
+Optional columns:
+
+* ``WEIGHT_IMLIN`` present only in LRG and BGS_BRIGHT-21.5 samples
+* ``WEIGHT_RF`` present only in QSO samples.
+* ``WEIGHT_SN`` present only in LRG and ELG_LOP samples.

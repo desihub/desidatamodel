@@ -62,7 +62,6 @@ TARGETID        int64         Unique DESI target ID
 RA              float32 deg   Barycentric Right Ascension in ICRS
 DEC             float32 deg   Barycentric declination in ICRS
 TRUEZ           float32       True redshift in a galaxy mock catalog
-STATUS          int32         Bit column present in Mocks to select according to nz or footprint
 RSDZ            float32       Redshift in mocks that includes RSD effects
 PRIORITY_INIT   int64         Target initial priority from target selection bitmasks and OBSCONDITIONS
 PRIORITY        int64         Target current priority

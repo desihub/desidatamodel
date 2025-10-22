@@ -89,6 +89,8 @@ NOBS_Z             int64           Number of images for central pixel in z-band
 MASKBITS           int16           Bitwise mask from the imaging indicating potential issue or blending
 BGS_TARGET [1]_    int64           BGS (Bright Galaxy Survey) target selection bitmask
 R_MAG_ABS [1]_     float32         Absolute magnitude in R band in mocks
+TSNR2_BGS [1]_     float64         BGS template (S/N)^2 summed over B,R,Z
+GOODTSNR [1]_      logical         True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 ================== ========= ===== =======================================================================================================================================
 
 .. [1] Optional
@@ -98,5 +100,5 @@ Notes and Examples
 
 Optional columns:
 
-* ``BGS_TARGET`` and ``R_MAG_ABS`` only present in BGS samples.
+* ``BGS_TARGET``, ``R_MAG_ABS``, ``TSNR2_BGS`` and ``GOODTSNR`` only present in BGS samples.
 * ``lrg_mask`` only present in LRG samples.
