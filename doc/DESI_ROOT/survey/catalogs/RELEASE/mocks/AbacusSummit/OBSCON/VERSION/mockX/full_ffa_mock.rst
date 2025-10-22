@@ -91,8 +91,8 @@ TSNR2_QSO      float32        QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG      float32        LRG template (S/N)^2 summed over B,R,Z
 TILELOCID      int64          Is 10000*TILEID+LOCATION
 NTILE          int64          Number of tiles target was available on
-TILES          char[23]       TILEIDs of those tile, in string form separated by -
-TILELOCIDS     char[79]       TILELOCIDs that the target was available for separated by -
+TILES          char[*]        TILEIDs of those tile, in string form separated by -
+TILELOCIDS     char[*]        TILELOCIDs that the target was available for separated by -
 WEIGHT_IIP     float32        Weight coming from the Probability of assignment in alt histories
 BITWEIGHTS     int64[4]       A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 PHOTSYS        char[1]        N for the MzLS/BASS photometric system, S for DECaLS

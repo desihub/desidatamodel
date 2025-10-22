@@ -74,8 +74,8 @@ GOODHARDLOC logical        True/False whether the fiber had good hardware
 GOODPRI     logical        True/False whether the priority of what was assigned to the location was less or equals to the base priority of the given target class
 GOODTSNR    logical        True/False whether the TSNR (class) value used was above the minimum threshold for the given target class
 NTILE       int64          Number of tiles target was available on
-TILES       char[23]       TILEIDs of those tile, in string form separated by -
-TILELOCIDS  char[79]       TILELOCIDs that the target was available for separated by -
+TILES       char[*]        TILEIDs of those tile, in string form separated by -
+TILELOCIDS  char[*]        TILELOCIDs that the target was available for separated by -
 NOBS_G      int16          Number of images for central pixel in g-band
 NOBS_R      int16          Number of images for central pixel in r-band
 NOBS_Z      int16          Number of images for central pixel in z-band

@@ -66,8 +66,8 @@ DEC             float64   deg   Barycentric declination in ICRS
 TILEID [1]_     int64           Unique DESI tile ID
 COLLISION [1]_  logical         Boolean for whether given potential assignment had a fiber collision with any keep-out zone
 NTILE [1]_      int64           Number of tiles target was available on
-TILES [1]_      char[36]        TILEIDs of those tile, in string form separated by -
-TILELOCIDS [1]_ char[110]       TILELOCIDs that the target was available for separated by -
+TILES [1]_      char[*]         TILEIDs of those tile, in string form separated by -
+TILELOCIDS [1]_ char[*]         TILELOCIDs that the target was available for separated by -
 =============== ========= ===== ===========================================================================================
 
 .. [1] Optional

@@ -77,8 +77,8 @@ GOODHARDLOC        logical         True/False whether the fiber had good hardwar
 LOCATION_ASSIGNED  logical         True/False for assigned/unassigned for the target in question
 TILELOCID_ASSIGNED logical         0/1 for unassigned/assigned for TILELOCID in question (it could have been assigned to a different target)
 NTILE              int64           Number of tiles target was available on
-TILES              char[36]        TILEIDs of those tile, in string form separated by -
-TILELOCIDS         char[109]       TILELOCIDs that the target was available for separated by -
+TILES              char[*]         TILEIDs of those tile, in string form separated by -
+TILELOCIDS         char[*]         TILELOCIDs that the target was available for separated by -
 COMP_TILE          float64         Assignment completeness for all targets of this type with the same value for TILES
 FRACZ_TILELOCID    float64         The fraction of targets of this type at this TILELOCID that received an observation (after forcing each target to a unique TILELOCID)
 PHOTSYS            char[1]         N for the MzLS/BASS photometric system, S for DECaLS

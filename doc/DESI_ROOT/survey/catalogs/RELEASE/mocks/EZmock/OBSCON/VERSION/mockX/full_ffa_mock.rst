@@ -66,9 +66,9 @@ TRUEZ            float32             True redshift in a galaxy mock catalog
 RAN_NUM_0_1 [1]_ float32             Random number between 0 and 1
 STATUS           binary              Bit column present in mocks to select according to nz or footprint
 MASKBITS         int16               Bitwise mask from the imaging indicating potential issue or blending
-NOBS_G           int64               Number of images for central pixel in g-band
-NOBS_R           int64               Number of images for central pixel in r-band
-NOBS_Z           int64               Number of images for central pixel in z-band
+NOBS_G           int16               Number of images for central pixel in g-band
+NOBS_R           int16               Number of images for central pixel in r-band
+NOBS_Z           int16               Number of images for central pixel in z-band
 NZ [1]_          float64  h^3 Mpc^-3 The comoving number density of the tracer at the given redshift, assuming complete sample
 GALCAP [1]_      char[1]             Galactic cap N or S
 DESI_TARGET      int64               DESI (dark time program) target selection bitmask
@@ -93,8 +93,8 @@ TSNR2_QSO        float32             QSO template (S/N)^2 summed over B,R,Z
 TSNR2_LRG        float32             LRG template (S/N)^2 summed over B,R,Z
 TILELOCID        int64               Is 10000*TILEID+LOCATION
 NTILE            int64               Number of tiles target was available on
-TILES            char[23]            TILEIDs of those tile, in string form separated by -
-TILELOCIDS       char[79]            TILELOCIDs that the target was available for separated by -
+TILES            char[*]             TILEIDs of those tile, in string form separated by -
+TILELOCIDS       char[*]             TILELOCIDs that the target was available for separated by -
 WEIGHT_IIP       float32             Weight coming from the probability of assignment in alt histories
 BITWEIGHTS       int64[4]            A size of two 64 bit masks that encodes which of the alternative assignment histories that the target was assigned in
 PHOTSYS          char[1]             N for the MzLS/BASS photometric system, S for DECaLS

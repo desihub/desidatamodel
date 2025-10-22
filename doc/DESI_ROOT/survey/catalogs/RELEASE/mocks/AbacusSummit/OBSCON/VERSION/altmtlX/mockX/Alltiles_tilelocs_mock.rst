@@ -58,6 +58,6 @@ Name       Type      Units Description
 ========== ========= ===== ===========================================================
 TARGETID   int64           Unique DESI target ID
 NTILE      int64           Number of tiles target was available on
-TILES      char[36]        TILEIDs of those tile, in string form separated by -
-TILELOCIDS char[111]       TILELOCIDs that the target was available for separated by -
+TILES      char[*]         TILEIDs of those tile, in string form separated by -
+TILELOCIDS char[*]         TILELOCIDs that the target was available for separated by -
 ========== ========= ===== ===========================================================

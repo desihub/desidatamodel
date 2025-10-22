@@ -68,9 +68,9 @@ TRUEZ         float32            True redshift in a galaxy mock catalog
 RAN_NUM_0_1   float32            Random number between 0 and 1
 STATUS        binary             Bit column present in Mocks to select according to nz or footprint
 MASKBITS      int16              Bitwise mask from the imaging indicating potential issue or blending
-NOBS_G        int64              Number of images for central pixel in g-band
-NOBS_R        int64              Number of images for central pixel in r-band
-NOBS_Z        int64              Number of images for central pixel in z-band
+NOBS_G        int16              Number of images for central pixel in g-band
+NOBS_R        int16              Number of images for central pixel in r-band
+NOBS_Z        int16              Number of images for central pixel in z-band
 NZ            float64 h^3 Mpc^-3 The comoving number density of the tracer at the given redshift, assuming complete sample
 GALCAP        char[1]            Galactic cap (N or S)
 DESI_TARGET   int64              DESI (dark time program) target selection bitmask
