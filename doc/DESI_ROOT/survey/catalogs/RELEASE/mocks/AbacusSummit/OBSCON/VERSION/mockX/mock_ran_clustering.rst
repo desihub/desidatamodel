@@ -54,9 +54,9 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-===================== ======= ===== ====================================================================
+===================== ======= ===== ====================================================================================================
 Name                  Type    Units Description
-===================== ======= ===== ====================================================================
+===================== ======= ===== ====================================================================================================
 RA                    float64 deg   Barycentric Right Ascension in ICRS
 DEC                   float64 deg   Barycentric declination in ICRS
 Z                     float64       Redshift measured by Redrock
@@ -73,8 +73,7 @@ FRAC_TLOBS_TILES [1]_ float64       Fraction of targets with the same TILES valu
 TILELOCID [1]_        int64         Is 10000*TILEID+LOCATION
 NX [1]_               float64       Estimated mean number density given the redshift and number of overlapping tiles (NTILE)
 WEIGHT_IMLIN [1]_     float64       Imaging systematics weights derived with the eBOSS linear regression method
-
-===================== ======= ===== ====================================================================
+===================== ======= ===== ====================================================================================================
 
 .. [1] Optional
 
