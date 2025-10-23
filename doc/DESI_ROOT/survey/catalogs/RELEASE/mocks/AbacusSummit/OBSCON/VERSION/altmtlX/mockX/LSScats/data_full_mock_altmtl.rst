@@ -60,8 +60,8 @@ LOCATION           int32           Location on the focal plane PETAL_LOC*1000 + 
 FIBER              int32           Fiber ID on the CCDs [0-4999]
 TARGETID           int64           Unique DESI target ID
 TILEID             int64           Unique DESI tile ID
-RA                 float32   deg   Barycentric Right Ascension in ICRS
-DEC                float32   deg   Barycentric declination in ICRS
+RA                 float64   deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
+DEC                float64   deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
 PRIORITY_INIT      int64           Target initial priority from target selection bitmasks and OBSCONDITIONS
 DESI_TARGET        int64           DESI (dark time program) target selection bitmask
 TILELOCID          int64           Is 10000*TILEID+LOCATION
@@ -102,3 +102,8 @@ Optional columns:
 
 * ``BGS_TARGET``, ``R_MAG_ABS``, ``TSNR2_BGS`` and ``GOODTSNR`` only present in BGS samples.
 * ``lrg_mask`` only present in LRG samples.
+
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64
+

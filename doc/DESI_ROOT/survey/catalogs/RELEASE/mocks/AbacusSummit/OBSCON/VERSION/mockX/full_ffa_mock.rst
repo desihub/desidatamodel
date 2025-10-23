@@ -61,8 +61,8 @@ FIBER          int64          Fiber ID on the CCDs [0-4999]
 TARGETID       int64          Unique DESI target ID
 R_MAG_APP [1]_ float32        Apparent magnitude in R band in mocks
 R_MAG_ABS [1]_ float32        Absolute magnitude in R band in mocks
-DEC            float64  deg   Barycentric declination in ICRS
-RA             float64  deg   Barycentric Right Ascension in ICRS
+DEC            float64  deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
+RA             float64  deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
 TRUEZ          float32        True redshift in a galaxy mock catalog
 RSDZ           float32        Redshift in mocks that includes RSD effects
 DESI_TARGET    int64          DESI (dark time program) target selection bitmask
@@ -99,4 +99,8 @@ PHOTSYS        char[1]        N for the MzLS/BASS photometric system, S for DECa
 ============== ======== ===== =====================================================================================================================
 
 .. [1] Optional, present only on the BRIGHT TRACERS (BGS)
+
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64
 

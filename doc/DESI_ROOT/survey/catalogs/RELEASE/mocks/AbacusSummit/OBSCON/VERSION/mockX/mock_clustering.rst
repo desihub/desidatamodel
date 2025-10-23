@@ -61,8 +61,8 @@ LOCATION           int64          Location on the focal plane PETAL_LOC*1000 + D
 FIBER              int64          Fiber ID on the CCDs [0-4999]
 TARGETID           int64          Unique DESI target ID
 R_MAG_ABS [1]_     float32        Absolute magnitude in r band in mocks
-DEC                float64  deg   Barycentric declination in ICRS
-RA                 float64  deg   Barycentric Right Ascension in ICRS
+DEC                float64  deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
+RA                 float64  deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
 Z                  float32        Redshift measured by Redrock
 DESI_TARGET        int64          DESI (dark time program) target selection bitmask
 PRIORITY_INIT      int64          Target initial priority from target selection bitmasks and OBSCONDITIONS
@@ -115,3 +115,8 @@ Notes and Examples
 * ``R_MAG_ABS`` only present in BGS catalogs 
 * ``R_MAG_APP`` only present in BGS ffa catalogs
 * ``NUMOBS_MORE``, ``NUMOBS_INIT``, ``BGS_TARGET``, ``MWS_TARGET``, ``SUBPRIORITY``, ``BRICKNAME``, ``OBSCONDITIONS``, ``SCND_TARGET``, ``TSNR2_ELG``, ``TSNR2_LYA``, ``TSNR2_BGS``, ``TSNR2_QSO``, ``TSNR2_LRG``, ``TILELOCID``, ``TILES``, ``TILELOCIDS``, ``WEIGHT_IIP``, ``BITWEIGHTS`` and ``WEIGHT_IMLIN`` only present in ffa catalogs
+
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64
+

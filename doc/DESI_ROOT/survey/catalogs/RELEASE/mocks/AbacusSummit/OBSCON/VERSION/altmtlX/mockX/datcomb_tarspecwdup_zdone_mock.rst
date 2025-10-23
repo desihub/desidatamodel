@@ -61,8 +61,8 @@ FIBER           int32         Fiber ID on the CCDs [0-4999]
 TARGETID        int64         Unique DESI target ID
 TILEID          int64         Unique DESI tile ID
 R_MAG_ABS [1]_  float32       Absolute magnitude in R band in mocks
-DEC             float64 deg   Barycentric declination in ICRS
-RA              float64 deg   Barycentric Right Ascension in ICRS
+DEC             float64 deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
+RA              float64 deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
 DESI_TARGET     int64         DESI (dark time program) target selection bitmask
 PRIORITY_INIT   int64         Target initial priority from target selection bitmasks and OBSCONDITIONS
 BGS_TARGET [1]_ int64         BGS (Bright Galaxy Survey) target selection bitmask
@@ -76,4 +76,8 @@ ZWARN_MTL       int64         The ZWARN from the zmtl file (contains extra bits)
 =============== ======= ===== ========================================================================
 
 .. [1] Optional, only present on bright samples
+
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64
 

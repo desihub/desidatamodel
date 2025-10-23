@@ -59,8 +59,8 @@ Name            Type    Units Description
 LOCATION        int64         Location on the focal plane PETAL_LOC*1000 + DEVICE_LOC
 FIBER           int64         Fiber ID on the CCDs [0-4999]
 TARGETID        int64         Unique DESI target ID
-RA              float32 deg   Barycentric Right Ascension in ICRS
-DEC             float32 deg   Barycentric declination in ICRS
+RA              float64 deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
+DEC             float64 deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
 TRUEZ           float32       True redshift in a galaxy mock catalog
 RSDZ            float32       Redshift in mocks that includes RSD effects
 PRIORITY_INIT   int64         Target initial priority from target selection bitmasks and OBSCONDITIONS
@@ -87,4 +87,8 @@ R_MAG_ABS [1]_  float32       Absolute magnitude in R band in mocks
 =============== ======= ===== =======================================================================================================
 
 .. [1] Optional, present in the bright samples only
+
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64
 

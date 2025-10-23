@@ -67,8 +67,8 @@ TRUEZ [1]_         float32       True redshift in a galaxy mock catalog
 RSDZ [1]_          float32       Redshift in mocks that includes RSD effects
 ZWARN [1]_         int64         Redshift warning bitmask from Redrock
 FIBER [1]_         int32         Fiber ID on the CCDs [0-4999]
-RA [1]_            float32 deg   Barycentric Right Ascension in ICRS
-DEC [1]_           float32 deg   Barycentric declination in ICRS
+RA [1]_            float64 deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
+DEC [1]_           float64 deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
 PRIORITY_INIT [1]_ int64         Target initial priority from target selection bitmasks and OBSCONDITIONS
 DESI_TARGET [1]_   int64         DESI (dark time program) target selection bitmask
 R_MAG_ABS [1]_     float32       Absolute magnitude in R band in mocks
@@ -86,3 +86,6 @@ Optional columns:
 * ``FIBER``, ``RA``, ``DEC``, ``PRIORITY_INIT``, ``DESI_TARGET`` : Present in wdup potential file, both for dark and bright
 * ``BGS_TARGET``, ``R_MAG_ABS`` : Only present in bright wdup potential file
 
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64

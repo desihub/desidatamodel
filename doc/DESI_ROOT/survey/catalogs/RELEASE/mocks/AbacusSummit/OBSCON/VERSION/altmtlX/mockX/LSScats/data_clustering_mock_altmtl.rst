@@ -57,8 +57,8 @@ Required Data Table Columns
 Name              Type    Units Description
 ================= ======= ===== ====================================================================================================
 TARGETID          int64         Unique DESI target ID
-DEC               float64 deg   Barycentric declination in ICRS
-RA                float64 deg   Barycentric Right Ascension in ICRS
+DEC               float64 deg   Barycentric declination in ICRS. Note that DEC for dark tracer is type = float32
+RA                float64 deg   Barycentric Right Ascension in ICRS. Note that RA for dark tracer is type = float32
 Z                 float32       Redshift measured by Redrock
 NTILE             int64         Number of tiles target was available on
 PHOTSYS           char[1]       N for the MzLS/BASS photometric system, S for DECaLS
@@ -84,4 +84,8 @@ Optional columns:
 * ``WEIGHT_IMLIN`` present only in LRG and BGS_BRIGHT-21.5 samples 
 * ``WEIGHT_RF`` present only in QSO samples.
 * ``WEIGHT_SN`` present only in LRG and ELG_LOP samples.
+
+.. warning::
+
+        For OBSCON = dark, dtypes of RA,DEC is float32, instead of float64
 
