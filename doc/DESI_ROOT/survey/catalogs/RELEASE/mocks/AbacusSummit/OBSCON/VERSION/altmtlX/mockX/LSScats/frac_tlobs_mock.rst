@@ -53,10 +53,10 @@ Required Data Table Columns
 
 .. rst-class:: columns
 
-================ ======== ===== ================================================================================
-Name             Type     Units Description
-================ ======== ===== ================================================================================
-TILES            char[36]       TILEIDs of those tile, in string form separated by &#x27;-&#x27;
-FRAC_TLOBS_TILES float64        Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
-================ ======== ===== ================================================================================
+================ ======= ===== ================================================================================
+Name             Type    Units Description
+================ ======= ===== ================================================================================
+TILES            char[*]       TILEIDs of those tile, in string form separated by &#x27;-&#x27;
+FRAC_TLOBS_TILES float64       Fraction of targets with the same TILES value that contribute to FRACZ_TILELOCID
+================ ======= ===== ================================================================================
 
