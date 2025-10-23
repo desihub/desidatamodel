@@ -66,9 +66,9 @@ TRUEZ            float32             True redshift in a galaxy mock catalog
 RAN_NUM_0_1 [1]_ float32             Random number between 0 and 1
 STATUS           binary              Bit column present in mocks to select according to nz or footprint
 MASKBITS         int16               Bitwise mask from the imaging indicating potential issue or blending
-NOBS_G           int16               Number of images for central pixel in g-band
-NOBS_R           int16               Number of images for central pixel in r-band
-NOBS_Z           int16               Number of images for central pixel in z-band
+NOBS_G           int64               Number of images for central pixel in g-band. Note that NOBS_G for dark tracer is type = int16
+NOBS_R           int64               Number of images for central pixel in r-band. Note that NOBS_R for dark tracer is type = int16
+NOBS_Z           int64               Number of images for central pixel in z-band. Note that NOBS_Z for dark tracer is type = int16
 NZ [1]_          float64  h^3 Mpc^-3 The comoving number density of the tracer at the given redshift, assuming complete sample
 GALCAP [1]_      char[1]             Galactic cap N or S
 DESI_TARGET      int64               DESI (dark time program) target selection bitmask
@@ -101,4 +101,8 @@ PHOTSYS          char[1]             N for the MzLS/BASS photometric system, S f
 ================ ======== ========== =====================================================================================================================
 
 .. [1] Optional, present only on the BRIGHT TRACERS (BGS)
+
+.. warning::
+
+        For OBSCON = dark, dtypes of NOBS_G, NOBS_R, NOBS_Z is int16, instead of int64
 

@@ -66,9 +66,9 @@ Z                float32              Redshift measured by Redrock
 TRUEZ            float32              True redshift in a galaxy mock catalog
 STATUS           binary               Bit column present in mocks to select according to nz or footprint
 MASKBITS         int16                Bitwise mask from the imaging indicating potential issue or blending
-NOBS_G           int16                Number of images for central pixel in g-band
-NOBS_R           int16                Number of images for central pixel in r-band
-NOBS_Z           int16                Number of images for central pixel in z-band
+NOBS_G           int64                Number of images for central pixel in g-band. Note that NOBS_G for dark tracer is type = int16
+NOBS_R           int64                Number of images for central pixel in r-band. Note that NOBS_R for dark tracer is type = int16
+NOBS_Z           int64                Number of images for central pixel in z-band. Note that NOBS_Z for dark tracer is type = int16
 PRIORITY_INIT    int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
 PRIORITY         int64                Target current priority
 DESI_TARGET      int64                DESI (dark time program) target selection bitmask
@@ -116,3 +116,8 @@ Notes and Examples
 
 * ``lrg_mask`` only present in LRG catalogs 
 * ``R_MAG_ABS``, ``NZ``, ``RAN_NUM_0_1``, ``GALCAP``, ``BRICKID`` only present in BGS catalogs 
+
+.. warning::
+
+        For OBSCON = dark, dtypes of NOBS_G, NOBS_R, NOBS_Z is int16, instead of int64
+
