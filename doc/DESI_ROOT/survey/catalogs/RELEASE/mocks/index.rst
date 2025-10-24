@@ -2,7 +2,7 @@
 mocks
 =====
 
-``${DESI_ROOT}/survey/catalogs/RELEASE/mocks`` host the LSS mock catalogs used to validate the analysis and to estimate covariance matrices for both dark and bright tracers.
+``${DESI_ROOT}/survey/catalogs/RELEASE/mocks`` hosts the large-scale structure (LSS) mock catalogs used to validate analyses and estimate covariance matrices for both dark and bright tracers.
 
 More details can be found in `DESI 2024 II (2025)`_
 
@@ -11,6 +11,6 @@ More details can be found in `DESI 2024 II (2025)`_
 .. toctree::
    :maxdepth: 1
 
-   EZmock : 1000 realizations at low resolution to estimate covariance matrices <EZmock/index>
-   AbacusSummit : 25 realizations of n-body simulations at high resolution for validation, separated by dark and bright programmes, followed by the internal version <AbacusSummit/index>
+   EZmock : 1000 low-resolution realizations used to estimate covariance matrices. <EZmock/index>
+   AbacusSummit : 25 high-resolution N-body simulation realizations for validation, divided into dark and bright programs, followed by the internal version <AbacusSummit/index>
 
