@@ -17,7 +17,7 @@ Data Directories
 Directories under :envvar:`DESI_ROOT`:
 
    * :doc:`spectro/redux/SPECPROD/ <DESI_SPECTRO_REDUX/SPECPROD/index>`: Processed spectra, classifications, and redshifts
-   * :doc:`survey/catalogs/RELEASE/LSS <DESI_ROOT/survey/catalogs/RELEASE/LSS/index>`: The Large Scale Structure catalog
+   * :doc:`survey/catalogs/RELEASE <DESI_ROOT/survey/catalogs/RELEASE/index>`: DR Large Scale Structure catalogs and associated mock catalogs
    * :doc:`vac/RELEASE/ <DESI_ROOT/vac/RELEASE/index>`: Value Added Catalogs
    * :doc:`target/ <DESI_TARGET/index>`: Target selection and fiber assignment catalogs
    * :doc:`spectro/data/NIGHT/EXPID/ <DESI_SPECTRO_DATA/NIGHT/EXPID/index>`: Raw data

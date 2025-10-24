@@ -19,6 +19,6 @@ Details about the content and production of the LSS catalogs are found in `Ross 
 
    SPECPROD/index
    randomRANN/index
-   altmtl/OBSCON/index
+   altmtl/index
    tiles-{OBSCON}.fits : List of tiles <tiles-obscon>
    collisions-{OBSCON}.fits : List of FIBER and LOCATION positions that are rejected from fiber assignment due to collisions with pre-defined keep out zones in the focal plane <collisions-obscon>
