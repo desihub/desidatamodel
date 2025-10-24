@@ -2,10 +2,18 @@
 desidatamodel Change Log
 ========================
 
-25.4 (unreleased)
------------------
+25.11 (unreleased)
+------------------
 
-* No changes yet.
+* Expand ``FIBERSTATUS`` documentation (PR `#214`_).
+* Improve ``SPECMASK`` documentation (PR `#215`_).
+* Expand ``PHOTSYS`` documentation (PR `#217`_).
+* Add LSS mock catalog data model (PR `#219`_).
+
+.. _`#214`: https://github.com/desihub/desidatamodel/pull/214
+.. _`#215`: https://github.com/desihub/desidatamodel/pull/215
+.. _`#217`: https://github.com/desihub/desidatamodel/pull/217
+.. _`#219`: https://github.com/desihub/desidatamodel/pull/219
 
 25.3 (2025-03-17)
 -----------------
