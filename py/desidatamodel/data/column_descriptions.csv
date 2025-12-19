@@ -446,18 +446,18 @@ TSNR2_ELG,float32,,"ELG template (S/N)^2 summed over B,R,Z","ELG template (S/N)^
 TSNR2_ELG_B,float32,,ELG B template (S/N)^2,ELG B template (S/N)^2
 TSNR2_ELG_R,float32,,ELG R template (S/N)^2,ELG R template (S/N)^2
 TSNR2_ELG_Z,float32,,ELG Z template (S/N)^2,ELG Z template (S/N)^2
-TSNR2_GPBBACKUP,float64,,Template (S/N)^2 for backup targets in BPB,template (S/N)^2 for backup targets in guider pass band
+TSNR2_GPBBACKUP,float64,,Template (S/N)^2 for backup targets in GPB,template (S/N)^2 for backup targets in guider pass band
 TSNR2_GPBBACKUP_B,float64,,Template (S/N)^2 for backup targets in GPB (B),template (S/N)^2 for backup targets in guider pass band on B
 TSNR2_GPBBACKUP_R,float64,,Template (S/N)^2 for backup targets in GPB (R),template (S/N)^2 for backup targets in guider pass band on R
 TSNR2_GPBBACKUP_Z,float64,,Template (S/N)^2 for backup targets in GPB (Z),template (S/N)^2 for backup targets in guider pass band on Z
-TSNR2_GPBBRIGHT,float64,,Template (S/N)^2 for bright targets in BPB,template (S/N)^2 for bright targets in guider pass band
-TSNR2_GPBBRIGHT_B,float64,,Template (S/N)^2 for bright targets in BPB (B),template (S/N)^2 for bright targets in guider pass band on B
-TSNR2_GPBBRIGHT_R,float64,,Template (S/N)^2 for bright targets in BPB (R),template (S/N)^2 for bright targets in guider pass band on R
-TSNR2_GPBBRIGHT_Z,float64,,Template (S/N)^2 for bright targets in BPB (Z),template (S/N)^2 for bright targets in guider pass band on Z
-TSNR2_GPBDARK,float64,,Template (S/N)^2 for dark targets in BPB,template (S/N)^2 for dark targets in guider pass band
-TSNR2_GPBDARK_B,float64,,Template (S/N)^2 for dark targets in BPB (B),template (S/N)^2 for dark targets in guider pass band on B
-TSNR2_GPBDARK_R,float64,,Template (S/N)^2 for dark targets in BPB (R),template (S/N)^2 for dark targets in guider pass band on R
-TSNR2_GPBDARK_Z,float64,,Template (S/N)^2 for dark targets in BPB (Z),template (S/N)^2 for dark targets in guider pass band on Z
+TSNR2_GPBBRIGHT,float64,,Template (S/N)^2 for bright targets in GPB,template (S/N)^2 for bright targets in guider pass band
+TSNR2_GPBBRIGHT_B,float64,,Template (S/N)^2 for bright targets in GPB (B),template (S/N)^2 for bright targets in guider pass band on B
+TSNR2_GPBBRIGHT_R,float64,,Template (S/N)^2 for bright targets in GPB (R),template (S/N)^2 for bright targets in guider pass band on R
+TSNR2_GPBBRIGHT_Z,float64,,Template (S/N)^2 for bright targets in GPB (Z),template (S/N)^2 for bright targets in guider pass band on Z
+TSNR2_GPBDARK,float64,,Template (S/N)^2 for dark targets in GPB,template (S/N)^2 for dark targets in guider pass band
+TSNR2_GPBDARK_B,float64,,Template (S/N)^2 for dark targets in GPB (B),template (S/N)^2 for dark targets in guider pass band on B
+TSNR2_GPBDARK_R,float64,,Template (S/N)^2 for dark targets in GPB (R),template (S/N)^2 for dark targets in guider pass band on R
+TSNR2_GPBDARK_Z,float64,,Template (S/N)^2 for dark targets in GPB (Z),template (S/N)^2 for dark targets in guider pass band on Z
 TSNR2_LRG,float32,,"LRG template (S/N)^2 summed over B,R,Z","LRG template (S/N)^2 summed over B,R,Z"
 TSNR2_LRG_B,float32,,LRG B template (S/N)^2,LRG B template (S/N)^2
 TSNR2_LRG_R,float32,,LRG R template (S/N)^2,LRG R template (S/N)^2
