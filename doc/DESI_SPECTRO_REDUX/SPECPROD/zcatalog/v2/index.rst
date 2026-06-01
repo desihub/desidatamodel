@@ -28,8 +28,8 @@ surveys and programs.
 
 v2 also introduces new redshift quality columns not present in v1:
 
-- ``Z_BEST``/``ZERR_BEST``/``ZWARN_BEST`` etc.: best redshift, choosing between
-  the standard Redrock ``Z`` and the QuasarNET ``Z_QSO`` for QSO targets.
+- ``Z_BEST``: best redshift, choosing between the standard Redrock ``Z`` and the QuasarNET ``Z_QSO`` for QSO targets.
+ It is the recommended redshift value for most users. The associated redrock columns are ``ZERR_BEST``, ``ZWARN_BEST`` etc. 
 - ``Z_CONF``: integer confidence level (0=no confidence, 1=low, 3=high/LSS-quality).
 - ``GOOD_SPEC``: True if the spectrum is a science target with good hardware status.
 - ``GOOD_Z_{BGS,LRG,ELG,QSO}``: per-tracer redshift quality flags passing LSS cuts.
