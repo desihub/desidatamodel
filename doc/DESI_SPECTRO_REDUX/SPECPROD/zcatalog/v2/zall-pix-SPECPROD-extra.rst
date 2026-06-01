@@ -1,0 +1,83 @@
+============================
+zall-pix-SPECPROD-extra.fits
+============================
+
+:Summary: Concatenation of all ``zpix-*-extra.fits`` files, combining all
+          extra columns across all SURVEYs and PROGRAMs.
+:Naming Convention: ``zall-pix-{SPECPROD}-extra.fits``, where ``{SPECPROD}``
+    is the official name of the full reduction, *e.g.* ``iron``.
+:Regex: ``zall-pix-[a-z0-9_-]+-extra\.fits``
+:File Type: FITS, ~25 GB
+
+This file is row-matched to :doc:`zall-pix-SPECPROD.fits <./zall-pix-SPECPROD>`
+and contains the extra columns stacked from all
+:doc:`zpix-*-extra.fits <./zpix-SURVEY-PROGRAM-extra>` files.
+
+Contents
+========
+
+====== =============== ======== ============================================================
+Number EXTNAME         Type     Contents
+====== =============== ======== ============================================================
+HDU0_  PRIMARY         IMAGE    Empty
+HDU1_  ZCATALOG_EXTRA  BINTABLE All extra columns not in core or imaging files
+====== =============== ======== ============================================================
+
+
+FITS Header Units
+=================
+
+HDU0
+----
+
+EXTNAME = PRIMARY
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    CHECKSUM     9aaGCVYE9aaECUYE str  HDU checksum
+    DATASUM      0                str  data unit checksum
+    ZCATVER      v2               str  Version of zcatalog files
+    ============ ================ ==== =======================
+
+Empty HDU.
+
+HDU1
+----
+
+EXTNAME = ZCATALOG_EXTRA
+
+All extra columns stacked from all
+:doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` files.
+Column definitions are identical to that file; see it for full descriptions.
+
+Required Header Keywords
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. collapse:: Required Header Keywords Table
+
+    .. rst-class:: keywords
+
+    ============ ================ ==== =======================
+    KEY          Example Value    Type Comment
+    ============ ================ ==== =======================
+    NAXIS1       870              int  width of table in bytes
+    NAXIS2       3000000          int  number of rows in table
+    CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
+    DATASUM      4284326946       str  data unit checksum
+    ZCATVER      v2               str  Version of zcatalog files
+    ============ ================ ==== =======================
+
+Required Data Table Columns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` for the
+full column list. The zall-pix-extra file contains the same columns as the
+per-survey zpix-extra files, with rows stacked from all surveys and programs.
