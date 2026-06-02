@@ -86,7 +86,8 @@ Required Data Table Columns
 Name                       Type        Units    Description
 ========================== =========== ======== =====================================================================================================================================
 TARGETID                   int64                Unique DESI target ID
-HEALPIX                    int32                HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+HEALPIX [1]_               int32                HEALPixel number decoded from UNIQPIX (DR3+)
+NSIDE [1]_                 int32                HEALPix NSIDE decoded from UNIQPIX (DR3+)
 SPGRPVAL                   int32                Value by which spectra are grouped for a coadd (healpixel number for healpix coadds)
 Z                          float64              Redshift measured by Redrock
 ZERR                       float32              Redshift error from Redrock

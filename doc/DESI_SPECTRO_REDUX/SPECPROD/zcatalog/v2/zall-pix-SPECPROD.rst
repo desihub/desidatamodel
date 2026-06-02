@@ -93,7 +93,8 @@ Name                       Type        Units   Description
 TARGETID                   int64               Unique DESI target ID
 SURVEY                     char[7]             Survey name
 PROGRAM                    char[6]             DESI program type - BRIGHT, DARK, BACKUP, OTHER
-HEALPIX                    int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme
+UNIQPIX [1]_               int32               Unique HEALPixel identifier encoding both pixel number and NSIDE (DR3+); HEALPIX and NSIDE are in the companion extra file
+HEALPIX [1]_               int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme (DR2 only)
 Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets, Z_QSO (QuasarNET) for confirmed QSOs where the two differ by >1000 km/s
 Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS quality cuts)
 ZERR_BEST                  float64             Redshift error for Z_BEST
