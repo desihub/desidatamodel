@@ -18,7 +18,7 @@ For each SURVEY and PROGRAM, four files are produced:
 
 The :doc:`ztile <ztile-SURVEY-PROGRAM-GROUPTYPE>` catalogs contain redshifts fit to
 coadded exposures of each tile. The
-:doc:`zpix <zpix-SURVEY-PROGRAM>` catalogs coadd data across tiles (by healpixel)
+:doc:`zpix <zpix-SURVEY-PROGRAM>` catalogs coadd data across tiles (by healpixel or uniqpix)
 before redshift fitting.
 
 The :doc:`zall-pix <zall-pix-SPECPROD>` and
