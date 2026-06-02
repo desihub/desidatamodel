@@ -165,7 +165,7 @@ MIN_MJD                    float64     d       Minimum Modified Julian Date (shu
 MAX_MJD                    float64     d       Maximum Modified Julian Date (shutter open for last exposure in coadd)
 MEAN_MJD                   float64     d       Mean Modified Julian Date over exposures in coadd
 GOOD_SPEC                  logical             True if this is a science target with good hardware/fiber status
-EFFTIME_SPEC               float32     s       Effective survey time for spectroscopy (from TSNR2)
+EFFTIME_SPEC               float32     s       Effective exposure time for spectroscopy (from TSNR2_LRG; see Notes)
 ZCAT_NSPEC                 int16               Number of times this TARGETID appears in this catalog
 ZCAT_PRIMARY               logical             True for the primary (best) spectrum for this TARGETID in this catalog
 ========================== =========== ======= =====================================================================================================================================
@@ -187,6 +187,10 @@ Notes:
   * This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
     ``MAIN_PRIMARY``; these are added when ztile files are combined into
     :doc:`zall-tilecumulative-SPECPROD.fits <./zall-tilecumulative-SPECPROD>`.
+  * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
+    where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
+    bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
+    factor from the TSNR ensemble template files in ``desimodel``.
 
 
 Notes and Examples
