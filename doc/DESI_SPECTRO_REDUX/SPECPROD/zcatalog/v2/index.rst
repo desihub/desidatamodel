@@ -42,11 +42,10 @@ Files are stored under ``zcatalog/v2/{SURVEY}/`` for per-survey catalogs and
    zpix-SURVEY-PROGRAM
    zpix-SURVEY-PROGRAM-imaging
    zpix-SURVEY-PROGRAM-extra
-   exp_fibermap/zpix-SURVEY-PROGRAM-expfibermap
+   exp_fibermap/index
    ztile-SURVEY-PROGRAM-GROUPTYPE
    ztile-SURVEY-PROGRAM-GROUPTYPE-imaging
    ztile-SURVEY-PROGRAM-GROUPTYPE-extra
-   exp_fibermap/ztile-SURVEY-PROGRAM-GROUPTYPE-expfibermap
    zall-pix-SPECPROD
    zall-pix-SPECPROD-imaging
    zall-pix-SPECPROD-extra
