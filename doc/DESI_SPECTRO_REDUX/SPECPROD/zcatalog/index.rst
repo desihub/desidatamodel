@@ -19,7 +19,6 @@ significantly reformats the files by splitting each catalog into separate files
 for core redshift columns, imaging photometry, and all remaining columns, to
 reduce per-file sizes at DR2+ data volumes. It also introduce a new "best" redshift
 and redshift quality columns (``Z_BEST``, ``Z_CONF``, ``GOOD_SPEC``, etc.).
-).
 
 .. toctree::
    :maxdepth: 1
