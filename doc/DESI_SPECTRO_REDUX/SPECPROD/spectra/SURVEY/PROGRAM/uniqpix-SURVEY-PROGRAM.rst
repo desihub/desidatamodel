@@ -101,7 +101,7 @@ Output for the matterhorn production::
     spectra/special/dark/6996/699670/coadd-special-dark-699670.fits at nside=256 has 2045 targets (38,985.2/deg^2)
     spectra/special/dark/6996/699671/coadd-special-dark-699671.fits at nside=256 has 1261 targets (24,039.3/deg^2)
 
-Note that the vastly different target densities get covered by different nside pixels so
-that each file has at most few thousand targets.
+Note that the vastly different target densities are covered by different nside pixels so
+that each file has at most a few thousand targets.
 
 
