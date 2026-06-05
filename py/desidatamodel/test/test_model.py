@@ -28,4 +28,7 @@ class TestModel(DataModelTestCase):
                 files_to_regexp('/desi/spectro/data', files,
                                 error=True)
             for f in files:
-                meta = f.extract_metadata(error=True)
+                try:
+                    meta = f.extract_metadata(error=True)
+                except Exception as err:
+                    raise DataModelError(f"Error extracting metadata from {f.filename}: {err}")
