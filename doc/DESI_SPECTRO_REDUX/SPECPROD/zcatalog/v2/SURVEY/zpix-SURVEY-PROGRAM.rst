@@ -4,7 +4,7 @@ zpix-SURVEY-PROGRAM.fits
 
 :Summary: Core redshift and targeting columns from the healpix-based redshift
           catalogs, one file per SURVEY and PROGRAM.
-:Naming Convention: ``zpix-SURVEY-PROGRAM.fits``, where ``SURVEY`` is
+:Naming Convention: ``zcatalog/v2/SURVEY/zpix-SURVEY-PROGRAM.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright`` or ``dark``.
 :Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)\.fits``
 :File Type: FITS, ~100 MB
@@ -190,7 +190,7 @@ Notes:
     :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` file.
   * This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
     ``MAIN_PRIMARY``; these are added when zpix files are combined into
-    :doc:`zall-pix-SPECPROD.fits <./zall-pix-SPECPROD>`.
+    :doc:`zall-pix-SPECPROD.fits <../zall/zall-pix-SPECPROD>`.
   * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
     where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
     bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization

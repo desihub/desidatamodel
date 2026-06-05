@@ -1,15 +1,13 @@
-===========================================
-ztile-SURVEY-PROGRAM-GROUPTYPE-imaging.fits
-===========================================
+================================
+zpix-SURVEY-PROGRAM-imaging.fits
+================================
 
-:Summary: Legacy Survey imaging photometry columns from the tile-based
-          redshift catalogs, one file per SURVEY, PROGRAM, and spectral GROUPTYPE.
-:Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE-imaging.fits``, where ``SURVEY``
-    is *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright`` or ``dark``,
-    and ``GROUPTYPE`` is one of ``cumulative``, ``pernight``, ``perexp``,
-    ``1x_depth``, ``4x_depth``, or ``lowspeed``.
-:Regex: ``ztile-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-(cumulative|perexp|pernight|1x_depth|4x_depth|lowspeed)-imaging\.fits``
-:File Type: FITS, ~50 MB
+:Summary: Legacy Survey imaging photometry columns from the healpix-based
+          redshift catalogs, one file per SURVEY and PROGRAM.
+:Naming Convention: ``zcatalog/v2/SURVEY/zpix-SURVEY-PROGRAM-imaging.fits``, where ``SURVEY`` is
+    *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright`` or ``dark``.
+:Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-imaging\.fits``
+:File Type: FITS, ~200 MB
 
 Contents
 ========
@@ -53,7 +51,7 @@ HDU1
 EXTNAME = ZCATALOG_IMAGING
 
 Legacy Survey (`LS`_) imaging photometry columns for each entry in the
-corresponding :doc:`ztile-SURVEY-PROGRAM-GROUPTYPE.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE>` file.
+corresponding :doc:`zpix-SURVEY-PROGRAM.fits <./zpix-SURVEY-PROGRAM>` file.
 Rows are in the same order and correspond 1-to-1 with the ZCATALOG HDU.
 
 Required Header Keywords
@@ -67,7 +65,7 @@ Required Header Keywords
     KEY          Example Value    Type Comment
     ============ ================ ==== =======================
     NAXIS1       228              int  width of table in bytes
-    NAXIS2       5000             int  number of rows in table
+    NAXIS2       139728           int  number of rows in table
     SURVEY [1]_  main             str  DESI sub-survey (e.g. sv1, sv3, main)
     PROGRAM [1]_ dark             str  DESI program (e.g. dark, bright)
     CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
@@ -84,7 +82,7 @@ Required Data Table Columns
 Name                       Type        Units        Description
 ========================== =========== ============ =====================================================================================================================================
 TARGETID                   int64                    Unique DESI target ID
-TILEID                     int32                    Unique DESI tile ID
+HEALPIX                    int32                    HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 PMRA                       float32     mas yr^-1    Reference catalog proper motion in the RA direction
 PMDEC                      float32     mas yr^-1    Reference catalog proper motion in the Dec direction
 REF_EPOCH                  float32     yr           Reference catalog reference epoch (*e.g.*, 2015.5 for `Gaia`_ DR2)

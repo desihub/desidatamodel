@@ -4,7 +4,7 @@ zall-tilecumulative-SPECPROD-extra.fits
 
 :Summary: Concatenation of all ``ztile-*-cumulative-extra.fits`` files,
           combining all extra columns across all TILEs, SURVEYs, and PROGRAMs.
-:Naming Convention: ``zall-tilecumulative-{SPECPROD}-extra.fits``, where
+:Naming Convention: ``zcatalog/v2/zall/zall-tilecumulative-{SPECPROD}-extra.fits``, where
     ``{SPECPROD}`` is the official name of the full reduction, *e.g.* ``iron``.
 :Regex: ``zall-tilecumulative-[a-z0-9_-]+-extra\.fits``
 :File Type: FITS, ~200 GB
@@ -12,7 +12,7 @@ zall-tilecumulative-SPECPROD-extra.fits
 This file is row-matched to
 :doc:`zall-tilecumulative-SPECPROD.fits <./zall-tilecumulative-SPECPROD>` and
 contains the extra columns stacked from all
-:doc:`ztile-*-cumulative-extra.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
+:doc:`ztile-*-cumulative-extra.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
 files.
 
 Contents
@@ -57,7 +57,7 @@ HDU1
 EXTNAME = ZCATALOG_EXTRA
 
 All extra columns stacked from all
-:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
+:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
 cumulative files. Column definitions are identical to that file; see it for
 full descriptions. Note that ``FIRSTNIGHT`` is included here (from the
 cumulative tile coadds) but not in the zall-tilecumulative core file.
@@ -83,6 +83,6 @@ Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 See
-:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
+:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
 for the full column list. The zall-tilecumulative-extra file contains the same
 columns, with rows stacked from all surveys, programs, and tiles.

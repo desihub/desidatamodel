@@ -4,7 +4,7 @@ ztile-SURVEY-PROGRAM-GROUPTYPE.fits
 
 :Summary: Core redshift and targeting columns from the tile-based redshift
           catalogs, one file per SURVEY, PROGRAM, and spectral GROUPTYPE.
-:Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
+:Naming Convention: ``zcatalog/v2/SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE.fits``, where ``SURVEY`` is
     *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright`` or ``dark``,
     and ``GROUPTYPE`` is one of ``cumulative``, ``pernight``, ``perexp``,
     ``1x_depth``, ``4x_depth``, or ``lowspeed``.
@@ -186,7 +186,7 @@ Notes:
     survey; there is no propagation of targeting bits across surveys.
   * This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
     ``MAIN_PRIMARY``; these are added when ztile files are combined into
-    :doc:`zall-tilecumulative-SPECPROD.fits <./zall-tilecumulative-SPECPROD>`.
+    :doc:`zall-tilecumulative-SPECPROD.fits <../zall/zall-tilecumulative-SPECPROD>`.
   * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
     where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
     bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization

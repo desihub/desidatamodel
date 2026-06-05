@@ -1,13 +1,17 @@
-================================
-zpix-SURVEY-PROGRAM-imaging.fits
-================================
+==============================
+zall-pix-SPECPROD-imaging.fits
+==============================
 
-:Summary: Legacy Survey imaging photometry columns from the healpix-based
-          redshift catalogs, one file per SURVEY and PROGRAM.
-:Naming Convention: ``zpix-SURVEY-PROGRAM-imaging.fits``, where ``SURVEY`` is
-    *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright`` or ``dark``.
-:Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-imaging\.fits``
-:File Type: FITS, ~200 MB
+:Summary: Concatenation of all ``zpix-*-imaging.fits`` files, combining Legacy
+          Survey imaging photometry columns across all SURVEYs and PROGRAMs.
+:Naming Convention: ``zcatalog/v2/zall/zall-pix-{SPECPROD}-imaging.fits``, where ``{SPECPROD}``
+    is the official name of the full reduction, *e.g.* ``iron``.
+:Regex: ``zall-pix-[a-z0-9_-]+-imaging\.fits``
+:File Type: FITS, ~10 GB
+
+This file is row-matched to :doc:`zall-pix-SPECPROD.fits <./zall-pix-SPECPROD>`
+and contains the imaging photometry columns stacked from all
+:doc:`zpix-*-imaging.fits <../SURVEY/zpix-SURVEY-PROGRAM-imaging>` files.
 
 Contents
 ========
@@ -50,9 +54,9 @@ HDU1
 
 EXTNAME = ZCATALOG_IMAGING
 
-Legacy Survey (`LS`_) imaging photometry columns for each entry in the
-corresponding :doc:`zpix-SURVEY-PROGRAM.fits <./zpix-SURVEY-PROGRAM>` file.
-Rows are in the same order and correspond 1-to-1 with the ZCATALOG HDU.
+Legacy Survey (`LS`_) imaging photometry columns stacked from all
+:doc:`zpix-SURVEY-PROGRAM-imaging.fits <../SURVEY/zpix-SURVEY-PROGRAM-imaging>` files.
+Column definitions are identical to that file; see it for descriptions.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,9 +69,7 @@ Required Header Keywords
     KEY          Example Value    Type Comment
     ============ ================ ==== =======================
     NAXIS1       228              int  width of table in bytes
-    NAXIS2       139728           int  number of rows in table
-    SURVEY [1]_  main             str  DESI sub-survey (e.g. sv1, sv3, main)
-    PROGRAM [1]_ dark             str  DESI program (e.g. dark, bright)
+    NAXIS2       3000000          int  number of rows in table
     CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
     DATASUM      4284326946       str  data unit checksum
     ZCATVER      v2               str  Version of zcatalog files
@@ -122,7 +124,6 @@ PARALLAX                   float32     mas          Reference catalog parallax
 PHOTSYS                    char[1]                  'N' for the MzLS/BASS photometric system, 'S' for DECaLS
 ========================== =========== ============ =====================================================================================================================================
 
-.. [1] Optional
 .. _`LS`: https://www.legacysurvey.org/
 .. _`DR9 bitmasks page`: https://www.legacysurvey.org/dr9/bitmasks
 .. _`ellipticity component`: https://www.legacysurvey.org/dr9/catalogs/#ellipticities

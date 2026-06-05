@@ -1,25 +1,28 @@
-======================
-zall-pix-SPECPROD.fits
-======================
+=================================
+zall-tilecumulative-SPECPROD.fits
+=================================
 
-:Summary: Concatenation of all ``zpix-*.fits`` files, combining core redshift
-          and targeting columns across all SURVEYs and PROGRAMs.
-:Naming Convention: ``zall-pix-{SPECPROD}.fits``, where ``{SPECPROD}`` is the
-    official name of the full reduction, *e.g.* ``iron``.
-:Regex: ``zall-pix-[a-z0-9][a-z0-9_-]*(?<!-imaging)(?<!-extra)\.fits``
+:Summary: Concatenation of all ``ztile-*-cumulative.fits`` files, combining
+          core redshift and targeting columns across all TILEs, SURVEYs, and
+          PROGRAMs.
+:Naming Convention: ``zcatalog/v2/zall/zall-tilecumulative-{SPECPROD}.fits``, where ``{SPECPROD}``
+    is the official name of the full reduction, *e.g.* ``iron``.
+:Regex: ``zall-tilecumulative-[a-z0-9][a-z0-9_-]*(?<!-imaging)(?<!-extra)\.fits``
 :File Type: FITS, ~5 GB
 
 This file contains a concatenation of all input
-:doc:`zpix-*.fits <./zpix-SURVEY-PROGRAM>` core files, combining redshift
-catalog entries across SURVEYs and PROGRAMs. It adds ``SURVEY`` and ``PROGRAM``
-columns identifying each entry's origin, and adds ``SV_PRIMARY``/``SV_NSPEC``
-for the best SV spectrum and ``MAIN_PRIMARY``/``MAIN_NSPEC`` for the best
-Main Survey spectrum when the same ``TARGETID`` appears in multiple surveys.
+:doc:`ztile-*-cumulative.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE>` core files,
+combining redshift catalog entries across TILEs, SURVEYs and PROGRAMs. It adds
+``SURVEY`` and ``PROGRAM`` columns identifying each entry's origin, and adds
+``SV_PRIMARY``/``SV_NSPEC`` and ``MAIN_PRIMARY``/``MAIN_NSPEC`` when the same
+``TARGETID`` appears in multiple surveys.
 
-The companion :doc:`zall-pix-SPECPROD-imaging.fits <./zall-pix-SPECPROD-imaging>`
-and :doc:`zall-pix-SPECPROD-extra.fits <./zall-pix-SPECPROD-extra>` files
-contain the imaging photometry and extra columns respectively, row-matched to
-this file.
+The companion
+:doc:`zall-tilecumulative-SPECPROD-imaging.fits <./zall-tilecumulative-SPECPROD-imaging>`
+and
+:doc:`zall-tilecumulative-SPECPROD-extra.fits <./zall-tilecumulative-SPECPROD-extra>`
+files contain the imaging photometry and extra columns respectively, row-matched
+to this file.
 
 Contents
 ========
@@ -28,7 +31,7 @@ Contents
 Number EXTNAME   Type     Contents
 ====== ========= ======== ============================================================
 HDU0_  PRIMARY   IMAGE    Empty
-HDU1_  ZCATALOG  BINTABLE Core redshift catalog across all surveys and programs
+HDU1_  ZCATALOG  BINTABLE Core redshift catalog across all tiles, surveys, and programs
 ====== ========= ======== ============================================================
 
 
@@ -63,7 +66,8 @@ HDU1
 EXTNAME = ZCATALOG
 
 Core redshift and targeting columns stacked from all
-:doc:`zpix-SURVEY-PROGRAM.fits <./zpix-SURVEY-PROGRAM>` files.
+:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE>`
+cumulative files.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,8 +79,8 @@ Required Header Keywords
     ============ ================ ==== =======================
     KEY          Example Value    Type Comment
     ============ ================ ==== =======================
-    NAXIS1       276              int  width of table in bytes
-    NAXIS2       3000000          int  number of rows in table
+    NAXIS1       280              int  width of table in bytes
+    NAXIS2       10000000         int  number of rows in table
     CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
     DATASUM      4284326946       str  data unit checksum
     ZCATVER      v2               str  Version of zcatalog files
@@ -93,8 +97,8 @@ Name                       Type        Units   Description
 TARGETID                   int64               Unique DESI target ID
 SURVEY                     char[7]             Survey name
 PROGRAM                    char[6]             DESI program type - BRIGHT, DARK, BACKUP, OTHER
-UNIQPIX [1]_               int32               Unique HEALPixel identifier encoding both pixel number and NSIDE (DR3+); HEALPIX and NSIDE are in the companion extra file
-HEALPIX [1]_               int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme (DR2 only)
+TILEID                     int32               Unique DESI tile ID
+LASTNIGHT                  int32               Final night of observation included in a series of coadds
 Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets, Z_QSO (QuasarNET) for confirmed QSOs where the two differ by >1000 km/s
 Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS quality cuts)
 ZERR_BEST                  float64             Redshift error for Z_BEST
@@ -153,6 +157,8 @@ Notes:
 
   * ``SV_NSPEC`` and ``SV_PRIMARY`` are present when any SV (sv1/sv2/sv3) entries exist.
   * ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are present when any ``SURVEY=main`` entries exist.
+  * ``FIRSTNIGHT`` is in the companion
+    :doc:`zall-tilecumulative-SPECPROD-extra.fits <./zall-tilecumulative-SPECPROD-extra>` file.
   * The targeting bitmasks ``DESI_TARGET``, ``BGS_TARGET``, ``MWS_TARGET``, and ``SCND_TARGET``
     only apply to ``SURVEY="main"`` targets; they are `not` set for targets in other surveys.
   * Similarly, the ``SV1_DESI_TARGET`` etc. target masks are only set for the corresponding

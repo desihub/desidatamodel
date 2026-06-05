@@ -1,14 +1,13 @@
-===============================================
-ztile-SURVEY-PROGRAM-GROUPTYPE-expfibermap.fits
-===============================================
+=====================================
+zpix-SURVEY-PROGRAM-expfibermap.fits
+=====================================
 
-:Summary: Per-exposure fibermap entries for the tile-based redshift catalogs,
-          one file per SURVEY, PROGRAM, and spectral GROUPTYPE.
-:Naming Convention: ``ztile-SURVEY-PROGRAM-GROUPTYPE-expfibermap.fits``, where
-    ``SURVEY`` is *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright``
-    or ``dark``, and ``GROUPTYPE`` is ``cumulative`` or ``pernight``.
-:Regex: ``ztile-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-(cumulative|perexp|pernight|1x_depth|4x_depth|lowspeed)-expfibermap\.fits``
-:File Type: FITS, ~50 MB
+:Summary: Per-exposure fibermap entries for the healpix-based redshift
+          catalogs, one file per SURVEY and PROGRAM.
+:Naming Convention: ``zcatalog/v2/SURVEY/exp_fibermap/zpix-SURVEY-PROGRAM-expfibermap.fits``, where ``SURVEY`` is
+    *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright`` or ``dark``.
+:Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-expfibermap\.fits``
+:File Type: FITS, ~500 MB
 
 Contents
 ========
@@ -52,8 +51,9 @@ HDU1
 EXTNAME = EXP_FIBERMAP
 
 Input fibermap entries for columns that apply per-exposure and cannot be
-coadded, *e.g.* the individual nights and exposures on which each target was
-observed. Each row corresponds to one exposure of one target.
+coadded, *e.g.* the individual TILEIDs and FIBERs on which each target was
+observed. Each row corresponds to one exposure of one target; a single target
+may appear many times if observed on multiple exposures or tiles.
 
 Required Header Keywords
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,7 +66,7 @@ Required Header Keywords
     KEY      Example Value    Type Comment
     ======== ================ ==== =======================
     NAXIS1   162              int  width of table in bytes
-    NAXIS2   5000             int  number of rows in table
+    NAXIS2   1374500          int  number of rows in table
     CHECKSUM diandZUmdfamdZUm str  HDU checksum
     DATASUM  2531100066       str  data unit checksum
     ======== ================ ==== =======================

@@ -4,14 +4,14 @@ zall-pix-SPECPROD-extra.fits
 
 :Summary: Concatenation of all ``zpix-*-extra.fits`` files, combining all
           extra columns across all SURVEYs and PROGRAMs.
-:Naming Convention: ``zall-pix-{SPECPROD}-extra.fits``, where ``{SPECPROD}``
+:Naming Convention: ``zcatalog/v2/zall/zall-pix-{SPECPROD}-extra.fits``, where ``{SPECPROD}``
     is the official name of the full reduction, *e.g.* ``iron``.
 :Regex: ``zall-pix-[a-z0-9_-]+-extra\.fits``
 :File Type: FITS, ~25 GB
 
 This file is row-matched to :doc:`zall-pix-SPECPROD.fits <./zall-pix-SPECPROD>`
 and contains the extra columns stacked from all
-:doc:`zpix-*-extra.fits <./zpix-SURVEY-PROGRAM-extra>` files.
+:doc:`zpix-*-extra.fits <../SURVEY/zpix-SURVEY-PROGRAM-extra>` files.
 
 Contents
 ========
@@ -55,7 +55,7 @@ HDU1
 EXTNAME = ZCATALOG_EXTRA
 
 All extra columns stacked from all
-:doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` files.
+:doc:`zpix-SURVEY-PROGRAM-extra.fits <../SURVEY/zpix-SURVEY-PROGRAM-extra>` files.
 Column definitions are identical to that file; see it for full descriptions.
 
 Required Header Keywords
@@ -78,6 +78,6 @@ Required Header Keywords
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` for the
+See :doc:`zpix-SURVEY-PROGRAM-extra.fits <../SURVEY/zpix-SURVEY-PROGRAM-extra>` for the
 full column list. The zall-pix-extra file contains the same columns as the
 per-survey zpix-extra files, with rows stacked from all surveys and programs.

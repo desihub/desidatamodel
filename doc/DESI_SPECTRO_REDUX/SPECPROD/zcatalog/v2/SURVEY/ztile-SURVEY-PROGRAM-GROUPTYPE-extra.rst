@@ -1,15 +1,17 @@
-==============================
-zpix-SURVEY-PROGRAM-extra.fits
-==============================
+=========================================
+ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits
+=========================================
 
-:Summary: All remaining columns from the healpix-based redshift catalogs not
-          included in the core or imaging files, one file per SURVEY and PROGRAM.
-          Includes full Redrock output, TSNR2 scores, emission line fits,
-          QuasarNET results, and per-tracer quality flags.
-:Naming Convention: ``zpix-SURVEY-PROGRAM-extra.fits``, where ``SURVEY`` is
-    *e.g.* ``main`` or ``sv1`` and ``PROGRAM`` is *e.g.* ``bright`` or ``dark``.
-:Regex: ``zpix-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-extra\.fits``
-:File Type: FITS, ~500 MB
+:Summary: All remaining columns from the tile-based redshift catalogs not
+          included in the core or imaging files, one file per SURVEY, PROGRAM,
+          and spectral GROUPTYPE. Includes full Redrock output, TSNR2 scores,
+          emission line fits, QuasarNET results, and per-tracer quality flags.
+:Naming Convention: ``zcatalog/v2/SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits``, where ``SURVEY``
+    is *e.g.* ``main`` or ``sv1``, ``PROGRAM`` is *e.g.* ``bright`` or ``dark``,
+    and ``GROUPTYPE`` is one of ``cumulative``, ``pernight``, ``perexp``,
+    ``1x_depth``, ``4x_depth``, or ``lowspeed``.
+:Regex: ``ztile-(cmx|main|sv1|sv2|sv3|special)-(backup|bright|dark|other)-(cumulative|perexp|pernight|1x_depth|4x_depth|lowspeed)-extra\.fits``
+:File Type: FITS, ~200 MB
 
 Contents
 ========
@@ -53,8 +55,8 @@ HDU1
 EXTNAME = ZCATALOG_EXTRA
 
 All columns not included in the core
-:doc:`zpix-SURVEY-PROGRAM.fits <./zpix-SURVEY-PROGRAM>` or imaging
-:doc:`zpix-SURVEY-PROGRAM-imaging.fits <./zpix-SURVEY-PROGRAM-imaging>` files.
+:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE>` or imaging
+:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-imaging.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE-imaging>` files.
 Rows are in the same order and correspond 1-to-1 with the ZCATALOG HDU.
 
 Required Header Keywords
@@ -67,8 +69,8 @@ Required Header Keywords
     ============ ================ ==== =======================
     KEY          Example Value    Type Comment
     ============ ================ ==== =======================
-    NAXIS1       870              int  width of table in bytes
-    NAXIS2       139728           int  number of rows in table
+    NAXIS1       882              int  width of table in bytes
+    NAXIS2       5000             int  number of rows in table
     RRVER        0.15.0           str  Redrock version
     SURVEY [1]_  main             str  DESI sub-survey (e.g. sv1, sv3, main)
     PROGRAM [1]_ dark             str  DESI program (e.g. dark, bright)
@@ -86,9 +88,9 @@ Required Data Table Columns
 Name                       Type        Units    Description
 ========================== =========== ======== =====================================================================================================================================
 TARGETID                   int64                Unique DESI target ID
-HEALPIX [1]_               int32                HEALPixel number decoded from UNIQPIX (DR3+)
-NSIDE [1]_                 int32                HEALPix NSIDE decoded from UNIQPIX (DR3+)
-SPGRPVAL                   int32                Value by which spectra are grouped for a coadd (healpixel number for healpix coadds)
+TILEID                     int32                Unique DESI tile ID
+FIRSTNIGHT [1]_            int32                KPNO Calendar Date when the first exposure was obtained (cumulative only)
+SPGRPVAL                   int32                Value by which spectra are grouped for a coadd (e.g. a YEARMMDD night)
 Z                          float64              Redshift measured by Redrock
 ZERR                       float32              Redshift error from Redrock
 ZWARN                      int32                Redshift warning bitmask from Redrock

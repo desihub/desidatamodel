@@ -10,19 +10,19 @@ the scale of the growing DESI data volumes.
 
 For each SURVEY and PROGRAM, four files are produced:
 
-- ``zpix-SURVEY-PROGRAM.fits`` — core redshift and targeting columns
-- ``zpix-SURVEY-PROGRAM-imaging.fits`` — Legacy Survey imaging photometry columns
-- ``zpix-SURVEY-PROGRAM-extra.fits`` — all remaining columns (full Redrock output,
+- ``SURVEY/zpix-SURVEY-PROGRAM.fits`` — core redshift and targeting columns
+- ``SURVEY/zpix-SURVEY-PROGRAM-imaging.fits`` — Legacy Survey imaging photometry columns
+- ``SURVEY/zpix-SURVEY-PROGRAM-extra.fits`` — all remaining columns (full Redrock output,
   TSNR2, emission line fits, QuasarNET, quality flags)
-- ``exp_fibermap/zpix-SURVEY-PROGRAM-expfibermap.fits`` — per-exposure fibermap
+- ``SURVEY/exp_fibermap/zpix-SURVEY-PROGRAM-expfibermap.fits`` — per-exposure fibermap
 
-The :doc:`ztile <ztile-SURVEY-PROGRAM-GROUPTYPE>` catalogs contain redshifts fit to
+The :doc:`ztile <SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE>` catalogs contain redshifts fit to
 coadded exposures of each tile. The
-:doc:`zpix <zpix-SURVEY-PROGRAM>` catalogs coadd data across tiles (by healpixel or uniqpix)
+:doc:`zpix <SURVEY/zpix-SURVEY-PROGRAM>` catalogs coadd data across tiles (by healpixel or uniqpix)
 before redshift fitting.
 
-The :doc:`zall-pix <zall-pix-SPECPROD>` and
-:doc:`zall-tilecumulative <zall-tilecumulative-SPECPROD>` catalogs stack the
+The :doc:`zall-pix <zall/zall-pix-SPECPROD>` and
+:doc:`zall-tilecumulative <zall/zall-tilecumulative-SPECPROD>` catalogs stack the
 individual zpix and ztile-cumulative files into combined catalogs across all
 surveys and programs.
 
@@ -39,16 +39,5 @@ Files are stored under ``zcatalog/v2/{SURVEY}/`` for per-survey catalogs and
 .. toctree::
    :maxdepth: 1
 
-   zpix-SURVEY-PROGRAM
-   zpix-SURVEY-PROGRAM-imaging
-   zpix-SURVEY-PROGRAM-extra
-   exp_fibermap/index
-   ztile-SURVEY-PROGRAM-GROUPTYPE
-   ztile-SURVEY-PROGRAM-GROUPTYPE-imaging
-   ztile-SURVEY-PROGRAM-GROUPTYPE-extra
-   zall-pix-SPECPROD
-   zall-pix-SPECPROD-imaging
-   zall-pix-SPECPROD-extra
-   zall-tilecumulative-SPECPROD
-   zall-tilecumulative-SPECPROD-imaging
-   zall-tilecumulative-SPECPROD-extra
+   SURVEY/index
+   zall/index
