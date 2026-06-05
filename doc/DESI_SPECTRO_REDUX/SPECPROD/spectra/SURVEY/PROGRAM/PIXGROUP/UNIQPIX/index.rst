@@ -13,4 +13,4 @@ Default $DESI_ROOT/spectro/redux/SPECPROD/spectra/SURVEY/PROGRAM/PIXGROUP/UNIQPI
 
 The available files and formats are the same as those in the
 :doc:`healpix directory tree </DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/index>`
-with the addition of a ``UNIQPIX`` header heyword.
+with the addition of a ``UNIQPIX`` header keyword.
