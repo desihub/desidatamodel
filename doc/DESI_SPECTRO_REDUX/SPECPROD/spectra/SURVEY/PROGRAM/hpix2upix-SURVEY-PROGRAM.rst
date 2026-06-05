@@ -2,7 +2,7 @@
 hpix2upix
 =========
 
-:Summary: This file contains a mapping of large nside healpix to adaptively size uniqpix.
+:Summary: This file contains a mapping of large nside healpix to adaptively sized uniqpix.
 :Naming Convention: ``hpix2upix-SURVEY-PROGRAM.fits``,
     where SURVEY is main, sv1, sv2, sv3, special, or cmx;
     and PROGRAM is bright, dark, backup, or other.
