@@ -82,8 +82,7 @@ Required Header Keywords
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See
-:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-imaging.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-imaging>`
+See `HDU1 of ztile-SURVEY-PROGRAM-GROUPTYPE-imaging.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-imaging.html#hdu1>`_
 for the full column list. The key columns are TARGETID and TILEID;
 all other columns are the imaging photometry columns from the Legacy Survey.
 
