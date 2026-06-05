@@ -82,7 +82,6 @@ Required Header Keywords
 Required Data Table Columns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See
-:doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
-for the full column list. The zall-tilecumulative-extra file contains the same
+See `HDU1 of ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <../SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra.html#hdu1>`_
+for the full column list. The zall-tilecumulative-SPECPROD-extra file contains the same
 columns, with rows stacked from all surveys, programs, and tiles.
