@@ -121,7 +121,7 @@ Name                       Type        Units   Description
 ========================== =========== ======= =====================================================================================================================================
 TARGETID                   int64               Unique DESI target ID
 TILEID                     int32               Unique DESI tile ID
-LASTNIGHT [1]_             int32               Final night of observation included in a series of coadds (cumulative only)
+LASTNIGHT [1]_             int32               Final night of observation included in a series of coadds
 Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets, Z_QSO (QuasarNET) for confirmed QSOs where the two differ by >1000 km/s
 Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS quality cuts)
 ZERR_BEST                  float64             Redshift error for Z_BEST
@@ -135,7 +135,7 @@ FIBER                      int32               Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32               bitwise-AND of input FIBERSTATUS
 TARGET_RA                  float64     deg     Barycentric Right Ascension in ICRS
 TARGET_DEC                 float64     deg     Barycentric Declination in ICRS
-DESINAME                   char[22]            Human readable sky location identifier DESI JXXX.XXXX[+/-]YY.YYYY
+DESINAME                   char[22]            Human readable identifier of a sky location DESI JXXX.XXXX[+/-]YY.YYYY, where X,Y=truncated decimal TARGET_RA, TARGET_DEC, precise to 0.36 arcsec. Multiple objects can map to a single DESINAME if very close on the sky.
 OBJTYPE                    char[3]             Object type: TGT, SKY, NON, BAD
 FIBERASSIGN_X              float32     mm      Fiberassign expected CS5 X location on focal plane
 FIBERASSIGN_Y              float32     mm      Fiberassign expected CS5 Y location on focal plane
@@ -161,13 +161,13 @@ COADD_NUMEXP               int16               Number of exposures in coadd
 COADD_EXPTIME              float32     s       Summed exposure time for coadd
 COADD_NUMNIGHT             int16               Number of nights in coadd
 COADD_NUMTILE              int16               Number of tiles in coadd
-MIN_MJD                    float64     d       Minimum Modified Julian Date (shutter open for first exposure in coadd)
-MAX_MJD                    float64     d       Maximum Modified Julian Date (shutter open for last exposure in coadd)
-MEAN_MJD                   float64     d       Mean Modified Julian Date over exposures in coadd
+MIN_MJD                    float64     d       Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
+MAX_MJD                    float64     d       Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
+MEAN_MJD                   float64     d       Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 GOOD_SPEC                  logical             True if this is a science target with good hardware/fiber status
 EFFTIME_SPEC               float32     s       Effective exposure time for spectroscopy (from TSNR2_LRG; see Notes)
 ZCAT_NSPEC                 int16               Number of times this TARGETID appears in this catalog
-ZCAT_PRIMARY               logical             True for the primary (best) spectrum for this TARGETID in this catalog
+ZCAT_PRIMARY               logical             Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
 ========================== =========== ======= =====================================================================================================================================
 
 .. [1] Optional

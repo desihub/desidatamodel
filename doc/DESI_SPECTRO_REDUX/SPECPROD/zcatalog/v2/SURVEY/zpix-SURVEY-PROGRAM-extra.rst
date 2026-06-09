@@ -90,7 +90,7 @@ HEALPIX [1]_               int32                HEALPixel number decoded from UN
 NSIDE [1]_                 int32                HEALPix NSIDE decoded from UNIQPIX (DR3+)
 SPGRPVAL                   int32                Value by which spectra are grouped for a coadd (healpixel number for healpix coadds)
 Z                          float64              Redshift measured by Redrock
-ZERR                       float32              Redshift error from Redrock
+ZERR                       float32              Redshift error from redrock
 ZWARN                      int32                Redshift warning bitmask from Redrock
 CHI2                       float32              Best fit chi squared
 COEFF                      float32[10]          Redrock template coefficients
@@ -103,7 +103,7 @@ COEFF_BEST                 float32[10]          Redrock template coefficients fo
 SUBPRIORITY                float64              Random subpriority [0-1] to break assignment ties
 FA_TARGET                  int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
 FA_TYPE                    binary               Fiberassign internal target type (science, standard, sky, safe, suppsky)
-OBSCONDITIONS              int16                Flag the target to be observed in graytime
+OBSCONDITIONS              int16                Flag the target to be observed in graytime.
 PRIORITY_INIT              int64                Target initial priority from target selection bitmasks and OBSCONDITIONS
 NUMOBS_INIT                int64                Initial number of observations for target calculated across target selection bitmasks and OBSCONDITIONS
 PLATE_RA                   float64     deg      Barycentric Right Ascension in ICRS to be used by PlateMaker

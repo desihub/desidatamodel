@@ -108,7 +108,7 @@ FIBER                      int32               Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32               bitwise-AND of input FIBERSTATUS
 TARGET_RA                  float64     deg     Barycentric Right Ascension in ICRS
 TARGET_DEC                 float64     deg     Barycentric Declination in ICRS
-DESINAME                   char[22]            Human readable sky location identifier DESI JXXX.XXXX[+/-]YY.YYYY
+DESINAME                   char[22]            Human readable identifier of a sky location DESI JXXX.XXXX[+/-]YY.YYYY, where X,Y=truncated decimal TARGET_RA, TARGET_DEC, precise to 0.36 arcsec. Multiple objects can map to a single DESINAME if very close on the sky.
 OBJTYPE                    char[3]             Object type: TGT, SKY, NON, BAD
 FIBERASSIGN_X              float32     mm      Fiberassign expected CS5 X location on focal plane
 FIBERASSIGN_Y              float32     mm      Fiberassign expected CS5 Y location on focal plane
@@ -134,17 +134,17 @@ COADD_NUMEXP               int16               Number of exposures in coadd
 COADD_EXPTIME              float32     s       Summed exposure time for coadd
 COADD_NUMNIGHT             int16               Number of nights in coadd
 COADD_NUMTILE              int16               Number of tiles in coadd
-MIN_MJD                    float64     d       Minimum Modified Julian Date (shutter open for first exposure in coadd)
-MAX_MJD                    float64     d       Maximum Modified Julian Date (shutter open for last exposure in coadd)
-MEAN_MJD                   float64     d       Mean Modified Julian Date over exposures in coadd
+MIN_MJD                    float64     d       Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
+MAX_MJD                    float64     d       Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
+MEAN_MJD                   float64     d       Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 GOOD_SPEC                  logical             True if this is a science target with good hardware/fiber status
 EFFTIME_SPEC               float32     s       Effective exposure time for spectroscopy (from TSNR2_LRG; see Notes)
 ZCAT_NSPEC                 int16               Number of times this TARGETID appears in this catalog
-ZCAT_PRIMARY               logical             True for the primary (best) spectrum for this TARGETID in this catalog
-SV_NSPEC [1]_              int16               Number of coadded spectra for this TARGETID in SV (SV1+SV2+SV3)
-SV_PRIMARY [1]_            logical             True for the primary coadded spectrum in SV (SV1+SV2+SV3)
-MAIN_NSPEC [1]_            int16               Number of coadded spectra for this TARGETID in the Main survey
-MAIN_PRIMARY [1]_          logical             True for the primary coadded spectrum in the Main survey
+ZCAT_PRIMARY               logical             Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
+SV_NSPEC [1]_              int16               Number of coadded spectra for this TARGETID in SV (SV1+2+3)
+SV_PRIMARY [1]_            logical             Boolean flag (True/False) for the primary coadded spectrum in SV (SV1+2+3)
+MAIN_NSPEC [1]_            int16               Number of coadded spectra for this TARGETID in Main survey
+MAIN_PRIMARY [1]_          logical             Boolean flag (True/False) for the primary coadded spectrum in Main survey
 ========================== =========== ======= =====================================================================================================================================
 
 .. [1] Optional
