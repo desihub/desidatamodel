@@ -222,7 +222,7 @@ MIN_MJD                    float64     d            Minimum value of the Modifie
 MAX_MJD                    float64     d            Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
 MEAN_MJD                   float64     d            Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 MEAN_FIBER_X               float32     mm           Mean (over exposures) fiber CS5 X location on focal plane
-MEAN_FIBER_Y               float32     mm           Mean (over exposures) fiber CS5 X location on focal plane
+MEAN_FIBER_Y               float32     mm           Mean (over exposures) fiber CS5 Y location on focal plane
 TSNR2_GPBDARK_B            float32                  template (S/N)^2 for dark targets in guider pass band on B
 TSNR2_ELG_B                float32                  ELG B template (S/N)^2
 TSNR2_GPBBRIGHT_B          float32                  template (S/N)^2 for bright targets in guider pass band on B
