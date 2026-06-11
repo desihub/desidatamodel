@@ -149,7 +149,8 @@ MAIN_PRIMARY [1]_          logical             Boolean flag (True/False) for the
 
 .. [1] Optional
 
-Notes:
+Notes
+~~~~~
 
   * ``SV_NSPEC`` and ``SV_PRIMARY`` are present when any SV (sv1/sv2/sv3) entries exist.
   * ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are present when any ``SURVEY=main`` entries exist.
