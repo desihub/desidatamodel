@@ -16,8 +16,10 @@ Files in the top-level production directory:
 Subdirectories under a spectroscopic production:
 
 * :doc:`zcatalog/ <zcatalog/index>`: summary redshift catalogs
-* :doc:`healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM <healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/index>`:
-  spectra, classifications, and redshifts coadded across tiles, grouped by survey, program, and healpixel.
+* DR2 and prior: :doc:`healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM <healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/index>`:
+  spectra, classifications, and redshifts coadded across tiles, grouped by survey, program, and fixed-sized nside=64 healpixel.
+* DR3 and after: :doc:`spectra/SURVEY/PROGRAM/PIXGROUP/UNIQPIX <spectra/SURVEY/PROGRAM/PIXGROUP/UNIQPIX/index>`:
+  spectra, classifications, and redshifts coadded across tiles, grouped by survey, program, and adaptively-sized uniqpix.
 * :doc:`tiles/GROUPTYPE/TILEID/GROUPID/index <tiles/GROUPTYPE/TILEID/GROUPID/index>`:
   spectra, classifications, and redshifts coadded per tile.
 * :doc:`calibnight/NIGHT/ <calibnight/NIGHT/index>`: nightly calibrations
@@ -40,6 +42,7 @@ Other subdirectories that represent internal desispec_ pipeline details, but do 
    calibnight/index
    exposures/index
    healpix/index
+   spectra/index
    preproc/index
    tiles/index
    zcatalog/index
