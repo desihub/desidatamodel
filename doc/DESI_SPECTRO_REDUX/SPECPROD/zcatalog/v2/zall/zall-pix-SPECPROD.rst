@@ -95,8 +95,8 @@ SURVEY                     char[7]             Survey name
 PROGRAM                    char[6]             DESI program type - BRIGHT, DARK, BACKUP, OTHER
 UNIQPIX [1]_               int32               Unique HEALPixel identifier encoding both pixel number and NSIDE (DR3+); HEALPIX and NSIDE are in the companion extra file
 HEALPIX [1]_               int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme (DR2 only)
-Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets, Z_QSO (QuasarNET) for confirmed QSOs where the two differ by >1000 km/s
-Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS quality cuts)
+Z_BEST                     float64             Best redshift: equals Z for most targets; uses Z_QSO when GOOD_Z_QSO or GOOD_Z_LYA is true and the redshifts differ by >1000 km/s
+Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (at least one GOOD_Z_* flag is true)
 ZERR_BEST                  float64             Redshift error for Z_BEST
 ZWARN_BEST                 int32               Redshift warning bitmask for Z_BEST
 SPECTYPE_BEST              char[6]             Spectral type for Z_BEST (e.g. GALAXY, QSO, STAR)
@@ -155,7 +155,8 @@ Notes
   * ``SV_NSPEC`` and ``SV_PRIMARY`` are present when any SV (sv1/sv2/sv3) entries exist.
   * ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are present when any ``SURVEY=main`` entries exist.
   * The targeting bitmasks ``DESI_TARGET``, ``BGS_TARGET``, ``MWS_TARGET``, and ``SCND_TARGET``
-    only apply to ``SURVEY="main"`` targets; they are `not` set for targets in other surveys.
+    are retained for ``SURVEY="main"`` and ``SURVEY="special"``. They are removed for
+    commissioning and SV surveys, which use their survey-specific target masks.
   * Similarly, the ``SV1_DESI_TARGET`` etc. target masks are only set for the corresponding
     survey; there is no propagation of targeting bits across surveys.
   * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,

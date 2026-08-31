@@ -139,19 +139,21 @@ The canonical code location defining FIBERSTATUS bits is
 FIBERSTATUS Mask Locations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-================ ============= ===========
-File             Table HDU     Column
-================ ============= ===========
-|frame|          FIBERMAP      FIBERSTATUS
-|sframe|         FIBERMAP      FIBERSTATUS
-|cframe|         FIBERMAP      FIBERSTATUS
-|spectra|        FIBERMAP      FIBERSTATUS
-|coadd|          EXP_FIBERMAP  FIBERSTATUS
-|coadd|          FIBERMAP      COADD_FIBERSTATUS
-|redrock|        FIBERMAP      COADD_FIBERSTATUS
-|exposure-qa|    FIBERQA       QAFIBERSTATUS
-|tile-qa|        FIBERQA       QAFIBERSTATUS
-================ ============= ===========
+================ ============== =================
+File             Table HDU      Column
+================ ============== =================
+|frame|          FIBERMAP       FIBERSTATUS
+|sframe|         FIBERMAP       FIBERSTATUS
+|cframe|         FIBERMAP       FIBERSTATUS
+|spectra|        FIBERMAP       FIBERSTATUS
+|coadd|          EXP_FIBERMAP   FIBERSTATUS
+|coadd|          FIBERMAP       COADD_FIBERSTATUS
+|redrock|        FIBERMAP       COADD_FIBERSTATUS
+|exposure-qa|    FIBERQA        QAFIBERSTATUS
+|tile-qa|        FIBERQA        QAFIBERSTATUS
+|ztile-v2|       ZCATALOG_EXTRA QAFIBERSTATUS
+|zall-tile-v2|   ZCATALOG_EXTRA QAFIBERSTATUS
+================ ============== =================
 
 .. |frame| replace:: :doc:`frame <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/frame-CAMERA-EXPID>`
 .. |sframe| replace:: :doc:`sframe <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/sframe-CAMERA-EXPID>`
@@ -160,6 +162,8 @@ File             Table HDU     Column
 .. |coadd| replace:: :doc:`coadd <DESI_SPECTRO_REDUX/SPECPROD/healpix/SURVEY/PROGRAM/PIXGROUP/PIXNUM/coadd-SURVEY-PROGRAM-PIXNUM>`
 .. |exposure-qa| replace:: :doc:`exposure-qa <DESI_SPECTRO_REDUX/SPECPROD/exposures/NIGHT/EXPID/exposure-qa-EXPID>`
 .. |tile-qa| replace:: :doc:`tile-qa <DESI_SPECTRO_REDUX/SPECPROD/tiles/GROUPTYPE/TILEID/GROUPID/tile-qa-TILEID-GROUPID>`
+.. |ztile-v2| replace:: :doc:`v2 ztile cumulative extra <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v2/SURVEY/ztile-SURVEY-PROGRAM-GROUPTYPE-extra>`
+.. |zall-tile-v2| replace:: :doc:`v2 zall tile cumulative extra <DESI_SPECTRO_REDUX/SPECPROD/zcatalog/v2/zall/zall-tilecumulative-SPECPROD-extra>`
 
 FIBERSTATUS Bit Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

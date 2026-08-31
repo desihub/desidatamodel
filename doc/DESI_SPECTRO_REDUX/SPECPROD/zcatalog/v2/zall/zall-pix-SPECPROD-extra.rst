@@ -68,7 +68,7 @@ Required Header Keywords
     ============ ================ ==== =======================
     KEY          Example Value    Type Comment
     ============ ================ ==== =======================
-    NAXIS1       870              int  width of table in bytes
+    NAXIS1       879              int  width of table in bytes
     NAXIS2       3000000          int  number of rows in table
     CHECKSUM     QA6lQ26iQ96iQ96i str  HDU checksum
     DATASUM      4284326946       str  data unit checksum
