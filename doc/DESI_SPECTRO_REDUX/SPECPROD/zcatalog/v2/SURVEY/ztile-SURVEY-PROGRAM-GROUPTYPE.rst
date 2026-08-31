@@ -122,8 +122,8 @@ Name                       Type        Units   Description
 TARGETID                   int64               Unique DESI target ID
 TILEID                     int32               Unique DESI tile ID
 LASTNIGHT [1]_             int32               Final night of observation included in a series of coadds
-Z_BEST                     float64             Best redshift: equals Z for most targets; uses Z_QSO when GOOD_Z_QSO or GOOD_Z_LYA is true and the redshifts differ by >1000 km/s
-Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (at least one GOOD_Z_* flag is true)
+Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets; for confirmed QSOs (i.e., when either GOOD_Z_QSO or GOOD_Z_LYA is true), it equals Z_QSO (QuasarNET) if the two redshifts differ by >1000 km/s
+Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS-like quality cuts)
 ZERR_BEST                  float64             Redshift error for Z_BEST
 ZWARN_BEST                 int32               Redshift warning bitmask for Z_BEST
 SPECTYPE_BEST              char[6]             Spectral type for Z_BEST (e.g. GALAXY, QSO, STAR)

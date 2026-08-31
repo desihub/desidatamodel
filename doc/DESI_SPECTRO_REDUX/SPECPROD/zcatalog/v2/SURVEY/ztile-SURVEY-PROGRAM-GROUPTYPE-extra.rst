@@ -182,8 +182,8 @@ GOOD_Z_BGS                 logical              True if BGS target with high-con
 GOOD_Z_LRG                 logical              True if LRG or LGE target with high-confidence redshift passing LSS quality cuts
 GOOD_Z_ELG                 logical              True if ELG target with high-confidence redshift passing LSS quality cuts
 GOOD_Z_QSO                 logical              True if QSO target with high-confidence redshift (Z_QSO) passing LSS quality cuts
-GOOD_Z_LYA                 logical              True for main-survey QSO candidates with high-confidence Z_QSO passing LyA WG criteria; False for other surveys
-Z_QSO                      float64              QuasarNET-corrected QSO redshift used in GOOD_Z_QSO and GOOD_Z_LYA evaluation
+GOOD_Z_LYA                 logical              True if the object passes the confident QSO criteria set by the DESI LyA Working Group
+Z_QSO                      float64              QuasarNET-corrected QSO redshift (used in GOOD_Z_QSO and GOOD_Z_LYA evaluation)
 ZERR_QSO                   float32              Error on Z_QSO
 ========================== =========== ======== =====================================================================================================================================
 
