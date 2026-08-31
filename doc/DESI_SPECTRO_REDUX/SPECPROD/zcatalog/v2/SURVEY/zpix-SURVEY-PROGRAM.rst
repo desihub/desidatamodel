@@ -63,8 +63,8 @@ quality flags) are in
 ``Z_BEST`` is the recommended redshift to use. It equals ``Z`` (Redrock) for most
 targets, but is set to ``Z_QSO`` (QuasarNET) when ``GOOD_Z_QSO`` or
 ``GOOD_Z_LYA`` is true and the two redshifts differ by more than 1000 km/s.
-``Z_CONF`` encodes the overall confidence: 0 = no confidence; 1 = ZWARN==0 but
-not LSS-quality; 3 = at least one ``GOOD_Z_{BGS,LRG,ELG,QSO,LYA}`` flag is true.
+``Z_CONF`` encodes the overall confidence: 0 = no confidence; 1 = low confidence
+(ZWARN==0 but not LSS-quality); 3 = high confidence (passes LSS-like quality cuts).
 
 ``TEMNAMnn`` and ``TEMVERnn`` record the Redrock template names and versions
 used for the redshift fits.
