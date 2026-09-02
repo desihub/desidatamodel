@@ -339,6 +339,7 @@ PSFSIZE_G,float32,arcsec,Median g-band PSF size of BRICK_PRIMARY objs,Median PSF
 PSFSIZE_R,float32,arcsec,Median r-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in r-band
 PSFSIZE_Z,float32,arcsec,Median z-band PSF size of BRICK_PRIMARY objs,Median PSF size evaluated at the BRICK_PRIMARY objects in this brick in z-band
 PSF_TO_FIBER_SPECFLUX,float64,,PSF light fraction in fiber (given seeing),Fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
+QAFIBERSTATUS,int32,,Fiber status bitmask with added QA diagnoses,"Fiber status bitmask, inflated with further QA diagnoses"
 QSO_MASKBITS,int32,,QSO Bitwise mask from imaging for potential issues, QSO Bitwise mask from the imaging indicating potential issue or blending
 R_MAG_ABS,float32,,Absolute magnitude in r band in mocks,Absolute magnitude in r band in mocks
 R_MAG_APP,float32,,Apparent magnitude in r band in mocks,Apparent magnitude in r band in mocks

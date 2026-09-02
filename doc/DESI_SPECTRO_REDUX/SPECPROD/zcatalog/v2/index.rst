@@ -40,10 +40,14 @@ New Columns in v2
 
 v2 also introduces new redshift quality columns not present in v1:
 
-- ``Z_BEST``: best redshift, choosing between the standard Redrock ``Z`` and the QuasarNET ``Z_QSO`` for QSO targets. It is the recommended redshift value for most users. The associated Redrock columns are ``ZERR_BEST``, ``ZWARN_BEST`` etc. 
-- ``Z_CONF``: integer confidence level: 0=no confidence, 1=low confidence (``ZWARN_BEST==0`` but not LSS-quality), 3=high confidence (passes LSS quality cuts). A non-zero ``Z_CONF`` also requires ``GOOD_SPEC==True``.
+- ``Z_BEST``: best redshift, choosing between the standard Redrock ``Z`` and the QuasarNET ``Z_QSO`` when ``GOOD_Z_QSO`` or ``GOOD_Z_LYA`` is true and the two redshifts differ by more than 1000 km/s. It is the recommended redshift value for most users. The associated Redrock columns are ``ZERR_BEST``, ``ZWARN_BEST`` etc.
+- ``Z_CONF``: integer confidence level: 0=no confidence, 1=low confidence (``ZWARN_BEST==0`` but not LSS-quality), 3=high confidence (passes LSS-like quality cuts). A non-zero ``Z_CONF`` also requires ``GOOD_SPEC==True``.
 - ``GOOD_SPEC``: True if the spectrum is a science target with good hardware status.
-- ``GOOD_Z_{BGS,LRG,ELG,QSO}``: per-tracer redshift quality flags passing LSS cuts.
+- ``GOOD_Z_{BGS,LRG,ELG,QSO,LYA}``: per-tracer redshift quality flags passing the corresponding quality cuts.
+
+The extra catalogs also include ``OIII_FLUX`` and ``OIII_FLUX_IVAR`` from the
+emission-line fits. Cumulative ztile catalogs additionally include
+``QAFIBERSTATUS`` from the corresponding tile QA files.
 
 Subdirectories
 --------------

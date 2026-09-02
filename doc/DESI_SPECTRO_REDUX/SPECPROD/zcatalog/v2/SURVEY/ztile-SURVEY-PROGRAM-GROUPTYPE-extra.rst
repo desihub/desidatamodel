@@ -69,7 +69,7 @@ Required Header Keywords
     ============ ================ ==== =======================
     KEY          Example Value    Type Comment
     ============ ================ ==== =======================
-    NAXIS1       882              int  width of table in bytes
+    NAXIS1       895              int  width of table in bytes
     NAXIS2       5000             int  number of rows in table
     RRVER        0.15.0           str  Redrock version
     SURVEY [1]_  main             str  DESI sub-survey (e.g. sv1, sv3, main)
@@ -159,6 +159,8 @@ TSNR2_QSO                  float32              QSO template (S/N)^2 summed over
 TSNR2_LRG                  float32              LRG template (S/N)^2 summed over B,R,Z
 OII_FLUX                   float32              [OII] doublet flux from emission line fit
 OII_FLUX_IVAR              float32              Inverse variance of OII_FLUX
+OIII_FLUX                  float32              [OIII] doublet flux from emission line fit
+OIII_FLUX_IVAR             float32              Inverse variance of OIII_FLUX
 IS_QSO_MGII                logical              True if this object is classified as a QSO by the MgII afterburner
 IS_QSO_QN_NEW_RR           logical              True if QuasarNET classification differs from Redrock and target is a QSO
 C_LYA                      float32              QuasarNET confidence for Lyman-alpha line
@@ -175,12 +177,15 @@ SUBTYPE_NEW                char[20]             Spectral subtype from QuasarNET 
 CHI2_NEW                   float64              Chi squared for QuasarNET fit
 DELTACHI2_NEW              float64              Delta chi2 for QuasarNET fit
 COEFF_NEW                  float64[10]          Template coefficients for QuasarNET fit
+QAFIBERSTATUS [1]_         int32                Fiber status bitmask, inflated with further QA diagnoses
 GOOD_Z_BGS                 logical              True if BGS target with high-confidence redshift passing LSS quality cuts
-GOOD_Z_LRG                 logical              True if LRG target with high-confidence redshift passing LSS quality cuts
+GOOD_Z_LRG                 logical              True if LRG or LGE target with high-confidence redshift passing LSS quality cuts
 GOOD_Z_ELG                 logical              True if ELG target with high-confidence redshift passing LSS quality cuts
 GOOD_Z_QSO                 logical              True if QSO target with high-confidence redshift (Z_QSO) passing LSS quality cuts
-Z_QSO                      float64              QuasarNET-corrected QSO redshift (used in GOOD_Z_QSO evaluation)
+GOOD_Z_LYA                 logical              True if the object passes the confident QSO criteria set by the DESI LyA Working Group
+Z_QSO                      float64              QuasarNET-corrected QSO redshift (used in GOOD_Z_QSO and GOOD_Z_LYA evaluation)
 ZERR_QSO                   float32              Error on Z_QSO
 ========================== =========== ======== =====================================================================================================================================
 
-.. [1] Optional
+.. [1] Optional. ``QAFIBERSTATUS`` is present only in cumulative catalogs. Its
+   bit definitions are documented in :doc:`../../../../../bitmasks`.

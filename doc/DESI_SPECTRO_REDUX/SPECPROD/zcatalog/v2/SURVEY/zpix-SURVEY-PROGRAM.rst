@@ -61,10 +61,10 @@ quality flags) are in
 :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>`.
 
 ``Z_BEST`` is the recommended redshift to use. It equals ``Z`` (Redrock) for most
-targets, but is set to ``Z_QSO`` (QuasarNET) for confirmed QSO targets where the
-two differ by more than 1000 km/s. ``Z_CONF`` encodes the overall confidence:
-0 = no confidence; 1 = ZWARN==0 but not LSS-quality; 3 = passes LSS quality cuts
-for at least one extragalactic tracer class.
+targets, but is set to ``Z_QSO`` (QuasarNET) when ``GOOD_Z_QSO`` or
+``GOOD_Z_LYA`` is true and the two redshifts differ by more than 1000 km/s.
+``Z_CONF`` encodes the overall confidence: 0 = no confidence; 1 = low confidence
+(ZWARN==0 but not LSS-quality); 3 = high confidence (passes LSS-like quality cuts).
 
 ``TEMNAMnn`` and ``TEMVERnn`` record the Redrock template names and versions
 used for the redshift fits.
@@ -126,8 +126,8 @@ Name                       Type        Units   Description
 TARGETID                   int64               Unique DESI target ID
 UNIQPIX [1]_               int32               Unique HEALPixel identifier encoding both pixel number and NSIDE (DR3+); HEALPIX and NSIDE are in the companion extra file
 HEALPIX [1]_               int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme (DR2 only)
-Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets, Z_QSO (QuasarNET) for confirmed QSOs where the two differ by >1000 km/s
-Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS quality cuts)
+Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets; for confirmed QSOs (i.e., when either GOOD_Z_QSO or GOOD_Z_LYA is true), it equals Z_QSO (QuasarNET) if the two redshifts differ by >1000 km/s
+Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS-like quality cuts)
 ZERR_BEST                  float64             Redshift error for Z_BEST
 ZWARN_BEST                 int32               Redshift warning bitmask for Z_BEST
 SPECTYPE_BEST              char[6]             Spectral type for Z_BEST (e.g. GALAXY, QSO, STAR)
@@ -184,10 +184,11 @@ Notes and Examples
 ==================
 
   * The targeting bitmasks ``DESI_TARGET``, ``BGS_TARGET``, ``MWS_TARGET``, and ``SCND_TARGET``
-    only apply to ``SURVEY="main"`` targets; they are `not` set for targets in other surveys.
+    are retained for ``SURVEY="main"`` and ``SURVEY="special"``. They are removed for
+    commissioning and SV surveys, which use their survey-specific target masks.
   * Similarly, the ``SV1_DESI_TARGET`` etc. target masks are only set for the corresponding
     survey; there is no propagation of targeting bits across surveys.
-  * ``GOOD_Z_{BGS,LRG,ELG,QSO}`` flags are in the companion
+  * ``GOOD_Z_{BGS,LRG,ELG,QSO,LYA}`` flags are in the companion
     :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` file.
   * This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
     ``MAIN_PRIMARY``; these are added when zpix files are combined into
