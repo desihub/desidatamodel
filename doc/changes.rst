@@ -9,11 +9,13 @@ desidatamodel Change Log
 * Improve ``SPECMASK`` documentation (PR `#215`_).
 * Expand ``PHOTSYS`` documentation (PR `#217`_).
 * Add LSS mock catalog data model (PR `#219`_).
+* Document columns missing from DR1 v2 zcatalogs (PR `#231`_).
 
 .. _`#214`: https://github.com/desihub/desidatamodel/pull/214
 .. _`#215`: https://github.com/desihub/desidatamodel/pull/215
 .. _`#217`: https://github.com/desihub/desidatamodel/pull/217
 .. _`#219`: https://github.com/desihub/desidatamodel/pull/219
+.. _`#231`: https://github.com/desihub/desidatamodel/pull/231
 
 25.3 (2025-03-17)
 -----------------
