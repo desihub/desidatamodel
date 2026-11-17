@@ -104,6 +104,11 @@ FLUX_IVAR_R                float32     nanomaggy^-2 Inverse Variance of FLUX_R
 FLUX_IVAR_Z                float32     nanomaggy^-2 Inverse Variance of FLUX_Z
 FLUX_IVAR_W1               float32     nanomaggy^-2 Inverse Variance of FLUX_W1
 FLUX_IVAR_W2               float32     nanomaggy^-2 Inverse Variance of FLUX_W2
+MW_TRANSMISSION_G          float32                  Galactic transmission in g band, computed from EBV using the Legacy Surveys DR9 extinction coefficients
+MW_TRANSMISSION_R          float32                  Galactic transmission in r band, computed from EBV using the Legacy Surveys DR9 extinction coefficients
+MW_TRANSMISSION_Z          float32                  Galactic transmission in z band, computed from EBV using the Legacy Surveys DR9 extinction coefficients
+MW_TRANSMISSION_W1         float32                  Galactic transmission in W1 band, computed from EBV using the Legacy Surveys DR9 extinction coefficients
+MW_TRANSMISSION_W2         float32                  Galactic transmission in W2 band, computed from EBV using the Legacy Surveys DR9 extinction coefficients
 FIBERFLUX_G                float32     nanomaggy    Predicted g-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_R                float32     nanomaggy    Predicted r-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
 FIBERFLUX_Z                float32     nanomaggy    Predicted z-band flux within a fiber of diameter 1.5 arcsec from this object in 1 arcsec Gaussian seeing
