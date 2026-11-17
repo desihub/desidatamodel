@@ -122,7 +122,7 @@ For the SURVEY=cmx m33 tile (TILEID=80615) tile and all the SURVEY=sv1 tiles (ex
 For targets with a non-zero proper motion, ``FIBER_RA`` and ``FIBER_DEC`` refer to the position at the reference epoch (but note that the proper-motion correction has been applied at the time of the observation, it is just not recorded in ``FIBER_RA`` and ``FIBER_DEC``).
 
 Optional Columns
-================
+----------------
 
-  * Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
-    :doc:`v2 overview <../../index>`.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../../index>`.

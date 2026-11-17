@@ -179,25 +179,25 @@ ZCAT_PRIMARY               logical             Boolean flag (True/False) for the
 Notes and Examples
 ==================
 
-  * ``FIRSTNIGHT`` (first night of observations for each tile) is in the companion
-    :doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE-extra>` file.
-  * This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
-    ``MAIN_PRIMARY``; these are added when ztile files are combined into
-    :doc:`zall-tilecumulative-SPECPROD.fits <../zall/zall-tilecumulative-SPECPROD>`.
-  * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
-    where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
-    bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
-    factor from the TSNR ensemble template files in ``desimodel``.
-  * For the SURVEY=cmx m33 tile (TILEID=80615) tile and all the SURVEY=sv1 tiles (except TILEID=80971-80976, the dc3r2 ones), proper-motion correction was applied at the :doc:`fiberassign </DESI_TARGET/fiberassign/tiles/TILES_VERSION/TILEXX/fiberassign-TILEID>` design step; thus the following columns can have different values than in the :doc:`desitarget products </DESI_TARGET/TARG_DIR/DR/VERSION/targets/PHASE/RESOLVE/OBSCON/PHASEtargets-OBSCON-RESOLVE-hp-HP>`: ``TARGET_RA``, ``TARGET_DEC``, ``REF_EPOCH``, ``PLATE_RA``, ``PLATE_DEC``, and ``PLATE_REF_EPOCH``.
+* ``FIRSTNIGHT`` (first night of observations for each tile) is in the companion
+  :doc:`ztile-SURVEY-PROGRAM-GROUPTYPE-extra.fits <./ztile-SURVEY-PROGRAM-GROUPTYPE-extra>` file.
+* This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
+  ``MAIN_PRIMARY``; these are added when ztile files are combined into
+  :doc:`zall-tilecumulative-SPECPROD.fits <../zall/zall-tilecumulative-SPECPROD>`.
+* ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
+  where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
+  bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
+  factor from the TSNR ensemble template files in ``desimodel``.
+* For the SURVEY=cmx m33 tile (TILEID=80615) tile and all the SURVEY=sv1 tiles (except TILEID=80971-80976, the dc3r2 ones), proper-motion correction was applied at the :doc:`fiberassign </DESI_TARGET/fiberassign/tiles/TILES_VERSION/TILEXX/fiberassign-TILEID>` design step; thus the following columns can have different values than in the :doc:`desitarget products </DESI_TARGET/TARG_DIR/DR/VERSION/targets/PHASE/RESOLVE/OBSCON/PHASEtargets-OBSCON-RESOLVE-hp-HP>`: ``TARGET_RA``, ``TARGET_DEC``, ``REF_EPOCH``, ``PLATE_RA``, ``PLATE_DEC``, and ``PLATE_REF_EPOCH``.
 
 Optional Columns
-================
+----------------
 
-  * ``LASTNIGHT`` is only present for ``GROUPTYPE=cumulative`` catalogs.
-  * Targeting bitmasks: ``CMX_TARGET``, ``SV1_*_TARGET``, ``SV2_*_TARGET``, and
-    ``SV3_*_TARGET`` are only present for the corresponding survey; there is no
-    propagation of targeting bits across surveys. ``DESI_TARGET``, ``BGS_TARGET``,
-    ``MWS_TARGET``, and ``SCND_TARGET`` are retained for ``SURVEY="main"`` and
-    ``SURVEY="special"``, and are removed for commissioning and SV surveys.
-  * Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
-    :doc:`v2 overview <../index>`.
+* ``LASTNIGHT`` is only present for ``GROUPTYPE=cumulative`` catalogs.
+* Targeting bitmasks: ``CMX_TARGET``, ``SV1_*_TARGET``, ``SV2_*_TARGET``, and
+  ``SV3_*_TARGET`` are only present for the corresponding survey; there is no
+  propagation of targeting bits across surveys. ``DESI_TARGET``, ``BGS_TARGET``,
+  ``MWS_TARGET``, and ``SCND_TARGET`` are retained for ``SURVEY="main"`` and
+  ``SURVEY="special"``, and are removed for commissioning and SV surveys.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../index>`.

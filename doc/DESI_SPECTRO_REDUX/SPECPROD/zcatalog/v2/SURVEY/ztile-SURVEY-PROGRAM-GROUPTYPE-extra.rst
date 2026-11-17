@@ -193,9 +193,9 @@ ZERR_QSO                   float32              Error on Z_QSO
 Optional Columns
 ================
 
-  * ``FIRSTNIGHT`` and ``QAFIBERSTATUS`` are only present for
-    ``GROUPTYPE=cumulative`` catalogs. ``QAFIBERSTATUS`` bit definitions are
-    documented in :doc:`../../../../../bitmasks`.
-  * Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
-    :doc:`v2 overview <../index>`.
+* ``FIRSTNIGHT`` and ``QAFIBERSTATUS`` are only present for
+  ``GROUPTYPE=cumulative`` catalogs. ``QAFIBERSTATUS`` bit definitions are
+  documented in :doc:`../../../../../bitmasks`.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../index>`.
 

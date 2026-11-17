@@ -153,26 +153,26 @@ MAIN_PRIMARY [1]_          logical             Boolean flag (True/False) for the
 Notes
 ~~~~~
 
-  * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
-    where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
-    bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
-    factor from the TSNR ensemble template files in ``desimodel``.
+* ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
+  where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
+  bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
+  factor from the TSNR ensemble template files in ``desimodel``.
 
 Optional Columns
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
-  * ``HEALPIX`` is present in DR1 and DR2 files, which are grouped by HEALPixel
-    (``healpix`` grouping). DR3+ files use the ``uniqpix`` grouping and have
-    ``UNIQPIX`` instead; ``HEALPIX`` and ``NSIDE`` are then in the companion
-    :doc:`zall-pix-SPECPROD-extra.fits <./zall-pix-SPECPROD-extra>` file.
-  * Targeting bitmasks: each ``*_TARGET`` column is present if any of the input
-    per-survey catalogs has it, and is set to 0 for entries from surveys that do
-    not have it; there is no propagation of targeting bits across surveys.
-    ``CMX_TARGET``, ``SV1_*_TARGET``, ``SV2_*_TARGET``, and ``SV3_*_TARGET`` are
-    only set for the corresponding survey. ``DESI_TARGET``, ``BGS_TARGET``,
-    ``MWS_TARGET``, and ``SCND_TARGET`` are only set for ``SURVEY="main"`` and
-    ``SURVEY="special"``.
-  * ``SV_NSPEC`` and ``SV_PRIMARY`` are present when any SV (sv1/sv2/sv3) entries exist.
-    ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are present when any ``SURVEY=main`` entries exist.
-  * Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
-    :doc:`v2 overview <../index>`.
+* ``HEALPIX`` is present in DR1 and DR2 files, which are grouped by HEALPixel
+  (``healpix`` grouping). DR3+ files use the ``uniqpix`` grouping and have
+  ``UNIQPIX`` instead; ``HEALPIX`` and ``NSIDE`` are then in the companion
+  :doc:`zall-pix-SPECPROD-extra.fits <./zall-pix-SPECPROD-extra>` file.
+* Targeting bitmasks: each ``*_TARGET`` column is present if any of the input
+  per-survey catalogs has it, and is set to 0 for entries from surveys that do
+  not have it; there is no propagation of targeting bits across surveys.
+  ``CMX_TARGET``, ``SV1_*_TARGET``, ``SV2_*_TARGET``, and ``SV3_*_TARGET`` are
+  only set for the corresponding survey. ``DESI_TARGET``, ``BGS_TARGET``,
+  ``MWS_TARGET``, and ``SCND_TARGET`` are only set for ``SURVEY="main"`` and
+  ``SURVEY="special"``.
+* ``SV_NSPEC`` and ``SV_PRIMARY`` are present when any SV (sv1/sv2/sv3) entries exist.
+  ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are present when any ``SURVEY=main`` entries exist.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../index>`.

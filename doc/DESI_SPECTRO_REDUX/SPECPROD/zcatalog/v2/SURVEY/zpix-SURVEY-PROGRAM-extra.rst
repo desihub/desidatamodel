@@ -190,10 +190,10 @@ ZERR_QSO                   float32              Error on Z_QSO
 Optional Columns
 ================
 
-  * ``HEALPIX`` and ``NSIDE`` are only present in DR3+ files, which use the
-    ``uniqpix`` grouping; they are decoded from ``UNIQPIX`` in the core
-    :doc:`zpix-SURVEY-PROGRAM.fits <./zpix-SURVEY-PROGRAM>` file. In DR1 and DR2
-    files, ``HEALPIX`` is in the core file.
-  * Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
-    :doc:`v2 overview <../index>`.
+* ``HEALPIX`` and ``NSIDE`` are only present in DR3+ files, which use the
+  ``uniqpix`` grouping; they are decoded from ``UNIQPIX`` in the core
+  :doc:`zpix-SURVEY-PROGRAM.fits <./zpix-SURVEY-PROGRAM>` file. In DR1 and DR2
+  files, ``HEALPIX`` is in the core file.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../index>`.
 
