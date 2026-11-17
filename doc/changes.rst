@@ -5,15 +5,33 @@ desidatamodel Change Log
 25.11 (unreleased)
 ------------------
 
+*Planned*: the next tag should correspond to DR2.
+
 * Expand ``FIBERSTATUS`` documentation (PR `#214`_).
 * Improve ``SPECMASK`` documentation (PR `#215`_).
 * Expand ``PHOTSYS`` documentation (PR `#217`_).
 * Add LSS mock catalog data model (PR `#219`_).
+* Fix typo in ``TSNR2_GPB`` description (PR `#220`_).
+* Add missing ``NUMEXP`` and ``NUMTILE`` column descriptions (PR `#221`_).
+* Update ``POORPOSITION`` description (PR `#222`_).
+* Add v2 zcatalog documentation (PR `#224`_).
+* Add uniqpix spectra/ directory tree description (PR `#225`_).
+* Fix ``MEAN_FIBER_Y`` description in v1 ztile zcatalog (PR `#226`_).
+* Update v2 zcatalog documentation (PR `#228_`).
+* Add MW_TRANSMISSION columns to v2 zcatalog documentation (PR `#230`_).
 
 .. _`#214`: https://github.com/desihub/desidatamodel/pull/214
 .. _`#215`: https://github.com/desihub/desidatamodel/pull/215
 .. _`#217`: https://github.com/desihub/desidatamodel/pull/217
 .. _`#219`: https://github.com/desihub/desidatamodel/pull/219
+.. _`#220`: https://github.com/desihub/desidatamodel/pull/220
+.. _`#221`: https://github.com/desihub/desidatamodel/pull/221
+.. _`#222`: https://github.com/desihub/desidatamodel/pull/222
+.. _`#224`: https://github.com/desihub/desidatamodel/pull/224
+.. _`#225`: https://github.com/desihub/desidatamodel/pull/225
+.. _`#226`: https://github.com/desihub/desidatamodel/pull/226
+.. _`#228`: https://github.com/desihub/desidatamodel/pull/228
+.. _`#230`: https://github.com/desihub/desidatamodel/pull/230
 
 25.3 (2025-03-17)
 -----------------
