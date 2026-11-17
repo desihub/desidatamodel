@@ -84,7 +84,6 @@ Required Data Table Columns
 Name                       Type        Units        Description
 ========================== =========== ============ =====================================================================================================================================
 TARGETID                   int64                    Unique DESI target ID
-HEALPIX                    int32                    HEALPixel containing this location at NSIDE=64 in the NESTED scheme
 PMRA                       float32     mas yr^-1    Reference catalog proper motion in the RA direction
 PMDEC                      float32     mas yr^-1    Reference catalog proper motion in the Dec direction
 REF_EPOCH                  float32     yr           Reference catalog reference epoch (*e.g.*, 2015.5 for `Gaia`_ DR2)

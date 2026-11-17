@@ -19,7 +19,9 @@ desidatamodel Change Log
 * Fix ``MEAN_FIBER_Y`` description in v1 ztile zcatalog (PR `#226`_).
 * Update v2 zcatalog documentation (PR `#228_`).
 * Add MW_TRANSMISSION columns to v2 zcatalog documentation (PR `#230`_).
-* Document columns missing from DR1 v2 zcatalogs (PR `#231`_).
+* Document columns missing from DR1 v2 zcatalogs, explain optional
+  columns, and remove ``HEALPIX`` from v2 zpix imaging files in v2 zcatalog
+  documentation (PR `#231`_).
 
 .. _`#214`: https://github.com/desihub/desidatamodel/pull/214
 .. _`#215`: https://github.com/desihub/desidatamodel/pull/215

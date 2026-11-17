@@ -65,7 +65,8 @@ not available in the DR1 pipeline outputs:
 The DR1 QuasarNET outputs include ``Z_NEW`` and ``ZERR_NEW`` but not the other
 ``*_NEW`` columns listed above, so the corresponding ``*_BEST`` columns cannot be
 computed. The ``*_MJD`` and ``IN_COADD_*`` columns are not in the DR1 fibermaps.
-These columns are marked with a footnote in the individual file descriptions.
+These columns are marked as optional, with an additional footnote, in the
+individual file descriptions.
 
 Subdirectories
 --------------
