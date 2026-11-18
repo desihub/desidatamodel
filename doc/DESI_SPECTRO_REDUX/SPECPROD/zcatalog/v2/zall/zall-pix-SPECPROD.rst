@@ -150,16 +150,8 @@ MAIN_PRIMARY [1]_          logical             Boolean flag (True/False) for the
 .. [1] Optional; see `Optional Columns`_ below.
 .. [2] Not available in DR1 (``iron``); see the :doc:`v2 overview <../index>`.
 
-Notes
-~~~~~
-
-* ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
-  where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
-  bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
-  factor from the TSNR ensemble template files in ``desimodel``.
-
 Optional Columns
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 * ``HEALPIX`` is present in DR1 and DR2 files, which are grouped by HEALPixel
   (``healpix`` grouping). DR3+ files use the ``uniqpix`` grouping and have
@@ -176,3 +168,12 @@ Optional Columns
   ``MAIN_NSPEC`` and ``MAIN_PRIMARY`` are present when any ``SURVEY=main`` entries exist.
 * Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
   :doc:`v2 overview <../index>`.
+
+Notes and Examples
+==================
+
+* ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
+  where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
+  bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
+  factor from the TSNR ensemble template files in ``desimodel``.
+

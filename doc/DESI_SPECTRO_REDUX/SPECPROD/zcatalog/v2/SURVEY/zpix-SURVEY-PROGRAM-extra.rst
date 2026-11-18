@@ -188,7 +188,7 @@ ZERR_QSO                   float32              Error on Z_QSO
 .. [2] Not available in DR1 (``iron``); see the :doc:`v2 overview <../index>`.
 
 Optional Columns
-================
+~~~~~~~~~~~~~~~~
 
 * ``HEALPIX`` and ``NSIDE`` are only present in DR3+ files, which use the
   ``uniqpix`` grouping; they are decoded from ``UNIQPIX`` in the core

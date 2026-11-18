@@ -191,7 +191,7 @@ ZERR_QSO                   float32              Error on Z_QSO
 .. [2] Not available in DR1 (``iron``); see the :doc:`v2 overview <../index>`.
 
 Optional Columns
-================
+~~~~~~~~~~~~~~~~
 
 * ``FIRSTNIGHT`` and ``QAFIBERSTATUS`` are only present for
   ``GROUPTYPE=cumulative`` catalogs. ``QAFIBERSTATUS`` bit definitions are
