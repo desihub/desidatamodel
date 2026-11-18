@@ -105,10 +105,13 @@ DELTA_Y               float64 mm       CS5 Y requested minus actual position
 FIBER_RA              float64 deg      RA of actual fiber position
 FIBER_DEC             float64 deg      DEC of actual fiber position
 PSF_TO_FIBER_SPECFLUX float64          fraction of light from point-like source captured by 1.5 arcsec diameter fiber given atmospheric seeing
-IN_COADD_B            logical          If True this fiber in this exposure was used in the coadd of camera B
-IN_COADD_R            logical          If True this fiber in this exposure was used in the coadd of camera R
-IN_COADD_Z            logical          If True this fiber in this exposure was used in the coadd of camera Z
+IN_COADD_B [1]_ [2]_  logical          If True this fiber in this exposure was used in the coadd of camera B
+IN_COADD_R [1]_ [2]_  logical          If True this fiber in this exposure was used in the coadd of camera R
+IN_COADD_Z [1]_ [2]_  logical          If True this fiber in this exposure was used in the coadd of camera Z
 ===================== ======= ======== =======================================================================================================
+
+.. [1] Optional
+.. [2] Not available in DR1 (``iron``); see the :doc:`v2 overview <../../index>`.
 
 
 Notes and Examples

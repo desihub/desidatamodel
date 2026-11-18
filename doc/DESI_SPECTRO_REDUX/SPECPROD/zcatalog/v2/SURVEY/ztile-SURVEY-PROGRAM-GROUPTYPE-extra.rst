@@ -101,7 +101,7 @@ SPECTYPE                   char[6]              Spectral type of Redrock best fi
 SUBTYPE                    char[3]              Spectral subtype
 NCOEFF                     int16                Number of Redrock template coefficients
 DELTACHI2                  float32              chi2 difference between first- and second-best redrock template fits
-COEFF_BEST                 float32[10]          Redrock template coefficients for Z_BEST fit
+COEFF_BEST [1]_ [2]_       float32[10]          Redrock template coefficients for Z_BEST fit
 SUBPRIORITY                float64              Random subpriority [0-1] to break assignment ties
 FA_TARGET                  int64                Targeting bit internally used by fiberassign (linked with FA_TYPE)
 FA_TYPE                    binary               Fiberassign internal target type (science, standard, sky, safe, suppsky)
@@ -171,12 +171,12 @@ C_Hbeta                    float32              QuasarNET confidence for H-beta 
 C_Halpha                   float32              QuasarNET confidence for H-alpha line
 Z_NEW                      float64              QuasarNET redshift (when IS_QSO_QN_NEW_RR is True)
 ZERR_NEW                   float64              QuasarNET redshift error
-ZWARN_NEW                  int64                Redshift warning bitmask for QuasarNET redshift
-SPECTYPE_NEW               char[6]              Spectral type from QuasarNET fit
-SUBTYPE_NEW                char[20]             Spectral subtype from QuasarNET fit
-CHI2_NEW                   float64              Chi squared for QuasarNET fit
-DELTACHI2_NEW              float64              Delta chi2 for QuasarNET fit
-COEFF_NEW                  float64[10]          Template coefficients for QuasarNET fit
+ZWARN_NEW [1]_ [2]_        int64                Redshift warning bitmask for QuasarNET redshift
+SPECTYPE_NEW [1]_ [2]_     char[6]              Spectral type from QuasarNET fit
+SUBTYPE_NEW [1]_ [2]_      char[20]             Spectral subtype from QuasarNET fit
+CHI2_NEW [1]_ [2]_         float64              Chi squared for QuasarNET fit
+DELTACHI2_NEW [1]_ [2]_    float64              Delta chi2 for QuasarNET fit
+COEFF_NEW [1]_ [2]_        float64[10]          Template coefficients for QuasarNET fit
 QAFIBERSTATUS [1]_         int32                Fiber status bitmask, inflated with further QA diagnoses
 GOOD_Z_BGS                 logical              True if BGS target with high-confidence redshift passing LSS quality cuts
 GOOD_Z_LRG                 logical              True if LRG or LGE target with high-confidence redshift passing LSS quality cuts
@@ -187,5 +187,15 @@ Z_QSO                      float64              QuasarNET-corrected QSO redshift
 ZERR_QSO                   float32              Error on Z_QSO
 ========================== =========== ======== =====================================================================================================================================
 
-.. [1] Optional. ``QAFIBERSTATUS`` is present only in cumulative catalogs. Its
-   bit definitions are documented in :doc:`../../../../../bitmasks`.
+.. [1] Optional; see `Optional Columns`_ below.
+.. [2] Not available in DR1 (``iron``); see the :doc:`v2 overview <../index>`.
+
+Optional Columns
+~~~~~~~~~~~~~~~~
+
+* ``FIRSTNIGHT`` and ``QAFIBERSTATUS`` are only present for
+  ``GROUPTYPE=cumulative`` catalogs. ``QAFIBERSTATUS`` bit definitions are
+  documented in :doc:`../../../../../bitmasks`.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../index>`.
+

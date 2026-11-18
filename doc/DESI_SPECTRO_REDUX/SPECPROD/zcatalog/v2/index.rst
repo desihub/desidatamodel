@@ -5,7 +5,8 @@ v2
 Overview of v2 Redshift Catalog Files
 -------------------------------------
 
-The v2 redshift catalogs are available starting from Data Release 2 (DR2).
+The v2 redshift catalogs were introduced in Data Release 2 (DR2) and are also
+available for DR1, with a few columns missing (see `DR1 v2 Catalogs`_ below).
 They significantly reorganize the column layout compared to
 :doc:`v1 <../v1/index>` by splitting each catalog into three separate FITS files
 by column type, plus a per-exposure fibermap file. This reduces per-file sizes at
@@ -48,6 +49,24 @@ v2 also introduces new redshift quality columns not present in v1:
 The extra catalogs also include ``OIII_FLUX`` and ``OIII_FLUX_IVAR`` from the
 emission-line fits. Cumulative ztile catalogs additionally include
 ``QAFIBERSTATUS`` from the corresponding tile QA files.
+
+DR1 v2 Catalogs
+---------------
+
+The DR1 (``iron``) v2 catalogs do not include the following columns, which are
+not available in the DR1 pipeline outputs:
+
+- core files: ``ZWARN_BEST``, ``CHI2_BEST``, ``DELTACHI2_BEST``, ``MIN_MJD``,
+  ``MAX_MJD``, ``MEAN_MJD``
+- extra files: ``COEFF_BEST``, ``ZWARN_NEW``, ``SPECTYPE_NEW``, ``SUBTYPE_NEW``,
+  ``CHI2_NEW``, ``DELTACHI2_NEW``, ``COEFF_NEW``
+- exp_fibermap files: ``IN_COADD_B``, ``IN_COADD_R``, ``IN_COADD_Z``
+
+The DR1 QuasarNET outputs include ``Z_NEW`` and ``ZERR_NEW`` but not the other
+``*_NEW`` columns listed above, so the corresponding ``*_BEST`` columns cannot be
+computed. The ``*_MJD`` and ``IN_COADD_*`` columns are not in the DR1 fibermaps.
+These columns are marked as optional, with an additional footnote, in the
+individual file descriptions.
 
 Subdirectories
 --------------

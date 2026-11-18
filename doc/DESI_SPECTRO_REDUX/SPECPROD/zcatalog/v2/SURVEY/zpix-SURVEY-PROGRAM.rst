@@ -125,15 +125,15 @@ Name                       Type        Units   Description
 ========================== =========== ======= =====================================================================================================================================
 TARGETID                   int64               Unique DESI target ID
 UNIQPIX [1]_               int32               Unique HEALPixel identifier encoding both pixel number and NSIDE (DR3+); HEALPIX and NSIDE are in the companion extra file
-HEALPIX [1]_               int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme (DR2 only)
+HEALPIX [1]_               int32               HEALPixel containing this location at NSIDE=64 in the NESTED scheme (DR1 and DR2)
 Z_BEST                     float64             Best redshift: equals Z (Redrock) for most targets; for confirmed QSOs (i.e., when either GOOD_Z_QSO or GOOD_Z_LYA is true), it equals Z_QSO (QuasarNET) if the two redshifts differ by >1000 km/s
 Z_CONF                     uint8               Redshift confidence: 0=no confidence, 1=low confidence (ZWARN==0), 3=high confidence (passes LSS-like quality cuts)
 ZERR_BEST                  float64             Redshift error for Z_BEST
-ZWARN_BEST                 int32               Redshift warning bitmask for Z_BEST
+ZWARN_BEST [1]_ [2]_       int32               Redshift warning bitmask for Z_BEST
 SPECTYPE_BEST              char[6]             Spectral type for Z_BEST (e.g. GALAXY, QSO, STAR)
 SUBTYPE_BEST               char[3]             Spectral subtype for Z_BEST
-CHI2_BEST                  float32             Best fit chi squared for Z_BEST
-DELTACHI2_BEST             float32             chi2 difference between first- and second-best fits for Z_BEST
+CHI2_BEST [1]_ [2]_        float32             Best fit chi squared for Z_BEST
+DELTACHI2_BEST [1]_ [2]_   float32             chi2 difference between first- and second-best fits for Z_BEST
 PETAL_LOC                  int16               Petal location [0-9]
 FIBER                      int32               Fiber ID on the CCDs [0-4999]
 COADD_FIBERSTATUS          int32               bitwise-AND of input FIBERSTATUS
@@ -165,36 +165,47 @@ COADD_NUMEXP               int16               Number of exposures in coadd
 COADD_EXPTIME              float32     s       Summed exposure time for coadd
 COADD_NUMNIGHT             int16               Number of nights in coadd
 COADD_NUMTILE              int16               Number of tiles in coadd
-MIN_MJD                    float64     d       Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
-MAX_MJD                    float64     d       Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
-MEAN_MJD                   float64     d       Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
+MIN_MJD [1]_ [2]_          float64     d       Minimum value of the Modified Julian Date (when the shutter was open for the first exposure used in the coadded spectrum)
+MAX_MJD [1]_ [2]_          float64     d       Maximum value of the Modified Julian Date (when the shutter was open for the last exposure used in the coadded spectrum)
+MEAN_MJD [1]_ [2]_         float64     d       Mean value of the Modified Julian Date (when the shutter was open for exposures used in the coadded spectrum)
 GOOD_SPEC                  logical             True if this is a science target with good hardware/fiber status
 EFFTIME_SPEC               float32     s       Effective exposure time for spectroscopy (from TSNR2_LRG; see Notes)
 ZCAT_NSPEC                 int16               Number of times this TARGETID appears in this catalog
 ZCAT_PRIMARY               logical             Boolean flag (True/False) for the primary coadded spectrum in this zcatalog
 ========================== =========== ======= =====================================================================================================================================
 
-.. [1] Optional
+.. [1] Optional; see `Optional Columns`_ below.
+.. [2] Not available in DR1 (``iron``); see the :doc:`v2 overview <../index>`.
 .. _`LS`: https://www.legacysurvey.org/
 .. _`DR9 bitmasks page`: https://www.legacysurvey.org/dr9/bitmasks
 .. _`Gaia`: https://gea.esac.esa.int/archive/documentation//GDR2/Gaia_archive/chap_datamodel/sec_dm_main_tables/ssec_dm_gaia_source.html
 .. _SFD98: https://ui.adsabs.harvard.edu/abs/1998ApJ...500..525S/abstract
 
+Optional Columns
+~~~~~~~~~~~~~~~~
+
+* ``HEALPIX`` is present in DR1 and DR2 files, which are grouped by HEALPixel
+  (``healpix`` grouping). DR3+ files use the ``uniqpix`` grouping and have
+  ``UNIQPIX`` instead; ``HEALPIX`` and ``NSIDE`` are then in the companion
+  :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` file.
+* Targeting bitmasks: ``CMX_TARGET``, ``SV1_*_TARGET``, ``SV2_*_TARGET``, and
+  ``SV3_*_TARGET`` are only present for the corresponding survey; there is no
+  propagation of targeting bits across surveys. ``DESI_TARGET``, ``BGS_TARGET``,
+  ``MWS_TARGET``, and ``SCND_TARGET`` are retained for ``SURVEY="main"`` and
+  ``SURVEY="special"``, and are removed for commissioning and SV surveys.
+* Columns that are also marked [2]_ are not available in DR1 (``iron``); see the
+  :doc:`v2 overview <../index>`.
+
 Notes and Examples
 ==================
 
-  * The targeting bitmasks ``DESI_TARGET``, ``BGS_TARGET``, ``MWS_TARGET``, and ``SCND_TARGET``
-    are retained for ``SURVEY="main"`` and ``SURVEY="special"``. They are removed for
-    commissioning and SV surveys, which use their survey-specific target masks.
-  * Similarly, the ``SV1_DESI_TARGET`` etc. target masks are only set for the corresponding
-    survey; there is no propagation of targeting bits across surveys.
-  * ``GOOD_Z_{BGS,LRG,ELG,QSO,LYA}`` flags are in the companion
-    :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` file.
-  * This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
-    ``MAIN_PRIMARY``; these are added when zpix files are combined into
-    :doc:`zall-pix-SPECPROD.fits <../zall/zall-pix-SPECPROD>`.
-  * ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
-    where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
-    bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
-    factor from the TSNR ensemble template files in ``desimodel``.
-  * For the SURVEY=cmx m33 tile (TILEID=80615) tile and all the SURVEY=sv1 tiles (except TILEID=80971-80976, the dc3r2 ones), proper-motion correction was applied at the :doc:`fiberassign </DESI_TARGET/fiberassign/tiles/TILES_VERSION/TILEXX/fiberassign-TILEID>` design step; thus the following columns can have different values than in the :doc:`desitarget products </DESI_TARGET/TARG_DIR/DR/VERSION/targets/PHASE/RESOLVE/OBSCON/PHASEtargets-OBSCON-RESOLVE-hp-HP>`: ``TARGET_RA``, ``TARGET_DEC``, ``REF_EPOCH``, ``PLATE_RA``, ``PLATE_DEC``, and ``PLATE_REF_EPOCH``.
+* ``GOOD_Z_{BGS,LRG,ELG,QSO,LYA}`` flags are in the companion
+  :doc:`zpix-SURVEY-PROGRAM-extra.fits <./zpix-SURVEY-PROGRAM-extra>` file.
+* This file does not contain ``SV_NSPEC``, ``SV_PRIMARY``, ``MAIN_NSPEC``, or
+  ``MAIN_PRIMARY``; these are added when zpix files are combined into
+  :doc:`zall-pix-SPECPROD.fits <../zall/zall-pix-SPECPROD>`.
+* ``EFFTIME_SPEC`` is the effective exposure time computed as ``SNR2TIME * TSNR2_X``,
+  where ``TSNR2_X`` is chosen by program: ``TSNR2_LRG`` for dark, ``TSNR2_BGS`` for
+  bright, ``TSNR2_GPBBACKUP`` for backup. ``SNR2TIME`` is a per-tracer normalization
+  factor from the TSNR ensemble template files in ``desimodel``.
+* For the SURVEY=cmx m33 tile (TILEID=80615) tile and all the SURVEY=sv1 tiles (except TILEID=80971-80976, the dc3r2 ones), proper-motion correction was applied at the :doc:`fiberassign </DESI_TARGET/fiberassign/tiles/TILES_VERSION/TILEXX/fiberassign-TILEID>` design step; thus the following columns can have different values than in the :doc:`desitarget products </DESI_TARGET/TARG_DIR/DR/VERSION/targets/PHASE/RESOLVE/OBSCON/PHASEtargets-OBSCON-RESOLVE-hp-HP>`: ``TARGET_RA``, ``TARGET_DEC``, ``REF_EPOCH``, ``PLATE_RA``, ``PLATE_DEC``, and ``PLATE_REF_EPOCH``.
